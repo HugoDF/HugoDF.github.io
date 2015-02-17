@@ -16,10 +16,10 @@
     letter-spacing: -1px;
     margin-bottom: 0;
     float: left;
-
     &,
     &:visited {
-        color: $grey-color-dark;
+        color: $text-color;
+        //color: $grey-color-dark;
     }
 }
 
@@ -209,7 +209,7 @@
 
 .post-content {
     margin-bottom: $spacing-unit;
-
+    min-height: 25rem;
     h2 {
         font-size: 32px;
 

@@ -1,10 +1,12 @@
 # Site settings
 title: Hugo Di Francesco
-email: hdifrancesco@gmail.com
+emails: 
+    - "hdifrancesco@gmail.com"
+    - "hugo.francesco.13@ucl.ac.uk"
 description: > # this means to ignore newlines until "baseurl:"
   I try to hack stuff together.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "http://hugodf.github.io" # the base hostname & protocol for your site
 twitter_username: k__hugo
 github_username:  HugoDF
 

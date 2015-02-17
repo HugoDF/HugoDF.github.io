@@ -5,35 +5,24 @@ layout: default
 <div class="home">
   <h1>Welcome,</h1>
   <p>My name is Hugo Di Francesco, I make websites amongst other things and you can follow me here</p>
-  <h2>About me</h2>
-  <p>I'm a second year Mathematical Computation Student at UCL (read computer science and maths), and I've been making websites commercially for around a year now</p>
-  <p>Front-end web technologies are my cup of tea. Anything from javascript to jQuery to responsive frameworks (Bootstrap, Foundation), using Sass/CSS3, HTML5 features. All this frontend goodness is driven with Laravel 4 PHP or keystone.js/express.js/node.js, I'm also looking at my friend Markus Padourek's nice integration called <a href="http://sanestack.com/">SANE Stack</a> which takes Ember.js and Sails.js and integrates them together (convention over configuration and javascript full-stack) while also adding cool features like Docker integration and data storage solutions (PostGres, Redis, MongoDB). And possibly documenting that to help out any Ember.js newcomers looking for a full-stack solution.</p>
-  <p>Automating things is the way to go for me, anything from task runners (read Grunt.js) to heavily customising a CMS to reduce the work I have to do and also to fulfill user requirements.</p>
-  <p>More work, less code is the idea: use plugins but know that if you needed to you, you could write it yourself</p>
-  <h2>Stack(s)</h2>
-  <ul>
-    <li>Languages: Javascript, PHP, CSS/HTML, - from uni - C, Java, Haskell</li>
-    <li>Styling Frameworks: <a href="http://foundation.zurb.com">ZURB Foundation</a> or <a href="http://getbootstrap.com/">Twitter Bootstrap</a>, using Sass</li>
-    <li>Templating Language: Handlebars or Blade templates (whatever goes really as long as it looks like html ie haven't learnt Jade yet)</li>
-    <li>Backend Framework: <a href="http://keystonejs.com">Keystone.js</a> (built on Express.js/Node.js and with Mongoose integration), Laravel 4, procedural PHP</li>
-    <li>Database: SQL and NoSQL (MongoDB) knowledge</li>
-    <li>Integration: proficient jQuery user (AJAX, grabbing data from other fields and dynamic resizing)</li>
-    <li>Javascript (no jQuery), when required</li>
-    <li>User of plugins and libraries (especially for javascript): Underscore.js, async.js, velocity,js</li>
-    <li>Fluent user of NPM, Bower and RubyGems</li>
-    <li>Version-control with GitHub</li>
-  </ul>
-  <h2>Contact me</h2>
-  <ul>
-    <li><a href="mailto:hdifrancesco@gmail.com">hdifrancesco@gmail.com</a></li>
-    <li><a target="_blank" href="https://twitter.com/k__hugo">Twitter</a></li>
-    <li><a target="_blank" href="https://github.io/HugoDF">GitHub</a></li>
-    <li><a target="_blank" href="https://uk.linkedin.com/in/hugodifrancesco">LinkedIn</a></li>
-  </ul>
+  {% for page in site.pages%}
+    {% if page.layout == 'page' %}
 
-  <h1>Posts</h1>
+      {% if page.title != 'Posts' %}
 
-  <ul class="post-list">
+      <h2>{{ page.title }}</h2>
+
+        {% if page.content %}
+            {{page.content}}
+        {% endif %}
+
+      {% endif %}
+
+    {% endif %}
+  {% endfor %}
+</div>
+<h2>Posts</h2>
+<ul class="post-list">
     {% for post in site.posts %}
       <li>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
@@ -43,8 +32,6 @@ layout: default
         </h2>
       </li>
     {% endfor %}
-  </ul>
+</ul>
 
-  <!--<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>-->
-
-</div>
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
