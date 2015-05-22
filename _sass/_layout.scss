@@ -1,13 +1,36 @@
+@mixin invert(){
+    background-color: $inverted-background-color;
+    color: $inverted-text-color;
+    a {
+        color: $inverted-brand-color;
+        text-decoration: none;
+
+        &:visited {
+            color: darken($inverted-brand-color, 10%);
+        }
+
+        &:hover {
+            color: $inverted-text-color;
+            text-decoration: underline;
+        }
+    }
+}
 /**
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
+    //border-top: 5px solid $grey-color-dark;
     border-bottom: 1px solid $grey-color-light;
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: $background-color;
+    //@include invert();
 }
 
 .site-title {
@@ -94,6 +117,10 @@
 .site-footer {
     border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
+    position: relative;
+    background-color: $background-color;
+    color: $text-color;
+    //@include invert();
 }
 
 .footer-heading {
@@ -105,18 +132,19 @@
 .social-media-list {
     list-style: none;
     margin-left: 0;
+    margin-bottom: 0;
 }
 
 .footer-col-wrapper {
     font-size: 15px;
-    color: $grey-color;
+    //color: $grey-color;
     margin-left: -$spacing-unit / 2;
     @extend %clearfix;
 }
 
 .footer-col {
     float: left;
-    margin-bottom: $spacing-unit / 2;
+    //margin-bottom: $spacing-unit / 2;
     padding-left: $spacing-unit / 2;
 }
 
@@ -156,13 +184,24 @@
     }
 }
 
-
+.overlay-wrapper{
+}
+.sky-overlay{
+    position: fixed;
+    background-image: url('/img/sky.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    z-index: -20;
+}
 
 /**
  * Page content
  */
 .page-content {
     padding: $spacing-unit 0;
+    padding-top: 76px;
+    min-height: calc(100% - 212px);
 }
 
 .page-heading {

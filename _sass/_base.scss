@@ -8,6 +8,10 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
+html, body{
+    height: 100%;
+}
+
 
 
 /**
@@ -93,7 +97,7 @@ a {
     text-decoration: none;
 
     &:visited {
-        color: darken($brand-color, 15%);
+        color: darken($brand-color, 10%);
     }
 
     &:hover {
@@ -198,7 +202,7 @@ pre {
         vertical-align: middle;
 
         path {
-            fill: $grey-color;
+            fill: $grey-color-dark;
         }
     }
 }

@@ -13,9 +13,13 @@ $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
-$text-color:       #fff;
-$background-color: #2e393e;
-$brand-color:      #2dcad2;
+$text-color:       #2e393e;
+$background-color: #fff;
+$brand-color: #CC0000;
+
+$inverted-text-color: #fff;
+$inverted-background-color: #2e393e;
+$inverted-brand-color:      #2dcad2;
 
 $grey-color:       #fff;
 $grey-color-light: lighten($grey-color, 40%);
