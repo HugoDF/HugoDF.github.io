@@ -274,3 +274,54 @@
         }
     }
 }
+/**
+ * Homepage
+ */
+.home{
+    text-align: center;
+    display: table;
+    .avatar{
+        display: inline-block;
+        border-radius: 999px;
+        width: 6*$spacing-unit;
+        margin-bottom: 2*$spacing-unit;
+        @media (min-width: 1024px){
+            float: left;
+        }
+    }
+    .grid{
+        width: 100%;
+        //padding: $spacing-unit;
+        display: block;
+        text-align: center;
+        @media (min-width: 1024px){
+            float: left;
+            width: 60%;
+            padding: 0 5%;
+        }
+    }
+    .tile{
+        display: inline-block;
+        text-align: left;
+        width: 20rem;
+        @media (min-width: 624px) and (max-width: 1023px){
+            //width: 80%;
+            padding: 0 30%;
+        }
+        @media (min-width: 1024px){
+            float: left;
+            width: 50%;
+            padding: 0;
+        }
+    }
+    .post-container{
+        $rest-of-width: $spacing-unit *6;
+        display: inline-block;
+        text-align: left;
+        width: 20rem;
+        @media (min-width: 1024px){
+            float: left;
+            width: calc(30% - #{$rest-of-width});
+        }
+    }
+}

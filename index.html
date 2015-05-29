@@ -3,8 +3,73 @@ layout: default
 ---
 
 <div class="home">
-  <h1>Welcome,</h1>
-  <p>My name is Hugo Di Francesco, I make websites amongst other things and you can follow me here</p>
+  <img class="avatar" src="/img/square.png"/>
+  <div class="grid">
+    <div class="tile">
+      <h1>Languages</h1>
+      <p>
+        <ul>
+          <li>Native: French, English, Spanish</li>
+          <li>Intermediate Avanced: German (B2)</li>
+        </ul>
+      </p>
+      </div>
+    <div class="tile">
+      <h1>Programming</h1>
+      <p>
+        <ul>
+          <li>JavaScript, PHP</li>
+          <li>Sass, jQuery</li>
+          <li>CSS3 &amp; HTML5</li>
+          <li>Java, C, Haskell</li>
+          <li>Ruby, SQL</li>
+        </ul>
+      </p>
+    </div>
+    <div class="tile">
+      <h1>Frameworks</h1>
+      <h2>MVC Frameworks</h2>
+      <p>
+        <ul>
+          <li>Laravel</li>
+          <li>Node.js/Express.js</li>
+          <li>Ruby on Rails</li> 
+        </ul>
+      </p>
+      <h2>Styling Frameworks</h2> 
+      <p>
+        <ul>
+          <li>ZURB Foundation</li>
+          <li>Bootstrap</li>
+          <li>Bourbon (Neat/Refills)</li>
+        </ul>
+      </p>
+    </div>
+    <div class="tile">
+      <h1>Build tools</h1>
+      <p>Grunt.js, Gulp.js</p>
+    </div>
+    <div class="tile">
+      <h1>Package managers</h1>
+      <p><ul>
+        <li>npm, Bower</li>
+        <li>RubyGems/Bundler</li>
+        <li>Composer</li>
+      </ul></p>
+    </div>
+    <div class="tile">
+      <h1>Other</h1>
+      <p>
+        <ul>
+          <li>GitHub</li>
+          <li>BugHerd</li>
+          <li>Blossom.io</li>
+          <li>PSD extraction</li>
+        </ul>
+      </p>
+    </div>
+  </div>
+  {% comment %}
   {% for page in site.pages%}
     {% if page.layout == 'page' %}
 
@@ -20,18 +85,21 @@ layout: default
 
     {% endif %}
   {% endfor %}
+  {% endcomment %}
+  <div class="post-container">
+    <h1>Posts</h1>
+    <ul class="post-list">
+        {% for post in site.posts %}
+          <li>
+            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+            <h2>
+              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h2>
+          </li>
+        {% endfor %}
+    </ul>
+
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  </div>
 </div>
-<h2>Posts</h2>
-<ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-</ul>
-
-<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
