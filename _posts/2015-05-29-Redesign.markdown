@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Redesign"
+date:   2015-05-29 14:30:11
+categories: redesign design grid
+---
+You see this website now but it's literally gone from darkness to light, the original theme was based around a dark grey background with white text and electric green links. Now it's about clouds, standard white on black with red links.
+
+In terms of design it's functional and uses standard design components.
+
+I had too much content so I simplified it into bulletpoints, and made it more of a grid/tile display.
+
+The image with massive border-radius (ie corners so rounded the images looks circular) is a regular fixture of social media and blogging websites of today.
+
+I'm quite proud of the background image which I took myself, the pages don't scroll much so it's not used to its full potential.
+
+The responsive navbar came courtesy of jekyll as did the footer.
