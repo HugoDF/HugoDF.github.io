@@ -280,13 +280,17 @@
  * Homepage
  */
 .home{
-    $home-width: 20rem;
+    $home-small-width: 80%;
+    $home-medium-width: 20rem;
     text-align: center;
     .hero-section{
         display: inline-block;
         text-align: center;
-        width: $home-width;
+        width: $home-medium-width;
         margin-bottom: $spacing-unit;
+        @media (max-width: 624px){
+            width: $home-small-width;
+        }
         @media (min-width: 1024px){
             text-align: left;
             float: left;
@@ -328,7 +332,10 @@
     .tile{
         display: inline-block;
         text-align: left;
-        width: $home-width;
+        width: $home-medium-width;
+        @media (max-width: 624px){
+            width: $home-small-width;
+        }
         @media (min-width: 624px) and (max-width: 1023px){
             //width: 80%;
             padding: 0 30%;
@@ -343,7 +350,14 @@
         $rest-of-width: $spacing-unit *6;
         display: inline-block;
         text-align: left;
-        width: $home-width;
+        width: $home-medium-width;
+        @media (max-width: 624px){
+            width: $home-small-width;
+        }
+        @media (min-width: 624px) and (max-width: 1023px){
+            //width: 80%;
+            padding: 0 30%;
+        }
         @media (min-width: 1024px){
             float: left;
             width: calc(30% - #{$rest-of-width});
