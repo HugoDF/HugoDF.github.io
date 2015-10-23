@@ -70,6 +70,7 @@
         top: 9px;
         right: 30px;
         background-color: $background-color;
+        background: rgba(250,250,250,.7);
         border: 1px solid $grey-color-light;
         border-radius: 5px;
         text-align: right;
@@ -206,6 +207,9 @@
     padding: $spacing-unit 0;
     padding-top: 76px;
     min-height: calc(100% - 212px);
+    @include media-query($on-palm) {
+        padding-top: 152px;
+    }
 }
 
 .page-heading {
@@ -323,6 +327,7 @@
         &:not(.avatar-container){
             float: left;
         }
+        width: 100%;
         margin-bottom: $spacing-unit/2;
     }
     .grid{
