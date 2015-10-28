@@ -5,7 +5,8 @@ permalink: /tutorials/
 ---
 <div class="post-container">
     <ul class="post-list">
-      {% for post in site.posts %}
+      {% assign sorted_posts = (site.posts | sort: 'date', 'first') %}
+      {% for post in sorted_posts %}
         {% if post.categories contains "tutorials" %}
         <li>
           <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
