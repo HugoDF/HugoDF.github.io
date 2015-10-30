@@ -219,7 +219,9 @@
 .post-list {
     margin-left: 0;
     list-style: none;
-    max-height: 600px;
+    @media screen and (min-width: 1024px){
+        max-height: 600px;
+    }
     overflow: scroll;
 
     > li {
@@ -335,6 +337,16 @@
         //padding: $spacing-unit;
         display: block;
         text-align: center;
+        @media (min-width: 720px){
+            -webkit-column-count: 2;
+               -moz-column-count: 2;
+                    column-count: 2;
+        }
+        @media (min-width: 1248px){
+            -webkit-column-count: 3;
+               -moz-column-count: 3;
+                    column-count: 3;
+        }
         @media (min-width: 1024px){
             float: left;
             width: 60%;
@@ -344,19 +356,7 @@
     .tile{
         display: inline-block;
         text-align: left;
-        width: $home-medium-width;
-        @media (max-width: 624px){
-            width: $home-small-width;
-        }
-        @media (min-width: 624px) and (max-width: 1023px){
-            //width: 80%;
-            padding: 0 30%;
-        }
-        @media (min-width: 1024px){
-            float: left;
-            // width: 50%;
-            padding: 0;
-        }
+        width: 100%;
     }
     .post-container{
         $rest-of-width: $spacing-unit *6;
@@ -364,7 +364,7 @@
         text-align: left;
         width: $home-medium-width;
         @media (max-width: 624px){
-            width: $home-small-width;
+            width: 100%;
         }
         @media (min-width: 624px) and (max-width: 1023px){
             //width: 80%;

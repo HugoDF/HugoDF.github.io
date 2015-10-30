@@ -95,23 +95,6 @@ layout: default
       </p>
     </div>
   </div>
-  {% comment %}
-  {% for page in site.pages%}
-    {% if page.layout == 'page' %}
-
-      {% if page.title != 'Posts' %}
-
-      <h2>{{ page.title }}</h2>
-
-        {% if page.content %}
-            {{page.content}}
-        {% endif %}
-
-      {% endif %}
-
-    {% endif %}
-  {% endfor %}
-  {% endcomment %}
   <div class="post-container">
     <h1>Posts</h1>
     <ul class="post-list">
