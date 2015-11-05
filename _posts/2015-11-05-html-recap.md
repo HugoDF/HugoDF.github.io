@@ -147,6 +147,13 @@ We can do some funky stuff like force the link to open in a new window/tab using
 
 There's another cool thing to explain in the example above: relative vs absolute paths. When you're navigating between pages on your own website, you can just us `/blabla` instead of typing out `http://mysite/blabla` which is quite cool and which means you can have your site in multiple places and each one of them works :).
 
+You can also do fancy linkeage like this:
+```html
+<a href="mailto:hugo@gmail.com">hugo@gmail.com</a>
+```
+
+If you click that link it will open the default mail client on whichever device you're on. It's cool because you're not saying: 'open the iOS/Android mail app' or 'open Outlook', you're saying, 'this is an address you can send an email to, figure out how you can complete that action'.
+
 ##Display type
 This is more of a CSS thing (I think I will reiterate it there).
 
