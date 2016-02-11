@@ -4,7 +4,7 @@ title: Posts
 permalink: /posts/
 ---
 
-<p>I also write on <a href="https://medium.com/@hugo__df">my medium account</a> and for <a href="https://medium.com/artificial-labs">Artificial Labs</a></p>
+#Check out my [Medium Blog](https://medium.com/@hugo__df) for more.
 <ul class="post-list">
     {% for post in site.posts %}
       <li>
