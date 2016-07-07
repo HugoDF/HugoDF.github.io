@@ -11,4 +11,4 @@ twitter_username: hugo__df
 github_username:  HugoDF
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown

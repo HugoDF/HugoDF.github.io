@@ -5,13 +5,14 @@ date:   2015-10-21 12:25:00
 categories: tutorials
 ---
 
-#The site
+# The site
+
 You can see what we've done at [hugodf.github.io/codingandcookies2](http://hugodf.github.io/codingandcookies2).  
 The GitHub repository is at [https://github.com/HugoDF/codingandcookies2/tree/gh-pages](https://github.com/HugoDF/codingandcookies2/tree/gh-pages).
 
 Before you start, download the skeleton/starter project either by following [this link](http://hugodf.github.io/codingandcookies2/codingandcookies2.zip) or from GitHub [https://github.com/HugoDF/codingandcookies2](https://github.com/HugoDF/codingandcookies2).
 
-##Walkthrough of components
+## Walkthrough of components
 
 If you open up Sublime Text/Atom/Brackets/Notepad++ or whatever else you're using you should be able to view a tree that's a bit like this:  
 ![image of tree][image-1]
@@ -24,9 +25,10 @@ In the `js` folder, you've got `jquery.js` and `main.js`.
 jQuery is a library for javascript that unifies the programming interface with the browser and allows you to "query" the the representation of your page in the browser (this is called the DOM). `main.js` is where we'll write our javascript code.
 In the `css` folder, we've again got two files: `default.css` and `main.css`. `default.css` is the base styles that I have written so that we can focus on improving this website and not the menial basic tasks we saw in the previous post. `main.css` is for you to write styles in :).  
 
-##CSS selectors
+## CSS selectors
+
 Just a quick reminder of how CSS selectors work (more on this at [http://hugodf.github.io/tutorials/2015/10/10/tutorial.html](http://hugodf.github.io/tutorials/2015/10/10/tutorial.html)).  
-A css selector uses either the element name: 
+A css selector uses either the element name:
 
 ```css
 html
@@ -39,10 +41,11 @@ or the class name or id preceded by `.` and `#` respectively:
 ```css
 .some-class{}
 #some-id{}
-``` 
+```
 jQuery will use similar selectors.
 
-##The web is mobile: responsive design concept
+## The web is mobile: responsive design concept
+
 In the year 2000, there was no such thing as widespread smartphones. Back then the web was Desktop-only.
 
 Then came the first smartphones and slowly websites started optimising for mobile performance (small screens). We started talking about the mobile web, the web was still desktop-first but there was progress.
@@ -56,7 +59,8 @@ On a simple level, it's doing things like collapsing the navbar items on mobile,
 
 If you just resize your browser to the minimum width you can, you will get an idea of how it looks on mobile, right now, it looks quite bad.
 
-##Media Queries
+## Media Queries
+
 To implement responsive designs, we need a mechanism to check device width at the very least. This is where media queries come in.
 
 A media query allows us to apply styles for a certaing type of device, this is what they can look like:
@@ -87,7 +91,8 @@ Add this to your `main.css`:
 }
 ```
 This will make the emoji disappear and bump the font-size down so that it looks nicer on mobile.
-##Style the Navbar for mobile
+
+## Style the Navbar for mobile
 
 We're going to style the navbar on mobile. Add the following in your `index.html` after `<div class="title">AIRBNB C(L)ONER</div>`:
 
@@ -136,7 +141,7 @@ Let's explain what this code does:
 
 If you open this in your browser, the menu doesn't open. That's because we have nothing adding the `open` class to `.nav-list` on mobile. We can fix that with jQuery.
 
-##Console.log and jQuery selectors
+## console.log and jQuery selectors
 
 Type this:
 
@@ -152,7 +157,7 @@ Reload your page and open up the console (Right Click on page > Inspect Element 
 jQuery [<div class="mobile-menu-toggle">]
 ```
 
-Let's explain the javascript code: 
+Let's explain the javascript code:
 
 - `$(document).ready(function(){})` means when `$(document)` is `ready` do the content of `function` (body is the stuff inside `{}`). `ready` is what we call an **event**.
 - `console.log` just prints whatever is in `()` to the developer console.
@@ -184,11 +189,12 @@ If you want to make this `MENU` button not appear on desktop, just write this in
 ```
 Notice that we're using `screen and (min-width:...)` which means `all screens that are bigger than ...`.
 
-##The tiles: CSS-only
+## The tiles: CSS-only
 
 Next up, let's style the tiles :).
 
 ### The tiles: style it
+
 They're a bit big and distorted on desktop. Let's hide the description and make them `32%` width. The tiles are wrapped in the `listing` class so the following code should do the trick:
 
 ```css
@@ -218,7 +224,9 @@ Now we need some more styling with `@media` queries to display nicely on mobile 
 }
 ```
 Those two rules say: on a `screen that is less that 1024px wide` `.listing` should have `width: 49%` and on a `screen that is less that 572px wide` `.listing` should have `width: 100%`.
+
 ### The tiles: transition it
+
 Ok now we've hidden the description and displayed the tiles in a nicer way, how do we display the description?
 
 First off I'll show you how to do it with CSS only.
@@ -247,7 +255,9 @@ It's really jittery and all but you know, that's without even using javascript. 
 }
 ```
 Still too jittery so let's bind it to click with jQuery.
-##The tiles: jQuery it :)
+
+## The tiles: jQuery it :)
+
 We're going to use a very similar snippet of javascript/jQuery as for the mobile menu
 
 So we just swap out `.listing:hover` for `.listing.open` which gives us:
@@ -298,6 +308,7 @@ Here's what the code does:
 - `$(this).addClass('open');` adds the open class to the listing that was clicked.
 
 ## Extra: Scroll-it
+
 Your homework :)
 
 Have a look at `$('.mobile-menu-toggle').offset().top` and `$('body,html').scrollTo(100)` to figure out how to make the page scroll on a certain element's click.

@@ -4,14 +4,17 @@ title: "Coding and Cookies Session 4: HTML Recap"
 date:   2015-11-05 11:00:00
 categories: tutorials recap
 ---
-#HTML: make it readable
+# HTML: make it readable
+
 If you want to take the quiz as you read the resources, it's at [quiz.hugodf.xyz](http://quiz.hugodf.xyz)  
 For the CSS and jQuery tutorials [click here](/tutorials/2015/11/05/recap.html)
 
 HTML stands for Hypertext Markup Language. `Hypertext` means it's cooler than text and `markup language` means it describes its own content.  
 That's what it does: when you hit a URL like [http://quiz.hugodf.xyz](http://quiz.hugodf.xyz). A server (computer somewhere that has all the things for that URL) sends a response in HTML format. Your browser then has to **parse** the HTML to show it to you as it was designed by the website's owner (me in this instance ;) ).  
 All we're going to do is talk to a browser in a way that it understands.
-##Declaring HTML
+
+## Declaring HTML
+
 The first tags you need to know are `html`, `head` and `body`. A HTML document usually looks like this:
 
 ```html
@@ -25,7 +28,8 @@ The first tags you need to know are `html`, `head` and `body`. A HTML document u
 ```
 Things contained in `head` are not displayed inside the HTML element, they give you info such as the name the tab/window (`title` tag), what needs to be loaded before the page is rendered (css/javascript files). Things like analytics libraries and what favicon to display also go in there.
 
-##Tags and Elements
+## Tags and Elements
+
 Tag and element are used interchangeably, depending on the context. So we can say the `body` element and the `body` tag(s).  
 
 If we're more strict:  
@@ -34,7 +38,8 @@ If we're more strict:
 
 Some tags self-close eg. `img`, `meta`; this usually means that they are elements that don't contain any text or other elements (an image is an image, it doesn't contain anything else, especially not text).
 
-##Attributes
+## Attributes
+
 Here's another HTML document:
 
 ```html
@@ -65,7 +70,8 @@ We say that `charset` and `description` are **attributes** of the respective `me
 - `data-some-attribute`: allows you to set an arbitrary data attribute (this will be useful for jQuery).  
 - `type`: allows you to set the **type** of the `input` element (example options are checkbox, radio button, text field, email field, password field, hidden field...).
 
-##"Semantic" Tags (HTML5)
+## "Semantic" Tags (HTML5)
+
 HTML allows you to describe what you're writing. Here's a sort of introduction/reference:
 
 ```html
@@ -87,7 +93,7 @@ HTML allows you to describe what you're writing. Here's a sort of introduction/r
 <nav>
 	Fancy element
 </nav>
-A video: 
+A video:
 <video></video>
 An image:
 <img>
@@ -117,7 +123,8 @@ An image:
 
 Try them out, get to know them and so on.
 
-##Generic Tags (div/span)
+## Generic Tags (div/span)
+
 It's all nice and cool to user _semantic_ blablabla, but sometimes you either need something that are not accurately represented by semantic tags or you're just not bothered to write out semantic things. Some of the more semantic tags are also not supported on older browsers.
 
 That's where generic tags come in: `div` and `span`.
@@ -127,7 +134,8 @@ That's where generic tags come in: `div` and `span`.
 
 These usually have a `class` attribute that will tell you what they are used for and to style these ugly elements :).
 
-##Anchor tricks
+## Anchor tricks
+
 Final element of the day: `a`, also known as **anchor** or for the less tech-inclined: a **link**.
 
 Now there is another element called `link` so we will make sure to call it `a` or **anchor** (`link` is something you put in your `head` element to get extra files that aren't in the page).
@@ -154,7 +162,8 @@ You can also do fancy linkeage like this:
 
 If you click that link it will open the default mail client on whichever device you're on. It's cool because you're not saying: 'open the iOS/Android mail app' or 'open Outlook', you're saying, 'this is an address you can send an email to, figure out how you can complete that action'.
 
-##Display type
+## Display type
+
 This is more of a CSS thing (I think I will reiterate it there).
 
 There are a couple of display types:  

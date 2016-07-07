@@ -65,10 +65,12 @@ The syntax is: `jQueryObject.on(eventName, actionToDo);`.
 - `actionToDo` is a function, in the example we use an _anonymous function_, which means it doesn't have a name but it can be another function that's been declared. `ActionToDo` is what we call a **callback**.
 
 ## Callbacks
+
 Callbacks are functions that are called on completion of an action. In the case above, when something is clicked the callback `function(){$('.menu').show();}` is called.  
 This concept is very important in javascript
 
 ## jQuery vs javascript
+
 Here is some jQuery code:
 
 ```javascript
