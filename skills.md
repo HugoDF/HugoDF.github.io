@@ -22,10 +22,9 @@ permalink: /skills/
       <h1>Frameworks</h1>
       <p>
         <ul>
-          <li>Ruby on Rails</li>
-          <li>Laravel (PHP)</li>
-          <li>Sinatra</li>
-          <li>Node.js/Express.js</li>
+          <li>Ruby on Rails, Laravel</li>
+          <li>Sinatra, Lumen</li>
+          <li>Express, Koa, Hapi</li>
         </ul>
       </p>
     </div>
@@ -43,8 +42,9 @@ permalink: /skills/
       <h1>Build tools</h1>
       <p>
         <ul>
-          <li>Grunt.js</li>
           <li>Gulp.js</li>
+          <li>npm scripts</li>
+          <li>Babel, browserify</li>
         </ul>
       </p>
     </div>
@@ -64,8 +64,7 @@ permalink: /skills/
         <ul>
           <li>GitHub</li>
           <li>BugHerd</li>
-          <li>Blossom.io</li>
-          <li>PSD extraction</li>
+          <li>JIRA</li>
         </ul>
       </p>
     </div>

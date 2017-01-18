@@ -1,10 +1,18 @@
 ---
-layout: page
-title: Posts
+layout: blog
+title: Blog
 permalink: /posts/
 ---
 
-#Check out my [Medium Blog](https://medium.com/@hugo__df) for more.
+You can find posts about Functional Programming, JavaScript, Ruby and assorted development practices on [my Medium blog](https://medium.com/@hugo__df).
+
+I also host some beginner tutorials [here](/tutorials).
+
+And most of my talks are [here](/talks).
+
+
+
+{% comment %}
 <ul class="post-list">
     {% for post in site.posts %}
       <li>
@@ -18,3 +26,4 @@ permalink: /posts/
 </ul>
 
 <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+{% endcomment %}
