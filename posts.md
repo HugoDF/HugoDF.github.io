@@ -8,7 +8,7 @@ You can find posts about Functional Programming, JavaScript, Ruby and assorted d
 
 I also host some beginner tutorials [here](/tutorials).
 
-And most of my talks are [here](/talks).
+I also have some talks [here](/talks).
 
 
 
