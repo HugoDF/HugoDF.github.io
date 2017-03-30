@@ -313,11 +313,11 @@
         //padding: $spacing-unit;
         display: block;
         text-align: center;
-        @media (min-width: 720px){
-            -webkit-column-count: 2;
-               -moz-column-count: 2;
-                    column-count: 2;
-        }
+        // @media (min-width: 720px){
+        //     -webkit-column-count: 2;
+        //        -moz-column-count: 2;
+        //             column-count: 2;
+        // }
     }
     .project-tile{
         display: inline-block;
