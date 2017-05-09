@@ -264,6 +264,12 @@
     }
 }
 
+@media (min-width: 720px){
+  .column-content {
+    column-count: 2
+  }
+}
+
 .post-content {
     margin-bottom: $spacing-unit;
     min-height: 25rem;
