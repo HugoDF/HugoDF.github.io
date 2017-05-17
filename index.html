@@ -2,111 +2,12 @@
 layout: page
 title: Projects
 ---
-
 <div class="home">
   <div class="project-grid">
-    <div class="project-tile">
-      <h1><a href="https://github.com/HugoDF/uclapi-javascript">UCL API, JavaScript wrapper</a></h1>
-      <p>
-        <ul>
-          <li>JavaScript wrapper for UCL API on npm as <a href="https://www.npmjs.com/package/uclapi">uclapi</a></li>
-          <li>Leverages ES6 features</li>
-          <li><a href="https://github.com/avajs/ava">AVA</a> for tests</li>
-        </ul>
-      </p>
-    </div>
-  
-    <div class="project-tile">
-      <h1><a href="https://liwely.com">Liwely, your mindfulness coach</a></h1>
-      <p>
-        <ul>
-          <li>React Native iOS app</li>
-          <li>Redux for task storage</li>
-          <li>Koa REST API backed by a MySQL database</li>
-        </ul>
-      </p>
-    </div>
-    
-    <div class="project-tile">
-      <h1><a href="http://ayc.academycup.com">Academy Cup, official website of the Academy Youth Cup</a></h1>
-      <p>
-        <ul>
-          <li>Full admin interface with deep CMS functionality</li>
-          <li>Ranking generation</li>
-          <li>Frontend design and implementation</li>
-        </ul>
-      </p>
-    </div>
-
-    <div class="project-tile">
-      <h1><a href="http://cleanair.me.uk">CleanAir, pollution and housing</a></h1>
-      <p>
-        <ul>
-          <li>React/React-router app that displays a heatmap of pollution along with houses in that area</li>
-          <li>Integration with the Zoopla API</li>
-          <li>Heavy use of Localstorage and caching to reduce round-trips and response time</li>
-          <li>REST API build in Flask and deployed on AWS EC2 with nginx in front of uWSGI</li>
-          <li>Database also hosted on AWS (RDS)</li>
-        </ul>
-      </p>
-    </div>
-
-    <div class="project-tile">
-      <h1><a href="https://tube.awebots.com">London Tube for Slack</a></h1>
-      <p>
-        <ul>
-          <li><code>/tube</code> slash command</li>
-          <li>Uses <a href="https://github.com/HugoDF/node-tfl">node-tfl</a> (contributed to updating the package)</li>
-          <li>Leverages <a href="https://github.com/howdyai/botkit">Botkit</a>, for authentication token storage (in Redis)</li>
-        </ul>
-      </p>
-    </div>
-
-    <div class="project-tile">
-      <h1><a href="https://github.com/awebots/jobbot">JobBot</a></h1>
-      <p>
-        <ul>
-          <li>A Ruby Bot that sends you jobs from Reddit, HackerNews and Workinstartups in Slack</li>
-          <li>API wrappers for workinstartups and HackerNews jobs</li>
-          <li>Uses Redd for access to Reddit</li>
-          <li>Source code is in <a href="https://github.com/awebots/jobbot">this repo</a></li>
-        </ul>
-      </p>
-    </div>
-
-    <div class="project-tile">
-      <h1><a href="https://github.com/parisandmilo/mondobot">MondoBot</a></h1>
-      <p>
-        <ul>
-          <li>A Node Bot that behaves like your bank assistant</li>
-          <li>BotKit for conversational aspects</li>
-          <li>Wit.ai for natural lanugage processing</li>
-          <li>Mondo OAuth integration</li>
-          <li>Add to Slack button</li>
-        </ul>
-      </p>
-    </div>
-    
-    <div class="project-tile">
-      <h1><a href="http://getmadideas.com" target="_blank">Get Mad Ideas: Find and share app ideas</a></h1>
-      <p>
-        <ul>
-          <li>A Rails web application that you can access at <a href="http://getmadideas.com" target="_blank">http://getmadideas.com</a></li>
-          <li>Featured on <a href="https://www.producthunt.com/tech/get-mad-ideas">ProductHunt with 100+ upvotes</a></li>
-          <li>Grabs tweets with #appidea and displays them for voting</li>
-        </ul>
-      </p>
-    </div>
-    <div class="project-tile">
-      <h1><a href="http://www.uclenergy.com" target="_blank">UCLU Energy Society website</a></h1>
-      <p>
-        <ul>
-          <li>A Node/Express web application <a href="http://www.uclenergy.com" target="_blank">www.uclenergy.com</a></li>
-          <li>Leverages Keystone.js for the admin section</li>
-          <li>Pages, sections and content can be edited</li>
-          <li>Features an event page, conference speaker pages and a committee page</li>
-        </ul>
-      </p>
-    </div>
+    {% for project in site.projects reversed %}
+      <div class="project-tile">
+        {{ project.output }}
+      </div>
+    {% endfor %}
   </div>
 </div>

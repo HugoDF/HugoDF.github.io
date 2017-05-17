@@ -12,3 +12,7 @@ github_username:  HugoDF
 
 # Build settings
 markdown: kramdown
+
+collections:
+- projects
+- demos
