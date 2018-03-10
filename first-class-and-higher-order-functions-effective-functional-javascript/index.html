@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en-US" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>First-class and Higher Order Functions: Effective Functional JavaScript &middot; Code with Hugo</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+     <link rel="canonical" href="https://hackernoon.com/effective-functional-javascript-first-class-and-higher-order-functions-713fde8df50a" /> 
+
+     <meta name="description" content="Functions: the killer JavaScript feature we never talk about.
+JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embe" /> 
+
+     
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://cdn-images-1.medium.com/max/1600/1*7GDcBl7iTGZ7dDuwWcIZxA.jpeg"/>
+    
+ 
+    <meta name="twitter:title" content="First-class and Higher Order Functions: Effective Functional JavaScript"/>
+    <meta name="twitter:description" content="Functions: the killer JavaScript feature we never talk about.
+JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embe"/>
+    <meta name="twitter:url" content="/first-class-and-higher-order-functions-effective-functional-javascript/" />
+    <meta name="twitter:site" content="@hugo__df"/>
+
+    <meta property="og:site_name" content="Code with Hugo" />
+    <meta property="og:title" content="First-class and Higher Order Functions: Effective Functional JavaScript &middot; Code with Hugo" />
+    <meta property="og:url" content="/first-class-and-higher-order-functions-effective-functional-javascript/" />
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Functions: the killer JavaScript feature we never talk about.
+JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embe" />
+
+    <meta property="article:published_time" content="2017-01-23T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Functional Programming" /><meta property="article:tag" content="Productivity" />
+
+    <meta property="og:image" content="https://cdn-images-1.medium.com/max/1600/1*7GDcBl7iTGZ7dDuwWcIZxA.jpeg"/>
+
+
+    <meta name="generator" content="Hugo 0.36" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/built/screen.css" /> 
+    <link rel="stylesheet" type="text/css" href="/css/casper-two.css" /> 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
+     <link rel="stylesheet" href="/overrides.css" /> 
+
+     
+
+</head>
+
+
+<body class="post-template">
+  <div class="site-wrapper"> 
+
+<header class="site-header outer">
+  <div class="inner">
+    <nav class="site-nav">
+      <div class="site-nav-left">
+
+        <ul class="nav" role="menu">
+        
+        
+        
+            <li class="" role="menuitem">
+              <a href="/">Home</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/javascript/">JavaScript</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/css/">CSS</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/dev-decoded/">Dev Decoded</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="http://skl.sh/2zNN3En">Git for creatives</a>
+            </li>
+        
+      </ul></div>
+
+      <div class="site-nav-right">
+        <div class="social-links">
+                    
+
+                    <a class="social-link social-link-tw" href="https://twitter.com/hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg></a>
+
+                    <a class="social-link" href="https://github.com/HugoDF" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+
+                    
+
+                    <a class="social-link" href="https://medium.com/@hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 195"><path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582 L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011 C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114 150.640424,135.084652 151.542017,135.771899 L161.755369,145.798942 L161.755369,148 L110.38282,148 L110.38282,145.798942 L120.963119,135.527337 C122.002801,134.487948 122.002801,134.182246 122.002801,132.592593 L122.002801,73.0417402 L92.585901,147.755438 L88.6106443,147.755438 L54.3622782,73.0417402 L54.3622782,123.115814 C54.0767278,125.221069 54.7759199,127.3406 56.2581699,128.863022 L70.0186741,145.55438 L70.0186741,147.755438 L31,147.755438 L31,145.55438 L44.7605042,128.863022 C46.2319621,127.338076 46.8903838,125.204485 46.5340803,123.115814 L46.5340803,65.2157554 Z"/></svg></a>
+        </div>  
+        
+        <a class="subscribe-button" href="/index.xml">Subscribe</a>
+            
+      </div>
+
+    </nav>  
+
+  </div>
+</header>
+
+<main id="site-main" class="site-main outer" role="main">
+  <div class="inner">
+    
+      <article class="post-full post"> 
+    <header class="post-full-header">
+        <section class="post-full-meta">
+            <time class="post-full-meta-date" datetime="2017-01-23">23 January 2017</time>
+                <span class="date-divider">/</span> <a href="/tags/javascript/">#JavaScript</a>&nbsp;<a href="/tags/functional-programming/">#Functional Programming</a>&nbsp;
+        </section>
+        <h1 class="post-full-title">First-class and Higher Order Functions: Effective Functional JavaScript</h1>
+    </header>
+    
+    <figure class="post-full-image" style="background-image: url(https://cdn-images-1.medium.com/max/1600/1*7GDcBl7iTGZ7dDuwWcIZxA.jpeg)">
+    </figure>
+
+    <section class="post-full-content">
+        <div class="kg-card-markdown">
+        
+
+<p>Functions: the killer JavaScript feature we never talk about.</p>
+
+<p>JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embedded systems and it brings a non-blocking I/O model that is faster than others for some types of applications. What really sets JavaScript apart from the rest of scripting languages is its highly functional nature.</p>
+
+<blockquote>
+<p>JavaScript has more in common with functional languages like <a href="http://javascript.crockford.com/little.html">Lisp or Scheme</a> than with C or Java. — Douglas Crockford in <a href="http://javascript.crockford.com/javascript.html">JavaScript: the World’s Most Misunderstood Language</a></p>
+</blockquote>
+
+<p>It’s a widely publicised fact that Brendan Eich, when creating the first version of JavaScript, was actually told he would be able to build a <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp, a list processing language like Scheme or common Lisp</a>. It turns out that Sun Microsystems had other ideas and this programming language needed to wear a coat of procedural syntax inherited from a C or Java-like language. Despite all the semicolons, at its heart JavaScript remains a functional language with features such as first-class functions and closures.</p>
+
+<p>This post will focus on first-class functions and higher order functions. To read more about closures and how to leverage them to wield JavaScript’s functional powers, I’ve written the<a href="https://hackernoon.com/ingredients-of-effective-functional-javascript-closures-partial-application-and-currying-66afe055102a"> following post</a>:
+<a href="https://hackernoon.com/ingredients-of-effective-functional-javascript-closures-partial-application-and-currying-66afe055102a"><strong>Ingredients of Effective Functional JavaScript: Closures, Partial Application and Currying</strong>
+*To use JavaScript to its full potential you have to embrace its strong functional programming base.*hackernoon.com</a></p>
+
+<h2 id="first-class-functions">First-class functions</h2>
+
+<p>A language with first-class functions means that it treats functions like expressions of any other type. Functions are like any other object.</p>
+
+<p>You can pass them into other functions as parameters:</p>
+
+<pre><code>function runFunction(fn, data) {
+  return fn(data);
+}
+</code></pre>
+
+<p>You can assign a function as a value to a variable:</p>
+
+<pre><code>var myFunc = function() {
+  // do something
+};
+
+const myNewGenFunc = someParam =&gt; someParam;
+</code></pre>
+
+<p>You can return a function:</p>
+
+<pre><code>function takeFirst(f, g) {
+   return f;
+}
+</code></pre>
+
+<h2 id="first-class-functions-in-practice">First-class functions in practice</h2>
+
+<h3 id="cheap-dependency-injection">Cheap dependency injection</h3>
+
+<p>In languages without first-class functions to pass a dependency in means passing an object. Here we can just pass functions around, which is great.</p>
+
+<p>For example in Java to run a custom sort on an ArrayList, we have to use ArrayList#sort which expects a Comparator object as a parameter (see <a href="http://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html#sort-java.util.Comparator-">the Java API docs here</a>). In JavaScript we use Array#sort (<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">MDN reference here</a>) which expects a function. This is a bit less verbose since in this case we’re just going to be implementing one method of the Comparator interface</p>
+
+<p>It gets even better with ES6 default parameter syntax.</p>
+
+<pre><code>// in fetch.js
+import axios from 'axios';
+
+export function fetchSomething(fetch = axios) {
+  return fetch('/get/some/resource');
+}
+
+// in someModule.js
+import axios from 'axios';
+
+import { fetchSomething } from './fetch';
+
+const fetcherWithHeaders = axios({
+  // pass some custom configs
+});
+
+fetchSomething(fetcherWithHeaders)
+.then(/* do something */)
+.catch(/* handle error */);
+
+// in someOtherModule.js
+
+import { fetchSomething } from './fetch';
+
+fetchSomething()
+.then(/* do something */)
+.catch(/* handle error */);
+</code></pre>
+
+<h3 id="callbacks-and-non-blocking-io">Callbacks and non-blocking IO</h3>
+
+<p>JavaScript’s default behaviour on IO is non-blocking. This means we tend to pass a lot of callbacks (until Promises came along at least). Being able to pass a function as a callback instead of an object on which we will run a method (like we would in say Java) means we can have terseness in callback-based code.</p>
+
+<p>For example in Node:</p>
+
+<pre><code>const fs = require('fs');
+
+fs.readFile('./myFile.txt', 'utf-8', function(err, data) {
+  // this is a callback, it gets executed
+  // once the file has been read
+});
+</code></pre>
+
+<h3 id="more-functional-programming-primitives-that-require-first-class-functions">More functional programming primitives that require first-class functions</h3>
+
+<p>Being able to return a function and closures means we have access to things like partial application and currying. <a href="https://hackernoon.com/ingredients-of-effective-functional-javascript-closures-partial-application-and-currying-66afe055102a">Read more about those FP superpowers here</a>.</p>
+
+<p>It also means we can start creating higher order functions.</p>
+
+<h2 id="higher-order-functions">Higher order functions</h2>
+
+<p>A function is a higher order function if it takes a function as a parameter, or returns a function as its result. Both of these requirements rely on functions being first-class objects in a language.</p>
+
+<p>map, filter and reduce/reduceRightare the functions present in JavaScript that map to classic higher order functions in other functional languages.</p>
+
+<p>In other languages:</p>
+
+<ul>
+<li><p>map tends to be called map or transform</p></li>
+
+<li><p>filter is called select in some languages</p></li>
+
+<li><p>reduce and reduceRight are the fold left and right functions (also called accumulate, aggregate, compress or inject in different languages)</p></li>
+</ul>
+
+<p>In functional programming languages, there are no loops. When you need to do an operation like traversing a list or a tree, there are two predominant styles: recursion and higher order functions.</p>
+
+<p>Recursion relies on a function calling itself, usually on a different part of the parameter (list being traversed for example). That’s a topic for <a href="https://hackernoon.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa#.i4kfpmmfr">another post</a>.</p>
+
+<p>Higher order functions are usually provided by the language. In ES6 JavaScript these functions are defined on the Array prototype.</p>
+
+<h3 id="array-map">Array#map</h3>
+
+<p>map is used if we want to perform the same change on each member of the array. It takes the function that should be applied to each element of the array as a parameter. That function is passed (element, index, wholeArray) as parameters.</p>
+
+<pre><code>const myArr = [ 'some text', 'more text', 'final text' ];
+
+const mappedArr = myArr.map( function(str) {
+  return str.split(' ');
+});
+
+console.log(mappedArr);
+// [ [ 'some', 'text' ], [ 'more', 'text' ], [ 'final', 'text' ] ]
+</code></pre>
+
+<h3 id="array-filter">Array#filter</h3>
+
+<p>filter allows us to pick which elements of the array should remain in the transformed list by passing a filtering function that returns a Boolean value (true/false). As for map this functions is passed (element, index, wholeArray).</p>
+
+<pre><code>const myArr = [ 5, 10, 4, 50, 3 ];
+
+const multiplesOfFive = myArr.filter( function(num) {
+  return num % 5 === 0;
+});
+
+console.log(multiplesOfFive);
+// [ 5, 10, 50 ]
+</code></pre>
+
+<h3 id="array-reduce">Array#reduce</h3>
+
+<p>reduce is used to change the shape of the array. We provide more than 1 parameter to this function (in addition to the array we’re reducing). We pass a reducing function and optionally the initial value of to reduce with. The function is passed (prev, curr, index, wholeArray) . prev is the value returned by the previous reduction, for the first iteration that means it’s either the initial value of the first element of the array. curr is the value in the array at which we’re at.</p>
+
+<p>The classic example is summing or concatenating.</p>
+
+<pre><code>const myNumbers = [ 1, 2, 5 ];
+const myWords = [ 'These', 'all', 'form', 'a', 'sentence' ];
+
+const sum = myNumbers.reduce( function(prev, curr) {
+  return prev + curr;
+}, 0);
+
+console.log(sum); // 8
+
+const sentence = myWords.reduce( (prev, curr) =&gt; {
+ return prev + ' ' + curr;
+}); // the initial value is optional
+
+console.log(sentence);
+// 'These all form a sentence'
+</code></pre>
+
+<p>If you want to learn more about the internal of map, filter and reduce or recursion, I’ve reimplemented them in a recursive style using ES6 destructuring in the following post:
+<a href="https://hackernoon.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa"><strong>Recursion in JavaScript with ES6, destructuring and rest/spread</strong>
+*The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative…*hackernoon.com</a></p>
+
+<h2 id="higher-order-functions-in-practice">Higher order functions in practice</h2>
+
+<h3 id="no-more-loops">No more loops</h3>
+
+<p>Higher order functions allow us to get rid of the imperative loops that seem to be spread everywhere.</p>
+
+<pre><code>var newArr = [];
+var myArr = [ 1, 2, 3 ];
+
+for(var i = 0; i &lt; myArr.length; i++) {
+  newArr.push(myArr[i] * 2);
+}
+
+console.log(newArr); // [ 2, 4, 6 ]
+
+// nicer with `map`
+const doubled = myArr.map( x =&gt; x * 2 );
+console.log(doubled); // [ 2, 4, 6 ]
+</code></pre>
+
+<p>The intent is just clearer with map. We can also extract the double function so we’re making our code more readable and modular.</p>
+
+<pre><code>const double = x =&gt; x * 2;
+const doubled = arr.map(double);
+</code></pre>
+
+<p>It reads like a book and that’s important because we write for humans not machines.</p>
+
+<h3 id="side-effect-free-programming">Side-effect free programming</h3>
+
+<p>Array higher order functions do not mutate the variable they are called on. This is good, because the loop-based approach using .push and .pop changes it. It means if you pass a variable as a parameter, it’s not suddenly going to get changed by a function down the call stack.</p>
+
+<pre><code>// some random module
+// obviously no one actually does this
+function doesBadSideEffect(arr) {
+  return arr.pop();
+}
+
+
+// somewhere quite important
+var arr = [ 'a', 'b', 'c' ];
+
+var joinedLetters = '';
+
+for(var i = 0; i &lt; arr.length; i++) {
+  joinedLetters += arr[i];
+  doesBadSideEffect(arr)
+}
+
+console.log(joinedLetters);
+// whoops 'ab'
+// even though the naming makes us
+// expect 'abc'
+</code></pre>
+
+<h3 id="declarative-code-optimisations">Declarative Code Optimisations</h3>
+
+<p>In some languages functions like map are parallelised. That’s because we don’t actually need to know what’s in the rest of the array to compute this particular element’s new value. If we’re doing complex things in the mapping function then this sort of optimisation could be very useful.</p>
+
+<h2 id="effective-functional-javascript">Effective Functional JavaScript</h2>
+
+<p>Use first-class and higher order functions to write nicer code more easily. It’s nice and declarative instead of imperative, say what you want done not how to do it</p>
+
+<p>This will enable you to compose your functions and write code that is extremely terse without losing readability.</p>
+
+<p><em>Remember to give this post some 💚 if you liked it. Follow me <a href="undefined">Hugo Di Francesco</a> or <a href="https://twitter.com/hugo__df">@hugo__df</a> for more JavaScript content :).</em></p>
+
+<p><em>Edit: 24/01/2017, rephrased “Callbacks and non-blocking IO” following <a href="undefined">Anton Alexandrenok</a>’s comments</em></p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2272/1*0hqOaABQ7XGPT-OYNgiUBg.png" alt="" /></p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2272/1*Vgw1jkA6hgnvwzTsfMlnpg.png" alt="" /></p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2272/1*gKBpq1ruUi0FVK2UM_I4tQ.png" alt="" />
+&gt; <a href="http://bit.ly/Hackernoon">Hacker Noon</a> is how hackers start their afternoons. We’re a part of the <a href="http://bit.ly/atAMIatAMI">@AMI</a> family. We are now <a href="http://bit.ly/hackernoonsubmission">accepting submissions</a> and happy to <a href="mailto:partners@amipublications.com">discuss advertising &amp; sponsorship</a> opportunities.
+&gt; If you enjoyed this story, we recommend reading our <a href="http://bit.ly/hackernoonlatestt">latest tech stories</a> and <a href="https://hackernoon.com/trending">trending tech stories</a>. Until next time, don’t take the realities of the world for granted!</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/30000/1*35tCjoPcvq6LbB3I6Wegqw.jpeg" alt="" /></p>
+    
+        </div>
+    </section>
+
+    <footer class="post-full-footer">
+      <section class="author-card">
+        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+        <section class="author-card-content">
+            <h4 class="author-card-name"><a href="/">Hugo Di Francesco</a></h4>
+                <p>A developer and teacher, working out of London writing JavaScript.</p>
+        </section>
+      </section>
+    </footer>
+</article>
+    
+    
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "\/first-class-and-higher-order-functions-effective-functional-javascript\/";  
+this.page.identifier = "\/first-class-and-higher-order-functions-effective-functional-javascript\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://codewithhugo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  </div>
+</main>
+
+
+<aside class="read-next outer">
+  <div class="inner">
+    <div class="read-next-feed">      
+      
+<article class="read-next-card" style="background-color: #090a0b;">
+    <header class="read-next-card-header">
+        <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
+        
+        <h3 class="read-next-card-header-title"><a href="/tags/javascript/">#JavaScript</a></h3>
+    </header>
+    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+    </div>
+
+    <div class="read-next-card-content">
+      
+        <ul>
+          <li><a href="/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+        
+          <li><a href="/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+        
+          <li><a href="/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
+        
+                      
+        
+          <li><a href="/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+        </ul>
+    </div>
+    <footer class="read-next-card-footer">
+      
+        <a href="/tags/javascript/">See all related posts →</a>
+    </footer>
+</article>
+
+
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/600/600/1*xJoAW5prjY5hGmiTgL40TQ.jpeg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #dev-decoded 
+              #Web development 
+              #Productivity  </span>
+              
+              <h2 class="post-card-title">In simple terms: code on the backend, frontend and how they interact</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>A look at the shifting boundaries of the web development stack
+This was originally posted as an answer on Quora: How do frontend code and backend code interact with each other?
+Let’s start with quick definitions:
+Frontend All things the browser can read, display and/or run. This means HTML, CSS and JavaScript.
+HTML (Hypertext Markup Language) tells the browser “what” content is, eg. “heading”, “paragraph”, “list”, “list item”.
+CSS (Cascading Style Sheets) tells the browser how to display elements eg. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1507914997623-5b75b37d9cad?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=4daefc0d1e77d387f6e177a0990e42a8&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #Productivity 
+              #JavaScript  </span>
+              
+              <h2 class="post-card-title">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>JavaScript has a thriving ecosystem of libraries delivered as packages on npm. Node has a high degree of compatibility with ES6 but it doesn’t have some features yet, namely import. This means that if we want to distribute useable packages over npm and we want to be writing ES6, we have to transpile back to ES5.
+We’ll be setting up a project that allows us to write ES6, and distribute it in ES5 (with Babel) and to test it with Mocha, all through npm scripts. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+    </div>
+  </div>
+</aside>
+
+<div class="floating-header">
+  <div class="floating-header-logo">
+    <a href="/">
+      
+      <span>Code with Hugo</span>
+    </a>
+  </div>
+  <span class="floating-header-divider">&mdash;</span>
+  <div class="floating-header-title">First-class and Higher Order Functions: Effective Functional JavaScript</div>
+  <div class="floating-header-share">
+    <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
+    </div>
+    
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=First-class%20and%20Higher%20Order%20Functions%3a%20Effective%20Functional%20JavaScript&amp;url=%2ffirst-class-and-higher-order-functions-effective-functional-javascript%2f"
+          onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+      </a>
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=%2ffirst-class-and-higher-order-functions-effective-functional-javascript%2f"
+          onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+      </a>
+  </div>
+
+  <progress class="progress" value="0">
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+  </progress>
+</div>
+
+
+
+<footer class="site-footer outer">
+  <div class="site-footer-content inner">
+    <section class="copyright" style="line-height: 1.3em;">
+      <a href="/">Code with Hugo</a>  <br>
+      
+    </section>
+    <nav class="site-footer-nav">
+        <a href="/">Latest Posts</a>
+        
+        <a href="https://twitter.com/hugo__df" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://github.com/HugoDF" target="_blank" rel="noopener">Github</a>
+        
+        <a href="https://medium.com/@hugo__df" target="_blank" rel="noopener">Medium</a>
+    </nav>  
+  </div>
+</footer>
+
+</div>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq=[['_setAccount','UA-60469708-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+    <script>
+
+
+
+
+
+$(document).ready(function () {
+    
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+</body></html>

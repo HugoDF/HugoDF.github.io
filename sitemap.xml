@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/first-class-and-higher-order-functions-effective-functional-javascript/</loc>
+    <lastmod>2017-01-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/</loc>
+    <lastmod>2016-10-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/recursion-in-javascript-with-es6-destructuring-and-rest/spread/</loc>
+    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/animations-css-vs-javascript/</loc>
+    <lastmod>2018-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/ava-low-config-testing-for-javascript/</loc>
+    <lastmod>2017-03-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/closures-partial-application-and-currying-effective-functional-javascript/</loc>
+    <lastmod>2017-01-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/why-css-is-hard/</loc>
+    <lastmod>2016-06-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/learn-git-even-if-you-dont-code/</loc>
+    <lastmod>2017-12-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/animation/</loc>
+    <lastmod>2018-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/css/</loc>
+    <lastmod>2018-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/dev-decoded/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/functional-programming/</loc>
+    <lastmod>2017-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/git/</loc>
+    <lastmod>2017-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/javascript/</loc>
+    <lastmod>2017-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/productivity/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/programming/</loc>
+    <lastmod>2017-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2018-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/testing/</loc>
+    <lastmod>2017-03-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/web-development/</loc>
+    <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

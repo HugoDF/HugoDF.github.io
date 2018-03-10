@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en-US" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Closures, Partial Application and Currying: Effective Functional JavaScript &middot; Code with Hugo</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+     <link rel="canonical" href="https://hackernoon.com/ingredients-of-effective-functional-javascript-closures-partial-application-and-currying-66afe055102a" /> 
+
+     <meta name="description" content="Spices and other ingredients of a great curry
+To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to" /> 
+
+     
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg"/>
+    
+ 
+    <meta name="twitter:title" content="Closures, Partial Application and Currying: Effective Functional JavaScript"/>
+    <meta name="twitter:description" content="Spices and other ingredients of a great curry
+To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to"/>
+    <meta name="twitter:url" content="/closures-partial-application-and-currying-effective-functional-javascript/" />
+    <meta name="twitter:site" content="@hugo__df"/>
+
+    <meta property="og:site_name" content="Code with Hugo" />
+    <meta property="og:title" content="Closures, Partial Application and Currying: Effective Functional JavaScript &middot; Code with Hugo" />
+    <meta property="og:url" content="/closures-partial-application-and-currying-effective-functional-javascript/" />
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Spices and other ingredients of a great curry
+To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to" />
+
+    <meta property="article:published_time" content="2017-01-12T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Functional Programming" /><meta property="article:tag" content="Productivity" />
+
+    <meta property="og:image" content="https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg"/>
+
+
+    <meta name="generator" content="Hugo 0.36" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/built/screen.css" /> 
+    <link rel="stylesheet" type="text/css" href="/css/casper-two.css" /> 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
+     <link rel="stylesheet" href="/overrides.css" /> 
+
+     
+
+</head>
+
+
+<body class="post-template">
+  <div class="site-wrapper"> 
+
+<header class="site-header outer">
+  <div class="inner">
+    <nav class="site-nav">
+      <div class="site-nav-left">
+
+        <ul class="nav" role="menu">
+        
+        
+        
+            <li class="" role="menuitem">
+              <a href="/">Home</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/javascript/">JavaScript</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/css/">CSS</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/dev-decoded/">Dev Decoded</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="http://skl.sh/2zNN3En">Git for creatives</a>
+            </li>
+        
+      </ul></div>
+
+      <div class="site-nav-right">
+        <div class="social-links">
+                    
+
+                    <a class="social-link social-link-tw" href="https://twitter.com/hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg></a>
+
+                    <a class="social-link" href="https://github.com/HugoDF" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+
+                    
+
+                    <a class="social-link" href="https://medium.com/@hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 195"><path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582 L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011 C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114 150.640424,135.084652 151.542017,135.771899 L161.755369,145.798942 L161.755369,148 L110.38282,148 L110.38282,145.798942 L120.963119,135.527337 C122.002801,134.487948 122.002801,134.182246 122.002801,132.592593 L122.002801,73.0417402 L92.585901,147.755438 L88.6106443,147.755438 L54.3622782,73.0417402 L54.3622782,123.115814 C54.0767278,125.221069 54.7759199,127.3406 56.2581699,128.863022 L70.0186741,145.55438 L70.0186741,147.755438 L31,147.755438 L31,145.55438 L44.7605042,128.863022 C46.2319621,127.338076 46.8903838,125.204485 46.5340803,123.115814 L46.5340803,65.2157554 Z"/></svg></a>
+        </div>  
+        
+        <a class="subscribe-button" href="/index.xml">Subscribe</a>
+            
+      </div>
+
+    </nav>  
+
+  </div>
+</header>
+
+<main id="site-main" class="site-main outer" role="main">
+  <div class="inner">
+    
+      <article class="post-full post"> 
+    <header class="post-full-header">
+        <section class="post-full-meta">
+            <time class="post-full-meta-date" datetime="2017-01-12">12 January 2017</time>
+                <span class="date-divider">/</span> <a href="/tags/javascript/">#JavaScript</a>&nbsp;<a href="/tags/functional-programming/">#Functional Programming</a>&nbsp;
+        </section>
+        <h1 class="post-full-title">Closures, Partial Application and Currying: Effective Functional JavaScript</h1>
+    </header>
+    
+    <figure class="post-full-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg)">
+    </figure>
+
+    <section class="post-full-content">
+        <div class="kg-card-markdown">
+        
+
+<p>Spices and other ingredients of a great curry</p>
+
+<p>To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.</p>
+
+<h2 id="the-basics">The basics</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Functional_programming">Functional programming</a> is a programming paradigm that follows a more mathematical computation model. Let’s go through some basics to make your JavaScript more functional.</p>
+
+<h3 id="declarative-programming">Declarative programming</h3>
+
+<p>Functional programs tend to be declarative (as opposed to imperative), that’s a case of telling the compiler <em>what</em> you want instead of <em>how</em> you want it.</p>
+
+<pre><code class="language-js">const list = [ 1, 2, 3 ];
+
+// imperative style
+const imperative = list[0];
+
+// declarative style
+const declarative = firstElement(list);
+</code></pre>
+
+<p>In the above code snippet we’re trying to get the first element of list, the declarative example says what we want, firstElement can do whatever it likes as long as it returns the first element of the passed parameter. Whereas in the imperative style, we say I want index 0 of list explicitly. In JavaScript and at this program size, this doesn’t make a massive difference.</p>
+
+<p>To build functional programs, we should prefer the declarative style and avoid mutation.</p>
+
+<h3 id="recursion-and-higher-order-functions">Recursion and higher order functions</h3>
+
+<p>There are no loops in functional programming, just recursion and higher order functions.</p>
+
+<p>Mechanisms such as <a href="https://en.wikipedia.org/wiki/Pattern_matching">pattern matching</a> allow for easier recursive function declarations. In ECMAScript 6 (the 2015 edition of the standard JavaScript is based on) we’ve added destructuring to the toolbox, which is a basic pattern matching that works for lists. You can read more about it <a href="https://hackernoon.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa#.i8rek71hd">here</a>.
+<a href="https://hackernoon.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa"><strong>Recursion in JavaScript with ES6, destructuring and rest/spread</strong>
+*The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative…*hackernoon.com</a></p>
+
+<p>Higher order functions allow you to traverse iterable collections (Arrays). In JavaScript we have Array#map, Array#filter and Array#reduce. Each of these takes a function as an argument. This is possible because we have first-class functions in JavaScript, which means you can pass them around like any other type of variable :).</p>
+
+<h3 id="lambdas-anonymous-functions">Lambdas (anonymous functions)</h3>
+
+<p>In JavaScript we can declare lambas (anonymous functions), which is quite handy considering the API of a lot of libraries expects a function as a parameter. We can just declare the function inline. It might mean a bit of a indentation/bracketing problem but inlining until you can generalise or refactor is actually great.</p>
+
+<pre><code>[ 1, 2, 3 ].map(function(el) {
+  return el * 2;
+});
+</code></pre>
+
+<h3 id="closures">Closures</h3>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553932829_Screen+Shot+2018-02-13+at+20.31.54.png" alt="Mateusz Zatorski (@matzatorski) - Explain closures in a tweet." /></p>
+
+<p>Here are some &gt;140 character explanations of closures, thanks to [Mateusz Zatorski]() for asking and his esteemed followers for answering :).</p>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553899984_Screen+Shot+2018-02-13+at+20.30.48.png" alt="Dan Abramov @dan_abramov - A function that can read and write variables outside of it. Even if those are inside other functions." /></p>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553899904_Screen+Shot+2018-02-13+at+20.30.57.png" alt="Rory Hunter @pugnascotia - A block of code with access to data / variables outwith its scope." /></p>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553899950_Screen+Shot+2018-02-13+at+20.31.04.png" alt="Ingvar Stepanyan @RReverser - Function bound to outer scope (similarly as it can be bound to object with .bind)" /></p>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553899940_Screen+Shot+2018-02-13+at+20.31.11.png" alt="Josh Burgess @_joshburgess - functions that &quot;remember&quot; the enviornment (enclosing scope) they were defined within, maintaining access to vars in that scope" /></p>
+
+<p>We can use closures to put state inside an outer function while having access to that state in an inner function. That state is not global but still accessible to child functions.</p>
+
+<pre><code class="language-js">function outerFunction() {
+  const someState = { count: 0 };
+  return {
+    increment: function() {
+      someState.count++;
+    },
+    getCount: function() {
+      return someState.count;
+    }
+  }
+}
+
+const counter = outerFunction();
+
+counter.increment();
+counter.increment();
+counter.getCount(); // 2
+counter.increment();
+counter.increment(); 
+counter.getCount(); // 4
+
+someState; // ReferenceError: someState is not defined
+</code></pre>
+
+<p>The state (<code>someState</code>) isn’t global since the last statement returns an error. It is however available to the functions it returned, because they can “see” someState, it’s in their lexical scope.</p>
+
+<h3 id="function-application">Function application</h3>
+
+<p>Function application is the first “hardcore” functional programming concept we’re going to introduce today. It’s a concept that comes from the mathematics world.</p>
+
+<p>A function application, in JavaScript, can look like a function call but doesn’t have to be.</p>
+
+<pre><code class="language-js">function someFunc(arg1, arg2) {
+  return arg1 + arg2;
+}
+
+// function call
+someFunc(1, 2); // 3
+
+// different ways to apply a function
+someFunc(1, 2); // 3
+someFunc.apply(this, [ 1, 2 ]); // 3
+someFunc.call(this, 1, 2); // 3
+</code></pre>
+
+<p>A function call is an imperative construct whereas a function application belongs to the realm of functional programming and mathematics.</p>
+
+<p>In JavaScript you can even use apply and call to define what this will be set to during the application.</p>
+
+<h2 id="partial-application">Partial application</h2>
+
+<p>Partial application is when you apply some of the required parameters of a function and return a function that takes the rest of the parameters.</p>
+
+<p>We’re going to flip the parameters to the map function. Instead of taking parameters <code>(list, fn)</code> it’s going to take <code>(fn, list)</code>. This is to illustrate the value of partial application.</p>
+
+<pre><code class="language-js">function functionalMap(fn, list) {
+    return list.map(fn);
+}
+
+function partialFunctionalMap(fn) {
+  return function(list) {
+    return functionalMap(fn, list);
+  }
+}
+
+// Example 1
+// Let's apply all the arguments at once
+functionalMap(x =&gt; x * 2, [ 1, 2, 3 ]);
+functionalMap(x =&gt; x * 2, [ 2, 3, 5 ]);
+
+// Example 2
+// Let's apply them one at a time
+const doubleListItems = partialFunctionalMap(x =&gt; x * 2);
+doubleListItems([ 1, 2, 3 ]);
+doubleListItems([ 2, 3, 5 ]);
+</code></pre>
+
+<p>What the code does in example 1 is less obvious than in example 2. You have to read what the lamba does instead of being told by the variable function name.</p>
+
+<p>This is something we can use in places like React event handlers.</p>
+
+<pre><code class="language-jsx">class MyComponent extends React.Component {
+  partialHandleLinkClick(type, activeType){
+    return function(e) {
+      const hasKeyboardModifier = e.ctrlKey || e.shiftKey || e.altKey || e.metaKey;
+      updateType(type, activeType, hasKeyboardModifier);
+    };
+  }
+  render() {
+    const types = [ 'Foo', 'Bar', 'Baz' ];
+    return (
+      &lt;div&gt;
+        {
+          types.map( (type, i) =&gt; {
+            &lt;a key={i} href=&quot;#&quot;
+              onClick={this.partialHandleLinkClick(type, this.props.activeType)}&gt;
+              {type}
+            &lt;/a&gt;
+          })
+        }
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+
+<p>Now if we went the Object-oriented route, we would use <code>.bind</code> <code>partialHandleClick</code> function to the component instance (<code>this</code>) and to be able to access <code>this.props.activeType</code> from inside <code>partialHandleClick</code>.
+We’re trying to leverage functional programming, so no accessing this from all the way inside an event handler.
+We get to store some information that we can get at <code>.map</code> time (which type is this handler for).
+When the event triggers, we get the final parameter we need <code>e</code> (the event object) and the handler can finish applying.</p>
+
+<h2 id="currying">Currying</h2>
+
+<p>A curried function is a function that you apply 1 parameter at a time.</p>
+
+<pre><code class="language-js">function partialFunctionalMap(fn) {
+  return function(list) {
+    return functionalMap(fn, list);
+  }
+}
+</code></pre>
+
+<p><code>partialFunctionalMap</code> is curried.
+In the event handler example <code>partialHandleLinkClick</code> isn’t, since the first application provided 2 parameters.</p>
+
+<p>We could rewrite it though.</p>
+
+<pre><code class="language-js">function curriedHandleLinkClick(type){
+  return function(activeType) {
+    return function(e) {
+      const hasKeyboardModifier = e.ctrlKey || e.shiftKey || e.altKey || e.metaKey;
+      updateType(type, activeType, hasKeyboardModifier);
+    };
+  };
+}
+</code></pre>
+
+<p>And we would use <code>this.curriedHandleLinkClick(type)(this.props.activeType)</code> instead of <code>this.partialHandleLinkClick(type, this.props.activeType)</code>.</p>
+
+<p>This isn’t as pretty in JavaScript as in other languages since we’re replacing <code>(arg1, arg2, arg3)</code> with <code>(arg1)(arg2)(arg3)</code>.</p>
+
+<h2 id="currying-and-partial-application">Currying and partial application</h2>
+
+<p>Currying is strict: a curried function <strong>always</strong> applied 1 parameter at a time. Partial application is not this strict.</p>
+
+<p>A curried function tends to be partially applied but a partially applied function does <strong>not</strong> have to be curried.</p>
+
+<p>This means we can automate the currying process.</p>
+
+<p>In JavaScript we can use libraries to curry functions with multiple arguments. <a href="https://lodash.com/docs#curry">Lodash has a curry function</a> and <a href="http://ramdajs.com/docs/#curry">so does Ramda</a>. They take a function and when applied with a parameter either returns if all required arguments are present or returns a curried function that accepts the rest of the arguments.</p>
+
+<p>You can also write your own by accessing the arguments object of the function and using Function#apply. Here are a couple of tutorials that take you through this process.</p>
+
+<p><a href="https://medium.com/@kbrainwave/currying-in-javascript-ce6da2d324fe"><strong>Currying in JavaScript</strong> A technique using partial evaluation</a></p>
+
+<p><a href="http://kevvv.in/currying-in-javascript/"><strong>Currying in JavaScript</strong>- Kevin Ennis</a></p>
+
+<p>Some languages like Haskell are auto-curried. This means that if the function application does not provide the required number of parameters, it will return a function which will accept the rest of the parameters one at a time, just like the <a href="https://lodash.com/">Lodash</a> and <a href="http://ramdajs.com/">Ramda</a> curry functions do. Another cool thing in Haskell is that partial application looks like non-partial application and curried function calls aren’t ugly, since the separator for parameters is a space.</p>
+
+<pre><code class="language-haskell">times a b = a * b
+
+times 1 2
+
+double = times 2
+</code></pre>
+
+<h2 id="effective-functional-javascript-recipe">Effective Functional JavaScript Recipe</h2>
+
+<p>Use and abuse closures, partial application and currying.</p>
+
+<p>This will enable you to compose your functions and write code that is extremely terse without losing readability.</p>
+    
+        </div>
+    </section>
+
+    <footer class="post-full-footer">
+      <section class="author-card">
+        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+        <section class="author-card-content">
+            <h4 class="author-card-name"><a href="/">Hugo Di Francesco</a></h4>
+                <p>A developer and teacher, working out of London writing JavaScript.</p>
+        </section>
+      </section>
+    </footer>
+</article>
+    
+    
+    
+
+<div id="disqus_thread"></div>
+<script>
+
+
+
+
+var disqus_config = function () {
+this.page.url = "\/closures-partial-application-and-currying-effective-functional-javascript\/";  
+this.page.identifier = "\/closures-partial-application-and-currying-effective-functional-javascript\/"; 
+};
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://codewithhugo.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  </div>
+</main>
+
+
+<aside class="read-next outer">
+  <div class="inner">
+    <div class="read-next-feed">      
+      
+<article class="read-next-card" style="background-color: #090a0b;">
+    <header class="read-next-card-header">
+        <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
+        
+        <h3 class="read-next-card-header-title"><a href="/tags/javascript/">#JavaScript</a></h3>
+    </header>
+    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+    </div>
+
+    <div class="read-next-card-content">
+      
+        <ul>
+          <li><a href="/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+        
+                      
+        
+          <li><a href="/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+        
+          <li><a href="/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+        
+          <li><a href="/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
+        </ul>
+    </div>
+    <footer class="read-next-card-footer">
+      
+        <a href="/tags/javascript/">See all related posts →</a>
+    </footer>
+</article>
+
+
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="/ava-low-config-testing-for-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/c/600/600/1*ap-t03_46d5mvDLRtL5lZA.jpeg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="/ava-low-config-testing-for-javascript/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #Testing 
+              #JavaScript 
+              #Productivity  </span>
+              
+              <h2 class="post-card-title">AVA, low-config testing for JavaScript</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>A JavaScript testing library for 2017
+AVA is a Futuristic JavaScript test runner.
+Some of its best features are:
+ it works out of the box, no need to specify a blob for test files or add Babel hooks
+ it’s runs tests in parallel, this stops you from using global state and runs faster
+ the tests are async by default
+  I quite like AVA since I can just drop it in and reap benefits without too much hassle. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="/why-css-is-hard/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="/why-css-is-hard/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #CSS 
+              #web development  </span>
+              
+              <h2 class="post-card-title">Why CSS is hard</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Things we’re not used to tend to be harder
+I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
+Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
+CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+    </div>
+  </div>
+</aside>
+
+<div class="floating-header">
+  <div class="floating-header-logo">
+    <a href="/">
+      
+      <span>Code with Hugo</span>
+    </a>
+  </div>
+  <span class="floating-header-divider">&mdash;</span>
+  <div class="floating-header-title">Closures, Partial Application and Currying: Effective Functional JavaScript</div>
+  <div class="floating-header-share">
+    <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
+    </div>
+    
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Closures%2c%20Partial%20Application%20and%20Currying%3a%20Effective%20Functional%20JavaScript&amp;url=%2fclosures-partial-application-and-currying-effective-functional-javascript%2f"
+          onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+      </a>
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=%2fclosures-partial-application-and-currying-effective-functional-javascript%2f"
+          onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+      </a>
+  </div>
+
+  <progress class="progress" value="0">
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+  </progress>
+</div>
+
+
+
+<footer class="site-footer outer">
+  <div class="site-footer-content inner">
+    <section class="copyright" style="line-height: 1.3em;">
+      <a href="/">Code with Hugo</a>  <br>
+      
+    </section>
+    <nav class="site-footer-nav">
+        <a href="/">Latest Posts</a>
+        
+        <a href="https://twitter.com/hugo__df" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://github.com/HugoDF" target="_blank" rel="noopener">Github</a>
+        
+        <a href="https://medium.com/@hugo__df" target="_blank" rel="noopener">Medium</a>
+    </nav>  
+  </div>
+</footer>
+
+</div>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq=[['_setAccount','UA-60469708-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+    <script>
+
+
+
+
+
+$(document).ready(function () {
+    
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+</body></html>

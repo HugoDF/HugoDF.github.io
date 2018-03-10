@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Code with Hugo</title>
+    <link>/tags/git/</link>
+    <description>Recent content in Git on Code with Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 04 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Learn git even if you don’t code</title>
+      <link>/learn-git-even-if-you-dont-code/</link>
+      <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/learn-git-even-if-you-dont-code/</guid>
+      <description>The tools we wield define us, git is the one tool all developers use Git is a ubiquitous version control tool. The way it works tightly correlates with software engineering and the mindsets of developers. It was purpose-built and designed to be used for the development of the Linux Kernel, one of the largest software projects that’s depended on by millions of developers.
+Your editing workflow is painful because it’s not version-controlled As part of a team, your editing workflow probably consists of sending a file back and forth for review, comment and amendments.</description>
+    </item>
+    
+  </channel>
+</rss>

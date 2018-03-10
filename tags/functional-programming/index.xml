@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Functional Programming on Code with Hugo</title>
+    <link>/tags/functional-programming/</link>
+    <description>Recent content in Functional Programming on Code with Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 23 Jan 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First-class and Higher Order Functions: Effective Functional JavaScript</title>
+      <link>/first-class-and-higher-order-functions-effective-functional-javascript/</link>
+      <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/first-class-and-higher-order-functions-effective-functional-javascript/</guid>
+      <description>Functions: the killer JavaScript feature we never talk about.
+JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embedded systems and it brings a non-blocking I/O model that is faster than others for some types of applications. What really sets JavaScript apart from the rest of scripting languages is its highly functional nature.
+ JavaScript has more in common with functional languages like Lisp or Scheme than with C or Java.</description>
+    </item>
+    
+    <item>
+      <title>Closures, Partial Application and Currying: Effective Functional JavaScript</title>
+      <link>/closures-partial-application-and-currying-effective-functional-javascript/</link>
+      <pubDate>Thu, 12 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/closures-partial-application-and-currying-effective-functional-javascript/</guid>
+      <description>Spices and other ingredients of a great curry
+To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.
+The basics Functional programming is a programming paradigm that follows a more mathematical computation model. Let’s go through some basics to make your JavaScript more functional.</description>
+    </item>
+    
+  </channel>
+</rss>
