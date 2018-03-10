@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Animation on Code with Hugo</title>
-    <link>/tags/animation/</link>
+    <link>https://codewithhugo.com/tags/animation/</link>
     <description>Recent content in Animation on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 21 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/animation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://codewithhugo.com/tags/animation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Animations: CSS vs JavaScript</title>
-      <link>/animations-css-vs-javascript/</link>
+      <link>https://codewithhugo.com/animations-css-vs-javascript/</link>
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/animations-css-vs-javascript/</guid>
+      <guid>https://codewithhugo.com/animations-css-vs-javascript/</guid>
       <description>When should you use JavaScript when you can use CSS? This post was sparked by a question I answered on Quora: Which is better to use, CSS or JS?
 The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see “Backend code, frontend code and how they interact” for more details): HTML says what things are, CSS how they look and JavaScript does all the things the other two can’t.</description>
     </item>

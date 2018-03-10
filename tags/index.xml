@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Code with Hugo</title>
-    <link>/tags/</link>
+    <link>https://codewithhugo.com/tags/</link>
     <description>Recent content in Tags on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 21 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://codewithhugo.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Animation</title>
-      <link>/tags/animation/</link>
+      <link>https://codewithhugo.com/tags/animation/</link>
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/animation/</guid>
+      <guid>https://codewithhugo.com/tags/animation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Css</title>
-      <link>/tags/css/</link>
+      <link>https://codewithhugo.com/tags/css/</link>
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/css/</guid>
+      <guid>https://codewithhugo.com/tags/css/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Dev Decoded</title>
-      <link>/tags/dev-decoded/</link>
+      <link>https://codewithhugo.com/tags/dev-decoded/</link>
       <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/dev-decoded/</guid>
+      <guid>https://codewithhugo.com/tags/dev-decoded/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Functional Programming</title>
-      <link>/tags/functional-programming/</link>
+      <link>https://codewithhugo.com/tags/functional-programming/</link>
       <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/functional-programming/</guid>
+      <guid>https://codewithhugo.com/tags/functional-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>/tags/git/</link>
+      <link>https://codewithhugo.com/tags/git/</link>
       <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/git/</guid>
+      <guid>https://codewithhugo.com/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript</title>
-      <link>/tags/javascript/</link>
+      <link>https://codewithhugo.com/tags/javascript/</link>
       <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/javascript/</guid>
+      <guid>https://codewithhugo.com/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Productivity</title>
-      <link>/tags/productivity/</link>
+      <link>https://codewithhugo.com/tags/productivity/</link>
       <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/productivity/</guid>
+      <guid>https://codewithhugo.com/tags/productivity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programming</title>
-      <link>/tags/programming/</link>
+      <link>https://codewithhugo.com/tags/programming/</link>
       <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/programming/</guid>
+      <guid>https://codewithhugo.com/tags/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Testing</title>
-      <link>/tags/testing/</link>
+      <link>https://codewithhugo.com/tags/testing/</link>
       <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/testing/</guid>
+      <guid>https://codewithhugo.com/tags/testing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web Development</title>
-      <link>/tags/web-development/</link>
+      <link>https://codewithhugo.com/tags/web-development/</link>
       <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/web-development/</guid>
+      <guid>https://codewithhugo.com/tags/web-development/</guid>
       <description></description>
     </item>
     

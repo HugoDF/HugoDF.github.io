@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Css on Code with Hugo</title>
-    <link>/tags/css/</link>
+    <link>https://codewithhugo.com/tags/css/</link>
     <description>Recent content in Css on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 21 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/css/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://codewithhugo.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Animations: CSS vs JavaScript</title>
-      <link>/animations-css-vs-javascript/</link>
+      <link>https://codewithhugo.com/animations-css-vs-javascript/</link>
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>/animations-css-vs-javascript/</guid>
+      <guid>https://codewithhugo.com/animations-css-vs-javascript/</guid>
       <description>When should you use JavaScript when you can use CSS? This post was sparked by a question I answered on Quora: Which is better to use, CSS or JS?
 The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see “Backend code, frontend code and how they interact” for more details): HTML says what things are, CSS how they look and JavaScript does all the things the other two can’t.</description>
     </item>
     
     <item>
       <title>Why CSS is hard</title>
-      <link>/why-css-is-hard/</link>
+      <link>https://codewithhugo.com/why-css-is-hard/</link>
       <pubDate>Sat, 18 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>/why-css-is-hard/</guid>
+      <guid>https://codewithhugo.com/why-css-is-hard/</guid>
       <description>Things we’re not used to tend to be harder
 I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
 Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Testing on Code with Hugo</title>
-    <link>/tags/testing/</link>
+    <link>https://codewithhugo.com/tags/testing/</link>
     <description>Recent content in Testing on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 13 Mar 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://codewithhugo.com/tags/testing/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>AVA, low-config testing for JavaScript</title>
-      <link>/ava-low-config-testing-for-javascript/</link>
+      <link>https://codewithhugo.com/ava-low-config-testing-for-javascript/</link>
       <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/ava-low-config-testing-for-javascript/</guid>
+      <guid>https://codewithhugo.com/ava-low-config-testing-for-javascript/</guid>
       <description>A JavaScript testing library for 2017
 AVA is a Futuristic JavaScript test runner.
 Some of its best features are:

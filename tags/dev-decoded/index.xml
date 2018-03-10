@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dev Decoded on Code with Hugo</title>
-    <link>/tags/dev-decoded/</link>
+    <link>https://codewithhugo.com/tags/dev-decoded/</link>
     <description>Recent content in Dev Decoded on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Fri, 31 Mar 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/dev-decoded/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://codewithhugo.com/tags/dev-decoded/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>In simple terms: code on the backend, frontend and how they interact</title>
-      <link>/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</link>
+      <link>https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</link>
       <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</guid>
+      <guid>https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</guid>
       <description>A look at the shifting boundaries of the web development stack
 This was originally posted as an answer on Quora: How do frontend code and backend code interact with each other?
 Let’s start with quick definitions:
@@ -27,10 +27,10 @@ CSS (Cascading Style Sheets) tells the browser how to display elements eg.</desc
     
     <item>
       <title>Learn git even if you don’t code</title>
-      <link>/learn-git-even-if-you-dont-code/</link>
+      <link>https://codewithhugo.com/learn-git-even-if-you-dont-code/</link>
       <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>/learn-git-even-if-you-dont-code/</guid>
+      <guid>https://codewithhugo.com/learn-git-even-if-you-dont-code/</guid>
       <description>The tools we wield define us, git is the one tool all developers use Git is a ubiquitous version control tool. The way it works tightly correlates with software engineering and the mindsets of developers. It was purpose-built and designed to be used for the development of the Linux Kernel, one of the largest software projects that’s depended on by millions of developers.
 Your editing workflow is painful because it’s not version-controlled As part of a team, your editing workflow probably consists of sending a file back and forth for review, comment and amendments.</description>
     </item>
