@@ -11,7 +11,7 @@
 
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
-     <link rel="canonical" href="https://medium.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa" /> 
+     <link rel="canonical" href="https://medium.com/@hugo__df/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa" /> 
 
      <meta name="description" content="The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new" /> 
 
@@ -312,15 +312,30 @@ var tail = ([ head, ...tail ]) =&gt; tail;
 
 <p>Our ES6 recursive/destructuring map can be simplified to:</p>
 
-<iframe src="https://medium.com/media/99dcd67d834a2b9459f2bfbf95d50415" frameborder=0></iframe>
+<pre><code class="language-js">function map([ head, ...tail ], fn) {
+  if (head === undefined &amp;&amp; !tail.length) return [];
+  return tail.length ? [ fn(head), ...(map(tail, fn)) ] : [ fn(head) ];
+}
+</code></pre>
 
 <p>Or if we want to abuse ES6 and allow ourselves to forget that we’re actually doing JavaScript:</p>
 
-<iframe src="https://medium.com/media/fbc62eef3fe89024132daf9e9e15c50b" frameborder=0></iframe>
+<pre><code class="language-js">const map = ([ head, ... tail ], fn) =&gt; 
+  ( (head !== undefined &amp;&amp; tail.length) ? ( tail.length ? [ fn(head), ...(map(tail, fn)) ] : [ fn(head) ] ) : []);
+</code></pre>
 
 <p>ES5 equivalent</p>
 
-<iframe src="https://medium.com/media/db075461ce15e357e8b11a9b3e0c28bc" frameborder=0></iframe>
+<pre><code class="language-js">function map(arr, fn) {
+  var head = arr[0];
+  var tail = arr.slice(1);
+  if(head === undefined &amp;&amp; tail.length === 0) return [];
+  if(tail.length === 0) {
+    return [ fn(head) ];
+  }
+  return [].concat(fn(head), map(tail, fn));
+}
+</code></pre>
 
 <p>All the features add up and while recursive map in ES6 is essentially a one-liner, in ES5 it’s a clunky, long, hard to read function.</p>
 
@@ -332,20 +347,35 @@ var tail = ([ head, ...tail ]) =&gt; tail;
 
 <p>ES6 allows us to write code in a functional style more tersely and effectively.</p>
 
-<p>*Give some 💚 to this post if you liked it and to <strong>follow</strong> for more JavaScript-related things.*</p>
-
-<p><em>You can find me on Twitter<a href="https://twitter.com/hugo__df">(at)hugo__df</a>, on GitHub as <a href="https://github.com/HugoDF">HugoDF</a>, there are more JavaScript gists <a href="https://gist.github.com/HugoDF">here</a>.</em></p>
-
 <h3 id="recursive-list-operations-in-es6-with-rest-spread-and-destructuring">Recursive list operations in ES6 with rest/spread and destructuring</h3>
 
-<iframe src="https://medium.com/media/fcb21acb6b7d03e8291f7db46b7021de" frameborder=0></iframe>
+<p>Filter implementation using ES6, destructuring and recursion:</p>
 
-<iframe src="https://medium.com/media/cca841bfb9a8f4f71851047383b3da11" frameborder=0></iframe>
+<pre><code class="language-js">function filter([ head, ...tail ], fn) {
+  const newHead = fn(head) ? [ head ] : [];
+  return tail.length ? [ ...newHead, ...(filter(tail, fn)) ] : newHead;
+}
+</code></pre>
 
-<p><iframe src="https://medium.com/media/70453b96587f361fe355fc98573aa9b8" frameborder=0></iframe>
-&gt; <a href="http://bit.ly/Hackernoon">Hacker Noon</a> is how hackers start their afternoons. We’re a part of the <a href="http://bit.ly/atAMIatAMI">@AMI</a>family. We are now <a href="http://bit.ly/hackernoonsubmission">accepting submissions</a> and happy to <a href="mailto:partners@amipublications.com">discuss advertising &amp;sponsorship</a> opportunities.
-&gt; To learn more, <a href="https://goo.gl/4ofytp">read our about page</a>, <a href="http://bit.ly/HackernoonFB">like/message us on Facebook</a>, or simply, <a href="https://goo.gl/k7XYbx">tweet/DM @HackerNoon.</a>
-&gt; If you enjoyed this story, we recommend reading our <a href="http://bit.ly/hackernoonlatestt">latest tech stories</a> and <a href="https://hackernoon.com/trending">trending tech stories</a>. Until next time, don’t take the realities of the world for granted!</p>
+<p>Reduce implementation using ES6, destructuring and recursion:</p>
+
+<pre><code class="language-js">function reduce([ head, ...tail ], fn, initial) {
+  if(head === undefined &amp;&amp; tail.length === 0) return initial;
+  if(!initial) {
+    const [ newHead, ...newTail] = tail;
+    return reduce(newTail, fn, fn(head, newHead));
+  }
+  return tail.length ? reduce(tail, fn, fn(initial, head)) : [ fn(initial, head) ];
+}
+</code></pre>
+
+<p>Join implementation using ES6, destructuring and recursion:</p>
+
+<pre><code class="language-js">function join([ head, ...tail ], separator = ',') {
+  if (head === undefined &amp;&amp; !tail.length) return '';
+  return tail.length ? head + separator + join(tail, separator) : head;
+}
+</code></pre>
     
         </div>
     </section>
@@ -404,13 +434,15 @@ s.setAttribute('data-timestamp', +new Date());
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
-        
-          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+                      
         
           <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
         
+          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
+        
           <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
+        
+          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
