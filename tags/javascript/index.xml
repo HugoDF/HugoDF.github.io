@@ -33,6 +33,17 @@ We’ll be setting up a project that allows us to write ES6, and distribute it i
     </item>
     
     <item>
+      <title>Avoiding falsy values in JavaScript arrays</title>
+      <link>https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/</link>
+      <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: use &lt;code&gt;Array.filter(Boolean)&lt;/code&gt; to filter out falsy values and avoid errors.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Animations: CSS vs JavaScript</title>
       <link>https://codewithhugo.com/animations-css-vs-javascript/</link>
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>

@@ -4,40 +4,47 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Recursion in JavaScript with ES6, destructuring and rest/spread &middot; Code with Hugo</title>
+    <title>Avoiding falsy values in JavaScript arrays &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
-     <link rel="canonical" href="https://medium.com/@hugo__df/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa" /> 
+    
+    <link rel="canonical" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/" /> 
 
-     <meta name="description" content="The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new" /> 
+     <meta name="description" content="&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: use &lt;code&gt;Array.filter(Boolean)&lt;/code&gt; to filter out falsy values and avoid errors.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;" /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&s=de9cf50e342bd5a92bf1850dc7f409c0&auto=format&fit=crop&w=600&q=80"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/kaizen-nguy.jpg"/>
     
  
-    <meta name="twitter:title" content="Recursion in JavaScript with ES6, destructuring and rest/spread"/>
-    <meta name="twitter:description" content="The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/" />
+    <meta name="twitter:title" content="Avoiding falsy values in JavaScript arrays"/>
+    <meta name="twitter:description" content="&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: use &lt;code&gt;Array.filter(Boolean)&lt;/code&gt; to filter out falsy values and avoid errors.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Recursion in JavaScript with ES6, destructuring and rest/spread &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/" />
+    <meta property="og:title" content="Avoiding falsy values in JavaScript arrays &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new" />
+    <meta property="og:description" content="&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: use &lt;code&gt;Array.filter(Boolean)&lt;/code&gt; to filter out falsy values and avoid errors.&lt;/p&gt;
 
-    <meta property="article:published_time" content="2016-10-10T00:00:00Z" />
-    
+&lt;p&gt;&lt;/p&gt;" />
 
-    <meta property="og:image" content="https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&s=de9cf50e342bd5a92bf1850dc7f409c0&auto=format&fit=crop&w=600&q=80"/>
+    <meta property="article:published_time" content="2018-04-11T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="web development" />
+
+    <meta property="og:image" content="https://codewithhugo.com/img/kaizen-nguy.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.36" />
@@ -115,268 +122,137 @@
       <article class="post-full post"> 
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2016-10-10">10 October 2016</time>
+            <time class="post-full-meta-date" datetime="2018-04-11">11 April 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.comtags/web-development/">#web development</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h1>
+        <h1 class="post-full-title">Avoiding falsy values in JavaScript arrays</h1>
     </header>
     
-    <figure class="post-full-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)">
     </figure>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
-        
+        <p><strong>tl;dr</strong>: use <code>Array.filter(Boolean)</code> to filter out falsy values and avoid errors.</p>
 
-<p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.</p>
+<p></p>
 
-<h2 id="destructuring">Destructuring</h2>
+<pre><code class="language-js">// Fun function that converts a name into a
+// 4 all-cap letters display name
+const makeDisplayName = name =&gt;
+  (name.charAt(0) + name.slice(1).replace(/a|e|i|o|u/g, &quot;&quot;))
+    .toUpperCase()
+    .slice(0, 4);
 
-<p>One of my favourite ES6 features is <strong>destructuring</strong>. It allows you to extract data from one variable to another by using <strong>structure</strong>. For arrays this means for example:</p>
+const displayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined]
+  .filter(Boolean)
+  .map(makeDisplayName);
+// [ 'ORNG', 'APPL', 'MNG' ]
 
-<pre><code>var [ first, second ] = [ 1, 2, 3, 4 ];
-// first: 1
-// second: 2
+// vs
+const displayNamesErrors = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined].map(
+  makeDisplayName
+);
+// TypeError: Cannot read property 'charAt' of undefined
 </code></pre>
 
-<p>There’s more you can do, like skip some members of the array on the right-hand side of the operation.</p>
+<h1 id="how-this-works-caveats">How this works &amp; caveats</h1>
 
-<pre><code>var [ first, , third, fourth ] = [ 1, 2, 3, 4 ];
-// first: 1
-// third: 3
-// fourth: 4
+<p><code>Boolean</code> when passed any falsy value returns <code>false</code> and when passed a truthy value returns <code>true</code>:</p>
+
+<pre><code class="language-js">Boolean(false); // false
+Boolean(&quot;&quot;); // false
+Boolean(null); // false
+Boolean(undefined); // false
+Boolean(0); // false
+Boolean(NaN); // false
+
+Boolean(1); // true
+Boolean(&quot;hello&quot;); // true
+Boolean(true); // true
+Boolean({}); // true
+Boolean([]); // true
 </code></pre>
 
-<p>This is actually quite easily back-ported to the equivalent ES5</p>
+<p>Note that a valid use case of filtering out falsy values except <code>0</code> needs special treatment since, <code>Boolean(0)</code> returns <code>false</code>, hence:</p>
 
-<pre><code>var arr = [ 1, 2, 3, 4 ];
-var first = arr[0];
-var second = arr[1];
-// etc ...
+<pre><code class="language-js">const noFalsyEvenZero = [NaN, undefined, null, 0, 1, 2, 2000, Infinity].filter(
+  Boolean
+);
+// [ 1, 2, 2000, Infinity ]
+const noFalsyExceptZero = [
+  NaN,
+  undefined,
+  null,
+  0,
+  1,
+  2,
+  2000,
+  Infinity
+].filter(el =&gt; el === 0 || Boolean(el));
+// [ 0, 1, 2, 2000, Infinity ]
 </code></pre>
 
-<h2 id="rest">Rest</h2>
+<h1 id="situations-in-which-this-would-this-occur">Situations in which this would this occur</h1>
 
-<p>This is where ES6 features become more interesting. With destructuring we can also assign what is called the <strong>rest</strong> of the array. We indicate <strong>rest</strong> with the &hellip; notation.</p>
+<p>Usually this happens when you want to compute something over an Array of objects where some of the elements have a property but others don&rsquo;t.</p>
 
-<pre><code>var [ first, ...notFirst ] = [ 1, 2, 3, 4 ];
-// first: 1
-// notFirst: [ 2, 3, 4 ]
-</code></pre>
-
-<p>Naming conventions lead to code that is more akin to the following:</p>
-
-<pre><code>var [ first, second, ...rest ] = [ 1, 2, 3, 4 ]
-// first: 1
-// second: 2
-// rest: [ 3, 4 ]
-</code></pre>
-
-<p>The rest operator has some interesting properties:</p>
-
-<pre><code>var [ first, ...rest ] = [ 1 ]
-// first: 1
-// rest: []
-</code></pre>
-
-<p>It always returns an array. Which means even in defensive JavaScript land, it’s ok to do things like check .length of rest without guards.</p>
-
-<p>The equivalent in ES5 (and below) is to use theArray.slice function.</p>
-
-<pre><code>var arr = [ 1, 2, 3, 4 ];
-var first = arr[0];
-var rest = arr.slice(1);
-// first: 1
-// rest: [ 2, 3, 4 ]
-</code></pre>
-
-<p>Two things to note here:</p>
-
-<ul>
-<li><p>the ES5 version is more verbose</p></li>
-
-<li><p>the ES5 version is more imperative, we tell JavaScript <strong>how</strong> to do something instead of telling it <strong>what</strong> we want.</p></li>
-</ul>
-
-<p>Now I also think that the structure-matching version (with rest) is more readable.</p>
-
-<h2 id="parameter-destructuring">Parameter destructuring</h2>
-
-<p>We can use destructuring on the parameters of a function definition:</p>
-
-<pre><code>function something([ first, ...rest ]) {
-  return {
-    first: first,
-    rest: rest
-  };
-}
-var result = something([1, 2, 3]);
-// result: { first: 1, rest: [ 2,3 ] }
-</code></pre>
-
-<p>Equivalent ES5:</p>
-
-<pre><code>function something(arr){
-  var first = arr[0];
-  var rest = arr.slice(1);
-  return {
-    first: first,
-    rest: rest
-  };
-}
-</code></pre>
-
-<p>Again it’s more verbose and more imperative.</p>
-
-<h2 id="spread">Spread</h2>
-
-<p>Spread uses the same notation as rest: &hellip;. What it does is quite different.</p>
-
-<pre><code>var arr = [ 1, 2, 3 ];
-var newArr = [ ...arr ];
-// newArr: [ 1, 2, 3]
-</code></pre>
-
-<p>ES5 equivalent:</p>
-
-<pre><code>var arr = [ 1, 2, 3 ];
-var newArr = [].concat(arr);
-</code></pre>
-
-<p>Things to note, the contents of the array are <strong>copied</strong>. So newArr is not a reference to arr.</p>
-
-<p>We can also do things like appending or prepending an array.</p>
-
-<pre><code>var arr = [ 1, 2, 3] ;
-
-var withPrepend = [ ...arr, 3, 2, 1];
-var withAppend = [ 3, 2, 1, ...arr ];
-// withPrepend: [ 1, 2, 3, 3, 2, 1]
-// withAppend: [ 3, 2, 1, 1, 2, 3 ]
-</code></pre>
-
-<h2 id="functional-programming-lists-recursion">Functional Programming: lists &amp; recursion</h2>
-
-<p>In functional programming when we run functions recursively over lists we like to model the list as a <strong>head</strong> and a <strong>tail</strong>.</p>
-
-<p>The head is the first element of the list, the tail is the list composed of the list minus the head.</p>
-
-<pre><code>arr = [ 1, 2, 3 ]
-// head(arr): 1
-// tail(arr): [ 2, 3 ]
-</code></pre>
-
-<p>In ES6 we can do this just by naming the variable appropriately with <strong>destructuring</strong> and <strong>rest:</strong></p>
-
-<pre><code>var [ head, ...tail ] = [ 1, 2, 3 ];
-// head: 1
-// tail: [ 2, 3 ]
-</code></pre>
-
-<p>We can also trivially implement the head and tail functions using ES6:</p>
-
-<pre><code>function head([ head, ...tail ]) { 
-  return head;
-}
-function tail([ head, ...tail ]) {
-  return tail;
-}
-// or with arrow function syntax
-var head = ([ head, ...tail ]) =&gt; head;
-var tail = ([ head, ...tail ]) =&gt; tail;
-</code></pre>
-
-<h3 id="tail-recursion">(Tail) Recursion</h3>
-
-<p>We can implement functions that operate over arrays (or lists as they tend to be called in functional programming) using <strong>parameter destructuring</strong>* *and <strong>recursion</strong>.</p>
-
-<p>For example, map can be implemented in the following manner:</p>
-
-<p><em>Map is a function that takes a list and a function and returns a list containing the result of a function application to each element of the list.</em></p>
-
-<pre><code>function map([ head, ...tail ], fn) {
-  if(head === undefined &amp;&amp; !tail.length) return [];
-  if(tail.length === 0){
-    return [ fn(head) ];
+<pre><code class="language-js">const companies = [
+  {
+    name: null,
+    employees: [],
+    founders: []
+  },
+  {
+    name: &quot;orange&quot;,
+    employees: [],
+    founders: []
+  },
+  {
+    name: &quot;apple&quot;,
+    employees: [],
+    founders: []
+  },
+  {
+    name: &quot;mango&quot;,
+    employees: [],
+    locations: []
+  },
+  {
+    employees: [],
+    founders: []
   }
-  return [ fn(head) ].concat(map(tail, fn));
-}
+];
+const companyNames = companies.map(company =&gt; company.name);
+// [undefined, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined]
 </code></pre>
 
-<p>The tail.length === 0 checks whether there is still a tail to recurse over. Otherwise, the recursion stops there.</p>
+<p>An issue can occur when you have null or undefined in your list</p>
 
-<p>This is not necessarily the most efficient version of map both in terms of memory usage and speed but it’s a good illustration of ES6.</p>
+<pre><code class="language-js">const makeDisplayName = name =&gt;
+  (name.charAt(0) + name.slice(1).replace(/a|e|i|o|u/g, &quot;&quot;))
+    .toUpperCase()
+    .slice(0, 4);
 
-<p>We can further simplify it by replacing concat with the spread operator and using a single return statement with a ternary operator.</p>
-
-<h3 id="very-es6-map">Very ES6 map</h3>
-
-<p>Our ES6 recursive/destructuring map can be simplified to:</p>
-
-<pre><code class="language-js">function map([ head, ...tail ], fn) {
-  if (head === undefined &amp;&amp; !tail.length) return [];
-  return tail.length ? [ fn(head), ...(map(tail, fn)) ] : [ fn(head) ];
-}
+const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined].map(
+  makeDisplayName
+);
+// TypeError: Cannot read property 'charAt' of undefined
 </code></pre>
 
-<p>Or if we want to abuse ES6 and allow ourselves to forget that we’re actually doing JavaScript:</p>
+<p>To avoid this we can filter falsy values out:</p>
 
-<pre><code class="language-js">const map = ([ head, ... tail ], fn) =&gt; 
-  ( (head !== undefined &amp;&amp; tail.length) ? ( tail.length ? [ fn(head), ...(map(tail, fn)) ] : [ fn(head) ] ) : []);
-</code></pre>
+<pre><code class="language-js">const makeDisplayName = name =&gt;
+  (name.charAt(0) + name.slice(1).replace(/a|e|i|o|u/g, &quot;&quot;))
+    .toUpperCase()
+    .slice(0, 4);
 
-<p>ES5 equivalent</p>
-
-<pre><code class="language-js">function map(arr, fn) {
-  var head = arr[0];
-  var tail = arr.slice(1);
-  if(head === undefined &amp;&amp; tail.length === 0) return [];
-  if(tail.length === 0) {
-    return [ fn(head) ];
-  }
-  return [].concat(fn(head), map(tail, fn));
-}
-</code></pre>
-
-<p>All the features add up and while recursive map in ES6 is essentially a one-liner, in ES5 it’s a clunky, long, hard to read function.</p>
-
-<h3 id="reimplementing-list-manipulation-functions">Reimplementing list manipulation functions</h3>
-
-<p>Now you can have a go at reimplementing filter, reduce and join using the above techniques.</p>
-
-<p>Solutions below the fold :).</p>
-
-<p>ES6 allows us to write code in a functional style more tersely and effectively.</p>
-
-<h3 id="recursive-list-operations-in-es6-with-rest-spread-and-destructuring">Recursive list operations in ES6 with rest/spread and destructuring</h3>
-
-<p>Filter implementation using ES6, destructuring and recursion:</p>
-
-<pre><code class="language-js">function filter([ head, ...tail ], fn) {
-  const newHead = fn(head) ? [ head ] : [];
-  return tail.length ? [ ...newHead, ...(filter(tail, fn)) ] : newHead;
-}
-</code></pre>
-
-<p>Reduce implementation using ES6, destructuring and recursion:</p>
-
-<pre><code class="language-js">function reduce([ head, ...tail ], fn, initial) {
-  if(head === undefined &amp;&amp; tail.length === 0) return initial;
-  if(!initial) {
-    const [ newHead, ...newTail] = tail;
-    return reduce(newTail, fn, fn(head, newHead));
-  }
-  return tail.length ? reduce(tail, fn, fn(initial, head)) : [ fn(initial, head) ];
-}
-</code></pre>
-
-<p>Join implementation using ES6, destructuring and recursion:</p>
-
-<pre><code class="language-js">function join([ head, ...tail ], separator = ',') {
-  if (head === undefined &amp;&amp; !tail.length) return '';
-  return tail.length ? head + separator + join(tail, separator) : head;
-}
-</code></pre>
-    
+const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined]
+  .filter(Boolean) // the identity function: `item =&gt; item` would also work here :)
+  .map(makeDisplayName);
+// [ 'ORNG', 'APPL', 'MNG' ]
+// No Error :)
+</code></pre>    
         </div>
     </section>
 
@@ -401,8 +277,8 @@ var tail = ([ head, ...tail ]) =&gt; tail;
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/codewithhugo.com\/recursion-in-javascript-with-es6-destructuring-and-rest\/spread\/";  
-this.page.identifier = "https:\/\/codewithhugo.com\/recursion-in-javascript-with-es6-destructuring-and-rest\/spread\/"; 
+this.page.url = "https:\/\/codewithhugo.com\/avoiding-falsy-values-in-javascript-arrays\/";  
+this.page.identifier = "https:\/\/codewithhugo.com\/avoiding-falsy-values-in-javascript-arrays\/"; 
 };
 
 (function() { 
@@ -427,6 +303,7 @@ s.setAttribute('data-timestamp', +new Date());
     <header class="read-next-card-header">
         <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
         
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.comtags/javascript/">#JavaScript</a></h3>
     </header>
     <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
     </div>
@@ -436,15 +313,16 @@ s.setAttribute('data-timestamp', +new Date());
         <ul>
           <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         
-          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
         
           <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
       
+        <a href="https://codewithhugo.comtags/javascript/">See all related posts →</a>
     </footer>
 </article>
 
@@ -452,24 +330,22 @@ s.setAttribute('data-timestamp', +new Date());
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">
-      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1507914997623-5b75b37d9cad?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=4daefc0d1e77d387f6e177a0990e42a8&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
           <header class="post-card-header">
-              <span class="post-card-tags">
-              #Productivity 
-              #JavaScript  </span>
               
-              <h2 class="post-card-title">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</h2>
+              <h2 class="post-card-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>JavaScript has a thriving ecosystem of libraries delivered as packages on npm. Node has a high degree of compatibility with ES6 but it doesn’t have some features yet, namely import. This means that if we want to distribute useable packages over npm and we want to be writing ES6, we have to transpile back to ES5.
-We’ll be setting up a project that allows us to write ES6, and distribute it in ES5 (with Babel) and to test it with Mocha, all through npm scripts. ...  </p>
+                <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
+Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
+var [ first, second ] = [ 1, 2, 3, 4 ]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
               
           </section>
       </a>
@@ -484,25 +360,26 @@ We’ll be setting up a project that allows us to write ES6, and distribute it i
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*gVQU50zNWjL1kihKKQ5zYQ.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #CSS 
               #JavaScript 
+              #animation 
               #web development  </span>
               
-              <h2 class="post-card-title">Avoiding falsy values in JavaScript arrays</h2>
+              <h2 class="post-card-title">Animations: CSS vs JavaScript</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>tl;dr: use Array.filter(Boolean) to filter out falsy values and avoid errors.
-
- ...  </p>
+                <p>When should you use JavaScript when you can use CSS? This post was sparked by a question I answered on Quora: Which is better to use, CSS or JS?
+The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see “Backend code, frontend code and how they interact” for more details): HTML says what things are, CSS how they look and JavaScript does all the things the other two can’t. ...  </p>
               
           </section>
       </a>
@@ -526,17 +403,17 @@ We’ll be setting up a project that allows us to write ES6, and distribute it i
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Recursion in JavaScript with ES6, destructuring and rest/spread</div>
+  <div class="floating-header-title">Avoiding falsy values in JavaScript arrays</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Recursion%20in%20JavaScript%20with%20ES6%2c%20destructuring%20and%20rest%2fspread&amp;url=https%3a%2f%2fcodewithhugo.com%2frecursion-in-javascript-with-es6-destructuring-and-rest%2fspread%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Avoiding%20falsy%20values%20in%20JavaScript%20arrays&amp;url=https%3a%2f%2fcodewithhugo.com%2favoiding-falsy-values-in-javascript-arrays%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2frecursion-in-javascript-with-es6-destructuring-and-rest%2fspread%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2favoiding-falsy-values-in-javascript-arrays%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>
