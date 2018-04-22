@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design on Code with Hugo</title>
+    <link>https://codewithhugo.com/tags/design/</link>
+    <description>Recent content in Design on Code with Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 22 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://codewithhugo.com/tags/design/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How components won the “framework wars”</title>
+      <link>https://codewithhugo.com/how-components-won-the-framework-wars/</link>
+      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/how-components-won-the-framework-wars/</guid>
+      <description>React vs Angular vs Vue: Why it doesn’t matter.
+2018 marks the end of JavaScript fatigue and the “framework wars” A typical frontend/JavaScript developer, usually involved some jQuery and associated plugins before moving on to React, Angular or Vue.
+Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. In more ways than one, the mental model of these frameworks/libraries have converged to the component model.</description>
+    </item>
+    
+  </channel>
+</rss>

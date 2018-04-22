@@ -48,6 +48,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/how-components-won-the-framework-wars/</loc>
+    <lastmod>2018-04-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/learn-git-even-if-you-dont-code/</loc>
     <lastmod>2017-12-04T00:00:00+00:00</lastmod>
   </url>
@@ -72,6 +77,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/css/</loc>
     <lastmod>2018-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/design/</loc>
+    <lastmod>2018-04-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
