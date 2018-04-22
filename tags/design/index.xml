@@ -18,7 +18,7 @@
       
       <guid>https://codewithhugo.com/how-components-won-the-framework-wars/</guid>
       <description>React vs Angular vs Vue: Why it doesn’t matter.
-2018 marks the end of JavaScript fatigue and the “framework wars” A typical frontend/JavaScript developer, usually involved some jQuery and associated plugins before moving on to React, Angular or Vue.
+2018 marks the end of JavaScript fatigue and the “framework wars” A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.
 Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. In more ways than one, the mental model of these frameworks/libraries have converged to the component model.</description>
     </item>
     
