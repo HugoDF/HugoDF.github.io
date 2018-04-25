@@ -59,6 +59,19 @@ CSS doesn’t get the love it deserves in the developer crowd.</description>
     </item>
     
     <item>
+      <title>Ditch syntax highlighting for better technical writing</title>
+      <link>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</link>
+      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</guid>
+      <description>&lt;p&gt;Ditching syntax highlighting leads to more concise snippets,
+more thought to be put to find a minimal example
+and better overall flow in your writing.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>How components won the “framework wars”</title>
       <link>https://codewithhugo.com/how-components-won-the-framework-wars/</link>
       <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>

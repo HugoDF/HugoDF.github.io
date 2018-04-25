@@ -54,7 +54,7 @@ We’ll be setting up a project that allows us to write ES6, and distribute it i
       <guid>https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/</guid>
       <description>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
 Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
-var [ first, second ] = [ 1, 2, 3, 4 ]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation.</description>
+var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation.</description>
     </item>
     
     <item>
@@ -114,6 +114,19 @@ The basics Functional programming is a programming paradigm that follows a more 
 I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
 Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
 CSS doesn’t get the love it deserves in the developer crowd.</description>
+    </item>
+    
+    <item>
+      <title>Ditch syntax highlighting for better technical writing</title>
+      <link>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</link>
+      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</guid>
+      <description>&lt;p&gt;Ditching syntax highlighting leads to more concise snippets,
+more thought to be put to find a minimal example
+and better overall flow in your writing.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

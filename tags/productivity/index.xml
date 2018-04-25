@@ -73,6 +73,19 @@ The basics Functional programming is a programming paradigm that follows a more 
     </item>
     
     <item>
+      <title>Ditch syntax highlighting for better technical writing</title>
+      <link>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</link>
+      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</guid>
+      <description>&lt;p&gt;Ditching syntax highlighting leads to more concise snippets,
+more thought to be put to find a minimal example
+and better overall flow in your writing.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Learn git even if you don’t code</title>
       <link>https://codewithhugo.com/learn-git-even-if-you-dont-code/</link>
       <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>

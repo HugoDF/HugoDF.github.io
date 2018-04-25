@@ -48,6 +48,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</loc>
+    <lastmod>2018-04-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/how-components-won-the-framework-wars/</loc>
     <lastmod>2018-04-22T00:00:00+00:00</lastmod>
   </url>
@@ -131,6 +136,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/</loc>
     <lastmod>2018-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/technical-writing/</loc>
+    <lastmod>2018-04-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
