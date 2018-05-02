@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Typescript on Code with Hugo</title>
+    <link>https://codewithhugo.com/tags/typescript/</link>
+    <description>Recent content in Typescript on Code with Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 02 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://codewithhugo.com/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Writing an npm module with TypeScript and microbundle</title>
+      <link>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</guid>
+      <description>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.
+Why TypeScript? TypeScript is a JavaScript superset that adds static types to it. Its other features also follow the ECMAScript specification (current and future) quite closely. For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code) nicer auto-complete.</description>
+    </item>
+    
+  </channel>
+</rss>

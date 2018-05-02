@@ -59,6 +59,16 @@ CSS doesn’t get the love it deserves in the developer crowd.</description>
     </item>
     
     <item>
+      <title>Writing an npm module with TypeScript and microbundle</title>
+      <link>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</guid>
+      <description>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.
+Why TypeScript? TypeScript is a JavaScript superset that adds static types to it. Its other features also follow the ECMAScript specification (current and future) quite closely. For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code) nicer auto-complete.</description>
+    </item>
+    
+    <item>
       <title>Ditch syntax highlighting for better technical writing</title>
       <link>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</link>
       <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>

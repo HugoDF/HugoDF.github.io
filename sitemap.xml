@@ -48,6 +48,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</loc>
+    <lastmod>2018-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</loc>
     <lastmod>2018-04-25T00:00:00+00:00</lastmod>
   </url>
@@ -94,6 +99,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/dev-decoded/</loc>
     <lastmod>2017-03-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/developer-tools/</loc>
+    <lastmod>2018-05-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -148,6 +159,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/testing/</loc>
     <lastmod>2017-03-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/typescript/</loc>
+    <lastmod>2018-05-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

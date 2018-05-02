@@ -4,43 +4,44 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Why CSS is hard &middot; Code with Hugo</title>
+    <title>Writing an npm module with TypeScript and microbundle &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
-     <link rel="canonical" href="https://medium.com/@hugo__df/why-css-is-hard-89f3b221dd4d" /> 
+    
+    <link rel="canonical" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/" /> 
 
-     <meta name="description" content="Things we’re not used to tend to be harder
-I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScri" /> 
+     <meta name="description" content="For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.
+Why TypeScript? Type" /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cd9daf0a6b9cb8db2b8b97fcace94526&auto=format&fit=crop&w=600&q=80"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/aaron-burden-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="Why CSS is hard"/>
-    <meta name="twitter:description" content="Things we’re not used to tend to be harder
-I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScri"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/why-css-is-hard/" />
+    <meta name="twitter:title" content="Writing an npm module with TypeScript and microbundle"/>
+    <meta name="twitter:description" content="For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.
+Why TypeScript? Type"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Why CSS is hard &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/why-css-is-hard/" />
+    <meta property="og:title" content="Writing an npm module with TypeScript and microbundle &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="Things we’re not used to tend to be harder
-I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScri" />
+    <meta property="og:description" content="For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.
+Why TypeScript? Type" />
 
-    <meta property="article:published_time" content="2016-06-18T00:00:00Z" />
-    <meta property="article:tag" content="CSS" /><meta property="article:tag" content="web development" />
+    <meta property="article:published_time" content="2018-05-02T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="TypeScript" /><meta property="article:tag" content="web development" /><meta property="article:tag" content="developer tools" />
 
-    <meta property="og:image" content="https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cd9daf0a6b9cb8db2b8b97fcace94526&auto=format&fit=crop&w=600&q=80"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/aaron-burden-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.36" />
@@ -118,102 +119,126 @@ I’m a developer, and I CSS. I probably have written more CSS than I have writt
       <article class="post-full post"> 
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2016-06-18">18 June 2016</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/css/">#CSS</a>&nbsp;<a href="https://codewithhugo.comtags/web-development/">#web development</a>&nbsp;
+            <time class="post-full-meta-date" datetime="2018-05-02">2 May 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.comtags/typescript/">#TypeScript</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Why CSS is hard</h1>
+        <h1 class="post-full-title">Writing an npm module with TypeScript and microbundle</h1>
     </header>
     
-    <figure class="post-full-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)">
     </figure>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
         
 
-<p>Things we’re not used to tend to be harder</p>
+<p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.</p>
 
-<p>I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.</p>
+<h2 id="why-typescript">Why TypeScript?</h2>
 
-<p>Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.</p>
+<p><a href="https://www.typescriptlang.org/">TypeScript</a> is a JavaScript superset that adds static types to it.
+Its other features also follow the ECMAScript specification (current and future) quite closely.
+For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more
+details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code)
+nicer auto-complete. TypeScript also serves as inline documentation that shouts at you when you pass something you
+shouldn’t, which will come handy when you rediscover your code a couple of months down the line.</p>
 
-<p>CSS doesn’t get the love it deserves in the developer crowd. I think I know why that is: it’s hard. Especially coming from the fairy land that is Java/JavaScript/Ruby/PHP/<em>insert language</em>.</p>
+<h2 id="why-microbundle">Why microbundle?</h2>
 
-<p>Now I’m not saying all these languages are <em>easy</em> by any stretch but CSS always throws up issues that stump me… for a good while.</p>
+<p><a href="https://github.com/developit/microbundle">Microbundle</a> is a “zero-configuration bundler for tiny modules”. It’s a wrapper around <a href="https://rollupjs.org/guide/en">rollup</a> with sane defaults (including minification/compression), nice outputted size stats, multiple target formats (ES modules, CommonJS, UMD). Most of all in the scope of this post, it has TypeScript support out of the box (<em>actually</em> no configuration, not even a <code>tsconfig.json</code>).
+It’s ridiculously easy to set up and allows library authors to focus on building a great library rather than setting up the plumbing to be able to ship a JavaScript library from ES6/TypeScript or other compile-to-JS tool 🙂.</p>
 
-<h3 id="1-the-difficulty-of-a-declarative-language">1. The difficulty of a declarative language</h3>
+<h1 id="zero-config-bundling">Zero-config bundling</h1>
 
-<p>CSS is a <strong>purely</strong>* *rule-based language. In a world where we write mainly Object-Oriented or procedural code, this does not sit comfortably. It’s just not the paradigm we’re used to.</p>
+<p>To start, we’ll have to create setup our package run <code>npm init</code> and complete all the prompts.</p>
 
-<p>Developers tend to struggle going from procedural to object-oriented programming and from OO to functional programming.</p>
+<p>Next run: <code>npm i --save-dev microbundle</code>.</p>
 
-<p>Changing paradigm means a change in mentality and that’s just not everyone’s cup of tea.</p>
+<p>Let’s create a src and dist folder: <code>mkdir src &amp;&amp; mkdir dist</code></p>
 
-<p>In CSS:</p>
+<p>And add the first TypeScript file: <code>touch src/index.ts</code>.</p>
+
+<p>Let’s add a class to the index.ts so we’re not just compiling empty files:
+<code>echo &quot;export class MyMainClass {}&quot; &gt;&gt; src/index.ts</code></p>
+
+<p>Microbundle looks at the <code>package.json</code> <code>&quot;main&quot;</code> and <code>&quot;source&quot;</code> fields (compiled entry point and source entry point),
+in our case that’s <code>dist/index.js</code> (which doesn’t exist yet) and <code>src/index.ts</code>.
+Let’s edit it to have the following in the <code>package.json</code>:</p>
+
+<pre><code>{
+  &quot;main&quot;: &quot;dist/index.js&quot;,
+  &quot;source&quot;: &quot;src/index.ts&quot;
+}
+</code></pre>
+
+<p>This means microbundle knows how to compile our library now, run: <code>npx microbundle</code> (on versions of npm &lt;5.x, you can also run <code>./node_modules/.bin/microbundle</code>).</p>
+
+<p>This will compile your <code>src/index.ts</code> to the <code>dist</code> folder.
+If you look at the contents of the <code>dist</code> folder, you’ll see how much work microbundle does for you:</p>
+
+<pre><code>$ ls dist
+index.d.ts       index.js.map     index.m.js.map   index.umd.js.map
+index.js         index.m.js       index.umd.js
+</code></pre>
+
+<p>Let’s explain what all these are:</p>
 
 <ul>
-<li><p>The rule declared last will take precedence.</p></li>
-
-<li><p>The rule declared on the most specific selector takes precedence.</p></li>
-
-<li><p>There aren’t any looping constructs.</p></li>
-
-<li><p>There aren’t any scoping constructs.</p></li>
+<li><code>index.js</code> is the CommonJS module. This is module type used by Node and it looks like <code>const myModule = require(</code><code>'</code><code>my-module</code><code>'</code><code>)</code></li>
+<li><code>index.m.js</code> is the ECMAScript Module, as defined in ES6, it looks like <code>import MyModule from</code> <code>'</code><code>my-module</code><code>'</code></li>
+<li><code>index.umd.js</code> is the UMD module</li>
+<li><code>index.d.ts</code> is TypeScript type declaration file</li>
 </ul>
 
-<p>This is nothing like your Java, PHP, Ruby, C.</p>
+<p>Then there’s a matching <code>.map</code> file that maps back to the TypeScript source for each of the files.</p>
 
-<p>Which brings us to the second strand of CSS issues.</p>
+<p>Take a look inside <code>index.js</code>:</p>
 
-<h3 id="2-no-scopes">2. No scopes</h3>
+<pre><code>$ cat dist/index.js
+var n=function(){return function(){}}();exports.MyMainClass=n;
+//# sourceMappingURL=index.js.map
+</code></pre>
 
-<blockquote>
-<h1 id="cs-101-avoid-global-things-impossible-in-css">CS 101: Avoid global things… impossible in CSS</h1>
-</blockquote>
+<p>Our <code>class MyMainClass {}</code> statement was compiled to its ES5 equivalent and the export to a CommonJS export.</p>
 
-<p>By default, a CSS rule is <strong>global</strong>. Now computer science tells us: “avoid global things if you can”… which you can’t in CSS.</p>
+<p><code>index.d.ts</code> is also interesting:</p>
 
-<p>To simulate scopes you either have two choices: pre-processors or methodologies.</p>
+<pre><code>$ cat dist/index.d.ts
+export declare class MyMainClass {
+}
+</code></pre>
 
-<p>Pre-processors like Sass, LESS or Stylus mean you can simulate scopes. You nest selectors so that changes on one page don’t affect other pages. This essentially outputs what some would consider <strong>bad</strong> CSS. And it comes with its own issues:</p>
+<p>This allows a TypeScript project to assign the correct type information back to the package… which <em>is</em> a roundabout way of doing since a TypeScript project should be able to just import the <code>.ts</code> file. The separate type declaration means that non-TypeScript projects can also understand the public API of the module (eg. code editors can do smart autocomplete on unseen npm packages).</p>
+
+<p>microbundle can also watch for changes: <code>npx microbundle watch</code>.</p>
+
+<p>For ease of use we can put the watch and build tasks in the <code>package.json</code> as npm scripts:</p>
+
+<pre><code>{
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;microbundle watch&quot;,
+    &quot;build&quot;: &quot;microbundle&quot;
+  }
+}
+</code></pre>
+
+<h1 id="publish-the-module">Publish the module</h1>
+
+<p>By leveraging microbundle we can publish the module as a CommonJS module (standard npm module), but also as an ES Module and a UMD module, to do this follow the guide at <a href="https://github.com/developit/microbundle#specifying-builds-in-packagejson">https://github.com/developit/microbundle#specifying-builds-in-packagejson</a>.</p>
+
+<p><strong>tl;dr</strong></p>
 
 <ul>
-<li><p>nest too deeply and you’re going to get performance/readability issues</p></li>
-
-<li><p>you need a build tool to compile from your pre-processed language down to CSS</p></li>
+<li><code>&quot;main&quot;: &quot;dist/index.js&quot;</code></li>
+<li><code>&quot;umd:main&quot;: &quot;dist/index.umd.js&quot;</code></li>
+<li><code>&quot;module&quot;: &quot;dist/index.m.js&quot;</code></li>
+<li><code>&quot;source&quot;: &quot;src/index.ts&quot;</code></li>
 </ul>
 
-<p>And that spells one thing: more complexity hence more trouble.</p>
+<p>With this <code>package.json</code> you can publish to npm with <code>npm publish</code>.
+And if you enjoyed using <a href="https://github.com/developit/microbundle">microbundle</a>, definitely keep using it but also give it a <a href="https://github.com/developit/microbundle">star on GitHub</a> and let Jason Miller aka <a href="https://twitter.com/_developit">@_developit</a> know you’re a fan on Twitter.</p>
 
-<p>Methodologies like BEM, and OOCSS allow you to avoid the scoping issues at the cost of learning and rigorously applying the methodology. Style guides help, but really it’s a case of making do with a pretty hard to use language.</p>
-
-<h3 id="3-purely-semantic">3. Purely semantic</h3>
-
-<p>CSS is completely semantic. Since we’re saying “this looks like this” in our code, the only way to test it is to make sure “this looks like this”… which is quite hard.</p>
-
-<p>Automated testing CSS? Unless you have a lot of time and want to go with webdriver &gt; browser &gt; take snapshots &gt; compare the images… well, you can’t really. You just have to measure as best you can, usually with your eyeballs.</p>
-
-<p>Refactoring CSS?</p>
-
-<p>“Just rewrite the whole thing”.</p>
-
-<p>Extending CSS?</p>
-
-<p>“Wing it and hope for the best”.</p>
-
-<p>If it looks right, the CSS is right. Which means the only way to be good at CSS is to be good at CSS.</p>
-
-<h3 id="4-quirks">4. Quirks</h3>
-
-<p>CSS has a ton of quirks. Different browsers implement things differently and have different default styles.</p>
-
-<p>This can be fixed with frameworks (or reset stylesheets), which are costly in terms of page load-time.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>Writing good CSS is hard, it needs to look perfectly right across browsers and devices. Worst of all, any random person can tell you your CSS is off. I’m guessing the average client won’t be trying to hit the edge cases of your server-logic. Which all contributes to a high-pressure, medium-reward environment for front-end guys.</p>
-
-<p>That’s why it’s so hard to find front-end web developers who can do the basics right. Getting the basics right is time-consuming and doesn’t pay half as well so why even bother?</p>
+<p>Cover Photo by <a href="https://unsplash.com/photos/J8R34suxfRU?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Aaron Burden</a> on <a href="https://unsplash.com/search/photos/tiny?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
     
         </div>
     </section>
@@ -239,8 +264,8 @@ I’m a developer, and I CSS. I probably have written more CSS than I have writt
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/codewithhugo.com\/why-css-is-hard\/";  
-this.page.identifier = "https:\/\/codewithhugo.com\/why-css-is-hard\/"; 
+this.page.url = "https:\/\/codewithhugo.com\/writing-an-npm-module-with-typescript-and-microbundle\/";  
+this.page.identifier = "https:\/\/codewithhugo.com\/writing-an-npm-module-with-typescript-and-microbundle\/"; 
 };
 
 (function() { 
@@ -266,7 +291,7 @@ s.setAttribute('data-timestamp', +new Date());
     <header class="read-next-card-header">
         <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
         
-        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.comtags/css/">#CSS</a></h3>
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.comtags/javascript/">#JavaScript</a></h3>
     </header>
     <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
     </div>
@@ -274,18 +299,18 @@ s.setAttribute('data-timestamp', +new Date());
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
-        
           <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         
           <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+        
+          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
       
-        <a href="https://codewithhugo.comtags/css/">See all related posts →</a>
+        <a href="https://codewithhugo.comtags/javascript/">See all related posts →</a>
     </footer>
 </article>
 
@@ -293,26 +318,26 @@ s.setAttribute('data-timestamp', +new Date());
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Functional Programming 
-              #Productivity  </span>
+              #CSS 
+              #web development  </span>
               
-              <h2 class="post-card-title">Closures, Partial Application and Currying: Effective Functional JavaScript</h2>
+              <h2 class="post-card-title">Why CSS is hard</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Spices and other ingredients of a great curry
-To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.
-The basics Functional programming is a programming paradigm that follows a more mathematical computation model. Let’s go through some basics to make your JavaScript more functional. ...  </p>
+                <p>Things we’re not used to tend to be harder
+I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
+Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
+CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
               
           </section>
       </a>
@@ -327,26 +352,26 @@ The basics Functional programming is a programming paradigm that follows a more 
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/jay-clark-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #TypeScript 
-              #web development 
-              #developer tools  </span>
+              #technical writing 
+              #productivity 
+              #web development  </span>
               
-              <h2 class="post-card-title">Writing an npm module with TypeScript and microbundle</h2>
+              <h2 class="post-card-title">Ditch syntax highlighting for better technical writing</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? TypeScript is a JavaScript superset that adds static types to it. Its other features also follow the ECMAScript specification (current and future) quite closely. For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code) nicer auto-complete. ...  </p>
+                <p>Ditching syntax highlighting leads to more concise snippets, more thought to be put to find a minimal example and better overall flow in your writing.
+
+ ...  </p>
               
           </section>
       </a>
@@ -370,17 +395,17 @@ Why TypeScript? TypeScript is a JavaScript superset that adds static types to it
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Why CSS is hard</div>
+  <div class="floating-header-title">Writing an npm module with TypeScript and microbundle</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Why%20CSS%20is%20hard&amp;url=https%3a%2f%2fcodewithhugo.com%2fwhy-css-is-hard%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Writing%20an%20npm%20module%20with%20TypeScript%20and%20microbundle&amp;url=https%3a%2f%2fcodewithhugo.com%2fwriting-an-npm-module-with-typescript-and-microbundle%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fwhy-css-is-hard%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fwriting-an-npm-module-with-typescript-and-microbundle%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>

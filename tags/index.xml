@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>Developer Tools</title>
+      <link>https://codewithhugo.com/tags/developer-tools/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/developer-tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Functional Programming</title>
       <link>https://codewithhugo.com/tags/functional-programming/</link>
       <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
@@ -107,6 +116,15 @@
       <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typescript</title>
+      <link>https://codewithhugo.com/tags/typescript/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/typescript/</guid>
       <description></description>
     </item>
     
