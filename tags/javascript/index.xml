@@ -80,6 +80,17 @@ The basics Functional programming is a programming paradigm that follows a more 
     </item>
     
     <item>
+      <title>Using ES6 classes for Sequelize 4 models</title>
+      <link>https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/</link>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/</guid>
+      <description>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
+For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
+To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node.</description>
+    </item>
+    
+    <item>
       <title>Writing an npm module with TypeScript and microbundle</title>
       <link>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>

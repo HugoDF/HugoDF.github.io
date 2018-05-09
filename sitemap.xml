@@ -48,6 +48,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/</loc>
+    <lastmod>2018-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
   </url>
@@ -123,6 +128,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/javascript/</loc>
     <lastmod>2017-01-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/node/</loc>
+    <lastmod>2018-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
