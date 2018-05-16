@@ -80,6 +80,16 @@ The basics Functional programming is a programming paradigm that follows a more 
     </item>
     
     <item>
+      <title>A simple, real-world VueJS directive</title>
+      <link>https://codewithhugo.com/a-simple-real-world-vuejs-directive/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/a-simple-real-world-vuejs-directive/</guid>
+      <description>VueJS is &amp;ldquo;The Progressive JavaScript Framework&amp;rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer. In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&amp;rsquo;s documentation is a focus directive.
+When running VueJS inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve normal anchors&amp;rsquo; href on click.</description>
+    </item>
+    
+    <item>
       <title>Using ES6 classes for Sequelize 4 models</title>
       <link>https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>

@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Using ES6 classes for Sequelize 4 models &middot; Code with Hugo</title>
+    <title>A simple, real-world VueJS directive &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,33 +12,33 @@
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
     
-    <link rel="canonical" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/" /> 
+    <link rel="canonical" href="https://codewithhugo.com/a-simple-real-world-vuejs-directive/" /> 
 
-     <meta name="description" content="The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, i" /> 
+     <meta name="description" content="VueJS is &amp;ldquo;The Progressive JavaScript Framework&amp;rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including" /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/eugene-lim-unsplash.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/frank-mckenna-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="Using ES6 classes for Sequelize 4 models"/>
-    <meta name="twitter:description" content="The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, i"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/" />
+    <meta name="twitter:title" content="A simple, real-world VueJS directive"/>
+    <meta name="twitter:description" content="VueJS is &amp;ldquo;The Progressive JavaScript Framework&amp;rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/a-simple-real-world-vuejs-directive/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Using ES6 classes for Sequelize 4 models &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/" />
+    <meta property="og:title" content="A simple, real-world VueJS directive &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/a-simple-real-world-vuejs-directive/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, i" />
+    <meta property="og:description" content="VueJS is &amp;ldquo;The Progressive JavaScript Framework&amp;rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including" />
 
-    <meta property="article:published_time" content="2018-05-09T00:00:00Z" />
-    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Node" /><meta property="article:tag" content="productivity" /><meta property="article:tag" content="web development" />
+    <meta property="article:published_time" content="2018-05-15T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="VueJS" /><meta property="article:tag" content="web development" />
 
-    <meta property="og:image" content="https://codewithhugo.com/img/eugene-lim-unsplash.jpg"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/frank-mckenna-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.36" />
@@ -116,193 +116,257 @@
       <article class="post-full post"> 
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-05-09">9 May 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.comtags/node/">#Node</a>&nbsp;
+            <time class="post-full-meta-date" datetime="2018-05-15">15 May 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.comtags/vuejs/">#VueJS</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Using ES6 classes for Sequelize 4 models</h1>
+        <h1 class="post-full-title">A simple, real-world VueJS directive</h1>
     </header>
     
-    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/frank-mckenna-unsplash.jpg)">
     </figure>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
         
 
-<p>The ES2015 or ES6 specification introduced <code>class</code> to JavaScript.
-Libraries like React went from <code>React.createClass</code> to <code>class MyComponent extends React.Component</code>,
-ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.</p>
+<p><a href="https://vuejs.org/">VueJS</a> is &ldquo;The Progressive JavaScript Framework&rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer.
+In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&rsquo;s documentation is a <code>focus</code> directive.</p>
 
-<p>For a Node.js web application’s persistence layer,
-a few databases come to mind like <a href="https://www.mongodb.com/">MongoDB</a>
-(possibly paired with <a href="http://mongoosejs.com/">mongoose</a>),
-or a key-value store like <a href="https://redis.io/">Redis</a>.</p>
+<p>When running VueJS inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve
+normal anchors&rsquo; <code>href</code> on click.
+The <code>href</code>s weren&rsquo;t AngularJS URLs so it would fall back to the default page.
+One solution could have leveraged components to update <code>window.location</code> directly, but here&rsquo;s a nifty directive to do the same:</p>
 
-<p>To run a relational database with a Node application, <a href="http://docs.sequelizejs.com/">Sequelize</a>,
-“An easy-to-use multi SQL dialect ORM for Node.js” is a good option.
-It allows the application to run backed by a MySQL or PostgreSQL instance and
-provides an easy way to map from entities&rsquo; representation in the database to JavaScript and vice versa.</p>
+<pre><code class="language-html">&lt;a v-href=&quot;'/my-url'&quot;&gt;Go&lt;/a&gt;
+</code></pre>
 
-<p>Sequelize’s API for model definitions looks like the following (from the docs <a href="http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):">http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):</a></p>
+<p>That&rsquo;s a pretty cool API, and it&rsquo;s probably more idiomatic Vue than:</p>
 
-<pre><code class="language-js">const MyModel = sequelize.define(&quot;MyModel&quot;, {
-  // fields and methods
+<pre><code class="language-html">&lt;MyAnchor href=&quot;/my-url&quot;&gt;
+  Go
+&lt;/MyAnchor&gt;
+</code></pre>
+
+<p>There were a couple of gotchas:</p>
+
+<ul>
+<li><a href="#local-global">Local vs global directive registration 🌐</a></li>
+<li><a href="#minimal-directive">A minimal directive API 👌</a></li>
+<li><a href="#hooks-and-remove">Vue directive hooks and <code>removeEventListener</code> 🆓</a></li>
+<li><a href="#handling-clicks">Handling clicks properly 🖱</a></li>
+<li><a href="#parting-thoughts">Parting thoughts 📚</a></li>
+</ul>
+
+<h1 id="local-global">Local vs global directive registration 🌐</h1>
+
+<p>A global Vue directive can be defined like so:</p>
+
+<pre><code class="language-js">Vue.directive(&quot;non-angular-link&quot;, {
+  // directive definition
 });
 </code></pre>
 
-<p>To add class and instance methods you would write the following:</p>
+<p>It can also be defined locally as follows:</p>
 
-<pre><code class="language-js">// Class Method
-MyModel.associate = function (models) {};
-// Instance Method
-MyModel.prototype.someMethod = function () {..}
-</code></pre>
-
-<p>This is necessary pre-ES6 since there was no concept of classical inheritance. Since we have class now, why not leverage them? For developers who are used to having classes, the following would likely look familiar:</p>
-
-<pre><code class="language-js">class MyModel extends Sequelize.Model {
-  static associate(models) {}
-  someMethod() {}
-}
-</code></pre>
-
-<p>Sequelize actually supports this, but the documentation is a bit lacking. One of the only place to find a reference to how to do this is in a GitHub issue: <a href="https://github.com/sequelize/sequelize/issues/6524">https://github.com/sequelize/sequelize/issues/6524</a>.</p>
-
-<p>Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from <code>Sequelize.Model</code>:</p>
-
-<ul>
-<li><a href="#typed-fields">Defining fields on a model</a></li>
-<li><a href="#assocations">Creating associations</a></li>
-<li><a href="#custom-table-name">Custom table name</a></li>
-<li><a href="#custom-model-name">Custom model name</a></li>
-<li><a href="#queries">Wrap queries</a></li>
-<li><a href="#instance-methods">Instance methods</a></li>
-<li><a href="#initialise-all">Initialising all models</a></li>
-</ul>
-
-<h1 id="typed-fields">Initialise the model with typed field(s)</h1>
-
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-    return super.init(
-      {
-        myField: DataTypes.STRING
-      },
-      { sequelize }
-    );
+<pre><code class="language-js">Vue.component(&quot;my-component&quot;, {
+  directives: {
+    &quot;non-angular-link&quot;: nonAngularLinkDirective
   }
-}
+});
 </code></pre>
 
-<h1 id="associations">Associate your model to other models</h1>
+<p>Where <code>nonAngularLinkDirective</code> would be a JavaScript object that defines the directive, eg.</p>
 
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static associate(models) {
-    this.myAssociation = this.belongsTo(models.OtherModel);
-    // or
-    this.myAssociation = models.MyModel.belongsTo(models.OtherModel);
+<pre><code class="language-js">const nonAngularLinkDirective = {
+  bind(el, binding) {},
+  unbind(el) {}
+};
+</code></pre>
+
+<p>This allows for flexibility if using a bundler like webpack and single file components:</p>
+
+<pre><code class="language-js">// non-angular-link-directive.js
+export const nonAngularLinkDirective = {
+  // directive definition
+};
+</code></pre>
+
+<pre><code class="language-html">// MyComponent.vue
+&lt;template&gt;
+  &lt;a
+    href=&quot;/my-url&quot;
+    v-non-angular-link
+  &gt;
+    Go
+  &lt;/a&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { nonAngularDirective } from './non-angular-link.directive';
+export default {
+  directives: {
+    'non-angular-link': nonAngularLinkDirective
   }
-}
+};
+&lt;/script&gt;
 </code></pre>
 
-<h1 id="customer-table-name">Setting a custom table name for your model</h1>
+<h1 id="minimal-directive">A minimal directive API 👌</h1>
 
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-    return super.init(
-      {
-        // field definitions
-      },
-      {
-        tableName: &quot;myModels&quot;,
-        sequelize
-      }
-    );
+<p>A full <code>MyAnchor</code> single file component would look like the following:</p>
+
+<pre><code class="language-html">// MyAnchor.vue
+&lt;template&gt;
+  &lt;a
+    @click=&quot;goToUrl($event)&quot;
+    :href=&quot;href&quot;
+  &gt;
+    &lt;slot /&gt;
+  &lt;/a&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  props: {
+    href: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+    goToUrl(e) {
+      e.preventDefault();
+      window.location.assign(this.href);
+    }
   }
-}
+});
+&lt;/script&gt;
 </code></pre>
 
-<h1 id="custom-model-name">Setting a custom model name for your model (for Sequelize)</h1>
+<p>This is quite verbose and leverages a global DOM object&hellip; not ideal.
+Here’s something similar using a directive:</p>
 
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-    return super.init(
-      {
-        // field definitions
-      },
-      {
-        modelName: &quot;myModel&quot;,
-        sequelize
-      }
-    );
-  }
-}
-</code></pre>
-
-<h1 id="queries">Wrap queries</h1>
-
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static getId(where) {
-    return this.findOne({
-      where,
-      attributes: [&quot;id&quot;],
-      order: [[&quot;createdAt&quot;, &quot;DESC&quot;]]
+<pre><code class="language-js">// non-angular-link-directive.js
+export const nonAngularLinkDirective = {
+  bind(el) {
+    el.addEventListener(&quot;click&quot;, event =&gt; {
+      event.preventDefault();
+      window.location.assign(event.target.href);
     });
   }
-}
+};
 </code></pre>
 
-<h1 id="instance-methods">Instance methods</h1>
+<p>This directive has to be used like so <code>&lt;a href=&quot;/my-url&quot; v-non-angular-link&gt;Go&lt;/a&gt;</code>, which isn’t the nicest API.
+By leveraging the second parameter passed to <code>bind</code> we can write it so that it can be used like <code>&lt;a v-href=&quot;'/my-url'&quot;&gt;Go&lt;/a&gt;</code>
+(for more information about <code>el</code> and <code>binding</code>, see <a href="https://vuejs.org/v2/guide/custom-directive.html#Directive-Hook-Arguments):">https://vuejs.org/v2/guide/custom-directive.html#Directive-Hook-Arguments):</a></p>
 
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`;
+<pre><code class="language-js">// non-angular-link-directive.js
+export const nonAngularLinkDirective = {
+  bind(el, binding) {
+    el.href = binding.value;
+    el.addEventListener(&quot;click&quot;, event =&gt; {
+      event.preventDefault();
+      window.location.assign(event.target.href);
+    });
   }
+};
+</code></pre>
+
+<p>We can now use it like using a local directive definition:</p>
+
+<pre><code class="language-html">// MyComponent.vue
+&lt;template&gt;
+  &lt;a v-href=&quot;'/my-url'&quot;&gt;Go&lt;/a&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { nonAngularLinkDirective } from './non-angular-link.directive';
+export default {
+  directives: {
+    href: nonAngularLinkDirective
+  }
+};
+&lt;/script&gt;
+</code></pre>
+
+<h1 id="hooks-and-remove">Vue directive hooks and <code>removeEventListener</code> 🆓</h1>
+
+<p>For the full list of directive hooks, see <a href="https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions">https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions</a>.</p>
+
+<p>As a good practice, the event listener should be removed when it’s not required any more.
+This can be done in <code>unbind</code> much in the same way as it was added, there’s a catch though,
+the arguments passed to <code>removeEventListener</code> have to be the same as the ones passed to <code>addEventListener</code>:</p>
+
+<pre><code class="language-js">// non-angular-link-directive.js
+const handleClick = event =&gt; {
+  event.preventDefault();
+  window.location.assign(event.target.href);
+};
+export const nonAngularLinkDirective = {
+  bind(el, binding) {
+    el.href = binding.value;
+    el.addEventListener(&quot;click&quot;, handleClick);
+  },
+  unbind(el) {
+    el.removeEventListener(&quot;click&quot;, handleClick);
+  }
+};
+</code></pre>
+
+<p>This will now remove the listener when the component where the directive is used is destroyed/un-mounts
+and leaves us with no hanging listeners.</p>
+
+<h1 id="handling-clicks">Handling clicks properly 🖱</h1>
+
+<p>An edge case happens when an anchor contains an image: the <code>target</code> of the event is not the <code>anchor</code>,
+but the <code>img</code>… which doesn’t have a <code>href</code> attribute.</p>
+
+<p>To deal with this, with a little knowledge of how <code>addEventListener</code> calls the passed handler,
+we can refactor the <code>handleClick</code> function.</p>
+
+<pre><code class="language-js">// non-angular-link-directive.js
+function handleClick(event) {
+  // The `this` context is the element
+  // on which the event listener is defined.
+  event.preventDefault();
+  window.location.assign(this.href);
 }
+
+// rest stays the same
 </code></pre>
 
-<h1 id="initialise-all">Initialise all your models</h1>
+<p>By using a named functions and the <code>this</code> allows the event listener to bind
+<code>this</code> to the element on which it’s attached as opposed to the lexical <code>this</code> of an arrow function.</p>
 
-<p><code>require()</code> followed by <code>model.init()</code> is an alternative to <code>sequelize.import(path)</code>, it’s a bit clearer what is and isn’t imported and under what name.</p>
+<h2 id="parting-thoughts">Parting thoughts 📚</h2>
 
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-const sequelize = new Sequelize();
-// pass your sequelize config here
+<p>We use <code>window.location.assign</code> so as to allow to test easily. With Jest and <code>@vue/test-utils</code> a test at the component level should look like this:</p>
 
-const FirstModel = require(&quot;./first-model&quot;);
-const SecondModel = require(&quot;./second-model&quot;);
-const ThirdModel = require(&quot;./third-model&quot;);
+<pre><code class="language-js">import { shallowMount } from '@vue/test-utils';
+import MyComponent from './MyComponent.vue';
 
-const models = {
-  First: FirstModel.init(sequelize, Sequelize),
-  Second: SecondModel.init(sequelize, Sequelize),
-  Third: ThirdModel.init(sequelize, Sequelize)
-};
+test('It should call window.location.assign with the right urls', () =&gt; {
+  // Stub window.location.assign
+  window.location.assign = jest.fn();
 
-// Run `.associate` if it exists,
-// ie create relationships in the ORM
-Object.values(models)
-  .filter(model =&gt; typeof model.associate === &quot;function&quot;)
-  .forEach(model =&gt; model.associate(models));
+  const myComponent = shallowMount(MyComponent);
 
-const db = {
-  ...models,
-  sequelize
-};
-
-module.exports = db;
+  myComponent.findAll('a').wrappers.forEach((anchor) =&gt; {
+    const mockEvent = {
+      preventDefault: jest.fn()
+    };
+    anchor.trigger('click', mockEvent);
+    expect(mockEvent.preventDefault).toHaveBeenCalled();
+    expect(window.location.assign).toHaveBeenCalledWith(
+      anchor.attributes().href
+    );
+});
 </code></pre>
 
-<p>For any questions about using Sequelize in this manner or developing Node apps
-backed by relational databases, feel free to comment below or tweet to me <a href="https://twitter.com/hugo__df">@hugo__df</a>.</p>
+<p>Directives allow you to contain pieces of code that interact with the DOM. This code needs to be generic enough to be used with the limited information available to a directive.</p>
 
-<p>Cover photo by <a href="https://unsplash.com/photos/sorCkbu4Nzw?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Eugene Lim</a> on <a href="https://unsplash.com/search/photos/square?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+<p>By coding against the DOM, we leverage the browser APIs instead of re-inventing them.</p>
+
+<p>Cover photo by <a href="https://unsplash.com/photos/tjX_sniNzgQ?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">frank mckenna</a> on <a href="https://unsplash.com/search/photos/contain?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
     
         </div>
     </section>
@@ -328,8 +392,8 @@ backed by relational databases, feel free to comment below or tweet to me <a hre
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/codewithhugo.com\/using-es6-classes-for-sequelize-4-models\/";  
-this.page.identifier = "https:\/\/codewithhugo.com\/using-es6-classes-for-sequelize-4-models\/"; 
+this.page.url = "https:\/\/codewithhugo.com\/a-simple-real-world-vuejs-directive\/";  
+this.page.identifier = "https:\/\/codewithhugo.com\/a-simple-real-world-vuejs-directive\/"; 
 };
 
 (function() { 
@@ -363,13 +427,13 @@ s.setAttribute('data-timestamp', +new Date());
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
+          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
+          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
+          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -382,25 +446,26 @@ s.setAttribute('data-timestamp', +new Date());
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-real-world-vuejs-directive/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/frank-mckenna-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-real-world-vuejs-directive/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #VueJS 
+              #CSS 
               #web development  </span>
               
-              <h2 class="post-card-title">A simple, real-world VueJS directive</h2>
+              <h2 class="post-card-title">Why CSS is hard</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>VueJS is &ldquo;The Progressive JavaScript Framework&rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer. In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&rsquo;s documentation is a focus directive.
-When running VueJS inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve normal anchors&rsquo; href on click. ...  </p>
+                <p>Things we’re not used to tend to be harder
+I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
+Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
+CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
               
           </section>
       </a>
@@ -415,26 +480,27 @@ When running VueJS inside of AngularJS, an issue occured whereby the AngularJS r
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #TypeScript 
-              #web development 
-              #developer tools  </span>
+              #Node 
+              #productivity 
+              #web development  </span>
               
-              <h2 class="post-card-title">Writing an npm module with TypeScript and microbundle</h2>
+              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? TypeScript is a JavaScript superset that adds static types to it. Its other features also follow the ECMAScript specification (current and future) quite closely. For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code) nicer auto-complete. ...  </p>
+                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
+For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
+To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node. ...  </p>
               
           </section>
       </a>
@@ -458,17 +524,17 @@ Why TypeScript? TypeScript is a JavaScript superset that adds static types to it
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Using ES6 classes for Sequelize 4 models</div>
+  <div class="floating-header-title">A simple, real-world VueJS directive</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Using%20ES6%20classes%20for%20Sequelize%204%20models&amp;url=https%3a%2f%2fcodewithhugo.com%2fusing-es6-classes-for-sequelize-4-models%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=A%20simple%2c%20real-world%20VueJS%20directive&amp;url=https%3a%2f%2fcodewithhugo.com%2fa-simple-real-world-vuejs-directive%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fusing-es6-classes-for-sequelize-4-models%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fa-simple-real-world-vuejs-directive%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>
