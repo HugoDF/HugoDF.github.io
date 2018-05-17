@@ -33,6 +33,17 @@ We’ll be setting up a project that allows us to write ES6, and distribute it i
     </item>
     
     <item>
+      <title>Recursion in JavaScript with ES6, destructuring and rest/spread</title>
+      <link>https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/</link>
+      <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/</guid>
+      <description>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
+Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
+var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation.</description>
+    </item>
+    
+    <item>
       <title>Avoiding falsy values in JavaScript arrays</title>
       <link>https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/</link>
       <pubDate>Wed, 11 Apr 2018 00:00:00 +0000</pubDate>
