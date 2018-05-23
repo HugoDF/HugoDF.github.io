@@ -6,10 +6,21 @@
     <description>Recent content in Git on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 04 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://codewithhugo.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Split an existing git commit</title>
+      <link>https://codewithhugo.com/split-an-existing-git-commit/</link>
+      <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/split-an-existing-git-commit/</guid>
+      <description>One of git&amp;rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to use git rebase, usually followed by a git push --force to overwrite history the remote with the local history.
+Here’s a look at how to split existing commits using rebase, reset and commit.
+Say you have two files edited in a commit (A and B) and you would like to get the changes from one of those files (A) into your current branch but not those from the other (B).</description>
+    </item>
     
     <item>
       <title>Learn git even if you don’t code</title>

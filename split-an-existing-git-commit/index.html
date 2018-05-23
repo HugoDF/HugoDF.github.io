@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Ditch syntax highlighting for better technical writing &middot; Code with Hugo</title>
+    <title>Split an existing git commit &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,45 +12,33 @@
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
     
-    <link rel="canonical" href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/" /> 
+    <link rel="canonical" href="https://codewithhugo.com/split-an-existing-git-commit/" /> 
 
-     <meta name="description" content="&lt;p&gt;Ditching syntax highlighting leads to more concise snippets,
-more thought to be put to find a minimal example
-and better overall flow in your writing.&lt;/p&gt;
-
-&lt;" /> 
+     <meta name="description" content="One of git&amp;rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to u" /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/jay-clark-unsplash.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/markus-spiske-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="Ditch syntax highlighting for better technical writing"/>
-    <meta name="twitter:description" content="&lt;p&gt;Ditching syntax highlighting leads to more concise snippets,
-more thought to be put to find a minimal example
-and better overall flow in your writing.&lt;/p&gt;
-
-&lt;"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/" />
+    <meta name="twitter:title" content="Split an existing git commit"/>
+    <meta name="twitter:description" content="One of git&amp;rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to u"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/split-an-existing-git-commit/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Ditch syntax highlighting for better technical writing &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/" />
+    <meta property="og:title" content="Split an existing git commit &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/split-an-existing-git-commit/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="&lt;p&gt;Ditching syntax highlighting leads to more concise snippets,
-more thought to be put to find a minimal example
-and better overall flow in your writing.&lt;/p&gt;
+    <meta property="og:description" content="One of git&amp;rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to u" />
 
-&lt;" />
+    <meta property="article:published_time" content="2018-05-23T00:00:00Z" />
+    <meta property="article:tag" content="git" /><meta property="article:tag" content="web development" /><meta property="article:tag" content="productivity" />
 
-    <meta property="article:published_time" content="2018-04-25T00:00:00Z" />
-    <meta property="article:tag" content="technical writing" /><meta property="article:tag" content="productivity" /><meta property="article:tag" content="web development" />
-
-    <meta property="og:image" content="https://codewithhugo.com/img/jay-clark-unsplash.jpg"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/markus-spiske-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.36" />
@@ -128,109 +116,51 @@ and better overall flow in your writing.&lt;/p&gt;
       <article class="post-full post"> 
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-04-25">25 April 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/technical-writing/">#technical writing</a>&nbsp;<a href="https://codewithhugo.comtags/productivity/">#productivity</a>&nbsp;
+            <time class="post-full-meta-date" datetime="2018-05-23">23 May 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/git/">#git</a>&nbsp;<a href="https://codewithhugo.comtags/web-development/">#web development</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Ditch syntax highlighting for better technical writing</h1>
+        <h1 class="post-full-title">Split an existing git commit</h1>
     </header>
     
-    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/jay-clark-unsplash.jpg)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/markus-spiske-unsplash.jpg)">
     </figure>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
-        <p>Ditching syntax highlighting leads to more concise snippets,
-more thought to be put to find a minimal example
-and better overall flow in your writing.</p>
+        <p>One of <code>git</code>&rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to use <code>git rebase</code>, usually followed by a <code>git push</code> <code>--</code><code>force</code> to overwrite history the remote with the local history.</p>
 
-<p></p>
+<p>Here’s a look at how to split existing commits using <code>rebase</code>, <code>reset</code> and <code>commit</code>.</p>
 
-<p>Writing technical content is hard, picking a nice syntax highlighting theme is harder.</p>
+<p>Say you have two files edited in a commit (A and B) and you would like to get the changes from one of those files (A) into your current branch but not those from the other (B).</p>
 
-<p>There are so many options and each platform has a ton more you can for example:</p>
+<p>Using <code>git cherry-pick &lt;commit-hash&gt;</code> is not an option since it would pull in the changes for both A and B.</p>
+
+<p>The solution is to split the commit into 2 and only cherry-pick the new commit that contains changes for A.</p>
+
+<p>To do this:</p>
 
 <ul>
-<li>export your code as images with services like <a href="https://carbon.now.sh">carbon.now.sh</a>,</li>
-<li>take screenshots of your code in your editor</li>
-<li>use GitHub gists <a href="https://gist.github.com">gist.github.com</a> or other hosted solution</li>
-<li>compile your examples to code blocks (eg. as part of your markdown compilation) and
-leverage CSS or JavaScript libraries to highlight them on the web</li>
+<li>run <code>git rebase -i &lt;commit-hash&gt;~</code> (note the <code>~</code>) or <code>git rebase -i &lt;hash-of-previous-commit&gt;</code></li>
+<li>find the commit you want to split in the rebase edit screen, change the <code>pick</code> to <code>e</code> (<code>edit</code>)</li>
+<li>save and exit (<code>ESC</code> followed by <code>:wq</code> to close VIM)</li>
+<li><code>git reset HEAD~</code> to reset the staged changes</li>
+<li><code>git add [files-to-add]</code> all the files we want to add to the first commit (here would be <code>git add A</code>)</li>
+<li><code>git commit</code> normally, with a message etc</li>
+<li>Run as many other rounds of as you want commits:
+
+<ul>
+<li><code>git add [other-files-to-add]</code></li>
+<li><code>git commit</code></li>
+</ul></li>
+<li><code>git rebase</code> <code>--</code><code>continue</code> to indicate that the splitting has been finished and to continue the rebase</li>
 </ul>
 
-<p>The other option is to just <em>not</em> have highlighted code blocks.</p>
+<p>Finally we can <code>git cherry-pick &lt;new-commit-hash&gt;</code> to get the changes into our branch</p>
 
-<p>Here are a couple of reasons to ditch syntax highlighting.</p>
+<p>For any questions about using git, feel free to comment below or tweet to me <a href="https://twitter.com/hugo__df">@hugo__df</a>.</p>
 
-<h1 id="1-focus">1. Focus</h1>
-
-<p>Focus on the content not presentation.</p>
-
-<p>Spend time polishing and rethinking your examples, not going back and exporting
-that code snippet on <a href="https://carbon.now.sh">carbon.now.sh</a> for the 10th time.</p>
-
-<p>The code snippets are an intrisic part of your content, not just a nice flourish.
-Your examples illustrate your points.
-You don&rsquo;t edit your content in 5 different formats, your code should be no different.</p>
-
-<p>Make your content pretty but not at the expense of your ability to publish it fast.</p>
-
-<h1 id="2-difficult-to-further-highlight-inside-something-that-s-highlighted">2. Difficult to further highlight inside something that&rsquo;s highlighted</h1>
-
-<p>Just like you can use <strong>bold</strong> and <em>italic</em> text in moderation,
-<strong>if a whole sentence or paragraph is bold, it&rsquo;s hard to <em>highlight</em> anything inside it.</strong>
-From there on it&rsquo;s just a race to the biggest, flashiest text.
-That&rsquo;s not something you want to turn your post into.</p>
-
-<p>What that means is that having large chunks of highlighted code might make it hard for you
-to show your readers what you&rsquo;re trying to show them.</p>
-
-<h1 id="3-content-that-lasts">3. Content that lasts</h1>
-
-<p>Using images or 3rd party services to host your code means your post now needs multiple
-services to be up for it to keep existing in full.</p>
-
-<p>Services shut down (sometimes quite quickly), images get lost.
-Don&rsquo;t let your post live on borrowed time, let it host all its own content.</p>
-
-<h1 id="4-accessible-and-fast">4. Accessible and fast</h1>
-
-<p>Put yourself in the reader&rsquo;s shoes.</p>
-
-<p>How many times did you load a post on a flaky network,
-just before the connection dropped, the post flashes, it looks like it loaded,
-maybe you beat the flaky network this time?</p>
-
-<p>Wrong! The post loaded alright, but to have any of the code, you need the images and the embeds&hellip; great.</p>
-
-<p>A code block is just text, it can be interpreted better than an image.
-Even if that image has a nice alt text and good metadata.</p>
-
-<h1 id="5-find-a-minimal-case">5. Find a minimal case</h1>
-
-<p>Not having nice-looking code means you&rsquo;ll shorten your examples and that&rsquo;s a good thing.</p>
-
-<p>More explanation, less shoving code in people&rsquo;s faces.
-After all that&rsquo;s why they&rsquo;re here.
-If they wanted to read code, they would have gone some open source project&rsquo;s GitHub page.</p>
-
-<h1 id="6-write-as-you-speak">6. Write as you speak</h1>
-
-<p>Large code snippets, just like massive paragraphs, can start to look like a wall of text.</p>
-
-<p>When you start to mix between small snippets and code inset in your text, the content will flow better.
-It will be more like a conversation, you explaining to a co-worker or a little sister,
-what exactly it is that <code>var</code> is compared to <code>let</code>.</p>
-
-<p>A well-written post with inset code is just like a well-punctuated and structured post.
-It feels a lot nicer to read, happy readers, happy writers.</p>
-
-<h1 id="conclusion">Conclusion</h1>
-
-<p>Reduce the amount of time you spend messing around with your code blocks and spend more time thinking about it.</p>
-
-<p>What other hurdles do you have in your technical writing?</p>
-
-<p>Let me know here or on Twitter: <a href="https://twitter.com/hugo__df">@hugo__df</a>.</p>    
+<p>Cover photo by <a href="https://unsplash.com/photos/qcCHZLdsS80?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Markus Spiske</a> on <a href="https://unsplash.com/search/photos/axe-split-wood?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+    
         </div>
     </section>
 
@@ -255,8 +185,8 @@ It feels a lot nicer to read, happy readers, happy writers.</p>
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/codewithhugo.com\/ditch-syntax-highlighting-for-better-technical-writing\/";  
-this.page.identifier = "https:\/\/codewithhugo.com\/ditch-syntax-highlighting-for-better-technical-writing\/"; 
+this.page.url = "https:\/\/codewithhugo.com\/split-an-existing-git-commit\/";  
+this.page.identifier = "https:\/\/codewithhugo.com\/split-an-existing-git-commit\/"; 
 };
 
 (function() { 
@@ -282,7 +212,7 @@ s.setAttribute('data-timestamp', +new Date());
     <header class="read-next-card-header">
         <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
         
-        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.comtags/technical-writing/">#technical writing</a></h3>
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.comtags/git/">#git</a></h3>
     </header>
     <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
     </div>
@@ -290,20 +220,18 @@ s.setAttribute('data-timestamp', +new Date());
     <div class="read-next-card-content">
       
         <ul>
-                      
-        
-          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
-        
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
-        
-          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
-        
           <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+        
+          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
+        
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
+        
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
       
-        <a href="https://codewithhugo.comtags/technical-writing/">See all related posts →</a>
+        <a href="https://codewithhugo.comtags/git/">See all related posts →</a>
     </footer>
 </article>
 
@@ -311,26 +239,26 @@ s.setAttribute('data-timestamp', +new Date());
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #TypeScript 
-              #web development 
-              #developer tools  </span>
+              #CSS 
+              #web development  </span>
               
-              <h2 class="post-card-title">Writing an npm module with TypeScript and microbundle</h2>
+              <h2 class="post-card-title">Why CSS is hard</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? TypeScript is a JavaScript superset that adds static types to it. Its other features also follow the ECMAScript specification (current and future) quite closely. For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code) nicer auto-complete. ...  </p>
+                <p>Things we’re not used to tend to be harder
+I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
+Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
+CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
               
           </section>
       </a>
@@ -345,26 +273,25 @@ Why TypeScript? TypeScript is a JavaScript superset that adds static types to it
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/how-components-won.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/frank-mckenna-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #design 
+              #VueJS 
               #web development  </span>
               
-              <h2 class="post-card-title">How components won the “framework wars”</h2>
+              <h2 class="post-card-title">A simple, real-world Vue.js directive</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>React vs Angular vs Vue: Why it doesn’t matter.
-2018 marks the end of JavaScript fatigue and the “framework wars” A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.
-Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. In more ways than one, the mental model of these frameworks/libraries have converged to the component model. ...  </p>
+                <p>Vue.js is &ldquo;The Progressive JavaScript Framework&rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer. In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&rsquo;s documentation is a focus directive.
+When running Vue.js inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve normal anchors&rsquo; href on click. ...  </p>
               
           </section>
       </a>
@@ -388,17 +315,17 @@ Having experienced React, Vue and Angular, it seems they solve similar problems 
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Ditch syntax highlighting for better technical writing</div>
+  <div class="floating-header-title">Split an existing git commit</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Ditch%20syntax%20highlighting%20for%20better%20technical%20writing&amp;url=https%3a%2f%2fcodewithhugo.com%2fditch-syntax-highlighting-for-better-technical-writing%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Split%20an%20existing%20git%20commit&amp;url=https%3a%2f%2fcodewithhugo.com%2fsplit-an-existing-git-commit%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fditch-syntax-highlighting-for-better-technical-writing%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fsplit-an-existing-git-commit%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>
