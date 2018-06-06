@@ -91,6 +91,17 @@ The basics Functional programming is a programming paradigm that follows a more 
     </item>
     
     <item>
+      <title>Setting up Express and Redis with Docker compose</title>
+      <link>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</link>
+      <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</guid>
+      <description>Redis and Express are tools that provide a simple and clean approach to their problem domains.
+The repo is available at: https://github.com/HugoDF/express-redis-docker.
+Redis is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. It has great flexibility and can also be used as a message queue, circular buffer (and pretty much anything else a developer can come up with short of a relational database).</description>
+    </item>
+    
+    <item>
       <title>From AngularJS to Vue.js, CommonJS and Jest</title>
       <link>https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/</link>
       <pubDate>Wed, 30 May 2018 00:00:00 +0000</pubDate>
