@@ -91,6 +91,17 @@ The basics Functional programming is a programming paradigm that follows a more 
     </item>
     
     <item>
+      <title>How to make beautiful, simple CLI apps with Node</title>
+      <link>https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/</link>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/</guid>
+      <description>Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
+Command line apps are a neat way to package repetitive tasks. This will walk you through some tools that are useful to build CLI apps.
+ The idea 💡 Piping to the command line 🚇 Dealing with sequential actions ✨ Executable JavaScript files 🦅 Adding package binaries 📦 Publishing to npm 🚀  The idea 💡 When merging/rebasing, the file that always seems to cause trouble is the package-lock.</description>
+    </item>
+    
+    <item>
       <title>Setting up Express and Redis with Docker compose</title>
       <link>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</link>
       <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>

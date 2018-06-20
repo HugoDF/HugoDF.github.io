@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
 
-    <title>Writing an npm module with TypeScript and microbundle &middot; Code with Hugo</title>
+    <title>How to make beautiful, simple CLI apps with Node &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,36 +13,36 @@
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
     
-    <link rel="canonical" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/" /> 
+    <link rel="canonical" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/" /> 
 
-     <meta name="description" content="For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? Type" /> 
+     <meta name="description" content="Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
+Command line apps are a neat way to package repetitive tasks. This will walk " /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/aaron-burden-unsplash.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/cli-screenshot.jpeg"/>
     
  
-    <meta name="twitter:title" content="Writing an npm module with TypeScript and microbundle"/>
-    <meta name="twitter:description" content="For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? Type"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/" />
+    <meta name="twitter:title" content="How to make beautiful, simple CLI apps with Node"/>
+    <meta name="twitter:description" content="Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
+Command line apps are a neat way to package repetitive tasks. This will walk "/>
+    <meta name="twitter:url" content="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Writing an npm module with TypeScript and microbundle &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/" />
+    <meta property="og:title" content="How to make beautiful, simple CLI apps with Node &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? Type" />
+    <meta property="og:description" content="Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
+Command line apps are a neat way to package repetitive tasks. This will walk " />
 
-    <meta property="article:published_time" content="2018-05-02T00:00:00Z" />
-    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="TypeScript" /><meta property="article:tag" content="web development" /><meta property="article:tag" content="developer tools" />
+    <meta property="article:published_time" content="2018-06-20T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Node" /><meta property="article:tag" content="CLI" />
 
-    <meta property="og:image" content="https://codewithhugo.com/img/aaron-burden-unsplash.jpg"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/cli-screenshot.jpeg"/>
 
 
     <meta name="generator" content="Hugo 0.36" />
@@ -116,126 +116,169 @@ Why TypeScript? Type" />
       <article class="post-full post"> 
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-05-02">2 May 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.comtags/typescript/">#TypeScript</a>&nbsp;
+            <time class="post-full-meta-date" datetime="2018-06-20">20 June 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.comtags/node/">#Node</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Writing an npm module with TypeScript and microbundle</h1>
+        <h1 class="post-full-title">How to make beautiful, simple CLI apps with Node</h1>
     </header>
     
-    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/cli-screenshot.jpeg)">
     </figure>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
         
 
-<p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.</p>
+<p>Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.</p>
 
-<h2 id="why-typescript">Why TypeScript?</h2>
-
-<p><a href="https://www.typescriptlang.org/">TypeScript</a> is a JavaScript superset that adds static types to it.
-Its other features also follow the ECMAScript specification (current and future) quite closely.
-For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more
-details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code)
-nicer auto-complete. TypeScript also serves as inline documentation that shouts at you when you pass something you
-shouldn’t, which will come handy when you rediscover your code a couple of months down the line.</p>
-
-<h2 id="why-microbundle">Why microbundle?</h2>
-
-<p><a href="https://github.com/developit/microbundle">Microbundle</a> is a “zero-configuration bundler for tiny modules”. It’s a wrapper around <a href="https://rollupjs.org/guide/en">rollup</a> with sane defaults (including minification/compression), nice outputted size stats, multiple target formats (ES modules, CommonJS, UMD). Most of all in the scope of this post, it has TypeScript support out of the box (<em>actually</em> no configuration, not even a <code>tsconfig.json</code>).
-It’s ridiculously easy to set up and allows library authors to focus on building a great library rather than setting up the plumbing to be able to ship a JavaScript library from ES6/TypeScript or other compile-to-JS tool 🙂.</p>
-
-<h1 id="zero-config-bundling">Zero-config bundling</h1>
-
-<p>To start, we’ll have to create setup our package run <code>npm init</code> and complete all the prompts.</p>
-
-<p>Next run: <code>npm i --save-dev microbundle</code>.</p>
-
-<p>Let’s create a src and dist folder: <code>mkdir src &amp;&amp; mkdir dist</code></p>
-
-<p>And add the first TypeScript file: <code>touch src/index.ts</code>.</p>
-
-<p>Let’s add a class to the index.ts so we’re not just compiling empty files:
-<code>echo &quot;export class MyMainClass {}&quot; &gt;&gt; src/index.ts</code></p>
-
-<p>Microbundle looks at the <code>package.json</code> <code>&quot;main&quot;</code> and <code>&quot;source&quot;</code> fields (compiled entry point and source entry point),
-in our case that’s <code>dist/index.js</code> (which doesn’t exist yet) and <code>src/index.ts</code>.
-Let’s edit it to have the following in the <code>package.json</code>:</p>
-
-<pre><code>{
-  &quot;main&quot;: &quot;dist/index.js&quot;,
-  &quot;source&quot;: &quot;src/index.ts&quot;
-}
-</code></pre>
-
-<p>This means microbundle knows how to compile our library now, run: <code>npx microbundle</code> (on versions of npm &lt;5.x, you can also run <code>./node_modules/.bin/microbundle</code>).</p>
-
-<p>This will compile your <code>src/index.ts</code> to the <code>dist</code> folder.
-If you look at the contents of the <code>dist</code> folder, you’ll see how much work microbundle does for you:</p>
-
-<pre><code>$ ls dist
-index.d.ts       index.js.map     index.m.js.map   index.umd.js.map
-index.js         index.m.js       index.umd.js
-</code></pre>
-
-<p>Let’s explain what all these are:</p>
+<p>Command line apps are a neat way to package repetitive tasks. This will walk you through some tools
+that are useful to build CLI apps.</p>
 
 <ul>
-<li><code>index.js</code> is the CommonJS module. This is module type used by Node and it looks like <code>const myModule = require(</code><code>'</code><code>my-module</code><code>'</code><code>)</code></li>
-<li><code>index.m.js</code> is the ECMAScript Module, as defined in ES6, it looks like <code>import MyModule from</code> <code>'</code><code>my-module</code><code>'</code></li>
-<li><code>index.umd.js</code> is the UMD module</li>
-<li><code>index.d.ts</code> is TypeScript type declaration file</li>
+<li><a href="#the-idea">The idea 💡</a></li>
+<li><a href="#piping-to-the-command-line">Piping to the command line 🚇</a></li>
+<li><a href="#dealing-with-sequential-actions">Dealing with sequential actions ✨</a></li>
+<li><a href="#executable-java-script-files">Executable JavaScript files 🦅</a></li>
+<li><a href="#adding-package-binaries">Adding package binaries 📦</a></li>
+<li><a href="#publishing-to-npm">Publishing to npm 🚀</a></li>
 </ul>
 
-<p>Then there’s a matching <code>.map</code> file that maps back to the TypeScript source for each of the files.</p>
+<h2 id="the-idea">The idea 💡</h2>
 
-<p>Take a look inside <code>index.js</code>:</p>
+<p>When merging/rebasing, the file that always seems to cause trouble is the package-lock.
+We&rsquo;ll go through how to make a simple utility that deletes the package-lock.json file, regenerates it (npm install) and adds it to the git index.</p>
 
-<pre><code>$ cat dist/index.js
-var n=function(){return function(){}}();exports.MyMainClass=n;
-//# sourceMappingURL=index.js.map
+<p>You can find it here: (<a href="https://github.com/HugoDF/fix-package-lock)[https://github.com/HugoDF/fix-package-lock">https://github.com/HugoDF/fix-package-lock)[https://github.com/HugoDF/fix-package-lock</a>] and run it using <code>npx fix-package-lock</code>.</p>
+
+<h2 id="piping-to-the-command-line">Piping to the command line 🚇</h2>
+
+<p>To start off, we&rsquo;ll leverage a package from Sindre Sohrus, <code>execa</code>, which is described as “a better <code>child_process</code>&rdquo;. For the following snippet to work, run <code>npm install --save execa</code>:</p>
+
+<p><code>index.js</code></p>
+
+<pre><code class="language-js">const execa = require('execa');
+
+execa('ls').then(result =&gt; console.log(result.stdout));
 </code></pre>
 
-<p>Our <code>class MyMainClass {}</code> statement was compiled to its ES5 equivalent and the export to a CommonJS export.</p>
-
-<p><code>index.d.ts</code> is also interesting:</p>
-
-<pre><code>$ cat dist/index.d.ts
-export declare class MyMainClass {
-}
+<pre><code class="language-sh">node index.js
+index.js
+node_modules
+package-lock.json
+package.json 
 </code></pre>
 
-<p>This allows a TypeScript project to assign the correct type information back to the package… which <em>is</em> a roundabout way of doing since a TypeScript project should be able to just import the <code>.ts</code> file. The separate type declaration means that non-TypeScript projects can also understand the public API of the module (eg. code editors can do smart autocomplete on unseen npm packages).</p>
+<h2 id="dealing-with-sequential-actions">Dealing with sequential actions ✨</h2>
 
-<p>microbundle can also watch for changes: <code>npx microbundle watch</code>.</p>
+<p>To re-generate the <code>package-lock</code> we&rsquo;ll need to first delete it, then run an <code>npm install</code>.</p>
 
-<p>For ease of use we can put the watch and build tasks in the <code>package.json</code> as npm scripts:</p>
+<p>To this end, we can use <a href="https://github.com/SamVerschueren/listr">Listr</a>, it allows us to do things that look like:</p>
+
+<p><img src="https://raw.githubusercontent.com/HugoDF/fix-package-lock/master/fix-package-lock.gif"></p>
+
+<p>Run <code>npm install --save listr</code> and add leverage Listr as follows:</p>
+
+<p><code>index.js</code>:</p>
+
+<pre><code class="language-js">const execa = require('execa');
+const Listr = require('listr');
+
+new Listr([
+  {
+    title: 'Removing package-lock',
+    task: () =&gt; execa('rm', ['package-lock.json'])
+  },
+  {
+    title: 'Running npm install',
+    task: () =&gt; execa('npm', ['install'])
+  },
+  {
+    title: 'Adding package-lock to git',
+    task: (ctx, task) =&gt;
+        execa('git', ['add', 'package-lock.json'])
+        .catch(() =&gt; task.skip())
+  }
+]).run();
+</code></pre>
+
+<p>Now the output of <code>node index.js</code> looks like the following:
+<img src="/img/20180619-running-screenshot.jpeg" alt="`node index.js` output" /></p>
+
+<p><a href="https://github.com/SamVerschueren/listr">Listr</a> gives you a loading state when you have a
+long-running task that returns a Promise (like the <code>execa</code> invocation of <code>npm install</code>).</p>
+
+<p>It&rsquo;s also possible to display a message that changes using Observables, for more information see <a href="https://github.com/SamVerschueren/listr">the Listr docs</a></p>
+
+<h2 id="executable-javascript-files">Executable JavaScript files 🦅</h2>
+
+<p>It&rsquo;s ideal to be able to execute our script using <code>./index.js</code> instead of <code>node index.js</code>.</p>
+
+<p>To do this, we need the file to be executable on UNIX systems that&rsquo;s: <code>chmod +x</code>. So</p>
+
+<pre><code>chmod +x index.js
+</code></pre>
+
+<p>We then need to inform the system how it should attempt to run the file, that&rsquo;s using the following hashbang:</p>
+
+<pre><code>#!/usr/bin/env node
+</code></pre>
+
+<p>If we add it to <code>index.js</code> we get:</p>
+
+<pre><code class="language-js">#!/usr/bin/env node
+const execa = require('execa');
+const Listr = require('listr');
+
+new Listr([
+  {
+    title: 'Removing package-lock',
+    task: () =&gt; execa('rm', ['package-lock.json'])
+  },
+  {
+    title: 'Running npm install',
+    task: () =&gt; execa('npm', ['install'])
+  },
+  {
+    title: 'Adding package-lock to git',
+    task: (ctx, task) =&gt;
+        execa('git', ['add', 'package-lock.json'])
+        .catch(() =&gt; task.skip())
+  }
+]).run();
+</code></pre>
+
+<p>Which we can now run using:</p>
+
+<pre><code>./index.js
+</code></pre>
+
+<h2 id="adding-package-binaries">Adding package binaries</h2>
+
+<p>npm has a <code>bin</code> field which we can use like the following (in <code>package.json</code>):</p>
 
 <pre><code>{
-  &quot;scripts&quot;: {
-    &quot;dev&quot;: &quot;microbundle watch&quot;,
-    &quot;build&quot;: &quot;microbundle&quot;
+  &quot;name&quot;: &quot;beautiful-cli&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;A simple CLI&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;bin&quot;: {
+    &quot;fix-package-json&quot;: &quot;./index.js&quot;
+  }
+  &quot;dependencies&quot;: {
+    &quot;execa&quot;: &quot;^0.10.0&quot;,
+    &quot;listr&quot;: &quot;^0.14.1&quot;
   }
 }
 </code></pre>
 
-<h1 id="publish-the-module">Publish the module</h1>
+<h2 id="publishing-to-npm">Publishing to npm 🚀</h2>
 
-<p>By leveraging microbundle we can publish the module as a CommonJS module (standard npm module), but also as an ES Module and a UMD module, to do this follow the guide at <a href="https://github.com/developit/microbundle#specifying-builds-in-packagejson">https://github.com/developit/microbundle#specifying-builds-in-packagejson</a>.</p>
+<p>This is left to the reader as an exercise, although using the <a href="https://github.com/sindresorhus/np">np</a>
+package, it&rsquo;s super straightforward.</p>
 
-<p><strong>tl;dr</strong></p>
+<p>Hint: run <code>npx np</code> in whatever package you&rsquo;re trying to publish</p>
 
-<ul>
-<li><code>&quot;main&quot;: &quot;dist/index.js&quot;</code></li>
-<li><code>&quot;umd:main&quot;: &quot;dist/index.umd.js&quot;</code></li>
-<li><code>&quot;module&quot;: &quot;dist/index.m.js&quot;</code></li>
-<li><code>&quot;source&quot;: &quot;src/index.ts&quot;</code></li>
-</ul>
-
-<p>With this <code>package.json</code> you can publish to npm with <code>npm publish</code>.
-And if you enjoyed using <a href="https://github.com/developit/microbundle">microbundle</a>, definitely keep using it but also give it a <a href="https://github.com/developit/microbundle">star on GitHub</a> and let Jason Miller aka <a href="https://twitter.com/_developit">@_developit</a> know you’re a fan on Twitter.</p>
-
-<p>Cover Photo by <a href="https://unsplash.com/photos/J8R34suxfRU?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Aaron Burden</a> on <a href="https://unsplash.com/search/photos/tiny?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+<p>You can find the full package at You can find it here: (<a href="https://github.com/HugoDF/fix-package-lock)[https://github.com/HugoDF/fix-package-lock">https://github.com/HugoDF/fix-package-lock)[https://github.com/HugoDF/fix-package-lock</a>] and run it using <code>npx fix-package-lock</code>.</p>
     
         </div>
     </section>
@@ -261,8 +304,8 @@ And if you enjoyed using <a href="https://github.com/developit/microbundle">micr
 
 
 var disqus_config = function () {
-this.page.url = "https:\/\/codewithhugo.com\/writing-an-npm-module-with-typescript-and-microbundle\/";  
-this.page.identifier = "https:\/\/codewithhugo.com\/writing-an-npm-module-with-typescript-and-microbundle\/"; 
+this.page.url = "https:\/\/codewithhugo.com\/how-to-make-beautiful-simple-cli-apps-with-node\/";  
+this.page.identifier = "https:\/\/codewithhugo.com\/how-to-make-beautiful-simple-cli-apps-with-node\/"; 
 };
 
 (function() { 
@@ -296,13 +339,13 @@ s.setAttribute('data-timestamp', +new Date());
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
+          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         
-          <li><a href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">From AngularJS to Vue.js, CommonJS and Jest</a></li>            
-        
-          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
+          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
         
           <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+        
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -315,27 +358,26 @@ s.setAttribute('data-timestamp', +new Date());
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Node 
-              #productivity 
+              #CSS 
               #web development  </span>
               
-              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
+              <h2 class="post-card-title">Why CSS is hard</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
-For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
-To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node. ...  </p>
+                <p>Things we’re not used to tend to be harder
+I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
+Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
+CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
               
           </section>
       </a>
@@ -350,26 +392,26 @@ To run a relational database with a Node application, Sequelize, “An easy-to-u
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/jay-clark-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ben-koorengevel-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #technical writing 
-              #productivity 
-              #web development  </span>
+              #JavaScript 
+              #Node 
+              #Docker  </span>
               
-              <h2 class="post-card-title">Ditch syntax highlighting for better technical writing</h2>
+              <h2 class="post-card-title">Setting up Express and Redis with Docker compose</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Ditching syntax highlighting leads to more concise snippets, more thought to be put to find a minimal example and better overall flow in your writing.
-
- ...  </p>
+                <p>Redis and Express are tools that provide a simple and clean approach to their problem domains.
+The repo is available at: https://github.com/HugoDF/express-redis-docker.
+Redis is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. It has great flexibility and can also be used as a message queue, circular buffer (and pretty much anything else a developer can come up with short of a relational database). ...  </p>
               
           </section>
       </a>
@@ -393,17 +435,17 @@ To run a relational database with a Node application, Sequelize, “An easy-to-u
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Writing an npm module with TypeScript and microbundle</div>
+  <div class="floating-header-title">How to make beautiful, simple CLI apps with Node</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Writing%20an%20npm%20module%20with%20TypeScript%20and%20microbundle&amp;url=https%3a%2f%2fcodewithhugo.com%2fwriting-an-npm-module-with-typescript-and-microbundle%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=How%20to%20make%20beautiful%2c%20simple%20CLI%20apps%20with%20Node&amp;url=https%3a%2f%2fcodewithhugo.com%2fhow-to-make-beautiful-simple-cli-apps-with-node%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fwriting-an-npm-module-with-typescript-and-microbundle%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fhow-to-make-beautiful-simple-cli-apps-with-node%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>
