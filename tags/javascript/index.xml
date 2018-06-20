@@ -102,6 +102,16 @@ Command line apps are a neat way to package repetitive tasks. This will walk you
     </item>
     
     <item>
+      <title>Testing an Express app with SuperTest, moxios and Jest</title>
+      <link>https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/</link>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/</guid>
+      <description>Testing is a crucial part of the software development process. It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.
+Express is one of the most widespread libraries for building backend applications in JavaScript. What follows is a summary of how to set up an efficient unit testing strategy for such an application as well as a couple of situations you may be faced with when attempting to test.</description>
+    </item>
+    
+    <item>
       <title>Setting up Express and Redis with Docker compose</title>
       <link>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</link>
       <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>

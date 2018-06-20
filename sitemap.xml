@@ -53,6 +53,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/</loc>
+    <lastmod>2018-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</loc>
     <lastmod>2018-06-06T00:00:00+00:00</lastmod>
   </url>
