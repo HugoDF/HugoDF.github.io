@@ -178,6 +178,23 @@
         </div>
     </section>
 
+    <section class="subscribe-form">
+        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+        <p>Get the latest posts delivered right to your inbox</p>
+        <form
+            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
+        >
+            <div class="form-group">
+                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+                <input type="hidden" value="1" name="embed"/>
+            </div>
+            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+        </form>
+    </section>
+
     <footer class="post-full-footer">
       <section class="author-card">
         <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
@@ -191,27 +208,6 @@
     
     
     
-
-<div id="disqus_thread"></div>
-<script>
-
-
-
-
-var disqus_config = function () {
-this.page.url = "https:\/\/codewithhugo.com\/learn-git-even-if-you-dont-code\/";  
-this.page.identifier = "https:\/\/codewithhugo.com\/learn-git-even-if-you-dont-code\/"; 
-};
-
-(function() { 
-var d = document, s = d.createElement('script');
-s.src = 'https://codewithhugo.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
 
   </div>
 </main>
@@ -234,13 +230,15 @@ s.setAttribute('data-timestamp', +new Date());
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
-        
-          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
-        
-          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
         
           <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
+        
+          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
+        
+                      
+        
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
