@@ -12,3 +12,7 @@
 .site-header:before {
   background: rgba(0, 0, 0, 0.5);
 }
+
+.site-wrapper {
+  min-height: auto;
+}
