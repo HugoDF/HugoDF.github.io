@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
      <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
 
-     
+    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
 
 </head>
 
@@ -84,40 +84,6 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/how-components-won.jpeg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #design 
-              #web development  </span>
-              
-              <h2 class="post-card-title">How components won the “framework wars”</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>React vs Angular vs Vue: Why it doesn’t matter.
-2018 marks the end of JavaScript fatigue and the “framework wars” A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.
-Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. In more ways than one, the mental model of these frameworks/libraries have converged to the component model. ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
     <a class="post-card-image-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
       <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cli-screenshot.jpeg)"></div>
     </a>
@@ -152,25 +118,60 @@ Command line apps are a neat way to package repetitive tasks. This will walk you
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #web development  </span>
+              #TypeScript 
+              #web development 
+              #developer tools  </span>
               
-              <h2 class="post-card-title">Avoiding falsy values in JavaScript arrays</h2>
+              <h2 class="post-card-title">Writing an npm module with TypeScript and microbundle</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>tl;dr: use Array.filter(Boolean) to filter out falsy values and avoid errors.
+                <p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.
+Why TypeScript? TypeScript is a JavaScript superset that adds static types to it. Its other features also follow the ECMAScript specification (current and future) quite closely. For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code) nicer auto-complete. ...  </p>
+              
+          </section>
+      </a>
 
- ...  </p>
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #ES6 
+              #web development  </span>
+              
+              <h2 class="post-card-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
+Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
+var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
               
           </section>
       </a>
