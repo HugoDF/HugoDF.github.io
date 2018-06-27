@@ -48,6 +48,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/</loc>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
   </url>
@@ -176,7 +181,7 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/node/</loc>
-    <lastmod>2018-06-20T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
