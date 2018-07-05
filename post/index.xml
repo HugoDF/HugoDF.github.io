@@ -117,6 +117,21 @@ CSS doesn’t get the love it deserves in the developer crowd.</description>
     </item>
     
     <item>
+      <title>Responsive, semantic images with CSS</title>
+      <link>https://codewithhugo.com/responsive-semantic-images-with-css/</link>
+      <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/responsive-semantic-images-with-css/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;CSS tip: &lt;code&gt;object-fit&lt;/code&gt; your images.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To have an image that doesn&amp;rsquo;t try to stretch to its width/height the classic CSS is as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Detecting Object vs Array in JavaScript by example</title>
       <link>https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/</link>
       <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>

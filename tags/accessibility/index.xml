@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tip on Code with Hugo</title>
-    <link>https://codewithhugo.com/tags/tip/</link>
-    <description>Recent content in Tip on Code with Hugo</description>
+    <title>Accessibility on Code with Hugo</title>
+    <link>https://codewithhugo.com/tags/accessibility/</link>
+    <description>Recent content in Accessibility on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 05 Jul 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://codewithhugo.com/tags/tip/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://codewithhugo.com/tags/accessibility/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -22,17 +22,6 @@
 &lt;/blockquote&gt;
 
 &lt;p&gt;To have an image that doesn&amp;rsquo;t try to stretch to its width/height the classic CSS is as follows:&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Detecting Object vs Array in JavaScript by example</title>
-      <link>https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/</link>
-      <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/</guid>
-      <description>&lt;p&gt;Let’s say we want to measure the depth of we have an object with mixed nested arrays/objects like so:&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

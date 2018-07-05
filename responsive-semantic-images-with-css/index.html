@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
 
-    <title>Setting up Express and Redis with Docker compose &middot; Code with Hugo</title>
+    <title>Responsive, semantic images with CSS &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,36 +13,45 @@
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
     
-    <link rel="canonical" href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/" /> 
+    <link rel="canonical" href="https://codewithhugo.com/responsive-semantic-images-with-css/" /> 
 
-     <meta name="description" content="Redis and Express are tools that provide a simple and clean approach to their problem domains.
-The repo is available at: https://github.com/HugoDF/express-redis" /> 
+     <meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;CSS tip: &lt;code&gt;object-fit&lt;/code&gt; your images.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To have an image that doesn&amp;rsquo;t try to stretch to its width/height the c" /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/ben-koorengevel-unsplash.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/nate-bell-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="Setting up Express and Redis with Docker compose"/>
-    <meta name="twitter:description" content="Redis and Express are tools that provide a simple and clean approach to their problem domains.
-The repo is available at: https://github.com/HugoDF/express-redis"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/" />
+    <meta name="twitter:title" content="Responsive, semantic images with CSS"/>
+    <meta name="twitter:description" content="&lt;blockquote&gt;
+&lt;p&gt;CSS tip: &lt;code&gt;object-fit&lt;/code&gt; your images.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To have an image that doesn&amp;rsquo;t try to stretch to its width/height the c"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/responsive-semantic-images-with-css/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Setting up Express and Redis with Docker compose &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/" />
+    <meta property="og:title" content="Responsive, semantic images with CSS &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/responsive-semantic-images-with-css/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="Redis and Express are tools that provide a simple and clean approach to their problem domains.
-The repo is available at: https://github.com/HugoDF/express-redis" />
+    <meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;CSS tip: &lt;code&gt;object-fit&lt;/code&gt; your images.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-    <meta property="article:published_time" content="2018-06-06T00:00:00Z" />
-    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Node" /><meta property="article:tag" content="Docker" />
+&lt;p&gt;To have an image that doesn&amp;rsquo;t try to stretch to its width/height the c" />
 
-    <meta property="og:image" content="https://codewithhugo.com/img/ben-koorengevel-unsplash.jpg"/>
+    <meta property="article:published_time" content="2018-07-05T00:00:00Z" />
+    <meta property="article:tag" content="CSS" /><meta property="article:tag" content="tip" /><meta property="article:tag" content="accessibility" />
+
+    <meta property="og:image" content="https://codewithhugo.com/img/nate-bell-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.36" />
@@ -120,230 +129,79 @@ The repo is available at: https://github.com/HugoDF/express-redis" />
       <article class="post-full post"> 
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-06-06">6 June 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.comtags/node/">#Node</a>&nbsp;
+            <time class="post-full-meta-date" datetime="2018-07-05">5 July 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/css/">#CSS</a>&nbsp;<a href="https://codewithhugo.comtags/tip/">#tip</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Setting up Express and Redis with Docker compose</h1>
+        <h1 class="post-full-title">Responsive, semantic images with CSS</h1>
     </header>
     
-    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/ben-koorengevel-unsplash.jpg)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/nate-bell-unsplash.jpg)">
     </figure>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
-        
-
-<p>Redis and Express are tools that provide a simple and clean approach to their problem domains.</p>
-
-<p>The repo is available at: <a href="https://github.com/HugoDF/express-redis-docker">https://github.com/HugoDF/express-redis-docker</a>.</p>
-
-<p><a href="https://redis.io/">Redis</a> is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. It has great flexibility and can also be used as a message queue, circular buffer (and pretty much anything else a developer can come up with short of a relational database).</p>
-
-<p><a href="https://expressjs.com/">Express</a> is a “fast, unopinionated, minimalist web framework for Node.js”. In other words, it’s a wrapper around Node’s server, that provides a way to write what’s called “middleware” to share and compose functionality across HTTP endpoints as well as define said endpoints.</p>
-
-<p>Getting Redis and Express to work together is trivial. Getting Redis and Express to work together in a way that’s fool and future-proof, and reproducible across local and deployed environments, is slightly harder. That’s where Docker and Docker Compose come in.</p>
-
-<p>Docker is a containerisation system, Docker Compose is a way to define how multiple Docker containers interact. In the context of Node web application development, Docker tends to be used to define a container that has the required system-level dependencies (eg. Node version, any extra database drivers). Docker Compose would be used to define dependencies outside of the Node application, for example databases.</p>
-
-<ul>
-<li><a href="#initialising-express">Initialising Express 🚅</a></li>
-<li><a href="#running-node-inside-of-docker">Running Node inside of Docker 🌊</a></li>
-<li><a href="#adding-redis">Adding Redis</a></li>
-<li><a href="#creating-a-blob-store">Creating a blob store 📒</a></li>
-</ul>
-
-<h1 id="initialising-express">Initialising Express 🚅</h1>
-
-<p>To start off, we should create a new directory/initialise npm:</p>
-
-<pre><code class="language-sh">mkdir express-redis
-cd express-redis
-npm init -y
-</code></pre>
-
-<p>We can then install Express:</p>
-
-<pre><code class="language-sh">npm i --save express
-</code></pre>
-
-<p>And create a <code>server.js</code> file that looks like the following:</p>
-
-<pre><code class="language-js">// server.js
-const express = require('express');
-const app = express();
-
-app.get('/', (req, res) =&gt; {
-    return res.send('Hello world');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =&gt; {
-    console.log(`Server listening on port ${PORT}`);
-});
-</code></pre>
-
-<p>That can be run using:</p>
-
-<pre><code class="language-sh">node server.js
-</code></pre>
-
-<p>We can check that it’s working as expected</p>
-
-<pre><code class="language-sh">curl http://localhost:3000/
-Hello world
-</code></pre>
-
-<h1 id="running-node-inside-of-docker">Running Node inside of Docker 🌊</h1>
-
-<p>To begin you’ll want to install <a href="https://www.docker.com/community-edition">Docker Community Edition</a> (<a href="https://www.docker.com/community-edition">https://www.docker.com/community-edition</a>).
-Then we can add a <code>Dockerfile</code> and a <code>docker-compose.yml</code>:</p>
-
-<pre><code class="language-dockerfile"># Dockerfile
-FROM node:9-alpine
-# Or whatever Node version/image you want
-WORKDIR '/var/www/app'
-</code></pre>
-
-<pre><code class="language-yml"># docker-compose.yml
-app:
-    build: ./
-    volumes:
-    - ./:/var/www/app
-    ports:
-    - 3000:3000
-    environment:
-    - NODE_ENV=development
-    - PORT=3000
-    command:
-    sh -c 'npm i &amp;&amp; node server.js'
-</code></pre>
-
-<p>Now run the app inside of Docker/Docker Compose:</p>
-
-<pre><code class="language-sh">docker-compose up
-</code></pre>
-
-<p>And check that it still works</p>
-
-<pre><code class="language-sh">curl http://localhost:3000/
-Hello world
-</code></pre>
-
-<p>Some extra context:</p>
-
-<ul>
-<li>The <code>Dockerfile</code> defines what container the application will be running in (here a Node 9 container built on top of alpine)</li>
-<li><code>docker-compose.yml</code>:
-
-<ul>
-<li><code>build</code> explains which image should be used by the <code>app</code> service definition (in this case, it points to what would be created by running the <code>Dockerfile</code>)</li>
-<li><code>volumes</code> defines what should be mounted where (in this case, we’ll mount the whole directory as <code>/var/www/app</code></li>
-<li><code>ports</code> maps ports from the host system to ports inside the container</li>
-<li><code>environment</code> sets environment variables for the container</li>
-<li><code>command</code> determines what will be run on startup of the container, here it runs <code>npm install</code> followed by the server startup command</li>
-</ul></li>
-</ul>
-
-<h1 id="adding-redis">Adding Redis</h1>
-
-<p>To add Redis to our Express app we should use the <code>redis</code> package:</p>
-
-<pre><code class="language-sh">npm install --save redis
-</code></pre>
-
-<p>Then we should probably wrap all the callback-based methods we want to use (see the api docs for the redis package, <a href="https://github.com/NodeRedis/node_redis#api">https://github.com/NodeRedis/node_redis#api</a>).
-Let’s do this using a <code>redis-client.js</code> module:</p>
-
-<pre><code class="language-js">// redis-client.js
-const redis = require('redis');
-const {promisify} = require('util');
-const client = redis.createClient(process.env.REDIS_URL);
-
-module.exports = {
-  ...client,
-  getAsync: promisify(client.get).bind(client),
-  setAsync: promisify(client.set).bind(client),
-  keysAsync: promisify(client.keys).bind(client)
-};
-</code></pre>
-
-<p>To running Redis inside of Docker Compose in such a way that our app can access it:</p>
-
-<pre><code class="language-yml"># docker-compose.yml
-# Add this top-level entry
-redis:
-    image: redis
-    container_name: cache
-    expose:
-    - 6379
-    
-app:
-    # some definitions
-    links:
-    - redis
-    environment:
-    - REDIS_URL=redis://cache
-    # rest of the environment definitions
-</code></pre>
-
-<p>We can now access the Redis client from the app container:</p>
-
-<pre><code class="language-sh">docker-compose run app node
-&gt; require('./redis-client') // doesn't crash
-</code></pre>
-
-<h1 id="creating-a-blob-store">Creating a blob store 📒</h1>
-
-<p>We can now create a HTTP API that will allow us to store data using query params and retrieve them using a get request (this isn’t RESTful at all but oh well 🙂 ).</p>
-
-<pre><code class="language-js">// server.js
-// imports and app definition
-
-const redisClient = require('./redis-client');
-app.get('/store/:key', async (req, res) =&gt; {
-    const { key } = req.params;
-    const value = req.query;
-    await redisClient.setAsync(key, JSON.stringify(value));
-    return res.send('Success');
-});
-app.get('/:key', async (req, res) =&gt; {
-    const { key } = req.params;
-    const rawData = await redisClient.getAsync(key);
-    return res.json(JSON.parse(rawData));
-});
-
-// code that starts the app...
-</code></pre>
-
-<p>If you have any questions about the above code let me know <a href="https://twitter.com/hugo__df">@hugo__df</a>. It is using a couple of more advanced features like async/await and destructuring as well as Express features to get query and path parameters (see <a href="https://expressjs.com/en/api.html#req.query">https://expressjs.com/en/api.html#req.query</a>, <a href="https://expressjs.com/en/api.html#req.params">https://expressjs.com/en/api.html#req.params</a>).</p>
-
-<p>Get the app running again: <code>docker-compose up</code></p>
-
-<ol>
-<li>Store some data:
-<code>
-curl http://localhost:3000/store/my-key\?some\=value\&amp;some-other\=other-value
-Success
-</code></li>
-<li>Retrieve that data:
-<code>
-curl http://localhost:3000/my-key
-{
-&quot;some&quot;: &quot;value&quot;,
-&quot;some-other&quot;: &quot;other-value&quot;
-}
-</code></li>
-</ol>
-
-<blockquote>
-<p>Note to more advanced Express users, and API design gurus.
-The reason I used an old school query-param based system is to avoid the boilerplate of using <code>body-parser</code> with POST requests</p>
+        <blockquote>
+<p>CSS tip: <code>object-fit</code> your images.</p>
 </blockquote>
 
-<p>Full repository available at: <a href="https://github.com/HugoDF/express-redis-docker">https://github.com/HugoDF/express-redis-docker</a></p>
+<p>To have an image that doesn&rsquo;t try to stretch to its width/height the classic CSS is as follows:</p>
 
-<p>Cover photo by <a href="https://unsplash.com/photos/rpMwfGLSsd8?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Ben Koorengevel</a> on <a href="https://unsplash.com/search/photos/boats?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-    
+<p></p>
+
+<pre><code class="language-css">.thumbnail {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+}
+</code></pre>
+
+<p>With this associated HTML (inline styles… 👎):</p>
+
+<pre><code class="language-html">&lt;div
+  class=&quot;thumbnail&quot;
+  style=&quot;background-image: url('some-url');&quot;
+&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>We can do:</p>
+
+<pre><code class="language-css">.thumbnail {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+}
+</code></pre>
+
+<p>With the following HTML:</p>
+
+<pre><code class="language-html">&lt;img class=&quot;thumbnail&quot; src=&quot;some-url&quot;&gt;
+</code></pre>
+
+<blockquote>
+<p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
+<a href="https://buttondown.email/hugo">Subscribe</a> to get the latest posts right in your inbox (before anyone else).</p>
+</blockquote>
+
+<h1 id="why-is-this-cool">Why is this cool?</h1>
+
+<ol>
+<li>One word: accessibility.</li>
+<li>Two words: semantic markup.</li>
+<li>Many words, with the <code>div</code> + <code>background-image</code> solution:
+
+<ol>
+<li>if the URL turned out to be broken, it would show empty space, with the <code>img</code> + <code>object-fit</code> one, it shows the good old “broken image because of URL” fallback (or <code>alt</code> attribute value).</li>
+<li>An <code>img</code> tag is more accessible since we can have <code>alt</code></li>
+<li>Typing <code>src=&quot;my-url&quot;</code> is just less characters than  <code>style=&quot;background-image: url('my-url')&quot;</code>.</li>
+</ol></li>
+</ol>
+
+<p>Warning: this might not work on older browsers, it does, however gracefully degrade (the image will just be stretched), it won&rsquo;t mess up the layout though.</p>
+
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@n8bell34?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Nate Bell"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Nate Bell</span></a></p>    
         </div>
     </section>
 
@@ -391,7 +249,7 @@ The reason I used an old school query-param based system is to avoid the boilerp
     <header class="read-next-card-header">
         <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
         
-        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.comtags/javascript/">#JavaScript</a></h3>
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.comtags/css/">#CSS</a></h3>
     </header>
     <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
     </div>
@@ -399,18 +257,18 @@ The reason I used an old school query-param based system is to avoid the boilerp
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         
-          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
         
-          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
       
-        <a href="https://codewithhugo.comtags/javascript/">See all related posts →</a>
+        <a href="https://codewithhugo.comtags/css/">See all related posts →</a>
     </footer>
 </article>
 
@@ -418,26 +276,26 @@ The reason I used an old school query-param based system is to avoid the boilerp
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cli-screenshot.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Node 
-              #CLI  </span>
+              #CSS 
+              #web development  </span>
               
-              <h2 class="post-card-title">How to make beautiful, simple CLI apps with Node</h2>
+              <h2 class="post-card-title">Why CSS is hard</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
-Command line apps are a neat way to package repetitive tasks. This will walk you through some tools that are useful to build CLI apps.
- The idea 💡 Piping to the command line 🚇 Dealing with sequential actions ✨ Executable JavaScript files 🦅 Adding package binaries 📦 Publishing to npm 🚀  The idea 💡 When merging/rebasing, the file that always seems to cause trouble is the package-lock. ...  </p>
+                <p>Things we’re not used to tend to be harder
+I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
+Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
+CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
               
           </section>
       </a>
@@ -452,25 +310,25 @@ Command line apps are a neat way to package repetitive tasks. This will walk you
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/20180704-array-types.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #VueJS 
-              #testing 
-              #JavaScript  </span>
+              #JavaScript 
+              #tip  </span>
               
-              <h2 class="post-card-title">From AngularJS to Vue.js, CommonJS and Jest</h2>
+              <h2 class="post-card-title">Detecting Object vs Array in JavaScript by example</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration
- AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components. ...  </p>
+                <p>Let’s say we want to measure the depth of we have an object with mixed nested arrays/objects like so:
+
+ ...  </p>
               
           </section>
       </a>
@@ -494,17 +352,17 @@ Command line apps are a neat way to package repetitive tasks. This will walk you
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Setting up Express and Redis with Docker compose</div>
+  <div class="floating-header-title">Responsive, semantic images with CSS</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Setting%20up%20Express%20and%20Redis%20with%20Docker%20compose&amp;url=https%3a%2f%2fcodewithhugo.com%2fsetting-up-express-and-redis-with-docker-compose%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Responsive%2c%20semantic%20images%20with%20CSS&amp;url=https%3a%2f%2fcodewithhugo.com%2fresponsive-semantic-images-with-css%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fsetting-up-express-and-redis-with-docker-compose%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fresponsive-semantic-images-with-css%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>
