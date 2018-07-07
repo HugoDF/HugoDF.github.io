@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
 
-    <title>Avoiding falsy values in JavaScript arrays &middot; Code with Hugo</title>
+    <title>Mocking the current Date in Jest tests &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,39 +13,33 @@
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
     
-    <link rel="canonical" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/" /> 
+    <link rel="canonical" href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/" /> 
 
-     <meta name="description" content="&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: use &lt;code&gt;Array.filter(Boolean)&lt;/code&gt; to filter out falsy values and avoid errors.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;" /> 
+     <meta name="description" content="&lt;p&gt;There are situations where &lt;code&gt;Date.now&lt;/code&gt; is used in application code. That code needs to be tested, and it’s always a struggle to remember how to moc" /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/kaizen-nguy.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/bryce-barker-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="Avoiding falsy values in JavaScript arrays"/>
-    <meta name="twitter:description" content="&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: use &lt;code&gt;Array.filter(Boolean)&lt;/code&gt; to filter out falsy values and avoid errors.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/" />
+    <meta name="twitter:title" content="Mocking the current Date in Jest tests"/>
+    <meta name="twitter:description" content="&lt;p&gt;There are situations where &lt;code&gt;Date.now&lt;/code&gt; is used in application code. That code needs to be tested, and it’s always a struggle to remember how to moc"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Avoiding falsy values in JavaScript arrays &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/" />
+    <meta property="og:title" content="Mocking the current Date in Jest tests &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: use &lt;code&gt;Array.filter(Boolean)&lt;/code&gt; to filter out falsy values and avoid errors.&lt;/p&gt;
+    <meta property="og:description" content="&lt;p&gt;There are situations where &lt;code&gt;Date.now&lt;/code&gt; is used in application code. That code needs to be tested, and it’s always a struggle to remember how to moc" />
 
-&lt;p&gt;&lt;/p&gt;" />
+    <meta property="article:published_time" content="2018-07-07T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Testing" /><meta property="article:tag" content="Node" />
 
-    <meta property="article:published_time" content="2018-04-11T00:00:00Z" />
-    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="web development" />
-
-    <meta property="og:image" content="https://codewithhugo.com/img/kaizen-nguy.jpg"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/bryce-barker-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.36" />
@@ -123,137 +117,44 @@
       <article class="post-full post"> 
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-04-11">11 April 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.comtags/web-development/">#web development</a>&nbsp;
+            <time class="post-full-meta-date" datetime="2018-07-07">7 July 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.comtags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.comtags/testing/">#Testing</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Avoiding falsy values in JavaScript arrays</h1>
+        <h1 class="post-full-title">Mocking the current Date in Jest tests</h1>
     </header>
     
-    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/bryce-barker-unsplash.jpg)">
     </figure>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
-        <p><strong>tl;dr</strong>: use <code>Array.filter(Boolean)</code> to filter out falsy values and avoid errors.</p>
+        <p>There are situations where <code>Date.now</code> is used in application code. That code needs to be tested, and it’s always a struggle to remember how to mock <code>Date.now</code>. Here is the magic snippet:</p>
 
 <p></p>
 
-<pre><code class="language-js">// Fun function that converts a name into a
-// 4 all-cap letters display name
-const makeDisplayName = name =&gt;
-  (name.charAt(0) + name.slice(1).replace(/a|e|i|o|u/g, &quot;&quot;))
-    .toUpperCase()
-    .slice(0, 4);
+<pre><code class="language-js">const literallyJustDateNow = () =&gt; Date.now();
 
-const displayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined]
-  .filter(Boolean)
-  .map(makeDisplayName);
-// [ 'ORNG', 'APPL', 'MNG' ]
+test('It should call and return Date.now()', () =&gt; {
+  const realDateNow = Date.now.bind(global.Date);
+  const dateNowStub = jest.fn(() =&gt; 1530518207007);
+  global.Date.now = dateNowStub;
 
-// vs
-const displayNamesErrors = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined].map(
-  makeDisplayName
-);
-// TypeError: Cannot read property 'charAt' of undefined
+  expect(literallyJustDateNow()).toBe(1530518207007);
+  expect(dateNowStub).toHaveBeenCalled();
+
+  global.Date.now = realDateNow;
+});
 </code></pre>
 
-<h1 id="how-this-works-caveats">How this works &amp; caveats</h1>
+<blockquote>
+<p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
+<a href="https://buttondown.email/hugo">Subscribe</a> to get the latest posts right in your inbox (before anyone else).</p>
+</blockquote>
 
-<p><code>Boolean</code> when passed any falsy value returns <code>false</code> and when passed a truthy value returns <code>true</code>:</p>
+<p>This isn’t really a Jest-specific trick, we’re just accessing Node <code>global</code> object and replace <code>Date.now</code> with a stub.
+We’re also being good unit-testing citizens and putting the original <code>global.Date.now</code> implementation back 😇.</p>
 
-<pre><code class="language-js">Boolean(false); // false
-Boolean(&quot;&quot;); // false
-Boolean(null); // false
-Boolean(undefined); // false
-Boolean(0); // false
-Boolean(NaN); // false
-
-Boolean(1); // true
-Boolean(&quot;hello&quot;); // true
-Boolean(true); // true
-Boolean({}); // true
-Boolean([]); // true
-</code></pre>
-
-<p>Note that a valid use case of filtering out falsy values except <code>0</code> needs special treatment since, <code>Boolean(0)</code> returns <code>false</code>, hence:</p>
-
-<pre><code class="language-js">const noFalsyEvenZero = [NaN, undefined, null, 0, 1, 2, 2000, Infinity].filter(
-  Boolean
-);
-// [ 1, 2, 2000, Infinity ]
-const noFalsyExceptZero = [
-  NaN,
-  undefined,
-  null,
-  0,
-  1,
-  2,
-  2000,
-  Infinity
-].filter(el =&gt; el === 0 || Boolean(el));
-// [ 0, 1, 2, 2000, Infinity ]
-</code></pre>
-
-<h1 id="situations-in-which-this-would-this-occur">Situations in which this would this occur</h1>
-
-<p>Usually this happens when you want to compute something over an Array of objects where some of the elements have a property but others don&rsquo;t.</p>
-
-<pre><code class="language-js">const companies = [
-  {
-    name: null,
-    employees: [],
-    founders: []
-  },
-  {
-    name: &quot;orange&quot;,
-    employees: [],
-    founders: []
-  },
-  {
-    name: &quot;apple&quot;,
-    employees: [],
-    founders: []
-  },
-  {
-    name: &quot;mango&quot;,
-    employees: [],
-    locations: []
-  },
-  {
-    employees: [],
-    founders: []
-  }
-];
-const companyNames = companies.map(company =&gt; company.name);
-// [undefined, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined]
-</code></pre>
-
-<p>An issue can occur when you have null or undefined in your list</p>
-
-<pre><code class="language-js">const makeDisplayName = name =&gt;
-  (name.charAt(0) + name.slice(1).replace(/a|e|i|o|u/g, &quot;&quot;))
-    .toUpperCase()
-    .slice(0, 4);
-
-const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined].map(
-  makeDisplayName
-);
-// TypeError: Cannot read property 'charAt' of undefined
-</code></pre>
-
-<p>To avoid this we can filter falsy values out:</p>
-
-<pre><code class="language-js">const makeDisplayName = name =&gt;
-  (name.charAt(0) + name.slice(1).replace(/a|e|i|o|u/g, &quot;&quot;))
-    .toUpperCase()
-    .slice(0, 4);
-
-const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined]
-  .filter(Boolean) // the identity function: `item =&gt; item` would also work here :)
-  .map(makeDisplayName);
-// [ 'ORNG', 'APPL', 'MNG' ]
-// No Error :)
-</code></pre>    
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@fortheloveofbry5tahh?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Bryce Barker"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Bryce Barker</span></a></p>    
         </div>
     </section>
 
@@ -309,13 +210,13 @@ const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
+          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
         
-          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
         
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -328,26 +229,26 @@ const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
-      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #ES6 
+              #CSS 
               #web development  </span>
               
-              <h2 class="post-card-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h2>
+              <h2 class="post-card-title">Why CSS is hard</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
-Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
-var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
+                <p>Things we’re not used to tend to be harder
+I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
+Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
+CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
               
           </section>
       </a>
@@ -362,26 +263,27 @@ var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*gVQU50zNWjL1kihKKQ5zYQ.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nate-bell-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #CSS 
-              #JavaScript 
-              #animation 
-              #web development  </span>
+              #tip 
+              #accessibility  </span>
               
-              <h2 class="post-card-title">Animations: CSS vs JavaScript</h2>
+              <h2 class="post-card-title">Responsive, semantic images with CSS</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>When should you use JavaScript when you can use CSS? This post was sparked by a question I answered on Quora: Which is better to use, CSS or JS?
-The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see “Backend code, frontend code and how they interact” for more details): HTML says what things are, CSS how they look and JavaScript does all the things the other two can’t. ...  </p>
+                <p> CSS tip: object-fit your images.
+ To have an image that doesn&rsquo;t try to stretch to its width/height the classic CSS is as follows:
+
+ ...  </p>
               
           </section>
       </a>
@@ -405,17 +307,17 @@ The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see 
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Avoiding falsy values in JavaScript arrays</div>
+  <div class="floating-header-title">Mocking the current Date in Jest tests</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Avoiding%20falsy%20values%20in%20JavaScript%20arrays&amp;url=https%3a%2f%2fcodewithhugo.com%2favoiding-falsy-values-in-javascript-arrays%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Mocking%20the%20current%20Date%20in%20Jest%20tests&amp;url=https%3a%2f%2fcodewithhugo.com%2fmocking-the-current-date-in-jest-tests%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2favoiding-falsy-values-in-javascript-arrays%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fmocking-the-current-date-in-jest-tests%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>

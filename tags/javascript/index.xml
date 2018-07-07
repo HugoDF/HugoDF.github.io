@@ -91,6 +91,17 @@ The basics Functional programming is a programming paradigm that follows a more 
     </item>
     
     <item>
+      <title>Mocking the current Date in Jest tests</title>
+      <link>https://codewithhugo.com/mocking-the-current-date-in-jest-tests/</link>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/mocking-the-current-date-in-jest-tests/</guid>
+      <description>&lt;p&gt;There are situations where &lt;code&gt;Date.now&lt;/code&gt; is used in application code. That code needs to be tested, and it’s always a struggle to remember how to mock &lt;code&gt;Date.now&lt;/code&gt;. Here is the magic snippet:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Detecting Object vs Array in JavaScript by example</title>
       <link>https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/</link>
       <pubDate>Wed, 04 Jul 2018 00:00:00 +0000</pubDate>
