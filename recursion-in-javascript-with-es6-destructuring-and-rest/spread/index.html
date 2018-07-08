@@ -47,10 +47,9 @@
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -134,63 +133,42 @@
 <h2 id="destructuring">Destructuring</h2>
 
 <p>One of my favourite ES6 features is <strong>destructuring</strong>. It allows you to extract data from one variable to another by using <strong>structure</strong>. For arrays this means for example:</p>
-
-<pre><code class="language-js">var [first, second] = [1, 2, 3, 4];
-// first: 1
-// second: 2
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="c1">// first: 1
+</span><span class="c1"></span><span class="err">// second: 2</span></code></pre></div>
 <p>There’s more you can do, like skip some members of the array on the right-hand side of the operation.</p>
-
-<pre><code class="language-js">var [first, , third, fourth] = [1, 2, 3, 4];
-// first: 1
-// third: 3
-// fourth: 4
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="p">,</span> <span class="nx">third</span><span class="p">,</span> <span class="nx">fourth</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="c1">// first: 1
+</span><span class="c1">// third: 3
+</span><span class="c1"></span><span class="err">// fourth: 4</span></code></pre></div>
 <p>This is actually quite easily back-ported to the equivalent ES5</p>
-
-<pre><code class="language-js">var arr = [1, 2, 3, 4];
-var first = arr[0];
-var second = arr[1];
-// etc ...
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">first</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">second</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="err">// etc ...</span></code></pre></div>
 <h2 id="rest">Rest</h2>
 
 <p>This is where ES6 features become more interesting. With destructuring we can also assign what is called the <strong>rest</strong> of the array. We indicate <strong>rest</strong> with the &hellip; notation.</p>
-
-<pre><code class="language-js">var [first, ...notFirst] = [1, 2, 3, 4];
-// first: 1
-// notFirst: [ 2, 3, 4 ]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="p">...</span><span class="nx">notFirst</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="c1">// first: 1
+</span><span class="c1"></span><span class="err">// notFirst: [ 2, 3, 4 ]</span></code></pre></div>
 <p>Naming conventions lead to code that is more akin to the following:</p>
-
-<pre><code class="language-js">var [first, second, ...rest] = [1, 2, 3, 4];
-// first: 1
-// second: 2
-// rest: [ 3, 4 ]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="c1">// first: 1
+</span><span class="c1">// second: 2
+</span><span class="c1"></span><span class="err">// rest: [ 3, 4 ]</span></code></pre></div>
 <p>The rest operator has some interesting properties:</p>
-
-<pre><code class="language-js">var [first, ...rest] = [1];
-// first: 1
-// rest: []
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="p">[</span><span class="nx">first</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="c1">// first: 1
+</span><span class="c1"></span><span class="err">// rest: []</span></code></pre></div>
 <p>It always returns an array. Which means even in defensive JavaScript land, it’s ok to do things like check .length of rest without guards.</p>
 
 <p>The equivalent in ES5 (and below) is to use theArray.slice function.</p>
-
-<pre><code class="language-js">var arr = [1, 2, 3, 4];
-var first = arr[0];
-var rest = arr.slice(1);
-// first: 1
-// rest: [ 2, 3, 4 ]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">first</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// first: 1
+</span><span class="c1"></span><span class="err">// rest: [ 2, 3, 4 ]</span></code></pre></div>
 <p>Two things to note here:</p>
 
 <ul>
@@ -204,89 +182,65 @@ var rest = arr.slice(1);
 <h2 id="parameter-destructuring">Parameter destructuring</h2>
 
 <p>We can use destructuring on the parameters of a function definition:</p>
-
-<pre><code class="language-js">function something([first, ...rest]) {
-  return {
-    first: first,
-    rest: rest
-  };
-}
-var result = something([1, 2, 3]);
-// result: { first: 1, rest: [ 2,3 ] }
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">something</span><span class="p">([</span><span class="nx">first</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">])</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">first</span><span class="o">:</span> <span class="nx">first</span><span class="p">,</span>
+    <span class="nx">rest</span><span class="o">:</span> <span class="nx">rest</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">something</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="err">// result: { first: 1, rest: [ 2,3 ] }</span></code></pre></div>
 <p>Equivalent ES5:</p>
-
-<pre><code class="language-js">function something(arr) {
-  var first = arr[0];
-  var rest = arr.slice(1);
-  return {
-    first: first,
-    rest: rest
-  };
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">something</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">first</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">first</span><span class="o">:</span> <span class="nx">first</span><span class="p">,</span>
+    <span class="nx">rest</span><span class="o">:</span> <span class="nx">rest</span>
+  <span class="p">};</span>
+<span class="p">}</span></code></pre></div>
 <p>Again it’s more verbose and more imperative.</p>
 
 <h2 id="spread">Spread</h2>
 
 <p>Spread uses the same notation as rest: &hellip;. What it does is quite different.</p>
-
-<pre><code class="language-js">var arr = [1, 2, 3];
-var newArr = [...arr];
-// newArr: [ 1, 2, 3]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">newArr</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">arr</span><span class="p">];</span>
+<span class="err">// newArr: [ 1, 2, 3]</span></code></pre></div>
 <p>ES5 equivalent:</p>
-
-<pre><code class="language-js">var arr = [1, 2, 3];
-var newArr = [].concat(arr);
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">newArr</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span></code></pre></div>
 <p>Things to note, the contents of the array are <strong>copied</strong>. So newArr is not a reference to arr.</p>
 
 <p>We can also do things like appending or prepending an array.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 
-<pre><code class="language-js">var arr = [1, 2, 3];
-
-var withPrepend = [...arr, 3, 2, 1];
-var withAppend = [3, 2, 1, ...arr];
-// withPrepend: [ 1, 2, 3, 3, 2, 1]
-// withAppend: [ 3, 2, 1, 1, 2, 3 ]
-</code></pre>
-
+<span class="kd">var</span> <span class="nx">withPrepend</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">arr</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">withAppend</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr</span><span class="p">];</span>
+<span class="c1">// withPrepend: [ 1, 2, 3, 3, 2, 1]
+</span><span class="c1"></span><span class="err">// withAppend: [ 3, 2, 1, 1, 2, 3 ]</span></code></pre></div>
 <h2 id="functional-programming-lists-recursion">Functional Programming: lists &amp; recursion</h2>
 
 <p>In functional programming when we run functions recursively over lists we like to model the list as a <strong>head</strong> and a <strong>tail</strong>.</p>
 
 <p>The head is the first element of the list, the tail is the list composed of the list minus the head.</p>
-
-<pre><code class="language-js">arr = [1, 2, 3];
-// head(arr): 1
-// tail(arr): [ 2, 3 ]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="c1">// head(arr): 1
+</span><span class="c1"></span><span class="err">// tail(arr): [ 2, 3 ]</span></code></pre></div>
 <p>In ES6 we can do this just by naming the variable appropriately with <strong>destructuring</strong> and <strong>rest:</strong></p>
-
-<pre><code class="language-js">var [head, ...tail] = [1, 2, 3];
-// head: 1
-// tail: [ 2, 3 ]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="p">[</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="c1">// head: 1
+</span><span class="c1"></span><span class="err">// tail: [ 2, 3 ]</span></code></pre></div>
 <p>We can also trivially implement the head and tail functions using ES6:</p>
-
-<pre><code class="language-js">function head([head, ...tail]) {
-  return head;
-}
-function tail([head, ...tail]) {
-  return tail;
-}
-// or with arrow function syntax
-var head = ([head, ...tail]) =&gt; head;
-var tail = ([head, ...tail]) =&gt; tail;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">head</span><span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">])</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">head</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">tail</span><span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">])</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">tail</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// or with arrow function syntax
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">head</span> <span class="o">=</span> <span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">])</span> <span class="p">=&gt;</span> <span class="nx">head</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">tail</span> <span class="o">=</span> <span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">])</span> <span class="p">=&gt;</span> <span class="nx">tail</span><span class="p">;</span></code></pre></div>
 <h3 id="tail-recursion">(Tail) Recursion</h3>
 
 <p>We can implement functions that operate over arrays (or lists as they tend to be called in functional programming) using <strong>parameter destructuring*</strong> *and <strong>recursion</strong>.</p>
@@ -294,16 +248,13 @@ var tail = ([head, ...tail]) =&gt; tail;
 <p>For example, map can be implemented in the following manner:</p>
 
 <p><em>Map is a function that takes a list and a function and returns a list containing the result of a function application to each element of the list.</em></p>
-
-<pre><code class="language-js">function map([head, ...tail], fn) {
-  if (head === undefined &amp;&amp; !tail.length) return [];
-  if (tail.length === 0) {
-    return [fn(head)];
-  }
-  return [fn(head)].concat(map(tail, fn));
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">map</span><span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">],</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">head</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">tail</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="p">[];</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">[</span><span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">map</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">));</span>
+<span class="p">}</span></code></pre></div>
 <p>The <code>tail.length === 0</code> checks whether there is still a tail to recurse over. Otherwise, the recursion stops there.</p>
 
 <p>This is not necessarily the most efficient version of map both in terms of memory usage and speed but it’s a good illustration of ES6.</p>
@@ -313,36 +264,27 @@ var tail = ([head, ...tail]) =&gt; tail;
 <h3 id="very-es6-map">Very ES6 map</h3>
 
 <p>Our ES6 recursive/destructuring map can be simplified to:</p>
-
-<pre><code class="language-js">function map([head, ...tail], fn) {
-  if (head === undefined &amp;&amp; !tail.length) return [];
-  return tail.length ? [fn(head), ...map(tail, fn)] : [fn(head)];
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">map</span><span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">],</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">head</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">tail</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="p">[];</span>
+  <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="p">[</span><span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">),</span> <span class="p">...</span><span class="nx">map</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)]</span> <span class="o">:</span> <span class="p">[</span><span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)];</span>
+<span class="p">}</span></code></pre></div>
 <p>Or if we want to abuse ES6 and allow ourselves to forget that we’re actually doing JavaScript:</p>
-
-<pre><code class="language-js">const map = ([head, ...tail], fn) =&gt;
-  head !== undefined &amp;&amp; tail.length
-    ? tail.length
-      ? [fn(head), ...map(tail, fn)]
-      : [fn(head)]
-    : [];
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">map</span> <span class="o">=</span> <span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">],</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">=&gt;</span>
+  <span class="nx">head</span> <span class="o">!==</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span>
+    <span class="o">?</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span>
+      <span class="o">?</span> <span class="p">[</span><span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">),</span> <span class="p">...</span><span class="nx">map</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)]</span>
+      <span class="o">:</span> <span class="p">[</span><span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)]</span>
+    <span class="o">:</span> <span class="p">[];</span></code></pre></div>
 <p>ES5 equivalent</p>
-
-<pre><code class="language-js">function map(arr, fn) {
-  var head = arr[0];
-  var tail = arr.slice(1);
-  if (head === undefined &amp;&amp; tail.length === 0) return [];
-  if (tail.length === 0) {
-    return [fn(head)];
-  }
-  return [].concat(fn(head), map(tail, fn));
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">map</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">head</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">tail</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">head</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="p">[];</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)];</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">[].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">),</span> <span class="nx">map</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">));</span>
+<span class="p">}</span></code></pre></div>
 <p>All the features add up and while recursive map in ES6 is essentially a one-liner, in ES5 it’s a clunky, long, hard to read function.</p>
 
 <h3 id="reimplementing-list-manipulation-functions">Reimplementing list manipulation functions</h3>
@@ -356,35 +298,26 @@ var tail = ([head, ...tail]) =&gt; tail;
 <h3 id="recursive-list-operations-in-es6-with-rest-spread-and-destructuring">Recursive list operations in ES6 with rest/spread and destructuring</h3>
 
 <p>Filter implementation using ES6, destructuring and recursion:</p>
-
-<pre><code class="language-js">function filter([head, ...tail], fn) {
-  const newHead = fn(head) ? [head] : [];
-  return tail.length ? [...newHead, ...filter(tail, fn)] : newHead;
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">filter</span><span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">],</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">newHead</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)</span> <span class="o">?</span> <span class="p">[</span><span class="nx">head</span><span class="p">]</span> <span class="o">:</span> <span class="p">[];</span>
+  <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="p">[...</span><span class="nx">newHead</span><span class="p">,</span> <span class="p">...</span><span class="nx">filter</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)]</span> <span class="o">:</span> <span class="nx">newHead</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
 <p>Reduce implementation using ES6, destructuring and recursion:</p>
-
-<pre><code class="language-js">function reduce([head, ...tail], fn, initial) {
-  if (head === undefined &amp;&amp; tail.length === 0) return initial;
-  if (!initial) {
-    const [newHead, ...newTail] = tail;
-    return reduce(newTail, fn, fn(head, newHead));
-  }
-  return tail.length
-    ? reduce(tail, fn, fn(initial, head))
-    : [fn(initial, head)];
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">reduce</span><span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">],</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">initial</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">head</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">initial</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">initial</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">[</span><span class="nx">newHead</span><span class="p">,</span> <span class="p">...</span><span class="nx">newTail</span><span class="p">]</span> <span class="o">=</span> <span class="nx">tail</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">newTail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">,</span> <span class="nx">newHead</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span>
+    <span class="o">?</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">initial</span><span class="p">,</span> <span class="nx">head</span><span class="p">))</span>
+    <span class="o">:</span> <span class="p">[</span><span class="nx">fn</span><span class="p">(</span><span class="nx">initial</span><span class="p">,</span> <span class="nx">head</span><span class="p">)];</span>
+<span class="p">}</span></code></pre></div>
 <p>Join implementation using ES6, destructuring and recursion:</p>
-
-<pre><code class="language-js">function join([head, ...tail], separator = &quot;,&quot;) {
-  if (head === undefined &amp;&amp; !tail.length) return &quot;&quot;;
-  return tail.length ? head + separator + join(tail, separator) : head;
-}
-</code></pre>
-    
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">join</span><span class="p">([</span><span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span><span class="p">],</span> <span class="nx">separator</span> <span class="o">=</span> <span class="s2">&#34;,&#34;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">head</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">tail</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="nx">head</span> <span class="o">+</span> <span class="nx">separator</span> <span class="o">+</span> <span class="nx">join</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">separator</span><span class="p">)</span> <span class="o">:</span> <span class="nx">head</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>    
         </div>
     </section>
 
@@ -440,15 +373,13 @@ var tail = ([head, ...tail]) =&gt; tail;
     <div class="read-next-card-content">
       
         <ul>
-                      
-        
-          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
-        
-          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
-        
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         
           <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
+        
+          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
+        
+          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -578,11 +509,11 @@ We’ll be setting up a project that allows us to write ES6, and distribute it i
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

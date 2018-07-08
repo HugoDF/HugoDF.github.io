@@ -60,10 +60,9 @@
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -147,39 +146,27 @@
 <p>To have an image that doesn&rsquo;t try to stretch to its width/height the classic CSS is as follows:</p>
 
 <p></p>
-
-<pre><code class="language-css">.thumbnail {
-  width: 50px;
-  height: 50px;
-  background-size: cover;
-  background-position: center;
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">thumbnail</span> <span class="p">{</span>
+  <span class="k">width</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">height</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">background-size</span><span class="p">:</span> <span class="kc">cover</span><span class="p">;</span>
+  <span class="k">background-position</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
 <p>With this associated HTML (inline styles… 👎):</p>
-
-<pre><code class="language-html">&lt;div
-  class=&quot;thumbnail&quot;
-  style=&quot;background-image: url('some-url');&quot;
-&gt;
-&lt;/div&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span>
+  <span class="na">class</span><span class="o">=</span><span class="s">&#34;thumbnail&#34;</span>
+  <span class="na">style</span><span class="o">=</span><span class="s">&#34;background-image: url(&#39;some-url&#39;);&#34;</span>
+<span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
 <p>We can do:</p>
-
-<pre><code class="language-css">.thumbnail {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  object-position: center;
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">thumbnail</span> <span class="p">{</span>
+  <span class="k">width</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">height</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+  <span class="k">object-fit</span><span class="p">:</span> <span class="kc">cover</span><span class="p">;</span>
+  <span class="k">object-position</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
 <p>With the following HTML:</p>
-
-<pre><code class="language-html">&lt;img class=&quot;thumbnail&quot; src=&quot;some-url&quot;&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;thumbnail&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;some-url&#34;</span><span class="p"></span><span class="p">&gt;</span></code></pre></div>
 <blockquote>
 <p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
 <a href="https://buttondown.email/hugo">Subscribe</a> to get the latest posts right in your inbox (before anyone else).</p>
@@ -257,13 +244,13 @@
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
         
-          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
         
-          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -395,11 +382,11 @@
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

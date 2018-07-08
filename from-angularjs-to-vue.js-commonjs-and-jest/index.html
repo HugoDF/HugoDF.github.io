@@ -51,10 +51,9 @@
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -170,27 +169,24 @@ Includes using <code>script</code> are reduced to a few bundles of JavaScript (d
 giving you the ability to leverage tools such as Jest, AVA or Mocha (instead of Jasmine + Karma or even Protractor).</p>
 
 <p>This means the controllers look more like the following:</p>
-
-<pre><code class="language-js">const angular = require('angular');
-function homeController(
-  $location,
-  otherService
-) {
-  const ctrl = this;
-  // attach methods to ctrl
-  return ctrl;
-}
-angular.module('myApp')
-.controller('HomeController', [
-  '$location',
-  'otherService',
-  homeController
-]);
-module.exports = {
-  homeController
-};
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">angular</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;angular&#39;</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">homeController</span><span class="p">(</span>
+  <span class="nx">$location</span><span class="p">,</span>
+  <span class="nx">otherService</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">ctrl</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="c1">// attach methods to ctrl
+</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">ctrl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;HomeController&#39;</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s1">&#39;$location&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;otherService&#39;</span><span class="p">,</span>
+  <span class="nx">homeController</span>
+<span class="p">]);</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">homeController</span>
+<span class="p">};</span></code></pre></div>
 <p>The above snippet leverages CommonJS which is Node’s default module system, its hallmarks are the use of  <code>require()</code> and <code>module.exports =</code>.</p>
 
 <p>To bundle the application, Webpack allows us to take the AngularJS codebase that leverages CommonJS and output a few application bundles.
@@ -199,11 +195,8 @@ Templates can be <code>require</code>-ed using the right webpack loaders (<code>
 <h2 id="why-commonjs-instead-of-es-modules">Why CommonJS instead of ES modules?</h2>
 
 <p>ES modules are the module format defined in the ECMAScript spec. They look like the following:</p>
-
-<pre><code class="language-js">import angular from 'angular'
-export function homeController() {}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">angular</span> <span class="nx">from</span> <span class="s1">&#39;angular&#39;</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">homeController</span><span class="p">()</span> <span class="p">{}</span></code></pre></div>
 <p>The issue with ES modules are that they are static imports, ideally they shouldn’t have side-effects.
 Including something that does <code>angular.module('some-name')</code> seems pretty side-effectful, so CommonJS reflects this a bit more: <code>require('./this-script-that-adds-something-to-angular')</code>.</p>
 
@@ -241,19 +234,16 @@ createVueComponent =&gt; createVueComponent(MyVueComponent)
 </ul>
 
 <p>Full snippet that leverages webpack to load a single file component:</p>
-
-<pre><code class="language-js">const angular = require('angular');
-const { default: Vue } = require('vue');
-const { default: MyComponent } = require('./my-component.vue');
-const MyVueComponent = Vue.component('my-component', MyComponent)
-angular
-.module('myApp')
-.directive('myComponent', [
-  'createVueComponent' ,
-  createVueComponent =&gt; createVueComponent(MyVueComponent)
-]);
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">angular</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;angular&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="p">{</span> <span class="k">default</span><span class="o">:</span> <span class="nx">Vue</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;vue&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="p">{</span> <span class="k">default</span><span class="o">:</span> <span class="nx">MyComponent</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./my-component.vue&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">MyVueComponent</span> <span class="o">=</span> <span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">&#39;my-component&#39;</span><span class="p">,</span> <span class="nx">MyComponent</span><span class="p">)</span>
+<span class="nx">angular</span>
+<span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;myComponent&#39;</span><span class="p">,</span> <span class="p">[</span>
+  <span class="s1">&#39;createVueComponent&#39;</span> <span class="p">,</span>
+  <span class="nx">createVueComponent</span> <span class="p">=&gt;</span> <span class="nx">createVueComponent</span><span class="p">(</span><span class="nx">MyVueComponent</span><span class="p">)</span>
+<span class="p">]);</span></code></pre></div>
 <p>In order to load single file components like in the above example, <code>vue-loader</code> is required (see <a href="https://github.com/vuejs/vue-loader">https://github.com/vuejs/vue-loader</a>),
 depending on how webpack is set up in a project, it can also affect how you process CSS (since single file components contain CSS as well as JavaScript and templates).</p>
 
@@ -262,40 +252,34 @@ depending on how webpack is set up in a project, it can also affect how you proc
 <h2 id="mock-assets">Mock assets</h2>
 
 <p><code>.html</code>, <code>.scss</code>, <code>.svg</code> needs to be dummied in your Jest config:</p>
-
-<pre><code class="language-json">{
-    &quot;testRegex&quot;: &quot;.*spec.js$&quot;,
-    &quot;moduleFileExtensions&quot;: [
-      &quot;js&quot;,
-      &quot;vue&quot;
-    ],
-    &quot;moduleNameMapper&quot;: {
-      &quot;\\.(html)$&quot;: &quot;&lt;rootDir&gt;/src/mocks/template-mock.js&quot;
-    },
-    &quot;transform&quot;: {
-      &quot;.*\\.js$&quot;: &quot;&lt;rootDir&gt;/node_modules/babel-jest&quot;,
-      &quot;.*\\.(vue)$&quot;: &quot;&lt;rootDir&gt;/node_modules/vue-jest&quot;
-    },
-    &quot;collectCoverageFrom&quot;: [
-      &quot;src/**/*.{js,vue}&quot;
-    ]
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;testRegex&#34;</span><span class="p">:</span> <span class="s2">&#34;.*spec.js$&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;moduleFileExtensions&#34;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&#34;js&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;vue&#34;</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;moduleNameMapper&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;\\.(html)$&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;rootDir&gt;/src/mocks/template-mock.js&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;transform&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;.*\\.js$&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;rootDir&gt;/node_modules/babel-jest&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;.*\\.(vue)$&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;rootDir&gt;/node_modules/vue-jest&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;collectCoverageFrom&#34;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&#34;src/**/*.{js,vue}&#34;</span>
+    <span class="p">]</span>
+<span class="p">}</span></code></pre></div>
 <h2 id="commonjs-webpack-and-vue-jest-woes">CommonJS, Webpack and <code>vue-jest</code> woes</h2>
 
 <p>Webpack doesn’t care about CommonJS vs ESM,  for all intents and purposes, Webpack treats them as the same thing. Here’s the catch: the recommended Jest plugin for Vue (<code>vue-jest</code>) handles <code>require</code> vs <code>import</code> of <code>.vue</code> files differently to Webpack.
 This is some sample code in a Vue component that imports another Vue single file component in CommonJS:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">MyOtherComponent</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./my-other-component.vue&#39;</span><span class="p">).</span><span class="k">default</span><span class="p">;</span>
 
-<pre><code class="language-js">const MyOtherComponent = require('./my-other-component.vue').default;
-
-export.default = {
-  components: {
-    MyOtherComponent
-  }
-};
-</code></pre>
-
+<span class="k">export</span><span class="p">.</span><span class="k">default</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">MyOtherComponent</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></div>
 <p>The issue is the following:</p>
 
 <ul>
@@ -321,34 +305,31 @@ export.default = {
 <p>The following preprocessor takes <code>require('./relative-path').default</code> and converts it to <code>require('./relative-path')</code> (which is what Webpack seems to do under the hood).
 To use the following preprocessor, replace the <code>.vue</code>-matching line in <code>&quot;transform&quot;</code> of Jest config with <code>&quot;.*\\.(vue)$&quot;: &quot;&lt;rootDir&gt;/vue-preprocessor&quot;</code>.
 Here is the full code for the preprocessor, walkthrough of the code/approach follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// vue-preprocessor.js
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">vueJest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;vue-jest&#39;</span><span class="p">);</span>
 
-<pre><code class="language-js">// vue-preprocessor.js
-const vueJest = require('vue-jest');
+<span class="k">const</span> <span class="nx">requireNonVendorDefaultRegex</span> <span class="o">=</span> <span class="sr">/(require)\(&#39;\..*&#39;\).default/g</span><span class="p">;</span>
 
-const requireNonVendorDefaultRegex = /(require)\('\..*'\).default/g;
+<span class="k">const</span> <span class="nx">rewriteNonVendorRequireDefault</span> <span class="o">=</span> <span class="nx">code</span> <span class="p">=&gt;</span>
+  <span class="nx">code</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">requireNonVendorDefaultRegex</span><span class="p">,</span> <span class="nx">match</span> <span class="p">=&gt;</span>
+    <span class="nx">match</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;.default&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+  <span class="p">);</span>
 
-const rewriteNonVendorRequireDefault = code =&gt;
-  code.replace(requireNonVendorDefaultRegex, match =&gt;
-    match.replace('.default', '')
-  );
-
-module.exports = {
-  process (src, filename, config, transformOptions) {
-    const { code: rawCode, map } = vueJest.process(
-      src,
-      filename,
-      config,
-      transformOptions
-    );
-    const code = rewriteNonVendorRequireDefault(rawCode);
-    return {
-      code,
-      map
-    };
-  }
-};
-</code></pre>
-
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">process</span> <span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">transformOptions</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">{</span> <span class="nx">code</span><span class="o">:</span> <span class="nx">rawCode</span><span class="p">,</span> <span class="nx">map</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">vueJest</span><span class="p">.</span><span class="nx">process</span><span class="p">(</span>
+      <span class="nx">src</span><span class="p">,</span>
+      <span class="nx">filename</span><span class="p">,</span>
+      <span class="nx">config</span><span class="p">,</span>
+      <span class="nx">transformOptions</span>
+    <span class="p">);</span>
+    <span class="k">const</span> <span class="nx">code</span> <span class="o">=</span> <span class="nx">rewriteNonVendorRequireDefault</span><span class="p">(</span><span class="nx">rawCode</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">code</span><span class="p">,</span>
+      <span class="nx">map</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></div>
 <p>At a high level, we process the code through <code>vue-jest</code> and then rewrite <code>require('./relative-path').default</code> to <code>require('./relative-path')</code>.
 This is done with the following:</p>
 
@@ -431,13 +412,13 @@ AngularJS was and still is great. What’s also great that we can migrate off it
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         
-          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
+          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -570,11 +551,11 @@ Say you have two files edited in a commit (A and B) and you would like to get th
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

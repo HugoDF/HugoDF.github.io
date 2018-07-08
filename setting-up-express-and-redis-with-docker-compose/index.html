@@ -51,10 +51,9 @@ The repo is available at: https://github.com/HugoDF/express-redis" />
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -155,80 +154,53 @@ The repo is available at: https://github.com/HugoDF/express-redis" />
 <h1 id="initialising-express">Initialising Express 🚅</h1>
 
 <p>To start off, we should create a new directory/initialise npm:</p>
-
-<pre><code class="language-sh">mkdir express-redis
-cd express-redis
-npm init -y
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">mkdir express-redis
+<span class="nb">cd</span> express-redis
+npm init -y</code></pre></div>
 <p>We can then install Express:</p>
-
-<pre><code class="language-sh">npm i --save express
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">npm i --save express</code></pre></div>
 <p>And create a <code>server.js</code> file that looks like the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// server.js
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 
-<pre><code class="language-js">// server.js
-const express = require('express');
-const app = express();
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">);</span>
+<span class="p">});</span>
 
-app.get('/', (req, res) =&gt; {
-    return res.send('Hello world');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =&gt; {
-    console.log(`Server listening on port ${PORT}`);
-});
-</code></pre>
-
+<span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
 <p>That can be run using:</p>
-
-<pre><code class="language-sh">node server.js
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">node server.js</code></pre></div>
 <p>We can check that it’s working as expected</p>
-
-<pre><code class="language-sh">curl http://localhost:3000/
-Hello world
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">curl http://localhost:3000/
+Hello world</code></pre></div>
 <h1 id="running-node-inside-of-docker">Running Node inside of Docker 🌊</h1>
 
 <p>To begin you’ll want to install <a href="https://www.docker.com/community-edition">Docker Community Edition</a> (<a href="https://www.docker.com/community-edition">https://www.docker.com/community-edition</a>).
 Then we can add a <code>Dockerfile</code> and a <code>docker-compose.yml</code>:</p>
-
-<pre><code class="language-dockerfile"># Dockerfile
-FROM node:9-alpine
-# Or whatever Node version/image you want
-WORKDIR '/var/www/app'
-</code></pre>
-
-<pre><code class="language-yml"># docker-compose.yml
-app:
-    build: ./
-    volumes:
-    - ./:/var/www/app
-    ports:
-    - 3000:3000
-    environment:
-    - NODE_ENV=development
-    - PORT=3000
-    command:
-    sh -c 'npm i &amp;&amp; node server.js'
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="c"># Dockerfile</span><span class="err">
+</span><span class="err"></span><span class="k">FROM</span><span class="s"> node:9-alpine</span><span class="err">
+</span><span class="err"></span><span class="c"># Or whatever Node version/image you want</span><span class="err">
+</span><span class="err"></span><span class="k">WORKDIR</span><span class="s"> &#39;/var/www/app&#39;</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="c"># docker-compose.yml</span><span class="w">
+</span><span class="w"></span>app<span class="p">:</span><span class="w">
+</span><span class="w">    </span>build<span class="p">:</span><span class="w"> </span>./<span class="w">
+</span><span class="w">    </span>volumes<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>./<span class="p">:</span>/var/www/app<span class="w">
+</span><span class="w">    </span>ports<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span><span class="m">3000</span><span class="p">:</span><span class="m">3000</span><span class="w">
+</span><span class="w">    </span>environment<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>NODE_ENV=development<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>PORT=<span class="m">3000</span><span class="w">
+</span><span class="w">    </span>command<span class="p">:</span><span class="w">
+</span><span class="w">    </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;npm i &amp;&amp; node server.js&#39;</span></code></pre></div>
 <p>Now run the app inside of Docker/Docker Compose:</p>
-
-<pre><code class="language-sh">docker-compose up
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">docker-compose up</code></pre></div>
 <p>And check that it still works</p>
-
-<pre><code class="language-sh">curl http://localhost:3000/
-Hello world
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">curl http://localhost:3000/
+Hello world</code></pre></div>
 <p>Some extra context:</p>
 
 <ul>
@@ -247,74 +219,59 @@ Hello world
 <h1 id="adding-redis">Adding Redis</h1>
 
 <p>To add Redis to our Express app we should use the <code>redis</code> package:</p>
-
-<pre><code class="language-sh">npm install --save redis
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">npm install --save redis</code></pre></div>
 <p>Then we should probably wrap all the callback-based methods we want to use (see the api docs for the redis package, <a href="https://github.com/NodeRedis/node_redis#api">https://github.com/NodeRedis/node_redis#api</a>).
 Let’s do this using a <code>redis-client.js</code> module:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// redis-client.js
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;redis&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="p">{</span><span class="nx">promisify</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span><span class="p">);</span>
 
-<pre><code class="language-js">// redis-client.js
-const redis = require('redis');
-const {promisify} = require('util');
-const client = redis.createClient(process.env.REDIS_URL);
-
-module.exports = {
-  ...client,
-  getAsync: promisify(client.get).bind(client),
-  setAsync: promisify(client.set).bind(client),
-  keysAsync: promisify(client.keys).bind(client)
-};
-</code></pre>
-
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">...</span><span class="nx">client</span><span class="p">,</span>
+  <span class="nx">getAsync</span><span class="o">:</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">get</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">client</span><span class="p">),</span>
+  <span class="nx">setAsync</span><span class="o">:</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">set</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">client</span><span class="p">),</span>
+  <span class="nx">keysAsync</span><span class="o">:</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">keys</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span>
+<span class="p">};</span></code></pre></div>
 <p>To running Redis inside of Docker Compose in such a way that our app can access it:</p>
-
-<pre><code class="language-yml"># docker-compose.yml
-# Add this top-level entry
-redis:
-    image: redis
-    container_name: cache
-    expose:
-    - 6379
-    
-app:
-    # some definitions
-    links:
-    - redis
-    environment:
-    - REDIS_URL=redis://cache
-    # rest of the environment definitions
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="c"># docker-compose.yml</span><span class="w">
+</span><span class="w"></span><span class="c"># Add this top-level entry</span><span class="w">
+</span><span class="w"></span>redis<span class="p">:</span><span class="w">
+</span><span class="w">    </span>image<span class="p">:</span><span class="w"> </span>redis<span class="w">
+</span><span class="w">    </span>container_name<span class="p">:</span><span class="w"> </span>cache<span class="w">
+</span><span class="w">    </span>expose<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span><span class="m">6379</span><span class="w">
+</span><span class="w">    
+</span><span class="w"></span>app<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># some definitions</span><span class="w">
+</span><span class="w">    </span>links<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>redis<span class="w">
+</span><span class="w">    </span>environment<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>REDIS_URL=redis<span class="p">:</span>//cache<span class="w">
+</span><span class="w">    </span><span class="c"># rest of the environment definitions</span></code></pre></div>
 <p>We can now access the Redis client from the app container:</p>
-
-<pre><code class="language-sh">docker-compose run app node
-&gt; require('./redis-client') // doesn't crash
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">docker-compose run app node
+&gt; require<span class="o">(</span><span class="s1">&#39;./redis-client&#39;</span><span class="o">)</span> // doesn<span class="err">&#39;</span>t crash</code></pre></div>
 <h1 id="creating-a-blob-store">Creating a blob store 📒</h1>
 
 <p>We can now create a HTTP API that will allow us to store data using query params and retrieve them using a get request (this isn’t RESTful at all but oh well 🙂 ).</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// server.js
+</span><span class="c1">// imports and app definition
+</span><span class="c1"></span>
+<span class="k">const</span> <span class="nx">redisClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./redis-client&#39;</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/store/:key&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">{</span> <span class="nx">key</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+    <span class="k">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">;</span>
+    <span class="kr">await</span> <span class="nx">redisClient</span><span class="p">.</span><span class="nx">setAsync</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Success&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:key&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">{</span> <span class="nx">key</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+    <span class="k">const</span> <span class="nx">rawData</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">redisClient</span><span class="p">.</span><span class="nx">getAsync</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">rawData</span><span class="p">));</span>
+<span class="p">});</span>
 
-<pre><code class="language-js">// server.js
-// imports and app definition
-
-const redisClient = require('./redis-client');
-app.get('/store/:key', async (req, res) =&gt; {
-    const { key } = req.params;
-    const value = req.query;
-    await redisClient.setAsync(key, JSON.stringify(value));
-    return res.send('Success');
-});
-app.get('/:key', async (req, res) =&gt; {
-    const { key } = req.params;
-    const rawData = await redisClient.getAsync(key);
-    return res.json(JSON.parse(rawData));
-});
-
-// code that starts the app...
-</code></pre>
-
+<span class="err">// code that starts the app...</span></code></pre></div>
 <p>If you have any questions about the above code let me know <a href="https://twitter.com/hugo__df">@hugo__df</a>. It is using a couple of more advanced features like async/await and destructuring as well as Express features to get query and path parameters (see <a href="https://expressjs.com/en/api.html#req.query">https://expressjs.com/en/api.html#req.query</a>, <a href="https://expressjs.com/en/api.html#req.params">https://expressjs.com/en/api.html#req.params</a>).</p>
 
 <p>Get the app running again: <code>docker-compose up</code></p>
@@ -399,13 +356,13 @@ The reason I used an old school query-param based system is to avoid the boilerp
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
+          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         
-          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
         
-          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
+          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -537,11 +494,11 @@ Command line apps are a neat way to package repetitive tasks. This will walk you
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

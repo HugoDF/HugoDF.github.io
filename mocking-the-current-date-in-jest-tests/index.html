@@ -48,10 +48,9 @@
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -131,21 +130,18 @@
         <p>There are situations where <code>Date.now</code> is used in application code. That code needs to be tested, and it’s always a struggle to remember how to mock <code>Date.now</code>. Here is the magic snippet:</p>
 
 <p></p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">literallyJustDateNow</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
 
-<pre><code class="language-js">const literallyJustDateNow = () =&gt; Date.now();
+<span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It should call and return Date.now()&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">realDateNow</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">global</span><span class="p">.</span><span class="nb">Date</span><span class="p">);</span>
+  <span class="k">const</span> <span class="nx">dateNowStub</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="mi">1530518207007</span><span class="p">);</span>
+  <span class="nx">global</span><span class="p">.</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span> <span class="o">=</span> <span class="nx">dateNowStub</span><span class="p">;</span>
 
-test('It should call and return Date.now()', () =&gt; {
-  const realDateNow = Date.now.bind(global.Date);
-  const dateNowStub = jest.fn(() =&gt; 1530518207007);
-  global.Date.now = dateNowStub;
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">literallyJustDateNow</span><span class="p">()).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">1530518207007</span><span class="p">);</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">dateNowStub</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
 
-  expect(literallyJustDateNow()).toBe(1530518207007);
-  expect(dateNowStub).toHaveBeenCalled();
-
-  global.Date.now = realDateNow;
-});
-</code></pre>
-
+  <span class="nx">global</span><span class="p">.</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span> <span class="o">=</span> <span class="nx">realDateNow</span><span class="p">;</span>
+<span class="p">});</span></code></pre></div>
 <blockquote>
 <p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
 <a href="https://buttondown.email/hugo">Subscribe</a> to get the latest posts right in your inbox (before anyone else).</p>
@@ -210,13 +206,13 @@ We’re also being good unit-testing citizens and putting the original <code>glo
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
         
-          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
-        
-          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         
           <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
+        
+          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -350,11 +346,11 @@ CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

@@ -51,10 +51,9 @@ E" />
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -165,54 +164,42 @@ a couple of situations you may be faced with when attempting to test.</p>
 <p>Say we have an Express set of route handlers like the following:</p>
 
 <p><code>hugo.js</code>:</p>
-
-<pre><code class="language-js">const {Router} = require('express');
-const axios = require('axios');
-module.exports = (router = new Router()) =&gt; {
-  router.get('/hugo', async (req, res) =&gt; {
-    const { data: userData } = await axios.get(
-      'https://api.github.com/users/HugoDF'
-    );
-    const {
-      blog,
-      location,
-      bio,
-      public_repos,
-    } = userData
-    return res.json({
-      blog,
-      location,
-      bio,
-      publicRepos: public_repos,
-    });
-  });
-  return router;
-};
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="p">{</span><span class="nx">Router</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;axios&#39;</span><span class="p">);</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">())</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/hugo&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">userData</span> <span class="p">}</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span>
+      <span class="s1">&#39;https://api.github.com/users/HugoDF&#39;</span>
+    <span class="p">);</span>
+    <span class="k">const</span> <span class="p">{</span>
+      <span class="nx">blog</span><span class="p">,</span>
+      <span class="nx">location</span><span class="p">,</span>
+      <span class="nx">bio</span><span class="p">,</span>
+      <span class="nx">public_repos</span><span class="p">,</span>
+    <span class="p">}</span> <span class="o">=</span> <span class="nx">userData</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+      <span class="nx">blog</span><span class="p">,</span>
+      <span class="nx">location</span><span class="p">,</span>
+      <span class="nx">bio</span><span class="p">,</span>
+      <span class="nx">publicRepos</span><span class="o">:</span> <span class="nx">public_repos</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">router</span><span class="p">;</span>
+<span class="p">};</span></code></pre></div>
 <p>This would be consumed in a main <code>server.js</code> like so:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="k">const</span> <span class="nx">hugo</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./hugo&#39;</span><span class="p">);</span>
 
-<pre><code class="language-js">const express = require('express');
-const app = express();
-const hugo = require('./hugo');
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">hugo</span><span class="p">());</span>
 
-app.use(hugo());
-
-app.listen(3000, () =&gt; {
-  console.log(`Server listening on port 3000`);
-});
-</code></pre>
-
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port 3000`</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
 <p>For this to run, the following dependencies are required:</p>
-
-<pre><code class="language-js">npm i --save express axios
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">npm</span> <span class="nx">i</span> <span class="o">--</span><span class="nx">save</span> <span class="nx">express</span> <span class="nx">axios</span></code></pre></div>
 <p>And it can be run using:</p>
-
-<pre><code class="language-js">node server.js
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">node</span> <span class="nx">server</span><span class="p">.</span><span class="nx">js</span></code></pre></div>
 <p>Hitting <code>/hugo</code> will return some JSON data pulled from my GitHub profile:</p>
 
 <pre><code>curl http://localhost:3000/hugo
@@ -227,61 +214,58 @@ app.listen(3000, () =&gt; {
 when we hit <code>/hugo</code> we get the right response, using <code>jest</code> here&rsquo;s what a test suite might look like:</p>
 
 <p><code>hugo.test.js</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">hugo</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./hugo&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">moxios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;moxios&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;supertest&#39;</span><span class="p">);</span>
 
-<pre><code class="language-js">const hugo = require('./hugo');
-const express = require('express');
-const moxios = require('moxios');
-const request = require('supertest');
+<span class="k">const</span> <span class="nx">initHugo</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">hugo</span><span class="p">());</span>
+  <span class="k">return</span> <span class="nx">app</span><span class="p">;</span>
+<span class="p">}</span>
 
-const initHugo = () =&gt; {
-  const app = express();
-  app.use(hugo());
-  return app;
-}
-
-describe('GET /hugo', () =&gt; {
-  beforeEach(() =&gt; {
-    moxios.install();
-  });
-  afterEach(() =&gt; {
-    moxios.uninstall();
-  });
-  test('It should fetch HugoDF from GitHub', async () =&gt; {
-    moxios.stubRequest(/api.github.com\/users/, {
-      status: 200,
-      response: {
-        blog: 'https://codewithhugo.com',
-        location: 'London',
-        bio: 'Developer, JavaScript',
-        public_repos: 39,
-      }
-    });
-    const app = initHugo();
-    await request(app).get('/hugo');
-    expect(moxios.requests.mostRecent().url).toBe('https://api.github.com/users/HugoDF');
-  });
-  test('It should 200 and return a transformed version of GitHub response', async () =&gt; {
-    moxios.stubRequest(/api.github.com\/users/, {
-      status: 200,
-      response: {
-        blog: 'https://codewithhugo.com',
-        location: 'London',
-        bio: 'Developer, JavaScript',
-        public_repos: 39,
-      }
-    });
-    const app = initHugo();
-    const res = await request(app).get('/hugo');
-    expect(res.body).toEqual({
-      blog: 'https://codewithhugo.com',
-        location: 'London',
-        bio: 'Developer, JavaScript',
-        publicRepos: 39,
-    });
-  });
-});
-</code></pre>
-
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;GET /hugo&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">beforeEach</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">moxios</span><span class="p">.</span><span class="nx">install</span><span class="p">();</span>
+  <span class="p">});</span>
+  <span class="nx">afterEach</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">moxios</span><span class="p">.</span><span class="nx">uninstall</span><span class="p">();</span>
+  <span class="p">});</span>
+  <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It should fetch HugoDF from GitHub&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">moxios</span><span class="p">.</span><span class="nx">stubRequest</span><span class="p">(</span><span class="sr">/api.github.com\/users/</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">status</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+      <span class="nx">response</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">blog</span><span class="o">:</span> <span class="s1">&#39;https://codewithhugo.com&#39;</span><span class="p">,</span>
+        <span class="nx">location</span><span class="o">:</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span>
+        <span class="nx">bio</span><span class="o">:</span> <span class="s1">&#39;Developer, JavaScript&#39;</span><span class="p">,</span>
+        <span class="nx">public_repos</span><span class="o">:</span> <span class="mi">39</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">initHugo</span><span class="p">();</span>
+    <span class="kr">await</span> <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/hugo&#39;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">moxios</span><span class="p">.</span><span class="nx">requests</span><span class="p">.</span><span class="nx">mostRecent</span><span class="p">().</span><span class="nx">url</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/users/HugoDF&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It should 200 and return a transformed version of GitHub response&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">moxios</span><span class="p">.</span><span class="nx">stubRequest</span><span class="p">(</span><span class="sr">/api.github.com\/users/</span><span class="p">,</span> <span class="p">{</span>
+      <span class="nx">status</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+      <span class="nx">response</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">blog</span><span class="o">:</span> <span class="s1">&#39;https://codewithhugo.com&#39;</span><span class="p">,</span>
+        <span class="nx">location</span><span class="o">:</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span>
+        <span class="nx">bio</span><span class="o">:</span> <span class="s1">&#39;Developer, JavaScript&#39;</span><span class="p">,</span>
+        <span class="nx">public_repos</span><span class="o">:</span> <span class="mi">39</span><span class="p">,</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">initHugo</span><span class="p">();</span>
+    <span class="k">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/hugo&#39;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">({</span>
+      <span class="nx">blog</span><span class="o">:</span> <span class="s1">&#39;https://codewithhugo.com&#39;</span><span class="p">,</span>
+        <span class="nx">location</span><span class="o">:</span> <span class="s1">&#39;London&#39;</span><span class="p">,</span>
+        <span class="nx">bio</span><span class="o">:</span> <span class="s1">&#39;Developer, JavaScript&#39;</span><span class="p">,</span>
+        <span class="nx">publicRepos</span><span class="o">:</span> <span class="mi">39</span><span class="p">,</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
 <p>To run the above, first of all, add the required dependencies:</p>
 
 <pre><code>npm install --save-dev jest moxios supertest
@@ -315,52 +299,46 @@ Status will be the status in the <code>axios</code> fetch response and <code>res
 <p>Let&rsquo;s say we have an app that&rsquo;s a blob store, backed by Redis (a simple key-value store amongst other things):</p>
 
 <p><code>blob-store.js</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="p">{</span><span class="nx">Router</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;router&#39;</span><span class="p">);</span>
 
-<pre><code class="language-js">const {Router} = require('router');
-
-module.exports = (redisClient, router = new Router()) =&gt; {
-  router.get('/store/:key', async (req, res) =&gt; {
-    const { key } = req.params;
-    const value = req.query;
-    await redisClient.setAsync(key, JSON.stringify(value));
-    return res.send('Success');
-  });
-  router.get('/:key', async (req, res) =&gt; {
-    const { key } = req.params;
-    const rawData = await redisClient.getAsync(key);
-    return res.json(JSON.parse(rawData));
-  });
-  return router;
-};
-</code></pre>
-
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">redisClient</span><span class="p">,</span> <span class="nx">router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">())</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/store/:key&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">{</span> <span class="nx">key</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+    <span class="k">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">;</span>
+    <span class="kr">await</span> <span class="nx">redisClient</span><span class="p">.</span><span class="nx">setAsync</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;Success&#39;</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:key&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">{</span> <span class="nx">key</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span>
+    <span class="k">const</span> <span class="nx">rawData</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">redisClient</span><span class="p">.</span><span class="nx">getAsync</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">rawData</span><span class="p">));</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">router</span><span class="p">;</span>
+<span class="p">};</span></code></pre></div>
 <p><code>server.js</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 
-<pre><code class="language-js">const express = require('express');
-const app = express();
+<span class="c1">// For the sake of simplicity, 
+</span><span class="c1">// redisClient isn&#39;t in another module
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">redis</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;redis&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="p">{</span><span class="nx">promisify</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span><span class="p">);</span>
 
-// For the sake of simplicity, 
-// redisClient isn't in another module
-const redis = require('redis');
-const {promisify} = require('util');
-const client = redis.createClient(process.env.REDIS_URL);
+<span class="k">const</span> <span class="nx">redisClient</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">getAsync</span><span class="o">:</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">get</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">client</span><span class="p">),</span>
+  <span class="nx">setAsync</span><span class="o">:</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">set</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span>
+<span class="p">};</span>
 
-const redisClient = {
-  getAsync: promisify(client.get).bind(client),
-  setAsync: promisify(client.set).bind(client)
-};
+<span class="k">const</span> <span class="nx">hugo</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./hugo&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">blobStore</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./blob-store&#39;</span><span class="p">);</span>
 
-const hugo = require('./hugo');
-const blobStore = require('./blob-store');
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">hugo</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">blobStore</span><span class="p">(</span><span class="nx">redisClient</span><span class="p">));</span>
 
-app.use(hugo());
-app.use(blobStore(redisClient));
-
-app.listen(3000, () =&gt; {
-  console.log(`Server listening on port 3000`);
-});
-</code></pre>
-
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port 3000`</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
 <p>For a walkthrough of the example of the above, see <a href="/setting-up-express-and-redis-with-docker-compose#creating-a-blob-store">Setting up Express and Redis with Docker compose</a>.</p>
 
 <p>To get it up and running:</p>
@@ -407,59 +385,56 @@ The alternative is to mock Redis, specifically, <code>redisClient</code>.</p>
 <h2 id="where-redis-gets-mocked">Where Redis gets mocked 🤡</h2>
 
 <p><code>blob-store.test.js</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">blobStore</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./blob-store&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">moxios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;moxios&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;supertest&#39;</span><span class="p">);</span>
 
-<pre><code class="language-js">const blobStore = require('./blob-store');
-const express = require('express');
-const moxios = require('moxios');
-const request = require('supertest');
+<span class="k">const</span> <span class="nx">initBlobStore</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="nx">mockRedisClient</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">getAsync</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()),</span>
+    <span class="nx">setAsync</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">())</span>
+  <span class="p">}</span>
+<span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">blobStore</span><span class="p">(</span><span class="nx">mockRedisClient</span><span class="p">));</span>
+  <span class="k">return</span> <span class="nx">app</span><span class="p">;</span>
+<span class="p">}</span>
 
-const initBlobStore = (
-  mockRedisClient = {
-    getAsync: jest.fn(() =&gt; Promise.resolve()),
-    setAsync: jest.fn(() =&gt; Promise.resolve())
-  }
-) =&gt; {
-  const app = express();
-  app.use(blobStore(mockRedisClient));
-  return app;
-}
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;GET /store/:key with params&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It should call redisClient.setAsync with key route parameter as key and stringified params as value&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">mockRedisClient</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">setAsync</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">())</span>
+    <span class="p">};</span>
+    <span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">initBlobStore</span><span class="p">(</span><span class="nx">mockRedisClient</span><span class="p">);</span>
+    <span class="kr">await</span> <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/store/my-key?hello=world&amp;foo=bar&#39;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">mockRedisClient</span><span class="p">.</span><span class="nx">setAsync</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span>
+      <span class="s1">&#39;my-key&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;{\&#34;hello\&#34;:\&#34;world\&#34;,\&#34;foo\&#34;:\&#34;bar\&#34;}&#39;</span>
+    <span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
 
-describe('GET /store/:key with params', () =&gt; {
-  test('It should call redisClient.setAsync with key route parameter as key and stringified params as value', async () =&gt; {
-    const mockRedisClient = {
-      setAsync: jest.fn(() =&gt; Promise.resolve())
-    };
-    const app = initBlobStore(mockRedisClient);
-    await request(app).get('/store/my-key?hello=world&amp;foo=bar');
-    expect(mockRedisClient.setAsync).toHaveBeenCalledWith(
-      'my-key',
-      '{\&quot;hello\&quot;:\&quot;world\&quot;,\&quot;foo\&quot;:\&quot;bar\&quot;}'
-    );
-  });
-});
-
-describe('GET /:key', () =&gt; {
-  test('It should call redisClient.getAsync with key route parameter as key', async () =&gt; {
-    const mockRedisClient = {
-      getAsync: jest.fn(() =&gt; Promise.resolve('{}'))
-    };
-    const app = initBlobStore(mockRedisClient);
-    await request(app).get('/my-key');
-    expect(mockRedisClient.setAsync).toHaveBeenCalledWith(
-      'my-key',
-    );
-  });
-  test('It should return output of redisClient.getAsync with key route parameter as key', async () =&gt; {
-    const mockRedisClient = {
-      getAsync: jest.fn(() =&gt; Promise.resolve('{}'))
-    };
-    const app = initBlobStore(mockRedisClient);
-    const response = await request(app).get('/my-key');
-    expect(response.body).toEqual({});
-  });
-});
-</code></pre>
-
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;GET /:key&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It should call redisClient.getAsync with key route parameter as key&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">mockRedisClient</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">getAsync</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;{}&#39;</span><span class="p">))</span>
+    <span class="p">};</span>
+    <span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">initBlobStore</span><span class="p">(</span><span class="nx">mockRedisClient</span><span class="p">);</span>
+    <span class="kr">await</span> <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/my-key&#39;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">mockRedisClient</span><span class="p">.</span><span class="nx">setAsync</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span>
+      <span class="s1">&#39;my-key&#39;</span><span class="p">,</span>
+    <span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It should return output of redisClient.getAsync with key route parameter as key&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">mockRedisClient</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">getAsync</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;{}&#39;</span><span class="p">))</span>
+    <span class="p">};</span>
+    <span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">initBlobStore</span><span class="p">(</span><span class="nx">mockRedisClient</span><span class="p">);</span>
+    <span class="k">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/my-key&#39;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">({});</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
 <p>In short we set up our tests so we can pass an arbitrary <code>redisClient</code> object where we can mock the methods themselves.</p>
 
 <h1 id="parting-thoughts">Parting thoughts 🦋</h1>
@@ -531,13 +506,15 @@ state somehow (ie writes to an object internally), and to inject/inspect that st
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">From AngularJS to Vue.js, CommonJS and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         
-          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
         
-          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
         
-          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
+                      
+        
+          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -669,11 +646,11 @@ Command line apps are a neat way to package repetitive tasks. This will walk you
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

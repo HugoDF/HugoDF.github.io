@@ -47,10 +47,9 @@
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -134,37 +133,34 @@
 <p>We’ll be setting up a project that allows us to write ES6, and distribute it in ES5 (with Babel) and to test it with Mocha, all through npm scripts. We’ll also discuss some workflows that we can use to speed up our development.</p>
 
 <p><strong>TL;DR</strong> Use this package.json, create a src folder, add an index.js and some .js and .test.js files inside it and off you go. You can also check out <a href="https://github.com/HugoDF/recursive-js">https://github.com/HugoDF/recursive-js</a>, it’s a decent example project. :)</p>
-
-<pre><code class="language-json">{
-  &quot;name&quot;: &quot;library-js&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;Starter for library development with ES6, Babel, Mocha and npm scripts&quot;,
-  &quot;main&quot;: &quot;./dist/index.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;npm run dev&quot;,
-    &quot;dev&quot;: &quot;npm test -- -w&quot;,
-    &quot;init&quot;: &quot;mkdir dist&quot;,
-    &quot;clean&quot;: &quot;rm -rf dist&quot;,
-    &quot;prebuild&quot;: &quot;npm run clean &amp;&amp; npm run init&quot;,
-    &quot;build&quot;: &quot;babel ./src -d ./dist --ignore test.js&quot;,
-    &quot;pretest&quot;: &quot;npm run build&quot;,
-    &quot;test&quot;: &quot;mocha --compilers js:babel-core/register ./src/**/*.test.js&quot;,
-    &quot;test:single&quot;: &quot;mocha --compilers js:babel-core/register&quot;
-  },
-  &quot;author&quot;: &quot;Hugo Di Francesco&quot;,
-  &quot;devDependencies&quot;: {
-    &quot;babel-cli&quot;: &quot;^6.16.0&quot;,
-    &quot;babel-core&quot;: &quot;^6.17.0&quot;,
-    &quot;babel-preset-es2015&quot;: &quot;^6.16.0&quot;,
-    &quot;chai&quot;: &quot;^3.5.0&quot;,
-    &quot;mocha&quot;: &quot;^3.1.2&quot;
-  },
-  &quot;files&quot;: [
-    &quot;dist&quot;
-  ]
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;library-js&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Starter for library development with ES6, Babel, Mocha and npm scripts&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;./dist/index.js&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run dev&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;dev&#34;</span><span class="p">:</span> <span class="s2">&#34;npm test -- -w&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;init&#34;</span><span class="p">:</span> <span class="s2">&#34;mkdir dist&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;clean&#34;</span><span class="p">:</span> <span class="s2">&#34;rm -rf dist&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;prebuild&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run clean &amp;&amp; npm run init&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;babel ./src -d ./dist --ignore test.js&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;pretest&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run build&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;mocha --compilers js:babel-core/register ./src/**/*.test.js&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;test:single&#34;</span><span class="p">:</span> <span class="s2">&#34;mocha --compilers js:babel-core/register&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Hugo Di Francesco&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;devDependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;babel-cli&#34;</span><span class="p">:</span> <span class="s2">&#34;^6.16.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;babel-core&#34;</span><span class="p">:</span> <span class="s2">&#34;^6.17.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;babel-preset-es2015&#34;</span><span class="p">:</span> <span class="s2">&#34;^6.16.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;chai&#34;</span><span class="p">:</span> <span class="s2">&#34;^3.5.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;mocha&#34;</span><span class="p">:</span> <span class="s2">&#34;^3.1.2&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;files&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&#34;dist&#34;</span>
+  <span class="p">]</span>
+<span class="p">}</span></code></pre></div>
 <h2 id="why-npm-scripts">Why npm scripts?</h2>
 
 <p>npm scripts live in your package.json. This means you don’t have to create a new configuration file just to run your tasks.</p>
@@ -229,29 +225,20 @@ filter.js index.js map.js reduce.js
 </code></pre>
 
 <p>Let’s now put some ES6 code in our files (for more details on how these functions were implemented see <a href="https://hackernoon.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa">Recursive JavaScript with ES6, destructuring and rest/spread</a>).</p>
-
-<pre><code class="language-js">function map([ head, ...tail ], fn) {
-  if (head === undefined &amp;&amp; !tail.length) return [];
-  return tail.length ? [ fn(head), ...(map(tail, fn)) ] : [ fn(head) ];
-}
-</code></pre>
-
-<pre><code class="language-js">function reduce([ head, ...tail ], fn, initial) {
-  if(head === undefined &amp;&amp; tail.length === 0) return initial;
-  if(!initial) {
-    const [ newHead, ...newTail] = tail;
-    return reduce(newTail, fn, fn(head, newHead));
-  }
-  return tail.length ? reduce(tail, fn, fn(initial, head)) : [ fn(initial, head) ];
-}
-</code></pre>
-
-<pre><code class="language-js">function filter([ head, ...tail ], fn) {
-  const newHead = fn(head) ? [ head ] : [];
-  return tail.length ? [ ...newHead, ...(filter(tail, fn)) ] : newHead;
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">map</span><span class="p">([</span> <span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span> <span class="p">],</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">head</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">tail</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="p">[];</span>
+  <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">),</span> <span class="p">...(</span><span class="nx">map</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">))</span> <span class="p">]</span> <span class="o">:</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)</span> <span class="p">];</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">reduce</span><span class="p">([</span> <span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span> <span class="p">],</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">initial</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">head</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">initial</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">initial</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">[</span> <span class="nx">newHead</span><span class="p">,</span> <span class="p">...</span><span class="nx">newTail</span><span class="p">]</span> <span class="o">=</span> <span class="nx">tail</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">newTail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">,</span> <span class="nx">newHead</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">initial</span><span class="p">,</span> <span class="nx">head</span><span class="p">))</span> <span class="o">:</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">initial</span><span class="p">,</span> <span class="nx">head</span><span class="p">)</span> <span class="p">];</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">filter</span><span class="p">([</span> <span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span> <span class="p">],</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">newHead</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)</span> <span class="o">?</span> <span class="p">[</span> <span class="nx">head</span> <span class="p">]</span> <span class="o">:</span> <span class="p">[];</span>
+  <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="p">[</span> <span class="p">...</span><span class="nx">newHead</span><span class="p">,</span> <span class="p">...(</span><span class="nx">filter</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">))</span> <span class="p">]</span> <span class="o">:</span> <span class="nx">newHead</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
 <p>Right now none of these functions can be loaded into another file, we’ll use ES6 default export to expose the functions so:</p>
 
 <pre><code>// map.js
@@ -774,13 +761,13 @@ map
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
+          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
         
-          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -846,7 +833,7 @@ JavaScript is a very in-demand language today. It runs in a lot of places from t
               
                 <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
 Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
-var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
+var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2 There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
               
           </section>
       </a>
@@ -913,11 +900,11 @@ var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

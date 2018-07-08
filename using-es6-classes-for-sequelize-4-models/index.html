@@ -48,10 +48,9 @@
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -145,28 +144,19 @@ It allows the application to run backed by a MySQL or PostgreSQL instance and
 provides an easy way to map from entities&rsquo; representation in the database to JavaScript and vice versa.</p>
 
 <p>Sequelize’s API for model definitions looks like the following (from the docs <a href="http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):">http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):</a></p>
-
-<pre><code class="language-js">const MyModel = sequelize.define(&quot;MyModel&quot;, {
-  // fields and methods
-});
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">MyModel</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&#34;MyModel&#34;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="c1">// fields and methods
+</span><span class="c1"></span><span class="p">});</span></code></pre></div>
 <p>To add class and instance methods you would write the following:</p>
-
-<pre><code class="language-js">// Class Method
-MyModel.associate = function (models) {};
-// Instance Method
-MyModel.prototype.someMethod = function () {..}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// Class Method
+</span><span class="c1"></span><span class="nx">MyModel</span><span class="p">.</span><span class="nx">associate</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">models</span><span class="p">)</span> <span class="p">{};</span>
+<span class="c1">// Instance Method
+</span><span class="c1"></span><span class="nx">MyModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">someMethod</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{..}</span></code></pre></div>
 <p>This is necessary pre-ES6 since there was no concept of classical inheritance. Since we have class now, why not leverage them? For developers who are used to having classes, the following would likely look familiar:</p>
-
-<pre><code class="language-js">class MyModel extends Sequelize.Model {
-  static associate(models) {}
-  someMethod() {}
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
+  <span class="kr">static</span> <span class="nx">associate</span><span class="p">(</span><span class="nx">models</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="nx">someMethod</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span></code></pre></div>
 <p>Sequelize actually supports this, but the documentation is a bit lacking. One of the only place to find a reference to how to do this is in a GitHub issue: <a href="https://github.com/sequelize/sequelize/issues/6524">https://github.com/sequelize/sequelize/issues/6524</a>.</p>
 
 <p>Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from <code>Sequelize.Model</code>:</p>
@@ -182,124 +172,103 @@ MyModel.prototype.someMethod = function () {..}
 </ul>
 
 <h1 id="typed-fields">Initialise the model with typed field(s)</h1>
-
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-    return super.init(
-      {
-        myField: DataTypes.STRING
-      },
-      { sequelize }
-    );
-  }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
+<span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
+  <span class="kr">static</span> <span class="nx">init</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span>
+      <span class="p">{</span>
+        <span class="nx">myField</span><span class="o">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span>
+      <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">sequelize</span> <span class="p">}</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <h1 id="associations">Associate your model to other models</h1>
-
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static associate(models) {
-    this.myAssociation = this.belongsTo(models.OtherModel);
-    // or
-    this.myAssociation = models.MyModel.belongsTo(models.OtherModel);
-  }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
+<span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
+  <span class="kr">static</span> <span class="nx">associate</span><span class="p">(</span><span class="nx">models</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">myAssociation</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">belongsTo</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">OtherModel</span><span class="p">);</span>
+    <span class="c1">// or
+</span><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">myAssociation</span> <span class="o">=</span> <span class="nx">models</span><span class="p">.</span><span class="nx">MyModel</span><span class="p">.</span><span class="nx">belongsTo</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">OtherModel</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <h1 id="customer-table-name">Setting a custom table name for your model</h1>
-
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-    return super.init(
-      {
-        // field definitions
-      },
-      {
-        tableName: &quot;myModels&quot;,
-        sequelize
-      }
-    );
-  }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
+<span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
+  <span class="kr">static</span> <span class="nx">init</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span>
+      <span class="p">{</span>
+        <span class="c1">// field definitions
+</span><span class="c1"></span>      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nx">tableName</span><span class="o">:</span> <span class="s2">&#34;myModels&#34;</span><span class="p">,</span>
+        <span class="nx">sequelize</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <h1 id="custom-model-name">Setting a custom model name for your model (for Sequelize)</h1>
-
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static init(sequelize, DataTypes) {
-    return super.init(
-      {
-        // field definitions
-      },
-      {
-        modelName: &quot;myModel&quot;,
-        sequelize
-      }
-    );
-  }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
+<span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
+  <span class="kr">static</span> <span class="nx">init</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">DataTypes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span>
+      <span class="p">{</span>
+        <span class="c1">// field definitions
+</span><span class="c1"></span>      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nx">modelName</span><span class="o">:</span> <span class="s2">&#34;myModel&#34;</span><span class="p">,</span>
+        <span class="nx">sequelize</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <h1 id="queries">Wrap queries</h1>
-
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  static getId(where) {
-    return this.findOne({
-      where,
-      attributes: [&quot;id&quot;],
-      order: [[&quot;createdAt&quot;, &quot;DESC&quot;]]
-    });
-  }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
+<span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
+  <span class="kr">static</span> <span class="nx">getId</span><span class="p">(</span><span class="nx">where</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span>
+      <span class="nx">where</span><span class="p">,</span>
+      <span class="nx">attributes</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;id&#34;</span><span class="p">],</span>
+      <span class="nx">order</span><span class="o">:</span> <span class="p">[[</span><span class="s2">&#34;createdAt&#34;</span><span class="p">,</span> <span class="s2">&#34;DESC&#34;</span><span class="p">]]</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <h1 id="instance-methods">Instance methods</h1>
-
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-class MyModel extends Sequelize.Model {
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`;
-  }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
+<span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
+  <span class="nx">getFullName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <h1 id="initialise-all">Initialise all your models</h1>
 
 <p><code>require()</code> followed by <code>model.init()</code> is an alternative to <code>sequelize.import(path)</code>, it’s a bit clearer what is and isn’t imported and under what name.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sequelize</span><span class="p">();</span>
+<span class="c1">// pass your sequelize config here
+</span><span class="c1"></span>
+<span class="k">const</span> <span class="nx">FirstModel</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;./first-model&#34;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">SecondModel</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;./second-model&#34;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">ThirdModel</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;./third-model&#34;</span><span class="p">);</span>
 
-<pre><code class="language-js">const Sequelize = require(&quot;sequelize&quot;);
-const sequelize = new Sequelize();
-// pass your sequelize config here
+<span class="k">const</span> <span class="nx">models</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">First</span><span class="o">:</span> <span class="nx">FirstModel</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">Sequelize</span><span class="p">),</span>
+  <span class="nx">Second</span><span class="o">:</span> <span class="nx">SecondModel</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">Sequelize</span><span class="p">),</span>
+  <span class="nx">Third</span><span class="o">:</span> <span class="nx">ThirdModel</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">sequelize</span><span class="p">,</span> <span class="nx">Sequelize</span><span class="p">)</span>
+<span class="p">};</span>
 
-const FirstModel = require(&quot;./first-model&quot;);
-const SecondModel = require(&quot;./second-model&quot;);
-const ThirdModel = require(&quot;./third-model&quot;);
+<span class="c1">// Run `.associate` if it exists,
+</span><span class="c1">// ie create relationships in the ORM
+</span><span class="c1"></span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">models</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">model</span> <span class="p">=&gt;</span> <span class="k">typeof</span> <span class="nx">model</span><span class="p">.</span><span class="nx">associate</span> <span class="o">===</span> <span class="s2">&#34;function&#34;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">model</span> <span class="p">=&gt;</span> <span class="nx">model</span><span class="p">.</span><span class="nx">associate</span><span class="p">(</span><span class="nx">models</span><span class="p">));</span>
 
-const models = {
-  First: FirstModel.init(sequelize, Sequelize),
-  Second: SecondModel.init(sequelize, Sequelize),
-  Third: ThirdModel.init(sequelize, Sequelize)
-};
+<span class="k">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">...</span><span class="nx">models</span><span class="p">,</span>
+  <span class="nx">sequelize</span>
+<span class="p">};</span>
 
-// Run `.associate` if it exists,
-// ie create relationships in the ORM
-Object.values(models)
-  .filter(model =&gt; typeof model.associate === &quot;function&quot;)
-  .forEach(model =&gt; model.associate(models));
-
-const db = {
-  ...models,
-  sequelize
-};
-
-module.exports = db;
-</code></pre>
-
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">db</span><span class="p">;</span></code></pre></div>
 <p>For any questions about using Sequelize in this manner or developing Node apps
 backed by relational databases, feel free to comment below or tweet to me <a href="https://twitter.com/hugo__df">@hugo__df</a>.</p>
 
@@ -360,13 +329,13 @@ backed by relational databases, feel free to comment below or tweet to me <a hre
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         
-          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
         
           <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -498,11 +467,11 @@ Why TypeScript? TypeScript is a JavaScript superset that adds static types to it
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

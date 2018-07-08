@@ -51,10 +51,9 @@ Command line apps are a neat way to package repetitive tasks. This will walk " /
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -159,19 +158,13 @@ We&rsquo;ll go through how to make a simple utility that deletes the package-loc
 <p>To start off, we&rsquo;ll leverage a package from Sindre Sohrus, <code>execa</code>, which is described as “a better <code>child_process</code>&rdquo;. For the following snippet to work, run <code>npm install --save execa</code>:</p>
 
 <p><code>index.js</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">execa</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;execa&#39;</span><span class="p">);</span>
 
-<pre><code class="language-js">const execa = require('execa');
-
-execa('ls').then(result =&gt; console.log(result.stdout));
-</code></pre>
-
-<pre><code class="language-sh">node index.js
+<span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">stdout</span><span class="p">));</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">node index.js
 index.js
 node_modules
 package-lock.json
-package.json 
-</code></pre>
-
+package.json </code></pre></div>
 <h2 id="dealing-with-sequential-actions">Dealing with sequential actions ✨</h2>
 
 <p>To re-generate the <code>package-lock</code> we&rsquo;ll need to first delete it, then run an <code>npm install</code>.</p>
@@ -183,28 +176,25 @@ package.json
 <p>Run <code>npm install --save listr</code> and add leverage Listr as follows:</p>
 
 <p><code>index.js</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">execa</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;execa&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">Listr</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;listr&#39;</span><span class="p">);</span>
 
-<pre><code class="language-js">const execa = require('execa');
-const Listr = require('listr');
-
-new Listr([
-  {
-    title: 'Removing package-lock',
-    task: () =&gt; execa('rm', ['package-lock.json'])
-  },
-  {
-    title: 'Running npm install',
-    task: () =&gt; execa('npm', ['install'])
-  },
-  {
-    title: 'Adding package-lock to git',
-    task: (ctx, task) =&gt;
-        execa('git', ['add', 'package-lock.json'])
-        .catch(() =&gt; task.skip())
-  }
-]).run();
-</code></pre>
-
+<span class="k">new</span> <span class="nx">Listr</span><span class="p">([</span>
+  <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Removing package-lock&#39;</span><span class="p">,</span>
+    <span class="nx">task</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;package-lock.json&#39;</span><span class="p">])</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Running npm install&#39;</span><span class="p">,</span>
+    <span class="nx">task</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;npm&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;install&#39;</span><span class="p">])</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Adding package-lock to git&#39;</span><span class="p">,</span>
+    <span class="nx">task</span><span class="o">:</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">task</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;package-lock.json&#39;</span><span class="p">])</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">task</span><span class="p">.</span><span class="nx">skip</span><span class="p">())</span>
+  <span class="p">}</span>
+<span class="p">]).</span><span class="nx">run</span><span class="p">();</span></code></pre></div>
 <p>Now the output of <code>node index.js</code> looks like the following:
 <img src="/img/20180619-running-screenshot.jpeg" alt="`node index.js` output" /></p>
 
@@ -228,29 +218,26 @@ long-running task that returns a Promise (like the <code>execa</code> invocation
 </code></pre>
 
 <p>If we add it to <code>index.js</code> we get:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ch">#!/usr/bin/env node
+</span><span class="ch"></span><span class="k">const</span> <span class="nx">execa</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;execa&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">Listr</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;listr&#39;</span><span class="p">);</span>
 
-<pre><code class="language-js">#!/usr/bin/env node
-const execa = require('execa');
-const Listr = require('listr');
-
-new Listr([
-  {
-    title: 'Removing package-lock',
-    task: () =&gt; execa('rm', ['package-lock.json'])
-  },
-  {
-    title: 'Running npm install',
-    task: () =&gt; execa('npm', ['install'])
-  },
-  {
-    title: 'Adding package-lock to git',
-    task: (ctx, task) =&gt;
-        execa('git', ['add', 'package-lock.json'])
-        .catch(() =&gt; task.skip())
-  }
-]).run();
-</code></pre>
-
+<span class="k">new</span> <span class="nx">Listr</span><span class="p">([</span>
+  <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Removing package-lock&#39;</span><span class="p">,</span>
+    <span class="nx">task</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;package-lock.json&#39;</span><span class="p">])</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Running npm install&#39;</span><span class="p">,</span>
+    <span class="nx">task</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;npm&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;install&#39;</span><span class="p">])</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Adding package-lock to git&#39;</span><span class="p">,</span>
+    <span class="nx">task</span><span class="o">:</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">task</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;package-lock.json&#39;</span><span class="p">])</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">task</span><span class="p">.</span><span class="nx">skip</span><span class="p">())</span>
+  <span class="p">}</span>
+<span class="p">]).</span><span class="nx">run</span><span class="p">();</span></code></pre></div>
 <p>Which we can now run using:</p>
 
 <pre><code>./index.js
@@ -339,13 +326,13 @@ package, it&rsquo;s super straightforward.</p>
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
-        
           <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
         
-          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
         
           <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
+        
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -477,11 +464,11 @@ Redis is “an open source, in-memory data structure store, used as a database, 
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

@@ -50,10 +50,9 @@ To use JavaScript to its full potential you have to embrace its strong functiona
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -143,16 +142,13 @@ To use JavaScript to its full potential you have to embrace its strong functiona
 <h3 id="declarative-programming">Declarative programming</h3>
 
 <p>Functional programs tend to be declarative (as opposed to imperative), that’s a case of telling the compiler <em>what</em> you want instead of <em>how</em> you want it.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">list</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">];</span>
 
-<pre><code class="language-js">const list = [ 1, 2, 3 ];
+<span class="c1">// imperative style
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">imperative</span> <span class="o">=</span> <span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 
-// imperative style
-const imperative = list[0];
-
-// declarative style
-const declarative = firstElement(list);
-</code></pre>
-
+<span class="c1">// declarative style
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">declarative</span> <span class="o">=</span> <span class="nx">firstElement</span><span class="p">(</span><span class="nx">list</span><span class="p">);</span></code></pre></div>
 <p>In the above code snippet we’re trying to get the first element of list, the declarative example says what we want, firstElement can do whatever it likes as long as it returns the first element of the passed parameter. Whereas in the imperative style, we say I want index 0 of list explicitly. In JavaScript and at this program size, this doesn’t make a massive difference.</p>
 
 <p>To build functional programs, we should prefer the declarative style and avoid mutation.</p>
@@ -191,31 +187,28 @@ const declarative = firstElement(list);
 <p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553899940_Screen+Shot+2018-02-13+at+20.31.11.png" alt="Josh Burgess @_joshburgess - functions that &quot;remember&quot; the enviornment (enclosing scope) they were defined within, maintaining access to vars in that scope" /></p>
 
 <p>We can use closures to put state inside an outer function while having access to that state in an inner function. That state is not global but still accessible to child functions.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">outerFunction</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">someState</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">count</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">increment</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">someState</span><span class="p">.</span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">getCount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">someState</span><span class="p">.</span><span class="nx">count</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<pre><code class="language-js">function outerFunction() {
-  const someState = { count: 0 };
-  return {
-    increment: function() {
-      someState.count++;
-    },
-    getCount: function() {
-      return someState.count;
-    }
-  }
-}
+<span class="k">const</span> <span class="nx">counter</span> <span class="o">=</span> <span class="nx">outerFunction</span><span class="p">();</span>
 
-const counter = outerFunction();
-
-counter.increment();
-counter.increment();
-counter.getCount(); // 2
-counter.increment();
-counter.increment(); 
-counter.getCount(); // 4
-
-someState; // ReferenceError: someState is not defined
-</code></pre>
-
+<span class="nx">counter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">getCount</span><span class="p">();</span> <span class="c1">// 2
+</span><span class="c1"></span><span class="nx">counter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span> 
+<span class="nx">counter</span><span class="p">.</span><span class="nx">getCount</span><span class="p">();</span> <span class="c1">// 4
+</span><span class="c1"></span>
+<span class="nx">someState</span><span class="p">;</span> <span class="err">// ReferenceError: someState is not defined</span></code></pre></div>
 <p>The state (<code>someState</code>) isn’t global since the last statement returns an error. It is however available to the functions it returned, because they can “see” someState, it’s in their lexical scope.</p>
 
 <h3 id="function-application">Function application</h3>
@@ -223,20 +216,17 @@ someState; // ReferenceError: someState is not defined
 <p>Function application is the first “hardcore” functional programming concept we’re going to introduce today. It’s a concept that comes from the mathematics world.</p>
 
 <p>A function application, in JavaScript, can look like a function call but doesn’t have to be.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">someFunc</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">arg1</span> <span class="o">+</span> <span class="nx">arg2</span><span class="p">;</span>
+<span class="p">}</span>
 
-<pre><code class="language-js">function someFunc(arg1, arg2) {
-  return arg1 + arg2;
-}
-
-// function call
-someFunc(1, 2); // 3
-
-// different ways to apply a function
-someFunc(1, 2); // 3
-someFunc.apply(this, [ 1, 2 ]); // 3
-someFunc.call(this, 1, 2); // 3
-</code></pre>
-
+<span class="c1">// function call
+</span><span class="c1"></span><span class="nx">someFunc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 3
+</span><span class="c1"></span>
+<span class="c1">// different ways to apply a function
+</span><span class="c1"></span><span class="nx">someFunc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 3
+</span><span class="c1"></span><span class="nx">someFunc</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">]);</span> <span class="c1">// 3
+</span><span class="c1"></span><span class="nx">someFunc</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="err">// 3</span></code></pre></div>
 <p>A function call is an imperative construct whereas a function application belongs to the realm of functional programming and mathematics.</p>
 
 <p>In JavaScript you can even use apply and call to define what this will be set to during the application.</p>
@@ -246,34 +236,30 @@ someFunc.call(this, 1, 2); // 3
 <p>Partial application is when you apply some of the required parameters of a function and return a function that takes the rest of the parameters.</p>
 
 <p>We’re going to flip the parameters to the map function. Instead of taking parameters <code>(list, fn)</code> it’s going to take <code>(fn, list)</code>. This is to illustrate the value of partial application.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">functionalMap</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">list</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">fn</span><span class="p">);</span>
+<span class="p">}</span>
 
-<pre><code class="language-js">function functionalMap(fn, list) {
-    return list.map(fn);
-}
+<span class="kd">function</span> <span class="nx">partialFunctionalMap</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">functionalMap</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">list</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-function partialFunctionalMap(fn) {
-  return function(list) {
-    return functionalMap(fn, list);
-  }
-}
+<span class="c1">// Example 1
+</span><span class="c1">// Let&#39;s apply all the arguments at once
+</span><span class="c1"></span><span class="nx">functionalMap</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">]);</span>
+<span class="nx">functionalMap</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span> <span class="p">]);</span>
 
-// Example 1
-// Let's apply all the arguments at once
-functionalMap(x =&gt; x * 2, [ 1, 2, 3 ]);
-functionalMap(x =&gt; x * 2, [ 2, 3, 5 ]);
-
-// Example 2
-// Let's apply them one at a time
-const doubleListItems = partialFunctionalMap(x =&gt; x * 2);
-doubleListItems([ 1, 2, 3 ]);
-doubleListItems([ 2, 3, 5 ]);
-</code></pre>
-
+<span class="c1">// Example 2
+</span><span class="c1">// Let&#39;s apply them one at a time
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">doubleListItems</span> <span class="o">=</span> <span class="nx">partialFunctionalMap</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">doubleListItems</span><span class="p">([</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">]);</span>
+<span class="nx">doubleListItems</span><span class="p">([</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span> <span class="p">]);</span></code></pre></div>
 <p>What the code does in example 1 is less obvious than in example 2. You have to read what the lamba does instead of being told by the variable function name.</p>
 
 <p>This is something we can use in places like React event handlers.</p>
-
-<pre><code class="language-jsx">class MyComponent extends React.Component {
+<div class="highlight"><pre class="chroma"><code class="language-jsx" data-lang="jsx">class MyComponent extends React.Component {
   partialHandleLinkClick(type, activeType){
     return function(e) {
       const hasKeyboardModifier = e.ctrlKey || e.shiftKey || e.altKey || e.metaKey;
@@ -281,12 +267,12 @@ doubleListItems([ 2, 3, 5 ]);
     };
   }
   render() {
-    const types = [ 'Foo', 'Bar', 'Baz' ];
+    const types = [ &#39;Foo&#39;, &#39;Bar&#39;, &#39;Baz&#39; ];
     return (
       &lt;div&gt;
         {
           types.map( (type, i) =&gt; {
-            &lt;a key={i} href=&quot;#&quot;
+            &lt;a key={i} href=&#34;#&#34;
               onClick={this.partialHandleLinkClick(type, this.props.activeType)}&gt;
               {type}
             &lt;/a&gt;
@@ -295,9 +281,7 @@ doubleListItems([ 2, 3, 5 ]);
       &lt;/div&gt;
     );
   }
-}
-</code></pre>
-
+}</code></pre></div>
 <p>Now if we went the Object-oriented route, we would use <code>.bind</code> <code>partialHandleClick</code> function to the component instance (<code>this</code>) and to be able to access <code>this.props.activeType</code> from inside <code>partialHandleClick</code>.
 We’re trying to leverage functional programming, so no accessing this from all the way inside an event handler.
 We get to store some information that we can get at <code>.map</code> time (which type is this handler for).
@@ -306,29 +290,23 @@ When the event triggers, we get the final parameter we need <code>e</code> (the 
 <h2 id="currying">Currying</h2>
 
 <p>A curried function is a function that you apply 1 parameter at a time.</p>
-
-<pre><code class="language-js">function partialFunctionalMap(fn) {
-  return function(list) {
-    return functionalMap(fn, list);
-  }
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">partialFunctionalMap</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">functionalMap</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">list</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <p><code>partialFunctionalMap</code> is curried.
 In the event handler example <code>partialHandleLinkClick</code> isn’t, since the first application provided 2 parameters.</p>
 
 <p>We could rewrite it though.</p>
-
-<pre><code class="language-js">function curriedHandleLinkClick(type){
-  return function(activeType) {
-    return function(e) {
-      const hasKeyboardModifier = e.ctrlKey || e.shiftKey || e.altKey || e.metaKey;
-      updateType(type, activeType, hasKeyboardModifier);
-    };
-  };
-}
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">curriedHandleLinkClick</span><span class="p">(</span><span class="nx">type</span><span class="p">){</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">activeType</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">const</span> <span class="nx">hasKeyboardModifier</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">ctrlKey</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">shiftKey</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">altKey</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="p">;</span>
+      <span class="nx">updateType</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">activeType</span><span class="p">,</span> <span class="nx">hasKeyboardModifier</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+<span class="p">}</span></code></pre></div>
 <p>And we would use <code>this.curriedHandleLinkClick(type)(this.props.activeType)</code> instead of <code>this.partialHandleLinkClick(type, this.props.activeType)</code>.</p>
 
 <p>This isn’t as pretty in JavaScript as in other languages since we’re replacing <code>(arg1, arg2, arg3)</code> with <code>(arg1)(arg2)(arg3)</code>.</p>
@@ -350,14 +328,11 @@ In the event handler example <code>partialHandleLinkClick</code> isn’t, since 
 <p><a href="http://kevvv.in/currying-in-javascript/"><strong>Currying in JavaScript</strong>- Kevin Ennis</a></p>
 
 <p>Some languages like Haskell are auto-curried. This means that if the function application does not provide the required number of parameters, it will return a function which will accept the rest of the parameters one at a time, just like the <a href="https://lodash.com/">Lodash</a> and <a href="http://ramdajs.com/">Ramda</a> curry functions do. Another cool thing in Haskell is that partial application looks like non-partial application and curried function calls aren’t ugly, since the separator for parameters is a space.</p>
+<div class="highlight"><pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="nf">times</span> <span class="nf">a</span> <span class="nf">b</span> <span class="ow">=</span> <span class="nf">a</span> <span class="o">*</span> <span class="nf">b</span>
 
-<pre><code class="language-haskell">times a b = a * b
+<span class="nf">times</span> <span class="mi">1</span> <span class="mi">2</span>
 
-times 1 2
-
-double = times 2
-</code></pre>
-
+<span class="nf">double</span> <span class="ow">=</span> <span class="nf">times</span> <span class="mi">2</span></code></pre></div>
 <h2 id="effective-functional-javascript-recipe">Effective Functional JavaScript Recipe</h2>
 
 <p>Use and abuse closures, partial application and currying.</p>
@@ -419,13 +394,13 @@ double = times 2
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
+        
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
+        
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
         
           <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
-        
-          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
-        
-          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -562,11 +537,11 @@ CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

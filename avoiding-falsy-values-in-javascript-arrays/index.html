@@ -54,10 +54,9 @@
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -137,123 +136,106 @@
         <p><strong>tl;dr</strong>: use <code>Array.filter(Boolean)</code> to filter out falsy values and avoid errors.</p>
 
 <p></p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// Fun function that converts a name into a
+</span><span class="c1">// 4 all-cap letters display name
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">makeDisplayName</span> <span class="o">=</span> <span class="nx">name</span> <span class="p">=&gt;</span>
+  <span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">name</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/a|e|i|o|u/g</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 
-<pre><code class="language-js">// Fun function that converts a name into a
-// 4 all-cap letters display name
-const makeDisplayName = name =&gt;
-  (name.charAt(0) + name.slice(1).replace(/a|e|i|o|u/g, &quot;&quot;))
-    .toUpperCase()
-    .slice(0, 4);
-
-const displayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined]
-  .filter(Boolean)
-  .map(makeDisplayName);
-// [ 'ORNG', 'APPL', 'MNG' ]
-
-// vs
-const displayNamesErrors = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined].map(
-  makeDisplayName
-);
-// TypeError: Cannot read property 'charAt' of undefined
-</code></pre>
-
+<span class="k">const</span> <span class="nx">displayNames</span> <span class="o">=</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&#34;orange&#34;</span><span class="p">,</span> <span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">]</span>
+  <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">makeDisplayName</span><span class="p">);</span>
+<span class="c1">// [ &#39;ORNG&#39;, &#39;APPL&#39;, &#39;MNG&#39; ]
+</span><span class="c1"></span>
+<span class="c1">// vs
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">displayNamesErrors</span> <span class="o">=</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&#34;orange&#34;</span><span class="p">,</span> <span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span>
+  <span class="nx">makeDisplayName</span>
+<span class="p">);</span>
+<span class="err">// TypeError: Cannot read property &#39;charAt&#39; of undefined</span></code></pre></div>
 <h1 id="how-this-works-caveats">How this works &amp; caveats</h1>
 
 <p><code>Boolean</code> when passed any falsy value returns <code>false</code> and when passed a truthy value returns <code>true</code>:</p>
-
-<pre><code class="language-js">Boolean(false); // false
-Boolean(&quot;&quot;); // false
-Boolean(null); // false
-Boolean(undefined); // false
-Boolean(0); // false
-Boolean(NaN); // false
-
-Boolean(1); // true
-Boolean(&quot;hello&quot;); // true
-Boolean(true); // true
-Boolean({}); // true
-Boolean([]); // true
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">Boolean</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">// false
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">);</span> <span class="c1">// false
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span> <span class="c1">// false
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">// false
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// false
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">(</span><span class="kc">NaN</span><span class="p">);</span> <span class="c1">// false
+</span><span class="c1"></span>
+<span class="nb">Boolean</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// true
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">(</span><span class="s2">&#34;hello&#34;</span><span class="p">);</span> <span class="c1">// true
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// true
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">({});</span> <span class="c1">// true
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">([]);</span> <span class="err">// true</span></code></pre></div>
 <p>Note that a valid use case of filtering out falsy values except <code>0</code> needs special treatment since, <code>Boolean(0)</code> returns <code>false</code>, hence:</p>
-
-<pre><code class="language-js">const noFalsyEvenZero = [NaN, undefined, null, 0, 1, 2, 2000, Infinity].filter(
-  Boolean
-);
-// [ 1, 2, 2000, Infinity ]
-const noFalsyExceptZero = [
-  NaN,
-  undefined,
-  null,
-  0,
-  1,
-  2,
-  2000,
-  Infinity
-].filter(el =&gt; el === 0 || Boolean(el));
-// [ 0, 1, 2, 2000, Infinity ]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">noFalsyEvenZero</span> <span class="o">=</span> <span class="p">[</span><span class="kc">NaN</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="kc">Infinity</span><span class="p">].</span><span class="nx">filter</span><span class="p">(</span>
+  <span class="nb">Boolean</span>
+<span class="p">);</span>
+<span class="c1">// [ 1, 2, 2000, Infinity ]
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">noFalsyExceptZero</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="kc">NaN</span><span class="p">,</span>
+  <span class="kc">undefined</span><span class="p">,</span>
+  <span class="kc">null</span><span class="p">,</span>
+  <span class="mi">0</span><span class="p">,</span>
+  <span class="mi">1</span><span class="p">,</span>
+  <span class="mi">2</span><span class="p">,</span>
+  <span class="mi">2000</span><span class="p">,</span>
+  <span class="kc">Infinity</span>
+<span class="p">].</span><span class="nx">filter</span><span class="p">(</span><span class="nx">el</span> <span class="p">=&gt;</span> <span class="nx">el</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">||</span> <span class="nb">Boolean</span><span class="p">(</span><span class="nx">el</span><span class="p">));</span>
+<span class="err">// [ 0, 1, 2, 2000, Infinity ]</span></code></pre></div>
 <h1 id="situations-in-which-this-would-this-occur">Situations in which this would this occur</h1>
 
 <p>Usually this happens when you want to compute something over an Array of objects where some of the elements have a property but others don&rsquo;t.</p>
-
-<pre><code class="language-js">const companies = [
-  {
-    name: null,
-    employees: [],
-    founders: []
-  },
-  {
-    name: &quot;orange&quot;,
-    employees: [],
-    founders: []
-  },
-  {
-    name: &quot;apple&quot;,
-    employees: [],
-    founders: []
-  },
-  {
-    name: &quot;mango&quot;,
-    employees: [],
-    locations: []
-  },
-  {
-    employees: [],
-    founders: []
-  }
-];
-const companyNames = companies.map(company =&gt; company.name);
-// [undefined, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">companies</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nx">employees</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">founders</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;orange&#34;</span><span class="p">,</span>
+    <span class="nx">employees</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">founders</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;apple&#34;</span><span class="p">,</span>
+    <span class="nx">employees</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">founders</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span>
+    <span class="nx">employees</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">locations</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">employees</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">founders</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+<span class="k">const</span> <span class="nx">companyNames</span> <span class="o">=</span> <span class="nx">companies</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">company</span> <span class="p">=&gt;</span> <span class="nx">company</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="err">// [undefined, &#34;orange&#34;, &#34;apple&#34;, &#34;mango&#34;, undefined]</span></code></pre></div>
 <p>An issue can occur when you have null or undefined in your list</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">makeDisplayName</span> <span class="o">=</span> <span class="nx">name</span> <span class="p">=&gt;</span>
+  <span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">name</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/a|e|i|o|u/g</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 
-<pre><code class="language-js">const makeDisplayName = name =&gt;
-  (name.charAt(0) + name.slice(1).replace(/a|e|i|o|u/g, &quot;&quot;))
-    .toUpperCase()
-    .slice(0, 4);
-
-const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined].map(
-  makeDisplayName
-);
-// TypeError: Cannot read property 'charAt' of undefined
-</code></pre>
-
+<span class="k">const</span> <span class="nx">companyDisplayNames</span> <span class="o">=</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&#34;orange&#34;</span><span class="p">,</span> <span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span>
+  <span class="nx">makeDisplayName</span>
+<span class="p">);</span>
+<span class="err">// TypeError: Cannot read property &#39;charAt&#39; of undefined</span></code></pre></div>
 <p>To avoid this we can filter falsy values out:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">makeDisplayName</span> <span class="o">=</span> <span class="nx">name</span> <span class="p">=&gt;</span>
+  <span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">name</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/a|e|i|o|u/g</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 
-<pre><code class="language-js">const makeDisplayName = name =&gt;
-  (name.charAt(0) + name.slice(1).replace(/a|e|i|o|u/g, &quot;&quot;))
-    .toUpperCase()
-    .slice(0, 4);
-
-const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;mango&quot;, undefined]
-  .filter(Boolean) // the identity function: `item =&gt; item` would also work here :)
-  .map(makeDisplayName);
-// [ 'ORNG', 'APPL', 'MNG' ]
-// No Error :)
-</code></pre>    
+<span class="k">const</span> <span class="nx">companyDisplayNames</span> <span class="o">=</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&#34;orange&#34;</span><span class="p">,</span> <span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">]</span>
+  <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">)</span> <span class="c1">// the identity function: `item =&gt; item` would also work here :)
+</span><span class="c1"></span>  <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">makeDisplayName</span><span class="p">);</span>
+<span class="c1">// [ &#39;ORNG&#39;, &#39;APPL&#39;, &#39;MNG&#39; ]
+</span><span class="c1"></span><span class="err">// No Error :)</span></code></pre></div>    
         </div>
     </section>
 
@@ -309,13 +291,13 @@ const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
+          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
         
-          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
         
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -347,7 +329,7 @@ const companyDisplayNames = [null, &quot;orange&quot;, &quot;apple&quot;, &quot;
               
                 <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
 Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
-var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
+var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2 There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
               
           </section>
       </a>
@@ -448,11 +430,11 @@ The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see 
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

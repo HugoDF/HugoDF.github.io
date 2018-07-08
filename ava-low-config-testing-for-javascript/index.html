@@ -56,10 +56,9 @@ Some of its best features are:
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -157,44 +156,32 @@ Some of its best features are:
 <h2 id="no-blob-configuration">No blob configuration</h2>
 
 <p>Running AVA at the command line is as simple as (if you’ve got it installed globally):</p>
-
-<pre><code class="language-sh">$ ava
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ ava</code></pre></div>
 <p>To run AVA in watch mode at the command line:</p>
 
 <pre><code>$ ava -w
 </code></pre>
 
 <p>To run AVA in verbose mode:</p>
-
-<pre><code class="language-sh">$ ava --verbose
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ ava --verbose</code></pre></div>
 <p>If your test files match against <code>test.js test-*.js test/**/*.js **/__tests__/**/*.js **/*.test.js</code> AVA will pick them up and run them. You can always override this, but I don’t think you would want to configure AVA differently.</p>
 
 <p>We can wrap these commands in a npm scripts and use the project’s version of AVA. And actually AVA has a command that can add this stuff to your package.json:</p>
-
-<pre><code class="language-sh">$ ava --init
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ ava --init</code></pre></div>
 <p>It will add AVA in <code>devDependencies</code> and in <code>test</code> script.</p>
 
 <h2 id="visibility-where-it-matters">Visibility where it matters</h2>
 
 <p>Here is an example test file in Mocha:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="p">{</span> <span class="nx">expect</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;chai&#39;</span><span class="p">);</span>
 
-<pre><code class="language-js">const { expect } = require('chai');
-
-describe('Some function', () =&gt; {
-  it('does something with input', () =&gt; {
-    const actualOutput = 42;
-    const expectedOutput = 42;
-    expect(actualOutput).to.equal(expectedOutput);
-  });
-});
-</code></pre>
-
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Some function&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;does something with input&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">actualOutput</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+    <span class="k">const</span> <span class="nx">expectedOutput</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">actualOutput</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">expectedOutput</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
 <p><code>describe</code>? <code>it</code>? Not so obvious that they’re functions defined by the test runner. We’re also using chai for our assertions… Wouldn’t it be nice if all this was one package and it was obvious we were using it?</p>
 
 <p>Mocha best practices also say we shouldn’t be using arrow functions (<code>() =&gt; {}</code>) since we may want to access the this defined inside of describe or it instead of the global module this.</p>
@@ -219,36 +206,27 @@ test('Some function', t =&gt; {
 <p>AVA runs using full ES2016 syntax by default and runs its code through Babel transforms.</p>
 
 <p>This means, without adding a Babel hook (like you would in Mocha) you can write:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">test</span> <span class="nx">from</span> <span class="s1">&#39;ava&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">sinon</span> <span class="nx">from</span> <span class="s1">&#39;sinon&#39;</span><span class="p">;</span>
 
-<pre><code class="language-js">import test from 'ava';
-import sinon from 'sinon';
-
-test('It actually runs', t =&gt; {
-  t.pass();
-});
-</code></pre>
-
+<span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It actually runs&#39;</span><span class="p">,</span> <span class="nx">t</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">t</span><span class="p">.</span><span class="nx">pass</span><span class="p">();</span>
+<span class="p">});</span></code></pre></div>
 <p>When you run the tests:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ ava
 
-<pre><code class="language-sh">$ ava
-
-  1 passed
-</code></pre>
-
+  <span class="m">1</span> passed</code></pre></div>
 <p>No syntax error on the ‘import’ statement.</p>
 
 <p>If you’re importing components that need to be Babel transformed (React components using JSX for example), you just need to add the following Babel hook to the AVA config in package.json:</p>
-
-<pre><code class="language-json">  {
-    &quot;ava&quot;: {
-      &quot;require&quot;: [
-        &quot;babel-register&quot;
-      ],
-      &quot;babel&quot;: &quot;inherit&quot;
-    }
-  }
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json">  <span class="p">{</span>
+    <span class="nt">&#34;ava&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;require&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&#34;babel-register&#34;</span>
+      <span class="p">],</span>
+      <span class="nt">&#34;babel&#34;</span><span class="p">:</span> <span class="s2">&#34;inherit&#34;</span>
+    <span class="p">}</span>
+  <span class="p">}</span></code></pre></div>
 <p>This means it’s easy to write modern JavaScript and test it using the same syntax and minimal headaches using AVA.</p>
 
 <h2 id="async-by-default">Async by default</h2>
@@ -351,13 +329,13 @@ test.cb('Callback gets correct value', t =&gt; {
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
+          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
         
-          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -490,11 +468,11 @@ The basics Functional programming is a programming paradigm that follows a more 
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->

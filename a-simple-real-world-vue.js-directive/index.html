@@ -48,10 +48,9 @@
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.css" /> 
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
 
-    <link href="https://buttondown.email/hugo" rel="alternate" type="application/rss+xml" title="Code with Hugo" /> 
-
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
 
 
@@ -137,17 +136,11 @@ In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that 
 normal anchors&rsquo; <code>href</code> on click.
 The <code>href</code>s weren&rsquo;t AngularJS URLs so it would fall back to the default page.
 One solution could have leveraged components to update <code>window.location</code> directly, but here&rsquo;s a nifty directive to do the same:</p>
-
-<pre><code class="language-html">&lt;a v-href=&quot;'/my-url'&quot;&gt;Go&lt;/a&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">v-href</span><span class="o">=</span><span class="s">&#34;&#39;/my-url&#39;&#34;</span><span class="p"></span><span class="p">&gt;</span>Go<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span></code></pre></div>
 <p>That&rsquo;s a pretty cool API, and it&rsquo;s probably more idiomatic Vue than:</p>
-
-<pre><code class="language-html">&lt;MyAnchor href=&quot;/my-url&quot;&gt;
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">MyAnchor</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/my-url&#34;</span><span class="p"></span><span class="p">&gt;</span>
   Go
-&lt;/MyAnchor&gt;
-</code></pre>
-
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">MyAnchor</span><span class="p">&gt;</span></code></pre></div>
 <p>There were a couple of gotchas:</p>
 
 <ul>
@@ -161,134 +154,107 @@ One solution could have leveraged components to update <code>window.location</co
 <h1 id="local-global">Local vs global directive registration 🌐</h1>
 
 <p>A global Vue directive can be defined like so:</p>
-
-<pre><code class="language-js">Vue.directive(&quot;non-angular-link&quot;, {
-  // directive definition
-});
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Vue</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s2">&#34;non-angular-link&#34;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="c1">// directive definition
+</span><span class="c1"></span><span class="p">});</span></code></pre></div>
 <p>It can also be defined locally as follows:</p>
-
-<pre><code class="language-js">Vue.component(&quot;my-component&quot;, {
-  directives: {
-    &quot;non-angular-link&quot;: nonAngularLinkDirective
-  }
-});
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s2">&#34;my-component&#34;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">directives</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&#34;non-angular-link&#34;</span><span class="o">:</span> <span class="nx">nonAngularLinkDirective</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
 <p>Where <code>nonAngularLinkDirective</code> would be a JavaScript object that defines the directive, eg.</p>
-
-<pre><code class="language-js">const nonAngularLinkDirective = {
-  bind(el, binding) {},
-  unbind(el) {}
-};
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">nonAngularLinkDirective</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">bind</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">binding</span><span class="p">)</span> <span class="p">{},</span>
+  <span class="nx">unbind</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span></code></pre></div>
 <p>This allows for flexibility if using a bundler like webpack and single file components:</p>
-
-<pre><code class="language-js">// non-angular-link-directive.js
-export const nonAngularLinkDirective = {
-  // directive definition
-};
-</code></pre>
-
-<pre><code class="language-html">// MyComponent.vue
-&lt;template&gt;
-  &lt;a
-    href=&quot;/my-url&quot;
-    v-non-angular-link
-  &gt;
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// non-angular-link-directive.js
+</span><span class="c1"></span><span class="k">export</span> <span class="k">const</span> <span class="nx">nonAngularLinkDirective</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// directive definition
+</span><span class="c1"></span><span class="p">};</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">// MyComponent.vue
+<span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span>
+    <span class="na">href</span><span class="o">=</span><span class="s">&#34;/my-url&#34;</span>
+    <span class="na">v-non-angular-link</span>
+  <span class="p"></span><span class="p">&gt;</span>
     Go
-  &lt;/a&gt;
-&lt;/template&gt;
+  <span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-&lt;script&gt;
-import { nonAngularDirective } from './non-angular-link.directive';
-export default {
-  directives: {
-    'non-angular-link': nonAngularLinkDirective
-  }
-};
-&lt;/script&gt;
-</code></pre>
-
+<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">nonAngularDirective</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./non-angular-link.directive&#39;</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">directives</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;non-angular-link&#39;</span><span class="o">:</span> <span class="nx">nonAngularLinkDirective</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
 <h1 id="minimal-directive">A minimal directive API 👌</h1>
 
 <p>A full <code>MyAnchor</code> single file component would look like the following:</p>
-
-<pre><code class="language-html">// MyAnchor.vue
-&lt;template&gt;
-  &lt;a
-    @click=&quot;goToUrl($event)&quot;
-    :href=&quot;href&quot;
-  &gt;
-    &lt;slot /&gt;
-  &lt;/a&gt;
-&lt;/template&gt;
-&lt;script&gt;
-export default {
-  props: {
-    href: {
-      type: String,
-      required: true
-    }
-  },
-  methods: {
-    goToUrl(e) {
-      e.preventDefault();
-      window.location.assign(this.href);
-    }
-  }
-});
-&lt;/script&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">// MyAnchor.vue
+<span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span>
+    <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&#34;goToUrl($event)&#34;</span>
+    <span class="na">:href</span><span class="o">=</span><span class="s">&#34;href&#34;</span>
+  <span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">slot</span> <span class="p">/</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">href</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span>
+      <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">goToUrl</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
 <p>This is quite verbose and leverages a global DOM object&hellip; not ideal.
 Here’s something similar using a directive:</p>
-
-<pre><code class="language-js">// non-angular-link-directive.js
-export const nonAngularLinkDirective = {
-  bind(el) {
-    el.addEventListener(&quot;click&quot;, event =&gt; {
-      event.preventDefault();
-      window.location.assign(event.target.href);
-    });
-  }
-};
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// non-angular-link-directive.js
+</span><span class="c1"></span><span class="k">export</span> <span class="k">const</span> <span class="nx">nonAngularLinkDirective</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">bind</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></div>
 <p>This directive has to be used like so <code>&lt;a href=&quot;/my-url&quot; v-non-angular-link&gt;Go&lt;/a&gt;</code>, which isn’t the nicest API.
 By leveraging the second parameter passed to <code>bind</code> we can write it so that it can be used like <code>&lt;a v-href=&quot;'/my-url'&quot;&gt;Go&lt;/a&gt;</code>
 (for more information about <code>el</code> and <code>binding</code>, see <a href="https://vuejs.org/v2/guide/custom-directive.html#Directive-Hook-Arguments):">https://vuejs.org/v2/guide/custom-directive.html#Directive-Hook-Arguments):</a></p>
-
-<pre><code class="language-js">// non-angular-link-directive.js
-export const nonAngularLinkDirective = {
-  bind(el, binding) {
-    el.href = binding.value;
-    el.addEventListener(&quot;click&quot;, event =&gt; {
-      event.preventDefault();
-      window.location.assign(event.target.href);
-    });
-  }
-};
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// non-angular-link-directive.js
+</span><span class="c1"></span><span class="k">export</span> <span class="k">const</span> <span class="nx">nonAngularLinkDirective</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">bind</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">binding</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">binding</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></div>
 <p>We can now use it like using a local directive definition:</p>
-
-<pre><code class="language-html">// MyComponent.vue
-&lt;template&gt;
-  &lt;a v-href=&quot;'/my-url'&quot;&gt;Go&lt;/a&gt;
-&lt;/template&gt;
-&lt;script&gt;
-import { nonAngularLinkDirective } from './non-angular-link.directive';
-export default {
-  directives: {
-    href: nonAngularLinkDirective
-  }
-};
-&lt;/script&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">// MyComponent.vue
+<span class="p">&lt;</span><span class="nt">template</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">v-href</span><span class="o">=</span><span class="s">&#34;&#39;/my-url&#39;&#34;</span><span class="p"></span><span class="p">&gt;</span>Go<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p"></span><span class="p">&gt;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">nonAngularLinkDirective</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./non-angular-link.directive&#39;</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">directives</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">href</span><span class="o">:</span> <span class="nx">nonAngularLinkDirective</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
 <h1 id="hooks-and-remove">Vue directive hooks and <code>removeEventListener</code> 🆓</h1>
 
 <p>For the full list of directive hooks, see <a href="https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions">https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions</a>.</p>
@@ -296,23 +262,20 @@ export default {
 <p>As a good practice, the event listener should be removed when it’s not required any more.
 This can be done in <code>unbind</code> much in the same way as it was added, there’s a catch though,
 the arguments passed to <code>removeEventListener</code> have to be the same as the ones passed to <code>addEventListener</code>:</p>
-
-<pre><code class="language-js">// non-angular-link-directive.js
-const handleClick = event =&gt; {
-  event.preventDefault();
-  window.location.assign(event.target.href);
-};
-export const nonAngularLinkDirective = {
-  bind(el, binding) {
-    el.href = binding.value;
-    el.addEventListener(&quot;click&quot;, handleClick);
-  },
-  unbind(el) {
-    el.removeEventListener(&quot;click&quot;, handleClick);
-  }
-};
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// non-angular-link-directive.js
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">handleClick</span> <span class="o">=</span> <span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="k">export</span> <span class="k">const</span> <span class="nx">nonAngularLinkDirective</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">bind</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">binding</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">binding</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span> <span class="nx">handleClick</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">unbind</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span> <span class="nx">handleClick</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span></code></pre></div>
 <p>This will now remove the listener when the component where the directive is used is destroyed/un-mounts
 and leaves us with no hanging listeners.</p>
 
@@ -323,46 +286,40 @@ but the <code>img</code>… which doesn’t have a <code>href</code> attribute.<
 
 <p>To deal with this, with a little knowledge of how <code>addEventListener</code> calls the passed handler,
 we can refactor the <code>handleClick</code> function.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// non-angular-link-directive.js
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">handleClick</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// The `this` context is the element
+</span><span class="c1"></span>  <span class="c1">// on which the event listener is defined.
+</span><span class="c1"></span>  <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
+<span class="p">}</span>
 
-<pre><code class="language-js">// non-angular-link-directive.js
-function handleClick(event) {
-  // The `this` context is the element
-  // on which the event listener is defined.
-  event.preventDefault();
-  window.location.assign(this.href);
-}
-
-// rest stays the same
-</code></pre>
-
+<span class="err">// rest stays the same</span></code></pre></div>
 <p>By using a named functions and the <code>this</code> allows the event listener to bind
 <code>this</code> to the element on which it’s attached as opposed to the lexical <code>this</code> of an arrow function.</p>
 
 <h2 id="parting-thoughts">Parting thoughts 📚</h2>
 
 <p>We use <code>window.location.assign</code> so as to allow to test easily. With Jest and <code>@vue/test-utils</code> a test at the component level should look like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="p">{</span> <span class="nx">shallowMount</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@vue/test-utils&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">MyComponent</span> <span class="nx">from</span> <span class="s1">&#39;./MyComponent.vue&#39;</span><span class="p">;</span>
 
-<pre><code class="language-js">import { shallowMount } from '@vue/test-utils';
-import MyComponent from './MyComponent.vue';
+<span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It should call window.location.assign with the right urls&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Stub window.location.assign
+</span><span class="c1"></span>  <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">assign</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">();</span>
 
-test('It should call window.location.assign with the right urls', () =&gt; {
-  // Stub window.location.assign
-  window.location.assign = jest.fn();
+  <span class="k">const</span> <span class="nx">myComponent</span> <span class="o">=</span> <span class="nx">shallowMount</span><span class="p">(</span><span class="nx">MyComponent</span><span class="p">);</span>
 
-  const myComponent = shallowMount(MyComponent);
-
-  myComponent.findAll('a').wrappers.forEach((anchor) =&gt; {
-    const mockEvent = {
-      preventDefault: jest.fn()
-    };
-    anchor.trigger('click', mockEvent);
-    expect(mockEvent.preventDefault).toHaveBeenCalled();
-    expect(window.location.assign).toHaveBeenCalledWith(
-      anchor.attributes().href
-    );
-});
-</code></pre>
-
+  <span class="nx">myComponent</span><span class="p">.</span><span class="nx">findAll</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">wrappers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">anchor</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">mockEvent</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="nx">preventDefault</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+    <span class="p">};</span>
+    <span class="nx">anchor</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="nx">mockEvent</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">mockEvent</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">assign</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">(</span>
+      <span class="nx">anchor</span><span class="p">.</span><span class="nx">attributes</span><span class="p">().</span><span class="nx">href</span>
+    <span class="p">);</span>
+<span class="p">});</span></code></pre></div>
 <p>Directives allow you to contain pieces of code that interact with the DOM. This code needs to be generic enough to be used with the limited information available to a directive.</p>
 
 <p>By coding against the DOM, we leverage the browser APIs instead of re-inventing them.</p>
@@ -424,15 +381,13 @@ test('It should call window.location.assign with the right urls', () =&gt; {
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
+          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
         
-                      
+          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         
-          <li><a href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">From AngularJS to Vue.js, CommonJS and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         
-          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
-        
-          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -566,11 +521,11 @@ To run a relational database with a Node application, Sequelize, “An easy-to-u
 </footer>
 
 </div>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
 
-<script>hljs.initHighlightingOnLoad();</script>
+
 
 
   <!-- Google Analytics -->
