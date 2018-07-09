@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
 
-    <title>Responsive, semantic images with CSS &middot; Code with Hugo</title>
+    <title>Better HTTP Polling with RxJS 5 &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,45 +13,33 @@
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
     
-    <link rel="canonical" href="https://codewithhugo.com/responsive-semantic-images-with-css/" /> 
+    <link rel="canonical" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/" /> 
 
-     <meta name="description" content="&lt;blockquote&gt;
-&lt;p&gt;CSS tip: &lt;code&gt;object-fit&lt;/code&gt; your images.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;To have an image that doesn&amp;rsquo;t try to stretch to its width/height the c" /> 
+     <meta name="description" content="&lt;p&gt;Here is the implementation for a function that takes a Promise-based fetch function and a function that decides if a response has been successful (from a pol" /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/nate-bell-unsplash.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/jp-valery-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="Responsive, semantic images with CSS"/>
-    <meta name="twitter:description" content="&lt;blockquote&gt;
-&lt;p&gt;CSS tip: &lt;code&gt;object-fit&lt;/code&gt; your images.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;To have an image that doesn&amp;rsquo;t try to stretch to its width/height the c"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/responsive-semantic-images-with-css/" />
+    <meta name="twitter:title" content="Better HTTP Polling with RxJS 5"/>
+    <meta name="twitter:description" content="&lt;p&gt;Here is the implementation for a function that takes a Promise-based fetch function and a function that decides if a response has been successful (from a pol"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/better-http-polling-with-rxjs-5/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Responsive, semantic images with CSS &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/responsive-semantic-images-with-css/" />
+    <meta property="og:title" content="Better HTTP Polling with RxJS 5 &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/better-http-polling-with-rxjs-5/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="&lt;blockquote&gt;
-&lt;p&gt;CSS tip: &lt;code&gt;object-fit&lt;/code&gt; your images.&lt;/p&gt;
-&lt;/blockquote&gt;
+    <meta property="og:description" content="&lt;p&gt;Here is the implementation for a function that takes a Promise-based fetch function and a function that decides if a response has been successful (from a pol" />
 
-&lt;p&gt;To have an image that doesn&amp;rsquo;t try to stretch to its width/height the c" />
+    <meta property="article:published_time" content="2018-07-09T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="reactive programming" />
 
-    <meta property="article:published_time" content="2018-07-05T00:00:00Z" />
-    <meta property="article:tag" content="CSS" /><meta property="article:tag" content="tip" /><meta property="article:tag" content="accessibility" />
-
-    <meta property="og:image" content="https://codewithhugo.com/img/nate-bell-unsplash.jpg"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/jp-valery-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.36" />
@@ -128,67 +116,73 @@
       <article class="post-full post"> 
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-07-05">5 July 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/css/">#CSS</a>&nbsp;<a href="https://codewithhugo.com/tags/tip/">#tip</a>&nbsp;
+            <time class="post-full-meta-date" datetime="2018-07-09">9 July 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/reactive-programming/">#reactive programming</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Responsive, semantic images with CSS</h1>
+        <h1 class="post-full-title">Better HTTP Polling with RxJS 5</h1>
     </header>
     
-    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/nate-bell-unsplash.jpg)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/jp-valery-unsplash.jpg)">
     </figure>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
-        <blockquote>
-<p>CSS tip: <code>object-fit</code> your images.</p>
-</blockquote>
-
-<p>To have an image that doesn&rsquo;t try to stretch to its width/height the classic CSS is as follows:</p>
+        <p>Here is the implementation for a function that takes a Promise-based fetch function and a function that decides if a response has been successful (from a polling perspective) and polls the fetch function until the <code>isSuccess</code> function returns <code>true</code>:</p>
 
 <p></p>
-<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">thumbnail</span> <span class="p">{</span>
-  <span class="k">width</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
-  <span class="k">height</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
-  <span class="k">background-size</span><span class="p">:</span> <span class="kc">cover</span><span class="p">;</span>
-  <span class="k">background-position</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="p">{</span> <span class="nx">Observable</span><span class="p">,</span> <span class="nx">from</span><span class="p">,</span> <span class="nx">interval</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">switchMap</span><span class="p">,</span> <span class="nx">takeWhile</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="nx">POLLING_INTERVAL</span> <span class="o">=</span> <span class="mi">600</span><span class="p">;</span> <span class="c1">// in milliseconds
+</span><span class="c1"></span>
+<span class="kd">function</span> <span class="nx">poll</span><span class="p">(</span><span class="nx">fetchFn</span><span class="p">,</span> <span class="nx">isSuccessFn</span><span class="p">,</span> <span class="nx">pollInterval</span> <span class="o">=</span> <span class="nx">POLLING_INTERVAL</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">interval</span><span class="p">(</span><span class="nx">POLLING_INTERVAL</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+      <span class="nx">switchMap</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">from</span><span class="p">(</span><span class="nx">fetchFn</span><span class="p">())),</span>
+      <span class="nx">takeWhile</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">isSuccessFn</span><span class="p">(</span><span class="nx">response</span><span class="p">))</span>
+  <span class="p">);</span>
 <span class="p">}</span></code></pre></div>
-<p>With this associated HTML (inline styles… 👎):</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span>
-  <span class="na">class</span><span class="o">=</span><span class="s">&#34;thumbnail&#34;</span>
-  <span class="na">style</span><span class="o">=</span><span class="s">&#34;background-image: url(&#39;some-url&#39;);&#34;</span>
-<span class="p"></span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">div</span><span class="p">&gt;</span></code></pre></div>
-<p>We can do:</p>
-<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">thumbnail</span> <span class="p">{</span>
-  <span class="k">width</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
-  <span class="k">height</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
-  <span class="k">object-fit</span><span class="p">:</span> <span class="kc">cover</span><span class="p">;</span>
-  <span class="k">object-position</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-<p>With the following HTML:</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;thumbnail&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;some-url&#34;</span><span class="p"></span><span class="p">&gt;</span></code></pre></div>
+<p>The above leverages RxJS 5 and uses its new <code>pipe</code> syntax. If we walk through it:</p>
+
+<ol>
+<li>create an Observable that emits every 600ms (by default) using <code>interval</code></li>
+<li>pipe that into <code>switchMap</code>, this operator essentially replaces the Observable’s value to another one, in this instance, replace the emitted interval count with an Observable created from the Promise returned by <code>fetchFn</code></li>
+<li><code>takeWhile</code> the <code>isSuccessFn</code> returns true</li>
+</ol>
+
+<p>To go into a bit more detail about <code>switchMap</code>, it’s a bit like doing this in a Promise chain:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">promiseChain</span> <span class="o">=</span> <span class="nb">Promise</span>
+  <span class="p">.</span><span class="nx">resolve</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+    <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">someFunctionThatReturnsAPromise</span><span class="p">()</span>
+  <span class="p">);</span></code></pre></div>
+<p>Anything that is now <code>.then</code>-ed onto <code>promiseChain</code> would now have the output of <code>someFunctionThatReturnsAPromise</code> passed in.</p>
+
+<p>Back to the poll function, this is an example of how it would be used:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s1">&#39;axios;
+</span><span class="s1">poll(
+</span><span class="s1">  axios.get(&#39;</span><span class="nx">https</span><span class="o">:</span><span class="c1">//changing-status.com/status&#39;),
+</span><span class="c1"></span>  <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="s1">&#39;success&#39;</span>
+<span class="p">).</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// response is HTTP response
+</span><span class="c1"></span>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
 <blockquote>
 <p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
 <a href="https://buttondown.email/hugo">Subscribe</a> to get the latest posts right in your inbox (before anyone else).</p>
 </blockquote>
 
-<h1 id="why-is-this-cool">Why is this cool?</h1>
-
-<ol>
-<li>One word: accessibility.</li>
-<li>Two words: semantic markup.</li>
-<li>Many words, with the <code>div</code> + <code>background-image</code> solution:
-
-<ol>
-<li>if the URL turned out to be broken, it would show empty space, with the <code>img</code> + <code>object-fit</code> one, it shows the good old “broken image because of URL” fallback (or <code>alt</code> attribute value).</li>
-<li>An <code>img</code> tag is more accessible since we can have <code>alt</code></li>
-<li>Typing <code>src=&quot;my-url&quot;</code> is just less characters than  <code>style=&quot;background-image: url('my-url')&quot;</code>.</li>
-</ol></li>
-</ol>
-
-<p>Warning: this might not work on older browsers, it does, however gracefully degrade (the image will just be stretched), it won&rsquo;t mess up the layout though.</p>
-
-<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@n8bell34?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Nate Bell"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Nate Bell</span></a></p>    
+<p>The advantage of this Observable-based approach is that we have access to each HTTP response. That’s nice if we need to display the status somewhere.
+An Observables are also pretty composable, so to turn what we’ve got into something that just emits once when the poll completes we can also do that:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="p">{</span> <span class="nx">skipWhile</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;rxjs/operators&#39;</span><span class="p">;</span>
+<span class="k">const</span> <span class="nx">emitOnPollComplete</span> <span class="o">=</span> <span class="nx">poll</span><span class="p">(</span>
+  <span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://changing-status.com/status&#39;</span><span class="p">),</span>
+  <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="s1">&#39;success&#39;</span>
+<span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+  <span class="nx">skipWhile</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">status</span> <span class="o">!==</span> <span class="s1">&#39;success&#39;</span><span class="p">)</span>
+<span class="p">).</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Poll complete&#39;</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@jpvalery?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Jp Valery"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Jp Valery</span></a></p>    
         </div>
     </section>
 
@@ -236,7 +230,7 @@
     <header class="read-next-card-header">
         <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
         
-        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/css/">#CSS</a></h3>
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a></h3>
     </header>
     <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
     </div>
@@ -244,22 +238,56 @@
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
+          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
         
-          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
         
-          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
         
-          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
       
-        <a href="https://codewithhugo.com/tags/css/">See all related posts →</a>
+        <a href="https://codewithhugo.com/tags/javascript/">See all related posts →</a>
     </footer>
 </article>
 
 
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #CSS 
+              #web development  </span>
+              
+              <h2 class="post-card-title">Why CSS is hard</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Things we’re not used to tend to be harder
+I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
+Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
+CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
       
       <article class="post-card post"> 
     
@@ -294,39 +322,6 @@
     </div>
 </article>
       
-      
-      <article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/20180704-array-types.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #tip  </span>
-              
-              <h2 class="post-card-title">Detecting Object vs Array in JavaScript by example</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>Let’s say we want to measure the depth of we have an object with mixed nested arrays/objects like so:
-
- ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
-      
     </div>
   </div>
 </aside>
@@ -339,17 +334,17 @@
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Responsive, semantic images with CSS</div>
+  <div class="floating-header-title">Better HTTP Polling with RxJS 5</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Responsive%2c%20semantic%20images%20with%20CSS&amp;url=https%3a%2f%2fcodewithhugo.com%2fresponsive-semantic-images-with-css%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Better%20HTTP%20Polling%20with%20RxJS%205&amp;url=https%3a%2f%2fcodewithhugo.com%2fbetter-http-polling-with-rxjs-5%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fresponsive-semantic-images-with-css%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fbetter-http-polling-with-rxjs-5%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>

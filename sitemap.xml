@@ -48,6 +48,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/better-http-polling-with-rxjs-5/</loc>
+    <lastmod>2018-07-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/mocking-the-current-date-in-jest-tests/</loc>
     <lastmod>2018-07-07T00:00:00+00:00</lastmod>
   </url>
@@ -221,6 +226,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/programming/</loc>
     <lastmod>2017-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/reactive-programming/</loc>
+    <lastmod>2018-07-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

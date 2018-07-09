@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reactive Programming on Code with Hugo</title>
+    <link>https://codewithhugo.com/tags/reactive-programming/</link>
+    <description>Recent content in Reactive Programming on Code with Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 09 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://codewithhugo.com/tags/reactive-programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Better HTTP Polling with RxJS 5</title>
+      <link>https://codewithhugo.com/better-http-polling-with-rxjs-5/</link>
+      <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/better-http-polling-with-rxjs-5/</guid>
+      <description>&lt;p&gt;Here is the implementation for a function that takes a Promise-based fetch function and a function that decides if a response has been successful (from a polling perspective) and polls the fetch function until the &lt;code&gt;isSuccess&lt;/code&gt; function returns &lt;code&gt;true&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
