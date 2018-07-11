@@ -6,10 +6,21 @@
     <description>Recent content in Node on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 07 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://codewithhugo.com/tags/node/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ES6 by example: a module/CLI to wait for Postgres in docker-compose</title>
+      <link>https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/</link>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/</guid>
+      <description>When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues inside the app.
+This post walks through how to deliver this functionality both as a CLI and a module that works both as a CommonJS module (require) and ES modules, without transpilation.
+“A fast, production ready, zero-dependency ES module loader for Node 6+!” is esm’s promise.</description>
+    </item>
     
     <item>
       <title>Mocking the current Date in Jest tests</title>

@@ -48,6 +48,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/</loc>
+    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/better-http-polling-with-rxjs-5/</loc>
     <lastmod>2018-07-09T00:00:00+00:00</lastmod>
   </url>
@@ -207,7 +212,7 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/node/</loc>
-    <lastmod>2018-07-07T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
