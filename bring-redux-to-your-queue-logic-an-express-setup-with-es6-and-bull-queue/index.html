@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en-US" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
+
+    <title>Bring Redux to your queue logic: an Express setup with ES6 and bull queue &middot; Code with Hugo</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
+    <meta name="theme-color" content="#090a0b">
+    
+    <link rel="canonical" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/" /> 
+
+     <meta name="description" content="There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few " /> 
+
+     
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg"/>
+    
+ 
+    <meta name="twitter:title" content="Bring Redux to your queue logic: an Express setup with ES6 and bull queue"/>
+    <meta name="twitter:description" content="There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few "/>
+    <meta name="twitter:url" content="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/" />
+    <meta name="twitter:site" content="@hugo__df"/>
+
+    <meta property="og:site_name" content="Code with Hugo" />
+    <meta property="og:title" content="Bring Redux to your queue logic: an Express setup with ES6 and bull queue &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/" />
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few " />
+
+    <meta property="article:published_time" content="2018-07-21T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Node" /><meta property="article:tag" content="Docker" />
+
+    <meta property="og:image" content="https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg"/>
+
+
+    <meta name="generator" content="Hugo 0.36" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
+
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
+</head>
+
+
+<body class="post-template">
+  <div class="site-wrapper"> 
+
+<header class="site-header outer">
+  <div class="inner">
+    <nav class="site-nav">
+      <div class="site-nav-left">
+
+        <ul class="nav" role="menu">
+        
+        
+        
+            <li class="" role="menuitem">
+              <a href="/">Home</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/javascript/">JavaScript</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/node/">Node</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/css/">CSS</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/tip/">tips</a>
+            </li>
+        
+      </ul></div>
+
+      <div class="site-nav-right">
+        <div class="social-links">
+                    
+
+                    <a class="social-link social-link-tw" href="https://twitter.com/hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg></a>
+
+                    <a class="social-link" href="https://github.com/HugoDF" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+
+                    
+
+                    <a class="social-link" href="https://medium.com/@hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 195"><path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582 L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011 C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114 150.640424,135.084652 151.542017,135.771899 L161.755369,145.798942 L161.755369,148 L110.38282,148 L110.38282,145.798942 L120.963119,135.527337 C122.002801,134.487948 122.002801,134.182246 122.002801,132.592593 L122.002801,73.0417402 L92.585901,147.755438 L88.6106443,147.755438 L54.3622782,73.0417402 L54.3622782,123.115814 C54.0767278,125.221069 54.7759199,127.3406 56.2581699,128.863022 L70.0186741,145.55438 L70.0186741,147.755438 L31,147.755438 L31,145.55438 L44.7605042,128.863022 C46.2319621,127.338076 46.8903838,125.204485 46.5340803,123.115814 L46.5340803,65.2157554 Z"/></svg></a>
+        </div>  
+        
+        <a class="subscribe-button" href="https://buttondown.email/hugo">Subscribe</a> </div>
+            
+      </div>
+
+    </nav>  
+
+  </div>
+</header>
+
+<main id="site-main" class="site-main outer" role="main">
+  <div class="inner">
+    
+      <article class="post-full post"> 
+    <header class="post-full-header">
+        <section class="post-full-meta">
+            <time class="post-full-meta-date" datetime="2018-07-21">21 July 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
+        </section>
+        <h1 class="post-full-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h1>
+    </header>
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)">
+    </figure>
+
+    <section class="post-full-content">
+        <div class="kg-card-markdown">
+        
+
+<!--
+- [An Express application with Redis and a worker 🏃‍♀️](#an-express-application-with-redis-and-a-worker-%F0%9F%8F%83%E2%80%8D%E2%99%80%EF%B8%8F)
+- [Setting up bull 🐮](#setting-up-bull-%F0%9F%90%AE)
+- [Persisting webhook data with Redis](#persisting-webhook-data-with-redis)
+  - [Accepting payloads and forwarding them on](#accepting-payloads-and-forwarding-them-on)
+  - [Persisting webhook data to Redis 💾](#persisting-webhook-data-to-redis-%F0%9F%92%BE)
+  - [Saving POST data using the new db module](#saving-post-data-using-the-new-db-module)
+- [Queuing jobs 🏭](#queuing-jobs-%F0%9F%8F%AD)
+- [Processing jobs ⚙️](#processing-jobs-%E2%9A%99%EF%B8%8F)
+- [Some other stuff to do before you ship this 🚢](#some-other-stuff-to-do-before-you-ship-this-%F0%9F%9A%A2)
+-->
+
+<p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.</p>
+
+<p>There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. <a href="https://github.com/Automattic/kue">Kue</a>, <a href="https://github.com/smrchy/rsmq">RSMQ</a>, <a href="https://github.com/bee-queue/bee-queue">Bee Queue</a>, <a href="https://github.com/OptimalBits/bull">bull</a>.
+The issue with Kue, RSMQ and Bee Queue was its use of a <code>done</code> callback as the recommended API.</p>
+
+<p>Bull <a href="https://github.com/OptimalBits/bull">https://github.com/OptimalBits/bull</a> is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means <code>async/await</code>.</p>
+
+<p>We’ll walk through an application that sends webhooks with a given payload to a set of URLs.</p>
+
+<!-- more -->
+
+<p>You can find the full code content at <a href="https://github.com/HugoDF/express-bull-es6">https://github.com/HugoDF/express-bull-es6</a>.</p>
+
+<ul>
+<li><a href="#an-express-application-with-redis-and-a-worker">An Express application with Redis and a worker 🏃‍♀️</a></li>
+<li><a href="#setting-up-bull">Setting up bull 🐮</a></li>
+<li><a href="#persisting-webhook-data-with-redis">Persisting webhook data with Redis</a>
+
+<ul>
+<li><a href="#accepting-payloads-and-forwarding-them-on">Accepting payloads and forwarding them on</a></li>
+<li><a href="#persisting-webhook-data-to-redis">Persisting webhook data to Redis 💾</a></li>
+<li><a href="#saving-post-data-using-the-new-db-module">Saving POST data using the new db module</a></li>
+</ul></li>
+<li><a href="#queuing-jobs">Queuing jobs 🏭</a></li>
+<li><a href="#processing-jobs">Processing jobs ⚙️</a></li>
+<li><a href="#some-other-stuff-to-do-before-you-ship-this">Some other stuff to do before you ship this 🚢</a></li>
+</ul>
+
+<h2 id="an-express-application-with-redis-and-a-worker">An Express application with Redis and a worker 🏃‍♀️</h2>
+
+<p>We&rsquo;ll start with a Node/Redis/Express setup using docker-compose (a full walkthrough can be found at
+<a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</a>),
+the application will be written using ES modules (by using the <a href="https://github.com/standard-things/esm">esm</a> package).</p>
+
+<p>To begin we&rsquo;ll use the following <code>docker-compose.yml</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml">version<span class="p">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="w">
+</span><span class="w"></span>services<span class="p">:</span><span class="w">
+</span><span class="w">    </span>app<span class="p">:</span><span class="w">
+</span><span class="w">        </span>build<span class="p">:</span><span class="w"> </span>.<span class="w">
+</span><span class="w">        </span>container_name<span class="p">:</span><span class="w"> </span>my-app<span class="w">
+</span><span class="w">        </span>environment<span class="p">:</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>NODE_ENV=development<span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>PORT=<span class="m">3000</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>REDIS_URL=redis<span class="p">:</span>//my-cache<span class="w">
+</span><span class="w">        </span>command<span class="p">:</span><span class="w"> </span><span class="s2">&#34;sh -c &#39;npm i &amp;&amp; npm run dev&#39;&#34;</span><span class="w">
+</span><span class="w">        </span>volumes<span class="p">:</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>.<span class="p">:</span>/var/www/app<span class="w">
+</span><span class="w">        </span>links<span class="p">:</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>redis<span class="w">
+</span><span class="w">        </span>ports<span class="p">:</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span><span class="s2">&#34;3000:3000&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w">    </span>worker<span class="p">:</span><span class="w">
+</span><span class="w">        </span>build<span class="p">:</span><span class="w"> </span>.<span class="w">
+</span><span class="w">        </span>container_name<span class="p">:</span><span class="w"> </span>my-worker<span class="w">
+</span><span class="w">        </span>environment<span class="p">:</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>NODE_ENV=development<span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>PORT=<span class="m">3000</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>REDIS_URL=redis<span class="p">:</span>//my-cache<span class="w">
+</span><span class="w">        </span>command<span class="p">:</span><span class="w"> </span><span class="s2">&#34;sh -c &#39;npm i &amp;&amp; npm run worker:dev&#39;&#34;</span><span class="w">
+</span><span class="w">        </span>volumes<span class="p">:</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>.<span class="p">:</span>/var/www/app<span class="w">
+</span><span class="w">        </span>links<span class="p">:</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span>redis<span class="w">
+</span><span class="w">
+</span><span class="w">    </span>redis<span class="p">:</span><span class="w">
+</span><span class="w">        </span>image<span class="p">:</span><span class="w"> </span>redis<span class="w">
+</span><span class="w">        </span>container_name<span class="p">:</span><span class="w"> </span>my-cache<span class="w">
+</span><span class="w">        </span>expose<span class="p">:</span><span class="w">
+</span><span class="w">            </span>-<span class="w"> </span><span class="s2">&#34;6379&#34;</span></code></pre></div>
+<p>We&rsquo;ll also need a <code>package.json</code> as follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;express-bull-es6&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;An Express setup with Redis, bull and ES6&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;server.js&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;node -r esm server.js&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;dev&#34;</span><span class="p">:</span> <span class="s2">&#34;nodemon -r esm server.js&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;worker&#34;</span><span class="p">:</span> <span class="s2">&#34;node -r esm worker.js&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;worker:dev&#34;</span><span class="p">:</span> <span class="s2">&#34;nodemon -r esm worker.js&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Hugo Di Francesco&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;license&#34;</span><span class="p">:</span> <span class="s2">&#34;MIT&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;dependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;esm&#34;</span><span class="p">:</span> <span class="s2">&#34;^3.0.67&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;express&#34;</span><span class="p">:</span> <span class="s2">&#34;^4.16.3&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;nodemon&#34;</span><span class="p">:</span> <span class="s2">&#34;^1.18.1&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>A <code>server.js</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="p">});</span></code></pre></div>
+<p>And a <code>worker.js</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Worker doing nothing&#39;</span><span class="p">);</span></code></pre></div>
+<p>Running the following at the command line should get us some output (after a bit if the dependencies need to install):</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ docker-compose up</code></pre></div>
+<p>Eventually:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">my-worker <span class="p">|</span> <span class="o">[</span>nodemon<span class="o">]</span> <span class="m">1</span>.18.1
+my-worker <span class="p">|</span> <span class="o">[</span>nodemon<span class="o">]</span> to restart at any time, enter <span class="sb">`</span>rs<span class="sb">`</span>
+my-worker <span class="p">|</span> <span class="o">[</span>nodemon<span class="o">]</span> watching: *.*
+my-worker <span class="p">|</span> <span class="o">[</span>nodemon<span class="o">]</span> starting <span class="sb">`</span>node -r esm worker.js<span class="sb">`</span>
+my-app    <span class="p">|</span> <span class="o">[</span>nodemon<span class="o">]</span> <span class="m">1</span>.18.1
+my-app    <span class="p">|</span> <span class="o">[</span>nodemon<span class="o">]</span> to restart at any time, enter <span class="sb">`</span>rs<span class="sb">`</span>
+my-app    <span class="p">|</span> <span class="o">[</span>nodemon<span class="o">]</span> watching: *.*
+my-app    <span class="p">|</span> <span class="o">[</span>nodemon<span class="o">]</span> starting <span class="sb">`</span>node -r esm server.js<span class="sb">`</span>
+my-worker <span class="p">|</span> Worker doing nothing
+my-app    <span class="p">|</span> Server listening on port <span class="m">3000</span></code></pre></div>
+<h2 id="setting-up-bull">Setting up bull 🐮</h2>
+
+<p>Next, we&rsquo;ll want to add <code>bull</code> to set up somes queues.
+We&rsquo;ll also set up <code>bull-arena</code> as a web UI to monitor these queues.</p>
+
+<p>First install <code>bull</code> and <code>bull-arena</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">npm i --save bull bull-arena</code></pre></div>
+<p>Let&rsquo;s create some queues in a <code>queues.js</code> file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">Queue</span> <span class="nx">from</span> <span class="s1">&#39;bull&#39;</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">const</span> <span class="nx">NOTIFY_URL</span> <span class="o">=</span> <span class="s1">&#39;NOTIFY_URL&#39;</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">const</span> <span class="nx">queues</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">NOTIFY_URL</span><span class="p">]</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Queue</span><span class="p">(</span>
+    <span class="nx">NOTIFY_URL</span><span class="p">,</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span>
+  <span class="p">)</span>
+<span class="p">};</span></code></pre></div>
+<p>And update <code>server.js</code> to include the <code>bull-arena</code> UI and <code>import</code> the <code>NOTIFY_URL</code> queue.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">url</span> <span class="nx">from</span> <span class="s1">&#39;url&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Arena</span> <span class="nx">from</span> <span class="s1">&#39;bull-arena&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">queues</span><span class="p">,</span> <span class="nx">NOTIFY_URL</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./queues&#39;</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+
+<span class="kd">function</span> <span class="nx">getRedisConfig</span><span class="p">(</span><span class="nx">redisUrl</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">redisConfig</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">redisUrl</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="nx">redisConfig</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">||</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">redisConfig</span><span class="p">.</span><span class="nx">port</span> <span class="o">||</span> <span class="mi">6379</span><span class="p">),</span>
+    <span class="nx">database</span><span class="o">:</span> <span class="p">(</span><span class="nx">redisConfig</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">||</span> <span class="s1">&#39;/0&#39;</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">||</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="o">:</span> <span class="nx">redisConfig</span><span class="p">.</span><span class="nx">auth</span> <span class="o">?</span> <span class="nx">redisConfig</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="kc">undefined</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">Arena</span><span class="p">(</span>
+  <span class="p">{</span>
+    <span class="nx">queues</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nx">NOTIFY_URL</span><span class="p">,</span>
+        <span class="nx">hostId</span><span class="o">:</span> <span class="s1">&#39;Worker&#39;</span><span class="p">,</span>
+        <span class="nx">redis</span><span class="o">:</span> <span class="nx">getRedisConfig</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">basePath</span><span class="o">:</span> <span class="s1">&#39;/arena&#39;</span><span class="p">,</span>
+    <span class="nx">disableListen</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">));</span>
+
+<span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="p">});</span></code></pre></div>
+<p>On save we&rsquo;ll be able to open up <a href="http://localhost:3000/arena">http://localhost:3000/arena</a> and see the following:</p>
+
+<p><img src="https://codewithhugo.com/img/20180721-arena-screenshot.jpg" alt="Screenshot of Arena in browser" /></p>
+
+<h2 id="persisting-webhook-data-with-redis">Persisting webhook data with Redis</h2>
+
+<h3 id="accepting-payloads-and-forwarding-them-on">Accepting payloads and forwarding them on</h3>
+
+<p>The shape of our API will be the following:
+A <code>POST /webhooks</code> endpoint that will accept a JSON POST body with a <code>payload</code> and a <code>urls</code> array, which will respond to the following request:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">curl -X POST <span class="se">\
+</span><span class="se"></span>  http://localhost:3000/webhooks <span class="se">\
+</span><span class="se"></span>  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  -d <span class="s1">&#39;{
+</span><span class="s1">	&#34;payload&#34;: {
+</span><span class="s1">		&#34;hello&#34;: &#34;world&#34;
+</span><span class="s1">	},
+</span><span class="s1">	&#34;urls&#34;: [
+</span><span class="s1">		&#34;http://localhost:3000/example&#34;,
+</span><span class="s1">		&#34;http://localhost:3000/example&#34;
+</span><span class="s1">	]
+</span><span class="s1">}&#39;</span></code></pre></div>
+<p>A <code>POST /webhooks/notify</code> endpoint that will accept a JSON POST body with an <code>id</code> field, which will respond to a request like the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">curl -X POST <span class="se">\
+</span><span class="se"></span>  http://localhost:3000/webhooks/notify <span class="se">\
+</span><span class="se"></span>  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  -d <span class="s1">&#39;{
+</span><span class="s1">	&#34;id&#34;: &#34;e5d9f99f-9641-4c0a-b2ca-3b0036c2a9b3&#34;
+</span><span class="s1">}&#39;</span></code></pre></div>
+<p>We&rsquo;ll also have a <code>POST /example</code> endpoint to check that our webhooks are actually being triggered.</p>
+
+<p>This means we&rsquo;ll need <code>body-parser</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">npm install --save body-parser</code></pre></div>
+<p><code>server.js</code> will look like the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">url</span> <span class="nx">from</span> <span class="s1">&#39;url&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">bodyParser</span> <span class="nx">from</span> <span class="s1">&#39;body-parser&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Arena</span> <span class="nx">from</span> <span class="s1">&#39;bull-arena&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">queues</span><span class="p">,</span> <span class="nx">NOTIFY_URL</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./queues&#39;</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="p">{</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+    <span class="nx">payload</span><span class="p">,</span>
+    <span class="nx">urls</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks/notify&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/example&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hit example with </span><span class="si">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">getRedisConfig</span><span class="p">(</span><span class="nx">redisUrl</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">redisConfig</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">redisUrl</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="nx">redisConfig</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">||</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">redisConfig</span><span class="p">.</span><span class="nx">port</span> <span class="o">||</span> <span class="mi">6379</span><span class="p">),</span>
+    <span class="nx">database</span><span class="o">:</span> <span class="p">(</span><span class="nx">redisConfig</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">||</span> <span class="s1">&#39;/0&#39;</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">||</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="o">:</span> <span class="nx">redisConfig</span><span class="p">.</span><span class="nx">auth</span> <span class="o">?</span> <span class="nx">redisConfig</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="kc">undefined</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">Arena</span><span class="p">(</span>
+  <span class="p">{</span>
+    <span class="nx">queues</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nx">NOTIFY_URL</span><span class="p">,</span>
+        <span class="nx">hostId</span><span class="o">:</span> <span class="s1">&#39;Worker&#39;</span><span class="p">,</span>
+        <span class="nx">redis</span><span class="o">:</span> <span class="nx">getRedisConfig</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">basePath</span><span class="o">:</span> <span class="s1">&#39;/arena&#39;</span><span class="p">,</span>
+    <span class="nx">disableListen</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">));</span>
+
+<span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="p">});</span></code></pre></div>
+<h3 id="persisting-webhook-data-to-redis">Persisting webhook data to Redis 💾</h3>
+
+<p><code>ioredis</code> (a Redis client for Node) will be picked to leverage the fact that <code>bull</code> uses <code>ioredis</code> under the hood:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">npm install --save ioredis</code></pre></div>
+<p>To generate unique identifiers we&rsquo;ll also install the <code>uuid</code> package:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">npm install --save uuid</code></pre></div>
+<p>A new module, <code>db.js</code> looks like the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">Redis</span> <span class="nx">from</span> <span class="s1">&#39;ioredis&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">v4</span> <span class="nx">as</span> <span class="nx">uuidV4</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;uuid&#39;</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="nx">redis</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Redis</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span><span class="p">);</span>
+
+<span class="k">const</span> <span class="nx">WEBHOOK_PREFIX</span> <span class="o">=</span> <span class="s1">&#39;webhook:&#39;</span><span class="p">;</span>
+<span class="k">const</span> <span class="nx">PAYLOAD_PREFIX</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">WEBHOOK_PREFIX</span><span class="si">}</span><span class="sb">payload:`</span><span class="p">;</span>
+<span class="k">const</span> <span class="nx">URLS_PREFIX</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">WEBHOOK_PREFIX</span><span class="si">}</span><span class="sb">urls:`</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="nx">makePayloadKey</span> <span class="o">=</span> <span class="nx">id</span> <span class="p">=&gt;</span> <span class="sb">`</span><span class="si">${</span><span class="nx">PAYLOAD_PREFIX</span><span class="si">}${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="k">const</span> <span class="nx">makeUrlsKey</span> <span class="o">=</span> <span class="nx">id</span> <span class="p">=&gt;</span> <span class="sb">`</span><span class="si">${</span><span class="nx">URLS_PREFIX</span><span class="si">}${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+
+<span class="kr">async</span> <span class="kd">function</span> <span class="nx">setWebhook</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">uuidV4</span><span class="p">();</span>
+  <span class="k">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">multi</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">hmset</span><span class="p">(</span><span class="nx">makePayloadKey</span><span class="p">(</span><span class="nx">id</span><span class="p">),</span> <span class="nx">payload</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">lpush</span><span class="p">(</span><span class="nx">makeUrlsKey</span><span class="p">(</span><span class="nx">id</span><span class="p">),</span> <span class="nx">urls</span><span class="p">)</span>
+  <span class="kr">await</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">exec</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">id</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">async</span> <span class="kd">function</span> <span class="nx">getWebhook</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">multi</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">hgetall</span><span class="p">(</span><span class="nx">makePayloadKey</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">lrange</span><span class="p">(</span><span class="nx">makeUrlsKey</span><span class="p">(</span><span class="nx">id</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">const</span> <span class="p">[[</span><span class="nx">_</span><span class="p">,</span> <span class="nx">payload</span><span class="p">],</span> <span class="p">[</span><span class="nx">__</span><span class="p">,</span> <span class="nx">urls</span><span class="p">]]</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">exec</span><span class="p">();</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">payload</span><span class="p">,</span>
+    <span class="nx">urls</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">setWebhook</span><span class="p">,</span>
+  <span class="nx">getWebhook</span>
+<span class="p">};</span></code></pre></div>
+<p>Payloads and URLs are modelled as <code>webhook:payload:&lt;some-uuid&gt;</code> and <code>webhook:urls:&lt;some-uuid&gt;</code> respectively.</p>
+
+<p>Payloads are Redis hashes (since the payload is a JSON object), and URLs are Redis lists (since we&rsquo;re dealing with a list of strings).</p>
+
+<p>We run into an issue whereby we want to make sure we&rsquo;re setting/getting the <code>payload</code> and <code>urls</code> at the same time, hence the use of <code>multi()</code>.</p>
+
+<p><code>multi</code> allows us to build transactions (operations that should be executed atomically).
+At this scale (no traffic 😄), considering we only every add (never update) and that we use UUIDs, we could just as well have <em>not</em> used transactions,
+but we&rsquo;ll be good engineers and go ahead and use them anyways.</p>
+
+<p>The more involved lines:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">multi</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">hgetall</span><span class="p">(</span><span class="nx">makePayloadKey</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span>
+  <span class="p">.</span><span class="nx">lrange</span><span class="p">(</span><span class="nx">makeUrlsKey</span><span class="p">(</span><span class="nx">id</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="k">const</span> <span class="p">[[</span><span class="nx">_</span><span class="p">,</span> <span class="nx">payload</span><span class="p">],</span> <span class="p">[</span><span class="nx">__</span><span class="p">,</span> <span class="nx">urls</span><span class="p">]]</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">exec</span><span class="p">();</span></code></pre></div>
+<p>Warrant an explanation:</p>
+
+<ol>
+<li><code>hgetall</code> gets all the key-value pairs in the hash,</li>
+<li><code>lrange</code> gets values of the list, when used with <code>1</code> as start and <code>-1</code> as end, it gets the whole list</li>
+
+<li><p><code>const output = await multi().op1().op2().exec()</code></p>
+
+<ul>
+<li>Sets output to an array of return values from <code>op1</code>, <code>op2</code></li>
+<li>In other words <code>output = [ [ errorOp1, replyOp1 ], [ errorOp2, replyOp2 ] ]</code></li>
+<li>In order to reflect this, we ignore errors (not such good practice) and only get the replies</li>
+<li>A better solution would be to do:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="p">[[</span><span class="nx">errPayload</span><span class="p">,</span> <span class="nx">payload</span><span class="p">],</span> <span class="p">[</span><span class="nx">errUrls</span><span class="p">,</span> <span class="nx">urls</span><span class="p">]]</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">exec</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">errPayload</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="nx">errPayload</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">errUrls</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="nx">errUrls</span>
+<span class="p">}</span></code></pre></div></li>
+</ol>
+
+<h3 id="saving-post-data-using-the-new-db-module">Saving POST data using the new db module</h3>
+
+<p>In <code>server.js</code> now looks like the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">url</span> <span class="nx">from</span> <span class="s1">&#39;url&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">express</span> <span class="nx">from</span> <span class="s1">&#39;express&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">bodyParser</span> <span class="nx">from</span> <span class="s1">&#39;body-parser&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Arena</span> <span class="nx">from</span> <span class="s1">&#39;bull-arena&#39;</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">db</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./db&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">queues</span><span class="p">,</span> <span class="nx">NOTIFY_URL</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./queues&#39;</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="p">{</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">setWebhook</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+      <span class="nx">id</span>
+    <span class="p">});</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks/notify&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">{</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span> <span class="p">}</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">getWebhook</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/example&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hit example with </span><span class="si">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">function</span> <span class="nx">getRedisConfig</span><span class="p">(</span><span class="nx">redisUrl</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">redisConfig</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">redisUrl</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">host</span><span class="o">:</span> <span class="nx">redisConfig</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">||</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">redisConfig</span><span class="p">.</span><span class="nx">port</span> <span class="o">||</span> <span class="mi">6379</span><span class="p">),</span>
+    <span class="nx">database</span><span class="o">:</span> <span class="p">(</span><span class="nx">redisConfig</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">||</span> <span class="s1">&#39;/0&#39;</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">||</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="o">:</span> <span class="nx">redisConfig</span><span class="p">.</span><span class="nx">auth</span> <span class="o">?</span> <span class="nx">redisConfig</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="kc">undefined</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nx">Arena</span><span class="p">(</span>
+  <span class="p">{</span>
+    <span class="nx">queues</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nx">NOTIFY_URL</span><span class="p">,</span>
+        <span class="nx">hostId</span><span class="o">:</span> <span class="s1">&#39;Worker&#39;</span><span class="p">,</span>
+        <span class="nx">redis</span><span class="o">:</span> <span class="nx">getRedisConfig</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">basePath</span><span class="o">:</span> <span class="s1">&#39;/arena&#39;</span><span class="p">,</span>
+    <span class="nx">disableListen</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">));</span>
+
+<span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+<span class="p">});</span></code></pre></div>
+<p>The main updates are:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="p">{</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">setWebhook</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+      <span class="nx">id</span>
+    <span class="p">});</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+<p>and:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks/notify&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">{</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span> <span class="p">}</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">getWebhook</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+<p>You&rsquo;ll notice that the <code>POST /webhooks/notify</code> handler still doesn&rsquo;t actually notify anything or anyone 🙈.</p>
+
+<h2 id="queuing-jobs">Queuing jobs 🏭</h2>
+
+<p>To queue jobs, we use the <code>queue.add</code> method and pass it what we want to appear in <code>job.data</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">queues</span><span class="p">[</span><span class="nx">NOTIFY_URL</span><span class="p">].</span><span class="nx">add</span><span class="p">({</span>
+  <span class="nx">payload</span><span class="p">,</span>
+  <span class="nx">url</span><span class="p">,</span>
+  <span class="nx">id</span>
+<span class="p">});</span></code></pre></div>
+<p>We want to send a request to each URL independently (that&rsquo;s sort of the point of the whole queue setup) which means we want:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks/notify&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="p">{</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span> <span class="p">}</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">getWebhook</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+    <span class="nx">urls</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">url</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">queues</span><span class="p">[</span><span class="nx">NOTIFY_URL</span><span class="p">].</span><span class="nx">add</span><span class="p">({</span>
+        <span class="nx">payload</span><span class="p">,</span>
+        <span class="nx">url</span><span class="p">,</span>
+        <span class="nx">id</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></div>
+<p>Where the notable change is:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">urls</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">url</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">queues</span><span class="p">[</span><span class="nx">NOTIFY_URL</span><span class="p">].</span><span class="nx">add</span><span class="p">({</span>
+    <span class="nx">payload</span><span class="p">,</span>
+    <span class="nx">url</span><span class="p">,</span>
+    <span class="nx">id</span>
+  <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+<p>Now that we&rsquo;ve done this, if we create a new webhook:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">curl -X POST <span class="se">\
+</span><span class="se"></span>  http://localhost:3000/webhooks <span class="se">\
+</span><span class="se"></span>  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  -d <span class="s1">&#39;{
+</span><span class="s1">        &#34;payload&#34;: {
+</span><span class="s1">                &#34;hello&#34;: &#34;world&#34;
+</span><span class="s1">        },
+</span><span class="s1">        &#34;urls&#34;: [
+</span><span class="s1">                &#34;http://localhost:3000/example&#34;,
+</span><span class="s1">                &#34;http://localhost:3000/example&#34;
+</span><span class="s1">        ]
+</span><span class="s1">}&#39;</span>
+<span class="o">{</span><span class="s2">&#34;id&#34;</span>:<span class="s2">&#34;5fc395bf-ca2f-4654-a7ac-52f6890d0deb&#34;</span><span class="o">}</span></code></pre></div>
+<p><code>{&quot;id&quot;:&quot;5fc395bf-ca2f-4654-a7ac-52f6890d0deb&quot;}</code> make sure to copy the id to input into the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">curl -X POST <span class="se">\
+</span><span class="se"></span>  http://localhost:3000/webhooks/notify <span class="se">\
+</span><span class="se"></span>  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  -d <span class="s1">&#39;{
+</span><span class="s1">	&#34;id&#34;: &#34;5fc395bf-ca2f-4654-a7ac-52f6890d0deb&#34;
+</span><span class="s1">}&#39;</span>
+OK</code></pre></div>
+<p>The jobs have been added to the queue, as we can check by opening <code>bull-arena</code> UI at <a href="http://localhost:3000/arena/Worker/NOTIFY_URL/waiting">http://localhost:3000/arena/Worker/NOTIFY_URL/waiting</a>:</p>
+
+<p><img src="https://codewithhugo.com/img/20180721-waiting-jobs.jpg" alt="Screenshot of waiting jobs on the NOTIFY_URL queue" /></p>
+
+<p>By clicking on one of the <code>__default__</code> jobs, we can see the payload, urls and id are being passed in correctly:</p>
+
+<p><img src="https://codewithhugo.com/img/20180721-job-payload.jpg" alt="Data content of job in queue" /></p>
+
+<h2 id="processing-jobs">Processing jobs ⚙️</h2>
+
+<p>We now want to actually process the queued jobs, ie ping some urls with some data.</p>
+
+<p>To do that let&rsquo;s bring in <code>axios</code> as a HTTP client:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">npm install --save axios</code></pre></div>
+<p>Create a <code>processors.js</code> file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="p">{</span> <span class="nx">NOTIFY_URL</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./queues&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s1">&#39;axios&#39;</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">const</span> <span class="nx">processorInitialisers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">NOTIFY_URL</span><span class="p">]</span><span class="o">:</span> <span class="nx">db</span> <span class="p">=&gt;</span> <span class="nx">job</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Posting to </span><span class="si">${</span><span class="nx">job</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">job</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">job</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>For some context, the reasons we&rsquo;ve gone with a <code>db =&gt; job =&gt; Promise</code> type signature even though we don&rsquo;t need the DB currently is
+to illustrate how I would pass the database or any other dependencies into the processorInitialiser.</p>
+
+<p>Some other processor initialiser could look like the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">myOtherProcessorInitialiser</span> <span class="o">=</span> <span class="nx">db</span> <span class="p">=&gt;</span> <span class="kr">async</span> <span class="nx">job</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">webhook</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">getWebhook</span><span class="p">(</span><span class="nx">job</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+    <span class="nx">webhook</span><span class="p">.</span><span class="nx">urls</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span>
+      <span class="nx">url</span> <span class="p">=&gt;</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">webhook</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">);</span>
+<span class="p">};</span></code></pre></div>
+<p>To finish off, we need to actually hook up the processors to the queue, that&rsquo;s done using <code>queue.process</code>, so in <code>worker.js</code> we will now have:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="p">{</span> <span class="nx">queues</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./queues&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">processorInitialisers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./processors&#39;</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">db</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./db&#39;</span><span class="p">;</span>
+
+<span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">queues</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(([</span><span class="nx">queueName</span><span class="p">,</span> <span class="nx">queue</span><span class="p">])</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Worker listening to &#39;</span><span class="si">${</span><span class="nx">queueName</span><span class="si">}</span><span class="sb">&#39; queue`</span><span class="p">);</span>
+  <span class="nx">queue</span><span class="p">.</span><span class="nx">process</span><span class="p">(</span><span class="nx">processorInitialisers</span><span class="p">[</span><span class="nx">queueName</span><span class="p">](</span><span class="nx">db</span><span class="p">));</span>
+<span class="p">});</span></code></pre></div>
+<p>We can test the webhooks work by creating one that points to <code>http://localhost:3000/example</code>, triggering it using <code>/webhook/notify</code> and checking the logs, something like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">my-worker <span class="p">|</span> Posting to http://localhost:3000/example
+my-app    <span class="p">|</span> Hit example with <span class="o">{</span><span class="s2">&#34;hello&#34;</span>:<span class="s2">&#34;world&#34;</span><span class="o">}</span>
+my-worker <span class="p">|</span> Posting to http://localhost:3000/example
+my-app    <span class="p">|</span> Hit example with <span class="o">{</span><span class="s2">&#34;hello&#34;</span>:<span class="s2">&#34;world&#34;</span><span class="o">}</span></code></pre></div>
+<h2 id="some-other-stuff-to-do-before-you-ship-this">Some other stuff to do before you ship this 🚢</h2>
+
+<p>We should really <em>not</em> be exposing the <code>bull-arena</code> UI to the public, so if you plan on using this setup in a hosted environment either do an:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">!==</span> <span class="s1">&#39;product&#39;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Bull arena logic
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<p>Or add HTTP basic auth to it using a middleware of some sort.</p>
+
+<p>You can read a more in-depth write up about using Docker Compose, Redis and Node/Express: <a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</a>).</p>
+
+<p>For more information about using <a href="https://github.com/standard-things/esm">esm</a>, see: <a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/</a>.</p>
+
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@mparzuchowski?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Michał Parzuchowski"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Michał Parzuchowski</span></a></p>
+    
+        </div>
+    </section>
+
+    <section class="subscribe-form">
+        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+        <p>Get the latest posts delivered right to your inbox</p>
+        <form
+            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
+        >
+            <div class="form-group">
+                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+                <input type="hidden" value="1" name="embed"/>
+            </div>
+            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+        </form>
+    </section>
+
+    <footer class="post-full-footer">
+      <section class="author-card">
+        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+        <section class="author-card-content">
+            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
+                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
+        </section>
+      </section>
+    </footer>
+</article>
+    
+    
+    
+
+  </div>
+</main>
+
+
+<aside class="read-next outer">
+  <div class="inner">
+    <div class="read-next-feed">      
+      
+<article class="read-next-card" 
+            style="background-image: url(https://codewithhugo.com/img/cover.jpg);" >
+    <header class="read-next-card-header">
+        <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
+        
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a></h3>
+    </header>
+    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+    </div>
+
+    <div class="read-next-card-content">
+      
+        <ul>
+          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
+        
+          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
+        
+          <li><a href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">Better HTTP Polling with RxJS 5</a></li>            
+        
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
+        </ul>
+    </div>
+    <footer class="read-next-card-footer">
+      
+        <a href="https://codewithhugo.com/tags/javascript/">See all related posts →</a>
+    </footer>
+</article>
+
+
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #CSS 
+              #web development  </span>
+              
+              <h2 class="post-card-title">Why CSS is hard</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Things we’re not used to tend to be harder
+I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
+Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
+CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/matthew-henry-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #Node  </span>
+              
+              <h2 class="post-card-title">ES6 by example: a module/CLI to wait for Postgres in docker-compose</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues inside the app.
+This post walks through how to deliver this functionality both as a CLI and a module that works both as a CommonJS module (require) and ES modules, without transpilation.
+“A fast, production ready, zero-dependency ES module loader for Node 6+!” is esm’s promise. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+    </div>
+  </div>
+</aside>
+
+<div class="floating-header">
+  <div class="floating-header-logo">
+    <a href="https://codewithhugo.com/">
+      
+      <span>Code with Hugo</span>
+    </a>
+  </div>
+  <span class="floating-header-divider">&mdash;</span>
+  <div class="floating-header-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</div>
+  <div class="floating-header-share">
+    <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
+    </div>
+    
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Bring%20Redux%20to%20your%20queue%20logic%3a%20an%20Express%20setup%20with%20ES6%20and%20bull%20queue&amp;url=https%3a%2f%2fcodewithhugo.com%2fbring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue%2f"
+          onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+      </a>
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fbring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue%2f"
+          onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+      </a>
+  </div>
+
+  <progress class="progress" value="0">
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+  </progress>
+</div>
+
+
+
+<footer class="site-footer outer">
+  <div class="site-footer-content inner">
+    <section class="copyright" style="line-height: 1.3em;">
+      <a href="/">Code with Hugo</a>  <br>
+      
+    </section>
+    <nav class="site-footer-nav">
+        <a href="/">Latest Posts</a>
+        
+        <a href="https://twitter.com/hugo__df" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://github.com/HugoDF" target="_blank" rel="noopener">Github</a>
+        
+        <a href="https://medium.com/@hugo__df" target="_blank" rel="noopener">Medium</a>
+    </nav>  
+  </div>
+</footer>
+
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
+
+
+
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq=[['_setAccount','UA-60469708-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+    <script>
+
+
+
+
+
+$(document).ready(function () {
+    
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+</body></html>

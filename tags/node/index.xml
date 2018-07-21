@@ -6,10 +6,21 @@
     <description>Recent content in Node on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 11 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://codewithhugo.com/tags/node/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bring Redux to your queue logic: an Express setup with ES6 and bull queue</title>
+      <link>https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/</guid>
+      <description>There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
+Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS.</description>
+    </item>
     
     <item>
       <title>ES6 by example: a module/CLI to wait for Postgres in docker-compose</title>

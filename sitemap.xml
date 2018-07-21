@@ -48,6 +48,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/</loc>
+    <lastmod>2018-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/</loc>
     <lastmod>2018-07-11T00:00:00+00:00</lastmod>
   </url>
@@ -182,7 +187,7 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/docker/</loc>
-    <lastmod>2018-06-06T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -212,7 +217,7 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/node/</loc>
-    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
