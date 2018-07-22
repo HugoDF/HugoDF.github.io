@@ -6,25 +6,10 @@
     <description>Recent content in Testing on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 13 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://codewithhugo.com/tags/testing/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>AVA, low-config testing for JavaScript</title>
-      <link>https://codewithhugo.com/ava-low-config-testing-for-javascript/</link>
-      <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/ava-low-config-testing-for-javascript/</guid>
-      <description>A JavaScript testing library for 2017
-AVA is a Futuristic JavaScript test runner.
-Some of its best features are:
- it works out of the box, no need to specify a blob for test files or add Babel hooks
- it’s runs tests in parallel, this stops you from using global state and runs faster
- the tests are async by default
-  I quite like AVA since I can just drop it in and reap benefits without too much hassle.</description>
-    </item>
     
     <item>
       <title>Mocking the current Date in Jest tests</title>
@@ -55,6 +40,21 @@ Express is one of the most widespread libraries for building backend application
       <guid>https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/</guid>
       <description>The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration
  AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components.</description>
+    </item>
+    
+    <item>
+      <title>AVA, low-config testing for JavaScript</title>
+      <link>https://codewithhugo.com/ava-low-config-testing-for-javascript/</link>
+      <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/ava-low-config-testing-for-javascript/</guid>
+      <description>A JavaScript testing library for 2017
+AVA is a Futuristic JavaScript test runner.
+Some of its best features are:
+ it works out of the box, no need to specify a blob for test files or add Babel hooks
+ it’s runs tests in parallel, this stops you from using global state and runs faster
+ the tests are async by default
+  I quite like AVA since I can just drop it in and reap benefits without too much hassle.</description>
     </item>
     
   </channel>

@@ -6,71 +6,10 @@
     <description>Recent content in Productivity on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 31 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://codewithhugo.com/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>In simple terms: code on the backend, frontend and how they interact</title>
-      <link>https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</link>
-      <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</guid>
-      <description>A look at the shifting boundaries of the web development stack
-This was originally posted as an answer on Quora: How do frontend code and backend code interact with each other?
-Let’s start with quick definitions:
-Frontend All things the browser can read, display and/or run. This means HTML, CSS and JavaScript.
-HTML (Hypertext Markup Language) tells the browser “what” content is, eg. “heading”, “paragraph”, “list”, “list item”.
-CSS (Cascading Style Sheets) tells the browser how to display elements eg.</description>
-    </item>
-    
-    <item>
-      <title>First-class and Higher Order Functions: Effective Functional JavaScript</title>
-      <link>https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/</link>
-      <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/</guid>
-      <description>Functions: the killer JavaScript feature we never talk about.
-JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embedded systems and it brings a non-blocking I/O model that is faster than others for some types of applications. What really sets JavaScript apart from the rest of scripting languages is its highly functional nature.
- JavaScript has more in common with functional languages like Lisp or Scheme than with C or Java.</description>
-    </item>
-    
-    <item>
-      <title>10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</title>
-      <link>https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/</link>
-      <pubDate>Mon, 24 Oct 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/</guid>
-      <description>JavaScript has a thriving ecosystem of libraries delivered as packages on npm. Node has a high degree of compatibility with ES6 but it doesn’t have some features yet, namely import. This means that if we want to distribute useable packages over npm and we want to be writing ES6, we have to transpile back to ES5.
-We’ll be setting up a project that allows us to write ES6, and distribute it in ES5 (with Babel) and to test it with Mocha, all through npm scripts.</description>
-    </item>
-    
-    <item>
-      <title>AVA, low-config testing for JavaScript</title>
-      <link>https://codewithhugo.com/ava-low-config-testing-for-javascript/</link>
-      <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/ava-low-config-testing-for-javascript/</guid>
-      <description>A JavaScript testing library for 2017
-AVA is a Futuristic JavaScript test runner.
-Some of its best features are:
- it works out of the box, no need to specify a blob for test files or add Babel hooks
- it’s runs tests in parallel, this stops you from using global state and runs faster
- the tests are async by default
-  I quite like AVA since I can just drop it in and reap benefits without too much hassle.</description>
-    </item>
-    
-    <item>
-      <title>Closures, Partial Application and Currying: Effective Functional JavaScript</title>
-      <link>https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/</link>
-      <pubDate>Thu, 12 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/</guid>
-      <description>Spices and other ingredients of a great curry
-To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.
-The basics Functional programming is a programming paradigm that follows a more mathematical computation model. Let’s go through some basics to make your JavaScript more functional.</description>
-    </item>
     
     <item>
       <title>Split an existing git commit</title>
@@ -115,6 +54,67 @@ and better overall flow in your writing.&lt;/p&gt;
       <guid>https://codewithhugo.com/learn-git-even-if-you-dont-code/</guid>
       <description>The tools we wield define us, git is the one tool all developers use Git is a ubiquitous version control tool. The way it works tightly correlates with software engineering and the mindsets of developers. It was purpose-built and designed to be used for the development of the Linux Kernel, one of the largest software projects that’s depended on by millions of developers.
 Your editing workflow is painful because it’s not version-controlled As part of a team, your editing workflow probably consists of sending a file back and forth for review, comment and amendments.</description>
+    </item>
+    
+    <item>
+      <title>In simple terms: code on the backend, frontend and how they interact</title>
+      <link>https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</link>
+      <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</guid>
+      <description>A look at the shifting boundaries of the web development stack
+This was originally posted as an answer on Quora: How do frontend code and backend code interact with each other?
+Let’s start with quick definitions:
+Frontend All things the browser can read, display and/or run. This means HTML, CSS and JavaScript.
+HTML (Hypertext Markup Language) tells the browser “what” content is, eg. “heading”, “paragraph”, “list”, “list item”.
+CSS (Cascading Style Sheets) tells the browser how to display elements eg.</description>
+    </item>
+    
+    <item>
+      <title>AVA, low-config testing for JavaScript</title>
+      <link>https://codewithhugo.com/ava-low-config-testing-for-javascript/</link>
+      <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/ava-low-config-testing-for-javascript/</guid>
+      <description>A JavaScript testing library for 2017
+AVA is a Futuristic JavaScript test runner.
+Some of its best features are:
+ it works out of the box, no need to specify a blob for test files or add Babel hooks
+ it’s runs tests in parallel, this stops you from using global state and runs faster
+ the tests are async by default
+  I quite like AVA since I can just drop it in and reap benefits without too much hassle.</description>
+    </item>
+    
+    <item>
+      <title>First-class and Higher Order Functions: Effective Functional JavaScript</title>
+      <link>https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/</link>
+      <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/</guid>
+      <description>Functions: the killer JavaScript feature we never talk about.
+JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embedded systems and it brings a non-blocking I/O model that is faster than others for some types of applications. What really sets JavaScript apart from the rest of scripting languages is its highly functional nature.
+ JavaScript has more in common with functional languages like Lisp or Scheme than with C or Java.</description>
+    </item>
+    
+    <item>
+      <title>Closures, Partial Application and Currying: Effective Functional JavaScript</title>
+      <link>https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/</link>
+      <pubDate>Thu, 12 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/</guid>
+      <description>Spices and other ingredients of a great curry
+To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.
+The basics Functional programming is a programming paradigm that follows a more mathematical computation model. Let’s go through some basics to make your JavaScript more functional.</description>
+    </item>
+    
+    <item>
+      <title>10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</title>
+      <link>https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/</link>
+      <pubDate>Mon, 24 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/</guid>
+      <description>JavaScript has a thriving ecosystem of libraries delivered as packages on npm. Node has a high degree of compatibility with ES6 but it doesn’t have some features yet, namely import. This means that if we want to distribute useable packages over npm and we want to be writing ES6, we have to transpile back to ES5.
+We’ll be setting up a project that allows us to write ES6, and distribute it in ES5 (with Babel) and to test it with Mocha, all through npm scripts.</description>
     </item>
     
   </channel>
