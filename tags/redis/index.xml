@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on Code with Hugo</title>
+    <link>https://codewithhugo.com/tags/redis/</link>
+    <description>Recent content in Redis on Code with Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://codewithhugo.com/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bring Redux to your queue logic: an Express setup with ES6 and bull queue</title>
+      <link>https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/</guid>
+      <description>There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
+Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS.</description>
+    </item>
+    
+    <item>
+      <title>Setting up Express and Redis with Docker compose</title>
+      <link>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</link>
+      <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</guid>
+      <description>Redis and Express are tools that provide a simple and clean approach to their problem domains.
+The repo is available at: https://github.com/HugoDF/express-redis-docker.
+Redis is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. It has great flexibility and can also be used as a message queue, circular buffer (and pretty much anything else a developer can come up with short of a relational database).</description>
+    </item>
+    
+  </channel>
+</rss>
