@@ -320,6 +320,20 @@ The reason I used an old school query-param based system is to avoid the boilerp
             <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
         </form>
     </section>
+    <script>
+        window.productHuntUpcoming = {
+          appId: 8335,
+          position: 'bottomLeft',
+        };
+
+        (function(doc, scr, src, a, b) {
+          a = doc.createElement(scr);
+          b = doc.getElementsByTagName(scr)[0];
+          a.async = true;
+          a.src = src;
+          b.parentNode.insertBefore(a, b);
+        })(document, 'script', 'https://assets.producthunt.com/assets/upwigloader.js');
+    </script>
 
     <footer class="post-full-footer">
       <section class="author-card">
@@ -356,13 +370,13 @@ The reason I used an old school query-param based system is to avoid the boilerp
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         
-          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
+          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
         
-          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
