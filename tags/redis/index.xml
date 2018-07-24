@@ -6,10 +6,20 @@
     <description>Recent content in Redis on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 21 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://codewithhugo.com/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Install just redis-cli on Ubuntu, Debian, Jessie</title>
+      <link>https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/</link>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/</guid>
+      <description>As part of adding integration tests to an app on CircleCI I ran into the following issues:
+ redis-cli&amp;rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &amp;ldquo;only way&amp;rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly.</description>
+    </item>
     
     <item>
       <title>Bring Redux to your queue logic: an Express setup with ES6 and bull queue</title>

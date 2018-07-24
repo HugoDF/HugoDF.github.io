@@ -158,7 +158,7 @@
     <item>
       <title>Redis</title>
       <link>https://codewithhugo.com/tags/redis/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/redis/</guid>
       <description></description>
@@ -188,6 +188,15 @@
       <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/tip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tooling</title>
+      <link>https://codewithhugo.com/tags/tooling/</link>
+      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/tooling/</guid>
       <description></description>
     </item>
     
