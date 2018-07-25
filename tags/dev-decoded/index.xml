@@ -8,7 +8,7 @@
     <language>en-US</language>
     <lastBuildDate>Mon, 04 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://codewithhugo.com/tags/dev-decoded/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://codewithhugo.com/tags/dev-decoded/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,8 +17,58 @@
       <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/learn-git-even-if-you-dont-code/</guid>
-      <description>The tools we wield define us, git is the one tool all developers use Git is a ubiquitous version control tool. The way it works tightly correlates with software engineering and the mindsets of developers. It was purpose-built and designed to be used for the development of the Linux Kernel, one of the largest software projects that’s depended on by millions of developers.
-Your editing workflow is painful because it’s not version-controlled As part of a team, your editing workflow probably consists of sending a file back and forth for review, comment and amendments.</description>
+      <description>
+
+&lt;h3 id=&#34;the-tools-we-wield-define-us-git-is-the-one-tool-all-developers-use&#34;&gt;The tools we wield define us, git is the one tool all developers use&lt;/h3&gt;
+
+&lt;p&gt;Git is a ubiquitous version control tool. The way it works tightly correlates with software engineering and the mindsets of developers. It was purpose-built and designed to be used for the development of the Linux Kernel, one of the largest software projects that’s depended on by millions of developers.&lt;/p&gt;
+
+&lt;h2 id=&#34;your-editing-workflow-is-painful-because-it-s-not-version-controlled&#34;&gt;Your editing workflow is painful because it’s not version-controlled&lt;/h2&gt;
+
+&lt;p&gt;As part of a team, your editing workflow probably consists of sending a file back and forth for review, comment and amendments. In a programmer’s eyes, this is a crazy inefficient way to work. In addition, the likelihood an edit will be lost or overwritten is high.&lt;/p&gt;
+
+&lt;p&gt;With git, that doesn’t happen any more. If only everyone used git, no more lost comments or amendments.&lt;/p&gt;
+
+&lt;p&gt;That’s wishful thinking of course but understanding how git works with branches, commits and so on will help you use the tools you already use more efficiently.&lt;/p&gt;
+
+&lt;p&gt;Reflexes like using the “latest” version of the document and re-applying your changes to it methodically will radically change the way you approach collaborative editing.&lt;/p&gt;
+
+&lt;h2 id=&#34;designed-for-a-distributed-team&#34;&gt;Designed for a distributed team&lt;/h2&gt;
+
+&lt;p&gt;In a remote, remote-friendly or a company that outsources any work, you know how long and arduous the revision process can be. Git was designed to help this process, many tools in the ecosystem around git have a concept of grouped changes that should be reviewed together (what GitHub calls Pull Requests).&lt;/p&gt;
+
+&lt;p&gt;Git becomes your one source of truth, everyone has it locally but it’s also all online.&lt;/p&gt;
+
+&lt;h2 id=&#34;proven-solutions-to-scale-problems&#34;&gt;Proven solutions to scale problems&lt;/h2&gt;
+
+&lt;p&gt;As one person the versioning process is “easy”. Adding another contributor can change the way you work massively. Now imaging going from 1 to over 1,500. That’s what the Linux Kernel did, from just Linus to thousands of contributors from companies such as Intel, IBM and Samsung.&lt;/p&gt;
+
+&lt;p&gt;Processes around git allow it to scale with your team and your project. Workflows like taking a section of work and integrating it after review are great even if you’re not using git. Having a version-control mindset and approach to this problem will help even with the less than optimal tools.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-complex-tool-with-simple-actions-the-unix-philosophy&#34;&gt;A complex tool with simple actions: the UNIX philosophy&lt;/h2&gt;
+
+&lt;p&gt;Git is actually relatively complex as a tool. Most of it was designed under the UNIX philosophy that tools should do one thing well and then be composed (or strung) together to do more complex actions.&lt;/p&gt;
+
+&lt;p&gt;This stands quite true of git despite not being true of all the actions you may run. Some things aren’t quite intuitive but they’re there if you remember them.&lt;/p&gt;
+
+&lt;p&gt;Git wraps concepts that most non-developers can grasp in developer-friendly packaging.&lt;/p&gt;
+
+&lt;p&gt;Due to the accessibility of version control as a business problem, learning to use git is an introduction to the command line that is more understandable. Non-developers could probably see themselves using git (even if they never end up doing so)&lt;/p&gt;
+
+&lt;h2 id=&#34;working-in-the-open&#34;&gt;Working in the Open&lt;/h2&gt;
+
+&lt;p&gt;Open Source projects usually use git and hosting platforms like GitHub, GitLab or BitBucket. The first obvious project to use it is the Linux Kernel, which is one of the biggest Open Source Software projects out there.&lt;/p&gt;
+
+&lt;p&gt;Understanding git means you understand how developers from around the world in different timezones and with different backgrounds can collaborate.&lt;/p&gt;
+
+&lt;p&gt;Hopefully you now understand how git can be considered more than just a version control tool.&lt;/p&gt;
+
+&lt;p&gt;If you want to learn more about git, I’ve written a course specifically for this purpose, you can find it at the following link for free if you sign up: &lt;a href=&#34;http://skl.sh/2zNN3En&#34;&gt;Git for Creatives&lt;/a&gt; (&lt;a href=&#34;http://skl.sh/2zNN3En&#34;&gt;http://skl.sh/2zNN3En&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Feel free to get in touch with me on Twitter &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Leave some 👏🏻 if you enjoyed this.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -27,12 +77,93 @@ Your editing workflow is painful because it’s not version-controlled As part o
       <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</guid>
-      <description>A look at the shifting boundaries of the web development stack
-This was originally posted as an answer on Quora: How do frontend code and backend code interact with each other?
-Let’s start with quick definitions:
-Frontend All things the browser can read, display and/or run. This means HTML, CSS and JavaScript.
-HTML (Hypertext Markup Language) tells the browser “what” content is, eg. “heading”, “paragraph”, “list”, “list item”.
-CSS (Cascading Style Sheets) tells the browser how to display elements eg.</description>
+      <description>
+
+&lt;p&gt;A look at the shifting boundaries of the web development stack&lt;/p&gt;
+
+&lt;p&gt;This was originally posted as an answer on Quora:
+&lt;a href=&#34;https://www.quora.com/How-does-a-frontend-code-and-a-backend-code-interact-with-each-other/&#34;&gt;&lt;strong&gt;How do frontend code and backend code interact with each other?&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s start with quick definitions:&lt;/p&gt;
+
+&lt;h3 id=&#34;frontend&#34;&gt;Frontend&lt;/h3&gt;
+
+&lt;p&gt;All things the browser can read, display and/or run. This means HTML, CSS and JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;HTML&lt;/code&gt; (Hypertext Markup Language) tells the browser “what” content is, eg. “heading”, “paragraph”, “list”, “list item”.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;CSS&lt;/code&gt; (Cascading Style Sheets) tells the browser how to display elements eg. “the first paragraph has a 20px margin after it”, “all text in the ‘body’ element should be dark grey in colour and use Verdana as its font”.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;JavaScript&lt;/code&gt; tells the browser how to react to some interactions using a lightweight programming language. A lot of websites don’t actually use much JavaScript but if you click on something and content changes without the page flickering to white before showing the new content, that means JavaScript is used somewhere.&lt;/p&gt;
+
+&lt;h3 id=&#34;backend&#34;&gt;Backend&lt;/h3&gt;
+
+&lt;p&gt;All things that run on a server ie. “not in the browser” or “on a computer connected to a network (usually the internet) that replies to other computers’ messages” are backend.&lt;/p&gt;
+
+&lt;p&gt;For your backend you can use any tool available on your server (which is just a computer that is set up to reply to messages). This means you can use any general purpose programming language, eg. Ruby, PHP, Python, Java, JavaScript/Node, bash. It also means you can use a host of Database Management Systems eg. MySQL, PostgreSQL, MongoDB, Cassandra, Redis, Memcached.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-state-of-backend-frontend-interaction&#34;&gt;The state of backend-frontend interaction&lt;/h2&gt;
+
+&lt;p&gt;There are two main architectures today that define how your backend and frontend interact.&lt;/p&gt;
+
+&lt;h3 id=&#34;server-rendered-apps&#34;&gt;&lt;strong&gt;Server-rendered apps&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;The first is straight up HTTP requests to a **server-rendered **app. This is a system whereby the browser sends a HTTP request and the server replies with a HTML page.&lt;/p&gt;
+
+&lt;p&gt;Between receiving the request and responding, the server usually queries the database and feeds it into a template (ERB, Blade, EJS, Handlebars).&lt;/p&gt;
+
+&lt;p&gt;Once the page is loaded in the browser, HTML defines what things are, CSS how they look and JS any special interactions.&lt;/p&gt;
+
+&lt;h3 id=&#34;communication-using-ajax&#34;&gt;&lt;strong&gt;Communication using AJAX&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;AJAX stands for &lt;strong&gt;A&lt;/strong&gt;synchronous &lt;strong&gt;J&lt;/strong&gt;ava&lt;strong&gt;S&lt;/strong&gt;cript and &lt;strong&gt;X&lt;/strong&gt;ML. This means that the JavaScript loaded in the browser sends a HTTP request (XHR, XML HTTP Request) from **within the page **and historically got a XML response.&lt;/p&gt;
+
+&lt;p&gt;Nowadays, responses are also done in JSON format.&lt;/p&gt;
+
+&lt;p&gt;This means that your server needs to have an &lt;strong&gt;endpoint&lt;/strong&gt;* *which replies JSON/XML to requests. Two examples of protocols for this are REST and SOAP.&lt;/p&gt;
+
+&lt;h3 id=&#34;client-side-single-page-applications&#34;&gt;&lt;strong&gt;Client-side (single page) applications&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;AJAX allows you to load data without refreshing the page. This has been pushed to the max with frameworks such as Angular and Ember. These apps are bundled, sent to the browser and any subsequent** rendering **is done on the client-side (browser).&lt;/p&gt;
+
+&lt;p&gt;These frontends communicate with the backend over HTTP using JSON/XML responses.&lt;/p&gt;
+
+&lt;h3 id=&#34;universal-isomorphic-applications&#34;&gt;Universal/Isomorphic applications&lt;/h3&gt;
+
+&lt;p&gt;React and Ember (amongst other) libraries and frameworks allow you to render an app on the server (backend) as well as on the client (frontend).&lt;/p&gt;
+
+&lt;p&gt;When set up like this, the app uses both AJAX and server-rendered HTML to communicate frontend to backend.&lt;/p&gt;
+
+&lt;h2 id=&#34;beyond-frontend-and-backend&#34;&gt;Beyond frontend and backend&lt;/h2&gt;
+
+&lt;h3 id=&#34;standalone-frontends&#34;&gt;Standalone frontends&lt;/h3&gt;
+
+&lt;p&gt;The web applications you’re going to build are going to need a network connection less and less.&lt;/p&gt;
+
+&lt;p&gt;Progressive web applications are loaded once and run forever (ish). You can have a database in the browser. For some use cases, your applications literally only needs a backend on first load and then just for syncing/safeguarding of data. This persistence layer means that most of the logic is into the client-side application (frontend).&lt;/p&gt;
+
+&lt;h3 id=&#34;lightweight-backends&#34;&gt;Lightweight backends&lt;/h3&gt;
+
+&lt;p&gt;Backends are becoming more and more lightweight. Technologies like document stores and graph databases mean that there’s a lot less going on in terms of re-aggregation of data by the backend service. The onus is on the client to specify what data it needs (graph databases) or to fetch all the different fragments of data it needs (REST APIs).&lt;/p&gt;
+
+&lt;p&gt;I mean we’re now building backend services that don’t even run all the time, just when they’re required, thanks to serverless architectures like AWS Lambda.&lt;/p&gt;
+
+&lt;h3 id=&#34;blurred-lines&#34;&gt;Blurred lines&lt;/h3&gt;
+
+&lt;p&gt;The complexity is shifting across the frontend/backend boundary. We now have the choice, depending on what sort of application we’re building, to make our client hold the complexity or to keep it on the server.&lt;/p&gt;
+
+&lt;p&gt;Each option has its pros and cons. Namely the server is an environment that is more stable and has less unknowns but it’s always a network call away. Certain users have the latest browsers and can profit from a client-side application that does most of the work with a snappy UI but you may be alienating users who don’t run the latest browser on an optic fibre internet connection.&lt;/p&gt;
+
+&lt;p&gt;At the end of the day, having all these options is a good thing. As long as we focus on building great experiences and products using the right tool for the job. Hopefully you have gained a bit more understanding of the state of web development today.&lt;/p&gt;
+
+&lt;p&gt;Recent posts:
+&lt;a href=&#34;https://medium.com/@hugo__df/7-reasons-you-should-be-hosted-on-aws-9312e40ee323&#34;&gt;&lt;strong&gt;7 reasons you should be hosted on AWS&lt;/strong&gt;
+*Amazon Web Services is one of the leading hosting providers, here’s why.*medium.com&lt;/a&gt;
+&lt;a href=&#34;https://hackernoon.com/virtualstudio-code-the-editor-i-didnt-think-i-needed-16970c8356d5&#34;&gt;&lt;strong&gt;Visual Studio Code: the editor I didn’t think I needed&lt;/strong&gt;
+*It’s the small things that make a difference.*hackernoon.com&lt;/a&gt;
+&lt;a href=&#34;https://medium.com/@hugo__df/why-css-is-hard-89f3b221dd4d&#34;&gt;&lt;strong&gt;Why CSS is hard&lt;/strong&gt;
+*Things we’re not used to tend to be harder*medium.com&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

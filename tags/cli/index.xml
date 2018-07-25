@@ -8,7 +8,7 @@
     <language>en-US</language>
     <lastBuildDate>Wed, 20 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://codewithhugo.com/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://codewithhugo.com/tags/cli/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,9 +17,147 @@
       <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/</guid>
-      <description>Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
-Command line apps are a neat way to package repetitive tasks. This will walk you through some tools that are useful to build CLI apps.
- The idea 💡 Piping to the command line 🚇 Dealing with sequential actions ✨ Executable JavaScript files 🦅 Adding package binaries 📦 Publishing to npm 🚀  The idea 💡 When merging/rebasing, the file that always seems to cause trouble is the package-lock.</description>
+      <description>
+
+&lt;p&gt;Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.&lt;/p&gt;
+
+&lt;p&gt;Command line apps are a neat way to package repetitive tasks. This will walk you through some tools
+that are useful to build CLI apps.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#the-idea&#34;&gt;The idea 💡&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#piping-to-the-command-line&#34;&gt;Piping to the command line 🚇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dealing-with-sequential-actions&#34;&gt;Dealing with sequential actions ✨&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#executable-javascript-files&#34;&gt;Executable JavaScript files 🦅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#adding-package-binaries&#34;&gt;Adding package binaries 📦&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#publishing-to-npm&#34;&gt;Publishing to npm 🚀&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;the-idea&#34;&gt;The idea 💡&lt;/h2&gt;
+
+&lt;p&gt;When merging/rebasing, the file that always seems to cause trouble is the package-lock.
+We&amp;rsquo;ll go through how to make a simple utility that deletes the package-lock.json file, regenerates it (npm install) and adds it to the git index.&lt;/p&gt;
+
+&lt;p&gt;You can find it here: &lt;a href=&#34;https://github.com/HugoDF/fix-package-lock&#34;&gt;https://github.com/HugoDF/fix-package-lock&lt;/a&gt; and run it using &lt;code&gt;npx fix-package-lock&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;piping-to-the-command-line&#34;&gt;Piping to the command line 🚇&lt;/h2&gt;
+
+&lt;p&gt;To start off, we&amp;rsquo;ll leverage a package from Sindre Sohrus, &lt;code&gt;execa&lt;/code&gt;, which is described as “a better &lt;code&gt;child_process&lt;/code&gt;&amp;rdquo;. For the following snippet to work, run &lt;code&gt;npm install --save execa&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;index.js&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;execa&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;ls&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;then&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;node index.js
+index.js
+node_modules
+package-lock.json
+package.json &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;dealing-with-sequential-actions&#34;&gt;Dealing with sequential actions ✨&lt;/h2&gt;
+
+&lt;p&gt;To re-generate the &lt;code&gt;package-lock&lt;/code&gt; we&amp;rsquo;ll need to first delete it, then run an &lt;code&gt;npm install&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To this end, we can use &lt;a href=&#34;https://github.com/SamVerschueren/listr&#34;&gt;Listr&lt;/a&gt;, it allows us to do things that look like:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/HugoDF/fix-package-lock/master/fix-package-lock.gif&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code&gt;npm install --save listr&lt;/code&gt; and add leverage Listr as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;index.js&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;execa&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Listr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;listr&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Listr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Removing package-lock&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;rm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;package-lock.json&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Running npm install&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;npm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;install&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Adding package-lock to git&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;git&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;add&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;package-lock.json&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;skip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;]).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now the output of &lt;code&gt;node index.js&lt;/code&gt; looks like the following:
+&lt;img src=&#34;https://codewithhugo.com/img/20180619-running-screenshot.jpeg&#34; alt=&#34;`node index.js` output&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/SamVerschueren/listr&#34;&gt;Listr&lt;/a&gt; gives you a loading state when you have a
+long-running task that returns a Promise (like the &lt;code&gt;execa&lt;/code&gt; invocation of &lt;code&gt;npm install&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s also possible to display a message that changes using Observables, for more information see &lt;a href=&#34;https://github.com/SamVerschueren/listr&#34;&gt;the Listr docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;executable-javascript-files&#34;&gt;Executable JavaScript files 🦅&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s ideal to be able to execute our script using &lt;code&gt;./index.js&lt;/code&gt; instead of &lt;code&gt;node index.js&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To do this, we need the file to be executable on UNIX systems that&amp;rsquo;s: &lt;code&gt;chmod +x&lt;/code&gt;. So&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chmod +x index.js
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We then need to inform the system how it should attempt to run the file, that&amp;rsquo;s using the following hashbang:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env node
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If we add it to &lt;code&gt;index.js&lt;/code&gt; we get:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;ch&#34;&gt;#!/usr/bin/env node
+&lt;/span&gt;&lt;span class=&#34;ch&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;execa&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Listr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;listr&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Listr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Removing package-lock&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;rm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;package-lock.json&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Running npm install&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;npm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;install&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Adding package-lock to git&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ctx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;execa&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;git&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;add&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;package-lock.json&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;task&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;skip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;]).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Which we can now run using:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./index.js
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;adding-package-binaries&#34;&gt;Adding package binaries&lt;/h2&gt;
+
+&lt;p&gt;npm has a &lt;code&gt;bin&lt;/code&gt; field which we can use like the following (in &lt;code&gt;package.json&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;name&amp;quot;: &amp;quot;beautiful-cli&amp;quot;,
+  &amp;quot;version&amp;quot;: &amp;quot;1.0.0&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;A simple CLI&amp;quot;,
+  &amp;quot;main&amp;quot;: &amp;quot;index.js&amp;quot;,
+  &amp;quot;bin&amp;quot;: {
+    &amp;quot;fix-package-json&amp;quot;: &amp;quot;./index.js&amp;quot;
+  }
+  &amp;quot;dependencies&amp;quot;: {
+    &amp;quot;execa&amp;quot;: &amp;quot;^0.10.0&amp;quot;,
+    &amp;quot;listr&amp;quot;: &amp;quot;^0.14.1&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;publishing-to-npm&#34;&gt;Publishing to npm 🚀&lt;/h2&gt;
+
+&lt;p&gt;This is left to the reader as an exercise, although using the &lt;a href=&#34;https://github.com/sindresorhus/np&#34;&gt;np&lt;/a&gt;
+package, it&amp;rsquo;s super straightforward.&lt;/p&gt;
+
+&lt;p&gt;Hint: run &lt;code&gt;npx np&lt;/code&gt; in whatever package you&amp;rsquo;re trying to publish&lt;/p&gt;
+
+&lt;p&gt;You can find the full package at You can find it here: &lt;a href=&#34;https://github.com/HugoDF/fix-package-lock&#34;&gt;https://github.com/HugoDF/fix-package-lock&lt;/a&gt; and run it using &lt;code&gt;npx fix-package-lock&lt;/code&gt;.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

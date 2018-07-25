@@ -8,7 +8,7 @@
     <language>en-US</language>
     <lastBuildDate>Mon, 04 Dec 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://codewithhugo.com/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://codewithhugo.com/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,8 +17,58 @@
       <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/learn-git-even-if-you-dont-code/</guid>
-      <description>The tools we wield define us, git is the one tool all developers use Git is a ubiquitous version control tool. The way it works tightly correlates with software engineering and the mindsets of developers. It was purpose-built and designed to be used for the development of the Linux Kernel, one of the largest software projects that’s depended on by millions of developers.
-Your editing workflow is painful because it’s not version-controlled As part of a team, your editing workflow probably consists of sending a file back and forth for review, comment and amendments.</description>
+      <description>
+
+&lt;h3 id=&#34;the-tools-we-wield-define-us-git-is-the-one-tool-all-developers-use&#34;&gt;The tools we wield define us, git is the one tool all developers use&lt;/h3&gt;
+
+&lt;p&gt;Git is a ubiquitous version control tool. The way it works tightly correlates with software engineering and the mindsets of developers. It was purpose-built and designed to be used for the development of the Linux Kernel, one of the largest software projects that’s depended on by millions of developers.&lt;/p&gt;
+
+&lt;h2 id=&#34;your-editing-workflow-is-painful-because-it-s-not-version-controlled&#34;&gt;Your editing workflow is painful because it’s not version-controlled&lt;/h2&gt;
+
+&lt;p&gt;As part of a team, your editing workflow probably consists of sending a file back and forth for review, comment and amendments. In a programmer’s eyes, this is a crazy inefficient way to work. In addition, the likelihood an edit will be lost or overwritten is high.&lt;/p&gt;
+
+&lt;p&gt;With git, that doesn’t happen any more. If only everyone used git, no more lost comments or amendments.&lt;/p&gt;
+
+&lt;p&gt;That’s wishful thinking of course but understanding how git works with branches, commits and so on will help you use the tools you already use more efficiently.&lt;/p&gt;
+
+&lt;p&gt;Reflexes like using the “latest” version of the document and re-applying your changes to it methodically will radically change the way you approach collaborative editing.&lt;/p&gt;
+
+&lt;h2 id=&#34;designed-for-a-distributed-team&#34;&gt;Designed for a distributed team&lt;/h2&gt;
+
+&lt;p&gt;In a remote, remote-friendly or a company that outsources any work, you know how long and arduous the revision process can be. Git was designed to help this process, many tools in the ecosystem around git have a concept of grouped changes that should be reviewed together (what GitHub calls Pull Requests).&lt;/p&gt;
+
+&lt;p&gt;Git becomes your one source of truth, everyone has it locally but it’s also all online.&lt;/p&gt;
+
+&lt;h2 id=&#34;proven-solutions-to-scale-problems&#34;&gt;Proven solutions to scale problems&lt;/h2&gt;
+
+&lt;p&gt;As one person the versioning process is “easy”. Adding another contributor can change the way you work massively. Now imaging going from 1 to over 1,500. That’s what the Linux Kernel did, from just Linus to thousands of contributors from companies such as Intel, IBM and Samsung.&lt;/p&gt;
+
+&lt;p&gt;Processes around git allow it to scale with your team and your project. Workflows like taking a section of work and integrating it after review are great even if you’re not using git. Having a version-control mindset and approach to this problem will help even with the less than optimal tools.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-complex-tool-with-simple-actions-the-unix-philosophy&#34;&gt;A complex tool with simple actions: the UNIX philosophy&lt;/h2&gt;
+
+&lt;p&gt;Git is actually relatively complex as a tool. Most of it was designed under the UNIX philosophy that tools should do one thing well and then be composed (or strung) together to do more complex actions.&lt;/p&gt;
+
+&lt;p&gt;This stands quite true of git despite not being true of all the actions you may run. Some things aren’t quite intuitive but they’re there if you remember them.&lt;/p&gt;
+
+&lt;p&gt;Git wraps concepts that most non-developers can grasp in developer-friendly packaging.&lt;/p&gt;
+
+&lt;p&gt;Due to the accessibility of version control as a business problem, learning to use git is an introduction to the command line that is more understandable. Non-developers could probably see themselves using git (even if they never end up doing so)&lt;/p&gt;
+
+&lt;h2 id=&#34;working-in-the-open&#34;&gt;Working in the Open&lt;/h2&gt;
+
+&lt;p&gt;Open Source projects usually use git and hosting platforms like GitHub, GitLab or BitBucket. The first obvious project to use it is the Linux Kernel, which is one of the biggest Open Source Software projects out there.&lt;/p&gt;
+
+&lt;p&gt;Understanding git means you understand how developers from around the world in different timezones and with different backgrounds can collaborate.&lt;/p&gt;
+
+&lt;p&gt;Hopefully you now understand how git can be considered more than just a version control tool.&lt;/p&gt;
+
+&lt;p&gt;If you want to learn more about git, I’ve written a course specifically for this purpose, you can find it at the following link for free if you sign up: &lt;a href=&#34;http://skl.sh/2zNN3En&#34;&gt;Git for Creatives&lt;/a&gt; (&lt;a href=&#34;http://skl.sh/2zNN3En&#34;&gt;http://skl.sh/2zNN3En&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Feel free to get in touch with me on Twitter &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Leave some 👏🏻 if you enjoyed this.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -8,7 +8,7 @@
     <language>en-US</language>
     <lastBuildDate>Thu, 05 Jul 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://codewithhugo.com/tags/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://codewithhugo.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -143,87 +143,6 @@
       <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Reactive Programming</title>
-      <link>https://codewithhugo.com/tags/reactive-programming/</link>
-      <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/reactive-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Redis</title>
-      <link>https://codewithhugo.com/tags/redis/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/redis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Technical Writing</title>
-      <link>https://codewithhugo.com/tags/technical-writing/</link>
-      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/technical-writing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Testing</title>
-      <link>https://codewithhugo.com/tags/testing/</link>
-      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/testing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tip</title>
-      <link>https://codewithhugo.com/tags/tip/</link>
-      <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/tip/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tooling</title>
-      <link>https://codewithhugo.com/tags/tooling/</link>
-      <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/tooling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Typescript</title>
-      <link>https://codewithhugo.com/tags/typescript/</link>
-      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/typescript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vuejs</title>
-      <link>https://codewithhugo.com/tags/vuejs/</link>
-      <pubDate>Wed, 30 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/vuejs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web Development</title>
-      <link>https://codewithhugo.com/tags/web-development/</link>
-      <pubDate>Wed, 23 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/web-development/</guid>
       <description></description>
     </item>
     
