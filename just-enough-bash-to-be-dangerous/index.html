@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
 
-    <title>Install just redis-cli on Ubuntu, Debian, Jessie &middot; Code with Hugo</title>
+    <title>Just enough bash to be dangerous &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,36 +13,39 @@
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
     
-    <link rel="canonical" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/" /> 
+    <link rel="canonical" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/" /> 
 
-     <meta name="description" content="As part of adding integration tests to an app on CircleCI I ran into the following issues:
- redis-cli&amp;rsquo;s API has changed from version 2 to 3 to 4  ie. this" /> 
+     <meta name="description" content="A bash cheat sheet for developers who just want to get by.
+ Writing setup, CI and deployment flows means a bit of the old bash scripting.
+Despite my deep intere" /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/nils-stahl-unsplash.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="Install just redis-cli on Ubuntu, Debian, Jessie"/>
-    <meta name="twitter:description" content="As part of adding integration tests to an app on CircleCI I ran into the following issues:
- redis-cli&amp;rsquo;s API has changed from version 2 to 3 to 4  ie. this"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/" />
+    <meta name="twitter:title" content="Just enough bash to be dangerous"/>
+    <meta name="twitter:description" content="A bash cheat sheet for developers who just want to get by.
+ Writing setup, CI and deployment flows means a bit of the old bash scripting.
+Despite my deep intere"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/just-enough-bash-to-be-dangerous/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Install just redis-cli on Ubuntu, Debian, Jessie &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/" />
+    <meta property="og:title" content="Just enough bash to be dangerous &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/just-enough-bash-to-be-dangerous/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="As part of adding integration tests to an app on CircleCI I ran into the following issues:
- redis-cli&amp;rsquo;s API has changed from version 2 to 3 to 4  ie. this" />
+    <meta property="og:description" content="A bash cheat sheet for developers who just want to get by.
+ Writing setup, CI and deployment flows means a bit of the old bash scripting.
+Despite my deep intere" />
 
-    <meta property="article:published_time" content="2018-07-24T00:00:00Z" />
-    <meta property="article:tag" content="Redis" /><meta property="article:tag" content="tooling" />
+    <meta property="article:published_time" content="2018-07-26T00:00:00Z" />
+    <meta property="article:tag" content="tooling" /><meta property="article:tag" content="bash" />
 
-    <meta property="og:image" content="https://codewithhugo.com/img/nils-stahl-unsplash.jpg"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.36" />
@@ -119,67 +122,108 @@
       <article class="post-full post"> 
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-07-24">24 July 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/redis/">#Redis</a>&nbsp;<a href="https://codewithhugo.com/tags/tooling/">#tooling</a>&nbsp;
+            <time class="post-full-meta-date" datetime="2018-07-26">26 July 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/tooling/">#tooling</a>&nbsp;<a href="https://codewithhugo.com/tags/bash/">#bash</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Install just redis-cli on Ubuntu, Debian, Jessie</h1>
+        <h1 class="post-full-title">Just enough bash to be dangerous</h1>
     </header>
     
-    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/nils-stahl-unsplash.jpg)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)">
     </figure>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
         
 
-<p>As part of adding integration tests to an app on CircleCI I ran into the following issues:</p>
+<blockquote>
+<p>A bash cheat sheet for developers who just want to get by.</p>
+</blockquote>
+
+<p>Writing setup, CI and deployment flows means a bit of the old bash scripting.</p>
+
+<p>Despite my deep interest in the intricacies of Bash (<em>/sarcasm</em>), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.</p>
+
+<p>To avoid having to do this again myself and for your reading pleasure, here they are.</p>
+
+<!-- more -->
+
+<p>To be dangerous in terms of setup, CI and depoyment flows we will encounter the following:
+- <a href="#check-if-file-exists">Check if file exists</a>
+- <a href="#check-if-a-symbolic-link-exists">Check if a (symbolic) link exists</a>
+- <a href="#check-if-environment-variable-is-set">Check if environment variable is set</a>
+- <a href="#switch-over-an-environment-variable">Switch over an environment variable</a>
+- <a href="#prompt-the-user">Prompt the user</a>
+- <a href="#bonus">Bonus</a>
+    - <a href="#slap-your-env-files-into-your-environment">Slap your .env files into your environment</a></p>
+
+<h2 id="check-if-file-exists">Check if file exists</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="k">if</span> <span class="o">[</span> ! -f ./pdfgen/pdfgen <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Building pdfgen binary&#34;</span>
+    npm run --prefix pdfgen build:linux
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Pdfgen binary already exists, skipping build&#34;</span>
+<span class="k">fi</span></code></pre></div>
+<h2 id="check-if-a-symbolic-link-exists">Check if a (symbolic) link exists</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="k">if</span> <span class="o">[</span> ! -L /usr/local/bin/heroku <span class="o">]</span><span class="p">;</span>
+<span class="k">then</span>
+    wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
+    sudo mkdir -p /usr/local/lib /usr/local/bin
+    sudo tar -xvzf heroku-linux-amd64.tar.gz -C /usr/local/lib
+    sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
+<span class="k">fi</span></code></pre></div>
+<h2 id="check-if-environment-variable-is-set">Check if environment variable is set</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># long
+</span><span class="c1"></span><span class="k">if</span> <span class="o">[</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">CIRCLE_BRANCH</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    npm run redis-cli flushall
+    npm run sync
+<span class="k">else</span> 
+    npm run sync
+<span class="k">fi</span>
+
+<span class="c1"># one-liner
+</span><span class="c1"></span><span class="o">[</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">CIRCLE_BRANCH</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> npm run redis-cli flushall <span class="o">&amp;&amp;</span> <span class="nb">false</span> <span class="o">||</span> npm run sync</code></pre></div>
+<h2 id="switch-over-an-environment-variable">Switch over an environment variable</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="k">case</span> <span class="nv">$CIRCLE_BRANCH</span> in
+    <span class="s2">&#34;develop&#34;</span><span class="o">)</span>
+        <span class="nb">export</span> <span class="nv">ENVIRONMENT</span><span class="o">=</span><span class="s2">&#34;dev&#34;</span>
+        <span class="nb">export</span> <span class="nv">HEROKU_APP</span><span class="o">=</span>dev-app
+        <span class="p">;;</span>
+    <span class="s2">&#34;staging&#34;</span><span class="o">)</span>
+        <span class="nb">export</span> <span class="nv">ENVIRONMENT</span><span class="o">=</span><span class="s2">&#34;staging&#34;</span>
+        <span class="nb">export</span> <span class="nv">HEROKU_APP</span><span class="o">=</span>staging-app
+        <span class="p">;;</span>
+    <span class="s2">&#34;production&#34;</span><span class="o">)</span>
+        <span class="nb">export</span> <span class="nv">ENVIRONMENT</span><span class="o">=</span><span class="s2">&#34;production&#34;</span>
+        <span class="nb">export</span> <span class="nv">HEROKU_APP</span><span class="o">=</span>production-app
+        <span class="p">;;</span>
+<span class="k">esac</span></code></pre></div>
+<h2 id="prompt-the-user">Prompt the user</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">read</span> -p <span class="s2">&#34;Are you sure you want to merge &#39;develop&#39; into &#39;staging&#39;? (y/N)&#34;</span> -n <span class="m">1</span> -r
+<span class="nb">echo</span> <span class="c1"># we like having a new line
+</span><span class="c1"></span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$REPLY</span> <span class="o">=</span>~ ^<span class="o">[</span>Yy<span class="o">]</span>$ <span class="o">]]</span>
+<span class="k">then</span>
+  git merge develop --ff-only
+  git push
+<span class="k">fi</span></code></pre></div>
+<p>A final bit of advice, if it&rsquo;s more than a couple of lines, try to use something like JavaScript, or Python to write your script.</p>
+
+<p>I&rsquo;ve got some resources to do that in modern JavaScript/Node:</p>
 
 <ul>
-<li><code>redis-cli</code>&rsquo;s API has changed from version 2 to 3 to 4
-
-<ul>
-<li>ie. this works in v4 <code>redis-cli -u ${REDIS_URL}</code> but doesn’t in v2</li>
-</ul></li>
-<li>the &ldquo;only way&rdquo; to install <code>redis-cli</code> is through a <code>redis-tools</code> or <code>redis-server</code> install and I <em>only</em> need <code>redis-cli</code> not the server or any other tools</li>
+<li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>
+<li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>
 </ul>
 
-<p>What follows is how <em>not</em> to install <code>redis-cli</code> and then how to install <code>redis-cli</code> latest, properly.</p>
+<h2 id="bonus">Bonus</h2>
 
-<h2 id="bad">Bad</h2>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt-get install redis-tools</code></pre></div>
-<p>This installs an outdated version, <code>2.8.x</code> where stable is <code>4.x.x</code>.</p>
+<h3 id="slap-your-env-files-into-your-environment">Slap your .env files into your environment</h3>
 
-<h2 id="better">Better</h2>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apt-get install redis-server</code></pre></div>
-<p>Maybe we don’t need the full <code>redis-server</code> install if we only need the CLI.
-Sometimes it also installs the old <code>redis-cli</code>… not the best.</p>
+<p>We&rsquo;ve got <code>.env</code> files laying around, Docker Compose deals with this for use usually but say we want to get something running outside of Docker (and without using something like <a href="https://github.com/motdotla/dotenv">dotenv</a>).</p>
 
-<h2 id="best">Best</h2>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> /tmp
-wget http://download.redis.io/redis-stable.tar.gz
-tar xvzf redis-stable.tar.gz
-<span class="nb">cd</span> redis-stable
-make
-cp src/redis-cli /usr/local/bin/
-chmod <span class="m">755</span> /usr/local/bin/redis-cli</code></pre></div>
-<p>You’ll need <code>libjemalloc1 libjemalloc-dev gcc make</code> most of which should already be installed. We&rsquo;re building from source&hellip; which takes about a minute on the CircleCI containers (so I would expect less everywhere else), which is fine.</p>
-
-<p>Credit: <a href="https://www.devops.zone/ha-performance-caching/installing-redis-cli-without-installing-server/">DevOps Zone, install redis-cli without installing server</a>. I shamelessly took the snippet from there, because hey, it works.</p>
-
-<h2 id="installing-redis-cli-latest-on-circleci">Installing redis-cli latest on CircleCI</h2>
-
-<p>Same as above except:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">sudo cp src/redis-cli /usr/local/bin/
-sudo chmod <span class="m">755</span> /usr/local/bin/redis-cli</code></pre></div>
-<p>CircleCI runs the jobs with a non-root user by default, and kudos to them for that, more tools should make you think about what privileges you have.</p>
-
-<p>I&rsquo;m not exactly sure what distribution CircleCI images run, some sort of Debian? Let me know at <a href="hi@codewithhugo.com">hi@codewithhugo.com</a>, or <a href="https://twitter.com/hugo__df">@hugo__df</a>.</p>
-
-<h2 id="installing-redis-cli-latest-on-alpine-in-docker">Installing redis-cli latest on Alpine in Docker</h2>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">apk --upgrade redis</code></pre></div>
-<p>If you know why this works but <code>apt-get install redis-server</code> sometimes installs old <code>redis-cli</code> drop me a line at <a href="hi@codewithhugo.com">hi@codewithhugo.com</a>, or Twitter <a href="https://twitter.com/hugo__df">@hugo__df</a>.</p>
-
-<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@nilsjacob?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Nils Stahl"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Nils Stahl</span></a></p>
+<p>Here&rsquo;s the snippet for a *NIX shell:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">export</span> <span class="k">$(</span>cat .env <span class="p">|</span> xargs<span class="k">)</span></code></pre></div>
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@guiccunha?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Guilherme  Cunha"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Guilherme  Cunha</span></a></p>
     
         </div>
     </section>
@@ -242,7 +286,7 @@ sudo chmod <span class="m">755</span> /usr/local/bin/redis-cli</code></pre></div
     <header class="read-next-card-header">
         <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
         
-        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/redis/">#Redis</a></h3>
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/tooling/">#tooling</a></h3>
     </header>
     <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
     </div>
@@ -250,82 +294,46 @@ sudo chmod <span class="m">755</span> /usr/local/bin/redis-cli</code></pre></div
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
-        
           <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+        
+          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
         
                       
         
-          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
+          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
+          <li><a href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">Better HTTP Polling with RxJS 5</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
       
-        <a href="https://codewithhugo.com/tags/redis/">See all related posts →</a>
+        <a href="https://codewithhugo.com/tags/tooling/">See all related posts →</a>
     </footer>
 </article>
 
 
       
+      
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nils-stahl-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #tooling 
-              #bash  </span>
+              #Redis 
+              #tooling  </span>
               
-              <h2 class="post-card-title">Just enough bash to be dangerous</h2>
+              <h2 class="post-card-title">Install just redis-cli on Ubuntu, Debian, Jessie</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>A bash cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
-To avoid having to do this again myself and for your reading pleasure, here they are. ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
-      
-      
-      <article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #Node 
-              #Docker 
-              #redis  </span>
-              
-              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
-There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
-Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. ...  </p>
+                <p>As part of adding integration tests to an app on CircleCI I ran into the following issues:
+ redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly. ...  </p>
               
           </section>
       </a>
@@ -349,17 +357,17 @@ Bull https://github.com/OptimalBits/bull is a premium Queue package for handling
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Install just redis-cli on Ubuntu, Debian, Jessie</div>
+  <div class="floating-header-title">Just enough bash to be dangerous</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Install%20just%20redis-cli%20on%20Ubuntu%2c%20Debian%2c%20Jessie&amp;url=https%3a%2f%2fcodewithhugo.com%2finstall-just-redis-cli-on-ubuntu-debian-jessie%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Just%20enough%20bash%20to%20be%20dangerous&amp;url=https%3a%2f%2fcodewithhugo.com%2fjust-enough-bash-to-be-dangerous%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2finstall-just-redis-cli-on-ubuntu-debian-jessie%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fjust-enough-bash-to-be-dangerous%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>
