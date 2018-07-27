@@ -59,6 +59,11 @@ The issue with Kue, RSMQ and Bee Queue was its use of a &lt;code&gt;done&lt;/cod
 &lt;li&gt;&lt;a href=&#34;#some-other-stuff-to-do-before-you-ship-this&#34;&gt;Some other stuff to do before you ship this 🚢&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;blockquote&gt;
+&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
+&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;h2 id=&#34;an-express-application-with-redis-and-a-worker&#34;&gt;An Express application with Redis and a worker 🏃‍♀️&lt;/h2&gt;
 
 &lt;p&gt;We&amp;rsquo;ll start with a Node/Redis/Express setup using docker-compose (a full walkthrough can be found at
@@ -207,6 +212,11 @@ We&amp;rsquo;ll also set up &lt;code&gt;bull-arena&lt;/code&gt; as a web UI to m
 &lt;p&gt;On save we&amp;rsquo;ll be able to open up &lt;a href=&#34;http://localhost:3000/arena&#34;&gt;http://localhost:3000/arena&lt;/a&gt; and see the following:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://codewithhugo.com/img/20180721-arena-screenshot.jpg&#34; alt=&#34;Screenshot of Arena in browser&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
+&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;persisting-webhook-data-with-redis&#34;&gt;Persisting webhook data with Redis&lt;/h2&gt;
 
@@ -2416,6 +2426,11 @@ provides an easy way to map from entities&amp;rsquo; representation in the datab
 &lt;li&gt;&lt;a href=&#34;#initialise-all&#34;&gt;Initialising all models&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;blockquote&gt;
+&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
+&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;h1 id=&#34;typed-fields&#34;&gt;Initialise the model with typed field(s)&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sequelize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyModel&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -2516,6 +2531,11 @@ provides an easy way to map from entities&amp;rsquo; representation in the datab
 &lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;db&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;For any questions about using Sequelize in this manner or developing Node apps
 backed by relational databases, feel free to comment below or tweet to me &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
+&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/sorCkbu4Nzw?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Eugene Lim&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/square?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
 </description>
