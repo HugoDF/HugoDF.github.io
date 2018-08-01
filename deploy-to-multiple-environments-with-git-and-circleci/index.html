@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en-US" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
+
+    <title>Deploy to multiple environments with git and CircleCI &middot; Code with Hugo</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
+    <meta name="theme-color" content="#090a0b">
+    
+    <link rel="canonical" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/" /> 
+
+     <meta name="description" content="Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buff" /> 
+
+     
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/oliver-roos-unsplash.jpg"/>
+    
+ 
+    <meta name="twitter:title" content="Deploy to multiple environments with git and CircleCI"/>
+    <meta name="twitter:description" content="Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buff"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/" />
+    <meta name="twitter:site" content="@hugo__df"/>
+
+    <meta property="og:site_name" content="Code with Hugo" />
+    <meta property="og:title" content="Deploy to multiple environments with git and CircleCI &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/" />
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buff" />
+
+    <meta property="article:published_time" content="2018-08-01T00:00:00Z" />
+    <meta property="article:tag" content="tooling" /><meta property="article:tag" content="git" /><meta property="article:tag" content="ci" /><meta property="article:tag" content="bash" />
+
+    <meta property="og:image" content="https://codewithhugo.com/img/oliver-roos-unsplash.jpg"/>
+
+
+    <meta name="generator" content="Hugo 0.36" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
+
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
+</head>
+
+
+<body class="post-template">
+  <div class="site-wrapper"> 
+
+<header class="site-header outer">
+  <div class="inner">
+    <nav class="site-nav">
+      <div class="site-nav-left">
+
+        <ul class="nav" role="menu">
+        
+        
+        
+            <li class="" role="menuitem">
+              <a href="/">Home</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/javascript/">JavaScript</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/node/">Node</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/css/">CSS</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/tip/">tips</a>
+            </li>
+        
+      </ul></div>
+
+      <div class="site-nav-right">
+        <div class="social-links">
+                    
+
+                    <a class="social-link social-link-tw" href="https://twitter.com/hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg></a>
+
+                    <a class="social-link" href="https://github.com/HugoDF" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+
+                    
+
+                    <a class="social-link" href="https://medium.com/@hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 195"><path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582 L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011 C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114 150.640424,135.084652 151.542017,135.771899 L161.755369,145.798942 L161.755369,148 L110.38282,148 L110.38282,145.798942 L120.963119,135.527337 C122.002801,134.487948 122.002801,134.182246 122.002801,132.592593 L122.002801,73.0417402 L92.585901,147.755438 L88.6106443,147.755438 L54.3622782,73.0417402 L54.3622782,123.115814 C54.0767278,125.221069 54.7759199,127.3406 56.2581699,128.863022 L70.0186741,145.55438 L70.0186741,147.755438 L31,147.755438 L31,145.55438 L44.7605042,128.863022 C46.2319621,127.338076 46.8903838,125.204485 46.5340803,123.115814 L46.5340803,65.2157554 Z"/></svg></a>
+        </div>  
+        
+        <a class="subscribe-button" href="https://buttondown.email/hugo">Subscribe</a> </div>
+            
+      </div>
+
+    </nav>  
+
+  </div>
+</header>
+
+<main id="site-main" class="site-main outer" role="main">
+  <div class="inner">
+    
+      <article class="post-full post"> 
+    <header class="post-full-header">
+        <section class="post-full-meta">
+            <time class="post-full-meta-date" datetime="2018-08-01">1 August 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/tooling/">#tooling</a>&nbsp;<a href="https://codewithhugo.com/tags/git/">#git</a>&nbsp;
+        </section>
+        <h1 class="post-full-title">Deploy to multiple environments with git and CircleCI</h1>
+    </header>
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)">
+    </figure>
+
+    <section class="post-full-content">
+        <div class="kg-card-markdown">
+        
+
+<p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.</p>
+
+<p>Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting.
+We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles.
+This is not a CircleCI 2.0 workflows tutorial, it’s more of a git-flow/CircleCI hybrid to have 2 (or more) environments being released to and automatically deployed by CircleCI.</p>
+
+<p>I would like to thanks Chris Fidao, and <a href="https://twitter.com/fideloper/status/1020330385333530624">this tweet</a>:</p>
+
+<p><img src="https://codewithhugo.com/img/2018-07-30-chris-fidao-tweet-screenshot.jpg" alt="🔥 Git is great, but not for what Linus probably intended. Despite its intentions, git(hub|lab|bucket) is actually used for: 1. backup (and distribution) 2. automation 3. release management 4. a hundred other things ..... xxx. version control https://t.co/GLUYkppSLs &amp;mdash; Chris Fidao (@fideloper) https://twitter.com/fideloper/status/1020330385333530624 20 July 2018" /></p>
+
+<!-- - [A branch setup 🌳](#a-branch-setup-%F0%9F%8C%B3)
+- [A branch setup 🌳](#a-branch-setup-%F0%9F%8C%B3)
+- [The workflow 🏞](#the-workflow-%F0%9F%8F%9E)
+- [Release scripts 🛫](#release-scripts-%F0%9F%9B%AB)
+    - [Logging in to Heroku (optional) 🔑](#logging-in-to-heroku-optional-%F0%9F%94%91)
+- [12(ish) factor app 🏗](#12ish-factor-app-%F0%9F%8F%97)
+    - [Injecting config and secrets 💉](#injecting-config-and-secrets-%F0%9F%92%89)
+    - [Run that deploy 🛬](#run-that-deploy-%F0%9F%9B%AC)
+-->
+
+<p>We&rsquo;ll go through how to use GitHub + CircleCI for deployment automation and release management.</p>
+
+<ul>
+<li><a href="#a-branch-setup">A branch setup 🌳</a></li>
+<li><a href="#the-workflow">The workflow 🏞</a></li>
+<li><a href="#release-scripts">Release scripts 🛫</a>
+
+<ul>
+<li><a href="#logging-in-to-heroku-optional">Logging in to Heroku (optional) 🔑</a></li>
+</ul></li>
+<li><a href="#12ish-factor-app">12(ish) factor app 🏗</a>
+
+<ul>
+<li><a href="#injecting-config-and-secrets">Injecting config and secrets 💉</a></li>
+<li><a href="#run-that-deploy">Run that deploy 🛬</a></li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
+<a href="https://buttondown.email/hugo">Subscribe</a> to get the latest posts right in your inbox (before anyone else).</p>
+</blockquote>
+
+<h2 id="a-branch-setup">A branch setup 🌳</h2>
+
+<p>We’ll want a <code>develop</code> and a <code>master</code> branch that get auto-deployed. Our default branch should be develop (ie. all pull requests should get merged into.
+Thats as simple as running:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ git checkout -b develop
+$ git push -u origin develop
+<span class="c1"># There&#39;s usually already a master branch otherwise:
+</span><span class="c1"></span>$ git checkout -b master
+$ git push -u origin master</code></pre></div>
+<p>We’re using branches because that’s the only primitive that CircleCI understands. On TravisCI or GoCD you would be able to set up “pipelines” for each environment but CircleCI workflows can’t be triggered for different environments manually, so it’s easiest to use git branches.</p>
+
+<h2 id="the-workflow">The workflow 🏞</h2>
+
+<ol>
+<li>Create a feature/task branch</li>
+<li>Complete the task, get the code in a state to be merged</li>
+<li>Open a PR from the feature/task branch to <code>develop</code>
+
+<ol>
+<li>CircleCI runs tests/lint whatever else (not covered in this post)</li>
+<li>Automated checks are all green ✅</li>
+</ol></li>
+<li>Review</li>
+<li>The PR is merged into <code>develop</code>
+
+<ol>
+<li>CircleCI runs automated checks again</li>
+<li>CircleCI deploys to development/staging environment if all checks are green</li>
+</ol></li>
+<li>To deploy to production, the release has to be manual
+
+<ol>
+<li>Merge <code>develop</code> into <code>master</code></li>
+<li>CircleCI runs automated checks again</li>
+<li>CircleCI deploys to production environment if all checks are green</li>
+</ol></li>
+</ol>
+
+<p>To make this process easier, we’ll have some release scripts to automate step 6 (merging correctly is easy to do wrong) and some CircleCI config to do steps 5a-b and 6b-c.</p>
+
+<h2 id="release-scripts">Release scripts 🛫</h2>
+
+<p>The following is  <code>release-production.sh</code>, we can use it to merge changes from develop → master:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nb">set</span> -e
+<span class="nb">set</span> -u
+<span class="nv">RELEASE_FROM</span><span class="o">=</span><span class="s2">&#34;develop&#34;</span>
+<span class="nv">RELEASE_TO</span><span class="o">=</span><span class="s2">&#34;master&#34;</span>
+<span class="nv">CURRENT_BRANCH</span><span class="o">=</span><span class="s2">&#34;`git branch | grep \* | cut -d &#39; &#39; -f2`&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;Checking out to &#39;</span><span class="si">${</span><span class="nv">RELEASE_FROM</span><span class="si">}</span><span class="s2">&#39; branch and pulling latest&#34;</span>
+git checkout <span class="si">${</span><span class="nv">RELEASE_FROM</span><span class="si">}</span> 
+git pull
+<span class="nb">echo</span> <span class="s2">&#34;Checking out to &#39;</span><span class="si">${</span><span class="nv">RELEASE_TO</span><span class="si">}</span><span class="s2">&#39; branch and pulling latest&#34;</span>
+git checkout <span class="si">${</span><span class="nv">RELEASE_TO</span><span class="si">}</span> 
+git pull
+<span class="nb">read</span> -p <span class="s2">&#34;Are you sure you want to merge &#39;</span><span class="si">${</span><span class="nv">RELEASE_FROM</span><span class="si">}</span><span class="s2">&#39; into &#39;</span><span class="si">${</span><span class="nv">RELEASE_TO</span><span class="si">}</span><span class="s2">&#39;? (y/n)&#34;</span> -n <span class="m">1</span> -r
+<span class="nb">echo</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$REPLY</span> <span class="o">=</span>~ ^<span class="o">[</span>Yy<span class="o">]</span>$ <span class="o">]]</span>
+<span class="k">then</span>
+    git merge <span class="si">${</span><span class="nv">RELEASE_FROM</span><span class="si">}</span> --ff-only
+    git push
+<span class="k">fi</span>
+
+git checkout <span class="si">${</span><span class="nv">CURRENT_BRANCH</span><span class="si">}</span></code></pre></div>
+<p>Here’s a breakdown of the steps of what it does:</p>
+
+<ul>
+<li>Save current branch name</li>
+<li>checkout to the branch we are releasing from (<code>develop</code>)</li>
+<li>pull latest</li>
+<li>checkout to the branch we are releasing to (<code>master</code>)</li>
+<li>pull latest</li>
+<li>prompt before merge</li>
+<li>merge
+
+<ul>
+<li><code>--ff-only</code>, means we run all merges with “fast-forward” which means we won’t get a merge commit, this means there won’t be a merge commit</li>
+</ul></li>
+<li>prompt before release</li>
+<li>push</li>
+<li>reset to branch we were initially on</li>
+</ul>
+
+<h3 id="logging-in-to-heroku-optional">Logging in to Heroku (optional) 🔑</h3>
+
+<p>To store secrets we’ll use CircleCI environment variables setting, and set <code>HEROKU_EMAIL</code> and <code>HEROKU_TOKEN</code> through the UI (Settings → Build Settings → Environment Variables).
+To get your Heroku token run <code>heroku auth:token</code>.
+To log in to Heroku, use the following in <code>login-heroku.sh</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">cat &gt; ~/.netrc <span class="s">&lt;&lt; EOF
+</span><span class="s">    machine api.heroku.com
+</span><span class="s">        login $HEROKU_EMAIL
+</span><span class="s">        password $HEROKU_TOKEN
+</span><span class="s">    machine git.heroku.com
+</span><span class="s">        login $HEROKU_EMAIL
+</span><span class="s">        password $HEROKU_TOKEN
+</span><span class="s">EOF</span>
+
+<span class="c1"># Add heroku.com to the list of known hosts
+</span><span class="c1"></span>mkdir ~/.ssh
+ssh-keyscan -H heroku.com &gt;&gt; ~/.ssh/known_hosts</code></pre></div>
+<h2 id="12-ish-factor-app">12(ish) factor app 🏗</h2>
+
+<p>We want to manage configuration somehow, for all the environments as described by <a href="https://12factor.net/">https://12factor.net/</a></p>
+
+<h3 id="injecting-config-and-secrets">Injecting config and secrets 💉</h3>
+
+<p><code>setup-env.sh</code></p>
+
+<ul>
+<li>Switch on <code>CIRCLE_BRANCH</code>, set some variables conditionally (<code>ENVIRONMENT</code>, <code>HEROKU_APP</code>, others not (<code>NODE_ENV</code>):</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="k">case</span> <span class="nv">$CIRCLE_BRANCH</span> in
+    <span class="s2">&#34;develop&#34;</span><span class="o">)</span>
+        <span class="nb">export</span> <span class="nv">ENVIRONMENT</span><span class="o">=</span><span class="s2">&#34;dev&#34;</span>
+        <span class="nb">export</span> <span class="nv">HEROKU_APP</span><span class="o">=</span><span class="s2">&#34;some-app&#34;</span>
+        <span class="p">;;</span>
+    <span class="s2">&#34;master&#34;</span><span class="o">)</span>
+        <span class="nb">export</span> <span class="nv">ENVIRONMENT</span><span class="o">=</span><span class="s2">&#34;production&#34;</span>
+        <span class="nb">export</span> <span class="nv">HEROKU_APP</span><span class="o">=</span><span class="s2">&#34;some-other-app&#34;</span>
+        <span class="p">;;</span>
+<span class="k">esac</span>
+<span class="nb">export</span> <span class="nv">NODE_ENV</span><span class="o">=</span><span class="s2">&#34;production&#34;</span></code></pre></div>
+<p>If we had to set some secrets around here, we would do something like the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="k">case</span> <span class="nv">$CIRCLE_BRANCH</span> in
+    <span class="s2">&#34;develop&#34;</span><span class="o">)</span>
+        <span class="nb">export</span> <span class="nv">MY_SECRET</span><span class="o">=</span><span class="si">${</span><span class="nv">MY_SECRET_DEV</span><span class="si">}</span>
+        <span class="nb">export</span> <span class="nv">HEROKU_APP</span><span class="o">=</span><span class="s2">&#34;some-app&#34;</span>
+        <span class="p">;;</span>
+    <span class="s2">&#34;master&#34;</span><span class="o">)</span>
+        <span class="nb">export</span> <span class="nv">MY_SECRET</span><span class="o">=</span><span class="si">${</span><span class="nv">MY_SECRET_PRODUCTION</span><span class="si">}</span>
+        <span class="p">;;</span>
+<span class="k">esac</span></code></pre></div>
+<p>Where <code>MY_SECRET_DEV</code>  and <code>MY_SECRET_PRODUCTION</code> are set through CircleCI environment variables (Settings → Build Settings → Environment Variables).</p>
+
+<h3 id="run-that-deploy">Run that deploy 🛬</h3>
+
+<p><code>deploy-heroku.sh</code>:</p>
+
+<ul>
+<li>Read setup from <code>setup-env</code>, add Heroku remote and push current branch to <code>master</code> on Heroku</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">set</span> -e
+<span class="nb">set</span> -u
+<span class="nb">source</span> ./setup-env.sh
+<span class="nb">echo</span> <span class="s2">&#34;Pushing branch </span><span class="si">${</span><span class="nv">CIRCLE_BRANCH</span><span class="si">}</span><span class="s2"> to app </span><span class="si">${</span><span class="nv">HEROKU_APP</span><span class="si">}</span><span class="s2">&#34;</span>
+git remote add heroku https://git.heroku.com/<span class="si">${</span><span class="nv">HEROKU_APP</span><span class="si">}</span>.git
+git push heroku <span class="si">${</span><span class="nv">CIRCLE_BRANCH</span><span class="si">}</span>:master</code></pre></div>
+<ul>
+<li>To have some sort of record of what’s deployed and what’s not, we want to set the <code>COMPARE_URL</code> and version number (<code>BUILD_NUM</code>) on Heroku, that requires the Heroku CLI:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="k">if</span> <span class="o">[</span> ! -L /usr/local/bin/heroku <span class="o">]</span><span class="p">;</span>
+<span class="k">then</span>
+    wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
+    sudo mkdir -p /usr/local/lib /usr/local/bin
+    sudo tar -xvzf heroku-linux-amd64.tar.gz -C /usr/local/lib
+    sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
+<span class="k">fi</span>
+<span class="nb">source</span> infra/scripts/setup-env.sh
+heroku config:set <span class="nv">BUILD_NUM</span><span class="o">=</span><span class="si">${</span><span class="nv">CIRCLE_BUILD_NUM</span><span class="si">}</span> <span class="nv">COMPARE_URL</span><span class="o">=</span><span class="si">${</span><span class="nv">CIRCLE_COMPARE_URL</span><span class="si">}</span> -a <span class="si">${</span><span class="nv">HEROKU_APP</span><span class="si">}</span></code></pre></div>
+<p>All together we end up with the following  <code>.circleci/config.yml</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml">version<span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="w"></span>jobs<span class="p">:</span><span class="w">
+</span><span class="w">    </span>deploy<span class="p">:</span><span class="w">
+</span><span class="w">    </span>docker<span class="p">:</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>image<span class="p">:</span><span class="w"> </span>circleci/node<span class="p">:</span><span class="m">10.5</span>.<span class="m">0</span><span class="w"> </span><span class="c"># replace with the image you need</span><span class="w">
+</span><span class="w">    </span>steps<span class="p">:</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>checkout<span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>run<span class="p">:</span><span class="w">
+</span><span class="w">            </span>name<span class="p">:</span><span class="w"> </span>Log<span class="w"> </span>in<span class="w"> </span>to<span class="w"> </span>Heroku<span class="w">
+</span><span class="w">            </span>command<span class="p">:</span><span class="w"> </span>bash<span class="w"> </span>./login-heroku.sh<span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>run<span class="p">:</span><span class="w">
+</span><span class="w">            </span>name<span class="p">:</span><span class="w"> </span>Install<span class="w"> </span>Heroku<span class="w"> </span>CLI<span class="w">
+</span><span class="w">            </span>command<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">            wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
+</span><span class="sd">            sudo mkdir -p /usr/local/lib /usr/local/bin
+</span><span class="sd">            sudo tar -xvzf heroku-linux-amd64.tar.gz -C /usr/local/lib
+</span><span class="sd">            sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>run<span class="p">:</span><span class="w">
+</span><span class="w">            </span>name<span class="p">:</span><span class="w"> </span>Deploy<span class="w"> </span>heroku<span class="w"> </span>app<span class="w">
+</span><span class="w">            </span>command<span class="p">:</span><span class="w"> </span>bash<span class="w"> </span>infra/deploy-heroku.sh<span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>run<span class="p">:</span><span class="w">
+</span><span class="w">            </span>name<span class="p">:</span><span class="w"> </span>Set<span class="w"> </span>BUILD_NUM<span class="w"> </span>and<span class="w"> </span>COMPARE_URL<span class="w"> </span>on<span class="w"> </span>Heroku<span class="w"> </span>to<span class="w"> </span>CIRCLECI<span class="w"> </span>values<span class="w">
+</span><span class="w">            </span>command<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">            source ./setup-env.sh
+</span><span class="sd">            heroku config:set BUILD_NUM=${CIRCLE_BUILD_NUM} COMPARE_URL=${CIRCLE_COMPARE_URL} -a ${HEROKU_APP}</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>workflows<span class="p">:</span><span class="w">
+</span><span class="w">    </span>version<span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="w">    </span>ci<span class="p">:</span><span class="w">
+</span><span class="w">    </span>jobs<span class="p">:</span><span class="w">
+</span><span class="w">        </span>-<span class="w"> </span>deploy<span class="p">:</span><span class="w">
+</span><span class="w">            </span>filters<span class="p">:</span><span class="w">
+</span><span class="w">            </span>branches<span class="p">:</span><span class="w">
+</span><span class="w">                </span>only<span class="p">:</span><span class="w">
+</span><span class="w">                </span>-<span class="w"> </span>develop<span class="w">
+</span><span class="w">                </span>-<span class="w"> </span>master<span class="w">
+</span><span class="w">            </span><span class="c"># You should probably be running</span><span class="w">
+</span><span class="w">            </span><span class="c"># some checks before you deploy</span><span class="w">
+</span><span class="w">            </span><span class="c"># requires:</span><span class="w">
+</span><span class="w">            </span><span class="c">#  - test</span><span class="w">
+</span><span class="w">            </span><span class="c">#  - lint</span></code></pre></div>
+<p>This isn’t an exhaustive description of how to set up your CI, but it’s a start.</p>
+
+<p>Feel free to drop me a line at <a href="hi@codewithhugo.com">hi@codewithhugo.com</a>, or Twitter <a href="https://twitter.com/hugo__df">@hugo__df</a>.</p>
+
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@fairfilter?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Oliver Roos"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Oliver Roos</span></a></p>
+    
+        </div>
+    </section>
+
+    <section class="subscribe-form">
+        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+        <p>Get all the posts of the week before anyone else in your inbox</p>
+        <form
+            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
+        >
+            <div class="form-group">
+                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+                <input type="hidden" value="1" name="embed"/>
+            </div>
+            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+        </form>
+    </section>
+
+    <footer class="post-full-footer">
+      <section class="author-card">
+        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+        <section class="author-card-content">
+            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
+                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
+        </section>
+      </section>
+    </footer>
+</article>
+    
+    
+    
+
+  </div>
+</main>
+
+
+<aside class="read-next outer">
+  <div class="inner">
+    <div class="read-next-feed">      
+      
+<article class="read-next-card" 
+            style="background-image: url(https://codewithhugo.com/img/cover.jpg);" >
+    <header class="read-next-card-header">
+        <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
+        
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/tooling/">#tooling</a></h3>
+    </header>
+    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+    </div>
+
+    <div class="read-next-card-content">
+      
+        <ul>
+          <li><a href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">From AngularJS to Vue.js, CommonJS and Jest</a></li>            
+        
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
+        
+          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
+        
+          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
+        </ul>
+    </div>
+    <footer class="read-next-card-footer">
+      
+        <a href="https://codewithhugo.com/tags/tooling/">See all related posts →</a>
+    </footer>
+</article>
+
+
+      
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #tooling 
+              #bash  </span>
+              
+              <h2 class="post-card-title">Just enough bash to be dangerous</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>A bash cheat sheet for developers who just want to get by.
+ Writing setup, CI and deployment flows means a bit of the old bash scripting.
+Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
+To avoid having to do this again myself and for your reading pleasure, here they are. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+    </div>
+  </div>
+</aside>
+
+<div class="floating-header">
+  <div class="floating-header-logo">
+    <a href="https://codewithhugo.com/">
+      
+      <span>Code with Hugo</span>
+    </a>
+  </div>
+  <span class="floating-header-divider">&mdash;</span>
+  <div class="floating-header-title">Deploy to multiple environments with git and CircleCI</div>
+  <div class="floating-header-share">
+    <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
+    </div>
+    
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Deploy%20to%20multiple%20environments%20with%20git%20and%20CircleCI&amp;url=https%3a%2f%2fcodewithhugo.com%2fdeploy-to-multiple-environments-with-git-and-circleci%2f"
+          onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+      </a>
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fdeploy-to-multiple-environments-with-git-and-circleci%2f"
+          onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+      </a>
+  </div>
+
+  <progress class="progress" value="0">
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+  </progress>
+</div>
+
+
+
+<footer class="site-footer outer">
+  <div class="site-footer-content inner">
+    <section class="copyright" style="line-height: 1.3em;">
+      <a href="/">Code with Hugo</a>  <br>
+      
+    </section>
+    <nav class="site-footer-nav">
+        <a href="/">Latest Posts</a>
+        
+        <a href="https://twitter.com/hugo__df" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://github.com/HugoDF" target="_blank" rel="noopener">Github</a>
+        
+        <a href="https://medium.com/@hugo__df" target="_blank" rel="noopener">Medium</a>
+    </nav>  
+  </div>
+</footer>
+
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
+
+
+
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq=[['_setAccount','UA-60469708-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+    <script>
+
+
+
+
+
+$(document).ready(function () {
+    
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+</body></html>

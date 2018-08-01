@@ -6,10 +6,271 @@
     <description>Recent content in Git on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 23 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Aug 2018 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://codewithhugo.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Deploy to multiple environments with git and CircleCI</title>
+      <link>https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/</guid>
+      <description>
+
+&lt;p&gt;Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.&lt;/p&gt;
+
+&lt;p&gt;Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting.
+We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles.
+This is not a CircleCI 2.0 workflows tutorial, it’s more of a git-flow/CircleCI hybrid to have 2 (or more) environments being released to and automatically deployed by CircleCI.&lt;/p&gt;
+
+&lt;p&gt;I would like to thanks Chris Fidao, and &lt;a href=&#34;https://twitter.com/fideloper/status/1020330385333530624&#34;&gt;this tweet&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://codewithhugo.com/img/2018-07-30-chris-fidao-tweet-screenshot.jpg&#34; alt=&#34;🔥 Git is great, but not for what Linus probably intended. Despite its intentions, git(hub|lab|bucket) is actually used for: 1. backup (and distribution) 2. automation 3. release management 4. a hundred other things ..... xxx. version control https://t.co/GLUYkppSLs &amp;amp;mdash; Chris Fidao (@fideloper) https://twitter.com/fideloper/status/1020330385333530624 20 July 2018&#34; /&gt;&lt;/p&gt;
+
+&lt;!-- - [A branch setup 🌳](#a-branch-setup-%F0%9F%8C%B3)
+- [A branch setup 🌳](#a-branch-setup-%F0%9F%8C%B3)
+- [The workflow 🏞](#the-workflow-%F0%9F%8F%9E)
+- [Release scripts 🛫](#release-scripts-%F0%9F%9B%AB)
+    - [Logging in to Heroku (optional) 🔑](#logging-in-to-heroku-optional-%F0%9F%94%91)
+- [12(ish) factor app 🏗](#12ish-factor-app-%F0%9F%8F%97)
+    - [Injecting config and secrets 💉](#injecting-config-and-secrets-%F0%9F%92%89)
+    - [Run that deploy 🛬](#run-that-deploy-%F0%9F%9B%AC)
+--&gt;
+
+&lt;p&gt;We&amp;rsquo;ll go through how to use GitHub + CircleCI for deployment automation and release management.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#a-branch-setup&#34;&gt;A branch setup 🌳&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-workflow&#34;&gt;The workflow 🏞&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#release-scripts&#34;&gt;Release scripts 🛫&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#logging-in-to-heroku-optional&#34;&gt;Logging in to Heroku (optional) 🔑&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12ish-factor-app&#34;&gt;12(ish) factor app 🏗&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#injecting-config-and-secrets&#34;&gt;Injecting config and secrets 💉&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#run-that-deploy&#34;&gt;Run that deploy 🛬&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
+&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;a-branch-setup&#34;&gt;A branch setup 🌳&lt;/h2&gt;
+
+&lt;p&gt;We’ll want a &lt;code&gt;develop&lt;/code&gt; and a &lt;code&gt;master&lt;/code&gt; branch that get auto-deployed. Our default branch should be develop (ie. all pull requests should get merged into.
+Thats as simple as running:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ git checkout -b develop
+$ git push -u origin develop
+&lt;span class=&#34;c1&#34;&gt;# There&amp;#39;s usually already a master branch otherwise:
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;$ git checkout -b master
+$ git push -u origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We’re using branches because that’s the only primitive that CircleCI understands. On TravisCI or GoCD you would be able to set up “pipelines” for each environment but CircleCI workflows can’t be triggered for different environments manually, so it’s easiest to use git branches.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-workflow&#34;&gt;The workflow 🏞&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a feature/task branch&lt;/li&gt;
+&lt;li&gt;Complete the task, get the code in a state to be merged&lt;/li&gt;
+&lt;li&gt;Open a PR from the feature/task branch to &lt;code&gt;develop&lt;/code&gt;
+
+&lt;ol&gt;
+&lt;li&gt;CircleCI runs tests/lint whatever else (not covered in this post)&lt;/li&gt;
+&lt;li&gt;Automated checks are all green ✅&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Review&lt;/li&gt;
+&lt;li&gt;The PR is merged into &lt;code&gt;develop&lt;/code&gt;
+
+&lt;ol&gt;
+&lt;li&gt;CircleCI runs automated checks again&lt;/li&gt;
+&lt;li&gt;CircleCI deploys to development/staging environment if all checks are green&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;To deploy to production, the release has to be manual
+
+&lt;ol&gt;
+&lt;li&gt;Merge &lt;code&gt;develop&lt;/code&gt; into &lt;code&gt;master&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;CircleCI runs automated checks again&lt;/li&gt;
+&lt;li&gt;CircleCI deploys to production environment if all checks are green&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To make this process easier, we’ll have some release scripts to automate step 6 (merging correctly is easy to do wrong) and some CircleCI config to do steps 5a-b and 6b-c.&lt;/p&gt;
+
+&lt;h2 id=&#34;release-scripts&#34;&gt;Release scripts 🛫&lt;/h2&gt;
+
+&lt;p&gt;The following is  &lt;code&gt;release-production.sh&lt;/code&gt;, we can use it to merge changes from develop → master:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; -e
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; -u
+&lt;span class=&#34;nv&#34;&gt;RELEASE_FROM&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;develop&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;RELEASE_TO&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;CURRENT_BRANCH&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;`git branch | grep \* | cut -d &amp;#39; &amp;#39; -f2`&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Checking out to &amp;#39;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;RELEASE_FROM&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#39; branch and pulling latest&amp;#34;&lt;/span&gt;
+git checkout &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;RELEASE_FROM&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt; 
+git pull
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Checking out to &amp;#39;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;RELEASE_TO&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#39; branch and pulling latest&amp;#34;&lt;/span&gt;
+git checkout &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;RELEASE_TO&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt; 
+git pull
+&lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt; -p &lt;span class=&#34;s2&#34;&gt;&amp;#34;Are you sure you want to merge &amp;#39;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;RELEASE_FROM&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#39; into &amp;#39;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;RELEASE_TO&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#39;? (y/n)&amp;#34;&lt;/span&gt; -n &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; -r
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[[&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$REPLY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~ ^&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;Yy&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;$ &lt;span class=&#34;o&#34;&gt;]]&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+    git merge &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;RELEASE_FROM&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt; --ff-only
+    git push
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+
+git checkout &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;CURRENT_BRANCH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here’s a breakdown of the steps of what it does:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Save current branch name&lt;/li&gt;
+&lt;li&gt;checkout to the branch we are releasing from (&lt;code&gt;develop&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;pull latest&lt;/li&gt;
+&lt;li&gt;checkout to the branch we are releasing to (&lt;code&gt;master&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;pull latest&lt;/li&gt;
+&lt;li&gt;prompt before merge&lt;/li&gt;
+&lt;li&gt;merge
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--ff-only&lt;/code&gt;, means we run all merges with “fast-forward” which means we won’t get a merge commit, this means there won’t be a merge commit&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;prompt before release&lt;/li&gt;
+&lt;li&gt;push&lt;/li&gt;
+&lt;li&gt;reset to branch we were initially on&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;logging-in-to-heroku-optional&#34;&gt;Logging in to Heroku (optional) 🔑&lt;/h3&gt;
+
+&lt;p&gt;To store secrets we’ll use CircleCI environment variables setting, and set &lt;code&gt;HEROKU_EMAIL&lt;/code&gt; and &lt;code&gt;HEROKU_TOKEN&lt;/code&gt; through the UI (Settings → Build Settings → Environment Variables).
+To get your Heroku token run &lt;code&gt;heroku auth:token&lt;/code&gt;.
+To log in to Heroku, use the following in &lt;code&gt;login-heroku.sh&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;cat &amp;gt; ~/.netrc &lt;span class=&#34;s&#34;&gt;&amp;lt;&amp;lt; EOF
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;    machine api.heroku.com
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        login $HEROKU_EMAIL
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        password $HEROKU_TOKEN
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;    machine git.heroku.com
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        login $HEROKU_EMAIL
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;        password $HEROKU_TOKEN
+&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;EOF&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;# Add heroku.com to the list of known hosts
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;mkdir ~/.ssh
+ssh-keyscan -H heroku.com &amp;gt;&amp;gt; ~/.ssh/known_hosts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;12-ish-factor-app&#34;&gt;12(ish) factor app 🏗&lt;/h2&gt;
+
+&lt;p&gt;We want to manage configuration somehow, for all the environments as described by &lt;a href=&#34;https://12factor.net/&#34;&gt;https://12factor.net/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;injecting-config-and-secrets&#34;&gt;Injecting config and secrets 💉&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;setup-env.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Switch on &lt;code&gt;CIRCLE_BRANCH&lt;/code&gt;, set some variables conditionally (&lt;code&gt;ENVIRONMENT&lt;/code&gt;, &lt;code&gt;HEROKU_APP&lt;/code&gt;, others not (&lt;code&gt;NODE_ENV&lt;/code&gt;):&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$CIRCLE_BRANCH&lt;/span&gt; in
+    &lt;span class=&#34;s2&#34;&gt;&amp;#34;develop&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ENVIRONMENT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;dev&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;some-app&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+    &lt;span class=&#34;s2&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ENVIRONMENT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;production&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;some-other-app&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;esac&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;NODE_ENV&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;production&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If we had to set some secrets around here, we would do something like the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$CIRCLE_BRANCH&lt;/span&gt; in
+    &lt;span class=&#34;s2&#34;&gt;&amp;#34;develop&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;MY_SECRET&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;MY_SECRET_DEV&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;some-app&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+    &lt;span class=&#34;s2&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;MY_SECRET&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;MY_SECRET_PRODUCTION&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;esac&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Where &lt;code&gt;MY_SECRET_DEV&lt;/code&gt;  and &lt;code&gt;MY_SECRET_PRODUCTION&lt;/code&gt; are set through CircleCI environment variables (Settings → Build Settings → Environment Variables).&lt;/p&gt;
+
+&lt;h3 id=&#34;run-that-deploy&#34;&gt;Run that deploy 🛬&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;deploy-heroku.sh&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Read setup from &lt;code&gt;setup-env&lt;/code&gt;, add Heroku remote and push current branch to &lt;code&gt;master&lt;/code&gt; on Heroku&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; -e
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; -u
+&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ./setup-env.sh
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Pushing branch &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;CIRCLE_BRANCH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; to app &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+git remote add heroku https://git.heroku.com/&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;.git
+git push heroku &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;CIRCLE_BRANCH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;:master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;To have some sort of record of what’s deployed and what’s not, we want to set the &lt;code&gt;COMPARE_URL&lt;/code&gt; and version number (&lt;code&gt;BUILD_NUM&lt;/code&gt;) on Heroku, that requires the Heroku CLI:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; ! -L /usr/local/bin/heroku &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+    wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
+    sudo mkdir -p /usr/local/lib /usr/local/bin
+    sudo tar -xvzf heroku-linux-amd64.tar.gz -C /usr/local/lib
+    sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; infra/scripts/setup-env.sh
+heroku config:set &lt;span class=&#34;nv&#34;&gt;BUILD_NUM&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;CIRCLE_BUILD_NUM&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;COMPARE_URL&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;CIRCLE_COMPARE_URL&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt; -a &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;All together we end up with the following  &lt;code&gt;.circleci/config.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;version&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;jobs&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;deploy&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;docker&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;image&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;circleci/node&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10.5&lt;/span&gt;.&lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# replace with the image you need&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;steps&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;checkout&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;run&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;name&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;Log&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;in&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;to&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;Heroku&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;command&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;bash&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;./login-heroku.sh&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;run&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;name&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;Install&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;Heroku&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;CLI&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;command&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;|
+&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;            wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
+&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;            sudo mkdir -p /usr/local/lib /usr/local/bin
+&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;            sudo tar -xvzf heroku-linux-amd64.tar.gz -C /usr/local/lib
+&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;            sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;run&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;name&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;Deploy&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;heroku&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;app&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;command&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;bash&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;infra/deploy-heroku.sh&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;run&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;name&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;Set&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;BUILD_NUM&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;and&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;COMPARE_URL&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;on&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;Heroku&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;to&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;CIRCLECI&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;values&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;command&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;|
+&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;            source ./setup-env.sh
+&lt;/span&gt;&lt;span class=&#34;sd&#34;&gt;            heroku config:set BUILD_NUM=${CIRCLE_BUILD_NUM} COMPARE_URL=${CIRCLE_COMPARE_URL} -a ${HEROKU_APP}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;workflows&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;version&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;ci&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;jobs&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;deploy&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;filters&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;branches&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;only&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;develop&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;                &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;master&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# You should probably be running&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# some checks before you deploy&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# requires:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#  - test&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;            &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#  - lint&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This isn’t an exhaustive description of how to set up your CI, but it’s a start.&lt;/p&gt;
+
+&lt;p&gt;Feel free to drop me a line at &lt;a href=&#34;hi@codewithhugo.com&#34;&gt;hi@codewithhugo.com&lt;/a&gt;, or Twitter &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@fairfilter?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Oliver Roos&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Oliver Roos&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Split an existing git commit</title>
