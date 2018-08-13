@@ -15,9 +15,11 @@
     
     <link rel="canonical" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/" /> 
 
-     <meta name="description" content="A bash cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep intere" /> 
+     <meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;A bash cheat sheet for developers who just want to get by.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Writing setup, CI and deployment flows means a bit of the old b" /> 
 
      
     
@@ -26,9 +28,11 @@ Despite my deep intere" />
     
  
     <meta name="twitter:title" content="Just enough bash to be dangerous"/>
-    <meta name="twitter:description" content="A bash cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep intere"/>
+    <meta name="twitter:description" content="&lt;blockquote&gt;
+&lt;p&gt;A bash cheat sheet for developers who just want to get by.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Writing setup, CI and deployment flows means a bit of the old b"/>
     <meta name="twitter:url" content="https://codewithhugo.com/just-enough-bash-to-be-dangerous/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
@@ -38,9 +42,11 @@ Despite my deep intere"/>
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="A bash cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep intere" />
+    <meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;A bash cheat sheet for developers who just want to get by.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Writing setup, CI and deployment flows means a bit of the old b" />
 
     <meta property="article:published_time" content="2018-07-26T00:00:00Z" />
     <meta property="article:tag" content="tooling" /><meta property="article:tag" content="bash" />
@@ -133,9 +139,7 @@ Despite my deep intere" />
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
-        
-
-<blockquote>
+        <blockquote>
 <p>A bash cheat sheet for developers who just want to get by.</p>
 </blockquote>
 
@@ -145,7 +149,7 @@ Despite my deep intere" />
 
 <p>To avoid having to do this again myself and for your reading pleasure, here they are.</p>
 
-<!-- more -->
+<p></p>
 
 <p>To be dangerous in terms of setup, CI and depoyment flows we will encounter the following:
 - <a href="#check-if-file-exists">Check if file exists</a>
@@ -154,7 +158,7 @@ Despite my deep intere" />
 - <a href="#switch-over-an-environment-variable">Switch over an environment variable</a>
 - <a href="#prompt-the-user">Prompt the user</a>
 - <a href="#bonus">Bonus</a>
-    - <a href="#slap-your-env-files-into-your-environment">Slap your .env files into your environment</a></p>
+  - <a href="#slap-your-env-files-into-your-environment">Slap your .env files into your environment</a></p>
 
 <blockquote>
 <p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
@@ -227,8 +231,7 @@ npm run sync
 
 <p>Here&rsquo;s the snippet for a *NIX shell:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">export</span> <span class="k">$(</span>cat .env <span class="p">|</span> xargs<span class="k">)</span></code></pre></div>
-<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@guiccunha?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Guilherme  Cunha"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Guilherme  Cunha</span></a></p>
-    
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@guiccunha?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Guilherme  Cunha"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Guilherme  Cunha</span></a></p>    
         </div>
     </section>
 
@@ -284,13 +287,13 @@ npm run sync
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">Abusing Jest snapshot tests: some nice use-cases 📸</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
         
-          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

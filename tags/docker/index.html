@@ -140,7 +140,10 @@
               
                 <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
 There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
-Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. ...  </p>
+Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
+We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
+
+ ...  </p>
               
           </section>
       </a>

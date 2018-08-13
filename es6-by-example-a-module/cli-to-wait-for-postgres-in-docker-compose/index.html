@@ -15,7 +15,7 @@
     
     <link rel="canonical" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/" /> 
 
-     <meta name="description" content="When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues insi" /> 
+     <meta name="description" content="&lt;p&gt;When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues i" /> 
 
      
     
@@ -24,7 +24,7 @@
     
  
     <meta name="twitter:title" content="ES6 by example: a module/CLI to wait for Postgres in docker-compose"/>
-    <meta name="twitter:description" content="When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues insi"/>
+    <meta name="twitter:description" content="&lt;p&gt;When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues i"/>
     <meta name="twitter:url" content="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
@@ -34,7 +34,7 @@
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues insi" />
+    <meta property="og:description" content="&lt;p&gt;When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues i" />
 
     <meta property="article:published_time" content="2018-07-11T00:00:00Z" />
     <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Node" />
@@ -127,15 +127,13 @@
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
-        
-
-<p>When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues inside the app.</p>
+        <p>When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues inside the app.</p>
 
 <p>This post walks through how to deliver this functionality both as a CLI and a module that works both as a CommonJS module (<code>require</code>) and ES modules, <strong>without transpilation</strong>.</p>
 
 <p>“A fast, production ready, zero-dependency ES module loader for Node 6+!” is <a href="https://github.com/standard-things/esm">esm</a>’s promise. From this sample project, it’s worked.</p>
 
-<!-- more -->
+<p></p>
 
 <!-- Break the table of contents so it doesn't auto-update with emoji -->
 
@@ -623,8 +621,7 @@ Postgres is unavailable - sleeping</code></pre></div>
     <span class="p">}</span>
   <span class="p">);</span>
 <span class="p">}</span></code></pre></div>
-<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@matthewhenry?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Matthew Henry"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Matthew Henry</span></a></p>
-    
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@matthewhenry?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Matthew Henry"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Matthew Henry</span></a></p>    
         </div>
     </section>
 
@@ -680,13 +677,13 @@ Postgres is unavailable - sleeping</code></pre></div>
     <div class="read-next-card-content">
       
         <ul>
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
+        
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+        
           <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
         
-          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
-        
-          <li><a href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">Install just redis-cli on Ubuntu, Debian, Jessie</a></li>            
-        
-          <li><a href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">Just enough bash to be dangerous</a></li>            
+          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -719,7 +716,10 @@ Postgres is unavailable - sleeping</code></pre></div>
               
                 <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
 There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
-Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. ...  </p>
+Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
+We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
+
+ ...  </p>
               
           </section>
       </a>
