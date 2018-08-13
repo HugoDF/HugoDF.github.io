@@ -27,7 +27,7 @@
 
 &lt;p&gt;We have the following pros for snapshot tests:
 - the match data is stored in a separate file so it&amp;rsquo;s harder to lose track of things, eg. being skimmed over during review
-- it&amp;rsquo;s a lost less effort to change than inline data matching, just run &lt;code&gt;npx jest -u&lt;/code&gt; and all snapshots get updated.&lt;/p&gt;
+- it&amp;rsquo;s a lot less effort to change than inline data matching, just run &lt;code&gt;npx jest -u&lt;/code&gt; and all snapshots get updated.&lt;/p&gt;
 
 &lt;p&gt;The following cons also come to mind:
 - it&amp;rsquo;s a lost less effort to change than inline data matching, which means people need to pay attention to changes in snapshot files
