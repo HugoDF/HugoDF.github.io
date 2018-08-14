@@ -45,7 +45,7 @@ In other words, although React and Vue testing w" />
     <meta property="og:image" content="https://codewithhugo.com/img/ben-sauer-unsplash.jpg"/>
 
 
-    <meta name="generator" content="Hugo 0.46" />
+    <meta name="generator" content="Hugo 0.36.1" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -210,8 +210,7 @@ In other words, although React and Vue testing w" />
     <span class="nx">expect</span><span class="p">(</span><span class="nx">ArenaConstructor</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">ArenaConstructor</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toMatchSnapshot</span><span class="p">();</span>
   <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 <p><code>monitor-queues.js</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Arena</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bull-arena&#39;</span><span class="p">);</span>
 <span class="k">const</span> <span class="p">{</span> <span class="nx">JOB_TYPES</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./queue/queues&#39;</span><span class="p">);</span>
@@ -243,8 +242,7 @@ In other words, although React and Vue testing w" />
   <span class="p">);</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">monitorQueues</span>
-<span class="p">};</span>
-</code></pre></div>
+<span class="p">};</span></code></pre></div>
 <p>Gives the following snapshots:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">exports</span><span class="p">[</span><span class="sb">`monitorQueues It should return an Arena instance with defaulted redis data when REDIS_URL is empty 1`</span><span class="p">]</span> <span class="o">=</span> <span class="sb">`
 </span><span class="sb">Array [
@@ -290,8 +288,7 @@ In other words, although React and Vue testing w" />
 </span><span class="sb">    &#34;disableListen&#34;: true,
 </span><span class="sb">  },
 </span><span class="sb">]
-</span><span class="sb">`</span><span class="p">;</span>
-</code></pre></div>
+</span><span class="sb">`</span><span class="p">;</span></code></pre></div>
 <h2 id="database-models">Database Models 🏬</h2>
 
 <h3 id="setup">Setup 🏗</h3>
@@ -313,8 +310,7 @@ In other words, although React and Vue testing w" />
   <span class="nx">MyModel</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">mockSequelize</span><span class="p">,</span> <span class="nx">mockDataTypes</span><span class="p">);</span>
   <span class="nx">expect</span><span class="p">(</span><span class="nx">MockModel</span><span class="p">.</span><span class="nx">init</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="nx">expect</span><span class="p">(</span><span class="nx">MockModel</span><span class="p">.</span><span class="nx">init</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toMatchSnapshot</span><span class="p">();</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 <p><code>my-model.js</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="p">{</span> <span class="nx">Model</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
 
@@ -342,8 +338,7 @@ In other words, although React and Vue testing w" />
 </span><span class="c1"></span>  <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">MyModel</span><span class="p">;</span>
-</code></pre></div>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">MyModel</span><span class="p">;</span></code></pre></div>
 <p>Gives us the following snapshot:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">exports</span><span class="p">[</span><span class="sb">`It should initialise correctly 1`</span><span class="p">]</span> <span class="o">=</span> <span class="sb">`
 </span><span class="sb">Array [
@@ -361,8 +356,7 @@ In other words, although React and Vue testing w" />
 </span><span class="sb">    &#34;sequelize&#34;: Object {},
 </span><span class="sb">  },
 </span><span class="sb">]
-</span><span class="sb">`</span><span class="p">;</span>
-</code></pre></div>
+</span><span class="sb">`</span><span class="p">;</span></code></pre></div>
 <h3 id="queries">Queries 🔍</h3>
 
 <p><code>my-model.test.js</code>:</p>
@@ -382,8 +376,7 @@ In other words, although React and Vue testing w" />
   <span class="nx">expect</span><span class="p">(</span><span class="nx">findOneStub</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
   <span class="nx">expect</span><span class="p">(</span><span class="nx">findOneStub</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">].</span><span class="nx">order</span><span class="p">).</span><span class="nx">toMatchSnapshot</span><span class="p">();</span>
   <span class="nx">MyModel</span><span class="p">.</span><span class="nx">findOne</span> <span class="o">=</span> <span class="nx">realFindOne</span><span class="p">;</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 <p><code>my-model.js</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="p">{</span> <span class="nx">Model</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
 
@@ -421,8 +414,7 @@ In other words, although React and Vue testing w" />
       <span class="p">]</span>
     <span class="p">});</span>
   <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<span class="p">}</span></code></pre></div>
 <p>Gives the following snapshot:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">exports</span><span class="p">[</span><span class="sb">`It should call model.findOne with correct order clause 1`</span><span class="p">]</span> <span class="o">=</span> <span class="sb">`
 </span><span class="sb">Array [
@@ -433,8 +425,7 @@ In other words, although React and Vue testing w" />
 </span><span class="sb">    &#34;ASC&#34;,
 </span><span class="sb">  ],
 </span><span class="sb">]
-</span><span class="sb">`</span><span class="p">;</span>
-</code></pre></div>
+</span><span class="sb">`</span><span class="p">;</span></code></pre></div>
 <h2 id="pug-or-handlebars-templates">pug or handlebars templates</h2>
 
 <p>This is pretty much the same as the Vue/React snapshot testing stuff, but let’s walk through it anyways, we have two equivalent templates in Pug and Handlebars:</p>
@@ -469,8 +460,7 @@ In other words, although React and Vue testing w" />
     <span class="nx">myTitle</span><span class="o">:</span> <span class="s1">&#39;Handlebars&#39;</span><span class="p">,</span>
     <span class="nx">myText</span><span class="o">:</span> <span class="s1">&#39;Handlebars is great&#39;</span>
   <span class="p">})).</span><span class="nx">toMatchSnapshot</span><span class="p">();</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 <p>The bulk of the work here actually compiling the template to a string with the raw compiler for pug and handlebars.</p>
 
 <p>The snapshots end up being pretty straightforward:</p>
@@ -482,8 +472,7 @@ In other words, although React and Vue testing w" />
 </span><span class="sb">  &lt;p&gt;Handlebars is great&lt;/p&gt;
 </span><span class="sb">&lt;/section&gt;
 </span><span class="sb">&#34;
-</span><span class="sb">`</span><span class="p">;</span>
-</code></pre></div>
+</span><span class="sb">`</span><span class="p">;</span></code></pre></div>
 <h2 id="gotchas-of-snapshot-testing">Gotchas of snapshot testing ⚠️</h2>
 
 <h3 id="some-things-like-functions-don-t-serialise-nicely">Some things (like functions) don’t serialise nicely 🔢</h3>
@@ -493,8 +482,7 @@ In other words, although React and Vue testing w" />
   <span class="nt">&#34;afterCreate&#34;</span><span class="p">:</span> <span class="p">[</span><span class="err">Function</span><span class="p">],</span>
 <span class="p">}</span><span class="err">,</span></code></pre></div>
 <p>We should really add a line like the following to test that this function <em>is</em> actually the correct function, (<code>my-model.test.js</code>):</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">expect</span><span class="p">(</span><span class="nx">MockModel</span><span class="p">.</span><span class="nx">init</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">].</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">afterCreate</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">MockModel</span><span class="p">.</span><span class="nx">afterCreate</span><span class="p">);</span>
-</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">expect</span><span class="p">(</span><span class="nx">MockModel</span><span class="p">.</span><span class="nx">init</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">].</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">afterCreate</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">MockModel</span><span class="p">.</span><span class="nx">afterCreate</span><span class="p">);</span></code></pre></div>
 <h3 id="if-you-can-do-a-full-match-do-it">If you can do a full match, do it</h3>
 
 <p>A lot of the time, a hard assertion with an object match is a good fit, don&rsquo;t just take a snapshot because you can.</p>
@@ -572,13 +560,13 @@ but it&rsquo;s also a lot less effort in terms of code typed and information sto
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">Better HTTP Polling with RxJS 5</a></li>            
         
-          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
+          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
+          <li><a href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">From AngularJS to Vue.js, CommonJS and Jest</a></li>            
         
-          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

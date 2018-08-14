@@ -48,7 +48,7 @@
     <meta property="og:image" content="https://codewithhugo.com/img/kaizen-nguy.jpg"/>
 
 
-    <meta name="generator" content="Hugo 0.46" />
+    <meta name="generator" content="Hugo 0.36.1" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -152,8 +152,7 @@
 </span><span class="c1"></span><span class="k">const</span> <span class="nx">displayNamesErrors</span> <span class="o">=</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&#34;orange&#34;</span><span class="p">,</span> <span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span>
   <span class="nx">makeDisplayName</span>
 <span class="p">);</span>
-<span class="c1">// TypeError: Cannot read property &#39;charAt&#39; of undefined
-</span><span class="c1"></span></code></pre></div>
+<span class="err">// TypeError: Cannot read property &#39;charAt&#39; of undefined</span></code></pre></div>
 <h1 id="how-this-works-caveats">How this works &amp; caveats</h1>
 
 <p><code>Boolean</code> when passed any falsy value returns <code>false</code> and when passed a truthy value returns <code>true</code>:</p>
@@ -168,8 +167,7 @@
 </span><span class="c1"></span><span class="nb">Boolean</span><span class="p">(</span><span class="s2">&#34;hello&#34;</span><span class="p">);</span> <span class="c1">// true
 </span><span class="c1"></span><span class="nb">Boolean</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span> <span class="c1">// true
 </span><span class="c1"></span><span class="nb">Boolean</span><span class="p">({});</span> <span class="c1">// true
-</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">([]);</span> <span class="c1">// true
-</span><span class="c1"></span></code></pre></div>
+</span><span class="c1"></span><span class="nb">Boolean</span><span class="p">([]);</span> <span class="err">// true</span></code></pre></div>
 <p>Note that a valid use case of filtering out falsy values except <code>0</code> needs special treatment since, <code>Boolean(0)</code> returns <code>false</code>, hence:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">noFalsyEvenZero</span> <span class="o">=</span> <span class="p">[</span><span class="kc">NaN</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="kc">Infinity</span><span class="p">].</span><span class="nx">filter</span><span class="p">(</span>
   <span class="nb">Boolean</span>
@@ -185,8 +183,7 @@
   <span class="mi">2000</span><span class="p">,</span>
   <span class="kc">Infinity</span>
 <span class="p">].</span><span class="nx">filter</span><span class="p">(</span><span class="nx">el</span> <span class="p">=&gt;</span> <span class="nx">el</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">||</span> <span class="nb">Boolean</span><span class="p">(</span><span class="nx">el</span><span class="p">));</span>
-<span class="c1">// [ 0, 1, 2, 2000, Infinity ]
-</span><span class="c1"></span></code></pre></div>
+<span class="err">// [ 0, 1, 2, 2000, Infinity ]</span></code></pre></div>
 <h1 id="situations-in-which-this-would-this-occur">Situations in which this would this occur</h1>
 
 <p>Usually this happens when you want to compute something over an Array of objects where some of the elements have a property but others don&rsquo;t.</p>
@@ -217,8 +214,7 @@
   <span class="p">}</span>
 <span class="p">];</span>
 <span class="k">const</span> <span class="nx">companyNames</span> <span class="o">=</span> <span class="nx">companies</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">company</span> <span class="p">=&gt;</span> <span class="nx">company</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-<span class="c1">// [undefined, &#34;orange&#34;, &#34;apple&#34;, &#34;mango&#34;, undefined]
-</span><span class="c1"></span></code></pre></div>
+<span class="err">// [undefined, &#34;orange&#34;, &#34;apple&#34;, &#34;mango&#34;, undefined]</span></code></pre></div>
 <p>An issue can occur when you have null or undefined in your list</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">makeDisplayName</span> <span class="o">=</span> <span class="nx">name</span> <span class="p">=&gt;</span>
   <span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">name</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/a|e|i|o|u/g</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">))</span>
@@ -228,8 +224,7 @@
 <span class="k">const</span> <span class="nx">companyDisplayNames</span> <span class="o">=</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&#34;orange&#34;</span><span class="p">,</span> <span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;mango&#34;</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span>
   <span class="nx">makeDisplayName</span>
 <span class="p">);</span>
-<span class="c1">// TypeError: Cannot read property &#39;charAt&#39; of undefined
-</span><span class="c1"></span></code></pre></div>
+<span class="err">// TypeError: Cannot read property &#39;charAt&#39; of undefined</span></code></pre></div>
 <p>To avoid this we can filter falsy values out:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">makeDisplayName</span> <span class="o">=</span> <span class="nx">name</span> <span class="p">=&gt;</span>
   <span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">name</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/a|e|i|o|u/g</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">))</span>
@@ -240,8 +235,7 @@
   <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">)</span> <span class="c1">// the identity function: `item =&gt; item` would also work here :)
 </span><span class="c1"></span>  <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">makeDisplayName</span><span class="p">);</span>
 <span class="c1">// [ &#39;ORNG&#39;, &#39;APPL&#39;, &#39;MNG&#39; ]
-</span><span class="c1">// No Error :)
-</span><span class="c1"></span></code></pre></div>    
+</span><span class="c1"></span><span class="err">// No Error :)</span></code></pre></div>    
         </div>
     </section>
 
@@ -297,13 +291,13 @@
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
-        
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
-        
           <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
         
-          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
+        
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
+        
+          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

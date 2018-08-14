@@ -45,7 +45,7 @@ Command line apps are a neat way to package repetitive tasks. This will walk " /
     <meta property="og:image" content="https://codewithhugo.com/img/cli-screenshot.jpeg"/>
 
 
-    <meta name="generator" content="Hugo 0.46" />
+    <meta name="generator" content="Hugo 0.36.1" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -160,8 +160,7 @@ We&rsquo;ll go through how to make a simple utility that deletes the package-loc
 <p><code>index.js</code></p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">execa</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;execa&#39;</span><span class="p">);</span>
 
-<span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">stdout</span><span class="p">));</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">node index.js
+<span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;ls&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">stdout</span><span class="p">));</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">node index.js
 index.js
 node_modules
 package-lock.json
@@ -195,8 +194,7 @@ package.json </code></pre></div>
         <span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;package-lock.json&#39;</span><span class="p">])</span>
         <span class="p">.</span><span class="k">catch</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">task</span><span class="p">.</span><span class="nx">skip</span><span class="p">())</span>
   <span class="p">}</span>
-<span class="p">]).</span><span class="nx">run</span><span class="p">();</span>
-</code></pre></div>
+<span class="p">]).</span><span class="nx">run</span><span class="p">();</span></code></pre></div>
 <p>Now the output of <code>node index.js</code> looks like the following:
 <img src="/img/20180619-running-screenshot.jpeg" alt="`node index.js` output" /></p>
 
@@ -239,8 +237,7 @@ long-running task that returns a Promise (like the <code>execa</code> invocation
         <span class="nx">execa</span><span class="p">(</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;package-lock.json&#39;</span><span class="p">])</span>
         <span class="p">.</span><span class="k">catch</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">task</span><span class="p">.</span><span class="nx">skip</span><span class="p">())</span>
   <span class="p">}</span>
-<span class="p">]).</span><span class="nx">run</span><span class="p">();</span>
-</code></pre></div>
+<span class="p">]).</span><span class="nx">run</span><span class="p">();</span></code></pre></div>
 <p>Which we can now run using:</p>
 
 <pre><code>./index.js
@@ -329,13 +326,13 @@ package, it&rsquo;s super straightforward.</p>
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">Just enough bash to be dangerous</a></li>            
-        
           <li><a href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
+          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
+        
+          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

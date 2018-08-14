@@ -50,7 +50,7 @@ Some of its best features are:
     <meta property="og:image" content="https://cdn-images-1.medium.com/fit/c/600/600/1*ap-t03_46d5mvDLRtL5lZA.jpeg"/>
 
 
-    <meta name="generator" content="Hugo 0.46" />
+    <meta name="generator" content="Hugo 0.36.1" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -181,8 +181,7 @@ Some of its best features are:
     <span class="k">const</span> <span class="nx">expectedOutput</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">actualOutput</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="nx">expectedOutput</span><span class="p">);</span>
   <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 <p><code>describe</code>? <code>it</code>? Not so obvious that they’re functions defined by the test runner. We’re also using chai for our assertions… Wouldn’t it be nice if all this was one package and it was obvious we were using it?</p>
 
 <p>Mocha best practices also say we shouldn’t be using arrow functions (<code>() =&gt; {}</code>) since we may want to access the this defined inside of describe or it instead of the global module this.</p>
@@ -212,8 +211,7 @@ test('Some function', t =&gt; {
 
 <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It actually runs&#39;</span><span class="p">,</span> <span class="nx">t</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">t</span><span class="p">.</span><span class="nx">pass</span><span class="p">();</span>
-<span class="p">});</span>
-</code></pre></div>
+<span class="p">});</span></code></pre></div>
 <p>When you run the tests:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ ava
 
@@ -331,13 +329,13 @@ test.cb('Callback gets correct value', t =&gt; {
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
+          <li><a href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">Install just redis-cli on Ubuntu, Debian, Jessie</a></li>            
         
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
         
-          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
+          <li><a href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">Just enough bash to be dangerous</a></li>            
         
-          <li><a href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">From AngularJS to Vue.js, CommonJS and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
