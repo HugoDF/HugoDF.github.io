@@ -83,92 +83,99 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cli-screenshot.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
               #Node 
-              #CLI  </span>
+              #Docker 
+              #redis  </span>
               
-              <h2 class="post-card-title">How to make beautiful, simple CLI apps with Node</h2>
+              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
-Command line apps are a neat way to package repetitive tasks. This will walk you through some tools that are useful to build CLI apps.
- The idea 💡 Piping to the command line 🚇 Dealing with sequential actions ✨ Executable JavaScript files 🦅 Adding package binaries 📦 Publishing to npm 🚀  The idea 💡 When merging/rebasing, the file that always seems to cause trouble is the package-lock. ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/frank-mckenna-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #VueJS 
-              #web development  </span>
-              
-              <h2 class="post-card-title">A simple, real-world Vue.js directive</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>Vue.js is &ldquo;The Progressive JavaScript Framework&rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer. In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&rsquo;s documentation is a focus directive.
-When running Vue.js inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve normal anchors&rsquo; href on click. ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #web development  </span>
-              
-              <h2 class="post-card-title">Avoiding falsy values in JavaScript arrays</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>tl;dr: use Array.filter(Boolean) to filter out falsy values and avoid errors.
+                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
+Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
+We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
 
  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #ES6 
+              #web development  </span>
+              
+              <h2 class="post-card-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
+Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
+var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ben-koorengevel-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #Node 
+              #Docker 
+              #redis  </span>
+              
+              <h2 class="post-card-title">Setting up Express and Redis with Docker compose</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Redis and Express are tools that provide a simple and clean approach to their problem domains.
+The repo is available at: https://github.com/HugoDF/express-redis-docker.
+Redis is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. It has great flexibility and can also be used as a message queue, circular buffer (and pretty much anything else a developer can come up with short of a relational database). ...  </p>
               
           </section>
       </a>
