@@ -33,10 +33,10 @@ This is not a CircleCI 2.0 workflows tutorial, it’s more of a git-flow/CircleC
 - [A branch setup 🌳](#a-branch-setup-%F0%9F%8C%B3)
 - [The workflow 🏞](#the-workflow-%F0%9F%8F%9E)
 - [Release scripts 🛫](#release-scripts-%F0%9F%9B%AB)
-    - [Logging in to Heroku (optional) 🔑](#logging-in-to-heroku-optional-%F0%9F%94%91)
+  - [Logging in to Heroku (optional) 🔑](#logging-in-to-heroku-optional-%F0%9F%94%91)
 - [12(ish) factor app 🏗](#12ish-factor-app-%F0%9F%8F%97)
-    - [Injecting config and secrets 💉](#injecting-config-and-secrets-%F0%9F%92%89)
-    - [Run that deploy 🛬](#run-that-deploy-%F0%9F%9B%AC)
+  - [Injecting config and secrets 💉](#injecting-config-and-secrets-%F0%9F%92%89)
+  - [Run that deploy 🛬](#run-that-deploy-%F0%9F%9B%AC)
 --&gt;
 
 &lt;p&gt;We&amp;rsquo;ll go through how to use GitHub + CircleCI for deployment automation and release management.&lt;/p&gt;
