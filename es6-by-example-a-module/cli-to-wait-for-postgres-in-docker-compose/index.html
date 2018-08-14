@@ -42,7 +42,7 @@
     <meta property="og:image" content="https://codewithhugo.com/img/matthew-henry-unsplash.jpg"/>
 
 
-    <meta name="generator" content="Hugo 0.36" />
+    <meta name="generator" content="Hugo 0.46" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -183,7 +183,8 @@
 <p>To begin we install <code>esm</code>: <code>npm install --save esm</code>.
 Next we’ll need a file for our module, <code>wait-for-pg.js</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">export</span> <span class="k">const</span> <span class="nx">DEFAULT_MAX_ATTEMPTS</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="k">export</span> <span class="k">const</span> <span class="nx">DEFAULT_DELAY</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="err">// in ms</span></code></pre></div>
+<span class="k">export</span> <span class="k">const</span> <span class="nx">DEFAULT_DELAY</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="c1">// in ms
+</span><span class="c1"></span></code></pre></div>
 <p>Trying to run this file with Node will throw:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node wait-for-pg.js
 /wait-for-pg/wait-for-pg.js:1
@@ -195,7 +196,8 @@ SyntaxError: Unexpected token export</code></pre></div>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node -r esm wait-for-pg.js</code></pre></div>
 <p>That’s if we want to run it as a script, say we want to let someone else consume it via <code>require</code> we’ll need an <code>index.js</code> with the following content:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">require</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;esm&#39;</span><span class="p">)(</span><span class="nx">module</span><span class="p">);</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./wait-for-pg&#39;</span><span class="p">);</span></code></pre></div>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./wait-for-pg&#39;</span><span class="p">);</span>
+</code></pre></div>
 <p>We can now run <code>index.js</code> as a script:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node index.js</code></pre></div>
 <p>We can also <code>require</code> it:</p>
@@ -237,7 +239,8 @@ Let’s have a look through some gotchas of default parameters that we’ll want
     <span class="nx">maxAttempts</span><span class="p">,</span>
     <span class="nx">delay</span>
   <span class="p">)</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>Callings the following will throw:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node -r esm <span class="c1"># node REPL
 </span><span class="c1"></span>&gt; import <span class="o">{</span> waitForPostgres <span class="o">}</span> from <span class="s1">&#39;./wait-for-pg&#39;</span><span class="p">;</span>
@@ -264,7 +267,8 @@ TypeError: Cannot destructure property <span class="sb">`</span>databaseUrl<span
     <span class="nx">maxAttempts</span><span class="p">,</span>
     <span class="nx">delay</span>
   <span class="p">)</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>It now runs:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node -r esm <span class="c1"># node REPL
 </span><span class="c1"></span>&gt; import <span class="o">{</span> waitForPostgres <span class="o">}</span> from <span class="s1">&#39;./wait-for-pg&#39;</span><span class="p">;</span>
@@ -297,7 +301,8 @@ null <span class="m">10</span> <span class="m">1000</span></code></pre></div>
     <span class="nx">maxAttempts</span><span class="p">,</span>
     <span class="nx">delay</span>
   <span class="p">)</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>Which would yield the following:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node -r esm <span class="c1"># node REPL
 </span><span class="c1"></span>&gt; import <span class="o">{</span> waitForPostgres <span class="o">}</span> from <span class="s1">&#39;./wait-for-pg&#39;</span><span class="p">;</span>
@@ -378,7 +383,8 @@ That means if we mark the <code>waitForPostgres</code> function as <code>async</
       <span class="kr">await</span> <span class="nx">timeout</span><span class="p">(</span><span class="nx">delay</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <h1 id="integrating-as-a-cli-with-meow">Integrating as a CLI with <code>meow</code> 😼</h1>
 
 <p><a href="https://www.npmjs.com/package/meow">meow</a> is a CLI app helper from Sindre Sohrus, install it: <code>npm install --save meow</code>
@@ -413,7 +419,8 @@ Create <code>wait-for-pg-cli.module.js</code>:</p>
       <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">});</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cli</span><span class="p">.</span><span class="nx">input</span><span class="p">,</span> <span class="nx">cli</span><span class="p">.</span><span class="nx">flags</span><span class="p">);</span></code></pre></div>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">cli</span><span class="p">.</span><span class="nx">input</span><span class="p">,</span> <span class="nx">cli</span><span class="p">.</span><span class="nx">flags</span><span class="p">);</span>
+</code></pre></div>
 <p>We use <code>inferType</code> so that the values for <code>maxAttempts</code> and <code>delay</code> get converted to numbers instead of being strings.
 We can run it using:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node -r esm wait-for-pg-cli.module.js
@@ -429,7 +436,8 @@ We can run it using:</p>
 </span><span class="sb">    $ wait-for-pg postgres://postgres@localhost:5432 -c 5 -d 3000 &amp;&amp; npm start
 </span><span class="sb">    # waits for postgres, 5 attempts at a 3s interval, if
 </span><span class="sb">    # postgres becomes available, run &#39;npm start&#39;
-</span><span class="sb">`</span><span class="p">;</span></code></pre></div>
+</span><span class="sb">`</span><span class="p">;</span>
+</code></pre></div>
 <p>To get the flags and first input, <code>wait-for-pg-cli.module.js</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="p">{</span>
   <span class="nx">waitForPostgres</span><span class="p">,</span>
@@ -469,7 +477,8 @@ We can run it using:</p>
   <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="p">).</span><span class="k">catch</span><span class="p">(</span>
   <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">);</span></code></pre></div>
+<span class="p">);</span>
+</code></pre></div>
 <p>If you don’t have a Postgres instance running on localhost the following shouldn’t print <code>Here</code>, that’s thanks to <code>process.exit(1)</code> in the <code>.catch</code> block:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node -r esm wait-for-pg-cli.module.js -c <span class="m">5</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;Here&#34;</span>
 Postgres is unavailable - sleeping
@@ -505,7 +514,8 @@ module.exports <span class="o">=</span> require<span class="o">(</span><span cla
   <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="p">).</span><span class="k">catch</span><span class="p">(</span>
   <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">);</span></code></pre></div>
+<span class="p">);</span>
+</code></pre></div>
 <p>With:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">try</span> <span class="p">{</span>
   <span class="kr">await</span> <span class="nx">waitForPostgres</span><span class="p">({</span>
@@ -516,7 +526,8 @@ module.exports <span class="o">=</span> require<span class="o">(</span><span cla
   <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>Running the CLI throws:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ ./wait-for-pg-cli.js
 wait-for-pg/wait-for-pg-cli.module.js:36
@@ -620,7 +631,8 @@ Postgres is unavailable - sleeping</code></pre></div>
       <span class="p">);</span>
     <span class="p">}</span>
   <span class="p">);</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@matthewhenry?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Matthew Henry"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Matthew Henry</span></a></p>    
         </div>
     </section>
@@ -677,13 +689,13 @@ Postgres is unavailable - sleeping</code></pre></div>
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
+          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
         
-          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
+          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

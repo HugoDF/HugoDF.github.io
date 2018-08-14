@@ -44,7 +44,7 @@ To use JavaScript to its full potential you have to embrace its strong functiona
     <meta property="og:image" content="https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg"/>
 
 
-    <meta name="generator" content="Hugo 0.36" />
+    <meta name="generator" content="Hugo 0.46" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -148,7 +148,8 @@ To use JavaScript to its full potential you have to embrace its strong functiona
 </span><span class="c1"></span><span class="k">const</span> <span class="nx">imperative</span> <span class="o">=</span> <span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 
 <span class="c1">// declarative style
-</span><span class="c1"></span><span class="k">const</span> <span class="nx">declarative</span> <span class="o">=</span> <span class="nx">firstElement</span><span class="p">(</span><span class="nx">list</span><span class="p">);</span></code></pre></div>
+</span><span class="c1"></span><span class="k">const</span> <span class="nx">declarative</span> <span class="o">=</span> <span class="nx">firstElement</span><span class="p">(</span><span class="nx">list</span><span class="p">);</span>
+</code></pre></div>
 <p>In the above code snippet we’re trying to get the first element of list, the declarative example says what we want, firstElement can do whatever it likes as long as it returns the first element of the passed parameter. Whereas in the imperative style, we say I want index 0 of list explicitly. In JavaScript and at this program size, this doesn’t make a massive difference.</p>
 
 <p>To build functional programs, we should prefer the declarative style and avoid mutation.</p>
@@ -208,7 +209,8 @@ To use JavaScript to its full potential you have to embrace its strong functiona
 <span class="nx">counter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span> 
 <span class="nx">counter</span><span class="p">.</span><span class="nx">getCount</span><span class="p">();</span> <span class="c1">// 4
 </span><span class="c1"></span>
-<span class="nx">someState</span><span class="p">;</span> <span class="err">// ReferenceError: someState is not defined</span></code></pre></div>
+<span class="nx">someState</span><span class="p">;</span> <span class="c1">// ReferenceError: someState is not defined
+</span><span class="c1"></span></code></pre></div>
 <p>The state (<code>someState</code>) isn’t global since the last statement returns an error. It is however available to the functions it returned, because they can “see” someState, it’s in their lexical scope.</p>
 
 <h3 id="function-application">Function application</h3>
@@ -226,7 +228,8 @@ To use JavaScript to its full potential you have to embrace its strong functiona
 <span class="c1">// different ways to apply a function
 </span><span class="c1"></span><span class="nx">someFunc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 3
 </span><span class="c1"></span><span class="nx">someFunc</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">]);</span> <span class="c1">// 3
-</span><span class="c1"></span><span class="nx">someFunc</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="err">// 3</span></code></pre></div>
+</span><span class="c1"></span><span class="nx">someFunc</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 3
+</span><span class="c1"></span></code></pre></div>
 <p>A function call is an imperative construct whereas a function application belongs to the realm of functional programming and mathematics.</p>
 
 <p>In JavaScript you can even use apply and call to define what this will be set to during the application.</p>
@@ -255,33 +258,34 @@ To use JavaScript to its full potential you have to embrace its strong functiona
 </span><span class="c1">// Let&#39;s apply them one at a time
 </span><span class="c1"></span><span class="k">const</span> <span class="nx">doubleListItems</span> <span class="o">=</span> <span class="nx">partialFunctionalMap</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
 <span class="nx">doubleListItems</span><span class="p">([</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">]);</span>
-<span class="nx">doubleListItems</span><span class="p">([</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span> <span class="p">]);</span></code></pre></div>
+<span class="nx">doubleListItems</span><span class="p">([</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span> <span class="p">]);</span>
+</code></pre></div>
 <p>What the code does in example 1 is less obvious than in example 2. You have to read what the lamba does instead of being told by the variable function name.</p>
 
 <p>This is something we can use in places like React event handlers.</p>
-<div class="highlight"><pre class="chroma"><code class="language-jsx" data-lang="jsx">class MyComponent extends React.Component {
-  partialHandleLinkClick(type, activeType){
-    return function(e) {
-      const hasKeyboardModifier = e.ctrlKey || e.shiftKey || e.altKey || e.metaKey;
-      updateType(type, activeType, hasKeyboardModifier);
-    };
-  }
-  render() {
-    const types = [ &#39;Foo&#39;, &#39;Bar&#39;, &#39;Baz&#39; ];
-    return (
-      &lt;div&gt;
-        {
-          types.map( (type, i) =&gt; {
-            &lt;a key={i} href=&#34;#&#34;
-              onClick={this.partialHandleLinkClick(type, this.props.activeType)}&gt;
-              {type}
-            &lt;/a&gt;
-          })
-        }
-      &lt;/div&gt;
-    );
-  }
-}</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="k">class</span> <span class="nx">MyComponent</span> <span class="k">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">partialHandleLinkClick</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">activeType</span><span class="p">){</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">const</span> <span class="nx">hasKeyboardModifier</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">ctrlKey</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">shiftKey</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">altKey</span> <span class="o">||</span> <span class="nx">e</span><span class="p">.</span><span class="nx">metaKey</span><span class="p">;</span>
+      <span class="nx">updateType</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">activeType</span><span class="p">,</span> <span class="nx">hasKeyboardModifier</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="nx">types</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;Foo&#39;</span><span class="p">,</span> <span class="s1">&#39;Bar&#39;</span><span class="p">,</span> <span class="s1">&#39;Baz&#39;</span> <span class="p">];</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">{</span>
+          <span class="nx">types</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">key</span><span class="o">=</span><span class="s">{i}</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span>
+              <span class="na">onClick</span><span class="o">=</span><span class="s">{this.partialHandleLinkClick(type,</span> <span class="na">this.props.activeType</span><span class="err">)</span><span class="p">}&gt;</span>
+              <span class="p">{</span><span class="nx">type</span><span class="p">}</span>
+            <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+          <span class="p">})</span>
+        <span class="p">}</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <p>Now if we went the Object-oriented route, we would use <code>.bind</code> <code>partialHandleClick</code> function to the component instance (<code>this</code>) and to be able to access <code>this.props.activeType</code> from inside <code>partialHandleClick</code>.
 We’re trying to leverage functional programming, so no accessing this from all the way inside an event handler.
 We get to store some information that we can get at <code>.map</code> time (which type is this handler for).
@@ -294,7 +298,8 @@ When the event triggers, we get the final parameter we need <code>e</code> (the 
   <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">functionalMap</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">list</span><span class="p">);</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p><code>partialFunctionalMap</code> is curried.
 In the event handler example <code>partialHandleLinkClick</code> isn’t, since the first application provided 2 parameters.</p>
 
@@ -306,7 +311,8 @@ In the event handler example <code>partialHandleLinkClick</code> isn’t, since 
       <span class="nx">updateType</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">activeType</span><span class="p">,</span> <span class="nx">hasKeyboardModifier</span><span class="p">);</span>
     <span class="p">};</span>
   <span class="p">};</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>And we would use <code>this.curriedHandleLinkClick(type)(this.props.activeType)</code> instead of <code>this.partialHandleLinkClick(type, this.props.activeType)</code>.</p>
 
 <p>This isn’t as pretty in JavaScript as in other languages since we’re replacing <code>(arg1, arg2, arg3)</code> with <code>(arg1)(arg2)(arg3)</code>.</p>
@@ -394,13 +400,13 @@ In the event handler example <code>partialHandleLinkClick</code> isn’t, since 
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">Better HTTP Polling with RxJS 5</a></li>            
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
         
-          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
         
-          <li><a href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">Install just redis-cli on Ubuntu, Debian, Jessie</a></li>            
+          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
         
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

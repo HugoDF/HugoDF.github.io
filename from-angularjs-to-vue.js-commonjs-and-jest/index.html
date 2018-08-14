@@ -45,7 +45,7 @@
     <meta property="og:image" content="https://codewithhugo.com/img/justyn-warner-unsplash.jpg"/>
 
 
-    <meta name="generator" content="Hugo 0.36" />
+    <meta name="generator" content="Hugo 0.46" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -186,7 +186,8 @@ giving you the ability to leverage tools such as Jest, AVA or Mocha (instead of 
 <span class="p">]);</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">homeController</span>
-<span class="p">};</span></code></pre></div>
+<span class="p">};</span>
+</code></pre></div>
 <p>The above snippet leverages CommonJS which is Node’s default module system, its hallmarks are the use of  <code>require()</code> and <code>module.exports =</code>.</p>
 
 <p>To bundle the application, Webpack allows us to take the AngularJS codebase that leverages CommonJS and output a few application bundles.
@@ -196,7 +197,8 @@ Templates can be <code>require</code>-ed using the right webpack loaders (<code>
 
 <p>ES modules are the module format defined in the ECMAScript spec. They look like the following:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">angular</span> <span class="nx">from</span> <span class="s1">&#39;angular&#39;</span>
-<span class="k">export</span> <span class="kd">function</span> <span class="nx">homeController</span><span class="p">()</span> <span class="p">{}</span></code></pre></div>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">homeController</span><span class="p">()</span> <span class="p">{}</span>
+</code></pre></div>
 <p>The issue with ES modules are that they are static imports, ideally they shouldn’t have side-effects.
 Including something that does <code>angular.module('some-name')</code> seems pretty side-effectful, so CommonJS reflects this a bit more: <code>require('./this-script-that-adds-something-to-angular')</code>.</p>
 
@@ -243,7 +245,8 @@ createVueComponent =&gt; createVueComponent(MyVueComponent)
 <span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;myComponent&#39;</span><span class="p">,</span> <span class="p">[</span>
   <span class="s1">&#39;createVueComponent&#39;</span> <span class="p">,</span>
   <span class="nx">createVueComponent</span> <span class="p">=&gt;</span> <span class="nx">createVueComponent</span><span class="p">(</span><span class="nx">MyVueComponent</span><span class="p">)</span>
-<span class="p">]);</span></code></pre></div>
+<span class="p">]);</span>
+</code></pre></div>
 <p>In order to load single file components like in the above example, <code>vue-loader</code> is required (see <a href="https://github.com/vuejs/vue-loader">https://github.com/vuejs/vue-loader</a>),
 depending on how webpack is set up in a project, it can also affect how you process CSS (since single file components contain CSS as well as JavaScript and templates).</p>
 
@@ -279,7 +282,8 @@ This is some sample code in a Vue component that imports another Vue single file
   <span class="nx">components</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">MyOtherComponent</span>
   <span class="p">}</span>
-<span class="p">};</span></code></pre></div>
+<span class="p">};</span>
+</code></pre></div>
 <p>The issue is the following:</p>
 
 <ul>
@@ -329,7 +333,8 @@ Here is the full code for the preprocessor, walkthrough of the code/approach fol
       <span class="nx">map</span>
     <span class="p">};</span>
   <span class="p">}</span>
-<span class="p">};</span></code></pre></div>
+<span class="p">};</span>
+</code></pre></div>
 <p>At a high level, we process the code through <code>vue-jest</code> and then rewrite <code>require('./relative-path').default</code> to <code>require('./relative-path')</code>.
 This is done with the following:</p>
 
@@ -412,15 +417,13 @@ AngularJS was and still is great. What’s also great that we can migrate off it
     <div class="read-next-card-content">
       
         <ul>
-                      
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">Abusing Jest snapshot tests: some nice use-cases 📸</a></li>            
         
-          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         
-          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
-        
-          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
+          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

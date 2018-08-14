@@ -48,7 +48,7 @@
     <meta property="og:image" content="https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg"/>
 
 
-    <meta name="generator" content="Hugo 0.36" />
+    <meta name="generator" content="Hugo 0.46" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -248,9 +248,11 @@ the application will be written using ES modules (by using the <a href="https://
 <span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>And a <code>worker.js</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Worker doing nothing&#39;</span><span class="p">);</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Worker doing nothing&#39;</span><span class="p">);</span>
+</code></pre></div>
 <p>Running the following at the command line should get us some output (after a bit if the dependencies need to install):</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ docker-compose up</code></pre></div>
 <p>Eventually:</p>
@@ -281,7 +283,8 @@ We&rsquo;ll also set up <code>bull-arena</code> as a web UI to monitor these que
     <span class="nx">NOTIFY_URL</span><span class="p">,</span>
     <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span>
   <span class="p">)</span>
-<span class="p">};</span></code></pre></div>
+<span class="p">};</span>
+</code></pre></div>
 <p>And update <code>server.js</code> to include the <code>bull-arena</code> UI and <code>import</code> the <code>NOTIFY_URL</code> queue.</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">url</span> <span class="nx">from</span> <span class="s1">&#39;url&#39;</span><span class="p">;</span>
 
@@ -322,7 +325,8 @@ We&rsquo;ll also set up <code>bull-arena</code> as a web UI to monitor these que
 <span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>On save we&rsquo;ll be able to open up <a href="http://localhost:3000/arena">http://localhost:3000/arena</a> and see the following:</p>
 
 <p><img src="https://codewithhugo.com/img/20180721-arena-screenshot.jpg" alt="Screenshot of Arena in browser" /></p>
@@ -420,7 +424,8 @@ A <code>POST /webhooks</code> endpoint that will accept a JSON POST body with a 
 <span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <h3 id="persisting-webhook-data-to-redis">Persisting webhook data to Redis 💾</h3>
 
 <p><code>ioredis</code> (a Redis client for Node) will be picked to leverage the fact that <code>bull</code> uses <code>ioredis</code> under the hood:</p>
@@ -463,7 +468,8 @@ A <code>POST /webhooks</code> endpoint that will accept a JSON POST body with a 
 <span class="k">export</span> <span class="k">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">setWebhook</span><span class="p">,</span>
   <span class="nx">getWebhook</span>
-<span class="p">};</span></code></pre></div>
+<span class="p">};</span>
+</code></pre></div>
 <p>Payloads and URLs are modelled as <code>webhook:payload:&lt;some-uuid&gt;</code> and <code>webhook:urls:&lt;some-uuid&gt;</code> respectively.</p>
 
 <p>Payloads are Redis hashes (since the payload is a JSON object), and URLs are Redis lists (since we&rsquo;re dealing with a list of strings).</p>
@@ -478,7 +484,8 @@ but we&rsquo;ll be good engineers and go ahead and use them anyways.</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">transaction</span> <span class="o">=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">multi</span><span class="p">()</span>
   <span class="p">.</span><span class="nx">hgetall</span><span class="p">(</span><span class="nx">makePayloadKey</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span>
   <span class="p">.</span><span class="nx">lrange</span><span class="p">(</span><span class="nx">makeUrlsKey</span><span class="p">(</span><span class="nx">id</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="k">const</span> <span class="p">[[</span><span class="nx">_</span><span class="p">,</span> <span class="nx">payload</span><span class="p">],</span> <span class="p">[</span><span class="nx">__</span><span class="p">,</span> <span class="nx">urls</span><span class="p">]]</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">exec</span><span class="p">();</span></code></pre></div>
+<span class="k">const</span> <span class="p">[[</span><span class="nx">_</span><span class="p">,</span> <span class="nx">payload</span><span class="p">],</span> <span class="p">[</span><span class="nx">__</span><span class="p">,</span> <span class="nx">urls</span><span class="p">]]</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">transaction</span><span class="p">.</span><span class="nx">exec</span><span class="p">();</span>
+</code></pre></div>
 <p>Warrant an explanation:</p>
 
 <ol>
@@ -499,7 +506,8 @@ but we&rsquo;ll be good engineers and go ahead and use them anyways.</p>
 <span class="p">}</span>
 <span class="k">if</span> <span class="p">(</span><span class="nx">errUrls</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">throw</span> <span class="nx">errUrls</span>
-<span class="p">}</span></code></pre></div></li>
+<span class="p">}</span>
+</code></pre></div></li>
 </ol>
 
 <h3 id="saving-post-data-using-the-new-db-module">Saving POST data using the new db module</h3>
@@ -573,7 +581,8 @@ but we&rsquo;ll be good engineers and go ahead and use them anyways.</p>
 <span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>The main updates are:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">const</span> <span class="p">{</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">urls</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
@@ -585,7 +594,8 @@ but we&rsquo;ll be good engineers and go ahead and use them anyways.</p>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>and:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks/notify&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
@@ -595,7 +605,8 @@ but we&rsquo;ll be good engineers and go ahead and use them anyways.</p>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>You&rsquo;ll notice that the <code>POST /webhooks/notify</code> handler still doesn&rsquo;t actually notify anything or anyone 🙈.</p>
 
 <h2 id="queuing-jobs">Queuing jobs 🏭</h2>
@@ -605,7 +616,8 @@ but we&rsquo;ll be good engineers and go ahead and use them anyways.</p>
   <span class="nx">payload</span><span class="p">,</span>
   <span class="nx">url</span><span class="p">,</span>
   <span class="nx">id</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>We want to send a request to each URL independently (that&rsquo;s sort of the point of the whole queue setup) which means we want:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks/notify&#39;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
@@ -622,7 +634,8 @@ but we&rsquo;ll be good engineers and go ahead and use them anyways.</p>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>Where the notable change is:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">urls</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">url</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">queues</span><span class="p">[</span><span class="nx">NOTIFY_URL</span><span class="p">].</span><span class="nx">add</span><span class="p">({</span>
@@ -630,7 +643,8 @@ but we&rsquo;ll be good engineers and go ahead and use them anyways.</p>
     <span class="nx">url</span><span class="p">,</span>
     <span class="nx">id</span>
   <span class="p">});</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>Now that we&rsquo;ve done this, if we create a new webhook:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">curl -X POST <span class="se">\
 </span><span class="se"></span>  http://localhost:3000/webhooks <span class="se">\
@@ -676,7 +690,8 @@ OK</code></pre></div>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Posting to </span><span class="si">${</span><span class="nx">job</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">url</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">job</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">job</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>For some context, the reasons we&rsquo;ve gone with a <code>db =&gt; job =&gt; Promise</code> type signature even though we don&rsquo;t need the DB currently is
 to illustrate how I would pass the database or any other dependencies into the processorInitialiser.</p>
 
@@ -688,7 +703,8 @@ to illustrate how I would pass the database or any other dependencies into the p
       <span class="nx">url</span> <span class="p">=&gt;</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">webhook</span><span class="p">.</span><span class="nx">payload</span><span class="p">)</span>
     <span class="p">)</span>
   <span class="p">);</span>
-<span class="p">};</span></code></pre></div>
+<span class="p">};</span>
+</code></pre></div>
 <p>To finish off, we need to actually hook up the processors to the queue, that&rsquo;s done using <code>queue.process</code>, so in <code>worker.js</code> we will now have:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="p">{</span> <span class="nx">queues</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./queues&#39;</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">processorInitialisers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./processors&#39;</span><span class="p">;</span>
@@ -697,7 +713,8 @@ to illustrate how I would pass the database or any other dependencies into the p
 <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">queues</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(([</span><span class="nx">queueName</span><span class="p">,</span> <span class="nx">queue</span><span class="p">])</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Worker listening to &#39;</span><span class="si">${</span><span class="nx">queueName</span><span class="si">}</span><span class="sb">&#39; queue`</span><span class="p">);</span>
   <span class="nx">queue</span><span class="p">.</span><span class="nx">process</span><span class="p">(</span><span class="nx">processorInitialisers</span><span class="p">[</span><span class="nx">queueName</span><span class="p">](</span><span class="nx">db</span><span class="p">));</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>We can test the webhooks work by creating one that points to <code>http://localhost:3000/example</code>, triggering it using <code>/webhook/notify</code> and checking the logs, something like:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">my-worker <span class="p">|</span> Posting to http://localhost:3000/example
 my-app    <span class="p">|</span> Hit example with <span class="o">{</span><span class="s2">&#34;hello&#34;</span>:<span class="s2">&#34;world&#34;</span><span class="o">}</span>
@@ -708,7 +725,8 @@ my-app    <span class="p">|</span> Hit example with <span class="o">{</span><spa
 <p>We should really <em>not</em> be exposing the <code>bull-arena</code> UI to the public, so if you plan on using this setup in a hosted environment either do an:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">!==</span> <span class="s1">&#39;product&#39;</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Bull arena logic
-</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div>
 <p>Or add HTTP basic auth to it using a middleware of some sort.</p>
 
 <p>You can read a more in-depth write up about using Docker Compose, Redis and Node/Express: <a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</a>).</p>
@@ -771,13 +789,15 @@ my-app    <span class="p">|</span> Hit example with <span class="o">{</span><spa
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
+          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         
-          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
+                      
         
-          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
+          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
         
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+        
+          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

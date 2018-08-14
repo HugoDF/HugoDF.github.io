@@ -42,7 +42,7 @@
     <meta property="og:image" content="https://codewithhugo.com/img/eugene-lim-unsplash.jpg"/>
 
 
-    <meta name="generator" content="Hugo 0.36" />
+    <meta name="generator" content="Hugo 0.46" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -146,17 +146,20 @@ provides an easy way to map from entities&rsquo; representation in the database 
 <p>Sequelize’s API for model definitions looks like the following (from the docs <a href="http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):">http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):</a></p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">MyModel</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nx">define</span><span class="p">(</span><span class="s2">&#34;MyModel&#34;</span><span class="p">,</span> <span class="p">{</span>
   <span class="c1">// fields and methods
-</span><span class="c1"></span><span class="p">});</span></code></pre></div>
+</span><span class="c1"></span><span class="p">});</span>
+</code></pre></div>
 <p>To add class and instance methods you would write the following:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// Class Method
 </span><span class="c1"></span><span class="nx">MyModel</span><span class="p">.</span><span class="nx">associate</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">models</span><span class="p">)</span> <span class="p">{};</span>
 <span class="c1">// Instance Method
-</span><span class="c1"></span><span class="nx">MyModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">someMethod</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{..}</span></code></pre></div>
+</span><span class="c1"></span><span class="nx">MyModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">someMethod</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{..}</span>
+</code></pre></div>
 <p>This is necessary pre-ES6 since there was no concept of classical inheritance. Since we have class now, why not leverage them? For developers who are used to having classes, the following would likely look familiar:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
   <span class="kr">static</span> <span class="nx">associate</span><span class="p">(</span><span class="nx">models</span><span class="p">)</span> <span class="p">{}</span>
   <span class="nx">someMethod</span><span class="p">()</span> <span class="p">{}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>Sequelize actually supports this, but the documentation is a bit lacking. One of the only place to find a reference to how to do this is in a GitHub issue: <a href="https://github.com/sequelize/sequelize/issues/6524">https://github.com/sequelize/sequelize/issues/6524</a>.</p>
 
 <p>Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from <code>Sequelize.Model</code>:</p>
@@ -187,7 +190,8 @@ provides an easy way to map from entities&rsquo; representation in the database 
       <span class="p">{</span> <span class="nx">sequelize</span> <span class="p">}</span>
     <span class="p">);</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <h1 id="associations">Associate your model to other models</h1>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
 <span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
@@ -196,7 +200,8 @@ provides an easy way to map from entities&rsquo; representation in the database 
     <span class="c1">// or
 </span><span class="c1"></span>    <span class="k">this</span><span class="p">.</span><span class="nx">myAssociation</span> <span class="o">=</span> <span class="nx">models</span><span class="p">.</span><span class="nx">MyModel</span><span class="p">.</span><span class="nx">belongsTo</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">OtherModel</span><span class="p">);</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <h1 id="customer-table-name">Setting a custom table name for your model</h1>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
 <span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
@@ -211,7 +216,8 @@ provides an easy way to map from entities&rsquo; representation in the database 
       <span class="p">}</span>
     <span class="p">);</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <h1 id="custom-model-name">Setting a custom model name for your model (for Sequelize)</h1>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
 <span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
@@ -226,7 +232,8 @@ provides an easy way to map from entities&rsquo; representation in the database 
       <span class="p">}</span>
     <span class="p">);</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <h1 id="queries">Wrap queries</h1>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
 <span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
@@ -237,14 +244,16 @@ provides an easy way to map from entities&rsquo; representation in the database 
       <span class="nx">order</span><span class="o">:</span> <span class="p">[[</span><span class="s2">&#34;createdAt&#34;</span><span class="p">,</span> <span class="s2">&#34;DESC&#34;</span><span class="p">]]</span>
     <span class="p">});</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <h1 id="instance-methods">Instance methods</h1>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">Sequelize</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;sequelize&#34;</span><span class="p">);</span>
 <span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Sequelize</span><span class="p">.</span><span class="nx">Model</span> <span class="p">{</span>
   <span class="nx">getFullName</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">lastName</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <h1 id="initialise-all">Initialise all your models</h1>
 
 <p><code>require()</code> followed by <code>model.init()</code> is an alternative to <code>sequelize.import(path)</code>, it’s a bit clearer what is and isn’t imported and under what name.</p>
@@ -273,7 +282,8 @@ provides an easy way to map from entities&rsquo; representation in the database 
   <span class="nx">sequelize</span>
 <span class="p">};</span>
 
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">db</span><span class="p">;</span></code></pre></div>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">db</span><span class="p">;</span>
+</code></pre></div>
 <p>For any questions about using Sequelize in this manner or developing Node apps
 backed by relational databases, feel free to comment below or tweet to me <a href="https://twitter.com/hugo__df">@hugo__df</a>.</p>
 
@@ -339,13 +349,13 @@ backed by relational databases, feel free to comment below or tweet to me <a hre
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
+          <li><a href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">Abusing Jest snapshot tests: some nice use-cases 📸</a></li>            
         
-          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
         
-          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
+          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
+          <li><a href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">Better HTTP Polling with RxJS 5</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

@@ -45,7 +45,7 @@ The repo is available at: https://github.com/HugoDF/express-redis" />
     <meta property="og:image" content="https://codewithhugo.com/img/ben-koorengevel-unsplash.jpg"/>
 
 
-    <meta name="generator" content="Hugo 0.36" />
+    <meta name="generator" content="Hugo 0.46" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -171,7 +171,8 @@ npm init -y</code></pre></div>
 <span class="k">const</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span><span class="p">;</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 <p>That can be run using:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">node server.js</code></pre></div>
 <p>We can check that it’s working as expected</p>
@@ -232,7 +233,8 @@ Let’s do this using a <code>redis-client.js</code> module:</p>
   <span class="nx">getAsync</span><span class="o">:</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">get</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">client</span><span class="p">),</span>
   <span class="nx">setAsync</span><span class="o">:</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">set</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">client</span><span class="p">),</span>
   <span class="nx">keysAsync</span><span class="o">:</span> <span class="nx">promisify</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">keys</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span>
-<span class="p">};</span></code></pre></div>
+<span class="p">};</span>
+</code></pre></div>
 <p>To running Redis inside of Docker Compose in such a way that our app can access it:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="c"># docker-compose.yml</span><span class="w">
 </span><span class="w"></span><span class="c"># Add this top-level entry</span><span class="w">
@@ -271,7 +273,8 @@ Let’s do this using a <code>redis-client.js</code> module:</p>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">rawData</span><span class="p">));</span>
 <span class="p">});</span>
 
-<span class="err">// code that starts the app...</span></code></pre></div>
+<span class="c1">// code that starts the app...
+</span><span class="c1"></span></code></pre></div>
 <p>If you have any questions about the above code let me know <a href="https://twitter.com/hugo__df">@hugo__df</a>. It is using a couple of more advanced features like async/await and destructuring as well as Express features to get query and path parameters (see <a href="https://expressjs.com/en/api.html#req.query">https://expressjs.com/en/api.html#req.query</a>, <a href="https://expressjs.com/en/api.html#req.params">https://expressjs.com/en/api.html#req.params</a>).</p>
 
 <p>Get the app running again: <code>docker-compose up</code></p>
@@ -356,13 +359,13 @@ The reason I used an old school query-param based system is to avoid the boilerp
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
         
-          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
         
-          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">Just enough bash to be dangerous</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
