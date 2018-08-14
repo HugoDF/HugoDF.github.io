@@ -41,7 +41,7 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1507914997623-5b75b37d9cad?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4daefc0d1e77d387f6e177a0990e42a8&auto=format&fit=crop&w=1000&q=80"/>
 
 
-    <meta name="generator" content="Hugo 0.36.1" />
+    <meta name="generator" content="Hugo 0.46" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -228,17 +228,20 @@ filter.js index.js map.js reduce.js
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">map</span><span class="p">([</span> <span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span> <span class="p">],</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">head</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">tail</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="k">return</span> <span class="p">[];</span>
   <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">),</span> <span class="p">...(</span><span class="nx">map</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">))</span> <span class="p">]</span> <span class="o">:</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)</span> <span class="p">];</span>
-<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">reduce</span><span class="p">([</span> <span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span> <span class="p">],</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">initial</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">reduce</span><span class="p">([</span> <span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span> <span class="p">],</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">initial</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span><span class="nx">head</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">&amp;&amp;</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">initial</span><span class="p">;</span>
   <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">initial</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">const</span> <span class="p">[</span> <span class="nx">newHead</span><span class="p">,</span> <span class="p">...</span><span class="nx">newTail</span><span class="p">]</span> <span class="o">=</span> <span class="nx">tail</span><span class="p">;</span>
     <span class="k">return</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">newTail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">,</span> <span class="nx">newHead</span><span class="p">));</span>
   <span class="p">}</span>
   <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="nx">reduce</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">,</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">initial</span><span class="p">,</span> <span class="nx">head</span><span class="p">))</span> <span class="o">:</span> <span class="p">[</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">initial</span><span class="p">,</span> <span class="nx">head</span><span class="p">)</span> <span class="p">];</span>
-<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">filter</span><span class="p">([</span> <span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span> <span class="p">],</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">filter</span><span class="p">([</span> <span class="nx">head</span><span class="p">,</span> <span class="p">...</span><span class="nx">tail</span> <span class="p">],</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">const</span> <span class="nx">newHead</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">head</span><span class="p">)</span> <span class="o">?</span> <span class="p">[</span> <span class="nx">head</span> <span class="p">]</span> <span class="o">:</span> <span class="p">[];</span>
   <span class="k">return</span> <span class="nx">tail</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="p">[</span> <span class="p">...</span><span class="nx">newHead</span><span class="p">,</span> <span class="p">...(</span><span class="nx">filter</span><span class="p">(</span><span class="nx">tail</span><span class="p">,</span> <span class="nx">fn</span><span class="p">))</span> <span class="p">]</span> <span class="o">:</span> <span class="nx">newHead</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <p>Right now none of these functions can be loaded into another file, we’ll use ES6 default export to expose the functions so:</p>
 
 <pre><code>// map.js
@@ -761,13 +764,13 @@ map
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
+          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
         
-          <li><a href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">Abusing Jest snapshot tests: some nice use-cases 📸</a></li>            
+          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
         
-          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
         
-          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -833,7 +836,7 @@ The basics Functional programming is a programming paradigm that follows a more 
               
                 <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
 Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
-var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2 There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
+var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
               
           </section>
       </a>

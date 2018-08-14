@@ -48,7 +48,7 @@
     <meta property="og:image" content="https://codewithhugo.com/img/20180704-array-types.jpg"/>
 
 
-    <meta name="generator" content="Hugo 0.36.1" />
+    <meta name="generator" content="Hugo 0.46" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
@@ -143,7 +143,8 @@
       <span class="nx">nestedArray</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span> <span class="nx">key</span><span class="o">:</span> <span class="s1">&#39;value&#39;</span> <span class="p">}</span> <span class="p">]</span>
     <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">};</span></code></pre></div>
+<span class="p">};</span>
+</code></pre></div>
 <p>The difficulty lies in detecting whether we should treat the value as an object (dictionary) or as a list.</p>
 
 <p>We should be able to do this with the following:</p>
@@ -159,7 +160,8 @@
       <span class="nx">value</span> <span class="p">=&gt;</span> <span class="nx">maxDepth</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="nx">depthIncrease</span><span class="p">))</span>
     <span class="p">)</span>
     <span class="o">:</span> <span class="nx">depth</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
 <a href="https://buttondown.email/hugo">Subscribe</a> to get the latest posts right in your inbox (before anyone else).</p>
@@ -171,7 +173,8 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nx">maxDepth</span><span class="p">([</span> <span class="p">{</span> <span class="nx">one</span><span class="o">:</span> <span class="s1">&#39;deep&#39;</span> <span class="p">}</span> <span class="p">]),</span> <span class="mi">1</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nx">maxDepth</span><span class="p">({</span> <span class="nx">one</span><span class="o">:</span> <span class="s1">&#39;deep&#39;</span> <span class="p">}),</span> <span class="mi">1</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nx">maxDepth</span><span class="p">({</span> <span class="nx">one</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span> <span class="nx">two</span><span class="o">:</span> <span class="s1">&#39;deep&#39;</span> <span class="p">}</span> <span class="p">]</span> <span class="p">}),</span> <span class="mi">2</span><span class="p">)</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nx">maxDepth</span><span class="p">({</span> <span class="nx">one</span><span class="o">:</span> <span class="p">{</span> <span class="nx">two</span><span class="o">:</span> <span class="s1">&#39;deep&#39;</span> <span class="p">}</span> <span class="p">}),</span> <span class="mi">2</span><span class="p">)</span></code></pre></div>
+<span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nx">maxDepth</span><span class="p">({</span> <span class="nx">one</span><span class="o">:</span> <span class="p">{</span> <span class="nx">two</span><span class="o">:</span> <span class="s1">&#39;deep&#39;</span> <span class="p">}</span> <span class="p">}),</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
 <p>To break down object vs primitive type detection, it’s a case of <code>typeof obj === 'object'</code>, see this quick reminder of types of things:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="k">typeof</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="k">typeof</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(),</span> <span class="s1">&#39;string&#39;</span><span class="p">);</span>
@@ -184,7 +187,8 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="k">typeof</span> <span class="p">{},</span> <span class="s1">&#39;object&#39;</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="k">typeof</span> <span class="k">new</span> <span class="nx">Map</span><span class="p">(),</span> <span class="s1">&#39;object&#39;</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="k">typeof</span> <span class="k">new</span> <span class="nx">Set</span><span class="p">(),</span> <span class="s1">&#39;object&#39;</span><span class="p">);</span></code></pre></div>
+<span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="k">typeof</span> <span class="k">new</span> <span class="nx">Set</span><span class="p">(),</span> <span class="s1">&#39;object&#39;</span><span class="p">);</span>
+</code></pre></div>
 <p>Now to separate Objects vs Arrays it’s <code>Array.isArray</code> every day, although we could use a check on <code>.length</code>, there’s also the caveat of <code>Set</code> or <code>Map</code> being passed around the function:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// Console.assert flips out again
 </span><span class="c1">// even though the assertions hold
@@ -193,7 +197,8 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="k">new</span> <span class="nx">Set</span><span class="p">()),</span> <span class="kc">false</span><span class="p">);</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">([]),</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="k">new</span> <span class="nb">Array</span><span class="p">()),</span> <span class="kc">true</span><span class="p">);</span></code></pre></div>
+<span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="k">new</span> <span class="nb">Array</span><span class="p">()),</span> <span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
 <p>We could also use <code>.length &gt; 0</code>, although that will check for a <strong>non-empty</strong> Array, or <code>.length != null</code>, and that’s a great use case for <code>!=</code>/<code>==</code>, but let’s stay away from that lest someone changes it to a <code>!==</code>/<code>===</code>.</p>    
         </div>
     </section>
@@ -250,13 +255,15 @@
     <div class="read-next-card-content">
       
         <ul>
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+        
           <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
         
-          <li><a href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">Abusing Jest snapshot tests: some nice use-cases 📸</a></li>            
+                      
         
-          <li><a href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">Just enough bash to be dangerous</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         
-          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
