@@ -12,11 +12,20 @@
     
     
     <item>
-      <title>Accessibility</title>
-      <link>https://codewithhugo.com/tags/accessibility/</link>
-      <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
+      <title>Functional Programming</title>
+      <link>https://codewithhugo.com/tags/functional-programming/</link>
+      <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://codewithhugo.com/tags/accessibility/</guid>
+      <guid>https://codewithhugo.com/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dev Decoded</title>
+      <link>https://codewithhugo.com/tags/dev-decoded/</link>
+      <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/dev-decoded/</guid>
       <description></description>
     </item>
     
@@ -26,6 +35,51 @@
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/animation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Design</title>
+      <link>https://codewithhugo.com/tags/design/</link>
+      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Developer Tools</title>
+      <link>https://codewithhugo.com/tags/developer-tools/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/developer-tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cli</title>
+      <link>https://codewithhugo.com/tags/cli/</link>
+      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/cli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Accessibility</title>
+      <link>https://codewithhugo.com/tags/accessibility/</link>
+      <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/accessibility/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://codewithhugo.com/tags/docker/</link>
+      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/docker/</guid>
       <description></description>
     </item>
     
@@ -48,11 +102,20 @@
     </item>
     
     <item>
-      <title>Cli</title>
-      <link>https://codewithhugo.com/tags/cli/</link>
-      <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
+      <title>Git</title>
+      <link>https://codewithhugo.com/tags/git/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://codewithhugo.com/tags/cli/</guid>
+      <guid>https://codewithhugo.com/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Es6</title>
+      <link>https://codewithhugo.com/tags/es6/</link>
+      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/es6/</guid>
       <description></description>
     </item>
     
@@ -71,69 +134,6 @@
       <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/deployment/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Design</title>
-      <link>https://codewithhugo.com/tags/design/</link>
-      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/design/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Dev Decoded</title>
-      <link>https://codewithhugo.com/tags/dev-decoded/</link>
-      <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/dev-decoded/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Developer Tools</title>
-      <link>https://codewithhugo.com/tags/developer-tools/</link>
-      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/developer-tools/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>https://codewithhugo.com/tags/docker/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Es6</title>
-      <link>https://codewithhugo.com/tags/es6/</link>
-      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/es6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Functional Programming</title>
-      <link>https://codewithhugo.com/tags/functional-programming/</link>
-      <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/functional-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Git</title>
-      <link>https://codewithhugo.com/tags/git/</link>
-      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/git/</guid>
       <description></description>
     </item>
     
