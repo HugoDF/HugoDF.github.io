@@ -59,9 +59,18 @@
     <item>
       <title>Css</title>
       <link>https://codewithhugo.com/tags/css/</link>
-      <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deployment</title>
+      <link>https://codewithhugo.com/tags/deployment/</link>
+      <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/deployment/</guid>
       <description></description>
     </item>
     
@@ -129,20 +138,11 @@
     </item>
     
     <item>
-      <title>Javascript</title>
-      <link>https://codewithhugo.com/tags/javascript/</link>
-      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      <title>Hugo</title>
+      <link>https://codewithhugo.com/tags/hugo/</link>
+      <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://codewithhugo.com/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Node</title>
-      <link>https://codewithhugo.com/tags/node/</link>
-      <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/node/</guid>
+      <guid>https://codewithhugo.com/tags/hugo/</guid>
       <description></description>
     </item>
     

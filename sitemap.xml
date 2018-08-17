@@ -38,6 +38,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/</loc>
+    <lastmod>2018-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/mocking-the-current-date-in-jest-tests/</loc>
     <lastmod>2018-07-07T00:00:00+00:00</lastmod>
   </url>
@@ -195,7 +200,13 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/css/</loc>
-    <lastmod>2018-07-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/deployment/</loc>
+    <lastmod>2018-08-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -238,6 +249,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/git/</loc>
     <lastmod>2018-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/hugo/</loc>
+    <lastmod>2018-08-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

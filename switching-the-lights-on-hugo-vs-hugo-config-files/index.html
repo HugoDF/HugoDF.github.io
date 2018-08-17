@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en-US" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
+
+    <title>Switching the lights on: Hugo vs Hugo config files &middot; Code with Hugo</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
+    <meta name="theme-color" content="#090a0b">
+    
+    <link rel="canonical" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/" /> 
+
+     <meta name="description" content="A simple Hugo blog setup
+ The story of getting codewithhugo.com up and running.
+The tl;dr is the following:
+ I always rave about my blog setup, it’s simple, fas" /> 
+
+     
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/parker-whitson-unsplash.jpg"/>
+    
+ 
+    <meta name="twitter:title" content="Switching the lights on: Hugo vs Hugo config files"/>
+    <meta name="twitter:description" content="A simple Hugo blog setup
+ The story of getting codewithhugo.com up and running.
+The tl;dr is the following:
+ I always rave about my blog setup, it’s simple, fas"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/" />
+    <meta name="twitter:site" content="@hugo__df"/>
+
+    <meta property="og:site_name" content="Code with Hugo" />
+    <meta property="og:title" content="Switching the lights on: Hugo vs Hugo config files &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/" />
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="A simple Hugo blog setup
+ The story of getting codewithhugo.com up and running.
+The tl;dr is the following:
+ I always rave about my blog setup, it’s simple, fas" />
+
+    <meta property="article:published_time" content="2018-08-17T00:00:00Z" />
+    <meta property="article:tag" content="hugo" /><meta property="article:tag" content="css" /><meta property="article:tag" content="deployment" />
+
+    <meta property="og:image" content="https://codewithhugo.com/img/parker-whitson-unsplash.jpg"/>
+
+
+    <meta name="generator" content="Hugo 0.46" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
+     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
+
+    <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
+</head>
+
+
+<body class="post-template">
+  <div class="site-wrapper"> 
+
+<header class="site-header outer">
+  <div class="inner">
+    <nav class="site-nav">
+      <div class="site-nav-left">
+
+        <ul class="nav" role="menu">
+        
+        
+        
+            <li class="" role="menuitem">
+              <a href="/">Home</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/javascript/">JavaScript</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/node/">Node</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/css/">CSS</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/tip/">tips</a>
+            </li>
+        
+      </ul></div>
+
+      <div class="site-nav-right">
+        <div class="social-links">
+                    
+
+                    <a class="social-link social-link-tw" href="https://twitter.com/hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg></a>
+
+                    <a class="social-link" href="https://github.com/HugoDF" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+
+                    
+
+                    <a class="social-link" href="https://medium.com/@hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 195"><path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582 L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011 C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114 150.640424,135.084652 151.542017,135.771899 L161.755369,145.798942 L161.755369,148 L110.38282,148 L110.38282,145.798942 L120.963119,135.527337 C122.002801,134.487948 122.002801,134.182246 122.002801,132.592593 L122.002801,73.0417402 L92.585901,147.755438 L88.6106443,147.755438 L54.3622782,73.0417402 L54.3622782,123.115814 C54.0767278,125.221069 54.7759199,127.3406 56.2581699,128.863022 L70.0186741,145.55438 L70.0186741,147.755438 L31,147.755438 L31,145.55438 L44.7605042,128.863022 C46.2319621,127.338076 46.8903838,125.204485 46.5340803,123.115814 L46.5340803,65.2157554 Z"/></svg></a>
+        </div>  
+        
+        <a class="subscribe-button" href="https://buttondown.email/hugo">Subscribe</a> </div>
+            
+      </div>
+
+    </nav>  
+
+  </div>
+</header>
+
+<main id="site-main" class="site-main outer" role="main">
+  <div class="inner">
+    
+      <article class="post-full post"> 
+    <header class="post-full-header">
+        <section class="post-full-meta">
+            <time class="post-full-meta-date" datetime="2018-08-17">17 August 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/hugo/">#hugo</a>&nbsp;<a href="https://codewithhugo.com/tags/css/">#css</a>&nbsp;
+        </section>
+        <h1 class="post-full-title">Switching the lights on: Hugo vs Hugo config files</h1>
+    </header>
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/parker-whitson-unsplash.jpg)">
+    </figure>
+
+    <section class="post-full-content">
+        <div class="kg-card-markdown">
+        
+
+<blockquote>
+<p>A simple Hugo blog setup</p>
+</blockquote>
+
+<p>The story of getting <a href="https://codewithhugo.com">codewithhugo.com</a> up and running.</p>
+
+<p>The <strong>tl;dr</strong> is the following:</p>
+
+<ul>
+<li>I always rave about my blog setup, it’s simple, fast and just works</li>
+<li>I used <a href="http://gohugo.io">Hugo</a>, “The world’s fastest framework for building websites”, a static site generator</li>
+<li>I used a theme, <a href="https://github.com/eueung/hugo-casper-two">casper-two</a>, which is a Hugo port of the <a href="https://ghost.org/">https://ghost.org/</a> default theme</li>
+<li>I deployed to GitHub pages behind Cloudflare.</li>
+</ul>
+
+<blockquote>
+<p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
+<a href="https://buttondown.email/hugo">Subscribe</a> to get the latest posts right in your inbox (before anyone else).</p>
+</blockquote>
+
+<ul>
+<li><a href="#why-i-didn-t-build-my-own-website">Why I didn’t build my own website 🏃‍♂️</a></li>
+<li><a href="#picking-a-theme-and-overriding-little-things">Picking a theme and overriding little things 🖼</a></li>
+<li><a href="#enabling-syntax-highlighting">Enabling syntax highlighting 🎨</a></li>
+<li><a href="#image-and-things">Image and things 🤳</a>
+
+<ul>
+<li><a href="#resize-using-imagemagick">Resize using imagemagick</a></li>
+<li><a href="#convert-png-to-jpg">Convert PNG to JPG</a></li>
+</ul></li>
+<li><a href="#deployment-and-more">Deployment and more</a>
+
+<ul>
+<li><a href="#deployment-script">Deployment script</a></li>
+<li><a href="#cleaning-up-with-node-and-npm-scripts">“Cleaning up” with Node and npm scripts 🙄</a>
+
+<ul>
+<li><a href="#minify-and-optimise-css">Minify and optimise CSS</a></li>
+<li><a href="#imageoptim">Imageoptim</a></li>
+</ul></li>
+<li><a href="#running-in-development-mode">Running in development mode</a></li>
+</ul></li>
+<li><a href="#cloudflare-setup">Cloudflare setup</a></li>
+</ul>
+
+<!--
+- [Getting a full RSS feed 😄](#getting-a-full-rss-feed-%F0%9F%98%84)
+    - [Cloudflare setup](#cloudflare-setup)
+-->
+
+<h2 id="why-i-didn-t-build-my-own-website">Why I didn’t build my own website 🏃‍♂️</h2>
+
+<p>I’m not a designer, and Code with Hugo wasn’t about me learning or showing off my website-making skills, it was about writing content consistently.
+That’s why I used a template, Hugo and GitHub pages. It’s a static site with a CDN (Cloudflare) in front so pretty much nothing can go wrong. That means I <em>have</em> to focus on the content.</p>
+
+<h2 id="picking-a-theme-and-overriding-little-things">Picking a theme and overriding little things 🖼</h2>
+
+<p><a href="https://github.com/eueung/hugo-casper-two">Casper Two</a>, the <a href="https://ghost.org">ghost.org</a> default theme is awesome.
+I tweaked a couple of things, as you can see in my <code>static/overrides.css</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">site-title</span> <span class="p">{</span>
+    <span class="k">font-weight</span><span class="p">:</span> <span class="mi">200</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">8</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">collection-title</span> <span class="p">{</span>
+    <span class="k">text-transform</span><span class="p">:</span> <span class="kc">uppercase</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">6</span><span class="kt">rem</span><span class="p">;</span>
+    <span class="k">font-weight</span><span class="p">:</span> <span class="mi">300</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">site-header</span><span class="p">:</span><span class="nd">before</span> <span class="p">{</span>
+    <span class="k">background</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="nt">This</span> <span class="nt">was</span> <span class="nt">only</span> <span class="nt">needed</span> <span class="nt">when</span> <span class="nt">I</span> <span class="nt">enabled</span> <span class="nt">pygments</span> <span class="nt">for</span> <span class="nt">syntax</span> <span class="nt">highlighting</span>
+<span class="p">.</span><span class="nc">site-wrapper</span> <span class="p">{</span>
+    <span class="k">min-height</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">highlight</span> <span class="p">{</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>Adding that stuff in <code>config.toml</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+    <span class="nx">customCSS</span> <span class="p">=</span> <span class="s2">&#34;overrides.css&#34;</span></code></pre></div>
+<p>That’s all the CSS I wrote 🙂 .</p>
+
+<h2 id="enabling-syntax-highlighting">Enabling syntax highlighting 🎨</h2>
+
+<p>codewithhugo.com didn’t have syntax highlighting for a while, 😕 and I even started whining.</p>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_3F94311F9467F8A3B0176D80603BB5F981B49B6D0E353DBB8DC8DC3DFEB48211_1533578484452_image.png" alt="&lt;blockquote&gt;&lt;p&gt;When &lt;a href=&quot;https://twitter.com/ThePracticalDev?ref_src=twsrc%5Etfw&quot;&gt;@ThePracticalDev&lt;/a&gt; has better syntax highlighting than your blog 😂😂 does anyone  know how to sort out &lt;a href=&quot;https://twitter.com/GoHugoIO?ref_src=twsrc%5Etfw&quot;&gt;@GoHugoIO&lt;/a&gt; syntax highlighting &lt;a href=&quot;https://t.co/PBJAolNlDY&quot;&gt;https://t.co/PBJAolNlDY&lt;/a&gt; &lt;a href=&quot;https://t.co/2PXyY7l0dV&quot;&gt;pic.twitter.com/2PXyY7l0dV&lt;/a&gt;&lt;/p&gt;&amp;mdash; Hugo Di Francesco (@hugo__df) &lt;a href=&quot;https://twitter.com/hugo__df/status/984699817531203584?ref_src=twsrc%5Etfw&quot;&gt;13 April 2018&lt;/a&gt;&lt;/blockquote&gt;" /></p>
+
+<p>I tried a couple of times to enable it, it was meant to be as simple as putting the following in <code>config.toml</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">pygmentsUseClassic</span><span class="p">=</span><span class="kc">false</span>
+<span class="nx">pygmentsCodefences</span><span class="p">=</span><span class="kc">true</span>
+<span class="nx">pygmentsUseClasses</span><span class="p">=</span><span class="kc">true</span></code></pre></div>
+<p>This stumped me for months, finally it turns out I was doing this</p>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+  <span class="nx">pygmentsUseClassic</span><span class="p">=</span><span class="kc">false</span>
+  <span class="nx">pygmentsCodefences</span><span class="p">=</span><span class="kc">true</span>
+  <span class="nx">pygmentsUseClasses</span><span class="p">=</span><span class="kc">true</span></code></pre></div>
+<p>Classic case of blinders being on.
+As part of this process I got <code>highlight.js</code> working, but in keeping with the “It’s a static site so pretty much nothing can go wrong” it felt a bit wrong to use a client-side library to highlight stuff.
+Since syntax highlighting is done at build-time, no <code>highlight.js</code> JS in <code>layouts/partials/js.html</code> :</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- &lt;script type=&#34;text/javascript&#34; src=&#34;//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js&#34;&gt;&lt;/script&gt; --&gt;</span></code></pre></div>
+<p>If you want it to actually look nice we need to generate the <code>syntax.css</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ hugo gen chromastyles --style<span class="o">=</span>monokai &gt; ./static/syntax.css</code></pre></div>
+<p>And hook it up in <code>config.toml</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+  <span class="nx">customCSS</span> <span class="p">=</span> <span class="p">[</span>
+    <span class="s2">&#34;overrides.css&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;syntax.css&#34;</span>
+  <span class="p">]</span></code></pre></div>
+<h2 id="image-and-things">Image and things 🤳</h2>
+
+<h3 id="resize-using-imagemagick">Resize using imagemagick</h3>
+
+<p>Create a <code>/static/img</code> folder using:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ mkdir -p static/img</code></pre></div>
+<p>Then we can resize whatever image I’m going to use (usually for the post cover photos):</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ convert my-image.jpg -resize 1500x1500 ./static/img/my-image.jpg</code></pre></div>
+<h3 id="convert-png-to-jpg">Convert PNG to JPG</h3>
+
+<p>I use Alchemy to convert from PNG to JPG <a href="https://dawnlabs.io/alchemy/">https://dawnlabs.io/alchemy/</a>, although I thing ImageMagick can do it as well.</p>
+
+<h2 id="deployment-and-more">Deployment and more</h2>
+
+<h3 id="deployment-script">Deployment script</h3>
+
+<p><code>./scripts/deploy.sh</code>, as taken from <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script-1">the Hugo docs</a>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nb">echo</span> -e <span class="s2">&#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;</span>
+<span class="c1"># Build the project.
+</span><span class="c1"></span>hugo <span class="c1"># if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`
+</span><span class="c1"># Go To Public folder
+</span><span class="c1"></span><span class="nb">cd</span> public
+<span class="c1"># Add changes to git.
+</span><span class="c1"></span>git add .
+<span class="c1"># Commit changes.
+</span><span class="c1"></span><span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;rebuilding site `date`&#34;</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -eq <span class="m">1</span> <span class="o">]</span>
+    <span class="k">then</span> <span class="nv">msg</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span>
+<span class="k">fi</span>
+git commit -m <span class="s2">&#34;</span><span class="nv">$msg</span><span class="s2">&#34;</span>
+<span class="c1"># Push source and build repos.
+</span><span class="c1"></span>git push origin master
+<span class="c1"># Come Back up to the Project Root
+</span><span class="c1"></span><span class="nb">cd</span> ..</code></pre></div>
+<h3 id="cleaning-up-with-node-and-npm-scripts">“Cleaning up” with Node and npm scripts 🙄</h3>
+
+<p>This is the full <code>package.json</code> (minus the stuff that&rsquo;s not necessary):</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;codewithhugo&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Repo for content of codewithhugo.com.&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;config&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;syntax&#34;</span><span class="p">:</span> <span class="s2">&#34;static/syntax&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;overrides&#34;</span><span class="p">:</span> <span class="s2">&#34;static/overrides&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;images&#34;</span><span class="p">:</span> <span class="s2">&#34;static/img&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;concurrently --names \&#34;SYNTAX,OVERRIDES,IMAGES\&#34; -c \&#34;bgBlue.bold,bgMagenta.bold,bgYellow.bold\&#34; \&#34;npm:build:css:syntax\&#34; \&#34;npm:build:css:overrides\&#34; \&#34;npm run build:imageoptim\&#34;&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;predeploy&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run build&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;deploy&#34;</span><span class="p">:</span> <span class="s2">&#34;./scripts/deploy.sh&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;serve&#34;</span><span class="p">:</span> <span class="s2">&#34;./scripts/serve.sh&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run dev&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;dev&#34;</span><span class="p">:</span> <span class="s2">&#34;concurrently --names \&#34;CSS,HUGO\&#34; -c \&#34;bgBlue.bold,bgMagenta.bold\&#34; \&#34;npm:watch:css\&#34; \&#34;npm:serve\&#34;&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;watch:css&#34;</span><span class="p">:</span> <span class="s2">&#34;concurrently \&#34;npm run build:css:syntax -- --watch --map inline\&#34; \&#34;npm run build:css:overrides -- --watch --map inline\&#34;&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;build:css:syntax&#34;</span><span class="p">:</span> <span class="s2">&#34;csso -i $npm_package_config_syntax.css -o $npm_package_config_syntax.min.css --stat&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;build:css:overrides&#34;</span><span class="p">:</span> <span class="s2">&#34;csso -i $npm_package_config_overrides.css -o $npm_package_config_overrides.min.css --stat&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;build:imageoptim&#34;</span><span class="p">:</span> <span class="s2">&#34;imageoptim $npm_package_config_images&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Hugo Di Francesco&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;homepage&#34;</span><span class="p">:</span> <span class="s2">&#34;https://github.com/HugoDF/codewithhugo#readme&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;devDependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;concurrently&#34;</span><span class="p">:</span> <span class="s2">&#34;^3.6.0&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;csso-cli&#34;</span><span class="p">:</span> <span class="s2">&#34;^1.1.0&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;imageoptim-cli&#34;</span><span class="p">:</span> <span class="s2">&#34;^2.0.3&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<p>Let’s walk through what happens when I run <code>npm run deploy</code>, these three tasks are the main ones:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;build&#34;</span><span class="err">:</span> <span class="s2">&#34;concurrently --names \&#34;SYNTAX,OVERRIDES,IMAGES\&#34; -c \&#34;bgBlue.bold,bgMagenta.bold,bgYellow.bold\&#34; \&#34;npm:build:css:syntax\&#34; \&#34;npm:build:css:overrides\&#34; \&#34;npm run build:imageoptim\&#34;&#34;</span><span class="err">,</span>
+<span class="s2">&#34;predeploy&#34;</span><span class="err">:</span> <span class="s2">&#34;npm run build&#34;</span><span class="err">,</span>
+<span class="s2">&#34;deploy&#34;</span><span class="err">:</span> <span class="s2">&#34;./scripts/deploy.sh&#34;</span><span class="err">,</span></code></pre></div>
+<p>A feature of <code>npm</code> is that if you have a script called <code>something</code>  you can defined another script <code>presomething</code> that will run before <code>something</code> whenever it’s called.
+So before deploying, we <code>npm run build</code>.
+<code>npm run build</code> runs a couple of tasks in parallel with <code>concurrently</code> (<a href="https://www.npmjs.com/package/concurrently">https://www.npmjs.com/package/concurrently</a>):</p>
+
+<ul>
+<li><code>npm:build:css:syntax</code> which is <code>concurrently</code>-specific shorthand for <code>npm run build:css:syntax</code></li>
+<li><code>npm:build:css:overrides</code> which is <code>concurrently</code>-specific shorthand for <code>npm run build:css:overrides</code></li>
+<li><code>npm run build:imageoptim</code></li>
+</ul>
+
+<h4 id="minify-and-optimise-css">Minify and optimise CSS</h4>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;build:css:syntax&#34;</span><span class="err">:</span> <span class="s2">&#34;csso -i $npm_package_config_syntax.css -o $npm_package_config_syntax.min.css --stat&#34;</span><span class="err">,</span>
+<span class="s2">&#34;build:css:overrides&#34;</span><span class="err">:</span> <span class="s2">&#34;csso -i $npm_package_config_overrides.css -o $npm_package_config_overrides.min.css --stat&#34;</span><span class="err">,</span></code></pre></div>
+<p><code>build:css:syntax</code> and <code>build:css:overrides</code> pretty much run the same command but on different files. Namely the files are <code>$npm_package_config_syntax.css</code> and <code>$npm_package_config_overrides.css</code> which interpolates npm_config syntax  and evaluate to <code>static/syntax.css</code> and <code>static/overrides.css</code> (see <code>config.syntax</code> and <code>config.overrides</code> in <code>package.json</code>. We use <a href="https://github.com/css/csso-cli">https://github.com/css/csso-cli</a>, which pretty much just minifies the CSS.</p>
+
+<p>The optimised CSS files get output as <code>static/syntax.min.css</code> and <code>static/overrides.min.css</code>, which I also update in the <code>config.toml</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+  <span class="nx">customCSS</span> <span class="p">=</span> <span class="p">[</span>
+    <span class="s2">&#34;overrides.min.css&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;syntax.min.css&#34;</span>
+  <span class="p">]</span></code></pre></div>
+<h4 id="imageoptim">Imageoptim</h4>
+
+<p>A similar approach is used for <code>build:imageoptim</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;build:imageoptim&#34;</span><span class="err">:</span> <span class="s2">&#34;imageoptim $npm_package_config_images&#34;</span></code></pre></div>
+<p>It runs <a href="https://github.com/JamieMason/ImageOptim-CLI">imageoptim-cli</a> on the contents of <code>$npm_package_config_images</code> (which expands to <code>static/img</code>).</p>
+
+<h3 id="running-in-development-mode">Running in development mode</h3>
+
+<p>Now that I’ve got a build step in place… the problem is that I need to watch for changes etc in development as well, which are the following scripts, from <code>package.json</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;serve&#34;</span><span class="err">:</span> <span class="s2">&#34;./scripts/serve.sh&#34;</span><span class="err">,</span>
+<span class="s2">&#34;start&#34;</span><span class="err">:</span> <span class="s2">&#34;npm run dev&#34;</span><span class="err">,</span>
+<span class="s2">&#34;dev&#34;</span><span class="err">:</span> <span class="s2">&#34;concurrently --names \&#34;CSS,HUGO\&#34; -c \&#34;bgBlue.bold,bgMagenta.bold\&#34; \&#34;npm:watch:css\&#34; \&#34;npm:serve\&#34;&#34;</span><span class="err">,</span>
+<span class="s2">&#34;watch:css&#34;</span><span class="err">:</span> <span class="s2">&#34;concurrently \&#34;npm run build:css:syntax -- --watch --map inline\&#34; \&#34;npm run build:css:overrides -- --watch --map inline\&#34;&#34;</span><span class="err">,</span></code></pre></div>
+<p><code>./scripts/serve.sh</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">hugo serve . -F
+<span class="c1"># -D will serve even draft posts
+</span><span class="c1"></span># -F will serve future posts</code></pre></div>
+<p>I like not having to change the dates of my posts when they’re not ready to be published yet, so I use the <code>-F</code> flag. If I don’t want a certain post to appear in development I’ll use <code>draft: true</code> in the frontmatter.
+<code>npm run dev</code> just runs the <code>csso-cli</code> tasks in watch mode as well as the Hugo dev server.</p>
+
+<h1 id="getting-a-full-rss-feed">Getting a full RSS feed 😄</h1>
+
+<p>The default Hugo RSS feed doesn’t have the full post contents, it just has the excerpt (what would display on the homepage tiles in my case).
+The problem with that is… well that the RSS feed doesn’t have full post contents.
+I knew it was a problem but as usual I never got round to fixing it until I embarrassed myself while promoting it 😄:</p>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_3F94311F9467F8A3B0176D80603BB5F981B49B6D0E353DBB8DC8DC3DFEB48211_1533580523884_image.png" alt="&lt;blockquote&gt;&lt;p&gt;If you have a blog and write/share useful things (big or small) about Web design / front-end dev and you provide an RSS feed to the blog, please respond to this tweet w/ the URL for it — I’d like to add more useful content feeds to my reader. 🙌🏻💃&lt;/p&gt;&amp;mdash; Sara Soueidan (@SaraSoueidan) &lt;a href=&quot;https://twitter.com/SaraSoueidan/status/1020288178597613569?ref_src=twsrc%5Etfw&quot;&gt;20 July 2018&lt;/a&gt;&lt;/blockquote&gt;" /></p>
+
+<p>And my reply to that:</p>
+
+<blockquote>
+<p>Hey there, I write at <a href="https://t.co/tkBYwl47Q6">https://codewithhugo.com</a>, I don&#39;t think the RSS feed I&#39;ve got actually has the full posts though 🙈</p>&mdash; Hugo Di Francesco (@hugo__df) 21 July 2018</blockquote></p>
+</blockquote>
+
+<p>To fix that I found <a href="https://randomgeekery.org/2017/09/15/full-content-hugo-feeds/">https://randomgeekery.org/2017/09/15/full-content-hugo-feeds/</a>, (where there’s a full explanation of what we’re doing). Essentially it boils down to creating the following
+<code>layouts/_default/rss.xml</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;rss</span> <span class="na">version=</span><span class="s">&#34;2.0&#34;</span> <span class="na">xmlns:atom=</span><span class="s">&#34;http://www.w3.org/2005/Atom&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;channel&gt;</span>
+    <span class="nt">&lt;title&gt;</span>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link&gt;</span>{{ .Permalink }}<span class="nt">&lt;/link&gt;</span>
+    <span class="nt">&lt;description&gt;</span>Recent content {{ if ne  .Title  .Site.Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;generator&gt;</span>Hugo -- gohugo.io<span class="nt">&lt;/generator&gt;</span>{{ with .Site.LanguageCode }}
+    <span class="nt">&lt;language&gt;</span>{{.}}<span class="nt">&lt;/language&gt;</span>{{end}}{{ with .Site.Author.email }}
+    <span class="nt">&lt;managingEditor&gt;</span>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}<span class="nt">&lt;/managingEditor&gt;</span>{{end}}{{ with .Site.Author.email }}
+    <span class="nt">&lt;webMaster&gt;</span>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}<span class="nt">&lt;/webMaster&gt;</span>{{end}}{{ with .Site.Copyright }}
+    <span class="nt">&lt;copyright&gt;</span>{{.}}<span class="nt">&lt;/copyright&gt;</span>{{end}}{{ if not .Date.IsZero }}
+    <span class="nt">&lt;lastBuildDate&gt;</span>{{ .Date.Format &#34;Mon, 02 Jan 2006 15:04:05 -0700&#34; | safeHTML }}<span class="nt">&lt;/lastBuildDate&gt;</span>{{ end }}
+    {{ with .OutputFormats.Get &#34;RSS&#34; }}
+        {{ printf &#34;<span class="nt">&lt;atom:link</span> <span class="na">href=</span><span class="s">%q</span> <span class="na">rel=</span><span class="s">\&#34;self\&#34;</span> <span class="na">type=</span><span class="s">%q</span> <span class="nt">/&gt;</span>&#34; .Permalink .MediaType | safeHTML }}
+    {{ end }}
+    {{ range .Pages }}
+    <span class="nt">&lt;item&gt;</span>
+        <span class="nt">&lt;title&gt;</span>{{ .Title }}<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;link&gt;</span>{{ .Permalink }}<span class="nt">&lt;/link&gt;</span>
+        <span class="nt">&lt;pubDate&gt;</span>{{ .Date.Format &#34;Mon, 02 Jan 2006 15:04:05 -0700&#34; | safeHTML }}<span class="nt">&lt;/pubDate&gt;</span>
+        {{ with .Site.Author.email }}<span class="nt">&lt;author&gt;</span>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}<span class="nt">&lt;/author&gt;</span>{{end}}
+        <span class="nt">&lt;guid&gt;</span>{{ .Permalink }}<span class="nt">&lt;/guid&gt;</span>
+        <span class="nt">&lt;description&gt;</span>{{ .Content | html }}<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+    {{ end }}
+    <span class="nt">&lt;/channel&gt;</span>
+<span class="nt">&lt;/rss&gt;</span></code></pre></div>
+<p>Which is just the default template except instead of:</p>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;description&gt;</span>{{ .Summary | html }}<span class="nt">&lt;/description&gt;</span></code></pre></div>
+<p>We do:</p>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;description&gt;</span>{{ .Content | html }}<span class="nt">&lt;/description&gt;</span></code></pre></div>
+<p>This make the built <code>index.xml</code> file huge since it’s putting every post’s full contents, so again on <a href="https://randomgeekery.org/2017/09/15/full-content-hugo-feeds/">https://randomgeekery.org/2017/09/15/full-content-hugo-feeds/</a>, I decided to limit the number of feed items to 15 (instead of 20 suggested in that post) that’s an update in <code>config.toml</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">rssLimit</span> <span class="p">=</span> <span class="mi">15</span></code></pre></div>
+<p>Full credit for this to this post <a href="https://randomgeekery.org/2017/09/15/full-content-hugo-feeds/">https://randomgeekery.org/2017/09/15/full-content-hugo-feeds/</a>, which actually explains the how and why of what has been done.</p>
+
+<h2 id="cloudflare-setup">Cloudflare setup</h2>
+
+<p>I flipped on a couple of settings, notably forcing HTTPS: Cloudflare Dashboard &gt; Crypto &gt; Always use HTTPS &gt; On and in the same section Crypto &gt; Automatic HTTPS Rewrites &gt; On.</p>
+
+<p>I increased the Caching &gt; Browser Cache Expiration to 8 days (could/should be more but I don’t want to have to version my assets) and switched on Caching &gt; Always Online™ so that should GitHub Pages fall down, Cloudflare will still serve my content and all would be well.</p>
+
+<p>That’s pretty much all of my Hugo setup for <a href="https://codewithhugo.com">codewithhugo.com</a> short of a couple of extra images and setting strings in <code>config.toml</code>.</p>
+
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@parkerkwhitson?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Parker Whitson"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Parker Whitson</span></a></p>
+    
+        </div>
+    </section>
+
+    <section class="subscribe-form">
+        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+        <p>Get all the posts of the week before anyone else in your inbox</p>
+        <form
+            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
+        >
+            <div class="form-group">
+                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+                <input type="hidden" value="1" name="embed"/>
+            </div>
+            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+        </form>
+    </section>
+
+    <footer class="post-full-footer">
+      <section class="author-card">
+        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+        <section class="author-card-content">
+            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
+                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
+        </section>
+      </section>
+    </footer>
+</article>
+    
+    
+    
+
+  </div>
+</main>
+
+
+<aside class="read-next outer">
+  <div class="inner">
+    <div class="read-next-feed">      
+      
+<article class="read-next-card" 
+            style="background-image: url(https://codewithhugo.com/img/cover.jpg);" >
+    <header class="read-next-card-header">
+        <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
+        
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/hugo/">#hugo</a></h3>
+    </header>
+    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+    </div>
+
+    <div class="read-next-card-content">
+      
+        <ul>
+          <li><a href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</a></li>            
+        
+          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
+        
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
+        
+          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+        </ul>
+    </div>
+    <footer class="read-next-card-footer">
+      
+        <a href="https://codewithhugo.com/tags/hugo/">See all related posts →</a>
+    </footer>
+</article>
+
+
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/jp-valery-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #reactive programming  </span>
+              
+              <h2 class="post-card-title">Better HTTP Polling with RxJS 5</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Here is the implementation for a function that takes a Promise-based fetch function and a function that decides if a response has been successful (from a polling perspective) and polls the fetch function until the isSuccess function returns true:
+
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bryce-barker-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #Testing 
+              #Node  </span>
+              
+              <h2 class="post-card-title">Mocking the current Date in Jest tests</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>There are situations where Date.now is used in application code. That code needs to be tested, and it’s always a struggle to remember how to mock Date.now. Here is the magic snippet:
+
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+    </div>
+  </div>
+</aside>
+
+<div class="floating-header">
+  <div class="floating-header-logo">
+    <a href="https://codewithhugo.com/">
+      
+      <span>Code with Hugo</span>
+    </a>
+  </div>
+  <span class="floating-header-divider">&mdash;</span>
+  <div class="floating-header-title">Switching the lights on: Hugo vs Hugo config files</div>
+  <div class="floating-header-share">
+    <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
+    </div>
+    
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Switching%20the%20lights%20on%3a%20Hugo%20vs%20Hugo%20config%20files&amp;url=https%3a%2f%2fcodewithhugo.com%2fswitching-the-lights-on-hugo-vs-hugo-config-files%2f"
+          onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+      </a>
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fswitching-the-lights-on-hugo-vs-hugo-config-files%2f"
+          onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+      </a>
+  </div>
+
+  <progress class="progress" value="0">
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+  </progress>
+</div>
+
+
+
+<footer class="site-footer outer">
+  <div class="site-footer-content inner">
+    <section class="copyright" style="line-height: 1.3em;">
+      <a href="/">Code with Hugo</a>  <br>
+      
+    </section>
+    <nav class="site-footer-nav">
+        <a href="/">Latest Posts</a>
+        
+        <a href="https://twitter.com/hugo__df" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://github.com/HugoDF" target="_blank" rel="noopener">Github</a>
+        
+        <a href="https://medium.com/@hugo__df" target="_blank" rel="noopener">Medium</a>
+    </nav>  
+  </div>
+</footer>
+
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
+
+
+
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq=[['_setAccount','UA-60469708-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+<script async src="//simplewebsiteanalytics.com/hello.js"></script> 
+<noscript><img src="//simplewebsiteanalytics.com/hello.gif" alt=""></noscript>
+
+    <script>
+
+
+
+
+
+$(document).ready(function () {
+    
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+</body></html>
