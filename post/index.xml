@@ -12,246 +12,6 @@
     
     
     <item>
-      <title>From AngularJS to Vue.js, CommonJS and Jest</title>
-      <link>https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/</link>
-      <pubDate>Wed, 30 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components.&lt;/p&gt;
-
-&lt;p&gt;With the tools we have today, AngularJS isn’t as strong a way to do things &lt;em&gt;any more&lt;/em&gt;. The fact that it’s in maintenance mode says it all. For a new application or new features, ie. for a project that &lt;em&gt;not&lt;/em&gt; in maintenance mode, it’s doesn’t have the same niceties as other frameworks and libraries like Angular 2+, React or Vue. There should be a way &lt;em&gt;not&lt;/em&gt; to rewrite the whole AngularJS application at once, here&amp;rsquo;s how I went about doing it:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#shipping-some-bundles&#34;&gt;Shipping some bundles 📦&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#why-commonjs-instead-of-es-modules&#34;&gt;Why CommonJS instead of ES modules?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adding-vue&#34;&gt;Adding Vue 🖼️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#setting-up-jest&#34;&gt;Setting up Jest 🔧&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#mock-assets&#34;&gt;Mock assets&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#commonjs--webpack-and-vue-jest-woes&#34;&gt;CommonJS, Webpack and &lt;code&gt;vue-jest&lt;/code&gt; woes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#some-solutions&#34;&gt;Some solutions 🤔&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor&#34;&gt;Fixing &lt;code&gt;vue-jest&lt;/code&gt;/Webpack CommonJS handling with a Jest preprocessor&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#thoughts-on-running-vue-inside-angularjs&#34;&gt;Thoughts on running Vue inside AngularJS 🏃‍&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;shipping-some-bundles&#34;&gt;Shipping some bundles 📦&lt;/h1&gt;
-
-&lt;p&gt;Bundling the AngularJS app allows you to send a few files with everything needed to run the single page application.
-Includes using &lt;code&gt;script&lt;/code&gt; are reduced to a few bundles of JavaScript (depending on having eg. a vendor bundle) and possibly a few of CSS.&lt;/p&gt;
-
-&lt;p&gt;Modernising the codebase using ES6 and beyond becomes possible with a transpilation step, and some bundlers even allow for loading of non-JS files into the JavaScript bundle which means templates and even assets can be sent down in the same payload.&lt;/p&gt;
-
-&lt;p&gt;Loading of JavaScript functionality not tied to browser APIs in a test environment using Node (+ JSDOM) becomes possible,
-giving you the ability to leverage tools such as Jest, AVA or Mocha (instead of Jasmine + Karma or even Protractor).&lt;/p&gt;
-
-&lt;p&gt;This means the controllers look more like the following:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;angular&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;angular&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;homeController&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;$location&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;otherService&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ctrl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;c1&#34;&gt;// attach methods to ctrl
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;ctrl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;angular&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;controller&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;HomeController&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
-  &lt;span class=&#34;s1&#34;&gt;&amp;#39;$location&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-  &lt;span class=&#34;s1&#34;&gt;&amp;#39;otherService&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;homeController&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;homeController&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The above snippet leverages CommonJS which is Node’s default module system, its hallmarks are the use of  &lt;code&gt;require()&lt;/code&gt; and &lt;code&gt;module.exports =&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;To bundle the application, Webpack allows us to take the AngularJS codebase that leverages CommonJS and output a few application bundles.
-Templates can be &lt;code&gt;require&lt;/code&gt;-ed using the right webpack loaders (&lt;code&gt;html-loader&lt;/code&gt;). SCSS stylesheets and even Handlebar templates can also be compiled.&lt;/p&gt;
-
-&lt;h2 id=&#34;why-commonjs-instead-of-es-modules&#34;&gt;Why CommonJS instead of ES modules?&lt;/h2&gt;
-
-&lt;p&gt;ES modules are the module format defined in the ECMAScript spec. They look like the following:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;angular&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;angular&amp;#39;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;homeController&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The issue with ES modules are that they are static imports, ideally they shouldn’t have side-effects.
-Including something that does &lt;code&gt;angular.module(&#39;some-name&#39;)&lt;/code&gt; seems pretty side-effectful, so CommonJS reflects this a bit more: &lt;code&gt;require(&#39;./this-script-that-adds-something-to-angular&#39;)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h1 id=&#34;adding-vue&#34;&gt;Adding Vue 🖼️&lt;/h1&gt;
-
-&lt;p&gt;This part was surprisingly straightforward, to add Vue components to an AngularJS app ngVue is available (&lt;a href=&#34;https://github.com/ngVue/ngVue&#34;&gt;https://github.com/ngVue/ngVue&lt;/a&gt;).
-&lt;code&gt;ngVue&lt;/code&gt; exposes functionality to wrap Vue components as an AngularJS directives.&lt;/p&gt;
-
-&lt;p&gt;The checklist goes like this:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;npm i --save ngVue vue vue-loader&lt;/code&gt; (vue-loader is to load/compile &lt;code&gt;.vue&lt;/code&gt; single file components)&lt;/li&gt;
-&lt;li&gt;add &lt;code&gt;ngVue&lt;/code&gt; to the bundle: have &lt;code&gt;require(&#39;ngVue&#39;)&lt;/code&gt; somewhere&lt;/li&gt;
-&lt;li&gt;Register &lt;code&gt;ngVue&lt;/code&gt;  with AngularJS &lt;code&gt;angular.module(&#39;myApp&#39;, [&#39;ngVue&#39;])&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Create a Vue component that is registered on the global Vue instance as a component
-&lt;code&gt;js
-const myComponent = {
-template: &#39;&amp;lt;div&amp;gt;My Component&amp;lt;/div&amp;gt;&#39;
-};
-const MyVueComponent = Vue.component(
-&#39;my-component&#39;,
-MyComponent
-);
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Register the component as an AngularJS directive
-&lt;code&gt;js
-angular
-.module(&#39;myApp&#39;)
-.directive(&#39;myComponent&#39;, [
-&#39;createVueComponent&#39; ,
-createVueComponent =&amp;gt; createVueComponent(MyVueComponent)
-]);
-&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;In an AngularJS template you can now use: &lt;code&gt;&amp;lt;my-component v-props-my-data=&amp;quot;ctrl.myData&amp;quot;&amp;gt;&amp;lt;/my-component&amp;gt;&lt;/code&gt; (&lt;code&gt;vprops-*&lt;/code&gt; allows you to pass data and functions from AngularJS to Vue as props)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Full snippet that leverages webpack to load a single file component:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;angular&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;angular&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Vue&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;vue&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyComponent&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./my-component.vue&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyVueComponent&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Vue&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;component&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;my-component&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyComponent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;angular&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;directive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;myComponent&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
-  &lt;span class=&#34;s1&#34;&gt;&amp;#39;createVueComponent&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;createVueComponent&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;createVueComponent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;MyVueComponent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;In order to load single file components like in the above example, &lt;code&gt;vue-loader&lt;/code&gt; is required (see &lt;a href=&#34;https://github.com/vuejs/vue-loader&#34;&gt;https://github.com/vuejs/vue-loader&lt;/a&gt;),
-depending on how webpack is set up in a project, it can also affect how you process CSS (since single file components contain CSS as well as JavaScript and templates).&lt;/p&gt;
-
-&lt;h1 id=&#34;setting-up-jest&#34;&gt;Setting up Jest 🔧&lt;/h1&gt;
-
-&lt;h2 id=&#34;mock-assets&#34;&gt;Mock assets&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;.html&lt;/code&gt;, &lt;code&gt;.scss&lt;/code&gt;, &lt;code&gt;.svg&lt;/code&gt; needs to be dummied in your Jest config:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;nt&#34;&gt;&amp;#34;testRegex&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;.*spec.js$&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-    &lt;span class=&#34;nt&#34;&gt;&amp;#34;moduleFileExtensions&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
-      &lt;span class=&#34;s2&#34;&gt;&amp;#34;js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-      &lt;span class=&#34;s2&#34;&gt;&amp;#34;vue&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
-    &lt;span class=&#34;nt&#34;&gt;&amp;#34;moduleNameMapper&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;nt&#34;&gt;&amp;#34;\\.(html)$&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;rootDir&amp;gt;/src/mocks/template-mock.js&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
-    &lt;span class=&#34;nt&#34;&gt;&amp;#34;transform&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;nt&#34;&gt;&amp;#34;.*\\.js$&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;rootDir&amp;gt;/node_modules/babel-jest&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-      &lt;span class=&#34;nt&#34;&gt;&amp;#34;.*\\.(vue)$&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;lt;rootDir&amp;gt;/node_modules/vue-jest&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
-    &lt;span class=&#34;nt&#34;&gt;&amp;#34;collectCoverageFrom&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
-      &lt;span class=&#34;s2&#34;&gt;&amp;#34;src/**/*.{js,vue}&amp;#34;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;commonjs-webpack-and-vue-jest-woes&#34;&gt;CommonJS, Webpack and &lt;code&gt;vue-jest&lt;/code&gt; woes&lt;/h2&gt;
-
-&lt;p&gt;Webpack doesn’t care about CommonJS vs ESM,  for all intents and purposes, Webpack treats them as the same thing. Here’s the catch: the recommended Jest plugin for Vue (&lt;code&gt;vue-jest&lt;/code&gt;) handles &lt;code&gt;require&lt;/code&gt; vs &lt;code&gt;import&lt;/code&gt; of &lt;code&gt;.vue&lt;/code&gt; files differently to Webpack.
-This is some sample code in a Vue component that imports another Vue single file component in CommonJS:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyOtherComponent&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./my-other-component.vue&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;export&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;default&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;components&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;nx&#34;&gt;MyOtherComponent&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The issue is the following:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;For the Webpack build to work, you need to use &lt;code&gt;const MyComponent = require(&#39;./my-component.vue&#39;).default&lt;/code&gt; or &lt;code&gt;import MyComponent from &#39;./my-component.vue&#39;&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;For tests to pass, you need to do &lt;code&gt;const MyComponent = require(&#39;./my-component.vue&#39;)&lt;/code&gt; or use &lt;code&gt;import&lt;/code&gt; and transpile the modules using Babel&lt;/li&gt;
-&lt;li&gt;AngularJS controllers love &lt;code&gt;this&lt;/code&gt; … transpiling ES modules through Babel breaks &lt;code&gt;this&lt;/code&gt; somehow&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;some-solutions&#34;&gt;Some solutions 🤔&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Use ES6 import/export for the Vue components and tests, add a specific extension (&lt;code&gt;.mjs&lt;/code&gt;, &lt;code&gt;.module.js&lt;/code&gt;), disable &lt;code&gt;babel-jest&lt;/code&gt; on CommonJS files.&lt;br /&gt;
-&lt;strong&gt;Drawback&lt;/strong&gt;: Coverage breaks due to the following issue (that is fixed now): &lt;a href=&#34;https://github.com/istanbuljs/babel-plugin-istanbul/pull/141&#34;&gt;https://github.com/istanbuljs/babel-plugin-istanbul/pull/141&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Monkey-patch using Jest inside your test: &lt;code&gt;jest.setMock(&#39;./my-component.vue&#39;, { default: MyComponent });&lt;/code&gt;.&lt;br /&gt;
-&lt;strong&gt;Drawback&lt;/strong&gt;: this is not a real fix, it makes the developer have to think about Vue vs bundled JavaScript vs JavaScript in test, which should appear the same in most situations.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Rewrite the transformed code, using a custom pre-processor, so it behaves the same under Webpack and &lt;code&gt;vue-jest&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor&#34;&gt;Fixing &lt;code&gt;vue-jest&lt;/code&gt;/Webpack CommonJS handling with a Jest preprocessor&lt;/h2&gt;
-
-&lt;p&gt;The following preprocessor takes &lt;code&gt;require(&#39;./relative-path&#39;).default&lt;/code&gt; and converts it to &lt;code&gt;require(&#39;./relative-path&#39;)&lt;/code&gt; (which is what Webpack seems to do under the hood).
-To use the following preprocessor, replace the &lt;code&gt;.vue&lt;/code&gt;-matching line in &lt;code&gt;&amp;quot;transform&amp;quot;&lt;/code&gt; of Jest config with &lt;code&gt;&amp;quot;.*\\.(vue)$&amp;quot;: &amp;quot;&amp;lt;rootDir&amp;gt;/vue-preprocessor&amp;quot;&lt;/code&gt;.
-Here is the full code for the preprocessor, walkthrough of the code/approach follows:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// vue-preprocessor.js
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;vueJest&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;vue-jest&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;requireNonVendorDefaultRegex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sr&#34;&gt;/(require)\(&amp;#39;\..*&amp;#39;\).default/g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;rewriteNonVendorRequireDefault&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;code&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;code&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;requireNonVendorDefaultRegex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;match&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;nx&#34;&gt;match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.default&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;process&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;transformOptions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;code&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;rawCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;map&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;vueJest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
-      &lt;span class=&#34;nx&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-      &lt;span class=&#34;nx&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-      &lt;span class=&#34;nx&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-      &lt;span class=&#34;nx&#34;&gt;transformOptions&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;code&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;rewriteNonVendorRequireDefault&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;rawCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;nx&#34;&gt;code&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-      &lt;span class=&#34;nx&#34;&gt;map&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;At a high level, we process the code through &lt;code&gt;vue-jest&lt;/code&gt; and then rewrite &lt;code&gt;require(&#39;./relative-path&#39;).default&lt;/code&gt; to &lt;code&gt;require(&#39;./relative-path&#39;)&lt;/code&gt;.
-This is done with the following:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/(require)\(&#39;\..*&#39;\).default/g&lt;/code&gt; matches any &lt;code&gt;require&lt;/code&gt; where the string arg starts with &lt;code&gt;.&lt;/code&gt; ie it will match local &lt;code&gt;require(&#39;./something-here&#39;)&lt;/code&gt; but not &lt;code&gt;require&lt;/code&gt; of node modules (eg. &lt;code&gt;required(&#39;vue&#39;)&lt;/code&gt;). A caveat is that this RegEx only works for single-quote requires… but that’s trivial to fix if the code uses double quotes.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;String.replace&lt;/code&gt; with a function argument is leveraged to run a custom replace on each match of the previous RegEx. That’s done with &lt;code&gt;match.replace(&#39;.default&#39;, &#39;&#39;)&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;thoughts-on-running-vue-inside-angularjs&#34;&gt;Thoughts on running Vue inside AngularJS 🏃‍&lt;/h1&gt;
-
-&lt;p&gt;AngularJS is from a time before bundlers and a JavaScript module system.
-The only contemporary bundling tool to AngularJS target JavaScript applications is the Google Closure Compiler.
-For reference Browserify was released in 2011, webpack in 2012. AngularJS’ initial release was in 2010.&lt;/p&gt;
-
-&lt;p&gt;That’s why we ended up with things like &lt;code&gt;script&lt;/code&gt; includes for each controller and each template (&lt;code&gt;script type=&amp;quot;ng-template&amp;quot;&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;Each &lt;code&gt;script&lt;/code&gt; will call &lt;code&gt;angular.module(&#39;app&#39;).{controller, directive, service}&lt;/code&gt;and each of those calls will register something on the global &lt;code&gt;angular&lt;/code&gt;  instance and can then be consumed elsewhere.
-This is brittle since code that should be co-located gets spread across the codebase and gets referenced with strings like &lt;code&gt;&#39;HomeController&#39;&lt;/code&gt;.
-All it takes is 1 typo and we&amp;rsquo;ve got a bug that won’t be detected until we get the app in a certain state…&lt;/p&gt;
-
-&lt;p&gt;With Vue.js, Webpack and Jest, we can bundle, test and build with more confidence.
-AngularJS was and still is great. What’s also great that we can migrate off it progressively, thanks to the &lt;code&gt;ngVue&lt;/code&gt; team.&lt;/p&gt;
-
-&lt;p&gt;That means we get to keep the solid AngularJS working alongside new features written in Vue.&lt;/p&gt;
-
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/TzQZTfkanPA?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Justyn Warner&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Setting up Express and Redis with Docker compose</title>
       <link>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</link>
       <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>
@@ -3389,6 +3149,53 @@ I knew it was a problem but as usual I never got round to fixing it until I emba
 &lt;p&gt;That’s pretty much all of my Hugo setup for &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt; short of a couple of extra images and setting strings in &lt;code&gt;config.toml&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@parkerkwhitson?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Parker Whitson&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Parker Whitson&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python GraphQL client requests example using gql</title>
+      <link>https://codewithhugo.com/python-graphql-client-requests-example-using-gql/</link>
+      <pubDate>Mon, 27 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/python-graphql-client-requests-example-using-gql/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;An example consuming a GraphQL API from Python using gql.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Full code example at &lt;a href=&#34;https://github.com/HugoDF/python-graphql-client-example&#34;&gt;HugoDF/python-graphql-client-example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
+&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ pip install gql # You should use a virtualenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;gql&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gql&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Client&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;gql.transport.requests&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RequestsHTTPTransport&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;_transport&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RequestsHTTPTransport&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;url&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;https://graphql-pokemon.now.sh/&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;use_json&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Client&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;transport&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_transport&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;fetch_schema_from_transport&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gql&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;{
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;    pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;        attacks {
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;            special {
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;                name
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;            }
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;        }
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;    }
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;}
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ python fetch.py
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;pokemon&amp;#39;&lt;/span&gt;: &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;attacks&amp;#39;&lt;/span&gt;: &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;special&amp;#39;&lt;/span&gt;: &lt;span class=&#34;o&#34;&gt;[{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;: &lt;span class=&#34;s1&#34;&gt;&amp;#39;Discharge&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;, &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;: &lt;span class=&#34;s1&#34;&gt;&amp;#39;Thunder&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;, &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;: &lt;span class=&#34;s1&#34;&gt;&amp;#39;Thunderbolt&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}]}}}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@isisf?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Isis França&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Isis França&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/python-graphql-client-requests-example-using-gql/</loc>
+    <lastmod>2018-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/mocking-the-current-date-in-jest-tests/</loc>
     <lastmod>2018-07-07T00:00:00+00:00</lastmod>
   </url>
@@ -253,6 +258,12 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/tags/graphql/</loc>
+    <lastmod>2018-08-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/tags/hugo/</loc>
     <lastmod>2018-08-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -285,6 +296,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/programming/</loc>
     <lastmod>2017-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/python/</loc>
+    <lastmod>2018-08-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -344,7 +361,7 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/web-development/</loc>
-    <lastmod>2018-05-23T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
