@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>Dev Decoded</title>
-      <link>https://codewithhugo.com/tags/dev-decoded/</link>
-      <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/dev-decoded/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Animation</title>
       <link>https://codewithhugo.com/tags/animation/</link>
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
@@ -138,11 +129,20 @@
     </item>
     
     <item>
-      <title>Graphql</title>
-      <link>https://codewithhugo.com/tags/graphql/</link>
-      <pubDate>Mon, 27 Aug 2018 00:00:00 +0000</pubDate>
+      <title>Cdn</title>
+      <link>https://codewithhugo.com/tags/cdn/</link>
+      <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://codewithhugo.com/tags/graphql/</guid>
+      <guid>https://codewithhugo.com/tags/cdn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dev Decoded</title>
+      <link>https://codewithhugo.com/tags/dev-decoded/</link>
+      <pubDate>Tue, 28 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/dev-decoded/</guid>
       <description></description>
     </item>
     
