@@ -45,10 +45,23 @@
     <meta name="generator" content="Hugo 0.46" />
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" /> 
-    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" /> 
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
-     <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.css" />  <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.css" /> 
+    
+      
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.906f8517e2d88846f4084249c8b675017675d81df7ce1ffad7376b368f4d02eb.css">
+    
+      
+      <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
+    
+
+    
+      
+        
+        <link rel="stylesheet" href="https://codewithhugo.com/cta.min.c778e85d564b6eaf937fbcf0931c8451b1e04002a9ba070b494f045452e423ae.css">
+      
+    
 
     <link href="https://buttondown.email/hugo" rel="alternate" title="Code with Hugo" /> 
 </head>
@@ -113,7 +126,7 @@
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
-      <article class="post-full post"> 
+      <article class="post-full post">
     <header class="post-full-header">
         <section class="post-full-meta">
             <time class="post-full-meta-date" datetime="2018-05-09">9 May 2018</time>
@@ -121,9 +134,20 @@
         </section>
         <h1 class="post-full-title">Using ES6 classes for Sequelize 4 models</h1>
     </header>
-    
-    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)">
-    </figure>
+    <div class="hero-container">
+
+      
+      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)">
+        
+  <section class="hero-cta">
+    <h3 class="cta-title">Get the Sequelize ES6 cheat sheet</h3>
+    <p class="cta-text">A cheat sheet to level up your Sequelize productivity.<br/>If you've ever needed better Sequelize docs, this is it.<br/></p>
+    <a href="https://gum.co/sequelize-es6" class="button">I want this</a>
+  </section>
+
+
+      </figure>
+    </div>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
@@ -293,7 +317,7 @@ backed by relational databases, feel free to comment below or tweet to me <a hre
 </blockquote>
 
 <p>Cover photo by <a href="https://unsplash.com/photos/sorCkbu4Nzw?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Eugene Lim</a> on <a href="https://unsplash.com/search/photos/square?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-    
+
         </div>
     </section>
 
@@ -324,6 +348,96 @@ backed by relational databases, feel free to comment below or tweet to me <a hre
       </section>
     </footer>
 </article>
+
+
+  <section class="overlay-cta">
+    <div class="overlay-cta__inner">
+      <div class="overlay-cta__text-container">
+        <h3 class="cta-title overlay-cta__title">
+          Get the Sequelize ES6 cheat sheet
+        </h3>
+        <p class="cta-text overlay-cta__text">A cheat sheet to level up your Sequelize productivity.
+If you&#39;ve ever needed better Sequelize docs, this is it.
+</p>
+      </div>
+      <div class="overlay-cta__button-container">
+        <a href="https://gum.co/sequelize-es6" class="button overlay-cta__button">I want this</a>
+        <a href="#" class="overlay-cta__close">close</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function (document) {
+      function getLastDocumentHeight(document) {
+        var body = document.body;
+        var html = document.documentElement;
+        return Math.max(
+          body.scrollHeight, body.offsetHeight,
+          html.clientHeight, html.scrollHeight,
+          html.offsetHeight
+        );
+      }
+
+      var $overlay = document.querySelector('.overlay-cta');
+      var hiddenClass = 'overlay-cta--hidden';
+      $overlay.classList.add(hiddenClass);
+
+      
+      var $overlayClose = document.querySelector('.overlay-cta__close');
+      var overlayCloseListener = $overlayClose.addEventListener('click', function (e) {
+        e.preventDefault();
+        $overlay.style = 'display: none;';
+      });
+
+      var title = document.querySelector('.hero-cta .button');
+
+      var lastScrollY = window.scrollY;
+      var lastWindowHeight = window.innerHeight;
+      var lastDocumentHeight = getLastDocumentHeight(document);
+      var ticking = false;
+
+
+      function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+      }
+
+      function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = getLastDocumentHeight(document);
+        requestTick();
+      }
+
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(update);
+        }
+        ticking = true;
+      }
+
+      function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        
+        if (lastScrollY >= trigger + triggerOffset && lastScrollY < (lastDocumentHeight - lastWindowHeight / 3)) {
+          $overlay.classList.remove(hiddenClass);
+        } else {
+          $overlay.classList.add(hiddenClass);
+        }
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize, false);
+
+      update();
+    })(document);
+  </script>
+
+
+
     
     
     
@@ -349,13 +463,13 @@ backed by relational databases, feel free to comment below or tweet to me <a hre
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
+          <li><a href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">Just enough bash to be dangerous</a></li>            
         
-          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
         
-          <li><a href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">Switching the lights on: Hugo vs Hugo config files</a></li>            
+          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">The step-by-step guide to create a domain redirect with Cloudflare</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
