@@ -139,6 +139,12 @@
       
       <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)">
         
+  <section class="hero-cta">
+    <h3 class="cta-title">Be the first to get the Sequelize ES6 cheat sheet</h3>
+    <p class="cta-text">A cheat sheet to level up your Sequelize productivity.<br/>If you've ever needed better Sequelize docs, this is it.<br/></p>
+    <a href="https://buttondown.email/hugo" class="button">Sign up here</a>
+  </section>
+
 
       </figure>
     </div>
@@ -344,6 +350,95 @@ backed by relational databases, feel free to comment below or tweet to me <a hre
 </article>
 
 
+  <section class="overlay-cta">
+    <div class="overlay-cta__inner">
+      <div class="overlay-cta__text-container">
+        <h3 class="cta-title overlay-cta__title">
+          Be the first to get the Sequelize ES6 cheat sheet
+        </h3>
+        <p class="cta-text overlay-cta__text">A cheat sheet to level up your Sequelize productivity.
+If you&#39;ve ever needed better Sequelize docs, this is it.
+</p>
+      </div>
+      <div class="overlay-cta__button-container">
+        <a href="https://buttondown.email/hugo" class="button overlay-cta__button">
+          
+          Sign up here
+          </a>
+        <a href="#" class="overlay-cta__close">close</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function (document) {
+      function getLastDocumentHeight(document) {
+        var body = document.body;
+        var html = document.documentElement;
+        return Math.max(
+          body.scrollHeight, body.offsetHeight,
+          html.clientHeight, html.scrollHeight,
+          html.offsetHeight
+        );
+      }
+
+      var $overlay = document.querySelector('.overlay-cta');
+      var hiddenClass = 'overlay-cta--hidden';
+      $overlay.classList.add(hiddenClass);
+
+      
+      var $overlayClose = document.querySelector('.overlay-cta__close');
+      var overlayCloseListener = $overlayClose.addEventListener('click', function (e) {
+        e.preventDefault();
+        $overlay.style = 'display: none;';
+      });
+
+      var title = document.querySelector('.hero-cta .button');
+
+      var lastScrollY = window.scrollY;
+      var lastWindowHeight = window.innerHeight;
+      var lastDocumentHeight = getLastDocumentHeight(document);
+      var ticking = false;
+
+
+      function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+      }
+
+      function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = getLastDocumentHeight(document);
+        requestTick();
+      }
+
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(update);
+        }
+        ticking = true;
+      }
+
+      function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        
+        if (lastScrollY >= trigger + triggerOffset && lastScrollY < (lastDocumentHeight - lastWindowHeight / 3)) {
+          $overlay.classList.remove(hiddenClass);
+        } else {
+          $overlay.classList.add(hiddenClass);
+        }
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onResize, false);
+
+      update();
+    })(document);
+  </script>
+
 
 
     
@@ -371,13 +466,13 @@ backed by relational databases, feel free to comment below or tweet to me <a hre
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">Install just redis-cli on Ubuntu, Debian, Jessie</a></li>            
         
           <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         
-          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">Better HTTP Polling with RxJS 5</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">Detecting Object vs Array in JavaScript by example</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
