@@ -491,13 +491,13 @@ I knew it was a problem but as usual I never got round to fixing it until I emba
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">How components won the “framework wars”</a></li>            
         
-          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
+          <li><a href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">The step-by-step guide to create a domain redirect with Cloudflare</a></li>            
         
-          <li><a href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">Just enough bash to be dangerous</a></li>            
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         
-          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -543,26 +543,27 @@ I knew it was a problem but as usual I never got round to fixing it until I emba
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/andrew-preble-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/sean-mungur-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #cdn 
-              #dev-decoded 
+              #git 
+              #bash 
               #productivity  </span>
               
-              <h2 class="post-card-title">The step-by-step guide to create a domain redirect with Cloudflare</h2>
+              <h2 class="post-card-title">Change the date of a git commit</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Be logged into your dashboard.
- Select the domain you want to redirect from Go to page rules  Click “Create page rule”  Enter your.domain/* (matches all traffic) for which URLs will have their traffic redirected
- Click “Add a Setting”  Select “Forwarding URL”  Select the type of redirect, I recommend 302s since they’re less aggressively cached (so if you ever want to use that domain to do something else other than redirect, you can)  Enter your forwarding URL  Click “Save and Deploy”   You’re done, you’ve just created a redirect from your domain to another one 🙂 ...  </p>
+                <p>One of the greatest and worst things with git is that you can rewrite the history. Here’s a sneaky way of abusing that, I can’t think of a legitimate reason to do this.
+As with anything, thanks StackOverflow for all the options I can pick from 👍.
+Set the date of the last commit to the current date GIT_COMMITTER_DATE=&quot;$(date)&quot; git commit --amend --no-edit --date &quot;$(date)&quot;
+Set the date of the last commit to an arbitrary date GIT_COMMITTER_DATE=&quot;Mon 20 Aug 2018 20:19:19 BST&quot; git commit --amend --no-edit --date &quot;Mon 20 Aug 2018 20:19:19 BST&quot; ...  </p>
               
           </section>
       </a>
