@@ -91,26 +91,28 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #tooling 
-              #git 
-              #ci 
               #bash  </span>
               
-              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
+              <h2 class="post-card-title">Just enough bash to be dangerous</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
-Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. ...  </p>
+                <p> A bash cheat sheet for developers who just want to get by.
+ Writing setup, CI and deployment flows means a bit of the old bash scripting.
+Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
+To avoid having to do this again myself and for your reading pleasure, here they are.
+
+ ...  </p>
               
           </section>
       </a>
@@ -125,26 +127,27 @@ Continuous Integration is awesome, but sometimes you need a buffer between auto-
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/max/1600/1*7GDcBl7iTGZ7dDuwWcIZxA.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/matthew-henry-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Functional Programming 
-              #Productivity  </span>
+              #Node  </span>
               
-              <h2 class="post-card-title">First-class and Higher Order Functions: Effective Functional JavaScript</h2>
+              <h2 class="post-card-title">ES6 by example: a module/CLI to wait for Postgres in docker-compose</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Functions: the killer JavaScript feature we never talk about.
-JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embedded systems and it brings a non-blocking I/O model that is faster than others for some types of applications. What really sets JavaScript apart from the rest of scripting languages is its highly functional nature.
- JavaScript has more in common with functional languages like Lisp or Scheme than with C or Java. ...  </p>
+                <p>When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues inside the app.
+This post walks through how to deliver this functionality both as a CLI and a module that works both as a CommonJS module (require) and ES modules, without transpilation.
+“A fast, production ready, zero-dependency ES module loader for Node 6+!” is esm’s promise. From this sample project, it’s worked.
+
+ ...  </p>
               
           </section>
       </a>
@@ -159,20 +162,26 @@ JavaScript is a very in-demand language today. It runs in a lot of places from t
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/post/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/defimg/6.jpg)"></div>
-    </a>    
+    <a class="post-card-image-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/post/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
           <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #ES6 
+              #web development  </span>
               
-              <h2 class="post-card-title">Posts</h2>
+              <h2 class="post-card-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> </p>
+                <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
+Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
+var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
               
           </section>
       </a>
