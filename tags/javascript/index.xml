@@ -12,200 +12,6 @@
     
     
     <item>
-      <title>How components won the “framework wars”</title>
-      <link>https://codewithhugo.com/how-components-won-the-framework-wars/</link>
-      <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/how-components-won-the-framework-wars/</guid>
-      <description>
-
-&lt;p&gt;React vs Angular vs Vue: Why it doesn’t matter.&lt;/p&gt;
-
-&lt;h2 id=&#34;2018-marks-the-end-of-javascript-fatigue-and-the-framework-wars&#34;&gt;2018 marks the end of JavaScript fatigue and the “framework wars”&lt;/h2&gt;
-
-&lt;p&gt;A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.&lt;/p&gt;
-
-&lt;p&gt;Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. In more ways than one, the mental model of these frameworks/libraries have converged to the component model.&lt;/p&gt;
-
-&lt;p&gt;This is a win for the developers since the mental model is the same for all the most widespread frameworks. Which means going from one to the other does not pose as big a challenge as it used to.&lt;/p&gt;
-
-&lt;p&gt;If you came here to read a more thorough review and have more background to the Vue, React and Angular ecosystems, I recommend the following from last summer:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://medium.com/unicorn-supplies/angular-vs-react-vs-vue-a-2017-comparison-c5c52d620176&#34;&gt;&lt;strong&gt;Angular vs. React vs. Vue: A 2017 comparison&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;the-component-and-composition-model&#34;&gt;The Component and composition model&lt;/h2&gt;
-
-&lt;p&gt;All 3 of the frameworks’ unit of work are the component.
-For React you’re extending &lt;code&gt;React.Component&lt;/code&gt;,
-in Angular we’re setting up a Module to wrap some component(s) with &lt;code&gt;@NgModule&lt;/code&gt; and &lt;code&gt;@Component&lt;/code&gt; decorators,
-in Vue you’re using &lt;code&gt;Vue.component()&lt;/code&gt; to register your components on the Vue instance.&lt;/p&gt;
-
-&lt;p&gt;Everything is based around Components, nesting them within each other, passing data between them and so on.&lt;/p&gt;
-
-&lt;p&gt;As a composition model, components are meant to be self-contained sections or &amp;ldquo;bits&amp;rdquo; of your application that you can
-then reuse in more specific contexts.
-The great thing they allow is a way to encapsulate logic, providing API guarantees: you pass x, y and z into this component and you will get this foo behaviour out of it, anything the component does internally is its own business.&lt;/p&gt;
-
-&lt;h2 id=&#34;state-and-mutation&#34;&gt;State and mutation&lt;/h2&gt;
-
-&lt;p&gt;The problem that all these frameworks tackle is binding data to the DOM somehow.
-This is something that the developer would have to do manually in jQuery for example.&lt;/p&gt;
-
-&lt;p&gt;This means that the most basic application (that uses a framework/library) will hold some sort of state.
-The models that Vue, Angular and React themselves (ie. not user-land libraries) expose are actually quite different.&lt;/p&gt;
-
-&lt;p&gt;Angular has the belief that state should be mutable.
-It also has affordances for passing services across components and modules usually keeping that service as a
-quasi-singleton through dependency injection.
-A developer can therefore easily write a data-sharing container that will update the relevant components,
-usually through the service returning Observables and components storing subscriptions to them.&lt;/p&gt;
-
-&lt;p&gt;Vue uses a reactivity system to notify the other parts of the application that a change has happened in state.
-This gives it a performance edge since using &lt;code&gt;this.property&lt;/code&gt; is actually using a setter under the hood, in that setter,
-Vue can send off updates wherever they’re required, and not just send them everywhere.
-The preferred mechanism for composing state to render in the template is computed properties.&lt;/p&gt;
-
-&lt;p&gt;React made the notion of immutable state more widespread in the JavaScript ecosystem.
-State is not updated by mutating (eg. using &lt;code&gt;state.myProperty&lt;/code&gt;), instead the component’s &lt;code&gt;setState&lt;/code&gt; method
-is called with the data to update.&lt;/p&gt;
-
-&lt;p&gt;The encapsulation that components provide however, means that the difference between the specifics of state management is not so obvious when using all these frameworks.&lt;/p&gt;
-
-&lt;p&gt;The preferred pattern in all 3 frameworks is to avoid directly mutating data passed from a parent in favour of informing said parent
-that a state change should happen.&lt;/p&gt;
-
-&lt;h2 id=&#34;data-passing&#34;&gt;Data passing&lt;/h2&gt;
-
-&lt;p&gt;Data passing patterns are simplified with a component-based application: the communication is only done from the parent to the child and vice-versa.&lt;/p&gt;
-
-&lt;p&gt;In React, props are passed to pass data but also functions that allow you to update the parent state from the child.&lt;/p&gt;
-
-&lt;p&gt;In Angular, &lt;code&gt;Input&lt;/code&gt; and &lt;code&gt;Output&lt;/code&gt; bindings are defined in the component and bound in the template.
-&lt;code&gt;Output&lt;/code&gt;s behave much like events in that they are emitted by the child and listened to by the parent.&lt;/p&gt;
-
-&lt;p&gt;In Vue, props are passed from parent to child and the child can emit events back to the parent.&lt;/p&gt;
-
-&lt;p&gt;The way to pass data between “sibling” components is solved in the same way in all these frameworks by finding the nearest common
-parent in the tree and encapsulating state and state updates there.&lt;/p&gt;
-
-&lt;h2 id=&#34;lifecycles-updates-and-re-render&#34;&gt;Lifecycles, updates and re-render&lt;/h2&gt;
-
-&lt;p&gt;Components in React, Vue and Angular update if local state &lt;em&gt;or&lt;/em&gt; props (inputs) change.
-If you don’t store any state locally, you could force components to only change when their props change.&lt;/p&gt;
-
-&lt;p&gt;Functional components do that for React and Vue, and &lt;code&gt;ChangeDetection.OnPush&lt;/code&gt; change detection strategy can be used in Angular.&lt;/p&gt;
-
-&lt;p&gt;The component lifecycles are provided under different method names in each framework.&lt;/p&gt;
-
-&lt;p&gt;All three provide a mounted/dismount which refers to the component being initialised in the DOM and it not being needed any more.
-It&amp;rsquo;s also possible to listen to updates to data and props which usually trigger a re-render of the template.&lt;/p&gt;
-
-&lt;h2 id=&#34;global-stores&#34;&gt;Global Stores&lt;/h2&gt;
-
-&lt;p&gt;When an application needs shared data in components that are quite far apart in the component tree, it&amp;rsquo;s time to use a store.&lt;/p&gt;
-
-&lt;p&gt;This was initially popularised by the React ecosystem with Facebook’s flux architecture.
-Flux consists in passing &lt;code&gt;actions&lt;/code&gt; to the store which knows how to update the store&amp;rsquo;s state depending on the action type.&lt;/p&gt;
-
-&lt;p&gt;In React the options are redux or MobX, Vue has the officially supported Vuex and Angular has ngrx/store.&lt;/p&gt;
-
-&lt;p&gt;This single global store pattern is therefore supported by all these frameworks.
-The difference is that the libraries are from the ecosystem for Angular and React whereas Vue&amp;rsquo;s store is supported
-by the core team.&lt;/p&gt;
-
-&lt;p&gt;The design of these &amp;ldquo;goto&amp;rdquo; store solutions reflect some of the idiomatic ways to write code with these frameworks:
-in Vue it’s object and getter/setter based, in Angular it’s Observables, well-organised effects and so on.
-React has the most choice, “just JavaScript” + pure functions (redux), reactive state watchers (MobX) or even plain
-JavaScript objects (unstated).&lt;/p&gt;
-
-&lt;h2 id=&#34;types-and-data-validation&#34;&gt;Types and data validation&lt;/h2&gt;
-
-&lt;p&gt;Validating the type of data within an application is helpful for development and debugging.&lt;/p&gt;
-
-&lt;p&gt;JavaScript isn’t statically typed so keeping track of types while passing data through multiple components
-and functions can become difficult.&lt;/p&gt;
-
-&lt;p&gt;Vue and React solve this with prop type validation.
-A component and its props is defined with typed props, in development mode,
-the library will check that passed props match the set prop types.
-These annotations and checks get stripped in production builds of the app/library.
-The overhead of the checks therefore disappears where performance is most crucial.&lt;/p&gt;
-
-&lt;p&gt;Angular doesn’t have such a prop validation mechanism but has the advantage of generally being written in TypeScript.
-The development experience of having statically typed inputs and outputs is great.
-These types however get stripped at build time.
-Detecting type mismatches at runtime is not possible.
-The majority of these type mismatches end up happening in the IDE or compiler.&lt;/p&gt;
-
-&lt;p&gt;React and Vue can also be tooled to leverage type systems such as TypeScript and Flow, which gives them
-similar guarantees as developing in Angular and TypeScript.&lt;/p&gt;
-
-&lt;h2 id=&#34;templates-styles-and-tooling&#34;&gt;Templates, styles and tooling&lt;/h2&gt;
-
-&lt;p&gt;Best practices around file structure of an application differ between Angular, Vue and React.&lt;/p&gt;
-
-&lt;p&gt;Angular leans towards one folder per Module/Component where your TypeScript, template and style files live.
-Templates and styles can be written inline in the Angular component inline but the best practice is to have separate files.
-This is a good idea for large single page applications.&lt;/p&gt;
-
-&lt;p&gt;Vue is called “the progressive framework” because it offers different features depending on the size of the
-application being developed.
-In the simplest case (Vue globally included using a CDN and script tag), writing templates inline is encouraged.
-Vue also offers a CLI and packages that integrate with build tools like webpack.
-The preferred way to write components in this environment is the single-file component a file with a template, a
-script and a style tag.
-Vue-loader compiles the template into JavaScript along with the script section and extracts the contents of the style
-tag into a stylesheet at build time.&lt;/p&gt;
-
-&lt;p&gt;In React, since logic and JSX templates cannot be separated, there is just the question of styles.
-There are multiple answers: handle styles separately, use webpack to extract your &lt;code&gt;import ‘my.css&#39;&lt;/code&gt;
-statements into a stylesheet or use CSS-in-JS libraries.&lt;/p&gt;
-
-&lt;p&gt;For small projects Vue has the nicer ergonomics, for the largest enterprise use-case, Angular has the most structure,
-React sits somewhere in between, where the component structure is left as an exercise to the developer but a
-build tool is recommended (at least to compile JSX).&lt;/p&gt;
-
-&lt;h2 id=&#34;testing-and-server-side-rendering&#34;&gt;Testing and server side rendering&lt;/h2&gt;
-
-&lt;p&gt;Unit testing in Angular is mainly done on the TypeScript components classes.
-To be able to test the template logic would require a full DOM environment (eg. a headless browser).&lt;/p&gt;
-
-&lt;p&gt;In React and Vue, thanks to their use of a Virtual DOM and render functions, testing the template logic is possible using &lt;a href=&#34;https://github.com/airbnb/enzyme&#34;&gt;enzyme&lt;/a&gt;
-and &lt;a href=&#34;https://github.com/vuejs/vue-test-utils&#34;&gt;vue-test-utils&lt;/a&gt; respectively.&lt;/p&gt;
-
-&lt;p&gt;Shallow rendering of components means that only the first &amp;ldquo;layer&amp;rdquo; of the component&amp;rsquo;s children is rendered,
-ie. all components that are in the children are not fully evaluated (rendered to HTML), instead they are left as &lt;code&gt;ComponentName&lt;/code&gt; in
-the component tree.&lt;/p&gt;
-
-&lt;p&gt;This ability to render without a full DOM environment is also useful for server-side rendering of the JavaScript application.
-Vue has the &lt;a href=&#34;https://github.com/vuejs/vue/tree/dev/packages/vue-server-renderer&#34;&gt;vue-server-renderer&lt;/a&gt; package and React the &lt;a href=&#34;https://reactjs.org/docs/react-dom-server.html&#34;&gt;ReactDOMServer&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;These allow a Node application to convert a hydrated Vue or React app to markup (HTML) usually to be sent back as a HTML response for
-the first page load.&lt;/p&gt;
-
-&lt;p&gt;Angular has similar compilation and rendering ability although these features are less &amp;ldquo;drop-in to an existing app&amp;rdquo; and more &amp;ldquo;build with these tools in mind&amp;rdquo;
-since some of the framework&amp;rsquo;s features have to be used with caution when using
-&lt;a href=&#34;https://angular.io/guide/universal&#34;&gt;Angular Universal&lt;/a&gt; which allows for server-side rendering or
-Angular&amp;rsquo;s &lt;a href=&#34;https://angular.io/guide/aot-compiler&#34;&gt;AoT compiler&lt;/a&gt; which
-compiles templates to JavaScript and render functions.&lt;/p&gt;
-
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;It&amp;rsquo;s very possible today to double down on component-based frameworks and to move seamlessly between them.&lt;/p&gt;
-
-&lt;p&gt;The concepts around components and how to build an app with them are the same, with framework-specific names
-which have a clear mapping across frameworks.&lt;/p&gt;
-
-&lt;p&gt;The only thing still separating React, Vue and Angular is the underlying philosophies and primitives on which they are built.
-React leans heavily on developers to pick and choose their preferred tools from the ecosystem (or build them if necessary).
-Vue is happy to start off as a simple &lt;code&gt;script&lt;/code&gt; tag include but also provides a coherent toolset to build larger applications
-(single file components, Vuex, vue-router, documentation and even a &lt;a href=&#34;https://vuejs.org/v2/style-guide/&#34;&gt;style guide&lt;/a&gt;).
-Angular is aimed at large applications and immediately comes with copious amounts of structure and verbosity (using TypeScript)
-as well as deeply embracing RxJS and Observables.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Writing an npm module with TypeScript and microbundle</title>
       <link>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
@@ -3442,6 +3248,187 @@ If you’re building a repo that is not &lt;code&gt;USERNAME.github.io&lt;/code&
 &lt;p&gt;For any questions let me know on Twitter &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@timbatec?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Pepi Stojanovski&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Pepi Stojanovski&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaScript GraphQL client requests in Node and the browser using `graphql.js`</title>
+      <link>https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;An example consuming a GraphQL API in JavaScript from Node and the browser using &lt;code&gt;graphql.js&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;See the example live: &lt;a href=&#34;https://codewithhugo.com/js-graphql-client-example/&#34;&gt;https://codewithhugo.com/js-graphql-client-example/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Full repo: &lt;a href=&#34;https://github.com/HugoDF/js-graphql-client-example&#34;&gt;https://github.com/HugoDF/js-graphql-client-example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#fetching-from-node&#34;&gt;Fetching from Node&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#fetching-from-the-browser&#34;&gt;Fetching from the browser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#graphql-documentation-tools&#34;&gt;GraphQL documentation tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
+&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;fetching-from-node&#34;&gt;Fetching from Node&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;fetch.js&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;graphql&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;graphql.js&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;graph&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;graphql&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;https://graphql-pokemon.now.sh/&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;query&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;graph&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`{
+&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;  pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;    attacks {
+&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;      special {
+&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;        name
+&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;      }
+&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;    }
+&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;  }
+&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;}`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;main&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;===&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;then&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;JSON&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stringify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;query&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ node fetch.js
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;s2&#34;&gt;&amp;#34;pokemon&amp;#34;&lt;/span&gt;: &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;s2&#34;&gt;&amp;#34;attacks&amp;#34;&lt;/span&gt;: &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;s2&#34;&gt;&amp;#34;special&amp;#34;&lt;/span&gt;: &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;Discharge&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;,
+        &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;Thunder&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;,
+        &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span class=&#34;s2&#34;&gt;&amp;#34;Thunderbolt&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;fetching-from-the-browser&#34;&gt;Fetching from the browser&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;graphql.js&lt;/code&gt; is isomorphic, it’ll also run in the browser, we’ll use Parcel to stitch everything together.&lt;/p&gt;
+
+&lt;p&gt;By default we fetch using the query from &lt;code&gt;fetch.js&lt;/code&gt;, then when the user clicks the &lt;code&gt;Try it&lt;/code&gt; button we use the contents of the textarea.&lt;/p&gt;
+
+&lt;p&gt;This code wires up the fetch logic with some reading the query from the DOM and updating an output div on completion, &lt;code&gt;client.js&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;graph&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./fetch&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$queryElement&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;querySelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.query&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$output&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;querySelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;.output&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$submitButton&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;querySelector&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;button&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;$submitButton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;onclick&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;queryData&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;$queryElement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;runQuery&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;graph&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;queryData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;runQuery&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;runQuery&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;then&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nx&#34;&gt;$output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;innerHTML&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;JSON&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stringify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nx&#34;&gt;$output&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;innerHTML&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`Error: &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;JSON&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;stringify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;index.html&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;no-js&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;http-equiv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;x-ua-compatible&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ie=edge&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;JavaScript GraphQL Client Example&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;JavaScript GraphQL Client example&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;viewport&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;width=device-width, initial-scale=1, shrink-to-fit=no&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;k&#34;&gt;font-family&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;apple-system&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BlinkMacSystemFont&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s1&#34;&gt;&amp;#39;Segoe UI&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Roboto&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Oxygen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ubuntu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Cantarell&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+          &lt;span class=&#34;s1&#34;&gt;&amp;#39;Open Sans&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Helvetica Neue&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;sans-serif&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;For full documentation see: &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://graphql-pokemon.now.sh/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;https://graphql-pokemon.now.sh/&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Input: &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;textarea&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;query&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;min-width: 285px; min-height: 150px&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+{
+  pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+    attacks {
+      special {
+        name
+      }
+    }
+  }
+}
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;textarea&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;button&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Try it&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;button&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Output: &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;output&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;./client.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ npm install --save-dev parcel&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ npx parcel index.html&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Open &lt;a href=&#34;http://localhost:1234&#34;&gt;http://localhost:1234&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_436CC3FB0186E19AFA848D5D9BBDDD002D6719E8B00591E0944C85836193A66D_1533923400947_image.png&#34; alt=&#34;Sample GraphQL query result displayed in the browser&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To test it out, we can change the textarea content to:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+    attacks {
+      fast {
+        name
+        type
+        damage
+      }
+      special {
+        type
+        damage
+        name
+      }
+    }
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And click &lt;code&gt;Try it&lt;/code&gt;. Which yields the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_436CC3FB0186E19AFA848D5D9BBDDD002D6719E8B00591E0944C85836193A66D_1534187747016_image.png&#34; alt=&#34;new GraphQL query output in browser&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;graphql-documentation-tools&#34;&gt;GraphQL documentation tools&lt;/h2&gt;
+
+&lt;p&gt;For the hosted GraphQL docs of the pokemon GraphQL API, see &lt;a href=&#34;https://graphql-pokemon.now.sh/&#34;&gt;https://graphql-pokemon.now.sh/&lt;/a&gt;, it opens GraphiQL where you can explore the API, use &lt;code&gt;CTRL + space&lt;/code&gt; to show field suggestions, and &lt;code&gt;CMD + enter&lt;/code&gt; to expand all nested fields by default. You can also right-click on a field to explore its type etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_436CC3FB0186E19AFA848D5D9BBDDD002D6719E8B00591E0944C85836193A66D_1533923625458_image.png&#34; alt=&#34;GraphiQL for pokemon GraphQL API&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;More about GraphQL coming next week in the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; so &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe&lt;/a&gt; if you’re not already.&lt;/p&gt;
+
+&lt;p&gt;If you have any questions feel free to tweet at me &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@imandrewpons?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Andrew Pons&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Andrew Pons&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
