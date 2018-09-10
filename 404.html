@@ -91,26 +91,25 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nate-bell-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #tooling 
-              #bash  </span>
+              #CSS 
+              #tip 
+              #accessibility  </span>
               
-              <h2 class="post-card-title">Just enough bash to be dangerous</h2>
+              <h2 class="post-card-title">Responsive, semantic images with CSS</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> A bash cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
-To avoid having to do this again myself and for your reading pleasure, here they are.
+                <p> CSS tip: object-fit your images.
+ To have an image that doesn&rsquo;t try to stretch to its width/height the classic CSS is as follows:
 
  ...  </p>
               
@@ -127,25 +126,25 @@ To avoid having to do this again myself and for your reading pleasure, here they
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #VueJS 
-              #testing 
-              #JavaScript  </span>
+              #JavaScript 
+              #web development  </span>
               
-              <h2 class="post-card-title">From AngularJS to Vue.js, CommonJS and Jest</h2>
+              <h2 class="post-card-title">Avoiding falsy values in JavaScript arrays</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration
- AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components. ...  </p>
+                <p>tl;dr: use Array.filter(Boolean) to filter out falsy values and avoid errors.
+
+ ...  </p>
               
           </section>
       </a>
@@ -160,26 +159,27 @@ To avoid having to do this again myself and for your reading pleasure, here they
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/sean-mungur-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #TypeScript 
-              #web development 
-              #developer tools  </span>
+              #git 
+              #bash 
+              #productivity  </span>
               
-              <h2 class="post-card-title">Writing an npm module with TypeScript and microbundle</h2>
+              <h2 class="post-card-title">Change the date of a git commit</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? TypeScript is a JavaScript superset that adds static types to it. Its other features also follow the ECMAScript specification (current and future) quite closely. For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code) nicer auto-complete. ...  </p>
+                <p>One of the greatest and worst things with git is that you can rewrite the history. Here’s a sneaky way of abusing that, I can’t think of a legitimate reason to do this.
+As with anything, thanks StackOverflow for all the options I can pick from 👍.
+Set the date of the last commit to the current date GIT_COMMITTER_DATE=&quot;$(date)&quot; git commit --amend --no-edit --date &quot;$(date)&quot;
+Set the date of the last commit to an arbitrary date GIT_COMMITTER_DATE=&quot;Mon 20 Aug 2018 20:19:19 BST&quot; git commit --amend --no-edit --date &quot;Mon 20 Aug 2018 20:19:19 BST&quot; ...  </p>
               
           </section>
       </a>

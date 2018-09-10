@@ -130,27 +130,24 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nils-stahl-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Sequelize 
-              #Node 
-              #productivity  </span>
+              #Redis 
+              #tooling  </span>
               
-              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
+              <h2 class="post-card-title">Install just redis-cli on Ubuntu, Debian, Jessie</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
-For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
-To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node. ...  </p>
+                <p>As part of adding integration tests to an app on CircleCI I ran into the following issues:
+ redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly. ...  </p>
               
           </section>
       </a>
@@ -165,63 +162,60 @@ To run a relational database with a Node application, Sequelize, “An easy-to-u
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bryce-barker-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #VueJS 
-              #testing 
-              #JavaScript  </span>
-              
-              <h2 class="post-card-title">From AngularJS to Vue.js, CommonJS and Jest</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration
- AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components. ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Node 
-              #Docker 
-              #redis  </span>
+              #Testing 
+              #Node  </span>
               
-              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
+              <h2 class="post-card-title">Mocking the current Date in Jest tests</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
-There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
-Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
-We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
+                <p>There are situations where Date.now is used in application code. That code needs to be tested, and it’s always a struggle to remember how to mock Date.now. Here is the magic snippet:
 
  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #ES6 
+              #web development  </span>
+              
+              <h2 class="post-card-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
+Destructuring One of my favourite ES6 features is destructuring. It allows you to extract data from one variable to another by using structure. For arrays this means for example:
+var [first, second] = [1, 2, 3, 4]; // first: 1 // second: 2  There’s more you can do, like skip some members of the array on the right-hand side of the operation. ...  </p>
               
           </section>
       </a>
