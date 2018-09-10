@@ -6,7 +6,7 @@
     <description>Recent content in Web Development on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://codewithhugo.com/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
     
@@ -1517,6 +1517,323 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
 &lt;p&gt;If you have any questions feel free to tweet at me &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@imandrewpons?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Andrew Pons&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Andrew Pons&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A gentle introduction to GraphQL API integrations</title>
+      <link>https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/</guid>
+      <description>
+
+&lt;p&gt;GraphQL is a great alternative to REST (or other HTTP API designs). This is an quick introduction to the core concepts around &lt;em&gt;consuming&lt;/em&gt; a GraphQL API.&lt;/p&gt;
+
+&lt;p&gt;To see some examples consuming a GraphQL API:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In Python, see &lt;a href=&#34;https://codewithhugo.com/python-graphql-client-requests-example-using-gql/&#34;&gt;Python GraphQL client requests example using gql&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;In JavaScript (browser and Node), &lt;a href=&#34;https://buttondown.email/hugo/archive/9011fe42-c8f7-4201-8b38-d777c1f6910a&#34;&gt;see last week&amp;rsquo;s Code with Hugo newsletter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;what-is-graphql-and-what-problems-does-it-solve&#34;&gt;What is GraphQL and what problems does it solve?&lt;/h2&gt;
+
+&lt;p&gt;GraphQL is &lt;a href=&#34;https://graphql.org&#34;&gt;&amp;ldquo;a query language for your API&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In plain English, it makes the client define what (nested) data it needs.&lt;/p&gt;
+
+&lt;p&gt;If we compare it to &lt;a href=&#34;https://en.wikipedia.org/wiki/Representational_state_transfer&#34;&gt;REST&lt;/a&gt; approaches:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;the “pure” REST approach is to return IDs (or resource links) for any associations (or nested resources).&lt;/li&gt;
+&lt;li&gt;The less pure approach is to expand all the nested stuff.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The first situation leads to having to make lots of calls to fetch all the data, the second leads to huge payloads and slow load times.&lt;/p&gt;
+
+&lt;p&gt;In GraphQL, the client states in the request what it wants expanded, renamed or whatever else in the response.&lt;/p&gt;
+
+&lt;p&gt;It has some nice side-effects, eg. less need to version your API since the client defines what it wants and GraphQL has a way to deprecate fields.&lt;/p&gt;
+
+&lt;h2 id=&#34;schema&#34;&gt;Schema&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/graphql/graphiql&#34;&gt;GraphiQL&lt;/a&gt;, &amp;ldquo;An in-browser IDE for exploring GraphQL.&amp;rdquo; is available by navigating to the endpoint in your browser.
+It&amp;rsquo;s possible to generate the schema using the GraphQL CLI (requires Node + npm 5+):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;npx graphql-cli get-schema --endpoint &lt;span class=&#34;nv&#34;&gt;$BASE_URL&lt;/span&gt;/api/graphql --no-all -o schema.graphql&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;queries&#34;&gt;Queries&lt;/h2&gt;
+
+&lt;h3 id=&#34;graphql-query-concepts&#34;&gt;GraphQL query concepts&lt;/h3&gt;
+
+&lt;h4 id=&#34;fields&#34;&gt;Fields&lt;/h4&gt;
+
+&lt;p&gt;What we would like returned in the query, see &lt;a href=&#34;https://graphql.org/learn/queries/#fields/&#34;&gt;the GraphQL documentation for “fields”&lt;/a&gt;.
+The GraphQL query for that returns the fields &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;fleeRate&lt;/code&gt;, &lt;code&gt;maxCP&lt;/code&gt;, &lt;code&gt;maxHP&lt;/code&gt;, is the following (see output &lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemon(name%3A%20%22Pikachu%22)%20%7B%0A%20%20%20%20name%0A%20%20%20%20fleeRate%0A%20%20%20%20maxCP%0A%20%20%20%20maxHP%0A%20%20%7D%0A%7D%0A&#34;&gt;here&lt;/a&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+    name
+    fleeRate
+    maxCP
+    maxHP
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;arguments&#34;&gt;Arguments&lt;/h4&gt;
+
+&lt;p&gt;How we are going to filter the query data down, see &lt;a href=&#34;https://graphql.org/learn/queries/#arguments&#34;&gt;the GraphQL documentation for “arguments”&lt;/a&gt;.
+To get the names of the first 10 pokemon we use &lt;code&gt;pokemons (first: 10) { FIELDS }&lt;/code&gt;see the output &lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemons%20(first%3A%2010)%20%7B%0A%20%20%20%20name%0A%20%20%20%20fleeRate%0A%20%20%20%20maxCP%0A%20%20%20%20maxHP%0A%20%20%7D%0A%7D%0A&#34;&gt;here&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemons (first: 10) {
+    name
+    fleeRate
+    maxCP
+    maxHP
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;aliases&#34;&gt;Aliases&lt;/h4&gt;
+
+&lt;p&gt;Aliases give us the ability to rename fields, see &lt;a href=&#34;https://graphql.org/learn/queries/#aliases&#34;&gt;the GraphQL documentation for “aliases”&lt;/a&gt;.
+We&amp;rsquo;re actually going to use it to map fields in the query eg. from camel to snake case:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+    evolution_requirements: evolutionRequirements {
+      amount
+      name
+    }
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Running this query (&lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemon(name%3A%20%22Pikachu%22)%20%7B%0A%20%20%20%20evolution_requirements%3A%20evolutionRequirements%20%7B%0A%20%20%20%20%20%20amount%0A%20%20%20%20%20%20name%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A&#34;&gt;here&lt;/a&gt;) gives us the following, where the &lt;code&gt;evolutionRequirements&lt;/code&gt; is what we’ve aliased it to.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  &amp;#34;data&amp;#34;: {
+    &amp;#34;pokemon&amp;#34;: {
+      &amp;#34;evolution_requirements&amp;#34;: {
+        &amp;#34;amount&amp;#34;: 50,
+        &amp;#34;name&amp;#34;: &amp;#34;Pikachu candies&amp;#34;
+      }
+    }
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;fragments&#34;&gt;Fragments&lt;/h4&gt;
+
+&lt;p&gt;The definition of fields to be expanded on a type. It&amp;rsquo;s a way to keep the queries DRY and in general split out field definitions that are repeated, re-used or deeply nested, see &lt;a href=&#34;https://graphql.org/learn/queries/#fragments&#34;&gt;the GraphQL documentation for fragments&lt;/a&gt;.
+It&amp;rsquo;s going to mean that instead of doing (&lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%0A%7B%0A%20%20pokemon(name%3A%20%22Pikachu%22)%20%7B%0A%20%20%20%20id%0A%20%20%20%20number%0A%20%20%20%20weight%20%7B%0A%20%20%20%20%20%20minimum%0A%20%20%20%20%20%20maximum%0A%20%20%20%20%7D%0A%20%20%20%20height%20%7B%0A%20%20%20%20%20%20minimum%0A%20%20%20%20%20%20maximum%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&#34;&gt;see&lt;/a&gt; &lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%0A%7B%0A%20%20pokemon(name%3A%20%22Pikachu%22)%20%7B%0A%20%20%20%20weight%20%7B%0A%20%20%20%20%20%20minimum%0A%20%20%20%20%20%20maximum%0A%20%20%20%20%7D%0A%20%20%20%20height%20%7B%0A%20%20%20%20%20%20minimum%0A%20%20%20%20%20%20maximum%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D&#34;&gt;the query in action here&lt;/a&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+    weight {
+      minimum
+      maximum
+    }
+    height {
+      minimum
+      maximum
+    }
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can for example run this (&lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemon(name%3A%20%22Pikachu%22)%20%7B%0A%20%20%20%20id%0A%20%20%20%20number%0A%20%20%20%20weight%20%7B...FullPokemonDimensions%7D%0A%20%20%20%20height%20%7B...FullPokemonDimensions%7D%0A%20%20%7D%0A%7D%0A%0Afragment%20FullPokemonDimensions%20on%20PokemonDimension%20%7B%0A%20%20minimum%0A%20%20maximum%0A%7D&#34;&gt;query&lt;/a&gt; &lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%0A%7B%0A%20%20pokemon(name%3A%20%22Pikachu%22)%20%7B%0A%20%20%20%20weight%20%7B...FullPokemonDimensions%7D%0A%20%20%20%20height%20%7B...FullPokemonDimensions%7D%0A%20%20%7D%0A%7D%0A%0Afragment%20FullPokemonDimensions%20on%20PokemonDimension%20%7B%0A%20%20minimum%0A%20%20maximum%0A%7D&#34;&gt;here&lt;/a&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+    weight {...FullPokemonDimensions}
+    height {...FullPokemonDimensions}
+  }
+}
+
+fragment FullPokemonDimensions on PokemonDimension {
+  minimum
+  maximum
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The output is equivalent:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  &amp;#34;data&amp;#34;: {
+    &amp;#34;pokemon&amp;#34;: {
+      &amp;#34;weight&amp;#34;: {
+        &amp;#34;minimum&amp;#34;: &amp;#34;5.25kg&amp;#34;,
+        &amp;#34;maximum&amp;#34;: &amp;#34;6.75kg&amp;#34;
+      },
+      &amp;#34;height&amp;#34;: {
+        &amp;#34;minimum&amp;#34;: &amp;#34;0.35m&amp;#34;,
+        &amp;#34;maximum&amp;#34;: &amp;#34;0.45m&amp;#34;
+      }
+    }
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;running-a-graphql-query&#34;&gt;Running a GraphQL query&lt;/h2&gt;
+
+&lt;p&gt;A GraphQL query can be run over POST or GET, it consists of:&lt;/p&gt;
+
+&lt;h3 id=&#34;post-recommended&#34;&gt;POST (recommended)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Required headers: &lt;code&gt;Content-Type: application/json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Required JSON body parameter: &lt;code&gt;query: { # insert your query }&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;raw-http-request&#34;&gt;Raw HTTP request&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;POST / HTTP/1.1
+Host: graphql-pokemon.now.sh
+Content-Type: application/json
+
+{
+        &amp;quot;query&amp;quot;: &amp;quot;{ pokemons(first: 10) { name } }&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;curl&#34;&gt;cURL&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -X POST \
+  https://graphql-pokemon.now.sh/ \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39;{
+        &amp;quot;query&amp;quot;: &amp;quot;{ pokemons(first: 10) { name } }&amp;quot;
+    }&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;get&#34;&gt;GET&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Required query param: &lt;code&gt;query&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;raw-http-request-1&#34;&gt;raw HTTP request&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /?query={%20pokemons(first:%2010)%20{%20name%20}%20} HTTP/1.1
+Host: graphql-pokemon.now.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;curl-1&#34;&gt;cURL&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -X GET &#39;https://graphql-pokemon.now.sh/?query={%20pokemons%28first:%2010%29%20{%20name%20}%20}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;top-level-queries&#34;&gt;Top-level queries&lt;/h2&gt;
+
+&lt;p&gt;There are 2 types of queries on the &lt;a href=&#34;https://graphql-pokemon.now.sh/&#34;&gt;GraphQL Pokemon API&lt;/a&gt; at the moment:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;First X pokemon: get all items (with whatever fields are defined in the query)&lt;/li&gt;
+&lt;li&gt;Single Pokemon by name: get a single item by its slug (with whatever fields are defined in the query)&lt;/li&gt;
+&lt;li&gt;Single Pokemon by id: get a single item by its slug (with whatever fields are defined in the query)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;first-x-pokemon&#34;&gt;First X Pokemon&lt;/h3&gt;
+
+&lt;p&gt;Queries of the form (&lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemons(first%3A%205)%20%7B%0A%20%20%20%20name%0A%20%20%7D%0A%7D&#34;&gt;see it in action in GraphiQL&lt;/a&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemons(first: 5) {
+    name
+    # other fields
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;single-pokemon-by-name&#34;&gt;Single Pokemon by name&lt;/h3&gt;
+
+&lt;p&gt;Queries of the form (&lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemon(name%3A%20%22Pikachu%22)%20%7B%0A%20%20%20%20name%0A%20%20%20%20classification%0A%20%20%7D%0A%7D&#34;&gt;see it in action in GraphiQL&lt;/a&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+    name
+    classification
+    # other fields
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note the double quotes (&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;) around the argument value&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;single-pokemon-by-id&#34;&gt;Single Pokemon by id&lt;/h3&gt;
+
+&lt;p&gt;Queries of the form (&lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemon(id%3A%20%22UG9rZW1vbjowMjU%3D%22)%20%7B%0A%20%20%20%20name%0A%20%20%20%20classification%0A%20%20%7D%0A%7D&#34;&gt;see it in action in GraphiQL&lt;/a&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemon(id: &amp;#34;UG9rZW1vbjowMjU=&amp;#34;) {
+    name
+    classification
+    # other fields
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note the double quotes (&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;) around the argument value&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;sample-queries&#34;&gt;Sample queries&lt;/h2&gt;
+
+&lt;h3 id=&#34;get-some-pokemon-to-create-strengths-weakness-resistance-classification&#34;&gt;Get some Pokemon to create strengths/weakness/resistance classification&lt;/h3&gt;
+
+&lt;p&gt;Query (&lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemons(first%3A%20100)%20%7B%0A%20%20%20%20name%0A%20%20%20%20image%0A%20%20%20%20maxHP%0A%20%20%20%20types%0A%20%20%20%20weaknesses%0A%20%20%20%20resistant%0A%20%20%7D%0A%7D&#34;&gt;see it in GraphiQL&lt;/a&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemons(first: 100) {
+    name
+    image
+    maxHP
+    types
+    weaknesses
+    resistant
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;get-pokemon-and-evolutions-expanded-for-physical-stats-and-attacks&#34;&gt;Get Pokemon and evolutions expanded for physical stats and attacks&lt;/h3&gt;
+
+&lt;p&gt;Query (&lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pokemon(name%3A%20%22Pikachu%22)%20%7B%0A%20%20%20%20...PokemonWithAttack%0A%20%20%20%20...FullPhysicalStats%0A%20%20%20%20evolutions%20%7B%0A%20%20%20%20%20%20...FullPhysicalStats%0A%20%20%20%20%20%20...PokemonWithAttack%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A%0Afragment%20PokemonWithAttack%20on%20Pokemon%20%7B%0A%20%20name%0A%20%20attacks%20%7B%0A%20%20%20%20fast%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20type%0A%20%20%20%20%20%20damage%0A%20%20%20%20%7D%0A%20%20%20%20special%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%20%20type%0A%20%20%20%20%20%20damage%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A%0Afragment%20FullPhysicalStats%20on%20Pokemon%20%7B%0A%20%20height%20%7B%20...FullDimension%20%7D%0A%20%20weight%20%7B%20...FullDimension%20%7D%0A%7D%0A%0Afragment%20FullDimension%20on%20PokemonDimension%20%7B%0A%20%20minimum%0A%20%20maximum%0A%7D&#34;&gt;see it in GraphiQL&lt;/a&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+    ...PokemonWithAttack
+    ...FullPhysicalStats
+    evolutions {
+      ...FullPhysicalStats
+      ...PokemonWithAttack
+    }
+  }
+}
+
+fragment PokemonWithAttack on Pokemon {
+  name
+  attacks {
+    fast {
+      name
+      type
+      damage
+    }
+    special {
+      name
+      type
+      damage
+    }
+  }
+}
+
+fragment FullPhysicalStats on Pokemon {
+  height { ...FullDimension }
+  weight { ...FullDimension }
+}
+
+fragment FullDimension on PokemonDimension {
+  minimum
+  maximum
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;get-selected-pokemon-as-named-fields-with-their-evolution-names&#34;&gt;Get selected Pokemon as named fields with their evolution names&lt;/h3&gt;
+
+&lt;p&gt;Query (&lt;a href=&#34;https://graphql-pokemon.now.sh/?query=%7B%0A%20%20pikachu%3A%20pokemon(name%3A%20%22Pikachu%22)%20%7B%0A%20%20%20%20...FullPokemon%0A%20%20%20%20evolutions%20%7B%0A%20%20%20%20%20%20...FullPokemon%0A%20%20%20%20%7D%0A%20%20%7D%0A%20%20bulbasaur%3Apokemon(name%3A%20%22Bulbasaur%22)%20%7B%0A%20%20%20%20...FullPokemon%0A%20%20%20%20evolutions%20%7B%0A%20%20%20%20%20%20...FullPokemon%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A%0Afragment%20FullPokemon%20on%20Pokemon%20%7B%0A%20%20name%0A%7D%0A&#34;&gt;see it in GraphiQL&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;We can rename top-level queries using aliases, that&amp;rsquo;s helpful if we want to do the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gql&#34; data-lang=&#34;gql&#34;&gt;{
+  pikachu: pokemon(name: &amp;#34;Pikachu&amp;#34;) {
+    ...FullPokemon
+    evolutions {
+      ...FullPokemon
+    }
+  }
+  bulbasaur:pokemon(name: &amp;#34;Bulbasaur&amp;#34;) {
+    ...FullPokemon
+    evolutions {
+      ...FullPokemon
+    }
+  }
+}
+
+fragment FullPokemon on Pokemon {
+  name
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you want to learn how to integrate with a GraphQL API:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In Python, see &lt;a href=&#34;https://codewithhugo.com/python-graphql-client-requests-example-using-gql/&#34;&gt;Python GraphQL client requests example using gql&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;In JavaScript (browser and Node), &lt;a href=&#34;https://buttondown.email/hugo/archive/9011fe42-c8f7-4201-8b38-d777c1f6910a&#34;&gt;see last week&amp;rsquo;s Code with Hugo newsletter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>
