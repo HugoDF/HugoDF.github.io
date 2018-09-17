@@ -12,124 +12,6 @@
     
     
     <item>
-      <title>Writing an npm module with TypeScript and microbundle</title>
-      <link>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</link>
-      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</guid>
-      <description>
-
-&lt;p&gt;For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.&lt;/p&gt;
-
-&lt;h2 id=&#34;why-typescript&#34;&gt;Why TypeScript?&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.typescriptlang.org/&#34;&gt;TypeScript&lt;/a&gt; is a JavaScript superset that adds static types to it.
-Its other features also follow the ECMAScript specification (current and future) quite closely.
-For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more
-details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code)
-nicer auto-complete. TypeScript also serves as inline documentation that shouts at you when you pass something you
-shouldn’t, which will come handy when you rediscover your code a couple of months down the line.&lt;/p&gt;
-
-&lt;h2 id=&#34;why-microbundle&#34;&gt;Why microbundle?&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;Microbundle&lt;/a&gt; is a “zero-configuration bundler for tiny modules”. It’s a wrapper around &lt;a href=&#34;https://rollupjs.org/guide/en&#34;&gt;rollup&lt;/a&gt; with sane defaults (including minification/compression), nice outputted size stats, multiple target formats (ES modules, CommonJS, UMD). Most of all in the scope of this post, it has TypeScript support out of the box (&lt;em&gt;actually&lt;/em&gt; no configuration, not even a &lt;code&gt;tsconfig.json&lt;/code&gt;).
-It’s ridiculously easy to set up and allows library authors to focus on building a great library rather than setting up the plumbing to be able to ship a JavaScript library from ES6/TypeScript or other compile-to-JS tool 🙂.&lt;/p&gt;
-
-&lt;h1 id=&#34;zero-config-bundling&#34;&gt;Zero-config bundling&lt;/h1&gt;
-
-&lt;p&gt;To start, we’ll have to create setup our package run &lt;code&gt;npm init&lt;/code&gt; and complete all the prompts.&lt;/p&gt;
-
-&lt;p&gt;Next run: &lt;code&gt;npm i --save-dev microbundle&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let’s create a src and dist folder: &lt;code&gt;mkdir src &amp;amp;&amp;amp; mkdir dist&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And add the first TypeScript file: &lt;code&gt;touch src/index.ts&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let’s add a class to the index.ts so we’re not just compiling empty files:
-&lt;code&gt;echo &amp;quot;export class MyMainClass {}&amp;quot; &amp;gt;&amp;gt; src/index.ts&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Microbundle looks at the &lt;code&gt;package.json&lt;/code&gt; &lt;code&gt;&amp;quot;main&amp;quot;&lt;/code&gt; and &lt;code&gt;&amp;quot;source&amp;quot;&lt;/code&gt; fields (compiled entry point and source entry point),
-in our case that’s &lt;code&gt;dist/index.js&lt;/code&gt; (which doesn’t exist yet) and &lt;code&gt;src/index.ts&lt;/code&gt;.
-Let’s edit it to have the following in the &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-  &amp;quot;main&amp;quot;: &amp;quot;dist/index.js&amp;quot;,
-  &amp;quot;source&amp;quot;: &amp;quot;src/index.ts&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This means microbundle knows how to compile our library now, run: &lt;code&gt;npx microbundle&lt;/code&gt; (on versions of npm &amp;lt;5.x, you can also run &lt;code&gt;./node_modules/.bin/microbundle&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;This will compile your &lt;code&gt;src/index.ts&lt;/code&gt; to the &lt;code&gt;dist&lt;/code&gt; folder.
-If you look at the contents of the &lt;code&gt;dist&lt;/code&gt; folder, you’ll see how much work microbundle does for you:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ls dist
-index.d.ts       index.js.map     index.m.js.map   index.umd.js.map
-index.js         index.m.js       index.umd.js
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Let’s explain what all these are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;index.js&lt;/code&gt; is the CommonJS module. This is module type used by Node and it looks like &lt;code&gt;const myModule = require(&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;my-module&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;index.m.js&lt;/code&gt; is the ECMAScript Module, as defined in ES6, it looks like &lt;code&gt;import MyModule from&lt;/code&gt; &lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;my-module&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;index.umd.js&lt;/code&gt; is the UMD module&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;index.d.ts&lt;/code&gt; is TypeScript type declaration file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Then there’s a matching &lt;code&gt;.map&lt;/code&gt; file that maps back to the TypeScript source for each of the files.&lt;/p&gt;
-
-&lt;p&gt;Take a look inside &lt;code&gt;index.js&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cat dist/index.js
-var n=function(){return function(){}}();exports.MyMainClass=n;
-//# sourceMappingURL=index.js.map
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Our &lt;code&gt;class MyMainClass {}&lt;/code&gt; statement was compiled to its ES5 equivalent and the export to a CommonJS export.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;index.d.ts&lt;/code&gt; is also interesting:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cat dist/index.d.ts
-export declare class MyMainClass {
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This allows a TypeScript project to assign the correct type information back to the package… which &lt;em&gt;is&lt;/em&gt; a roundabout way of doing since a TypeScript project should be able to just import the &lt;code&gt;.ts&lt;/code&gt; file. The separate type declaration means that non-TypeScript projects can also understand the public API of the module (eg. code editors can do smart autocomplete on unseen npm packages).&lt;/p&gt;
-
-&lt;p&gt;microbundle can also watch for changes: &lt;code&gt;npx microbundle watch&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;For ease of use we can put the watch and build tasks in the &lt;code&gt;package.json&lt;/code&gt; as npm scripts:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-  &amp;quot;scripts&amp;quot;: {
-    &amp;quot;dev&amp;quot;: &amp;quot;microbundle watch&amp;quot;,
-    &amp;quot;build&amp;quot;: &amp;quot;microbundle&amp;quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;publish-the-module&#34;&gt;Publish the module&lt;/h1&gt;
-
-&lt;p&gt;By leveraging microbundle we can publish the module as a CommonJS module (standard npm module), but also as an ES Module and a UMD module, to do this follow the guide at &lt;a href=&#34;https://github.com/developit/microbundle#specifying-builds-in-packagejson&#34;&gt;https://github.com/developit/microbundle#specifying-builds-in-packagejson&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;main&amp;quot;: &amp;quot;dist/index.js&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;umd:main&amp;quot;: &amp;quot;dist/index.umd.js&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;module&amp;quot;: &amp;quot;dist/index.m.js&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;source&amp;quot;: &amp;quot;src/index.ts&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;With this &lt;code&gt;package.json&lt;/code&gt; you can publish to npm with &lt;code&gt;npm publish&lt;/code&gt;.
-And if you enjoyed using &lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;microbundle&lt;/a&gt;, definitely keep using it but also give it a &lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;star on GitHub&lt;/a&gt; and let Jason Miller aka &lt;a href=&#34;https://twitter.com/_developit&#34;&gt;@_developit&lt;/a&gt; know you’re a fan on Twitter.&lt;/p&gt;
-
-&lt;p&gt;Cover Photo by &lt;a href=&#34;https://unsplash.com/photos/J8R34suxfRU?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Aaron Burden&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/tiny?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Using ES6 classes for Sequelize 4 models</title>
       <link>https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
@@ -3429,6 +3311,129 @@ If you’re building a repo that is not &lt;code&gt;USERNAME.github.io&lt;/code&
 &lt;p&gt;If you have any questions feel free to tweet at me &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@imandrewpons?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Andrew Pons&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Andrew Pons&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Why you should wrap your (JavaScript) dependencies</title>
+      <link>https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/</link>
+      <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;An email sending example.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#example-using-sendgrid&#34;&gt;Example using SendGrid&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-do-we-consume-this&#34;&gt;How do we consume this?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#switching-to-another-email-provider&#34;&gt;Switching to another email provider&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt;.
+&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;example-using-sendgrid&#34;&gt;Example using SendGrid&lt;/h2&gt;
+
+&lt;p&gt;On a very basic level, we want to be able to send emails.&lt;/p&gt;
+
+&lt;p&gt;In code terms, we want a &lt;code&gt;send&lt;/code&gt; function.
+What&amp;rsquo;s nice to have is a way to abstract the message creation, that&amp;rsquo;s a &lt;code&gt;makeMailMessage&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;p&gt;See the following code:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sgMail&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;@sendgrid/mail&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;SENDGRID_API_KEY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;EMAIL_OVERRIDE_TO_ADDRESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;EMAIL_FROM_ADDRESS&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;env&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;sgMail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;setApiKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;SENDGRID_API_KEY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;makeMailMessage&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;EMAIL_FROM_ADDRESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;html&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;EMAIL_OVERRIDE_TO_ADDRESS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;...(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;sgMail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;makeMailMessage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;how-do-we-consume-this&#34;&gt;How do we consume this?&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kr&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;doSomeSending&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;email&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;makeMailMessage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;hi@codewithhugo.com&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;email&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;subject&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Welcome to Code with Hugo&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`Hi &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;, welcome to Code with Hugo.`&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;switching-to-another-email-provider&#34;&gt;Switching to another email provider&lt;/h2&gt;
+
+&lt;p&gt;Say we want to switch to another provider, namely Mailgun.
+Ideally, we don’t want to change any of the application code.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;MAILGUN_API_KEY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;EMAIL_DOMAIN&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;EMAIL_OVERRIDE_TO_ADDRESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;EMAIL_FROM_ADDRESS&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;env&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;mailgun&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;mailgun-js&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)({&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;apiKey&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MAILGUN_API_KEY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;domain&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;EMAIL_DOMAIN&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+
+&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;makeMailMessage&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;EMAIL_FROM_ADDRESS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;html&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;EMAIL_OVERRIDE_TO_ADDRESS&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;...(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;text&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Promise&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;resolve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;reject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;mailgun&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;messages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;reject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+      &lt;span class=&#34;nx&#34;&gt;resolve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;makeMailMessage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;send&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The API for our &lt;code&gt;mail&lt;/code&gt; module stays the same, but we’ve changed the provider under the hood 👍 .&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@samuelzeller?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Samuel Zeller&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Samuel Zeller&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
