@@ -24,7 +24,7 @@
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/samuel-zeller-unsplash.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/andrew-pons-unsplash.jpg"/>
     
  
     <meta name="twitter:title" content="Why you should wrap your (JavaScript) dependencies"/>
@@ -51,7 +51,7 @@
     <meta property="article:published_time" content="2018-09-17T00:00:00Z" />
     <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Node" /><meta property="article:tag" content="ES6" />
 
-    <meta property="og:image" content="https://codewithhugo.com/img/samuel-zeller-unsplash.jpg"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/andrew-pons-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.46" />
@@ -144,7 +144,7 @@
     <div class="hero-container">
 
       
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/samuel-zeller-unsplash.jpg)">
+      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/andrew-pons-unsplash.jpg)">
         
 
       </figure>
@@ -210,14 +210,13 @@ What&rsquo;s nice to have is a way to abstract the message creation, that&rsquo;
 <span class="p">};</span>
 </code></pre></div>
 <h2 id="how-do-we-consume-this">How do we consume this?</h2>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">doSomeSending</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">doSomeSending</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">makeMailMessage</span><span class="p">({</span>
     <span class="nx">from</span><span class="o">:</span> <span class="s1">&#39;hi@codewithhugo.com&#39;</span><span class="p">,</span>
     <span class="nx">to</span><span class="o">:</span> <span class="nx">email</span><span class="p">,</span>
     <span class="nx">subject</span><span class="o">:</span> <span class="s1">&#39;Welcome to Code with Hugo&#39;</span><span class="p">,</span>
     <span class="nx">text</span><span class="o">:</span> <span class="sb">`Hi </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">, welcome to Code with Hugo.`</span>
   <span class="p">});</span>
-  <span class="k">return</span> <span class="nx">send</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="switching-to-another-email-provider">Switching to another email provider</h2>
@@ -327,13 +326,13 @@ Ideally, we don’t want to change any of the application code.</p>
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         
-          <li><a href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">Python GraphQL client requests example using gql</a></li>            
+          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
         
-          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
         
-          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
+          <li><a href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">Abusing Jest snapshot tests: some nice use-cases 📸</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
