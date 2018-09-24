@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
 
-    <title>Split an existing git commit &middot; Code with Hugo</title>
+    <title>Unit Testing Sequelize 4 ES6 class models &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,33 +13,33 @@
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
     
-    <link rel="canonical" href="https://codewithhugo.com/split-an-existing-git-commit/" /> 
+    <link rel="canonical" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/" /> 
 
-     <meta name="description" content="One of git&amp;rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to u" /> 
+     <meta name="description" content="In &amp;ldquo;Using ES6 classes for Sequelize 4 models&amp;rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach " /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/markus-spiske-unsplash.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/elevate-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="Split an existing git commit"/>
-    <meta name="twitter:description" content="One of git&amp;rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to u"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/split-an-existing-git-commit/" />
+    <meta name="twitter:title" content="Unit Testing Sequelize 4 ES6 class models"/>
+    <meta name="twitter:description" content="In &amp;ldquo;Using ES6 classes for Sequelize 4 models&amp;rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach "/>
+    <meta name="twitter:url" content="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Split an existing git commit &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/split-an-existing-git-commit/" />
+    <meta property="og:title" content="Unit Testing Sequelize 4 ES6 class models &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="One of git&amp;rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to u" />
+    <meta property="og:description" content="In &amp;ldquo;Using ES6 classes for Sequelize 4 models&amp;rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach " />
 
-    <meta property="article:published_time" content="2018-05-23T00:00:00Z" />
-    <meta property="article:tag" content="git" /><meta property="article:tag" content="web development" /><meta property="article:tag" content="productivity" />
+    <meta property="article:published_time" content="2018-09-24T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Sequelize" /><meta property="article:tag" content="testing" /><meta property="article:tag" content="Node" />
 
-    <meta property="og:image" content="https://codewithhugo.com/img/markus-spiske-unsplash.jpg"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/elevate-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.46" />
@@ -56,6 +56,11 @@
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
 
+    
+      
+        
+        <link rel="stylesheet" href="https://codewithhugo.com/cta.min.08150ec3dfde130dfc2a22f37f0de664ce7916765a67f94841d471da76e0efbe.css">
+      
     
 
      
@@ -124,55 +129,101 @@
       <article class="post-full post">
     <header class="post-full-header">
         <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-05-23">23 May 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/git/">#git</a>&nbsp;<a href="https://codewithhugo.com/tags/web-development/">#web development</a>&nbsp;
+            <time class="post-full-meta-date" datetime="2018-09-24">24 September 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/sequelize/">#Sequelize</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Split an existing git commit</h1>
+        <h1 class="post-full-title">Unit Testing Sequelize 4 ES6 class models</h1>
     </header>
     <div class="hero-container">
 
       
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/markus-spiske-unsplash.jpg)">
+      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/elevate-unsplash.jpg)">
         
+  <section class="hero-cta">
+    <h3 class="cta-title">Be the first to get the free Sequelize ES6 cheat sheet</h3>
+    <p class="cta-text">A cheat sheet to level up your Sequelize productivity.<br/>If you've ever needed better Sequelize docs, this is it.<br/></p>
+    <a href="https://buttondown.email/hugo" class="button">Sign up here</a>
+  </section>
+
 
       </figure>
     </div>
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
-        <p>One of <code>git</code>&rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to use <code>git rebase</code>, usually followed by a <code>git push</code> <code>--</code><code>force</code> to overwrite history the remote with the local history.</p>
+        
 
-<p>Here’s a look at how to split existing commits using <code>rebase</code>, <code>reset</code> and <code>commit</code>.</p>
+<p>In <a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">&ldquo;Using ES6 classes for Sequelize 4 models&rdquo;</a> we explored how to define Sequelize models using ES6 classes.
+One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).</p>
 
-<p>Say you have two files edited in a commit (A and B) and you would like to get the changes from one of those files (A) into your current branch but not those from the other (B).</p>
+<p>The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.</p>
 
-<p>Using <code>git cherry-pick &lt;commit-hash&gt;</code> is not an option since it would pull in the changes for both A and B.</p>
+<p>We’ll be testing the following model:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="p">{</span> <span class="nx">Model</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
 
-<p>The solution is to split the commit into 2 and only cherry-pick the new commit that contains changes for A.</p>
+<span class="k">class</span> <span class="nx">MyModel</span> <span class="k">extends</span> <span class="nx">Model</span> <span class="p">{</span>
+  <span class="kr">static</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span>
+      <span class="c1">// Config, see &#34;Using ES6 classes for Sequelize 4 models&#34;
+</span><span class="c1"></span>    <span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="nx">isAvailable</span> <span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">meetings</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;meetings should be eager-loaded&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">meetings</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
+      <span class="p">({</span> <span class="nx">startDate</span><span class="p">,</span> <span class="nx">endDate</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">startDate</span> <span class="o">&lt;</span> <span class="nx">date</span> <span class="o">&amp;&amp;</span> <span class="nx">endDate</span> <span class="o">&gt;</span> <span class="nx">date</span><span class="p">)</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<p>To do this:</p>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">MyModel</span><span class="p">;</span>
+</code></pre></div>
+<p>At the module level, we want to:</p>
 
 <ul>
-<li>run <code>git rebase -i &lt;commit-hash&gt;~</code> (note the <code>~</code>) or <code>git rebase -i &lt;hash-of-previous-commit&gt;</code></li>
-<li>find the commit you want to split in the rebase edit screen, change the <code>pick</code> to <code>e</code> (<code>edit</code>)</li>
-<li>save and exit (<code>ESC</code> followed by <code>:wq</code> to close VIM)</li>
-<li><code>git reset HEAD~</code> to reset the staged changes</li>
-<li><code>git add [files-to-add]</code> all the files we want to add to the first commit (here would be <code>git add A</code>)</li>
-<li><code>git commit</code> normally, with a message etc</li>
-<li>Run as many other rounds of as you want commits:
-
-<ul>
-<li><code>git add [other-files-to-add]</code></li>
-<li><code>git commit</code></li>
-</ul></li>
-<li><code>git rebase</code> <code>--</code><code>continue</code> to indicate that the splitting has been finished and to continue the rebase</li>
+<li>mock out Sequelize</li>
+<li>import the model</li>
 </ul>
 
-<p>Finally we can <code>git cherry-pick &lt;new-commit-hash&gt;</code> to get the changes into our branch</p>
+<p>In the test:</p>
 
-<p>For any questions about using git, feel free to comment below or tweet to me <a href="https://twitter.com/hugo__df">@hugo__df</a>.</p>
+<ul>
+<li>Instantiate the model that we’ve defined (without crashing)</li>
+<li>Set some properties on that instance</li>
+<li>Run some methods</li>
+<li>Assert on the output</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
+<span class="k">const</span> <span class="nx">Model</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./model&#39;</span><span class="p">);</span>
 
-<p>Cover photo by <a href="https://unsplash.com/photos/qcCHZLdsS80?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Markus Spiske</a> on <a href="https://unsplash.com/search/photos/axe-split-wood?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+<span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It should not throw when passed a model containing an empty list of meetings&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">();</span>
+  <span class="nx">model</span><span class="p">.</span><span class="nx">meetings</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">isAvailable</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">())).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toThrow</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="alternative-with-object-assign">Alternative with <code>Object.assign</code></h2>
+
+<p>If we’re setting more than a single instance property, using <code>Object.assign</code> can be easier to manage:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;sequelize&#39;</span><span class="p">);</span>
+
+<span class="k">const</span> <span class="nx">Model</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./model&#39;</span><span class="p">);</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">&#39;It should not throw when passed a model containing an empty list of meetings&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="nx">model</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">Model</span><span class="p">(),</span>
+    <span class="p">{</span>
+      <span class="nx">meetings</span><span class="o">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">isAvailable</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">())).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toThrow</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Using ES6 classes with Sequelize makes testing easier and more natural, <a href="https://buttondown.email/hugo">sign up to the newsletter</a> to stay in the loop for the upcoming Sequelize ES6 Cheat Sheet.</p>
+
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@elevatebeer?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Elevate"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Elevate</span></a></p>
 
         </div>
     </section>
@@ -225,7 +276,7 @@
     <header class="read-next-card-header">
         <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
         
-        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/git/">#git</a></h3>
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a></h3>
     </header>
     <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
     </div>
@@ -233,18 +284,18 @@
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">Abusing Jest snapshot tests: some nice use-cases 📸</a></li>            
+          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
         
-          <li><a href="https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/">Build and deploy a Vue/React/Vanilla JS app with Parcel and GitHub pages</a></li>            
+          <li><a href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">Mocking the current Date in Jest tests</a></li>            
         
-          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         
-          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
+          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
       
-        <a href="https://codewithhugo.com/tags/git/">See all related posts →</a>
+        <a href="https://codewithhugo.com/tags/javascript/">See all related posts →</a>
     </footer>
 </article>
 
@@ -252,25 +303,27 @@
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/parker-whitson-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #VueJS 
-              #testing 
-              #JavaScript  </span>
+              #hugo 
+              #css 
+              #deployment  </span>
               
-              <h2 class="post-card-title">From AngularJS to Vue.js, CommonJS and Jest</h2>
+              <h2 class="post-card-title">Switching the lights on: Hugo vs Hugo config files</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration
- AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components. ...  </p>
+                <p>A simple Hugo blog setup
+ The story of getting codewithhugo.com up and running.
+The tl;dr is the following:
+ I always rave about my blog setup, it’s simple, fast and just works I used Hugo, “The world’s fastest framework for building websites”, a static site generator I used a theme, casper-two, which is a Hugo port of the https://ghost.org/ default theme I deployed to GitHub pages behind Cloudflare. ...  </p>
               
           </section>
       </a>
@@ -285,25 +338,26 @@
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/frank-mckenna-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/andrew-pons-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #VueJS 
-              #web development  </span>
+              #Node 
+              #ES6  </span>
               
-              <h2 class="post-card-title">A simple, real-world Vue.js directive</h2>
+              <h2 class="post-card-title">Why you should wrap your (JavaScript) dependencies</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Vue.js is &ldquo;The Progressive JavaScript Framework&rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer. In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&rsquo;s documentation is a focus directive.
-When running Vue.js inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve normal anchors&rsquo; href on click. ...  </p>
+                <p> An email sending example.
+ 
+ ...  </p>
               
           </section>
       </a>
@@ -327,17 +381,17 @@ When running Vue.js inside of AngularJS, an issue occured whereby the AngularJS 
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Split an existing git commit</div>
+  <div class="floating-header-title">Unit Testing Sequelize 4 ES6 class models</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Split%20an%20existing%20git%20commit&amp;url=https%3a%2f%2fcodewithhugo.com%2fsplit-an-existing-git-commit%2f"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=Unit%20Testing%20Sequelize%204%20ES6%20class%20models&amp;url=https%3a%2f%2fcodewithhugo.com%2funit-testing-sequelize-4-es6-class-models%2f"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fsplit-an-existing-git-commit%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2funit-testing-sequelize-4-es6-class-models%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>
