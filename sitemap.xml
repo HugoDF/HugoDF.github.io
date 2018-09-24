@@ -317,6 +317,12 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/tags/meta/</loc>
+    <lastmod>2018-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/tags/node/</loc>
     <lastmod>2018-07-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
