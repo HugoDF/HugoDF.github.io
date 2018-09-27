@@ -48,11 +48,29 @@
     </item>
     
     <item>
+      <title>Technical Writing</title>
+      <link>https://codewithhugo.com/tags/technical-writing/</link>
+      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/technical-writing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Developer Tools</title>
       <link>https://codewithhugo.com/tags/developer-tools/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/developer-tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typescript</title>
+      <link>https://codewithhugo.com/tags/typescript/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/typescript/</guid>
       <description></description>
     </item>
     
@@ -71,6 +89,15 @@
       <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/accessibility/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tip</title>
+      <link>https://codewithhugo.com/tags/tip/</link>
+      <pubDate>Thu, 05 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/tip/</guid>
       <description></description>
     </item>
     
@@ -138,6 +165,15 @@
     </item>
     
     <item>
+      <title>Tooling</title>
+      <link>https://codewithhugo.com/tags/tooling/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/tooling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Es6</title>
       <link>https://codewithhugo.com/tags/es6/</link>
       <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
@@ -152,6 +188,15 @@
       <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Testing</title>
+      <link>https://codewithhugo.com/tags/testing/</link>
+      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/testing/</guid>
       <description></description>
     </item>
     
@@ -233,6 +278,33 @@
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/graphql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sequelize</title>
+      <link>https://codewithhugo.com/tags/sequelize/</link>
+      <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/sequelize/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vuejs</title>
+      <link>https://codewithhugo.com/tags/vuejs/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/vuejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Development</title>
+      <link>https://codewithhugo.com/tags/web-development/</link>
+      <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/web-development/</guid>
       <description></description>
     </item>
     
