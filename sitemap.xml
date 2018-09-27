@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/</loc>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/</loc>
     <lastmod>2018-09-24T00:00:00+00:00</lastmod>
   </url>
@@ -408,13 +413,13 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/vuejs/</loc>
-    <lastmod>2018-05-30T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://codewithhugo.com/tags/web-development/</loc>
-    <lastmod>2018-09-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
