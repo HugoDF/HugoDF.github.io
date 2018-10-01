@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>Functional Programming</title>
-      <link>https://codewithhugo.com/tags/functional-programming/</link>
-      <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/functional-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Programming</title>
       <link>https://codewithhugo.com/tags/programming/</link>
       <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
@@ -305,6 +296,24 @@
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/web-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Functional Programming</title>
+      <link>https://codewithhugo.com/tags/functional-programming/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Interview</title>
+      <link>https://codewithhugo.com/tags/interview/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/interview/</guid>
       <description></description>
     </item>
     
