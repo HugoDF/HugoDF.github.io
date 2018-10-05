@@ -7481,5 +7481,259 @@ In this situation we’ll be fetching comments from the Reddit API.&lt;/p&gt;
 </description>
     </item>
     
+    <item>
+      <title>Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</title>
+      <link>https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/</link>
+      <pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;Settling on a &lt;a href=&#34;https://www.netlify.com/&#34;&gt;Netlify&lt;/a&gt; + &lt;a href=&#34;https://github.com/dokku/dokku&#34;&gt;Dokku&lt;/a&gt; on &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt; deployment stack for JavaScript and Node.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Over the last few years I’ve never quite settled on a goto deployment strategy for my apps and projects. Technology-wise it has settled towards Vue or static site generators for the frontend with Node on the backend, whether that’s for API servers or handling rendering through handlebars.&lt;/p&gt;
+
+&lt;p&gt;What I’ve finally settled on is &lt;a href=&#34;https://www.netlify.com/&#34;&gt;Netlify&lt;/a&gt; + &lt;a href=&#34;https://github.com/dokku/dokku&#34;&gt;Dokku&lt;/a&gt; on &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt;. Netlify for anything static (and more with forms, CMS and lambda). Dokku, “The smallest PaaS implementation you&amp;rsquo;ve ever seen.“ for any backend apps and databases. This is what I’ve used to deploy my latest projects &lt;a href=&#34;https://accountableblogging.com/post-frequency&#34;&gt;Post Frequency&lt;/a&gt; and &lt;a href=&#34;https://accountableblogging.com/post-frequency&#34;&gt;Accountable Blogging&lt;/a&gt;, tools to quantify and improve your blogging output.&lt;/p&gt;
+
+&lt;p&gt;This is a long list of pros/cons for a bunch of services:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 → pro&lt;/li&gt;
+&lt;li&gt;👎 → con&lt;/li&gt;
+&lt;li&gt;🤔 → undecided&lt;/li&gt;
+&lt;li&gt;🚨 → deal-breaker for me&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;🤓 → nice-to-have&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#my-past-deployment-experiences&#34;&gt;My past deployment experiences&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#nowsh&#34;&gt;now.sh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github-pages&#34;&gt;GitHub Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#heroku&#34;&gt;Heroku&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#aws&#34;&gt;AWS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#digitalocean&#34;&gt;DigitalOcean&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#vultr&#34;&gt;Vultr&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#the-stack-moving-forward&#34;&gt;The stack moving forward&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#netlify&#34;&gt;Netlify&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#dokku-on-digitalocean&#34;&gt;Dokku on DigitalOcean&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#setting-dokku-up&#34;&gt;Setting Dokku up&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#parting-thoughts&#34;&gt;Parting thoughts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;my-past-deployment-experiences&#34;&gt;My past deployment experiences&lt;/h2&gt;
+
+&lt;p&gt;For these purposes I’ve leaned towards the following deployment options:&lt;/p&gt;
+
+&lt;h3 id=&#34;now-sh-https-now-sh&#34;&gt;&lt;a href=&#34;https://now.sh&#34;&gt;now.sh&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 does static hosting&lt;/li&gt;
+&lt;li&gt;👍 does app hosting&lt;/li&gt;
+&lt;li&gt;👍 can build your static site/frontend&lt;/li&gt;
+&lt;li&gt;👎 no database hosting&lt;/li&gt;
+&lt;li&gt;🤔 built-in DNS&lt;/li&gt;
+&lt;li&gt;🚨 I didn’t use it to full capacity (only ever had 2 deployments instead of the limit of 5)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;github-pages-https-pages-github-com&#34;&gt;&lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 free&lt;/li&gt;
+&lt;li&gt;👍 baked into your GitHub repos (as simple as pushing to &lt;code&gt;gh-pages&lt;/code&gt; branch)&lt;/li&gt;
+&lt;li&gt;👍 static hosting&lt;/li&gt;
+&lt;li&gt;👎 can’t build your app itself&lt;/li&gt;
+&lt;li&gt;👎 for the longest time was difficult to have SSL for (had to pair it with Cloudflare)&lt;/li&gt;
+&lt;li&gt;👎 dealing with domain names&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;heroku-https-www-heroku-com&#34;&gt;&lt;a href=&#34;https://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 app hosting&lt;/li&gt;
+&lt;li&gt;👍 database hosting (with a generous free tier)&lt;/li&gt;
+&lt;li&gt;👍 &lt;code&gt;git push heroku master&lt;/code&gt; deploys&lt;/li&gt;
+&lt;li&gt;👍 addons system
+
+&lt;ul&gt;
+&lt;li&gt;👍 things like logging aggregation, monitoring are just a click away&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👍 buildpack system&lt;/li&gt;
+&lt;li&gt;👍 easy domain management&lt;/li&gt;
+&lt;li&gt;👎 🤑 per app/dyno pricing&lt;/li&gt;
+&lt;li&gt;🚨 it’s just not worth it for low traffic apps&lt;/li&gt;
+&lt;li&gt;🚨 Scaling Node apps involves increasing the number of processes + a Node process is not very resource intensive, which would get very costly (not that I’ve ever needs to scale my personal apps)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;aws&#34;&gt;AWS&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 has everything you could think of&lt;/li&gt;
+&lt;li&gt;👎 dashboard UI&lt;/li&gt;
+&lt;li&gt;🚨 pricing once the free tier expires (1 year) is steep even for the smallest instances&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;digitalocean-https-m-do-co-c-4ee8b2d1adb4&#34;&gt;&lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 dashboard UI&lt;/li&gt;
+&lt;li&gt;👍 competitive pricing&lt;/li&gt;
+&lt;li&gt;👎 managing the server
+
+&lt;ul&gt;
+&lt;li&gt;ssh-ing to install databases, and runtime requirements (Node, pm2)&lt;/li&gt;
+&lt;li&gt;deployment over ssh (or at least ssh to &lt;code&gt;git pull&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👎 setting up nginx 😛
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;I secretly love dealing with nginx configuration, just not at the cost of shipping some code&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;** I won’t mention one-click deploys here because I hadn’t used them before deciding to give Dokku a try*&lt;/p&gt;
+
+&lt;h3 id=&#34;vultr-https-www-vultr-com&#34;&gt;&lt;a href=&#34;https://www.vultr.com/&#34;&gt;Vultr&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 cheapest VPS I could find at the time ($2.50)
+
+&lt;ul&gt;
+&lt;li&gt;caveat: the machine specs are what you pay for, which is enough to host a university final year project API + React app&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👎 managing the server (see &lt;a href=&#34;#digitalocean&#34;&gt;DigitalOcean&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;the-stack-moving-forward&#34;&gt;The stack moving forward&lt;/h2&gt;
+
+&lt;h3 id=&#34;netlify-https-www-netlify-com&#34;&gt;&lt;a href=&#34;https://www.netlify.com/&#34;&gt;Netlify&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 free tier (beyond generous)&lt;/li&gt;
+&lt;li&gt;👍 static hosting&lt;/li&gt;
+&lt;li&gt;👍 can build your static site/frontend&lt;/li&gt;
+&lt;li&gt;🤔 lambda ❤
+
+&lt;ul&gt;
+&lt;li&gt;👍 having a backend (that isn’t a backend) for some stuff is cool&lt;/li&gt;
+&lt;li&gt;👎 dealing with a bundler for backend code&lt;/li&gt;
+&lt;li&gt;👎 debugging minified backend code&lt;/li&gt;
+&lt;li&gt;🤔 lambda startup time (can be fine if you have an SPA on the frontend that puts a nice loading state while you wait)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👍 forms
+
+&lt;ul&gt;
+&lt;li&gt;trivial to integrate&lt;/li&gt;
+&lt;li&gt;no need to prematurely add a second service eg. to collect email addresses on a landing page&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👍 Netlify CMS + identity&lt;/li&gt;
+&lt;li&gt;🤔 CDN baked in&lt;/li&gt;
+&lt;li&gt;👍 DNS&lt;/li&gt;
+&lt;li&gt;👍 automatic SSL&lt;/li&gt;
+&lt;li&gt;🤓 preview apps&lt;/li&gt;
+&lt;li&gt;👍 nice GitHub integration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;dokku-https-github-com-dokku-dokku-on-digitalocean-https-m-do-co-c-4ee8b2d1adb4&#34;&gt;&lt;a href=&#34;https://github.com/dokku/dokku&#34;&gt;Dokku&lt;/a&gt; on &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 as expensive as necessary
+
+&lt;ul&gt;
+&lt;li&gt;can have as many apps as you want as long as it doesn’t max out your CPU/RAM&lt;/li&gt;
+&lt;li&gt;easy to scale up&lt;/li&gt;
+&lt;li&gt;starting for $5/mo&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👍 &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt;’s &lt;a href=&#34;https://www.digitalocean.com/products/one-click-apps/dokku/&#34;&gt;“Dokku one-click deploy”&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dokku pros and cons (regardless of &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt;)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 &lt;code&gt;git push dokku master&lt;/code&gt; deploys&lt;/li&gt;
+&lt;li&gt;👍 management from the command line&lt;/li&gt;
+&lt;li&gt;👎 no UI by default although &lt;a href=&#34;https://github.com/palfrey/wharf&#34;&gt;https://github.com/palfrey/wharf&lt;/a&gt; could be cool&lt;/li&gt;
+&lt;li&gt;👍 easy SSL&lt;/li&gt;
+&lt;li&gt;👍 easy domain management&lt;/li&gt;
+&lt;li&gt;👍 application hosting&lt;/li&gt;
+&lt;li&gt;👍 database hosting&lt;/li&gt;
+&lt;li&gt;🤔 multiple apps on one instance
+
+&lt;ul&gt;
+&lt;li&gt;if the droplet goes down 2-3 apps go down (I don’t think anyone cares about this)&lt;/li&gt;
+&lt;li&gt;a single high traffic app can eat resources (when apps get traffic, move them somewhere else)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;🤔 still self-hosting
+
+&lt;ul&gt;
+&lt;li&gt;Except now I need to be able to manage Docker/Dokku stuff&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;setting-dokku-up&#34;&gt;Setting Dokku up&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;👍 &lt;a href=&#34;http://dokku domains:add feed-accountable-blogging feed.accountableblogging.com&#34;&gt;one-click deploy droplet&lt;/a&gt; on &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;👎 there isn’t a definitive guide to setting up a DNS record for a subdomain for the Dokku instance
+
+&lt;ul&gt;
+&lt;li&gt;here’s my shot at it:&lt;/li&gt;
+&lt;li&gt;find out the server’s IP&lt;/li&gt;
+&lt;li&gt;create an A record
+
+&lt;ol&gt;
+&lt;li&gt;for &lt;code&gt;*.deploy.yourdomain.tld&lt;/code&gt; and &lt;code&gt;deploy.yourdomain.tld&lt;/code&gt; (feel free to replace &lt;code&gt;deploy&lt;/code&gt; with whatever subdomain), for me that was &lt;code&gt;deploy.codewithhugo.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;point the record to the IP address&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;(if you’re on CloudFlare or anything else that can proxy): &lt;strong&gt;don’t use the CDN/proxy feature&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;To check it works, ssh &lt;code&gt;deploy.yourdomain.tld&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;🤔 no local CLI (everything is done over SSH)
+
+&lt;ul&gt;
+&lt;li&gt;add &lt;code&gt;alias dokku=&amp;quot;ssh -t dokku@deploy.yourdomain.tld&amp;quot;&lt;/code&gt; to your &lt;code&gt;.bashrc&lt;/code&gt;/&lt;code&gt;.zshrc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;then use &lt;code&gt;dokku &amp;lt;command&amp;gt;&lt;/code&gt; as you would on the remote server&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👎 same situation for custom domains for apps
+
+&lt;ul&gt;
+&lt;li&gt;again, my take on it&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dokku domains:add your-app-name subdomain.domain.tld&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create a CNAME record
+
+&lt;ol&gt;
+&lt;li&gt;name: &lt;code&gt;subdomain&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;value: &lt;code&gt;your-app-name.deploy.yourdomain.tld&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;👍 easy letsencrypt (&lt;a href=&#34;https://github.com/dokku/dokku-letsencrypt&#34;&gt;https://github.com/dokku/dokku-letsencrypt&lt;/a&gt;)
+
+&lt;ul&gt;
+&lt;li&gt;ssh into the server&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add letsencrypt to an app&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dokku letsencrypt app-name&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add letsencrypt certificate auto-renewal CRON job:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dokku letsencrypt:cron-job --add&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;parting-thoughts&#34;&gt;Parting thoughts&lt;/h2&gt;
+
+&lt;p&gt;My migration of a couple of apps off of now.sh wasn’t to go from bad to good, but rather from good to better (for my needs).&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@billjelen?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Bill Jelen&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Bill Jelen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
