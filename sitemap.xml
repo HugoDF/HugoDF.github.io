@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/observablehq-notebooks-for-javascript-demos-and-prototypes/</loc>
+    <lastmod>2018-10-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/</loc>
     <lastmod>2018-10-05T00:00:00+00:00</lastmod>
   </url>
@@ -364,6 +369,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/programming/</loc>
     <lastmod>2017-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/prototypes/</loc>
+    <lastmod>2018-10-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
