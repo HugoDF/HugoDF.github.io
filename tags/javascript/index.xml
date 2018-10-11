@@ -6278,5 +6278,83 @@ fileDataUri = URL.createObjectURL(file)
 </description>
     </item>
     
+    <item>
+      <title>Use ES modules in Node without Babel/Webpack using `esm`</title>
+      <link>https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/</link>
+      <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/</guid>
+      <description>
+
+&lt;p&gt;Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use &lt;code&gt;require(&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;module-name&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;)&lt;/code&gt; to import from other modules and use the &lt;code&gt;module.exports&lt;/code&gt; object to expose entities from a module.&lt;/p&gt;
+
+&lt;p&gt;Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. The ease with which one can bundle CommonJS coupled with its widespread use in Node applications and tools means CommonJS quickly displaced RequireJS and SystemJS for frontend application dependency and module management&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I’m working on a “history of JavaScript module, bundling + dependency management” article, &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe&lt;/a&gt; to get it first).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;CommonJS has some drawbacks, like being hard to statically analyse, which leads to for example bloated bundles. It’s also just not part of the ECMAScript specification, which ES modules are.&lt;/p&gt;
+
+&lt;p&gt;For anyone who is still wondering, ECMAScript (or ES) modules use a syntax with &lt;code&gt;import thing from &#39;my-module&#39;;&lt;/code&gt; or &lt;code&gt;import { something } from &#39;my-module&#39;&lt;/code&gt; to import things and &lt;code&gt;export default&lt;/code&gt; or &lt;code&gt;export something&lt;/code&gt; to expose entities from the module.&lt;/p&gt;
+
+&lt;p&gt;Bundlers like Webpack, Rollup and Parcel have support for ES modules. For a Node server I’ve still tended to write in CommonJS style because Node has great support for most ESNext features out of the box (eg. rest/spread, async/await, destructuring, class, shorthand object syntax) and I don’t like messing with bundlers and transpilers.&lt;/p&gt;
+
+&lt;p&gt;I’ve discovered the &lt;a href=&#34;https://github.com/standard-things/esm&#34;&gt;esm&lt;/a&gt; module, “Tomorrow&amp;rsquo;s ECMAScript modules today!” by &lt;a href=&#34;https://github.com/jdalton&#34;&gt;John-David Dalton&lt;/a&gt; (of lodash 😄). It allows you to use ES modules in Node with no compilation step. It’s small, has a small footprint and comes with some extra goodies&lt;/p&gt;
+
+&lt;p&gt;What follows is some ways to use it that aren’t strictly documented. This covers use-cases like incremental adoption of ES modules (ie. convert some modules to ESM but not the whole app). Using this will help you share&lt;/p&gt;
+
+&lt;h2 id=&#34;import-default-export-from-an-es-module-in-commonjs&#34;&gt;Import default export from an ES module in CommonJS&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;esmImport&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;esm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;foo&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;esmImport&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./my-foo&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;import-named-exports-from-an-es-module-in-commonjs&#34;&gt;Import named exports from an ES module in CommonJS&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;esmImport&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;esm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;bar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;baz&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;esmImport&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./my-foo&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;bar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;baz&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;re-export-an-es-module-as-commonjs&#34;&gt;Re-export an ES module as CommonJS&lt;/h2&gt;
+
+&lt;p&gt;This is documented in the docs but I thought I would include it for completeness&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;esm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./my-es-module&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// see the docs
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// https://github.com/standard-things/esm#getting-started
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;load-whole-application-using-es-modules&#34;&gt;Load whole application using ES modules&lt;/h2&gt;
+
+&lt;p&gt;Again, this in the docs but including it for completeness&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;node&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;r&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;esm&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;js&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// see the docs
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// https://github.com/standard-things/esm#getting-started
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;using-top-level-await&#34;&gt;Using top-level await&lt;/h2&gt;
+
+&lt;p&gt;Let’s say we have this module &lt;code&gt;cli.module.js&lt;/code&gt; (taken from &lt;a href=&#34;https://github.com/HugoDF/wait-for-pg/blob/master/wait-for-pg-cli.module.js#L35-L44&#34;&gt;github.com/HugoDF/wait-for-pg&lt;/a&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;waitForPostgres&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Promise&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;resolve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kr&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;waitForPostgres&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Success&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The interesting bit is that this is using &lt;code&gt;await&lt;/code&gt; without being in an &lt;code&gt;async&lt;/code&gt; function. That’s something &lt;code&gt;esm&lt;/code&gt; allows you to do. This can be enabled by setting &lt;code&gt;&amp;quot;&lt;/code&gt;&lt;code&gt;esm&lt;/code&gt;&lt;code&gt;&amp;quot;&lt;/code&gt;&lt;code&gt;: {&lt;/code&gt; &lt;code&gt;&amp;quot;&lt;/code&gt;&lt;code&gt;await&lt;/code&gt;&lt;code&gt;&amp;quot;&lt;/code&gt;&lt;code&gt;: true }&lt;/code&gt; in &lt;code&gt;package.json&lt;/code&gt; but it can also be enabled at conversion time &lt;code&gt;cli.js&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;esmImport&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;esm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;await&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;exports&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;esmImport&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./cli.module&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lo and behold it works:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ node cli.js
+Success&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;That wraps up how to use ES modules now, without transpilation. There’s a more thorough walkthrough of what that means at &lt;a href=&#34;https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/&#34;&gt;ES6 by example: a module/CLI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you’re interested in “history of JavaScript module, bundling + dependency management” article, let me know by &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribing&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@sortino?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Joshua Sortino&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Joshua Sortino&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
