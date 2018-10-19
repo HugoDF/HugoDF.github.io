@@ -130,23 +130,23 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/20180704-array-types.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #web development  </span>
+              #tip  </span>
               
-              <h2 class="post-card-title">Avoiding falsy values in JavaScript arrays</h2>
+              <h2 class="post-card-title">Detecting Object vs Array in JavaScript by example</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>tl;dr: use Array.filter(Boolean) to filter out falsy values and avoid errors.
+                <p>Let’s say we want to measure the depth of we have an object with mixed nested arrays/objects like so:
 
  ...  </p>
               
@@ -163,29 +163,27 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/600/600/1*xJoAW5prjY5hGmiTgL40TQ.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bill-jelen-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #dev-decoded 
-              #Web development 
-              #Productivity  </span>
+              #deployment 
+              #Node 
+              #JavaScript 
+              #tooling  </span>
               
-              <h2 class="post-card-title">In simple terms: code on the backend, frontend and how they interact</h2>
+              <h2 class="post-card-title">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>A look at the shifting boundaries of the web development stack
-This was originally posted as an answer on Quora: How do frontend code and backend code interact with each other?
-Let’s start with quick definitions:
-Frontend All things the browser can read, display and/or run. This means HTML, CSS and JavaScript.
-HTML (Hypertext Markup Language) tells the browser “what” content is, eg. “heading”, “paragraph”, “list”, “list item”.
-CSS (Cascading Style Sheets) tells the browser how to display elements eg. ...  </p>
+                <p>Settling on a Netlify + Dokku on DigitalOcean deployment stack for JavaScript and Node.
+ Over the last few years I’ve never quite settled on a goto deployment strategy for my apps and projects. Technology-wise it has settled towards Vue or static site generators for the frontend with Node on the backend, whether that’s for API servers or handling rendering through handlebars.
+What I’ve finally settled on is Netlify + Dokku on DigitalOcean. ...  </p>
               
           </section>
       </a>
@@ -200,27 +198,27 @@ CSS (Cascading Style Sheets) tells the browser how to display elements eg. ...  
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/sean-mungur-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Sequelize 
-              #Node 
+              #git 
+              #bash 
               #productivity  </span>
               
-              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
+              <h2 class="post-card-title">Change the date of a git commit</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
-For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
-To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node. ...  </p>
+                <p>One of the greatest and worst things with git is that you can rewrite the history. Here’s a sneaky way of abusing that, I can’t think of a legitimate reason to do this.
+As with anything, thanks StackOverflow for all the options I can pick from 👍.
+Set the date of the last commit to the current date GIT_COMMITTER_DATE=&quot;$(date)&quot; git commit --amend --no-edit --date &quot;$(date)&quot;
+Set the date of the last commit to an arbitrary date GIT_COMMITTER_DATE=&quot;Mon 20 Aug 2018 20:19:19 BST&quot; git commit --amend --no-edit --date &quot;Mon 20 Aug 2018 20:19:19 BST&quot; ...  </p>
               
           </section>
       </a>
