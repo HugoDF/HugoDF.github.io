@@ -19,6 +19,11 @@
       <guid>https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/</guid>
       <description>
 
+&lt;blockquote&gt;
+&lt;p&gt;Warning: the ecosystem has moved on since this post was originally published, it’s now easier than ever to set up a library for development:
+see &lt;a href=&#34;https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/&#34;&gt;Writing an npm module with microbundle&lt;/a&gt; for an up to date view on how to develop a library&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;p&gt;JavaScript has a thriving ecosystem of libraries delivered as packages on npm. Node has a high degree of compatibility with ES6 but it doesn’t have some features yet, namely import. This means that if we want to distribute useable packages over npm and we want to be writing ES6, we have to transpile back to ES5.&lt;/p&gt;
 
 &lt;p&gt;We’ll be setting up a project that allows us to write ES6, and distribute it in ES5 (with Babel) and to test it with Mocha, all through npm scripts. We’ll also discuss some workflows that we can use to speed up our development.&lt;/p&gt;
