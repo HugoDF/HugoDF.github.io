@@ -200,20 +200,27 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/post/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/defimg/3.jpg)"></div>
-    </a>    
+    <a class="post-card-image-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nate-bell-unsplash.jpg)"></div>
+    </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/post/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
           <header class="post-card-header">
+              <span class="post-card-tags">
+              #CSS 
+              #tip 
+              #accessibility  </span>
               
-              <h2 class="post-card-title">Posts</h2>
+              <h2 class="post-card-title">Responsive, semantic images with CSS</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> </p>
+                <p> CSS tip: object-fit your images.
+ To have an image that doesn&rsquo;t try to stretch to its width/height the classic CSS is as follows:
+
+ ...  </p>
               
           </section>
       </a>
@@ -228,27 +235,27 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/isis-franca-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Sequelize 
-              #Node 
-              #productivity  </span>
+              #python 
+              #graphql 
+              #web development  </span>
               
-              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
+              <h2 class="post-card-title">Python GraphQL client requests example using gql</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
-For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
-To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node. ...  </p>
+                <p>An example consuming a GraphQL API from Python using gql.
+ Full code example at HugoDF/python-graphql-client-example.
+ This was sent out on the Code with Hugo newsletter last Monday. Subscribe to get the latest posts right in your inbox (before anyone else).
+ $ pip install gql # You should use a virtualenvfrom gql import gql, Client from gql.transport.requests import RequestsHTTPTransport _transport = RequestsHTTPTransport( url=&#39;https://graphql-pokemon.now.sh/&#39;, use_json=True, ) client = Client( transport=_transport, fetch_schema_from_transport=True, ) query = gql(&#34;&#34;&#34; { pokemon(name: &#34;Pikachu&#34;) { attacks { special { name } } } } &#34;&#34;&#34;) print(client. ...  </p>
               
           </section>
       </a>
@@ -263,26 +270,26 @@ To run a relational database with a Node application, Sequelize, “An easy-to-u
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/split-an-existing-git-commit/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/markus-spiske-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/andrew-preble-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/split-an-existing-git-commit/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #git 
-              #web development 
+              #cdn 
+              #dev-decoded 
               #productivity  </span>
               
-              <h2 class="post-card-title">Split an existing git commit</h2>
+              <h2 class="post-card-title">The step-by-step guide to create a domain redirect with Cloudflare</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>One of git&rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to use git rebase, usually followed by a git push --force to overwrite history the remote with the local history.
-Here’s a look at how to split existing commits using rebase, reset and commit.
-Say you have two files edited in a commit (A and B) and you would like to get the changes from one of those files (A) into your current branch but not those from the other (B). ...  </p>
+                <p>Be logged into your dashboard.
+ Select the domain you want to redirect from Go to page rules  Click “Create page rule”  Enter your.domain/* (matches all traffic) for which URLs will have their traffic redirected
+ Click “Add a Setting”  Select “Forwarding URL”  Select the type of redirect, I recommend 302s since they’re less aggressively cached (so if you ever want to use that domain to do something else other than redirect, you can)  Enter your forwarding URL  Click “Save and Deploy”   You’re done, you’ve just created a redirect from your domain to another one 🙂 ...  </p>
               
           </section>
       </a>
