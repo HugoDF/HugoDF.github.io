@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/</loc>
+    <lastmod>2018-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/</loc>
     <lastmod>2018-10-11T00:00:00+00:00</lastmod>
   </url>
@@ -241,6 +246,12 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/tags/blogging/</loc>
+    <lastmod>2018-10-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/categories/</loc>
     <priority>0</priority>
   </url>
@@ -415,7 +426,7 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/technical-writing/</loc>
-    <lastmod>2018-04-25T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

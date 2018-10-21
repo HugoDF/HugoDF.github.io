@@ -39,15 +39,6 @@
     </item>
     
     <item>
-      <title>Technical Writing</title>
-      <link>https://codewithhugo.com/tags/technical-writing/</link>
-      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/tags/technical-writing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Developer Tools</title>
       <link>https://codewithhugo.com/tags/developer-tools/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
@@ -323,6 +314,24 @@
       <pubDate>Mon, 08 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/tags/prototypes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blogging</title>
+      <link>https://codewithhugo.com/tags/blogging/</link>
+      <pubDate>Sun, 21 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/blogging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Technical Writing</title>
+      <link>https://codewithhugo.com/tags/technical-writing/</link>
+      <pubDate>Sun, 21 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/tags/technical-writing/</guid>
       <description></description>
     </item>
     

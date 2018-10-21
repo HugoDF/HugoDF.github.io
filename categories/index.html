@@ -130,27 +130,24 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nils-stahl-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Sequelize 
-              #Node 
-              #productivity  </span>
+              #Redis 
+              #tooling  </span>
               
-              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
+              <h2 class="post-card-title">Install just redis-cli on Ubuntu, Debian, Jessie</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
-For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
-To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node. ...  </p>
+                <p>As part of adding integration tests to an app on CircleCI I ran into the following issues:
+ redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly. ...  </p>
               
           </section>
       </a>
@@ -165,25 +162,26 @@ To run a relational database with a Node application, Sequelize, “An easy-to-u
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*gVQU50zNWjL1kihKKQ5zYQ.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #CSS 
               #JavaScript 
+              #animation 
               #web development  </span>
               
-              <h2 class="post-card-title">Avoiding falsy values in JavaScript arrays</h2>
+              <h2 class="post-card-title">Animations: CSS vs JavaScript</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>tl;dr: use Array.filter(Boolean) to filter out falsy values and avoid errors.
-
- ...  </p>
+                <p>When should you use JavaScript when you can use CSS? This post was sparked by a question I answered on Quora: Which is better to use, CSS or JS?
+The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see “Backend code, frontend code and how they interact” for more details): HTML says what things are, CSS how they look and JavaScript does all the things the other two can’t. ...  </p>
               
           </section>
       </a>
@@ -198,26 +196,26 @@ To run a relational database with a Node application, Sequelize, “An easy-to-u
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elevate-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bryce-barker-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/mocking-the-current-date-in-jest-tests/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Sequelize 
-              #testing 
+              #Testing 
               #Node  </span>
               
-              <h2 class="post-card-title">Unit Testing Sequelize 4 ES6 class models</h2>
+              <h2 class="post-card-title">Mocking the current Date in Jest tests</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).
-The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications. ...  </p>
+                <p>There are situations where Date.now is used in application code. That code needs to be tested, and it’s always a struggle to remember how to mock Date.now. Here is the magic snippet:
+
+ ...  </p>
               
           </section>
       </a>

@@ -7976,5 +7976,146 @@ Success&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 </description>
     </item>
     
+    <item>
+      <title>6 months of Code with Hugo, in numbers</title>
+      <link>https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/</link>
+      <pubDate>Sun, 21 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Going from 0 to small. A developer&amp;rsquo;s journey starting a technical blog from scratch.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Stats in this post as of 21st of October, &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;follow me on Twitter&lt;/a&gt; for monthly updates.&lt;/p&gt;
+
+&lt;p&gt;Contents:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#timeline&#34;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#post-count-total-word-and-read-time&#34;&gt;Post count, total word and read time&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#top-visited&#34;&gt;Top visited&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#top-day-analytics-and-search-traffic-data&#34;&gt;Top day, analytics and search traffic data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#highlights&#34;&gt;Highlights&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#newsletter-devto-and-twitter&#34;&gt;Newsletter, dev.to and Twitter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#code-and-example-repositories&#34;&gt;Code and example repositories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#revenue&#34;&gt;Revenue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;timeline&#34;&gt;Timeline&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;First commit&lt;/strong&gt;: 10th of March 2018&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_12BC44EFC445B39435F24188DC09E3523F5F0BB39541BE515F4AE118481862F4_1540125428049_image.png&#34; alt=&#34;First commit to the Code with Hugo repository&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;First post&lt;/strong&gt;: &lt;a href=&#34;https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/&#34;&gt;Avoiding falsy values in JavaScript&lt;/a&gt;, &lt;em&gt;published 10th of April 2018&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_12BC44EFC445B39435F24188DC09E3523F5F0BB39541BE515F4AE118481862F4_1540125423109_image.png&#34; alt=&#34;First post on Code with Hugo repository&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6 month date&lt;/strong&gt;: 11th of October&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Days&lt;/strong&gt;: 183 days (for the 6-month date)&lt;/p&gt;
+
+&lt;h2 id=&#34;post-count-total-word-and-read-time&#34;&gt;Post count, total word and read time&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Posts&lt;/strong&gt;: 35 (36 since this is published, live stats at &lt;a href=&#34;https://beta.observablehq.com/@hugodf/code-with-hugo-posts&#34;&gt;https://beta.observablehq.com/@hugodf/code-with-hugo-posts&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Total Words&lt;/strong&gt;: 32,900&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;output of : &lt;code&gt;cat content/post/2018-{04,05,06,07,08,09,10,11,12}-* | wc -w&lt;/code&gt; in the Hugo root directory&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Total reading time&lt;/strong&gt;: 110 minutes, 1h 50min&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mean post reading time&lt;/strong&gt;: 3.02 minutes&lt;/p&gt;
+
+&lt;h2 id=&#34;top-visited&#34;&gt;Top visited&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/&#34;&gt;How to make beautiful, simple CLI apps with Node&lt;/a&gt;, &lt;em&gt;published 20th of June 2018&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/how-components-won-the-framework-wars/&#34;&gt;How components won the frameworks wars&lt;/a&gt;, &lt;em&gt;published 22nd of April 2018&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/&#34;&gt;Using ES6 classes for Sequelize 4 models&lt;/a&gt;, &lt;em&gt;published 9th of May 2018&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/&#34;&gt;Testing an Express app with Supertest, moxios and Jest&lt;/a&gt;, &lt;em&gt;published 27th of June 2018&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/&#34;&gt;Setting up Express and Redis with Docker Compose&lt;/a&gt;, &lt;em&gt;published 6th of June 2018&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/&#34;&gt;JavaScript GraphQL Client Requests in Node and the browser using graphql.js&lt;/a&gt;, &lt;em&gt;published 5th of September 2018&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com&#34;&gt;Homepage, codewithhugo.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/change-the-date-of-a-git-commit/&#34;&gt;Change the date of a git commit&lt;/a&gt;, &lt;em&gt;published 29th of August 2018&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/mocking-the-current-date-in-jest-tests/&#34;&gt;Mocking the current Date in Jest tests&lt;/a&gt;, &lt;em&gt;published 7th of July 2018&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/&#34;&gt;A gentle introduction to GraphQL API integrations&lt;/a&gt;, &lt;em&gt;published 10th of September 2018&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_12BC44EFC445B39435F24188DC09E3523F5F0BB39541BE515F4AE118481862F4_1540124344695_image.png&#34; alt=&#34;Top 10 posts for pageviews after 6 months&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;top-day-analytics-and-search-traffic-data&#34;&gt;Top day, analytics and search traffic data&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Top Day&lt;/strong&gt;: 23rd of April, 2,622 page views&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/&#34;&gt;How to make beautiful, simple CLI apps with Node&lt;/a&gt; got pretty high on &lt;a href=&#34;http://reddit.com/r/node&#34;&gt;&lt;code&gt;/r/node&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_12BC44EFC445B39435F24188DC09E3523F5F0BB39541BE515F4AE118481862F4_1540124269010_image.png&#34; alt=&#34;Google Analytics after 6 months&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Search traffic for the last 6 months (as of 21st of October 2018):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_12BC44EFC445B39435F24188DC09E3523F5F0BB39541BE515F4AE118481862F4_1540124214742_image.png&#34; alt=&#34;Search traffic graph after 6 months&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;highlights&#34;&gt;Highlights&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Getting onto &lt;a href=&#34;https://nodeweekly.com/&#34;&gt;Node Weekly&lt;/a&gt;, &lt;a href=&#34;https://javascriptweekly.com/&#34;&gt;JavaScript Weekly&lt;/a&gt;, &lt;a href=&#34;https://www.google.co.uk/search?q=vuejsfeed&amp;amp;oq=vuejsfeed&amp;amp;aqs=chrome..69i57j0l3.1928j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8&#34;&gt;Vue.js feed&lt;/a&gt;, &lt;a href=&#34;https://graphqlweekly.com/&#34;&gt;GraphQL Weekly&lt;/a&gt;, thanks for all the work put into curating top content (and deeming some of mine was).&lt;/li&gt;
+&lt;li&gt;Becoming a writer for freeCodeCamp and The Startup, on top of a HackerNoon and Codeburst contributor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;newsletter-dev-to-and-twitter&#34;&gt;Newsletter, dev.to and Twitter&lt;/h2&gt;
+
+&lt;p&gt;Newsletter:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Subscribes&lt;/strong&gt;: 72&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Unsubscribes&lt;/strong&gt;: 4&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;dev.to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Followers:&lt;/strong&gt; 2,811&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;code-and-example-repositories&#34;&gt;Code and example repositories&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Repositories count&lt;/strong&gt;: 11&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;In order of appearance:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/express-redis-docker&#34;&gt;github.com/HugoDF/express-redis-docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/fix-package-lock&#34;&gt;github.com/HugoDF/fix-package-lock&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/express-supertest-moxios&#34;&gt;github.com/HugoDF/express-supertest-moxios&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/express-bull-es6&#34;&gt;github.com/HugoDF/express-bull-es6&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/snapshot-everything&#34;&gt;github.com/HugoDF/snapshot-everything&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/python-graphql-client-example&#34;&gt;github.com/HugoDF/python-graphql-client-example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/js-graphql-client-example&#34;&gt;github.com/HugoDF/js-graphql-client-example&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/parcel-gh-pages-deploy&#34;&gt;github.com/HugoDF/parcel-gh-pages-deploy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/vue-multiple-components-in-sfc&#34;&gt;github.com/HugoDF/vue-multiple-components-in-sfc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/wait-for-pg&#34;&gt;github.com/HugoDF/wait-for-pg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/micro-vs-express-example&#34;&gt;github.com/HugoDF/micro-vs-express-example&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Extracted using: &lt;code&gt;cat content/post/2018-{04,05,06,07,08,09,10,11,12}-* | grep &amp;quot;https://github.com/HugoDF/&amp;quot;&lt;/code&gt; followed by manual cleaning 🙂&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;revenue&#34;&gt;Revenue&lt;/h2&gt;
+
+&lt;p&gt;👌, a big fat &lt;code&gt;0&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m working on &lt;a href=&#34;https://accountableblogging.com&#34;&gt;Accountable Blogging&lt;/a&gt; and a Sequelize cheat sheet so &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to the newsletter&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Again, stats and data in this post as of 21st of October, &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;follow me on Twitter&lt;/a&gt; for monthly updates.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@srd844?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Stephen Dawson&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Stephen Dawson&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

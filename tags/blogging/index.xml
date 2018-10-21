@@ -1,115 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Technical Writing on Code with Hugo</title>
-    <link>https://codewithhugo.com/tags/technical-writing/</link>
-    <description>Recent content in Technical Writing on Code with Hugo</description>
+    <title>Blogging on Code with Hugo</title>
+    <link>https://codewithhugo.com/tags/blogging/</link>
+    <description>Recent content in Blogging on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 21 Oct 2018 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://codewithhugo.com/tags/technical-writing/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://codewithhugo.com/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Ditch syntax highlighting for better technical writing</title>
-      <link>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</link>
-      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</guid>
-      <description>&lt;p&gt;Ditching syntax highlighting leads to more concise snippets,
-more thought to be put to find a minimal example
-and better overall flow in your writing.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Writing technical content is hard, picking a nice syntax highlighting theme is harder.&lt;/p&gt;
-
-&lt;p&gt;There are so many options and each platform has a ton more you can for example:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;export your code as images with services like &lt;a href=&#34;https://carbon.now.sh&#34;&gt;carbon.now.sh&lt;/a&gt;,&lt;/li&gt;
-&lt;li&gt;take screenshots of your code in your editor&lt;/li&gt;
-&lt;li&gt;use GitHub gists &lt;a href=&#34;https://gist.github.com&#34;&gt;gist.github.com&lt;/a&gt; or other hosted solution&lt;/li&gt;
-&lt;li&gt;compile your examples to code blocks (eg. as part of your markdown compilation) and
-leverage CSS or JavaScript libraries to highlight them on the web&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The other option is to just &lt;em&gt;not&lt;/em&gt; have highlighted code blocks.&lt;/p&gt;
-
-&lt;p&gt;Here are a couple of reasons to ditch syntax highlighting.&lt;/p&gt;
-
-&lt;h1 id=&#34;1-focus&#34;&gt;1. Focus&lt;/h1&gt;
-
-&lt;p&gt;Focus on the content not presentation.&lt;/p&gt;
-
-&lt;p&gt;Spend time polishing and rethinking your examples, not going back and exporting
-that code snippet on &lt;a href=&#34;https://carbon.now.sh&#34;&gt;carbon.now.sh&lt;/a&gt; for the 10th time.&lt;/p&gt;
-
-&lt;p&gt;The code snippets are an intrisic part of your content, not just a nice flourish.
-Your examples illustrate your points.
-You don&amp;rsquo;t edit your content in 5 different formats, your code should be no different.&lt;/p&gt;
-
-&lt;p&gt;Make your content pretty but not at the expense of your ability to publish it fast.&lt;/p&gt;
-
-&lt;h1 id=&#34;2-difficult-to-further-highlight-inside-something-that-s-highlighted&#34;&gt;2. Difficult to further highlight inside something that&amp;rsquo;s highlighted&lt;/h1&gt;
-
-&lt;p&gt;Just like you can use &lt;strong&gt;bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt; text in moderation,
-&lt;strong&gt;if a whole sentence or paragraph is bold, it&amp;rsquo;s hard to &lt;em&gt;highlight&lt;/em&gt; anything inside it.&lt;/strong&gt;
-From there on it&amp;rsquo;s just a race to the biggest, flashiest text.
-That&amp;rsquo;s not something you want to turn your post into.&lt;/p&gt;
-
-&lt;p&gt;What that means is that having large chunks of highlighted code might make it hard for you
-to show your readers what you&amp;rsquo;re trying to show them.&lt;/p&gt;
-
-&lt;h1 id=&#34;3-content-that-lasts&#34;&gt;3. Content that lasts&lt;/h1&gt;
-
-&lt;p&gt;Using images or 3rd party services to host your code means your post now needs multiple
-services to be up for it to keep existing in full.&lt;/p&gt;
-
-&lt;p&gt;Services shut down (sometimes quite quickly), images get lost.
-Don&amp;rsquo;t let your post live on borrowed time, let it host all its own content.&lt;/p&gt;
-
-&lt;h1 id=&#34;4-accessible-and-fast&#34;&gt;4. Accessible and fast&lt;/h1&gt;
-
-&lt;p&gt;Put yourself in the reader&amp;rsquo;s shoes.&lt;/p&gt;
-
-&lt;p&gt;How many times did you load a post on a flaky network,
-just before the connection dropped, the post flashes, it looks like it loaded,
-maybe you beat the flaky network this time?&lt;/p&gt;
-
-&lt;p&gt;Wrong! The post loaded alright, but to have any of the code, you need the images and the embeds&amp;hellip; great.&lt;/p&gt;
-
-&lt;p&gt;A code block is just text, it can be interpreted better than an image.
-Even if that image has a nice alt text and good metadata.&lt;/p&gt;
-
-&lt;h1 id=&#34;5-find-a-minimal-case&#34;&gt;5. Find a minimal case&lt;/h1&gt;
-
-&lt;p&gt;Not having nice-looking code means you&amp;rsquo;ll shorten your examples and that&amp;rsquo;s a good thing.&lt;/p&gt;
-
-&lt;p&gt;More explanation, less shoving code in people&amp;rsquo;s faces.
-After all that&amp;rsquo;s why they&amp;rsquo;re here.
-If they wanted to read code, they would have gone some open source project&amp;rsquo;s GitHub page.&lt;/p&gt;
-
-&lt;h1 id=&#34;6-write-as-you-speak&#34;&gt;6. Write as you speak&lt;/h1&gt;
-
-&lt;p&gt;Large code snippets, just like massive paragraphs, can start to look like a wall of text.&lt;/p&gt;
-
-&lt;p&gt;When you start to mix between small snippets and code inset in your text, the content will flow better.
-It will be more like a conversation, you explaining to a co-worker or a little sister,
-what exactly it is that &lt;code&gt;var&lt;/code&gt; is compared to &lt;code&gt;let&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;A well-written post with inset code is just like a well-punctuated and structured post.
-It feels a lot nicer to read, happy readers, happy writers.&lt;/p&gt;
-
-&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
-
-&lt;p&gt;Reduce the amount of time you spend messing around with your code blocks and spend more time thinking about it.&lt;/p&gt;
-
-&lt;p&gt;What other hurdles do you have in your technical writing?&lt;/p&gt;
-
-&lt;p&gt;Let me know here or on Twitter: &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>6 months of Code with Hugo, in numbers</title>
