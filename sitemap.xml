@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/</loc>
+    <lastmod>2018-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/</loc>
     <lastmod>2018-10-21T00:00:00+00:00</lastmod>
   </url>
@@ -236,6 +241,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/animation/</loc>
     <lastmod>2018-01-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/architecture/</loc>
+    <lastmod>2018-10-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
