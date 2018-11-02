@@ -31,8 +31,10 @@
 &lt;li&gt;I always rave about my blog setup, it’s simple, fast and just works&lt;/li&gt;
 &lt;li&gt;I used &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;, “The world’s fastest framework for building websites”, a static site generator&lt;/li&gt;
 &lt;li&gt;I used a theme, &lt;a href=&#34;https://github.com/eueung/hugo-casper-two&#34;&gt;casper-two&lt;/a&gt;, which is a Hugo port of the &lt;a href=&#34;https://ghost.org/&#34;&gt;https://ghost.org/&lt;/a&gt; default theme&lt;/li&gt;
-&lt;li&gt;I deployed to GitHub pages behind Cloudflare.&lt;/li&gt;
+&lt;li&gt;I deployed to GitHub pages behind Cloudflare *.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;There&amp;rsquo;s been an update in the deployment saga, read it here: &lt;a href=&#34;https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/&#34;&gt;&amp;ldquo;A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
@@ -65,8 +67,8 @@
 &lt;/ul&gt;
 
 &lt;!--
-- [Getting a full RSS feed 😄](#getting-a-full-rss-feed-%F0%9F%98%84)
-    - [Cloudflare setup](#cloudflare-setup)
+- [Getting a full RSS feed 😄](#getting-a-full-rss-feed-)
+  - [Cloudflare setup](#cloudflare-setup)
 --&gt;
 
 &lt;h2 id=&#34;why-i-didn-t-build-my-own-website&#34;&gt;Why I didn’t build my own website 🏃‍♂️&lt;/h2&gt;
