@@ -99,27 +99,30 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ben-sauer-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Testing 
               #JavaScript 
-              #ES6  </span>
+              #Node 
+              #Docker 
+              #redis  </span>
               
-              <h2 class="post-card-title">Abusing Jest snapshot tests: some nice use-cases 📸</h2>
+              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>There&rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.
-In other words, although React and Vue testing with snapshots is pretty well documented, that&rsquo;s not the only place they&rsquo;re useful.
-As a rule of thumb, you could replace a lot of unit tests that assert on with specific data with snapshot tests.
-We have the following pros for snapshot tests: - the match data is stored in a separate file so it&rsquo;s harder to lose track of things, eg. ...  </p>
+                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
+Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
+We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
+
+ ...  </p>
               
           </section>
       </a>
@@ -168,25 +171,26 @@ The basics Functional programming is a programming paradigm that follows a more 
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elevate-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #VueJS 
+              #JavaScript 
+              #Sequelize 
               #testing 
-              #JavaScript  </span>
+              #Node  </span>
               
-              <h2 class="post-card-title">From AngularJS to Vue.js, CommonJS and Jest</h2>
+              <h2 class="post-card-title">Unit Testing Sequelize 4 ES6 class models</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration
- AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components. ...  </p>
+                <p>In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).
+The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications. ...  </p>
               
           </section>
       </a>

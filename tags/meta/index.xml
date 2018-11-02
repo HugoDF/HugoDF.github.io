@@ -6,7 +6,7 @@
     <description>Recent content in Meta on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 17 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Nov 2018 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://codewithhugo.com/tags/meta/index.xml" rel="self" type="application/rss+xml" />
     
@@ -441,6 +441,122 @@ I knew it was a problem but as usual I never got round to fixing it until I emba
 &lt;p&gt;Again, stats and data in this post as of 21st of October, &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;follow me on Twitter&lt;/a&gt; for monthly updates.&lt;/p&gt;
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@srd844?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Stephen Dawson&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Stephen Dawson&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</title>
+      <link>https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/</link>
+      <pubDate>Fri, 02 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Last Monday (22 October 2018) GitHub was going 💥, and scheduled content on Code with Hugo wasn’t going live.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For context, the blog’s setup is documented in &lt;a href=&#34;https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/&#34;&gt;“Switching the lights on: Hugo vs Hugo config files”&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt; &lt;em&gt;(as is relevant to this post)&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cloudflare DNS + CDN + proxying + HTTPS&lt;/li&gt;
+&lt;li&gt;GitHub Pages&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; as a static site generator&lt;/li&gt;
+&lt;li&gt;CircleCI to deploy the site daily + on push (🤷‍♀️wasn’t in the post but that’s how I do it)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Contents of this post:&lt;/p&gt;
+
+&lt;!--
+- [On hosting with a business which isn’t specialised in static hosting 🤔](#on-hosting-with-a-business-which-isnt-specialised-in-static-hosting-)
+- [Speedy migration to Netlify ⏩](#speedy-migration-to-netlify-)
+- [Why use Cloudflare then?](#why-use-cloudflare-then)
+- [The path forward](#the-path-forward)
+--&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#on-hosting-with-a-business-which-isnt-specialised-in-static-hosting&#34;&gt;On hosting with a business which isn’t specialised in static hosting 🤔&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#speedy-migration-to-netlify&#34;&gt;Speedy migration to Netlify ⏩&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-use-cloudflare-then&#34;&gt;Why use Cloudflare then?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-path-forward&#34;&gt;The path forward&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;on-hosting-with-a-business-which-isn-t-specialised-in-static-hosting&#34;&gt;On hosting with a business which isn’t specialised in static hosting 🤔&lt;/h2&gt;
+
+&lt;p&gt;Back to the story: &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt; was not building or publishing on GitHub Page… which means my post &lt;a href=&#34;https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/&#34;&gt;“Simple but not too simple: how&lt;/a&gt; &lt;code&gt;[micro](https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/)&lt;/code&gt; &lt;a href=&#34;https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/&#34;&gt;improves your Node applications”&lt;/a&gt;, scheduled for publication at 7AM UTC (I’ll write up how I do this one day &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to get it in your inbox&lt;/a&gt;)… Didn’t go live.&lt;/p&gt;
+
+&lt;p&gt;As it turns out, the GitHub team itself struggled to get a post out during this period: &lt;a href=&#34;https://blog.github.com/2018-10-30-oct21-post-incident-analysis/#2018-october-22-0746-utc&#34;&gt;“We use GitHub Pages internally and all builds had been paused several hours earlier, so publishing this took additional effort.”&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;What’s worse, GitHub’s web-hooks and other core APIs were either unavailable or really flakey/disrupted. Which means that migrating to Netlify wasn’t as simple as usual: “deploy from git” wouldn’t work due to disruptions on GitHub’s end.&lt;/p&gt;
+
+&lt;h2 id=&#34;speedy-migration-to-netlify&#34;&gt;Speedy migration to Netlify ⏩&lt;/h2&gt;
+
+&lt;p&gt;A great Netlify feature is “manual deploys”, where you just upload a zip and it deploys it as a static site. Thankfully the latest version on my GitHub Pages repository had the post I wanted (it just couldn’t deploy it).&lt;/p&gt;
+
+&lt;p&gt;Getting the site up on Netlify was simple enough:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;download the repository’s zip archive from GitHub (thankfully this wasn’t on fire 🚒 like the rest of GitHub)&lt;/li&gt;
+&lt;li&gt;upload it to Netlify using the dashboard&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;At this point the site is live on a &lt;code&gt;*.netlify.com&lt;/code&gt; domain.&lt;/p&gt;
+
+&lt;p&gt;Getting the codewithhugo.com domain pointing to Netlify:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Update the &lt;code&gt;A&lt;/code&gt; records on Cloudflare’s DNS to Netlify’s load balancer &lt;code&gt;104.198.14.52&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What surprised me is how fast the update happened. A DNS update should take time to propagate. Except this wasn’t strictly a DNS update since I’m using Cloudflare’s proxied DNS. That means if you &lt;code&gt;dig codewithhugo.com&lt;/code&gt; you get the following answer section:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;;; ANSWER SECTION:
+codewithhugo.com.        299        IN        A        104.27.140.8
+codewithhugo.com.        299        IN        A        104.27.141.8
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Suprise! 🎉 those records don’t point to Netlify (or GitHub Pages), they point to Cloudflare (see &lt;a href=&#34;https://www.abuseipdb.com/whois/104.27.140.8&#34;&gt;https://www.abuseipdb.com/whois/104.27.140.8&lt;/a&gt; and &lt;a href=&#34;https://www.abuseipdb.com/whois/104.27.141.8&#34;&gt;https://www.abuseipdb.com/whois/104.27.141.8&lt;/a&gt;). Cloudflare then proxies to Netlify’s load balancer. Super 👏 neat 👏 .&lt;/p&gt;
+
+&lt;h2 id=&#34;why-use-cloudflare-then&#34;&gt;Why use Cloudflare then?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1054350487372349440&#34;&gt;https://twitter.com/hugo__df/status/1054350487372349440&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1054350487372349440&#34;&gt;https://twitter.com/hugo__df/status/1054350487372349440&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;When I first published &lt;a href=&#34;https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/&#34;&gt;“Switching the lights on: Hugo vs Hugo config files”&lt;/a&gt;, one of the reactions I received was: &lt;a href=&#34;https://dev.to/lietux/comment/4od9&#34;&gt;“You don&amp;rsquo;t seem to explain any reason for using CloudFlare on top of GitHub pages. Care to elaborate?”&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To which I replied (&lt;a href=&#34;https://dev.to/hugo__df/comment/5115&#34;&gt;see the comment here&lt;/a&gt;):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;HTTPS (pretty sure it didn&amp;rsquo;t use to be a thing with custom domains on GitHub pages)&lt;/li&gt;
+&lt;li&gt;CDN&lt;/li&gt;
+&lt;li&gt;DNS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Which even I didn’t find that compelling, now I guess I do have a compelling reason to use Cloudflare: you’re able to change hosting provider within minutes if you leverage Cloudflare’s proxied DNS + CDN service.&lt;/p&gt;
+
+&lt;p&gt;I think due to Cloudflare’s proxying and Netlify’s manual deploy saving my bacon in this instance (Monday is newsletter day and I wanted to get the &lt;code&gt;micro&lt;/code&gt; post in there), it’s brought value enough to justify my stack choice.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-path-forward&#34;&gt;The path forward&lt;/h2&gt;
+
+&lt;p&gt;Since I host my static sites on Netlify now (&lt;a href=&#34;http://Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS&#34;&gt;see “Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS”&lt;/a&gt;), I’ve decided that maybe sticking &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt; on there permanently is a good idea. Sorry GitHub Pages.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540484787181_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1054679262584823808&#34;&gt;https://twitter.com/hugo__df/status/1054679262584823808&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1054679262584823808&#34;&gt;https://twitter.com/hugo__df/status/1054679262584823808&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s an example config for deploying a site hosted on GitHub (that would work as a GitHub Pages site) to Netlify:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540486742344_DqL5IruWkAAlwyF.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pretty simple!&lt;/p&gt;
+
+&lt;p&gt;GitHub Pages is awesome, my demos are likely to still live there. Disruptions happen to everyone but as is &lt;a href=&#34;https://blog.github.com/2018-10-30-oct21-post-incident-analysis/&#34;&gt;clear in their post-mortem&lt;/a&gt;, GitHub isn’t a static hosting service 🙂. Netlify’s core business proposition is static site hosting and deployment, that’s why &lt;a href=&#34;https://codewithhugo.com&#34;&gt;Code with Hugo&lt;/a&gt; is going to live there from now on 👍.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@arizonanthony?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Anthony Cantin&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Anthony Cantin&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

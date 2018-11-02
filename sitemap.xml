@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/</loc>
+    <lastmod>2018-11-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/</loc>
     <lastmod>2018-10-22T00:00:00+00:00</lastmod>
   </url>
@@ -291,7 +296,7 @@
   
   <url>
     <loc>https://codewithhugo.com/</loc>
-    <lastmod>2018-10-22T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -303,7 +308,7 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/deployment/</loc>
-    <lastmod>2018-08-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -369,13 +374,13 @@
   
   <url>
     <loc>https://codewithhugo.com/tags/javascript/</loc>
-    <lastmod>2018-10-22T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://codewithhugo.com/tags/meta/</loc>
-    <lastmod>2018-08-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -387,7 +392,7 @@
   
   <url>
     <loc>https://codewithhugo.com/post/</loc>
-    <lastmod>2018-10-22T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
