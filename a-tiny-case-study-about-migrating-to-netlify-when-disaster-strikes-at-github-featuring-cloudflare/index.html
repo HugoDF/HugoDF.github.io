@@ -195,7 +195,8 @@
 
 <h2 id="on-hosting-with-a-business-which-isn-t-specialised-in-static-hosting">On hosting with a business which isn’t specialised in static hosting 🤔</h2>
 
-<p>Back to the story: <a href="https://codewithhugo.com">codewithhugo.com</a> was not building or publishing on GitHub Page… which means my post <a href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">“Simple but not too simple: how</a> <code>[micro](https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/)</code> <a href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">improves your Node applications”</a>, scheduled for publication at 7AM UTC (I’ll write up how I do this one day <a href="https://buttondown.email/hugo">subscribe to get it in your inbox</a>)… Didn’t go live.</p>
+<p>Back to the story: <a href="https://codewithhugo.com">codewithhugo.com</a> was not building or publishing on GitHub Page…
+which means my post <a href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">“Simple but not too simple: how <code>micro</code> improves your Node applications”</a>, scheduled for publication at 7AM UTC (I’ll write up how I do this one day <a href="https://buttondown.email/hugo">subscribe to get it in your inbox</a>)… Didn’t go live.</p>
 
 <p>As it turns out, the GitHub team itself struggled to get a post out during this period: <a href="https://blog.github.com/2018-10-30-oct21-post-incident-analysis/#2018-october-22-0746-utc">“We use GitHub Pages internally and all builds had been paused several hours earlier, so publishing this took additional effort.”</a></p>
 
@@ -231,9 +232,13 @@ codewithhugo.com.        299        IN        A        104.27.141.8
 
 <h2 id="why-use-cloudflare-then">Why use Cloudflare then?</h2>
 
-<p><a href="https://twitter.com/hugo__df/status/1054350487372349440">https://twitter.com/hugo__df/status/1054350487372349440</a></p>
+<blockquote>
+<p>Well since <a href="https://twitter.com/github?ref_src=twsrc%5Etfw">@github</a> Pages stopped building with all the issues, thanks to <a href="https://twitter.com/Netlify?ref_src=twsrc%5Etfw">@Netlify</a>&rsquo;s <code>zip upload</code> functionality and <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw">@Cloudflare</a>&rsquo;s proxied DNS service I&rsquo;ve been able to get the blog post I scheduled for today live.</p>
 
-<p><a href="https://twitter.com/hugo__df/status/1054350487372349440">https://twitter.com/hugo__df/status/1054350487372349440</a></p>
+<p>👏👍</p>
+
+<p>— Hugo Di Francesco (@hugo__df) <a href="https://twitter.com/hugo__df/status/1054350487372349440?ref_src=twsrc%5Etfw">22 October 2018</a></p>
+</blockquote>
 
 <p>When I first published <a href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">“Switching the lights on: Hugo vs Hugo config files”</a>, one of the reactions I received was: <a href="https://dev.to/lietux/comment/4od9">“You don&rsquo;t seem to explain any reason for using CloudFlare on top of GitHub pages. Care to elaborate?”</a>.</p>
 
@@ -251,19 +256,21 @@ codewithhugo.com.        299        IN        A        104.27.141.8
 
 <h2 id="the-path-forward">The path forward</h2>
 
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540484787181_image.png" alt="✅ Don't switch back to GitHub Pages #codewithhugo" /></p>
+
 <p>Since I host my static sites on Netlify now (<a href="http://Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS">see “Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS”</a>), I’ve decided that maybe sticking <a href="https://codewithhugo.com">codewithhugo.com</a> on there permanently is a good idea. Sorry GitHub Pages.</p>
 
-<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540484787181_image.png" alt="" /></p>
+<blockquote>
+<p>If you want to migrate a HTML <a href="https://twitter.com/github?ref_src=twsrc%5Etfw">@github</a> Pages site to <a href="https://twitter.com/Netlify?ref_src=twsrc%5Etfw">@Netlify</a> here&rsquo;s an example config (tl;dr: use Publish Directory &ldquo;.&rdquo;) <a href="https://t.co/pDvlMXnCoc">pic.twitter.com/pDvlMXnCoc</a></p>
 
-<p><a href="https://twitter.com/hugo__df/status/1054679262584823808">https://twitter.com/hugo__df/status/1054679262584823808</a></p>
-
-<p><a href="https://twitter.com/hugo__df/status/1054679262584823808">https://twitter.com/hugo__df/status/1054679262584823808</a></p>
+<p>— Hugo Di Francesco (@hugo__df) <a href="https://twitter.com/hugo__df/status/1054679262584823808?ref_src=twsrc%5Etfw">23 October 2018</a></p>
+</blockquote>
 
 <p>Here’s an example config for deploying a site hosted on GitHub (that would work as a GitHub Pages site) to Netlify:</p>
 
-<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540486742344_DqL5IruWkAAlwyF.jpg" alt="" /></p>
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540486742344_DqL5IruWkAAlwyF.jpg" alt="Example config to deploy a GitHub Pages site from GitHub to Netlify" /></p>
 
-<p>Pretty simple!</p>
+<p>Pretty simple, publish the root directory using <code>Publish Directory: .</code> and don&rsquo;t set a build command.</p>
 
 <p>GitHub Pages is awesome, my demos are likely to still live there. Disruptions happen to everyone but as is <a href="https://blog.github.com/2018-10-30-oct21-post-incident-analysis/">clear in their post-mortem</a>, GitHub isn’t a static hosting service 🙂. Netlify’s core business proposition is static site hosting and deployment, that’s why <a href="https://codewithhugo.com">Code with Hugo</a> is going to live there from now on 👍.</p>
 
@@ -327,13 +334,13 @@ codewithhugo.com.        299        IN        A        104.27.141.8
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">Unit Testing Sequelize 4 ES6 class models</a></li>            
+          <li><a href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">Writing multiple Vue components in a single file</a></li>            
         
-          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</a></li>            
         
-          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
+          <li><a href="https://codewithhugo.com/impress-interviewers-with-recursion-in-javascript-with-es6-features/">Impress interviewers with recursion in JavaScript with ES6 features</a></li>            
         
-          <li><a href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">Just enough bash to be dangerous</a></li>            
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

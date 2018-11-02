@@ -6657,7 +6657,8 @@ This is the hello world, &lt;code&gt;app.js&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;on-hosting-with-a-business-which-isn-t-specialised-in-static-hosting&#34;&gt;On hosting with a business which isn’t specialised in static hosting 🤔&lt;/h2&gt;
 
-&lt;p&gt;Back to the story: &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt; was not building or publishing on GitHub Page… which means my post &lt;a href=&#34;https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/&#34;&gt;“Simple but not too simple: how&lt;/a&gt; &lt;code&gt;[micro](https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/)&lt;/code&gt; &lt;a href=&#34;https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/&#34;&gt;improves your Node applications”&lt;/a&gt;, scheduled for publication at 7AM UTC (I’ll write up how I do this one day &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to get it in your inbox&lt;/a&gt;)… Didn’t go live.&lt;/p&gt;
+&lt;p&gt;Back to the story: &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt; was not building or publishing on GitHub Page…
+which means my post &lt;a href=&#34;https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/&#34;&gt;“Simple but not too simple: how &lt;code&gt;micro&lt;/code&gt; improves your Node applications”&lt;/a&gt;, scheduled for publication at 7AM UTC (I’ll write up how I do this one day &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to get it in your inbox&lt;/a&gt;)… Didn’t go live.&lt;/p&gt;
 
 &lt;p&gt;As it turns out, the GitHub team itself struggled to get a post out during this period: &lt;a href=&#34;https://blog.github.com/2018-10-30-oct21-post-incident-analysis/#2018-october-22-0746-utc&#34;&gt;“We use GitHub Pages internally and all builds had been paused several hours earlier, so publishing this took additional effort.”&lt;/a&gt;&lt;/p&gt;
 
@@ -6693,9 +6694,13 @@ codewithhugo.com.        299        IN        A        104.27.141.8
 
 &lt;h2 id=&#34;why-use-cloudflare-then&#34;&gt;Why use Cloudflare then?&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1054350487372349440&#34;&gt;https://twitter.com/hugo__df/status/1054350487372349440&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Well since &lt;a href=&#34;https://twitter.com/github?ref_src=twsrc%5Etfw&#34;&gt;@github&lt;/a&gt; Pages stopped building with all the issues, thanks to &lt;a href=&#34;https://twitter.com/Netlify?ref_src=twsrc%5Etfw&#34;&gt;@Netlify&lt;/a&gt;&amp;rsquo;s &lt;code&gt;zip upload&lt;/code&gt; functionality and &lt;a href=&#34;https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw&#34;&gt;@Cloudflare&lt;/a&gt;&amp;rsquo;s proxied DNS service I&amp;rsquo;ve been able to get the blog post I scheduled for today live.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1054350487372349440&#34;&gt;https://twitter.com/hugo__df/status/1054350487372349440&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;👏👍&lt;/p&gt;
+
+&lt;p&gt;— Hugo Di Francesco (@hugo__df) &lt;a href=&#34;https://twitter.com/hugo__df/status/1054350487372349440?ref_src=twsrc%5Etfw&#34;&gt;22 October 2018&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;When I first published &lt;a href=&#34;https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/&#34;&gt;“Switching the lights on: Hugo vs Hugo config files”&lt;/a&gt;, one of the reactions I received was: &lt;a href=&#34;https://dev.to/lietux/comment/4od9&#34;&gt;“You don&amp;rsquo;t seem to explain any reason for using CloudFlare on top of GitHub pages. Care to elaborate?”&lt;/a&gt;.&lt;/p&gt;
 
@@ -6713,19 +6718,21 @@ codewithhugo.com.        299        IN        A        104.27.141.8
 
 &lt;h2 id=&#34;the-path-forward&#34;&gt;The path forward&lt;/h2&gt;
 
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540484787181_image.png&#34; alt=&#34;✅ Don&#39;t switch back to GitHub Pages #codewithhugo&#34; /&gt;&lt;/p&gt;
+
 &lt;p&gt;Since I host my static sites on Netlify now (&lt;a href=&#34;http://Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS&#34;&gt;see “Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS”&lt;/a&gt;), I’ve decided that maybe sticking &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt; on there permanently is a good idea. Sorry GitHub Pages.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540484787181_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you want to migrate a HTML &lt;a href=&#34;https://twitter.com/github?ref_src=twsrc%5Etfw&#34;&gt;@github&lt;/a&gt; Pages site to &lt;a href=&#34;https://twitter.com/Netlify?ref_src=twsrc%5Etfw&#34;&gt;@Netlify&lt;/a&gt; here&amp;rsquo;s an example config (tl;dr: use Publish Directory &amp;ldquo;.&amp;rdquo;) &lt;a href=&#34;https://t.co/pDvlMXnCoc&#34;&gt;pic.twitter.com/pDvlMXnCoc&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1054679262584823808&#34;&gt;https://twitter.com/hugo__df/status/1054679262584823808&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1054679262584823808&#34;&gt;https://twitter.com/hugo__df/status/1054679262584823808&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;— Hugo Di Francesco (@hugo__df) &lt;a href=&#34;https://twitter.com/hugo__df/status/1054679262584823808?ref_src=twsrc%5Etfw&#34;&gt;23 October 2018&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Here’s an example config for deploying a site hosted on GitHub (that would work as a GitHub Pages site) to Netlify:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540486742344_DqL5IruWkAAlwyF.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5691CB595260242ACD57C6976EE88A660D47EA1777643C78B1E18DEE1EB217B5_1540486742344_DqL5IruWkAAlwyF.jpg&#34; alt=&#34;Example config to deploy a GitHub Pages site from GitHub to Netlify&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Pretty simple!&lt;/p&gt;
+&lt;p&gt;Pretty simple, publish the root directory using &lt;code&gt;Publish Directory: .&lt;/code&gt; and don&amp;rsquo;t set a build command.&lt;/p&gt;
 
 &lt;p&gt;GitHub Pages is awesome, my demos are likely to still live there. Disruptions happen to everyone but as is &lt;a href=&#34;https://blog.github.com/2018-10-30-oct21-post-incident-analysis/&#34;&gt;clear in their post-mortem&lt;/a&gt;, GitHub isn’t a static hosting service 🙂. Netlify’s core business proposition is static site hosting and deployment, that’s why &lt;a href=&#34;https://codewithhugo.com&#34;&gt;Code with Hugo&lt;/a&gt; is going to live there from now on 👍.&lt;/p&gt;
 
