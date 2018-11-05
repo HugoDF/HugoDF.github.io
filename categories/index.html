@@ -138,57 +138,23 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nils-stahl-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Redis 
-              #tooling  </span>
+              #JavaScript 
+              #web development  </span>
               
-              <h2 class="post-card-title">Install just redis-cli on Ubuntu, Debian, Jessie</h2>
+              <h2 class="post-card-title">Avoiding falsy values in JavaScript arrays</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>As part of adding integration tests to an app on CircleCI I ran into the following issues:
- redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly. ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nate-bell-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #CSS 
-              #tip 
-              #accessibility  </span>
-              
-              <h2 class="post-card-title">Responsive, semantic images with CSS</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p> CSS tip: object-fit your images.
- To have an image that doesn&rsquo;t try to stretch to its width/height the classic CSS is as follows:
+                <p>tl;dr: use Array.filter(Boolean) to filter out falsy values and avoid errors.
 
  ...  </p>
               
@@ -205,24 +171,64 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/joshua-sortino-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/anthony-cantin-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #ES6  </span>
+              #meta 
+              #deployment 
+              #JavaScript  </span>
               
-              <h2 class="post-card-title">Use ES modules in Node without Babel/Webpack using `esm`</h2>
+              <h2 class="post-card-title">A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use require('module-name') to import from other modules and use the module.exports object to expose entities from a module.
-Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. ...  </p>
+                <p> Last Monday (22 October 2018) GitHub was going 💥, and scheduled content on Code with Hugo wasn’t going live.
+ For context, the blog’s setup is documented in “Switching the lights on: Hugo vs Hugo config files”.
+tl;dr (as is relevant to this post)
+ Cloudflare DNS + CDN + proxying + HTTPS GitHub Pages Hugo as a static site generator CircleCI to deploy the site daily + on push (🤷‍♀️wasn’t in the post but that’s how I do it)  
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #tooling 
+              #bash  </span>
+              
+              <h2 class="post-card-title">Just enough bash to be dangerous</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p> A bash cheat sheet for developers who just want to get by.
+ Writing setup, CI and deployment flows means a bit of the old bash scripting.
+Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
+To avoid having to do this again myself and for your reading pleasure, here they are.
+
+ ...  </p>
               
           </section>
       </a>

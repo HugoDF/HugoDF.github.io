@@ -212,63 +212,26 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/matthew-henry-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #Node  </span>
-              
-              <h2 class="post-card-title">ES6 by example: a module/CLI to wait for Postgres in docker-compose</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues inside the app.
-This post walks through how to deliver this functionality both as a CLI and a module that works both as a CommonJS module (require) and ES modules, without transpilation.
-“A fast, production ready, zero-dependency ES module loader for Node 6+!” is esm’s promise. From this sample project, it’s worked.
-
- ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #tooling 
+              #git 
+              #ci 
               #bash  </span>
               
-              <h2 class="post-card-title">Just enough bash to be dangerous</h2>
+              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> A bash cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
-To avoid having to do this again myself and for your reading pleasure, here they are.
-
- ...  </p>
+                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. ...  </p>
               
           </section>
       </a>
@@ -283,26 +246,58 @@ To avoid having to do this again myself and for your reading pleasure, here they
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
-      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cli-screenshot.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #CSS 
-              #web development  </span>
+              #JavaScript 
+              #Node 
+              #CLI  </span>
               
-              <h2 class="post-card-title">Why CSS is hard</h2>
+              <h2 class="post-card-title">How to make beautiful, simple CLI apps with Node</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Things we’re not used to tend to be harder
-I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
-Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
-CSS doesn’t get the love it deserves in the developer crowd. ...  </p>
+                <p>Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
+Command line apps are a neat way to package repetitive tasks. This will walk you through some tools that are useful to build CLI apps.
+ The idea 💡 Piping to the command line 🚇 Dealing with sequential actions ✨ Executable JavaScript files 🦅 Adding package binaries 📦 Publishing to npm 🚀  The idea 💡 When merging/rebasing, the file that always seems to cause trouble is the package-lock. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nils-stahl-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #Redis 
+              #tooling  </span>
+              
+              <h2 class="post-card-title">Install just redis-cli on Ubuntu, Debian, Jessie</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>As part of adding integration tests to an app on CircleCI I ran into the following issues:
+ redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly. ...  </p>
               
           </section>
       </a>
