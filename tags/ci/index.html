@@ -58,6 +58,9 @@
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
+      
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.2a90f41cf8cf23510a102e013116d80ad7ed31824b86f0862a21f69386ec9a51.css">
+    
 
     
 
@@ -223,6 +226,85 @@ Continuous Integration is awesome, but sometimes you need a buffer between auto-
 
 
 
-<script async src="//cdn.simpleanalytics.io/hello.js"></script> 
+<script async src="//cdn.simpleanalytics.io/hello.js"></script>
 <noscript><img src="//api.simpleanalytics.io/hello.gif" alt=""></noscript>
+
+
+<script>
+  (function (document) {
+    function getLastDocumentHeight(document) {
+      var body = document.body;
+      var html = document.documentElement;
+      return Math.max(
+        body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight,
+        html.offsetHeight
+      );
+    }
+
+    var $overlay = document.querySelector('.overlay-cta');
+    var hiddenClass = 'overlay-cta--hidden';
+    var closedClass = 'overlay-cta--closed';
+    $overlay.classList.add(hiddenClass);
+
+    
+    var $overlayClose = document.querySelector('.overlay-cta__close');
+    var overlayCloseListener = $overlayClose.addEventListener('click', function (e) {
+      e.preventDefault();
+      $overlay.classList.add(closedClass);
+    });
+
+    var $heroCtaButton = document.querySelector('.hero-cta .button');
+    var $firstContentItem = document.querySelector('.post-full-content > * > *');
+    var title = $heroCtaButton || $firstContentItem;
+
+    var $subscribeBox = document.querySelector('.subscribe-form');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = getLastDocumentHeight(document);
+    var ticking = false;
+
+
+    function onScroll() {
+      lastScrollY = window.scrollY;
+      requestTick();
+    }
+
+    function onResize() {
+      lastWindowHeight = window.innerHeight;
+      lastDocumentHeight = getLastDocumentHeight(document);
+      requestTick();
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+      }
+      ticking = true;
+    }
+
+    function update() {
+      var trigger = title.getBoundingClientRect().top + window.scrollY;
+      var triggerOffset = title.offsetHeight + 35;
+      var lastShowCtaBoxHeight = $subscribeBox.getBoundingClientRect().top ;
+      
+      if (
+        lastScrollY >= trigger + triggerOffset &&
+        lastShowCtaBoxHeight > lastWindowHeight
+      ) {
+        $overlay.classList.remove(hiddenClass);
+      } else {
+        $overlay.classList.add(hiddenClass);
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, false);
+
+    update();
+  })(document);
+</script>
 </body></html>
