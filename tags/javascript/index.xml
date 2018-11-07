@@ -6739,5 +6739,270 @@ codewithhugo.com.        299        IN        A        104.27.141.8
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@arizonanthony?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Anthony Cantin&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Anthony Cantin&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Progress and roadblocks: a journey into open-source</title>
+      <link>https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/</link>
+      <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;Enhancing generators for ES6 in the Sequelize CLI&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is the story of my discovery of ES6-class style model definitions with Sequelize (see &lt;a href=&#34;https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/&#34;&gt;Using ES6 classes for Sequelize 4 models&lt;/a&gt;).
+The realisation that the current Sequelize CLI model generator didn&amp;rsquo;t support it (as is expected since it&amp;rsquo;s not the most common way of doing it).
+Finally, the impetus to just implement it myself.&lt;/p&gt;
+
+&lt;p&gt;In other words, I started using a style of Sequelize models that the Sequelize CLI didn&amp;rsquo;t support. I didn&amp;rsquo;t get an answer on a &amp;ldquo;feature request&amp;rdquo; issue, so I just forked it, implemented it and published it.&lt;/p&gt;
+
+&lt;p&gt;The Free Open Source Software movement has its ups and downs, its hype and abandoned projects.
+One of the great aspects of it is that you can always (depending on the license) just fork something and publish it 🙂.&lt;/p&gt;
+
+&lt;p&gt;Some links:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/HugoDF/sequelize-cli&#34;&gt;sequelize-cli fork repo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.npmjs.com/package/@hugodf/sequelize-cli&#34;&gt;fork published on npm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Live-tweet storms:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1057294226755592192&#34;&gt;Day 1 (struggles)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1057671284920848385&#34;&gt;Day 2 (fixes)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1057986197165879298&#34;&gt;Day 3 (first publish)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1058284191673188354&#34;&gt;Day 4 (finishing up)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--
+- [Dealing with a GitHub fork repository 🍴](#dealing-with-a-github-fork-repository-)
+- [Following setup instructions 📐](#following-setup-instructions-)
+- [My goals 🛒](#my-goals-)
+- [Getting tests to pass 🚫](#getting-tests-to-pass-)
+- [Releasing the updates 🚀](#releasing-the-updates-)
+  - [Trying to contribute back upstream](#trying-to-contribute-back-upstream)
+  - [Publishing a fork as an npm scoped module](#publishing-a-fork-as-an-npm-scoped-module)
+- [Lessons about the Open Source Movement 📖](#lessons-about-the-open-source-movement-)
+  - [People are paid to make mistakes, people who work for free will also make (similar) mistakes](#people-are-paid-to-make-mistakes-people-who-work-for-free-will-also-make-similar-mistakes)
+  - [No one owes you _anything_](#no-one-owes-you-_anything_)
+  - [Do what you can](#do-what-you-can)
+--&gt;
+
+&lt;p&gt;Table of contents:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#dealing-with-a-github-fork-repository&#34;&gt;Dealing with a GitHub fork repository 🍴&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#following-setup-instructions&#34;&gt;Following setup instructions 📐&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#my-goals&#34;&gt;My goals 🛒&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#getting-tests-to-pass&#34;&gt;Getting tests to pass&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#releasing-the-updates&#34;&gt;Releasing the updates 🚀&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#trying-to-contribute-back-upstream&#34;&gt;Trying to contribute back upstream&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#publishing-a-fork-as-an-npm-scoped-module&#34;&gt;Publishing a fork as an npm scoped module&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#lessons-about-the-open-source-movement&#34;&gt;Lessons about the Open Source Movement 📖&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#people-are-paid-to-make-mistakes-people-who-work-for-free-will-also-make-similar-mistakes&#34;&gt;People are paid to make mistakes, people who work for free will also make (similar) mistakes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#no-one-owes-you-anything&#34;&gt;No one owes you &lt;em&gt;anything&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#do-what-you-can&#34;&gt;Do what you can&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;dealing-with-a-github-fork-repository&#34;&gt;Dealing with a GitHub fork repository 🍴&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Fork using the GitHub UI&lt;/li&gt;
+&lt;li&gt;Clone &lt;strong&gt;your fork&lt;/strong&gt; &lt;code&gt;git clone git@github.com:USERNAME/REPONAME.git&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;eg. &lt;code&gt;git clone git@github.com:HugoDF/sequelize-cli.git&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Create upstream remote
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git remote add upstream git remote add upstream https://github.com/sequelize/cli&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;(To sync with upstream) fetch upstream remote and merge it into local branch (from &lt;a href=&#34;https://help.github.com/articles/syncing-a-fork/&#34;&gt;GitHub Help Syncing a Fork&lt;/a&gt;)
+
+&lt;ol&gt;
+&lt;li&gt;Get latest from upstream &lt;code&gt;git fetch upstream&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Merge changes &lt;code&gt;git merge upstream/master&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Send upstream changes to fork  &lt;code&gt;git push&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;following-setup-instructions&#34;&gt;Following setup instructions 📐&lt;/h2&gt;
+
+&lt;p&gt;Getting a project set up can be daunting, luckily Sequelize CLI has some steps in &lt;code&gt;CONTRIBUTING.md&lt;/code&gt;, they&amp;rsquo;re the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;npm install&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Didn’t work on Node 10, something to do with node-gyp and SQLite&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm test&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;takes 10-15 minutes&lt;/li&gt;
+&lt;li&gt;failed on latest &lt;code&gt;master&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;my-goals&#34;&gt;My goals 🛒&lt;/h2&gt;
+
+&lt;p&gt;I wanted to:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Update &lt;code&gt;sequelize model:create&lt;/code&gt; to support a second template, which uses an ES6 class model 👍 when passed a &lt;code&gt;--class&lt;/code&gt; flag, the tasks are as follows
+
+&lt;ol&gt;
+&lt;li&gt;Add support for a &lt;code&gt;--class&lt;/code&gt; flag, somewhere in &lt;a href=&#34;https://github.com/HugoDF/sequelize-cli/blob/master/src/commands/model_generate.js#L10-L24&#34;&gt;model_generate.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Check for &lt;code&gt;args.class&lt;/code&gt; in &lt;a href=&#34;https://github.com/HugoDF/sequelize-cli/blob/master/src/helpers/model-helper.js#L45-L51&#34;&gt;model_helper.js&lt;/a&gt; &lt;code&gt;generateFileContent&lt;/code&gt;, and switch templates depending on that&lt;/li&gt;
+&lt;li&gt;Create a &lt;code&gt;class-model.js&lt;/code&gt; file which is a template similar to &lt;a href=&#34;https://github.com/HugoDF/sequelize-cli/blob/master/src/assets/models/model.js&#34;&gt;src/assets/models/model.js&lt;/a&gt; but uses ES6 &lt;code&gt;class&lt;/code&gt; syntax for the Sequelize model&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;class-model.js&lt;/code&gt; instead of &lt;code&gt;model.js&lt;/code&gt; in &lt;code&gt;model_helper#generateFileContent&lt;/code&gt; when &lt;code&gt;args.class&lt;/code&gt; is set (ie. &lt;code&gt;true&lt;/code&gt;)&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Update the migration generator (these are totally arbitrary choices but things I’ve found wanting to do in Sequelize projects):
+
+&lt;ol&gt;
+&lt;li&gt;use object shorthand notation for functions instead of arrow functions&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;(Ended up not doing this, because it&amp;rsquo;s trivial and nitpicky)&lt;/em&gt; use &lt;code&gt;(sequelize, DataTypes) -&amp;gt; Promise&lt;/code&gt; function signature, ie. rename &lt;code&gt;queryInterface&lt;/code&gt; and &lt;code&gt;Sequelize&lt;/code&gt; to &lt;code&gt;sequelize&lt;/code&gt; and &lt;code&gt;DataTypes&lt;/code&gt; respectively&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;(Won’t do)&lt;/em&gt;&lt;/strong&gt; Update &lt;code&gt;model/index.js&lt;/code&gt; to a form that is more explicit and more in line with what I would use in production
+
+&lt;ul&gt;
+&lt;li&gt;Why?
+This isn’t something that is compatible with current behaviour of the template, you would lose auto-loading of all models in the &lt;code&gt;models&lt;/code&gt; folder.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;getting-tests-to-pass&#34;&gt;Getting tests to pass 🚫&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Failing locally…&lt;/li&gt;
+&lt;li&gt;Was working for &lt;a href=&#34;https://github.com/sequelize/cli&#34;&gt;https://github.com/sequelize/cli&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Why?&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;2.1/ Day 2 of trying to hack on Sequelize CLI&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve got green tests&amp;hellip; it turns out &lt;code&gt;master&lt;/code&gt; is a fake ✅ passing build.&lt;br /&gt;
+It loads latest &lt;code&gt;sequelize-cli&lt;/code&gt; from npm, soooo isn&amp;rsquo;t testing the code in master.&lt;/p&gt;
+
+&lt;p&gt;Hard reset to latest released npm version fixed the test 👍&lt;/p&gt;
+
+&lt;p&gt;— Hugo Di Francesco (@hugo__df) &lt;a href=&#34;https://twitter.com/hugo__df/status/1057671284920848385?ref_src=twsrc%5Etfw&#34;&gt;31 October 2018&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Sequelize CLI Continuous Integration isn&amp;rsquo;t set up how you expect it to be set up:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What you expect: checkout the commit&amp;rsquo;s code and test it&lt;/li&gt;
+&lt;li&gt;What it does: fetch &lt;code&gt;sequelize-cli&lt;/code&gt; from npm, and test that&amp;hellip; so it&amp;rsquo;s testing the latest published release, not the latest code in the repo.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Tests still take a while ⏳&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;they&amp;rsquo;re mostly integration tests: writing files, writing to the DB and having to setup/teardown every so often&lt;/li&gt;
+&lt;li&gt;on my machine a bunch of tests run in 2-3 seconds each and the total time is about 10-15 minutes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;releasing-the-updates&#34;&gt;Releasing the updates 🚀&lt;/h2&gt;
+
+&lt;h3 id=&#34;trying-to-contribute-back-upstream&#34;&gt;Trying to contribute back upstream&lt;/h3&gt;
+
+&lt;p&gt;A &lt;a href=&#34;https://github.com/sequelize/cli/issues/678&#34;&gt;GitHub issue created on the 1st of August 2018&lt;/a&gt; seems to have been lost (not even a “this isn’t something we want to do”).&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s not the nicest experience but it&amp;rsquo;s totally fine by me, OSS maintainers don&amp;rsquo;t owe us anything after all.&lt;/p&gt;
+
+&lt;p&gt;This might be a niche use-case, most people seem to be happy to write models in the &lt;code&gt;module.exports = () =&amp;gt; { /* do some stuff in the closure */ return };&lt;/code&gt; fashion,
+although looking at the number of people who read &lt;a href=&#34;https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/&#34;&gt;“Using ES6 classes for Sequelize 4 models”&lt;/a&gt;,
+it’s a valid way to write an application using Sequelize:&lt;/p&gt;
+
+&lt;iframe width=&#34;600&#34; height=&#34;338&#34; src=&#34;https://datastudio.google.com/embed/reporting/1oQQZK-AbLF8qZhv9FWJwhVfZiTUMjtok/page/WdLb&#34; frameborder=&#34;0&#34; style=&#34;border:0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;noscript&gt;
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_3F14BC7EA71B60938252453DA3775006F6FE61D96309C1403D86743C7DA41F76_1541000231558_Screen+Shot+2018-10-30+at+15.36.36.png)
+&lt;/noscript&gt;
+
+&lt;p&gt;I went ahead and created a PR but I don’t expect it to get merged:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ES6 class PR on &lt;a href=&#34;https://github.com/sequelize/cli/pull/709&#34;&gt;sequelize/cli repo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;publishing-a-fork-as-an-npm-scoped-module&#34;&gt;Publishing a fork as an npm scoped module&lt;/h3&gt;
+
+&lt;p&gt;I always thought this is more a niche/variation type of thing, so publishing it as a fork makes sense&lt;/p&gt;
+
+&lt;p&gt;Update &lt;code&gt;package.json&lt;/code&gt; to have, &lt;code&gt;publishConfig&lt;/code&gt; is very important if you’re publishing a scoped module&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;@hugodf/sequelize-cli&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;publishConfig&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;access&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;public&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Use &lt;code&gt;np&lt;/code&gt; 🙂:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;npx np&lt;/code&gt; and go through the dialog&lt;/li&gt;
+&lt;li&gt;Since the tests take 10-15 minutes to run, I’ve found using the &lt;code&gt;--yolo&lt;/code&gt; option useful&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_3F14BC7EA71B60938252453DA3775006F6FE61D96309C1403D86743C7DA41F76_1541151247857_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;lessons-about-the-open-source-movement&#34;&gt;Lessons about the Open Source Movement 📖&lt;/h2&gt;
+
+&lt;h3 id=&#34;people-are-paid-to-make-mistakes-people-who-work-for-free-will-also-make-similar-mistakes&#34;&gt;People are paid to make mistakes, people who work for free will also make (similar) mistakes&lt;/h3&gt;
+
+&lt;p&gt;Just like at the day job, it&amp;rsquo;s important to have empathy for &amp;ldquo;interesting things&amp;rdquo; going on in the code eg. &lt;a href=&#34;#getting-tests-to-pass&#34;&gt;the tests running against something other than the code&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If anything maintainers have created this project for free, in their spare time so expect &lt;em&gt;more&lt;/em&gt; &amp;ldquo;interesting things&amp;rdquo; in the codebase.&lt;/p&gt;
+
+&lt;p&gt;Technical debt is a sign that the open source project has reached some level of maturity.&lt;/p&gt;
+
+&lt;p&gt;Remember that your situation is the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Aware of the project&amp;rsquo;s existence&lt;/li&gt;
+&lt;li&gt;Using the project&lt;/li&gt;
+&lt;li&gt;Finding a use-cases where the project doesn&amp;rsquo;t quite fit &lt;em&gt;your&lt;/em&gt; needs&lt;/li&gt;
+&lt;li&gt;That use-case might not be something the project even wants to solve&lt;/li&gt;
+&lt;li&gt;Attempting to contribute back to the project&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You&amp;rsquo;re in a very specific situation where the project has reached some level of critical mass/awareness/scale.
+To get here, just like at a startup attempting to scale, the maintainers have had to move relatively fast and fly by the seat of their pants, maybe put some &amp;ldquo;hacks&amp;rdquo; in some places.&lt;/p&gt;
+
+&lt;h3 id=&#34;no-one-owes-you-anything&#34;&gt;No one owes you &lt;em&gt;anything&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;As I mentioned, I opened both an issue and a PR and I don&amp;rsquo;t think either one of them is going to get a response.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s why I just went ahead and published the fork as a module (scoped modules is awesome for this kind of use-case 👍 npm team).&lt;/p&gt;
+
+&lt;h3 id=&#34;do-what-you-can&#34;&gt;Do what you can&lt;/h3&gt;
+
+&lt;p&gt;Every little helps:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mentioning something that stumped you during setup (eg. master being a fake green ✅ build)&lt;/li&gt;
+&lt;li&gt;Documentation updates&lt;/li&gt;
+&lt;li&gt;Opening random PRs with super-opinionated new feature 🙄&lt;/li&gt;
+&lt;li&gt;Write blog posts documenting interesting usage of a library&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Everyone is just trying to help,&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@docrowdee?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Ruediger Theiselmann&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Ruediger Theiselmann&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
