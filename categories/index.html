@@ -141,25 +141,27 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/jay-clark-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/anthony-cantin-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #technical writing 
-              #productivity 
-              #web development  </span>
+              #meta 
+              #deployment 
+              #JavaScript  </span>
               
-              <h2 class="post-card-title">Ditch syntax highlighting for better technical writing</h2>
+              <h2 class="post-card-title">A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Ditching syntax highlighting leads to more concise snippets, more thought to be put to find a minimal example and better overall flow in your writing.
-
+                <p> Last Monday (22 October 2018) GitHub was going 💥, and scheduled content on Code with Hugo wasn’t going live.
+ For context, the blog’s setup is documented in “Switching the lights on: Hugo vs Hugo config files”.
+tl;dr (as is relevant to this post)
+ Cloudflare DNS + CDN + proxying + HTTPS GitHub Pages Hugo as a static site generator CircleCI to deploy the site daily + on push (🤷‍♀️wasn’t in the post but that’s how I do it)  
  ...  </p>
               
           </section>
@@ -175,29 +177,24 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kelly-sikkema-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/joshua-sortino-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Node 
-              #ES6 
-              #architecture  </span>
+              #ES6  </span>
               
-              <h2 class="post-card-title">Simple, but not too simple: how using Zeit’s `micro` improves your Node applications</h2>
+              <h2 class="post-card-title">Use ES modules in Node without Babel/Webpack using `esm`</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Leave the Express comfort zone to expand how you think about Node application architecture.
- tl;dr
- using a function composition model for building HTTP servers is awesome Functions as a Service are great but have some drawbacks micro has a similar, simple API to FaaS but doesn&rsquo;t have a compilation step micro&rsquo;s minimalism affects how you solve problems
- Functions as a composition model for JavaScript
- Functions as a Service pain points ...  </p>
+                <p>Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use require('module-name') to import from other modules and use the module.exports object to expose entities from a module.
+Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. ...  </p>
               
           </section>
       </a>
@@ -212,27 +209,25 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/isis-franca-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #python 
-              #graphql 
+              #JavaScript 
               #web development  </span>
               
-              <h2 class="post-card-title">Python GraphQL client requests example using gql</h2>
+              <h2 class="post-card-title">Avoiding falsy values in JavaScript arrays</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>An example consuming a GraphQL API from Python using gql.
- Full code example at HugoDF/python-graphql-client-example.
- This was sent out on the Code with Hugo newsletter last Monday. Subscribe to get the latest posts right in your inbox (before anyone else).
- $ pip install gql # You should use a virtualenvfrom gql import gql, Client from gql.transport.requests import RequestsHTTPTransport _transport = RequestsHTTPTransport( url=&#39;https://graphql-pokemon.now.sh/&#39;, use_json=True, ) client = Client( transport=_transport, fetch_schema_from_transport=True, ) query = gql(&#34;&#34;&#34; { pokemon(name: &#34;Pikachu&#34;) { attacks { special { name } } } } &#34;&#34;&#34;) print(client. ...  </p>
+                <p>tl;dr: use Array.filter(Boolean) to filter out falsy values and avoid errors.
+
+ ...  </p>
               
           </section>
       </a>
@@ -288,81 +283,5 @@
 <noscript><img src="//api.simpleanalytics.io/hello.gif" alt=""></noscript>
 
 
-<script>
-  (function (document) {
-    function getLastDocumentHeight(document) {
-      var body = document.body;
-      var html = document.documentElement;
-      return Math.max(
-        body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight,
-        html.offsetHeight
-      );
-    }
 
-    var $overlay = document.querySelector('.overlay-cta');
-    var hiddenClass = 'overlay-cta--hidden';
-    var closedClass = 'overlay-cta--closed';
-    $overlay.classList.add(hiddenClass);
-
-    
-    var $overlayClose = document.querySelector('.overlay-cta__close');
-    var overlayCloseListener = $overlayClose.addEventListener('click', function (e) {
-      e.preventDefault();
-      $overlay.classList.add(closedClass);
-    });
-
-    var $heroCtaButton = document.querySelector('.hero-cta .button');
-    var $firstContentItem = document.querySelector('.post-full-content > * > *');
-    var title = $heroCtaButton || $firstContentItem;
-
-    var $subscribeBox = document.querySelector('.subscribe-form');
-
-    var lastScrollY = window.scrollY;
-    var lastWindowHeight = window.innerHeight;
-    var lastDocumentHeight = getLastDocumentHeight(document);
-    var ticking = false;
-
-
-    function onScroll() {
-      lastScrollY = window.scrollY;
-      requestTick();
-    }
-
-    function onResize() {
-      lastWindowHeight = window.innerHeight;
-      lastDocumentHeight = getLastDocumentHeight(document);
-      requestTick();
-    }
-
-    function requestTick() {
-      if (!ticking) {
-        requestAnimationFrame(update);
-      }
-      ticking = true;
-    }
-
-    function update() {
-      var trigger = title.getBoundingClientRect().top + window.scrollY;
-      var triggerOffset = title.offsetHeight + 35;
-      var lastShowCtaBoxHeight = $subscribeBox.getBoundingClientRect().top ;
-      
-      if (
-        lastScrollY >= trigger + triggerOffset &&
-        lastShowCtaBoxHeight > lastWindowHeight
-      ) {
-        $overlay.classList.remove(hiddenClass);
-      } else {
-        $overlay.classList.add(hiddenClass);
-      }
-
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize, false);
-
-    update();
-  })(document);
-</script>
 </body></html>
