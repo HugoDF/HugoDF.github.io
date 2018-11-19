@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en-US" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
+
+    <title>A simple JavaScript/Node coding setup on Mac OS X &middot; Code with Hugo</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#090a0b">
+
+    <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
+    <meta name="theme-color" content="#090a0b">
+    
+    <link rel="canonical" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/" /> 
+
+     <meta name="description" content="&lt;p&gt;Here&amp;rsquo;s how I get productive for JavaScript/Node on Mac OS.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;" /> 
+
+     
+    
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/oskar-yildiz-unsplash.jpg"/>
+    
+ 
+    <meta name="twitter:title" content="A simple JavaScript/Node coding setup on Mac OS X"/>
+    <meta name="twitter:description" content="&lt;p&gt;Here&amp;rsquo;s how I get productive for JavaScript/Node on Mac OS.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/" />
+    <meta name="twitter:site" content="@hugo__df"/>
+
+    <meta property="og:site_name" content="Code with Hugo" />
+    <meta property="og:title" content="A simple JavaScript/Node coding setup on Mac OS X &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/" />
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="&lt;p&gt;Here&amp;rsquo;s how I get productive for JavaScript/Node on Mac OS.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;" />
+
+    <meta property="article:published_time" content="2018-11-19T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="meta" /><meta property="article:tag" content="node" /><meta property="article:tag" content="git" />
+
+    <meta property="og:image" content="https://codewithhugo.com/img/oskar-yildiz-unsplash.jpg"/>
+
+
+    <meta name="generator" content="Hugo 0.46" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://codewithhugo.com/css/casper-two.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
+    
+      
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+    
+      
+      <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
+    
+      
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.2a90f41cf8cf23510a102e013116d80ad7ed31824b86f0862a21f69386ec9a51.css">
+    
+
+    
+
+     
+</head>
+
+
+<body class="post-template">
+  <div class="site-wrapper"> 
+
+<header class="site-header outer">
+  <div class="inner">
+    <nav class="site-nav">
+      <div class="site-nav-left">
+
+        <ul class="nav" role="menu">
+        
+        
+        
+            <li class="" role="menuitem">
+              <a href="/">Home</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/guides/">guides</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/javascript/">JavaScript</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/node/">Node</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/tags/css/">CSS</a>
+            </li>
+        
+            <li class="" role="menuitem">
+              <a href="/open/">#open</a>
+            </li>
+        
+      </ul></div>
+
+      <div class="site-nav-right">
+        <div class="social-links">
+                    
+
+                    <a class="social-link social-link-tw" href="https://twitter.com/hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg></a>
+
+                    <a class="social-link" href="https://github.com/HugoDF" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+
+                    
+
+                    <a class="social-link" href="https://medium.com/@hugo__df" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 195"><path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582 L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011 C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114 150.640424,135.084652 151.542017,135.771899 L161.755369,145.798942 L161.755369,148 L110.38282,148 L110.38282,145.798942 L120.963119,135.527337 C122.002801,134.487948 122.002801,134.182246 122.002801,132.592593 L122.002801,73.0417402 L92.585901,147.755438 L88.6106443,147.755438 L54.3622782,73.0417402 L54.3622782,123.115814 C54.0767278,125.221069 54.7759199,127.3406 56.2581699,128.863022 L70.0186741,145.55438 L70.0186741,147.755438 L31,147.755438 L31,145.55438 L44.7605042,128.863022 C46.2319621,127.338076 46.8903838,125.204485 46.5340803,123.115814 L46.5340803,65.2157554 Z"/></svg></a>
+        </div>  
+        
+        <a class="subscribe-button" href="https://codewithhugo.com/index.xml">Subscribe</a>
+            
+      </div>
+
+    </nav>  
+
+  </div>
+</header>
+
+<main id="site-main" class="site-main outer" role="main">
+  <div class="inner">
+    
+      <article class="post-full post">
+    <header class="post-full-header">
+        <section class="post-full-meta">
+            <time class="post-full-meta-date" datetime="2018-11-19">19 November 2018</time>
+                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/meta/">#meta</a>&nbsp;
+        </section>
+        <h1 class="post-full-title">A simple JavaScript/Node coding setup on Mac OS X</h1>
+    </header>
+    <div class="hero-container">
+
+      
+      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/oskar-yildiz-unsplash.jpg)">
+        
+
+      </figure>
+    </div>
+
+    <section class="post-full-content">
+        <div class="kg-card-markdown">
+        <p>Here&rsquo;s how I get productive for JavaScript/Node on Mac OS.</p>
+
+<p></p>
+
+<ul>
+<li><p><a href="#terminal">Terminal</a></p>
+
+<ul>
+<li><a href="#setup-iterm2">Setup iTerm2</a>
+
+<ul>
+<li><a href="#change-edit-mode-to-natural-text">Change edit mode to natural text</a></li>
+<li><a href="#new-session-should-start-where-previous-left-off">New session should start where previous left off</a></li>
+<li><a href="#quit-on-tab-close">Quit on tab close</a></li>
+<li><a href="#increase-font-size">Increase font size</a></li>
+</ul></li>
+<li><a href="#shell-setup">Shell setup</a>
+
+<ul>
+<li><a href="#zsh">zsh</a></li>
+<li><a href="#snazzy-colour-theme">snazzy colour theme</a></li>
+<li><a href="#pure-prompt">Pure prompt</a></li>
+</ul></li>
+</ul></li>
+
+<li><p><a href="#browsers-and-testing">Browsers and testing</a></p></li>
+
+<li><p><a href="#editor">Editor</a></p>
+
+<ul>
+<li><a href="#install-vscode-command-line-tools">Install VSCode command line tools</a></li>
+<li><a href="#must-have-extensions">Must-have extensions</a></li>
+<li><a href="#nice-to-have-extensions">Nice to have extensions</a></li>
+</ul></li>
+
+<li><p><a href="#productivity">Productivity</a></p></li>
+
+<li><p><a href="#tooling">Tooling</a></p></li>
+
+<li><p><a href="#setup-and-configuration">Setup and configuration</a></p></li>
+
+<li><p><a href="#misc-and-extras">Misc and extras</a></p>
+
+<ul>
+<li><a href="#optional-docker-virtualbox">(Optional) Docker, VirtualBox</a></li>
+</ul></li>
+</ul>
+
+<h1 id="terminal">Terminal</h1>
+
+<h2 id="setup-iterm2">Setup iTerm2</h2>
+
+<ul>
+<li>Install <a href="https://www.iterm2.com/">iTerm2</a></li>
+</ul>
+
+<h3 id="change-edit-mode-to-natural-text">Change edit mode to natural text</h3>
+
+<ul>
+<li>iTerm Preferences → Profiles → select your profile → Keys tab → Load Preset&hellip; → Natural Text Editing (See <a href="https://apple.stackexchange.com/a/218639">this StackOverflow answer</a>)</li>
+</ul>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542554401407_image.png" alt="" /></p>
+
+<h3 id="new-session-should-start-where-previous-left-off">New session should start where previous left off</h3>
+
+<ul>
+<li>iTerm Preferences → Profiles → select your profile → General tab → Working Directory section → Reuse previous session’s directory option
+<br /></li>
+</ul>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542554259914_image.png" alt="" /></p>
+
+<h3 id="quit-on-tab-close">Quit on tab close</h3>
+
+<ul>
+<li>iTerm Preferences → General, “Closing” → “Quit when all windows are closed”
+<br /></li>
+</ul>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542554318639_image.png" alt="" /></p>
+
+<h3 id="increase-font-size">Increase font size</h3>
+
+<ul>
+<li>iTerm Preferences → Profiles → select your profile → Text tab → Font section → Change font → Update font in the popup</li>
+<li>Fan of 16pt Monaco (12, 14 is just too small)</li>
+</ul>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542554456878_image.png" alt="" /></p>
+
+<h2 id="shell-setup">Shell setup</h2>
+
+<h3 id="zsh">zsh</h3>
+
+<p>With <a href="https://ohmyz.sh/">oh-my-zsh</a> manager. Sets you up with auto-completion.</p>
+
+<h3 id="snazzy-colour-theme">snazzy colour theme</h3>
+
+<p>Using <a href="https://github.com/samtgarson/iterm-snazzy">iterm-snazzy</a>, which is a case of downloading the <code>.itermcolors</code> file and choosing the theme from (iTerm Preferences → Profile &gt; Colors &gt; Color Presets&hellip;).</p>
+
+<h3 id="pure-prompt">Pure prompt</h3>
+
+<p>It’s simple, clean but gives you enough information to be productive.</p>
+
+<p><em>(see <a href="#setup-and-configuration">Setup and configuration</a> for how to get Node/npm up and running)</em></p>
+
+<ul>
+<li>Install using npm:  <code>npm install --global pure-prompt</code></li>
+<li>Initialise by adding the following to your <code>.zshrc</code>:
+autoload -U promptinit; promptinit
+prompt pure</li>
+</ul>
+
+<h1 id="browsers-and-testing">Browsers and testing</h1>
+
+<p>As a developer it’s always good to have a few browsers and tools handy:</p>
+
+<ul>
+<li><a href="https://www.google.com/chrome/">Google Chrome</a>: still a goto due to its solid and extensive dev tools. Usually I install the React or Vue dev tools.</li>
+<li><a href="https://www.getpostman.com/apps">Postman for Mac</a>: to manually test APIs</li>
+<li><a href="https://www.mozilla.org/firefox/new/">Firefox</a>: number 2 browser</li>
+<li><a href="https://brave.com/">Brave</a>: auto-blocks ads and tracking, sort of the “play” browser, its dev tools are a buggier/less ergonomic version of Chrome dev tools (this is because Brave uses Chromium under the hood)</li>
+<li>Safari - installed by default on Mac OSX, it’s a buggy browser, good to test using it since it surfaces weird SVG and cookies security policy quirks. Since it’s the default it’s also widely used by non-technical people.
+
+<ul>
+<li>Enable the dev tools: Safari → Preferences → Advanced → Show develop menu in menu bar.</li>
+</ul></li>
+</ul>
+
+<h1 id="editor">Editor</h1>
+
+<p>I use <a href="https://code.visualstudio.com/">Visual Studio Code</a>, it strikes the right balance between usable out of the box and customisable. The way I see it editors like vim or Atom need a bit of config before being productive, and others like Sublime or IDEs (WebStorm) don’t have the same plugin ecosystem.</p>
+
+<h2 id="install-vscode-command-line-tools">Install VSCode command line tools</h2>
+
+<p>Open the dialog using CMD + P.</p>
+
+<p>Use: <code>Shell Command: Install 'code' command in PATH</code></p>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542556492194_image.png" alt="" /></p>
+
+<p>The VSCode command line tool usage examples:</p>
+
+<ul>
+<li><code>code .</code> : open <code>.</code> directory in VSCode</li>
+<li><code>code -r .</code> : replace directory opened in VSCode with the current directory</li>
+<li><code>code -a .</code> : add current directory to VSCode, ie. initialises a workspace</li>
+</ul>
+
+<h2 id="must-have-extensions">Must-have extensions</h2>
+
+<ul>
+<li>Atom keymap: I’m not a fan of the default keybindings, this uses Atom-style ones, <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.atom-keybindings">get it from the Visual Studio Marketplace</a> or <code>ext install atom-keybindings</code> from <code>CMD + P</code> menu</li>
+<li>EditorConfig for VS Code: “EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs.” (see <a href="https://editorconfig.org/">editorconfig.org</a>), ie. helps you deal with tab size, trimming spaces etc. across code editors, <a href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig">get it here from the Visual Studio Marketplace</a> or <code>ext install EditorConfig</code> from <code>CMD + P</code> menu</li>
+</ul>
+
+<h2 id="nice-to-have-extensions">Nice to have extensions</h2>
+
+<ul>
+<li>ESLint: “Integrates ESLint JavaScript into VS Code.”, <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">get it from the Visual Studio Marketplace</a> or <code>ext install vscode-eslint</code> from <code>CMD + P</code> menu</li>
+<li>npm Intellisense: “autocomplete npm modules in import statements”, <a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense">get it from the Visual Studio Marketplace</a> or <code>ext install npm-intellisense</code> from <code>CMD + P</code> menu</li>
+<li>Snazzy theme: same colour theme (snazzy) as I’ve got setup for the terminal for VSCode, <a href="https://marketplace.visualstudio.com/items?itemName=alexanderbast.vscode-snazzy">get it from the Visual Studio Marketplace</a> or <code>ext install snazzy theme</code></li>
+<li>Import Cost: “Display import/require package size in the editor”, <a href="https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost">get it from the Visual Studio Marketplace</a>, or <code>ext install import-cost</code></li>
+</ul>
+
+<h1 id="productivity">Productivity</h1>
+
+<p>Not many productivity apps, just <a href="https://www.alfredapp.com/">Alfred</a>, which I used as a better Spotlight Search and <a href="https://clipy-app.com/">Clipy</a> which is a clipboard manager. For Clipy, bump up the number of “inline items” (Clipy → Preferences → Menu → Number of items place inline).</p>
+
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542557479751_image.png" alt="" /></p>
+
+<h1 id="tooling">Tooling</h1>
+
+<p>Update Xcode using <code>xcode-select</code> <code>--</code><code>install</code>.</p>
+
+<p>Install <a href="https://brew.sh/">Homebrew</a> for package managements (think apt or pkg for Mac):</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">/usr/bin/ruby -e <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&#34;</span></code></pre></div>
+<p>Install <a href="https://nodejs.org/en/">Node.js</a> either from source, using the Mac installer or using Homebrew:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">brew install node</code></pre></div>
+<p>Install <code>n</code> – Interactively Manage Your Node.js Versions using npm (now that we have Node installed):
+<code>npm install</code> <code>--</code><code>global n</code></p>
+
+<p>Switch to latest Node version using <code>n</code>:
+<code>sudo n latest</code></p>
+
+<p>Install jq (format and deal with JSON nicely in the terminal) and watch (run a command repeatedly) using Homebrew</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">brew install jq watch</code></pre></div>
+<p>Add a few git extensions:</p>
+
+<ul>
+<li><a href="https://github.com/paulirish/git-open">git-open</a>: “Type <code>git open</code> to open the GitHub page or website for a repository in your browser.” using <code>npm install --global git-open</code></li>
+<li><a href="https://coderwall.com/p/euwpig/a-better-git-log">git-lg</a>: simpler/prettier <code>git log</code>:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git config --global alias.lg <span class="s2">&#34;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&#34;</span></code></pre></div>
+<h1 id="setup-and-configuration">Setup and configuration</h1>
+
+<p>Add the following minimal <code>.vimrc</code>, which enables syntax highlighting, has basic tab/tabsize configuration and enables line numbers display:</p>
+<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="nx">syntax</span> <span class="nx">enable</span><span class="err">
+</span><span class="err"></span><span class="nx">set</span> <span class="nx">tabstop</span><span class="p">=</span><span class="m">2</span><span class="err">
+</span><span class="err"></span><span class="nx">set</span> <span class="nx">shiftwidth</span><span class="p">=</span><span class="m">2</span><span class="err">
+</span><span class="err"></span><span class="nx">set</span> <span class="nx">expandtab</span><span class="err">
+</span><span class="err"></span><span class="nx">set</span> <span class="nx">number</span></code></pre></div>
+<p>Set up SSH keys and add to VCS hosting, <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">see this GitHub help article</a>:</p>
+
+<ul>
+<li>Generate a new key: <code>ssh-keygen -t rsa -b 4096 -C &quot;*your_email@example.com*&quot;</code></li>
+<li>Copy your public key to clipboard so you can paste it wherever your hosted Version Control system asks you to: <code>pbcopy &lt; ~/.ssh/id_rsa.pub</code></li>
+</ul>
+
+<p>Put percentage on power level, right-click the battery indicator and select “Show Percentage”.</p>
+
+<h1 id="misc-and-extras">Misc and extras</h1>
+
+<p>❤️ Spotify</p>
+
+<h2 id="optional-docker-virtualbox">(Optional) Docker, VirtualBox</h2>
+
+<p>Docker is a containerisation technology, think VMs but smaller. I recommend <a href="https://docs.docker.com/docker-for-mac/install/">Docker for Mac</a>.
+VirtualBox allows you to run Virtual Machines on Mac, install it at <a href="https://docs.docker.com/docker-for-mac/install/">VirtualBox downloads</a>.</p>
+
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@oskaryil?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Oskar Yildiz"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Oskar Yildiz</span></a></p>
+        </div>
+    </section>
+
+    <section class="subscribe-form">
+        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+        <p>Get all the posts of the week before anyone else in your inbox</p>
+        <form
+            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
+            method="post"
+            target="popupwindow"
+            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
+        >
+            <div class="form-group">
+                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+                <input type="hidden" value="1" name="embed"/>
+            </div>
+            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+        </form>
+    </section>
+
+    <footer class="post-full-footer">
+      <section class="author-card">
+        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+        <section class="author-card-content">
+            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
+                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
+        </section>
+      </section>
+    </footer>
+</article>
+
+
+  <section class="overlay-cta">
+    <div class="overlay-cta__inner">
+      <div class="overlay-cta__text-container">
+        <h3 class="cta-title overlay-cta__title">
+          Subscribe to the Code with Hugo newsletter
+        </h3>
+        <p class="cta-text overlay-cta__text">
+          Get the latest articles in your inbox every 2 weeks
+        </p>
+      </div>
+      <div class="overlay-cta__button-container">
+        <a href="https://buttondown.email/hugo" class="button overlay-cta__button">
+          Subscribe
+        </a>
+        <a href="#" class="overlay-cta__close">close</a>
+      </div>
+    </div>
+  </section>
+
+
+
+    
+    
+    
+
+  </div>
+</main>
+
+
+<aside class="read-next outer">
+  <div class="inner">
+    <div class="read-next-feed">      
+      
+<article class="read-next-card" 
+            style="background-image: url(https://codewithhugo.com/img/cover.jpg);" >
+    <header class="read-next-card-header">
+        <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
+        
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a></h3>
+    </header>
+    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+    </div>
+
+    <div class="read-next-card-content">
+      
+        <ul>
+          <li><a href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">Install just redis-cli on Ubuntu, Debian, Jessie</a></li>            
+        
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoiding falsy values in JavaScript arrays</a></li>            
+        
+          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+        
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+        </ul>
+    </div>
+    <footer class="read-next-card-footer">
+      
+        <a href="https://codewithhugo.com/tags/javascript/">See all related posts →</a>
+    </footer>
+</article>
+
+
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/parker-whitson-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #hugo 
+              #meta 
+              #css 
+              #deployment  </span>
+              
+              <h2 class="post-card-title">Switching the lights on: Hugo vs Hugo config files</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>A simple Hugo blog setup
+ The story of getting codewithhugo.com up and running.
+The tl;dr is the following:
+ I always rave about my blog setup, it’s simple, fast and just works I used Hugo, “The world’s fastest framework for building websites”, a static site generator I used a theme, casper-two, which is a Hugo port of the https://ghost.org/ default theme I deployed to GitHub pages behind Cloudflare *. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+      
+      <article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ruediger-theiselmann-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #sequelize 
+              #node 
+              #git 
+              #cli 
+              #JavaScript  </span>
+              
+              <h2 class="post-card-title">Progress and roadblocks: a journey into open-source</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Enhancing generators for ES6 in the Sequelize CLI
+ This is the story of my discovery of ES6-class style model definitions with Sequelize (see Using ES6 classes for Sequelize 4 models). The realisation that the current Sequelize CLI model generator didn&rsquo;t support it (as is expected since it&rsquo;s not the most common way of doing it). Finally, the impetus to just implement it myself.
+In other words, I started using a style of Sequelize models that the Sequelize CLI didn&rsquo;t support. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+      
+    </div>
+  </div>
+</aside>
+
+<div class="floating-header">
+  <div class="floating-header-logo">
+    <a href="https://codewithhugo.com/">
+      
+      <span>Code with Hugo</span>
+    </a>
+  </div>
+  <span class="floating-header-divider">&mdash;</span>
+  <div class="floating-header-title">A simple JavaScript/Node coding setup on Mac OS X</div>
+  <div class="floating-header-share">
+    <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
+    </div>
+
+    
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=%22A%20simple%20JavaScript%2fNode%20coding%20setup%20on%20Mac%20OS%20X%22%20by%20%40hugo__df&amp;url=https%3a%2f%2fcodewithhugo.com%2fa-simple-javascript%2fnode-coding-setup-on-mac-os-x%2f&amp"
+          onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+      </a>
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fa-simple-javascript%2fnode-coding-setup-on-mac-os-x%2f"
+          onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+      </a>
+  </div>
+
+  <progress class="progress" value="0">
+    <div class="progress-container">
+      <span class="progress-bar"></span>
+    </div>
+  </progress>
+</div>
+
+
+
+<footer class="site-footer outer">
+  <div class="site-footer-content inner">
+    <section class="copyright" style="line-height: 1.3em;">
+      <a href="/">Code with Hugo</a>  <br>
+      
+    </section>
+    <nav class="site-footer-nav">
+        <a href="/">Latest Posts</a>
+        
+        <a href="https://twitter.com/hugo__df" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://github.com/HugoDF" target="_blank" rel="noopener">Github</a>
+        
+        <a href="https://medium.com/@hugo__df" target="_blank" rel="noopener">Medium</a>
+    </nav>  
+  </div>
+</footer>
+
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://codewithhugo.com/js/jquery.fitvids.js"></script>
+
+
+
+
+  <!-- Google Analytics -->
+  <script>
+    var _gaq=[['_setAccount','UA-60469708-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+
+
+
+<script async src="//cdn.simpleanalytics.io/hello.js"></script>
+<noscript><img src="//api.simpleanalytics.io/hello.gif" alt=""></noscript>
+
+
+
+
+
+<script>
+  (function (document) {
+    function getLastDocumentHeight(document) {
+      var body = document.body;
+      var html = document.documentElement;
+      return Math.max(
+        body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight,
+        html.offsetHeight
+      );
+    }
+
+    var $overlay = document.querySelector('.overlay-cta');
+    var hiddenClass = 'overlay-cta--hidden';
+    var closedClass = 'overlay-cta--closed';
+    $overlay.classList.add(hiddenClass);
+
+    
+    var $overlayClose = document.querySelector('.overlay-cta__close');
+    var overlayCloseListener = $overlayClose.addEventListener('click', function (e) {
+      e.preventDefault();
+      $overlay.classList.add(closedClass);
+    });
+
+    var $heroCtaButton = document.querySelector('.hero-cta .button');
+    var $firstContentItem = document.querySelector('.post-full-content > * > *');
+    var title = $heroCtaButton || $firstContentItem;
+
+    var $subscribeBox = document.querySelector('.subscribe-form');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = getLastDocumentHeight(document);
+    var ticking = false;
+
+
+    function onScroll() {
+      lastScrollY = window.scrollY;
+      requestTick();
+    }
+
+    function onResize() {
+      lastWindowHeight = window.innerHeight;
+      lastDocumentHeight = getLastDocumentHeight(document);
+      requestTick();
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+      }
+      ticking = true;
+    }
+
+    function update() {
+      var trigger = title.getBoundingClientRect().top + window.scrollY;
+      var triggerOffset = title.offsetHeight + 35;
+      var lastShowCtaBoxHeight = $subscribeBox.getBoundingClientRect().top ;
+      
+      if (
+        lastScrollY >= trigger + triggerOffset &&
+        lastShowCtaBoxHeight > lastWindowHeight
+      ) {
+        $overlay.classList.remove(hiddenClass);
+      } else {
+        $overlay.classList.add(hiddenClass);
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, false);
+
+    update();
+  })(document);
+</script>
+
+
+    <script>
+
+
+
+
+
+$(document).ready(function () {
+    
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+</body></html>
