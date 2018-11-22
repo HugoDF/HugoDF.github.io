@@ -61,6 +61,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/</loc>
+    <lastmod>2018-11-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/</loc>
     <lastmod>2018-11-19T00:00:00+00:00</lastmod>
   </url>
@@ -401,6 +406,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/node/</loc>
     <lastmod>2018-10-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/payment/</loc>
+    <lastmod>2018-11-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
