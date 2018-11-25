@@ -7778,5 +7778,210 @@ The rest is all explained in the article.&lt;/p&gt;
 </description>
     </item>
     
+    <item>
+      <title>Post Frequency: from prototype to production with Vue &#43; Node</title>
+      <link>https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/</link>
+      <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;If you want to ship, use the tools you know. — A lot of people&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let&amp;rsquo;s apply that principle: I&amp;rsquo;m building &lt;a href=&#34;https://accountableblogging.com&#34;&gt;Post Frequency/Accountable Blogging&lt;/a&gt;,
+I&amp;rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and
+I’ve settled on Dokku for databases/backend applications hosting.
+&lt;/p&gt;
+
+&lt;p&gt;See how I deploy my applications &lt;a href=&#34;https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/&#34;&gt;Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Table of contents:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#context&#34;&gt;Context&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#frontend&#34;&gt;Frontend&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#vue--vue-cli-3&#34;&gt;Vue + Vue CLI 3&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#vue-cli-prerender-spa-plugin&#34;&gt;Vue CLI prerender SPA plugin&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#load-some-scripts-only-on-production&#34;&gt;Load some scripts only on production&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#load-scripts-only-if-not-pre-rendering-injectx-using&#34;&gt;Load scripts only if &lt;em&gt;not&lt;/em&gt; pre-rendering &lt;code&gt;injectX&lt;/code&gt; using:&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#pass-service-urls-using-envenvironment-files&#34;&gt;Pass service URLs using &lt;code&gt;.env.${ENVIRONMENT}&lt;/code&gt; files&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#being-social-and-google-friendly&#34;&gt;Being social and Google-friendly&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#be-crawlable&#34;&gt;Be crawlable&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#favicons-and-manifests&#34;&gt;Favicons and manifests&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#meta-description-opengraph-tags&#34;&gt;Meta description, OpenGraph tags&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#without-router&#34;&gt;Without router&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#with-vue-router&#34;&gt;With vue-router&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#backend-services&#34;&gt;Backend service(s)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#launch&#34;&gt;Launch&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#outcomes&#34;&gt;Outcomes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
+
+&lt;p&gt;Accountable Blogging was always going to be a single-ish page application, initially the backend was going to be Netlify lambdas… when I hit some issues with that I just went back to what I know, setting up Dokku to deploy some backend services.&lt;/p&gt;
+
+&lt;p&gt;Since my lambdas were already written, I went for &lt;code&gt;micro&lt;/code&gt; (see  &lt;a href=&#34;https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/&#34;&gt;Simple but not too simple: how using Zeit&amp;rsquo;s micro improves your Node applications&lt;/a&gt;) instead of Express. In &lt;a href=&#34;https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/&#34;&gt;this other post&lt;/a&gt;, I go into more detail about why I did this, in short: it&amp;rsquo;s lighter and requires less boilerplate/helper packages to get a single POST endpoint up and running.&lt;/p&gt;
+
+&lt;h2 id=&#34;frontend&#34;&gt;Frontend&lt;/h2&gt;
+
+&lt;h3 id=&#34;vue-vue-cli-3&#34;&gt;Vue + Vue CLI 3&lt;/h3&gt;
+
+&lt;p&gt;I&amp;rsquo;m a big fan of Vue. It&amp;rsquo;s simple, it has good docs, it&amp;rsquo;s easy to write.&lt;/p&gt;
+
+&lt;p&gt;I had never really tried the Vue CLI. Just like the rest of the official Vue packages and ecosytem, it&amp;rsquo;s got super nice ergonomics (eg. a plugin system, a local UI, hot module reloading that works).&lt;/p&gt;
+
+&lt;h3 id=&#34;vue-cli-prerender-spa-plugin&#34;&gt;Vue CLI prerender SPA plugin&lt;/h3&gt;
+
+&lt;p&gt;To have indexable HTML with our SPA, we can leverage &lt;a href=&#34;https://www.npmjs.com/package/vue-cli-plugin-prerender-spa&#34;&gt;vue-cli-plugin-prerender-spa&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# if you have vue-cli globally installed
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;vue add prerender-spa
+&lt;span class=&#34;c1&#34;&gt;# if you have it only locally installed
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;npx vue add prerender-spa&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;load-some-scripts-only-on-production&#34;&gt;Load some scripts only on production&lt;/h3&gt;
+
+&lt;p&gt;There are situations where you only want to load some scripts on production.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how to do it, with the example of the &lt;a href=&#34;https://crisp.chat&#34;&gt;crisp.chat&lt;/a&gt; JavaScript SDK (it’s slow to load and doesn&amp;rsquo;t make sense to use locally) &lt;code&gt;public/index.html&lt;/code&gt; (using EJS templating I believe):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text/javascript&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;$crisp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[];&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;&amp;lt;&lt;/span&gt;% if (NODE_ENV === &amp;#39;production&amp;#39;) { %&amp;gt;
+    window.CRISP_WEBSITE_ID=&amp;#34;SOME_ID&amp;#34;;
+    (function(){d=document;s=d.createElement(&amp;#34;script&amp;#34;);s.src=&amp;#34;https://client.crisp.chat/l.js&amp;#34;;s.async=1;d.getElementsByTagName(&amp;#34;head&amp;#34;)[0].appendChild(s);})();
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;&amp;lt;&lt;/span&gt;% } %&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This &lt;code&gt;&amp;lt;% if (NODE_ENV === &#39;production&#39;) { %&amp;gt;&lt;/code&gt; and the matching &lt;code&gt;&amp;lt;% } %&amp;gt;&lt;/code&gt; exclude rendering the particular script in dev.&lt;/p&gt;
+
+&lt;h3 id=&#34;load-scripts-only-if-not-pre-rendering-injectx-using&#34;&gt;Load scripts only if &lt;em&gt;not&lt;/em&gt; pre-rendering &lt;code&gt;injectX&lt;/code&gt; using:&lt;/h3&gt;
+
+&lt;p&gt;Sometimes you want to conditionally load things when &lt;em&gt;not&lt;/em&gt; pre-rendering. This can be achieved using &lt;code&gt;window.__PRERENDER_INJECTED&lt;/code&gt; (which is a variable set by pre-render-SPA).&lt;/p&gt;
+
+&lt;p&gt;It looks like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;__PRERENDER_INJECTED&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;__PRERENDER_INJECTED&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;PRERENDERING&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+  &lt;span class=&#34;c1&#34;&gt;// init stuff
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You need the following in &lt;code&gt;.prerender-spa.json&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;customRendererConfig&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;inject&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;PRERENDERING&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The full example would therefore be:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text/javascript&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;$crisp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[];&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;CRISP_WEBSITE_ID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;SOME_ID&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;err&#34;&gt;&amp;lt;&lt;/span&gt;% if (NODE_ENV === &amp;#39;production&amp;#39;) { %&amp;gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;__PRERENDER_INJECTED&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;__PRERENDER_INJECTED&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;PRERENDERING&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;createElement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;script&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;https://client.crisp.chat/l.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;kr&#34;&gt;async&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;head&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;].&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;appendChild&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);})();&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;err&#34;&gt;&amp;lt;&lt;/span&gt;% } %&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;pass-service-urls-using-env-environment-files&#34;&gt;Pass service URLs using &lt;code&gt;.env.${ENVIRONMENT}&lt;/code&gt; files&lt;/h2&gt;
+
+&lt;p&gt;You probably want to hit a local version of your backend services when developing and obviously the live one when in production, here&amp;rsquo;s how you do that with &lt;code&gt;.env&lt;/code&gt; files
+&lt;code&gt;.env.development&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;VUE_APP_FEED_SERVICE_URL=http://localhost:1234
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;.env.production&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;VUE_APP_FEED_SERVICE_URL=https://my-live-service.accoutableblogging.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In your application code you can then access it under &lt;code&gt;process.env.VUE_APP_FEED_SERVICE_URL&lt;/code&gt; for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;FEED_SERVICE_URL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;env&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;VUE_APP_FEED_SERVICE_URL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;FEED_DATA_URL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;FEED_SERVICE_URL&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;being-social-and-google-friendly&#34;&gt;Being social and Google-friendly&lt;/h2&gt;
+
+&lt;h3 id=&#34;be-crawlable&#34;&gt;Be crawlable&lt;/h3&gt;
+
+&lt;p&gt;As a good internet citizen, we should be readable without JavaScript enabled. Since we&amp;rsquo;re leveraging Vue/vue-cli/vue-router we should probably pre-render (see &lt;a href=&#34;#vue-cli-prerender-spa-plugin&#34;&gt;Vue CLI prerender SPA plugin&lt;/a&gt; section).&lt;/p&gt;
+
+&lt;p&gt;What would be even nicer would be a &lt;code&gt;sitemap.xml&lt;/code&gt; that you can submit to Google Webmaster tools, I haven&amp;rsquo;t found a nice solution yet but if/when I do you can be sure I&amp;rsquo;ll share it so &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to my newsletter&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;favicons-and-manifests&#34;&gt;Favicons and manifests&lt;/h3&gt;
+
+&lt;p&gt;Get your assets from &lt;a href=&#34;https://realfavicongenerator.net/&#34;&gt;realfavicongenerator.net&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The end of the process on there is a download of a zip folder and some tags that you can copy.&lt;/p&gt;
+
+&lt;p&gt;Unzip the favicons and dump them in the &lt;code&gt;public&lt;/code&gt; folder and add the tags to the &lt;code&gt;head&lt;/code&gt; of the &lt;code&gt;public/index.html&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h3 id=&#34;meta-description-opengraph-tags&#34;&gt;Meta description, OpenGraph tags&lt;/h3&gt;
+
+&lt;p&gt;Create your assets with &lt;a href=&#34;https://realfavicongenerator.net/social/&#34;&gt;realfavicongenerator.net/social&lt;/a&gt; or &lt;a href=&#34;https://metatags.io/&#34;&gt;metatags.io&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s a fun gotcha: resources (URLs) in &lt;code&gt;og&lt;/code&gt; tags need to be an absolute URL.&lt;/p&gt;
+
+&lt;h4 id=&#34;without-router&#34;&gt;Without router&lt;/h4&gt;
+
+&lt;p&gt;ie. you have an app that is a single page 🙂, then just add your tags to &lt;code&gt;public/index.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;with-vue-router&#34;&gt;With vue-router&lt;/h4&gt;
+
+&lt;p&gt;I used &lt;a href=&#34;https://alligator.io/vuejs/vue-router-modify-head/&#34;&gt;this article&lt;/a&gt;, and you should &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to the newsletter&lt;/a&gt;, for next week&amp;rsquo;s article if you want the breakdown of how I&amp;rsquo;ve set it up.&lt;/p&gt;
+
+&lt;h2 id=&#34;backend-service-s&#34;&gt;Backend service(s)&lt;/h2&gt;
+
+&lt;p&gt;Have a &lt;code&gt;src/services&lt;/code&gt; folder where anything backend will live, say you have a &lt;code&gt;some-service&lt;/code&gt; service.&lt;/p&gt;
+
+&lt;p&gt;My process starts with a directory &lt;code&gt;src/services/some-service&lt;/code&gt; that contains an Express or micro app (see &lt;a href=&#34;https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/&#34;&gt;this article about how I set up my micro app&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;For each service, we&amp;rsquo;ll create a git remote to Dokku (or Heroku or whatever other git-based method you’re using):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git remote add dokku-service dokku@&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;DOKKU_INSTANCE_IP&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;:some-service&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Deploying to Dokku from the project root (where the top-level &lt;code&gt;package.json&lt;/code&gt; is), can be done with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git subtree push --prefix src/services/some-service dokku-service master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you would like to deploy using &lt;code&gt;npm run deploy:service&lt;/code&gt;, you can put the following into the top-level &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;scripts&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;deploy:service&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git subtree push --prefix src/services/some-service dokku-service master&amp;#34;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;launch&#34;&gt;Launch&lt;/h2&gt;
+
+&lt;p&gt;My launch was moderately successful, it started with an &lt;a href=&#34;https://indiehackers.com&#34;&gt;IndieHackers&lt;/a&gt; post: &lt;a href=&#34;https://www.indiehackers.com/forum/show-ih-a-github-style-graph-for-your-blog-da74a24d42&#34;&gt;Show IH: A GitHub-style graph for your blog&lt;/a&gt; and a &lt;a href=&#34;https://dev.to&#34;&gt;dev.to&lt;/a&gt; post: &lt;a href=&#34;https://dev.to/hugo__df/github-style-contribution-graph-for-your-blog-78f&#34;&gt;GitHub-style contribution graph for your blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Those two combined got me some traffic (90 referrals from IndieHackers and 60 from dev.to), see:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/iqfFJWP.png&#34; alt=&#34;accountableblogging.com 23/10 to 30/10 page views graph&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The ProductHunt launch went relatively well as well, &lt;a href=&#34;https://www.producthunt.com/posts/post-frequency&#34;&gt;see Post Frequency on ProductHunt&lt;/a&gt;. It got onto the front page (I reckon Ryan Hoover had something to do with that 😉) and got 100+ upvotes. This is more of a &amp;ldquo;check out this thing I made&amp;rdquo;, rather than a full-blown product so it&amp;rsquo;s not bad. Around 250 people checked it out from that (direct referrals from ProductHunt). The thing with ProductHunt is that other tools read data from there and syndicate it so you also see a trickle of other traffic, see the following graph:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/AP27VWy.png&#34; alt=&#34;accountableblogging.com 29/10 to 23/11 page views graph&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;outcomes&#34;&gt;Outcomes&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ve currently got 18 email signups, if you&amp;rsquo;re interested you can sign up too: &lt;a href=&#34;https://accountableblogging.com&#34;&gt;accountableblogging.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve created a little email + survey people can take using Typeform, you&amp;rsquo;ll receive it if you sign up.&lt;/p&gt;
+
+&lt;p&gt;Next steps are to build the thing out. It&amp;rsquo;s simple: give me your URL + payment details, I track how much you publish, you meet your goal or pay.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@neonbrand?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from NeONBRAND&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;NeONBRAND&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
