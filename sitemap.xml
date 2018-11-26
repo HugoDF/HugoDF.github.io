@@ -61,6 +61,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/</loc>
+    <lastmod>2018-11-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/</loc>
     <lastmod>2018-11-22T00:00:00+00:00</lastmod>
   </url>
@@ -500,6 +505,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/typescript/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/vue/</loc>
+    <lastmod>2018-11-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
