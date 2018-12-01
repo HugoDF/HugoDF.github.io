@@ -102,26 +102,23 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/jp-valery-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #tooling 
-              #bash  </span>
+              #JavaScript 
+              #reactive programming  </span>
               
-              <h2 class="post-card-title">Just enough bash to be dangerous</h2>
+              <h2 class="post-card-title">Better HTTP Polling with RxJS 5</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> A bash cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
-To avoid having to do this again myself and for your reading pleasure, here they are.
+                <p>Here is the implementation for a function that takes a Promise-based fetch function and a function that decides if a response has been successful (from a polling perspective) and polls the fetch function until the isSuccess function returns true:
 
  ...  </p>
               
@@ -138,27 +135,26 @@ To avoid having to do this again myself and for your reading pleasure, here they
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/isis-franca-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #python 
-              #graphql 
-              #web development  </span>
+              #tooling 
+              #git 
+              #ci 
+              #bash  </span>
               
-              <h2 class="post-card-title">Python GraphQL client requests example using gql</h2>
+              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>An example consuming a GraphQL API from Python using gql.
- Full code example at HugoDF/python-graphql-client-example.
- This was sent out on the Code with Hugo newsletter last Monday. Subscribe to get the latest posts right in your inbox (before anyone else).
- $ pip install gql # You should use a virtualenvfrom gql import gql, Client from gql.transport.requests import RequestsHTTPTransport _transport = RequestsHTTPTransport( url=&#39;https://graphql-pokemon.now.sh/&#39;, use_json=True, ) client = Client( transport=_transport, fetch_schema_from_transport=True, ) query = gql(&#34;&#34;&#34; { pokemon(name: &#34;Pikachu&#34;) { attacks { special { name } } } } &#34;&#34;&#34;) print(client. ...  </p>
+                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. ...  </p>
               
           </section>
       </a>
@@ -173,27 +169,25 @@ To avoid having to do this again myself and for your reading pleasure, here they
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/sean-mungur-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/frank-mckenna-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #git 
-              #bash 
-              #productivity  </span>
+              #JavaScript 
+              #VueJS 
+              #web development  </span>
               
-              <h2 class="post-card-title">Change the date of a git commit</h2>
+              <h2 class="post-card-title">A simple, real-world Vue.js directive</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>One of the greatest and worst things with git is that you can rewrite the history. Here’s a sneaky way of abusing that, I can’t think of a legitimate reason to do this.
-As with anything, thanks StackOverflow for all the options I can pick from 👍.
-Set the date of the last commit to the current date GIT_COMMITTER_DATE=&quot;$(date)&quot; git commit --amend --no-edit --date &quot;$(date)&quot;
-Set the date of the last commit to an arbitrary date GIT_COMMITTER_DATE=&quot;Mon 20 Aug 2018 20:19:19 BST&quot; git commit --amend --no-edit --date &quot;Mon 20 Aug 2018 20:19:19 BST&quot; ...  </p>
+                <p>Vue.js is &ldquo;The Progressive JavaScript Framework&rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer. In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&rsquo;s documentation is a focus directive.
+When running Vue.js inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve normal anchors&rsquo; href on click. ...  </p>
               
           </section>
       </a>
