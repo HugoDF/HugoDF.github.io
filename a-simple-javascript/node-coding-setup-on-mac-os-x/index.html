@@ -168,7 +168,7 @@
 <p></p>
 
 <ul>
-<li><p><a href="#terminal">Terminal</a></p>
+<li><a href="#terminal">Terminal</a>
 
 <ul>
 <li><a href="#setup-iterm2">Setup iTerm2</a>
@@ -178,6 +178,7 @@
 <li><a href="#new-session-should-start-where-previous-left-off">New session should start where previous left off</a></li>
 <li><a href="#quit-on-tab-close">Quit on tab close</a></li>
 <li><a href="#increase-font-size">Increase font size</a></li>
+<li><a href="#enable-infinite-history">Enable infinite history</a></li>
 </ul></li>
 <li><a href="#shell-setup">Shell setup</a>
 
@@ -187,24 +188,22 @@
 <li><a href="#pure-prompt">Pure prompt</a></li>
 </ul></li>
 </ul></li>
-
-<li><p><a href="#browsers-and-testing">Browsers and testing</a></p></li>
-
-<li><p><a href="#editor">Editor</a></p>
+<li><a href="#browsers-and-testing">Browsers and testing</a></li>
+<li><a href="#editor">Editor</a>
 
 <ul>
 <li><a href="#install-vscode-command-line-tools">Install VSCode command line tools</a></li>
 <li><a href="#must-have-extensions">Must-have extensions</a></li>
 <li><a href="#nice-to-have-extensions">Nice to have extensions</a></li>
 </ul></li>
+<li><a href="#productivity">Productivity</a>
 
-<li><p><a href="#productivity">Productivity</a></p></li>
-
-<li><p><a href="#tooling">Tooling</a></p></li>
-
-<li><p><a href="#setup-and-configuration">Setup and configuration</a></p></li>
-
-<li><p><a href="#misc-and-extras">Misc and extras</a></p>
+<ul>
+<li><a href="#clipy">Clipy</a></li>
+</ul></li>
+<li><a href="#tooling">Tooling</a></li>
+<li><a href="#setup-and-configuration">Setup and configuration</a></li>
+<li><a href="#misc-and-extras">Misc and extras</a>
 
 <ul>
 <li><a href="#optional-docker-virtualbox">(Optional) Docker, VirtualBox</a></li>
@@ -253,6 +252,14 @@
 </ul>
 
 <p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542554456878_image.png" alt="" /></p>
+
+<h3 id="enable-infinite-history">Enable infinite history</h3>
+
+<ul>
+<li>iTerm Preferences → Profiles → select your profile → Terminal tab → Unlimited scrollback</li>
+</ul>
+
+<p><img src="https://i.imgur.com/ATMGb9k.png" alt="" /></p>
 
 <h2 id="shell-setup">Shell setup</h2>
 
@@ -331,9 +338,17 @@ prompt pure</li>
 
 <h1 id="productivity">Productivity</h1>
 
-<p>Not many productivity apps, just <a href="https://www.alfredapp.com/">Alfred</a>, which I use as a better Spotlight Search and <a href="https://clipy-app.com/">Clipy</a> which is a clipboard manager. For Clipy, bump up the number of “inline items” (Clipy → Preferences → Menu → Number of items place inline).</p>
+<p>Not many productivity apps, just <a href="https://www.alfredapp.com/">Alfred</a>, which I use as a better Spotlight Search and <a href="https://clipy-app.com/">Clipy</a> which is a clipboard manager.</p>
+
+<h2 id="clipy">Clipy</h2>
+
+<p>Bump up the number of “inline items” (Clipy → Preferences → Menu → Number of items place inline).</p>
 
 <p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542557479751_image.png" alt="" /></p>
+
+<p>Set your screenshots to save to clipboard + enable the option to paste as plain text (Clipy → Preferences → Beta → Paste as PlainText + Save screenshots in history).</p>
+
+<p><img src="https://i.imgur.com/YEtHo8a.png" alt="" /></p>
 
 <h1 id="tooling">Tooling</h1>
 
@@ -355,6 +370,7 @@ prompt pure</li>
 
 <ul>
 <li><a href="https://github.com/paulirish/git-open">git-open</a>: “Type <code>git open</code> to open the GitHub page or website for a repository in your browser.” using <code>npm install --global git-open</code></li>
+<li><a href="https://github.com/kamranahmedse/git-standup">git-standup</a>: “Recall what you did on the last working day.” using <code>git standup</code>, there are multiple install options (see <a href="https://github.com/kamranahmedse/git-standup#install">git-standup#install</a>), I usually go with: <code>brew install git-standup</code></li>
 <li><a href="https://coderwall.com/p/euwpig/a-better-git-log">git-lg</a>: simpler/prettier <code>git log</code>:</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git config --global alias.lg <span class="s2">&#34;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&#34;</span></code></pre></div>
@@ -463,13 +479,13 @@ VirtualBox allows you to run Virtual Machines on Mac, install it at <a href="htt
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">Switching the lights on: Hugo vs Hugo config files</a></li>            
+          <li><a href="https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/">Build and deploy a Vue/React/Vanilla JS app with Parcel and GitHub pages</a></li>            
         
           <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">Setting up Express and Redis with Docker compose</a></li>            
         
-          <li><a href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</a></li>            
+          <li><a href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">Switching the lights on: Hugo vs Hugo config files</a></li>            
         
-          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
+          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

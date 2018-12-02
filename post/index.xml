@@ -8679,7 +8679,7 @@ To get here, just like at a startup attempting to scale, the maintainers have ha
 &lt;p&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#terminal&#34;&gt;Terminal&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&#34;#terminal&#34;&gt;Terminal&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#setup-iterm2&#34;&gt;Setup iTerm2&lt;/a&gt;
@@ -8689,6 +8689,7 @@ To get here, just like at a startup attempting to scale, the maintainers have ha
 &lt;li&gt;&lt;a href=&#34;#new-session-should-start-where-previous-left-off&#34;&gt;New session should start where previous left off&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#quit-on-tab-close&#34;&gt;Quit on tab close&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#increase-font-size&#34;&gt;Increase font size&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#enable-infinite-history&#34;&gt;Enable infinite history&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#shell-setup&#34;&gt;Shell setup&lt;/a&gt;
 
@@ -8698,24 +8699,22 @@ To get here, just like at a startup attempting to scale, the maintainers have ha
 &lt;li&gt;&lt;a href=&#34;#pure-prompt&#34;&gt;Pure prompt&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#browsers-and-testing&#34;&gt;Browsers and testing&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#editor&#34;&gt;Editor&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;a href=&#34;#browsers-and-testing&#34;&gt;Browsers and testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#editor&#34;&gt;Editor&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#install-vscode-command-line-tools&#34;&gt;Install VSCode command line tools&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#must-have-extensions&#34;&gt;Must-have extensions&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#nice-to-have-extensions&#34;&gt;Nice to have extensions&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#productivity&#34;&gt;Productivity&lt;/a&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#productivity&#34;&gt;Productivity&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#tooling&#34;&gt;Tooling&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#setup-and-configuration&#34;&gt;Setup and configuration&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#misc-and-extras&#34;&gt;Misc and extras&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#clipy&#34;&gt;Clipy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#tooling&#34;&gt;Tooling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#setup-and-configuration&#34;&gt;Setup and configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#misc-and-extras&#34;&gt;Misc and extras&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#optional-docker-virtualbox&#34;&gt;(Optional) Docker, VirtualBox&lt;/a&gt;&lt;/li&gt;
@@ -8764,6 +8763,14 @@ To get here, just like at a startup attempting to scale, the maintainers have ha
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542554456878_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;enable-infinite-history&#34;&gt;Enable infinite history&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;iTerm Preferences → Profiles → select your profile → Terminal tab → Unlimited scrollback&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/ATMGb9k.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;shell-setup&#34;&gt;Shell setup&lt;/h2&gt;
 
@@ -8842,9 +8849,17 @@ prompt pure&lt;/li&gt;
 
 &lt;h1 id=&#34;productivity&#34;&gt;Productivity&lt;/h1&gt;
 
-&lt;p&gt;Not many productivity apps, just &lt;a href=&#34;https://www.alfredapp.com/&#34;&gt;Alfred&lt;/a&gt;, which I use as a better Spotlight Search and &lt;a href=&#34;https://clipy-app.com/&#34;&gt;Clipy&lt;/a&gt; which is a clipboard manager. For Clipy, bump up the number of “inline items” (Clipy → Preferences → Menu → Number of items place inline).&lt;/p&gt;
+&lt;p&gt;Not many productivity apps, just &lt;a href=&#34;https://www.alfredapp.com/&#34;&gt;Alfred&lt;/a&gt;, which I use as a better Spotlight Search and &lt;a href=&#34;https://clipy-app.com/&#34;&gt;Clipy&lt;/a&gt; which is a clipboard manager.&lt;/p&gt;
+
+&lt;h2 id=&#34;clipy&#34;&gt;Clipy&lt;/h2&gt;
+
+&lt;p&gt;Bump up the number of “inline items” (Clipy → Preferences → Menu → Number of items place inline).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_4D85104EB4612E36D39F1EDC98FBA3CCC5F99A3320C73070E613DFAB4FC5809A_1542557479751_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Set your screenshots to save to clipboard + enable the option to paste as plain text (Clipy → Preferences → Beta → Paste as PlainText + Save screenshots in history).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/YEtHo8a.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;tooling&#34;&gt;Tooling&lt;/h1&gt;
 
@@ -8866,6 +8881,7 @@ prompt pure&lt;/li&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/paulirish/git-open&#34;&gt;git-open&lt;/a&gt;: “Type &lt;code&gt;git open&lt;/code&gt; to open the GitHub page or website for a repository in your browser.” using &lt;code&gt;npm install --global git-open&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kamranahmedse/git-standup&#34;&gt;git-standup&lt;/a&gt;: “Recall what you did on the last working day.” using &lt;code&gt;git standup&lt;/code&gt;, there are multiple install options (see &lt;a href=&#34;https://github.com/kamranahmedse/git-standup#install&#34;&gt;git-standup#install&lt;/a&gt;), I usually go with: &lt;code&gt;brew install git-standup&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://coderwall.com/p/euwpig/a-better-git-log&#34;&gt;git-lg&lt;/a&gt;: simpler/prettier &lt;code&gt;git log&lt;/code&gt;:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git config --global alias.lg &lt;span class=&#34;s2&#34;&gt;&amp;#34;log --color --graph --pretty=format:&amp;#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&amp;#39; --abbrev-commit&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
