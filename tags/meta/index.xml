@@ -1358,5 +1358,134 @@ The rest is all explained in the article.&lt;/p&gt;
 </description>
     </item>
     
+    <item>
+      <title>Technical content workflow for “Code with Hugo”: static site, Paper, Medium, DEV and Buttondown</title>
+      <link>https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: here are the tools used to power, build and publish &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/paper&#34;&gt;Dropbox Paper&lt;/a&gt; because it syncs desktop/mobile and outputs to markdown&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://unsplash.com&#34;&gt;Unsplash&lt;/a&gt; for cover images&lt;/li&gt;
+&lt;li&gt;Edited Markdown + images → &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt; static site generator&lt;/li&gt;
+&lt;li&gt;Casper 2 (&lt;a href=&#34;https://ghost.org&#34;&gt;https://ghost.org&lt;/a&gt; default theme) for &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Schedule:
+
+&lt;ul&gt;
+&lt;li&gt;Newsletter: Mondays 5pm UK every 2 weeks&lt;/li&gt;
+&lt;li&gt;1+ post a week&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Cross-post to Medium (Stories → Import a Story)&lt;/li&gt;
+&lt;li&gt;Cross-post to &lt;a href=&#34;https://&#34;&gt;dev.to&lt;/a&gt; using RSS feed&lt;/li&gt;
+&lt;li&gt;Social media/promotion &amp;lt; Organic traffic&lt;/li&gt;
+&lt;li&gt;Newsletter powered by &lt;a href=&#34;https://buttondown.email&#34;&gt;https://buttondown.email&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Analytics: Google Analytics + Simple Analytics&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This post has about 7 month’s worth of learning in it, so see the following table of contents:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#dont-build-your-own-if-youre-about-content&#34;&gt;Don’t build your own if you’re about content&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-flow-from-idea-to-published&#34;&gt;The flow: from idea to published&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#social-mediapromotion--organic-traffic&#34;&gt;Social Media/Promotion &amp;lt; Organic traffic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#post-and-newsletter-schedule&#34;&gt;Post and Newsletter Schedule&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#newsletter-why-buttondown&#34;&gt;Newsletter: why Buttondown?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#analytics-stack&#34;&gt;Analytics stack&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;don-t-build-your-own-if-you-re-about-content&#34;&gt;Don’t build your own if you’re about content&lt;/h2&gt;
+
+&lt;p&gt;I could code the UI, but I used a theme, the goal here is not to code.&lt;/p&gt;
+
+&lt;p&gt;I wanted something I wasn’t actually that familiar with so I wouldn’t mess about with it initially, it also had to look good and “Just work”™️.&lt;/p&gt;
+
+&lt;p&gt;That’s how I ended up with the &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo static site generator&lt;/a&gt;, Casper 2 (ported from the &lt;a href=&#34;http://ghost.org&#34;&gt;ghost.org&lt;/a&gt; default theme). My initial setup is documented in &lt;a href=&#34;https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/&#34;&gt;“Switching the lights on: Hugo vs Hugo config files”&lt;/a&gt;. I was running on GitHub Pages but recently updated to use Netlify when GitHub had a nasty outage, you can read more about that switch in &lt;a href=&#34;https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/&#34;&gt;“A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare”&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s obviously useful to be able to modify some of the templates to eg.:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;add canonical links&lt;/li&gt;
+&lt;li&gt;put the buttondown subscribe form (CSS was already there 👍)&lt;/li&gt;
+&lt;li&gt;guides page + paywall (see &lt;a href=&#34;https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/&#34;&gt;&amp;ldquo;Add a client-side paywall using checkoutpage.co and vanilla JavaScript&amp;rdquo;&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;the-flow-from-idea-to-published&#34;&gt;The flow: from idea to published&lt;/h2&gt;
+
+&lt;p&gt;Drafts and ideas live in &lt;a href=&#34;https://www.dropbox.com/paper&#34;&gt;Paper&lt;/a&gt;, it has a decent folder structure and a Medium-like text editor. Unlike the Medium mobile app it’s offline-enabled. Paper exports to Markdown so the content only needs slight alterations.&lt;/p&gt;
+
+&lt;p&gt;I have a master “content plan” which has a checklist with all the posts I’ve got in different states. It looks like this but with some unticked checkboxes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_29CFCFC848110B136BEAF99234A8BDCAE6DD96AF0613D98F3B81C70639BC1E84_1544048168679_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://unsplash.com&#34;&gt;Unsplash&lt;/a&gt; for images, gives a bit of life and colour to the site or &lt;a href=&#34;https://carbon.now.sh&#34;&gt;https://carbon.now.sh&lt;/a&gt; if a code screenshot is more appropriate. I resize and run the images through an optimiser (see switching the lights on).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.to&#34;&gt;DEV&lt;/a&gt; has a great community, it’s still growing so there’s a lot of eyeballs and less content than other places. People who post on &lt;a href=&#34;http://dev.to&#34;&gt;dev.to&lt;/a&gt; also seem less interested in tricking a curation algorithm and going viral, instead being happy to share their work/knowledge.&lt;/p&gt;
+
+&lt;p&gt;Large Medium publications can get you some traffic for that initial push to get a post off the ground.&lt;/p&gt;
+
+&lt;p&gt;Running your own site gives you flexibility and staying power, you’re not tied to a platform.&lt;/p&gt;
+
+&lt;p&gt;I see my setup like the &lt;a href=&#34;https://dev.to/nhoizey/medium-is-only-an-edge-server-of-your-posse-cdn-your-own-blog-is-the-origin-3aga&#34;&gt;author of this post describes his&lt;/a&gt;, Medium and DEV are just the edge of my content delivery network.&lt;/p&gt;
+
+&lt;p&gt;I’m building domain authority etc. eg. as your authority grows, some content that wasn’t ranking crazy well on Google will get an opportunity to shine.&lt;/p&gt;
+
+&lt;h2 id=&#34;social-media-promotion-organic-traffic&#34;&gt;Social Media/Promotion &amp;lt; Organic traffic&lt;/h2&gt;
+
+&lt;p&gt;The angle with Code with Hugo is search engine optimisation (ie. organic search traffic, check out /open page).&lt;/p&gt;
+
+&lt;p&gt;When I started I would post to aggregators, it turns out having someone repost your content on Reddit or HackerNews is more powerful than you spamming it there, the views aren’t worth the effort, especially once you start getting organic traffic.&lt;/p&gt;
+
+&lt;p&gt;A tip I heard on the SyntaxFM podcast is that when you post on social media, use a format that fits with the medium. For example on Twitter, I don’t just spam the link to my post, I post a snippet or create a thread with some key points from the post.&lt;/p&gt;
+
+&lt;p&gt;Remember that you want your writing to compound. Put a link to the posts you want to drive traffic to in your successful posts, Hugo and Casper has a related posts section which means I don’t even need to think about it.&lt;/p&gt;
+
+&lt;p&gt;I’ve had a couple posts do well on Reddit and been featured on a few newsletters (&lt;a href=&#34;https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/&#34;&gt;read more about that here&lt;/a&gt;). That always helps with traffic, but it’s a spike and then it’s gone.&lt;/p&gt;
+
+&lt;p&gt;I’m now at the point where I get regular organic traffic, which is great.&lt;/p&gt;
+
+&lt;h2 id=&#34;post-and-newsletter-schedule&#34;&gt;Post and Newsletter Schedule&lt;/h2&gt;
+
+&lt;p&gt;The Code with Hugo newsletter (usually) goes out on Monday 5pm UK every 2 weeks.&lt;/p&gt;
+
+&lt;p&gt;Initially, I was creating content for the newsletter, and sending it out every week (see the oldest posts in the newsletter archive &lt;a href=&#34;https://buttondown.email/hugo/archive&#34;&gt;https://buttondown.email/hugo/archive&lt;/a&gt;). I would then re-post whatever was in the newsletter on the blog. That “every week on Monday, content goes out” helped get me into the flow of things.&lt;/p&gt;
+
+&lt;p&gt;I thought getting content earlier would incentivise people to subscribe… it didn’t. The “long-form newsletter every week phase” was a lot of work and didn’t do a few things a newsletter can/should do for you: resurface older content and drive traffic to your site.&lt;/p&gt;
+
+&lt;p&gt;Newsletter 2.0 is more links, less text. The first few were a bit too heavy and wordy. I think I’ve hit the sweet spot with my latest “little update paragraph + a bunch of links” format 😄 .&lt;/p&gt;
+
+&lt;p&gt;I publish on &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt; at least once a week see &lt;a href=&#34;https://accountableblogging.com/post-frequency/?url=https%3A%2F%2Fcodewithhugo.com&#34;&gt;https://accountableblogging.com/post-frequency/?url=https%3A%2F%2Fcodewithhugo.com&lt;/a&gt;, that visualisation is a bit off because I’m pretty sure I didn’t miss that week it’s telling me I did.&lt;/p&gt;
+
+&lt;p&gt;There’s a lot of content out there telling you the best days to publish. I like Mondays and the weekend, but it’s very hit and miss. Any day works, just get it out and keep re-promoting it later 🙂.&lt;/p&gt;
+
+&lt;p&gt;You should re-post according to platform algorithms eg. Medium prefers fresh content so cross post ASAP, DEV.to doesn&amp;rsquo;t as much so you could post a bit later. On Twitter you should promote a couple times for different timezones to catch as much of your audience as possible. This is where a newsletter shines, you send it out once and people trickle in for about a week.&lt;/p&gt;
+
+&lt;p&gt;Your email list is your way to stay directly in touch with your audience, it allows you to circumvent the aggregator, social media and other proprietary platform(s).&lt;/p&gt;
+
+&lt;h2 id=&#34;newsletter-why-buttondown&#34;&gt;Newsletter: why Buttondown?&lt;/h2&gt;
+
+&lt;p&gt;Buttondown (buttondown.email) is quite new so I managed to get the &lt;code&gt;hugo&lt;/code&gt; URL: &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;https://buttondown.email/hugo&lt;/a&gt;. Justin, the 👨‍💻 who builds buttondown, is always super helpful.&lt;/p&gt;
+
+&lt;p&gt;The basic features that make it viable are markdown support and scheduling support (day job you know). It’s also got cool features like Tweet embeds and link URL checking.&lt;/p&gt;
+
+&lt;p&gt;It’s reasonably priced (I ain’t near 1000 subscribers if anyone is asking) and Justin has helped me out multiple times (on his evenings and weekends, the savage 💪 ).&lt;/p&gt;
+
+&lt;h2 id=&#34;analytics-stack&#34;&gt;Analytics stack&lt;/h2&gt;
+
+&lt;p&gt;I use 3 different tools for figuring out what content is doing well and why.&lt;/p&gt;
+
+&lt;p&gt;I use Google Analytics to track where my traffic is coming from and which pages it’s ending up on. It tracks users/sessions which is important if you want to know around how much you’ll be making from ads or how your info products are converting.&lt;/p&gt;
+
+&lt;p&gt;The Google Search Console gives me insights into which queries I’m doing well for. You can also look up your Alexa rank on &lt;a href=&#34;https://alexa.com&#34;&gt;alexa.com&lt;/a&gt;, it represents how much traffic you&amp;rsquo;re getting vs the rest of the internet.&lt;/p&gt;
+
+&lt;p&gt;Simple Analytics is one for the future, it allows me to have live stats in the open &lt;a href=&#34;https://simpleanalytics.io/codewithhugo.com&#34;&gt;simpleanalytics.io/codewithhugo.com&lt;/a&gt;. They’ve recently added a “visitors online” feature, which is more accurate than Google Analytic’s “Active Users”. That’s because GA shows you hits from the last X seconds whereas Simple Analytics shows you who’s &lt;em&gt;actually&lt;/em&gt; online.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@christinhumephoto?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Christin Hume&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Christin Hume&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
