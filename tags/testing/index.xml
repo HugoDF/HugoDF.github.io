@@ -1166,19 +1166,21 @@ but it&amp;rsquo;s also a lot less effort in terms of code typed and information
     </item>
     
     <item>
-      <title>Unit Testing Sequelize 4 ES6 class models</title>
+      <title>Mocking ES6 classes in tests with examples of Sequelize model unit tests</title>
       <link>https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/</link>
       <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/</guid>
       <description>
 
-&lt;p&gt;In &lt;a href=&#34;https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/&#34;&gt;&amp;ldquo;Using ES6 classes for Sequelize 4 models&amp;rdquo;&lt;/a&gt; we explored how to define Sequelize models using ES6 classes.
-One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).&lt;/p&gt;
+&lt;p&gt;This post goes through some patterns that can be used to unit test ES6 classes.&lt;/p&gt;
 
 &lt;p&gt;The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.&lt;/p&gt;
 
-&lt;p&gt;We’ll be testing the following model:&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&#34;https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/&#34;&gt;&amp;ldquo;Using ES6 classes for Sequelize 4 models&amp;rdquo;&lt;/a&gt; we explored how to define Sequelize models using ES6 classes.
+One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).&lt;/p&gt;
+
+&lt;p&gt;We’ll be testing the following model (which is an ES6 class):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;sequelize&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 
 &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyModel&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -1203,7 +1205,7 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
 &lt;p&gt;At the module level, we want to:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;mock out Sequelize&lt;/li&gt;
+&lt;li&gt;mock out Sequelize (and the &lt;code&gt;Model&lt;/code&gt; base class)&lt;/li&gt;
 &lt;li&gt;import the model&lt;/li&gt;
 &lt;/ul&gt;
 
