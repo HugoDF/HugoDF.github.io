@@ -102,62 +102,26 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elevate-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/how-components-won.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Sequelize 
-              #testing 
-              #Node  </span>
-              
-              <h2 class="post-card-title">Mocking ES6 classes in tests with examples of Sequelize model unit tests</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>This post goes through some patterns that can be used to unit test ES6 classes.
-The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.
-In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database). ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/isis-franca-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #python 
-              #graphql 
+              #design 
               #web development  </span>
               
-              <h2 class="post-card-title">Python GraphQL client requests example using gql</h2>
+              <h2 class="post-card-title">How components won the “framework wars”</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>An example consuming a GraphQL API from Python using gql.
- Full code example at HugoDF/python-graphql-client-example.
- This was sent out on the Code with Hugo newsletter last Monday. Subscribe to get the latest posts right in your inbox (before anyone else).
- $ pip install gql # You should use a virtualenvfrom gql import gql, Client from gql.transport.requests import RequestsHTTPTransport _transport = RequestsHTTPTransport( url=&#39;https://graphql-pokemon.now.sh/&#39;, use_json=True, ) client = Client( transport=_transport, fetch_schema_from_transport=True, ) query = gql(&#34;&#34;&#34; { pokemon(name: &#34;Pikachu&#34;) { attacks { special { name } } } } &#34;&#34;&#34;) print(client. ...  </p>
+                <p>React vs Angular vs Vue: Why it doesn’t matter.
+2018 marks the end of JavaScript fatigue and the “framework wars” A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.
+Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. In more ways than one, the mental model of these frameworks/libraries have converged to the component model. ...  </p>
               
           </section>
       </a>
@@ -172,27 +136,61 @@ In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to def
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/samuel-zeller-2-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #meta 
-              #payment  </span>
+              #web development  </span>
               
-              <h2 class="post-card-title">Add a client-side paywall using checkoutpage.co and vanilla JavaScript</h2>
+              <h2 class="post-card-title">Avoid null/undefined in JavaScript arrays</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>How I created the buying mechanism for the Sequelize ES6 Cheatsheet using checkoutpage.co and sprinkles of vanilla JavaScript.
-This strictly isn’t a paywall, it&rsquo;s all client-side and doesn&rsquo;t check much.
-In principle you can display the whole things using a bit of CSS magic. You could also read the source and reverse-engineer what query params work for this page.
-You could also spoof as Google Bot (or another crawler) and skip the pay overlay. ...  </p>
+                <p> How to avoid TypeError: Cannot read property ___ of undefined using Array.filter(Boolean)
+ tl;dr: Array.filter(Boolean) filters out falsy values (null, undefined, 0, false, '') and avoids Cannot read property of undefined errors.
+
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/andrew-pons-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #graphql 
+              #Node 
+              #web development  </span>
+              
+              <h2 class="post-card-title">JavaScript GraphQL client requests in Node and the browser using `graphql.js`</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p> An example consuming a GraphQL API in JavaScript from Node and the browser using graphql.js
+ 
+ ...  </p>
               
           </section>
       </a>
