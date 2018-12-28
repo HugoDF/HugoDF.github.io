@@ -876,7 +876,7 @@ test.cb(&#39;Callback gets correct value&#39;, t =&amp;gt; {
     </item>
     
     <item>
-      <title>React vs Angular vs Vue 2019: How components won the “framework wars”</title>
+      <title>React vs Angular vs Vue in 2019: How components won the “framework wars”</title>
       <link>https://codewithhugo.com/how-components-won-the-framework-wars/</link>
       <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
       
@@ -886,7 +886,7 @@ test.cb(&#39;Callback gets correct value&#39;, t =&amp;gt; {
 &lt;p&gt;React, Vue or Angular: Why it doesn’t matter.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;2019 marks the end of JavaScript fatigue and the “framework wars”&lt;/p&gt;
+&lt;p&gt;2018 marked the end of JavaScript fatigue and the React vs Vue vs Angular (“framework wars”) debate&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.&lt;/p&gt;
