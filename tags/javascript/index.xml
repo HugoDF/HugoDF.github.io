@@ -1539,16 +1539,18 @@ test.cb(&#39;Callback gets correct value&#39;, t =&amp;gt; {
     </item>
     
     <item>
-      <title>How components won the “framework wars”</title>
+      <title>React vs Angular vs Vue 2019: How components won the “framework wars”</title>
       <link>https://codewithhugo.com/how-components-won-the-framework-wars/</link>
       <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/how-components-won-the-framework-wars/</guid>
       <description>
 
-&lt;p&gt;React vs Angular vs Vue: Why it doesn’t matter.&lt;/p&gt;
+&lt;p&gt;React, Vue or Angular: Why it doesn’t matter.&lt;/p&gt;
 
-&lt;h2 id=&#34;2018-marks-the-end-of-javascript-fatigue-and-the-framework-wars&#34;&gt;2018 marks the end of JavaScript fatigue and the “framework wars”&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2019 marks the end of JavaScript fatigue and the “framework wars”&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.&lt;/p&gt;
 
@@ -1556,9 +1558,23 @@ test.cb(&#39;Callback gets correct value&#39;, t =&amp;gt; {
 
 &lt;p&gt;This is a win for the developers since the mental model is the same for all the most widespread frameworks. Which means going from one to the other does not pose as big a challenge as it used to.&lt;/p&gt;
 
-&lt;p&gt;If you came here to read a more thorough review and have more background to the Vue, React and Angular ecosystems, I recommend the following from last summer:&lt;/p&gt;
+&lt;p&gt;If you came here to read a more thorough review and have more background to the Vue, React and Angular ecosystems, I recommend the following from 2017:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://medium.com/unicorn-supplies/angular-vs-react-vs-vue-a-2017-comparison-c5c52d620176&#34;&gt;&lt;strong&gt;Angular vs. React vs. Vue: A 2017 comparison&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Table of contents:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#the-component-and-composition-model&#34;&gt;The Component and composition model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#state-and-mutation&#34;&gt;State and mutation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-passing&#34;&gt;Data passing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#lifecycles-updates-and-re-render&#34;&gt;Lifecycles, updates and re-render&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#global-stores&#34;&gt;Global Stores&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#types-and-data-validation&#34;&gt;Types and data validation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#templates-styles-and-tooling&#34;&gt;Templates, styles and tooling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#testing-and-server-side-rendering&#34;&gt;Testing and server side rendering&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&#34;the-component-and-composition-model&#34;&gt;The Component and composition model&lt;/h2&gt;
 
@@ -1571,7 +1587,9 @@ in Vue you’re using &lt;code&gt;Vue.component()&lt;/code&gt; to register your 
 
 &lt;p&gt;As a composition model, components are meant to be self-contained sections or &amp;ldquo;bits&amp;rdquo; of your application that you can
 then reuse in more specific contexts.
-The great thing they allow is a way to encapsulate logic, providing API guarantees: you pass x, y and z into this component and you will get this foo behaviour out of it, anything the component does internally is its own business.&lt;/p&gt;
+The great thing they allow is a way to encapsulate logic, providing API guarantees: you pass x, y and z into this component and you will get these a, b, c behaviours out of it, anything the component does internally is its own business.&lt;/p&gt;
+
+&lt;p&gt;This is the first similarity in the React vs Vue vs Angular debate.&lt;/p&gt;
 
 &lt;h2 id=&#34;state-and-mutation&#34;&gt;State and mutation&lt;/h2&gt;
 
