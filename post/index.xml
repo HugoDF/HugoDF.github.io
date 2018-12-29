@@ -1979,16 +1979,18 @@ AngularJS was and still is great. What’s also great that we can migrate off it
     </item>
     
     <item>
-      <title>Setting up Express and Redis with Docker compose</title>
+      <title>A Docker/docker-compose setup with Redis and Node/Express</title>
       <link>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</link>
       <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</guid>
       <description>
 
-&lt;p&gt;Redis and Express are tools that provide a simple and clean approach to their problem domains.&lt;/p&gt;
+&lt;p&gt;Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.&lt;/p&gt;
 
 &lt;p&gt;The repo is available at: &lt;a href=&#34;https://github.com/HugoDF/express-redis-docker&#34;&gt;https://github.com/HugoDF/express-redis-docker&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;docker-compose.yml&lt;/code&gt; is available at: &lt;a href=&#34;https://github.com/HugoDF/express-redis-docker/blob/master/docker-compose.yml&#34;&gt;github.com/HugoDF/express-redis-docker/docker-compose.yml&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://redis.io/&#34;&gt;Redis&lt;/a&gt; is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. It has great flexibility and can also be used as a message queue, circular buffer (and pretty much anything else a developer can come up with short of a relational database).&lt;/p&gt;
 
@@ -1998,11 +2000,20 @@ AngularJS was and still is great. What’s also great that we can migrate off it
 
 &lt;p&gt;Docker is a containerisation system, Docker Compose is a way to define how multiple Docker containers interact. In the context of Node web application development, Docker tends to be used to define a container that has the required system-level dependencies (eg. Node version, any extra database drivers). Docker Compose would be used to define dependencies outside of the Node application, for example databases.&lt;/p&gt;
 
+&lt;!--
+
+- [Initialising Express 🚅](#initialising-express-)
+- [Running Node inside of Docker 🌊](#running-node-inside-of-docker-)
+- [Adding Redis](#adding-redis)
+- [Creating a blob store 📒](#creating-a-blob-store-)
+
+--&gt;
+
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#initialising-express-%F0%9F%9A%85&#34;&gt;Initialising Express 🚅&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#running-node-inside-of-docker-%F0%9F%8C%8A&#34;&gt;Running Node inside of Docker 🌊&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#initialising-express&#34;&gt;Initialising Express 🚅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#running-node-inside-of-docker&#34;&gt;Running Node inside of Docker 🌊&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#adding-redis&#34;&gt;Adding Redis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#creating-a-blob-store-%F0%9F%93%92&#34;&gt;Creating a blob store 📒&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-blob-store&#34;&gt;Creating a blob store 📒&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&#34;initialising-express&#34;&gt;Initialising Express 🚅&lt;/h1&gt;
@@ -2037,19 +2048,19 @@ Hello world&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To begin you’ll want to install &lt;a href=&#34;https://www.docker.com/community-edition&#34;&gt;Docker Community Edition&lt;/a&gt; (&lt;a href=&#34;https://www.docker.com/community-edition&#34;&gt;https://www.docker.com/community-edition&lt;/a&gt;).
 Then we can add a &lt;code&gt;Dockerfile&lt;/code&gt; and a &lt;code&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-dockerfile&#34; data-lang=&#34;dockerfile&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Dockerfile&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;s&#34;&gt; node:9-alpine&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;s&#34;&gt; node:10&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Or whatever Node version/image you want&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;WORKDIR&lt;/span&gt;&lt;span class=&#34;s&#34;&gt; &amp;#39;/var/www/app&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span class=&#34;c&#34;&gt;# docker-compose.yml&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;app&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;build&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;./&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;volumes&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;build&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;./&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;volumes&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;./&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;/var/www/app&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;ports&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;ports&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;3000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;3000&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;environment&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;environment&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;NODE_ENV=development&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;PORT=&lt;span class=&#34;m&#34;&gt;3000&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;command&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;command&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;sh&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;-c&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;npm i &amp;amp;&amp;amp; node server.js&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now run the app inside of Docker/Docker Compose:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker-compose up&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -2059,7 +2070,7 @@ Hello world&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Some extra context:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;The &lt;code&gt;Dockerfile&lt;/code&gt; defines what container the application will be running in (here a Node 9 container built on top of alpine)&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;Dockerfile&lt;/code&gt; defines what container the application will be running in (here a Node 10 default container)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;docker-compose.yml&lt;/code&gt;:
 
 &lt;ul&gt;
@@ -2093,16 +2104,16 @@ Let’s do this using a &lt;code&gt;redis-client.js&lt;/code&gt; module:&lt;/p&g
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span class=&#34;c&#34;&gt;# docker-compose.yml&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# Add this top-level entry&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;redis&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;image&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;redis&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;container_name&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;cache&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;expose&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;image&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;redis&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;container_name&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;cache&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;expose&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;m&#34;&gt;6379&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;app&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# some definitions&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;links&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# some definitions&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;links&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;redis&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;environment&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;environment&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;-&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;REDIS_URL=redis&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;//cache&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;c&#34;&gt;# rest of the environment definitions&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We can now access the Redis client from the app container:&lt;/p&gt;
