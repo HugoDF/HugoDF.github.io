@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
 
-    <title>Abusing Jest snapshot tests: some nice use-cases 📸 &middot; Code with Hugo</title>
+    <title>When to use Jest snapshot tests: comprehensive use-cases and examples 📸 &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,14 +32,14 @@ In other words, although React and Vue testing w" />
     <meta name="twitter:image" content="https://codewithhugo.com/img/ben-sauer-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="Abusing Jest snapshot tests: some nice use-cases 📸"/>
+    <meta name="twitter:title" content="When to use Jest snapshot tests: comprehensive use-cases and examples 📸"/>
     <meta name="twitter:description" content="There&amp;rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.
 In other words, although React and Vue testing w"/>
     <meta name="twitter:url" content="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="Abusing Jest snapshot tests: some nice use-cases 📸 &middot; Code with Hugo" />
+    <meta property="og:title" content="When to use Jest snapshot tests: comprehensive use-cases and examples 📸 &middot; Code with Hugo" />
     <meta property="og:url" content="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/" />
     
 
@@ -149,7 +149,7 @@ In other words, although React and Vue testing w" />
             <time class="post-full-meta-date" datetime="2018-08-10">10 August 2018</time>
                 <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/testing/">#Testing</a>&nbsp;<a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;
         </section>
-        <h1 class="post-full-title">Abusing Jest snapshot tests: some nice use-cases 📸</h1>
+        <h1 class="post-full-title">When to use Jest snapshot tests: comprehensive use-cases and examples 📸</h1>
     </header>
     <div class="hero-container">
 
@@ -179,15 +179,16 @@ In other words, although React and Vue testing w" />
 - despite community efforts, the only major test library that supports out of the box is Jest (which locks you into that ecosystem)</p>
 
 <!--
-- [Config 🎛](#config-%F0%9F%8E%9B)
-- [Database Models 🏬](#database-models-%F0%9F%8F%AC)
-  - [Setup 🏗](#setup-%F0%9F%8F%97)
-  - [Queries 🔍](#queries-%F0%9F%94%8D)
+- [authorAvatar: https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg](#authoravatar-httpscdn-images-1mediumcomfitc2002000rb-adjpttv1uza4ojpeg)
+- [Config 🎛](#config-)
+- [Database Models 🏬](#database-models-)
+  - [Setup 🏗](#setup-)
+  - [Queries 🔍](#queries-)
 - [pug or handlebars templates](#pug-or-handlebars-templates)
-- [Gotchas of snapshot testing ⚠️](#gotchas-of-snapshot-testing-%E2%9A%A0%EF%B8%8F)
-  - [Some things (like functions) don’t serialise nicely 🔢](#some-things-like-functions-don%E2%80%99t-serialise-nicely-%F0%9F%94%A2)
+- [Gotchas of snapshot testing ⚠️](#gotchas-of-snapshot-testing-️)
+  - [Some things (like functions) don’t serialise nicely 🔢](#some-things-like-functions-dont-serialise-nicely-)
   - [If you can do a full match, do it](#if-you-can-do-a-full-match-do-it)
-  - [Try to cover the same code/feature with another type of test ✌️](#try-to-cover-the-same-codefeature-with-another-type-of-test-%E2%9C%8C%EF%B8%8F)
+  - [Try to cover the same code/feature with another type of test ✌️](#try-to-cover-the-same-codefeature-with-another-type-of-test-️)
 --->
 
 <p>That makes it particularly well-suited for a couple of areas:</p>
@@ -627,13 +628,13 @@ but it&rsquo;s also a lot less effort in terms of code typed and information sto
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
+          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
         
-          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">The step-by-step guide to create a domain redirect with Cloudflare</a></li>            
         
-          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
+          <li><a href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">Writing multiple Vue components in a single file</a></li>            
         
-          <li><a href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">Why you should wrap your (JavaScript) dependencies</a></li>            
+          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">React vs Angular vs Vue in 2019: How components won the “framework wars”</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -726,14 +727,14 @@ Continuous Integration is awesome, but sometimes you need a buffer between auto-
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">Abusing Jest snapshot tests: some nice use-cases 📸</div>
+  <div class="floating-header-title">When to use Jest snapshot tests: comprehensive use-cases and examples 📸</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
 
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=%22Abusing%20Jest%20snapshot%20tests%3a%20some%20nice%20use-cases%20%f0%9f%93%b8%22%20by%20%40hugo__df&amp;url=https%3a%2f%2fcodewithhugo.com%2fabusing-jest-snapshot-tests-some-nice-use-cases-%2f&amp"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=%22When%20to%20use%20Jest%20snapshot%20tests%3a%20comprehensive%20use-cases%20and%20examples%20%f0%9f%93%b8%22%20by%20%40hugo__df&amp;url=https%3a%2f%2fcodewithhugo.com%2fabusing-jest-snapshot-tests-some-nice-use-cases-%2f&amp"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>

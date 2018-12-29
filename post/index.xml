@@ -2708,12 +2708,12 @@ state somehow (ie writes to an object internally), and to inject/inspect that st
     </item>
     
     <item>
-      <title>Mocking the current Date in Jest tests</title>
+      <title>Mocking/stubbing the current Date in Jest tests</title>
       <link>https://codewithhugo.com/mocking-the-current-date-in-jest-tests/</link>
       <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/mocking-the-current-date-in-jest-tests/</guid>
-      <description>&lt;p&gt;There are situations where &lt;code&gt;Date.now&lt;/code&gt; is used in application code. That code needs to be tested, and it’s always a struggle to remember how to mock &lt;code&gt;Date.now&lt;/code&gt;. Here is the magic snippet:&lt;/p&gt;
+      <description>&lt;p&gt;There are situations where &lt;code&gt;Date.now&lt;/code&gt; is used in application code. That code needs to be tested, and it’s always a struggle to remember how to mock/stub &lt;code&gt;Date.now&lt;/code&gt;. Here is the magic snippet:&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;literallyJustDateNow&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;Date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
@@ -2741,12 +2741,12 @@ We’re also being good unit-testing citizens and putting the original &lt;code&
     </item>
     
     <item>
-      <title>Better HTTP Polling with RxJS 5</title>
+      <title>Better HTTP Polling in JavaScript with RxJS 5</title>
       <link>https://codewithhugo.com/better-http-polling-with-rxjs-5/</link>
       <pubDate>Mon, 09 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/better-http-polling-with-rxjs-5/</guid>
-      <description>&lt;p&gt;Here is the implementation for a function that takes a Promise-based fetch function and a function that decides if a response has been successful (from a polling perspective) and polls the fetch function until the &lt;code&gt;isSuccess&lt;/code&gt; function returns &lt;code&gt;true&lt;/code&gt;:&lt;/p&gt;
+      <description>&lt;p&gt;Here is the implementation for a function that takes a Promise-based fetch function (eg. using axios) and a function that decides if a response has been successful (from a polling perspective) and polls the fetch function until the &lt;code&gt;isSuccess&lt;/code&gt; function returns &lt;code&gt;true&lt;/code&gt;:&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Observable&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;interval&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;rxjs&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
@@ -4359,7 +4359,7 @@ heroku config:set &lt;span class=&#34;nv&#34;&gt;BUILD_NUM&lt;/span&gt;&lt;span 
     </item>
     
     <item>
-      <title>Abusing Jest snapshot tests: some nice use-cases 📸</title>
+      <title>When to use Jest snapshot tests: comprehensive use-cases and examples 📸</title>
       <link>https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/</link>
       <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
       
@@ -4381,15 +4381,16 @@ heroku config:set &lt;span class=&#34;nv&#34;&gt;BUILD_NUM&lt;/span&gt;&lt;span 
 - despite community efforts, the only major test library that supports out of the box is Jest (which locks you into that ecosystem)&lt;/p&gt;
 
 &lt;!--
-- [Config 🎛](#config-%F0%9F%8E%9B)
-- [Database Models 🏬](#database-models-%F0%9F%8F%AC)
-  - [Setup 🏗](#setup-%F0%9F%8F%97)
-  - [Queries 🔍](#queries-%F0%9F%94%8D)
+- [authorAvatar: https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg](#authoravatar-httpscdn-images-1mediumcomfitc2002000rb-adjpttv1uza4ojpeg)
+- [Config 🎛](#config-)
+- [Database Models 🏬](#database-models-)
+  - [Setup 🏗](#setup-)
+  - [Queries 🔍](#queries-)
 - [pug or handlebars templates](#pug-or-handlebars-templates)
-- [Gotchas of snapshot testing ⚠️](#gotchas-of-snapshot-testing-%E2%9A%A0%EF%B8%8F)
-  - [Some things (like functions) don’t serialise nicely 🔢](#some-things-like-functions-don%E2%80%99t-serialise-nicely-%F0%9F%94%A2)
+- [Gotchas of snapshot testing ⚠️](#gotchas-of-snapshot-testing-️)
+  - [Some things (like functions) don’t serialise nicely 🔢](#some-things-like-functions-dont-serialise-nicely-)
   - [If you can do a full match, do it](#if-you-can-do-a-full-match-do-it)
-  - [Try to cover the same code/feature with another type of test ✌️](#try-to-cover-the-same-codefeature-with-another-type-of-test-%E2%9C%8C%EF%B8%8F)
+  - [Try to cover the same code/feature with another type of test ✌️](#try-to-cover-the-same-codefeature-with-another-type-of-test-️)
 ---&gt;
 
 &lt;p&gt;That makes it particularly well-suited for a couple of areas:&lt;/p&gt;
@@ -5924,7 +5925,7 @@ Ideally, we don’t want to change any of the application code.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Mocking ES6 classes in tests with examples of Sequelize model unit tests</title>
+      <title>Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</title>
       <link>https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/</link>
       <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -5963,7 +5964,7 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
 &lt;p&gt;At the module level, we want to:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;mock out Sequelize (and the &lt;code&gt;Model&lt;/code&gt; base class)&lt;/li&gt;
+&lt;li&gt;mock/stub out Sequelize (and the &lt;code&gt;Model&lt;/code&gt; base class)&lt;/li&gt;
 &lt;li&gt;import the model&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -6817,7 +6818,7 @@ fileDataUri = URL.createObjectURL(file)
     </item>
     
     <item>
-      <title>Use ES modules in Node without Babel/Webpack using `esm`</title>
+      <title>Use ES modules/ES6 import in Node without Babel/Webpack using `esm`</title>
       <link>https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/</link>
       <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
       

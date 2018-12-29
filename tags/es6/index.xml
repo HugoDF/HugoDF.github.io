@@ -234,7 +234,7 @@
     </item>
     
     <item>
-      <title>Abusing Jest snapshot tests: some nice use-cases 📸</title>
+      <title>When to use Jest snapshot tests: comprehensive use-cases and examples 📸</title>
       <link>https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/</link>
       <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
       
@@ -256,15 +256,16 @@
 - despite community efforts, the only major test library that supports out of the box is Jest (which locks you into that ecosystem)&lt;/p&gt;
 
 &lt;!--
-- [Config 🎛](#config-%F0%9F%8E%9B)
-- [Database Models 🏬](#database-models-%F0%9F%8F%AC)
-  - [Setup 🏗](#setup-%F0%9F%8F%97)
-  - [Queries 🔍](#queries-%F0%9F%94%8D)
+- [authorAvatar: https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg](#authoravatar-httpscdn-images-1mediumcomfitc2002000rb-adjpttv1uza4ojpeg)
+- [Config 🎛](#config-)
+- [Database Models 🏬](#database-models-)
+  - [Setup 🏗](#setup-)
+  - [Queries 🔍](#queries-)
 - [pug or handlebars templates](#pug-or-handlebars-templates)
-- [Gotchas of snapshot testing ⚠️](#gotchas-of-snapshot-testing-%E2%9A%A0%EF%B8%8F)
-  - [Some things (like functions) don’t serialise nicely 🔢](#some-things-like-functions-don%E2%80%99t-serialise-nicely-%F0%9F%94%A2)
+- [Gotchas of snapshot testing ⚠️](#gotchas-of-snapshot-testing-️)
+  - [Some things (like functions) don’t serialise nicely 🔢](#some-things-like-functions-dont-serialise-nicely-)
   - [If you can do a full match, do it](#if-you-can-do-a-full-match-do-it)
-  - [Try to cover the same code/feature with another type of test ✌️](#try-to-cover-the-same-codefeature-with-another-type-of-test-%E2%9C%8C%EF%B8%8F)
+  - [Try to cover the same code/feature with another type of test ✌️](#try-to-cover-the-same-codefeature-with-another-type-of-test-️)
 ---&gt;
 
 &lt;p&gt;That makes it particularly well-suited for a couple of areas:&lt;/p&gt;
@@ -910,7 +911,7 @@ In this situation we’ll be fetching comments from the Reddit API.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Use ES modules in Node without Babel/Webpack using `esm`</title>
+      <title>Use ES modules/ES6 import in Node without Babel/Webpack using `esm`</title>
       <link>https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/</link>
       <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
       

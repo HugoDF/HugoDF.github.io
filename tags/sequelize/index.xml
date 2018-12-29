@@ -187,7 +187,7 @@ backed by relational databases, feel free to comment below or tweet to me &lt;a 
     </item>
     
     <item>
-      <title>Mocking ES6 classes in tests with examples of Sequelize model unit tests</title>
+      <title>Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</title>
       <link>https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/</link>
       <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -226,7 +226,7 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
 &lt;p&gt;At the module level, we want to:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;mock out Sequelize (and the &lt;code&gt;Model&lt;/code&gt; base class)&lt;/li&gt;
+&lt;li&gt;mock/stub out Sequelize (and the &lt;code&gt;Model&lt;/code&gt; base class)&lt;/li&gt;
 &lt;li&gt;import the model&lt;/li&gt;
 &lt;/ul&gt;
 
