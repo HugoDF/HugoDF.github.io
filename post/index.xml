@@ -12,230 +12,6 @@
     
     
     <item>
-      <title>Closures, Partial Application and Currying: Effective Functional JavaScript</title>
-      <link>https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/</link>
-      <pubDate>Thu, 12 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/</guid>
-      <description>
-
-&lt;p&gt;Spices and other ingredients of a great curry&lt;/p&gt;
-
-&lt;p&gt;To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.&lt;/p&gt;
-
-&lt;h2 id=&#34;the-basics&#34;&gt;The basics&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Functional_programming&#34;&gt;Functional programming&lt;/a&gt; is a programming paradigm that follows a more mathematical computation model. Let’s go through some basics to make your JavaScript more functional.&lt;/p&gt;
-
-&lt;h3 id=&#34;declarative-programming&#34;&gt;Declarative programming&lt;/h3&gt;
-
-&lt;p&gt;Functional programs tend to be declarative (as opposed to imperative), that’s a case of telling the compiler &lt;em&gt;what&lt;/em&gt; you want instead of &lt;em&gt;how&lt;/em&gt; you want it.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;list&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;// imperative style
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;imperative&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;// declarative style
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;declarative&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;firstElement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;In the above code snippet we’re trying to get the first element of list, the declarative example says what we want, firstElement can do whatever it likes as long as it returns the first element of the passed parameter. Whereas in the imperative style, we say I want index 0 of list explicitly. In JavaScript and at this program size, this doesn’t make a massive difference.&lt;/p&gt;
-
-&lt;p&gt;To build functional programs, we should prefer the declarative style and avoid mutation.&lt;/p&gt;
-
-&lt;h3 id=&#34;recursion-and-higher-order-functions&#34;&gt;Recursion and higher order functions&lt;/h3&gt;
-
-&lt;p&gt;There are no loops in functional programming, just recursion and higher order functions.&lt;/p&gt;
-
-&lt;p&gt;Mechanisms such as &lt;a href=&#34;https://en.wikipedia.org/wiki/Pattern_matching&#34;&gt;pattern matching&lt;/a&gt; allow for easier recursive function declarations. In ECMAScript 6 (the 2015 edition of the standard JavaScript is based on) we’ve added destructuring to the toolbox, which is a basic pattern matching that works for lists. You can read more about it &lt;a href=&#34;https://hackernoon.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa#.i8rek71hd&#34;&gt;here&lt;/a&gt;.
-&lt;a href=&#34;https://hackernoon.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa&#34;&gt;&lt;strong&gt;Recursion in JavaScript with ES6, destructuring and rest/spread&lt;/strong&gt;
-*The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative…*hackernoon.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Higher order functions allow you to traverse iterable collections (Arrays). In JavaScript we have Array#map, Array#filter and Array#reduce. Each of these takes a function as an argument. This is possible because we have first-class functions in JavaScript, which means you can pass them around like any other type of variable :).&lt;/p&gt;
-
-&lt;h3 id=&#34;lambdas-anonymous-functions&#34;&gt;Lambdas (anonymous functions)&lt;/h3&gt;
-
-&lt;p&gt;In JavaScript we can declare lambas (anonymous functions), which is quite handy considering the API of a lot of libraries expects a function as a parameter. We can just declare the function inline. It might mean a bit of a indentation/bracketing problem but inlining until you can generalise or refactor is actually great.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[ 1, 2, 3 ].map(function(el) {
-  return el * 2;
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;closures&#34;&gt;Closures&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553932829_Screen+Shot+2018-02-13+at+20.31.54.png&#34; alt=&#34;Mateusz Zatorski (@matzatorski) - Explain closures in a tweet.&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here are some &amp;gt;140 character explanations of closures, thanks to [Mateusz Zatorski]() for asking and his esteemed followers for answering :).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553899984_Screen+Shot+2018-02-13+at+20.30.48.png&#34; alt=&#34;Dan Abramov @dan_abramov - A function that can read and write variables outside of it. Even if those are inside other functions.&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553899904_Screen+Shot+2018-02-13+at+20.30.57.png&#34; alt=&#34;Rory Hunter @pugnascotia - A block of code with access to data / variables outwith its scope.&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553899950_Screen+Shot+2018-02-13+at+20.31.04.png&#34; alt=&#34;Ingvar Stepanyan @RReverser - Function bound to outer scope (similarly as it can be bound to object with .bind)&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_A4850B9878B1CEB09AB317E4A152A596BD90A90FBA7AC3DF6929A49CE574E13D_1518553899940_Screen+Shot+2018-02-13+at+20.31.11.png&#34; alt=&#34;Josh Burgess @_joshburgess - functions that &amp;quot;remember&amp;quot; the enviornment (enclosing scope) they were defined within, maintaining access to vars in that scope&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We can use closures to put state inside an outer function while having access to that state in an inner function. That state is not global but still accessible to child functions.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;outerFunction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;someState&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;nx&#34;&gt;increment&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;nx&#34;&gt;someState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
-    &lt;span class=&#34;nx&#34;&gt;getCount&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;someState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;counter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;outerFunction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-
-&lt;span class=&#34;nx&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;increment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;increment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;getCount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 2
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;increment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;increment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; 
-&lt;span class=&#34;nx&#34;&gt;counter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;getCount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 4
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;someState&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// ReferenceError: someState is not defined
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The state (&lt;code&gt;someState&lt;/code&gt;) isn’t global since the last statement returns an error. It is however available to the functions it returned, because they can “see” someState, it’s in their lexical scope.&lt;/p&gt;
-
-&lt;h3 id=&#34;function-application&#34;&gt;Function application&lt;/h3&gt;
-
-&lt;p&gt;Function application is the first “hardcore” functional programming concept we’re going to introduce today. It’s a concept that comes from the mathematics world.&lt;/p&gt;
-
-&lt;p&gt;A function application, in JavaScript, can look like a function call but doesn’t have to be.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;someFunc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;arg1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;arg2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;arg1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;arg2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;// function call
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;someFunc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 3
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// different ways to apply a function
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;someFunc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 3
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;someFunc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;apply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 3
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;someFunc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;call&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 3
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;A function call is an imperative construct whereas a function application belongs to the realm of functional programming and mathematics.&lt;/p&gt;
-
-&lt;p&gt;In JavaScript you can even use apply and call to define what this will be set to during the application.&lt;/p&gt;
-
-&lt;h2 id=&#34;partial-application&#34;&gt;Partial application&lt;/h2&gt;
-
-&lt;p&gt;Partial application is when you apply some of the required parameters of a function and return a function that takes the rest of the parameters.&lt;/p&gt;
-
-&lt;p&gt;We’re going to flip the parameters to the map function. Instead of taking parameters &lt;code&gt;(list, fn)&lt;/code&gt; it’s going to take &lt;code&gt;(fn, list)&lt;/code&gt;. This is to illustrate the value of partial application.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;functionalMap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;partialFunctionalMap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;functionalMap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;// Example 1
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Let&amp;#39;s apply all the arguments at once
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;functionalMap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;functionalMap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;// Example 2
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Let&amp;#39;s apply them one at a time
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;doubleListItems&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;partialFunctionalMap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;doubleListItems&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;span class=&#34;nx&#34;&gt;doubleListItems&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;What the code does in example 1 is less obvious than in example 2. You have to read what the lamba does instead of being told by the variable function name.&lt;/p&gt;
-
-&lt;p&gt;This is something we can use in places like React event handlers.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyComponent&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;React&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Component&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;partialHandleLinkClick&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;activeType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;hasKeyboardModifier&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ctrlKey&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;shiftKey&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;altKey&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;metaKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-      &lt;span class=&#34;nx&#34;&gt;updateType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;activeType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;hasKeyboardModifier&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;nx&#34;&gt;render&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;types&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Foo&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Bar&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Baz&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
-      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-          &lt;span class=&#34;nx&#34;&gt;types&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-            &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;{i}&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;#&amp;#34;&lt;/span&gt;
-              &lt;span class=&#34;na&#34;&gt;onClick&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;{this.partialHandleLinkClick(type,&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;this.props.activeType&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&amp;gt;&lt;/span&gt;
-              &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-            &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-      &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now if we went the Object-oriented route, we would use &lt;code&gt;.bind&lt;/code&gt; &lt;code&gt;partialHandleClick&lt;/code&gt; function to the component instance (&lt;code&gt;this&lt;/code&gt;) and to be able to access &lt;code&gt;this.props.activeType&lt;/code&gt; from inside &lt;code&gt;partialHandleClick&lt;/code&gt;.
-We’re trying to leverage functional programming, so no accessing this from all the way inside an event handler.
-We get to store some information that we can get at &lt;code&gt;.map&lt;/code&gt; time (which type is this handler for).
-When the event triggers, we get the final parameter we need &lt;code&gt;e&lt;/code&gt; (the event object) and the handler can finish applying.&lt;/p&gt;
-
-&lt;h2 id=&#34;currying&#34;&gt;Currying&lt;/h2&gt;
-
-&lt;p&gt;A curried function is a function that you apply 1 parameter at a time.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;partialFunctionalMap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;functionalMap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;fn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;list&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;partialFunctionalMap&lt;/code&gt; is curried.
-In the event handler example &lt;code&gt;partialHandleLinkClick&lt;/code&gt; isn’t, since the first application provided 2 parameters.&lt;/p&gt;
-
-&lt;p&gt;We could rewrite it though.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;curriedHandleLinkClick&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;activeType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;hasKeyboardModifier&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ctrlKey&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;shiftKey&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;altKey&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;metaKey&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-      &lt;span class=&#34;nx&#34;&gt;updateType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;activeType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;hasKeyboardModifier&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;And we would use &lt;code&gt;this.curriedHandleLinkClick(type)(this.props.activeType)&lt;/code&gt; instead of &lt;code&gt;this.partialHandleLinkClick(type, this.props.activeType)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;This isn’t as pretty in JavaScript as in other languages since we’re replacing &lt;code&gt;(arg1, arg2, arg3)&lt;/code&gt; with &lt;code&gt;(arg1)(arg2)(arg3)&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;currying-and-partial-application&#34;&gt;Currying and partial application&lt;/h2&gt;
-
-&lt;p&gt;Currying is strict: a curried function &lt;strong&gt;always&lt;/strong&gt; applied 1 parameter at a time. Partial application is not this strict.&lt;/p&gt;
-
-&lt;p&gt;A curried function tends to be partially applied but a partially applied function does &lt;strong&gt;not&lt;/strong&gt; have to be curried.&lt;/p&gt;
-
-&lt;p&gt;This means we can automate the currying process.&lt;/p&gt;
-
-&lt;p&gt;In JavaScript we can use libraries to curry functions with multiple arguments. &lt;a href=&#34;https://lodash.com/docs#curry&#34;&gt;Lodash has a curry function&lt;/a&gt; and &lt;a href=&#34;http://ramdajs.com/docs/#curry&#34;&gt;so does Ramda&lt;/a&gt;. They take a function and when applied with a parameter either returns if all required arguments are present or returns a curried function that accepts the rest of the arguments.&lt;/p&gt;
-
-&lt;p&gt;You can also write your own by accessing the arguments object of the function and using Function#apply. Here are a couple of tutorials that take you through this process.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://medium.com/@kbrainwave/currying-in-javascript-ce6da2d324fe&#34;&gt;&lt;strong&gt;Currying in JavaScript&lt;/strong&gt; A technique using partial evaluation&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://kevvv.in/currying-in-javascript/&#34;&gt;&lt;strong&gt;Currying in JavaScript&lt;/strong&gt;- Kevin Ennis&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Some languages like Haskell are auto-curried. This means that if the function application does not provide the required number of parameters, it will return a function which will accept the rest of the parameters one at a time, just like the &lt;a href=&#34;https://lodash.com/&#34;&gt;Lodash&lt;/a&gt; and &lt;a href=&#34;http://ramdajs.com/&#34;&gt;Ramda&lt;/a&gt; curry functions do. Another cool thing in Haskell is that partial application looks like non-partial application and curried function calls aren’t ugly, since the separator for parameters is a space.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span class=&#34;nf&#34;&gt;times&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;b&lt;/span&gt;
-
-&lt;span class=&#34;nf&#34;&gt;times&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;
-
-&lt;span class=&#34;nf&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;times&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;effective-functional-javascript-recipe&#34;&gt;Effective Functional JavaScript Recipe&lt;/h2&gt;
-
-&lt;p&gt;Use and abuse closures, partial application and currying.&lt;/p&gt;
-
-&lt;p&gt;This will enable you to compose your functions and write code that is extremely terse without losing readability.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>First-class and Higher Order Functions: Effective Functional JavaScript</title>
       <link>https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/</link>
       <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
@@ -9563,6 +9339,173 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@mbaumi?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Mika Baumeister&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Mika Baumeister&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Connect to MongoDB on Dokku with your local command line or Robo3T</title>
+      <link>https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/</guid>
+      <description>&lt;p&gt;The Dokku mongo plugin provides a &lt;code&gt;mongo:connect&lt;/code&gt; command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Table of Contents:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t&#34;&gt;Connect to MongoDB on Dokku with your local command line or Robo3T&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#pre-requisites&#34;&gt;Pre-requisites&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#dokku-mongo-is-installed&#34;&gt;dokku-mongo is installed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#you-have-a-database-to-play-with&#34;&gt;You have a database to play with&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#connect-to-your-remote-mongodb-instance-on-dokku&#34;&gt;Connect to your remote MongoDB instance on Dokku&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#dokkus-behaviour-around-access-of-mongodb&#34;&gt;Dokku’s behaviour around access of MongoDB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exposing-our-mongodb-instance&#34;&gt;Exposing our MongoDB instance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#connecting-with-robo3t&#34;&gt;Connecting with Robo3T&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#testing-out-the-connection&#34;&gt;Testing out the connection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#security-concerns&#34;&gt;Security concerns&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h2&gt;
+
+&lt;h3 id=&#34;dokku-mongo-is-installed&#34;&gt;dokku-mongo is installed&lt;/h3&gt;
+
+&lt;p&gt;See &lt;a href=&#34;https://github.com/dokku/dokku-mongo&#34;&gt;github.com/dokku/dokku-mongo&lt;/a&gt;, to install it:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ssh into the server running Dokku as root&lt;/li&gt;
+&lt;li&gt;run: &lt;code&gt;sudo dokku plugin:install https://github.com/dokku/dokku-mongo.git mongo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;you-have-a-database-to-play-with&#34;&gt;You have a database to play with&lt;/h3&gt;
+
+&lt;p&gt;Create one with: &lt;code&gt;ssh -t dokku@YOUR_INSTANCE_IP mongo:create public-database&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You should get the following output, the bolded string is the mongo connection URI:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    Waiting for container to be ready
+=====&amp;gt; MongoDB container created: public-database
+=====&amp;gt; Container Information
+    Config dir:          /var/lib/dokku/services/mongo/public-database/config
+    Data dir:            /var/lib/dokku/services/mongo/public-database/data
+    Dsn:                 mongodb://public-database:289b4a4b32ab3182895d8aac7def0ee1@dokku-mongo-public-database:27017/public-database
+    Exposed ports:       -
+    Id:                  67163f2006dd9e17f8325620814bae9b881ee6465088b8b1c571fbb6c08ac801
+    Internal ip:         172.17.0.11
+    Links:               -
+    Service root:        /var/lib/dokku/services/mongo/public-database
+    Status:              running
+    Version:             mongo:3.4.9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;connect-to-your-remote-mongodb-instance-on-dokku&#34;&gt;Connect to your remote MongoDB instance on Dokku&lt;/h2&gt;
+
+&lt;p&gt;First off, let’s check that we can connect using the included dokku-mongo &lt;code&gt;:connect&lt;/code&gt; command.
+Run the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh -t dokku@YOUR_INSTANCE_IP mongo:connect public-database
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It should open a MongoDB shell:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;MongoDB shell version v3.4.9
+connecting to: mongodb://127.0.0.1:27017/public-database
+MongoDB server version: 3.4.9
+&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;dokku-s-behaviour-around-access-of-mongodb&#34;&gt;Dokku’s behaviour around access of MongoDB&lt;/h3&gt;
+
+&lt;p&gt;If we look back at the &lt;code&gt;mongo:info&lt;/code&gt; output we’ll notice the following line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Exposed ports:       -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That means this MongoDB instance is not exposed to anything outside of Dokku, that’s good for security, bad for accessing it from your local tools.&lt;/p&gt;
+
+&lt;h3 id=&#34;exposing-our-mongodb-instance&#34;&gt;Exposing our MongoDB instance&lt;/h3&gt;
+
+&lt;p&gt;We’ll need to expose it, and pass some ports we want to map to (this helps with predictability/reproducibility)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ssh -t dokku@YOUR_INSTANCE_IP mongo:expose public-database &lt;span class=&#34;m&#34;&gt;20017&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20018&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20019&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20020&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Which yields the following output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-----&amp;gt; Service public-database exposed on port(s) [container-&amp;gt;host]: 27017-&amp;gt;20017 27018-&amp;gt;20018 27019-&amp;gt;20019 28017-&amp;gt;20020
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which means the MongoDB ports 27017, 27018, 27019 and 28017 were exposed at the server’s 20017, 20018, 20019, 20020 ports respectively.&lt;/p&gt;
+
+&lt;h3 id=&#34;connecting-with-robo3t&#34;&gt;Connecting with Robo3T&lt;/h3&gt;
+
+&lt;p&gt;In order to connect with Robo3T we’ll create a new connection to the MongoDB instance.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open the “Connect” menu (File &amp;gt; Connect)&lt;/li&gt;
+&lt;li&gt;In the first line, click “Create”&lt;/li&gt;
+&lt;li&gt;Fill out the “Connection” tab, of course, replace YOUR_SERVER_IP with your actual server IP or domain name.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546270597650_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fill out the “Authentication” tab, if you remember our connection string from &lt;code&gt;dokku mongo:info public-database&lt;/code&gt;, &lt;code&gt;**mongodb://public-database:289b4a4b32ab3182895d8aac7def0ee1@dokku-mongo-public-database:27017/public-database**&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The format is &lt;code&gt;mongodb://USERNAME:PASSWORD@INTERNAL_HOSTNAME:INTERNAL_PORT/DATABASE_NAME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;So we have&lt;/li&gt;
+&lt;li&gt;Database: &lt;code&gt;public-database&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;User Name: &lt;code&gt;public-database&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Password: &lt;code&gt;289b4a4b32ab3182895d8aac7def0ee1&lt;/code&gt; (use your actual password)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546270788604_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can now hit “Test” and it should tell you everything is fine&lt;/li&gt;
+&lt;li&gt;You can “Save” and “Connect” to this new database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;testing-out-the-connection&#34;&gt;Testing out the connection&lt;/h2&gt;
+
+&lt;p&gt;Create a new collection “newest-public-spaces”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546271101758_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546271148845_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Insert some data&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546271216423_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546271218792_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s disconnect and go back to the dokku-mongo plugin connection and get data for the &lt;code&gt;newest-public-spaces&lt;/code&gt; collection to see if we were talking to the same database.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ssh -t dokku@YOUR_SERVER_IP mongo:connect public-database
+MongoDB shell version v3.4.9
+connecting to: mongodb://127.0.0.1:27017/public-database
+MongoDB server version: &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;.4.9
+&amp;gt; db.getCollection&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;newest-public-spaces&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;.find&lt;span class=&#34;o&#34;&gt;({})&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;_id&amp;#34;&lt;/span&gt; : ObjectId&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;5c2a39e6e632f9bc24ec1a2d&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; : &lt;span class=&#34;s2&#34;&gt;&amp;#34;my park&amp;#34;&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;location&amp;#34;&lt;/span&gt; : &lt;span class=&#34;s2&#34;&gt;&amp;#34;next door&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;security-concerns&#34;&gt;Security concerns&lt;/h2&gt;
+
+&lt;p&gt;These connections are not done with TLS (transport layer security), which is fine for non-sensitive data.&lt;/p&gt;
+
+&lt;p&gt;I would also suggest using &lt;code&gt;dokku mongo:unexpose YOUR_DATABASE_NAME&lt;/code&gt; when not actively using the connection.&lt;/p&gt;
+
+&lt;p&gt;For more about Dokku and deployment see: &lt;a href=&#34;https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/&#34;&gt;Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS&lt;/a&gt; or the &lt;a href=&#34;https://codewithhugo.com/tags/deployment&#34;&gt;“Deployment”&lt;/a&gt; category on Code with Hugo&lt;/p&gt;
+
+&lt;p&gt;If you’re looking for a good place to host your Dokku instance, I recommend &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt;, they have a great &lt;a href=&#34;https://www.digitalocean.com/products/one-click-apps/dokku/&#34;&gt;One-click install and deploy Dokku&lt;/a&gt;, if you use &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;this referral link you’ll get $100 free credit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@ckirby?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Cameron Kirby&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Cameron Kirby&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

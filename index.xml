@@ -12,260 +12,6 @@
     
     
     <item>
-      <title>First-class and Higher Order Functions: Effective Functional JavaScript</title>
-      <link>https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/</link>
-      <pubDate>Mon, 23 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/</guid>
-      <description>
-
-&lt;p&gt;Functions: the killer JavaScript feature we never talk about.&lt;/p&gt;
-
-&lt;p&gt;JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embedded systems and it brings a non-blocking I/O model that is faster than others for some types of applications. What really sets JavaScript apart from the rest of scripting languages is its highly functional nature.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;JavaScript has more in common with functional languages like &lt;a href=&#34;http://javascript.crockford.com/little.html&#34;&gt;Lisp or Scheme&lt;/a&gt; than with C or Java. — Douglas Crockford in &lt;a href=&#34;http://javascript.crockford.com/javascript.html&#34;&gt;JavaScript: the World’s Most Misunderstood Language&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It’s a widely publicised fact that Brendan Eich, when creating the first version of JavaScript, was actually told he would be able to build a &lt;a href=&#34;https://en.wikipedia.org/wiki/Lisp_(programming_language)&#34;&gt;Lisp, a list processing language like Scheme or common Lisp&lt;/a&gt;. It turns out that Sun Microsystems had other ideas and this programming language needed to wear a coat of procedural syntax inherited from a C or Java-like language. Despite all the semicolons, at its heart JavaScript remains a functional language with features such as first-class functions and closures.&lt;/p&gt;
-
-&lt;p&gt;This post will focus on first-class functions and higher order functions. To read more about closures and how to leverage them to wield JavaScript’s functional powers, I’ve written the&lt;a href=&#34;https://hackernoon.com/ingredients-of-effective-functional-javascript-closures-partial-application-and-currying-66afe055102a&#34;&gt; following post&lt;/a&gt;:
-&lt;a href=&#34;https://hackernoon.com/ingredients-of-effective-functional-javascript-closures-partial-application-and-currying-66afe055102a&#34;&gt;&lt;strong&gt;Ingredients of Effective Functional JavaScript: Closures, Partial Application and Currying&lt;/strong&gt;
-*To use JavaScript to its full potential you have to embrace its strong functional programming base.*hackernoon.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;first-class-functions&#34;&gt;First-class functions&lt;/h2&gt;
-
-&lt;p&gt;A language with first-class functions means that it treats functions like expressions of any other type. Functions are like any other object.&lt;/p&gt;
-
-&lt;p&gt;You can pass them into other functions as parameters:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function runFunction(fn, data) {
-  return fn(data);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can assign a function as a value to a variable:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var myFunc = function() {
-  // do something
-};
-
-const myNewGenFunc = someParam =&amp;gt; someParam;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can return a function:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;function takeFirst(f, g) {
-   return f;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;first-class-functions-in-practice&#34;&gt;First-class functions in practice&lt;/h2&gt;
-
-&lt;h3 id=&#34;cheap-dependency-injection&#34;&gt;Cheap dependency injection&lt;/h3&gt;
-
-&lt;p&gt;In languages without first-class functions to pass a dependency in means passing an object. Here we can just pass functions around, which is great.&lt;/p&gt;
-
-&lt;p&gt;For example in Java to run a custom sort on an ArrayList, we have to use ArrayList#sort which expects a Comparator object as a parameter (see &lt;a href=&#34;http://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html#sort-java.util.Comparator-&#34;&gt;the Java API docs here&lt;/a&gt;). In JavaScript we use Array#sort (&lt;a href=&#34;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/sort&#34;&gt;MDN reference here&lt;/a&gt;) which expects a function. This is a bit less verbose since in this case we’re just going to be implementing one method of the Comparator interface&lt;/p&gt;
-
-&lt;p&gt;It gets even better with ES6 default parameter syntax.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// in fetch.js
-import axios from &#39;axios&#39;;
-
-export function fetchSomething(fetch = axios) {
-  return fetch(&#39;/get/some/resource&#39;);
-}
-
-// in someModule.js
-import axios from &#39;axios&#39;;
-
-import { fetchSomething } from &#39;./fetch&#39;;
-
-const fetcherWithHeaders = axios({
-  // pass some custom configs
-});
-
-fetchSomething(fetcherWithHeaders)
-.then(/* do something */)
-.catch(/* handle error */);
-
-// in someOtherModule.js
-
-import { fetchSomething } from &#39;./fetch&#39;;
-
-fetchSomething()
-.then(/* do something */)
-.catch(/* handle error */);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;callbacks-and-non-blocking-io&#34;&gt;Callbacks and non-blocking IO&lt;/h3&gt;
-
-&lt;p&gt;JavaScript’s default behaviour on IO is non-blocking. This means we tend to pass a lot of callbacks (until Promises came along at least). Being able to pass a function as a callback instead of an object on which we will run a method (like we would in say Java) means we can have terseness in callback-based code.&lt;/p&gt;
-
-&lt;p&gt;For example in Node:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const fs = require(&#39;fs&#39;);
-
-fs.readFile(&#39;./myFile.txt&#39;, &#39;utf-8&#39;, function(err, data) {
-  // this is a callback, it gets executed
-  // once the file has been read
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;more-functional-programming-primitives-that-require-first-class-functions&#34;&gt;More functional programming primitives that require first-class functions&lt;/h3&gt;
-
-&lt;p&gt;Being able to return a function and closures means we have access to things like partial application and currying. &lt;a href=&#34;https://hackernoon.com/ingredients-of-effective-functional-javascript-closures-partial-application-and-currying-66afe055102a&#34;&gt;Read more about those FP superpowers here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It also means we can start creating higher order functions.&lt;/p&gt;
-
-&lt;h2 id=&#34;higher-order-functions&#34;&gt;Higher order functions&lt;/h2&gt;
-
-&lt;p&gt;A function is a higher order function if it takes a function as a parameter, or returns a function as its result. Both of these requirements rely on functions being first-class objects in a language.&lt;/p&gt;
-
-&lt;p&gt;map, filter and reduce/reduceRightare the functions present in JavaScript that map to classic higher order functions in other functional languages.&lt;/p&gt;
-
-&lt;p&gt;In other languages:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;map tends to be called map or transform&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;filter is called select in some languages&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;reduce and reduceRight are the fold left and right functions (also called accumulate, aggregate, compress or inject in different languages)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In functional programming languages, there are no loops. When you need to do an operation like traversing a list or a tree, there are two predominant styles: recursion and higher order functions.&lt;/p&gt;
-
-&lt;p&gt;Recursion relies on a function calling itself, usually on a different part of the parameter (list being traversed for example). That’s a topic for &lt;a href=&#34;https://hackernoon.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa#.i4kfpmmfr&#34;&gt;another post&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Higher order functions are usually provided by the language. In ES6 JavaScript these functions are defined on the Array prototype.&lt;/p&gt;
-
-&lt;h3 id=&#34;array-map&#34;&gt;Array#map&lt;/h3&gt;
-
-&lt;p&gt;map is used if we want to perform the same change on each member of the array. It takes the function that should be applied to each element of the array as a parameter. That function is passed (element, index, wholeArray) as parameters.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const myArr = [ &#39;some text&#39;, &#39;more text&#39;, &#39;final text&#39; ];
-
-const mappedArr = myArr.map( function(str) {
-  return str.split(&#39; &#39;);
-});
-
-console.log(mappedArr);
-// [ [ &#39;some&#39;, &#39;text&#39; ], [ &#39;more&#39;, &#39;text&#39; ], [ &#39;final&#39;, &#39;text&#39; ] ]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;array-filter&#34;&gt;Array#filter&lt;/h3&gt;
-
-&lt;p&gt;filter allows us to pick which elements of the array should remain in the transformed list by passing a filtering function that returns a Boolean value (true/false). As for map this functions is passed (element, index, wholeArray).&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const myArr = [ 5, 10, 4, 50, 3 ];
-
-const multiplesOfFive = myArr.filter( function(num) {
-  return num % 5 === 0;
-});
-
-console.log(multiplesOfFive);
-// [ 5, 10, 50 ]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;array-reduce&#34;&gt;Array#reduce&lt;/h3&gt;
-
-&lt;p&gt;reduce is used to change the shape of the array. We provide more than 1 parameter to this function (in addition to the array we’re reducing). We pass a reducing function and optionally the initial value of to reduce with. The function is passed (prev, curr, index, wholeArray) . prev is the value returned by the previous reduction, for the first iteration that means it’s either the initial value of the first element of the array. curr is the value in the array at which we’re at.&lt;/p&gt;
-
-&lt;p&gt;The classic example is summing or concatenating.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const myNumbers = [ 1, 2, 5 ];
-const myWords = [ &#39;These&#39;, &#39;all&#39;, &#39;form&#39;, &#39;a&#39;, &#39;sentence&#39; ];
-
-const sum = myNumbers.reduce( function(prev, curr) {
-  return prev + curr;
-}, 0);
-
-console.log(sum); // 8
-
-const sentence = myWords.reduce( (prev, curr) =&amp;gt; {
- return prev + &#39; &#39; + curr;
-}); // the initial value is optional
-
-console.log(sentence);
-// &#39;These all form a sentence&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you want to learn more about the internal of map, filter and reduce or recursion, I’ve reimplemented them in a recursive style using ES6 destructuring in the following post:
-&lt;a href=&#34;https://hackernoon.com/recursion-in-javascript-with-es6-destructuring-and-rest-spread-4b22ae5998fa&#34;&gt;&lt;strong&gt;Recursion in JavaScript with ES6, destructuring and rest/spread&lt;/strong&gt;
-*The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative…*hackernoon.com&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;higher-order-functions-in-practice&#34;&gt;Higher order functions in practice&lt;/h2&gt;
-
-&lt;h3 id=&#34;no-more-loops&#34;&gt;No more loops&lt;/h3&gt;
-
-&lt;p&gt;Higher order functions allow us to get rid of the imperative loops that seem to be spread everywhere.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var newArr = [];
-var myArr = [ 1, 2, 3 ];
-
-for(var i = 0; i &amp;lt; myArr.length; i++) {
-  newArr.push(myArr[i] * 2);
-}
-
-console.log(newArr); // [ 2, 4, 6 ]
-
-// nicer with `map`
-const doubled = myArr.map( x =&amp;gt; x * 2 );
-console.log(doubled); // [ 2, 4, 6 ]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The intent is just clearer with map. We can also extract the double function so we’re making our code more readable and modular.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;const double = x =&amp;gt; x * 2;
-const doubled = arr.map(double);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It reads like a book and that’s important because we write for humans not machines.&lt;/p&gt;
-
-&lt;h3 id=&#34;side-effect-free-programming&#34;&gt;Side-effect free programming&lt;/h3&gt;
-
-&lt;p&gt;Array higher order functions do not mutate the variable they are called on. This is good, because the loop-based approach using .push and .pop changes it. It means if you pass a variable as a parameter, it’s not suddenly going to get changed by a function down the call stack.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// some random module
-// obviously no one actually does this
-function doesBadSideEffect(arr) {
-  return arr.pop();
-}
-
-
-// somewhere quite important
-var arr = [ &#39;a&#39;, &#39;b&#39;, &#39;c&#39; ];
-
-var joinedLetters = &#39;&#39;;
-
-for(var i = 0; i &amp;lt; arr.length; i++) {
-  joinedLetters += arr[i];
-  doesBadSideEffect(arr)
-}
-
-console.log(joinedLetters);
-// whoops &#39;ab&#39;
-// even though the naming makes us
-// expect &#39;abc&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;declarative-code-optimisations&#34;&gt;Declarative Code Optimisations&lt;/h3&gt;
-
-&lt;p&gt;In some languages functions like map are parallelised. That’s because we don’t actually need to know what’s in the rest of the array to compute this particular element’s new value. If we’re doing complex things in the mapping function then this sort of optimisation could be very useful.&lt;/p&gt;
-
-&lt;h2 id=&#34;effective-functional-javascript&#34;&gt;Effective Functional JavaScript&lt;/h2&gt;
-
-&lt;p&gt;Use first-class and higher order functions to write nicer code more easily. It’s nice and declarative instead of imperative, say what you want done not how to do it&lt;/p&gt;
-
-&lt;p&gt;This will enable you to compose your functions and write code that is extremely terse without losing readability.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Edit: 24/01/2017, rephrased “Callbacks and non-blocking IO” following Anton Alexandrenok’s comments&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>AVA, low-config testing for JavaScript</title>
       <link>https://codewithhugo.com/ava-low-config-testing-for-javascript/</link>
       <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
@@ -9339,6 +9085,173 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@mbaumi?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Mika Baumeister&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Mika Baumeister&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Connect to MongoDB on Dokku with your local command line or Robo3T</title>
+      <link>https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/</guid>
+      <description>&lt;p&gt;The Dokku mongo plugin provides a &lt;code&gt;mongo:connect&lt;/code&gt; command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Table of Contents:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t&#34;&gt;Connect to MongoDB on Dokku with your local command line or Robo3T&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#pre-requisites&#34;&gt;Pre-requisites&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#dokku-mongo-is-installed&#34;&gt;dokku-mongo is installed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#you-have-a-database-to-play-with&#34;&gt;You have a database to play with&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#connect-to-your-remote-mongodb-instance-on-dokku&#34;&gt;Connect to your remote MongoDB instance on Dokku&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#dokkus-behaviour-around-access-of-mongodb&#34;&gt;Dokku’s behaviour around access of MongoDB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exposing-our-mongodb-instance&#34;&gt;Exposing our MongoDB instance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#connecting-with-robo3t&#34;&gt;Connecting with Robo3T&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#testing-out-the-connection&#34;&gt;Testing out the connection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#security-concerns&#34;&gt;Security concerns&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h2&gt;
+
+&lt;h3 id=&#34;dokku-mongo-is-installed&#34;&gt;dokku-mongo is installed&lt;/h3&gt;
+
+&lt;p&gt;See &lt;a href=&#34;https://github.com/dokku/dokku-mongo&#34;&gt;github.com/dokku/dokku-mongo&lt;/a&gt;, to install it:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ssh into the server running Dokku as root&lt;/li&gt;
+&lt;li&gt;run: &lt;code&gt;sudo dokku plugin:install https://github.com/dokku/dokku-mongo.git mongo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;you-have-a-database-to-play-with&#34;&gt;You have a database to play with&lt;/h3&gt;
+
+&lt;p&gt;Create one with: &lt;code&gt;ssh -t dokku@YOUR_INSTANCE_IP mongo:create public-database&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You should get the following output, the bolded string is the mongo connection URI:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    Waiting for container to be ready
+=====&amp;gt; MongoDB container created: public-database
+=====&amp;gt; Container Information
+    Config dir:          /var/lib/dokku/services/mongo/public-database/config
+    Data dir:            /var/lib/dokku/services/mongo/public-database/data
+    Dsn:                 mongodb://public-database:289b4a4b32ab3182895d8aac7def0ee1@dokku-mongo-public-database:27017/public-database
+    Exposed ports:       -
+    Id:                  67163f2006dd9e17f8325620814bae9b881ee6465088b8b1c571fbb6c08ac801
+    Internal ip:         172.17.0.11
+    Links:               -
+    Service root:        /var/lib/dokku/services/mongo/public-database
+    Status:              running
+    Version:             mongo:3.4.9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;connect-to-your-remote-mongodb-instance-on-dokku&#34;&gt;Connect to your remote MongoDB instance on Dokku&lt;/h2&gt;
+
+&lt;p&gt;First off, let’s check that we can connect using the included dokku-mongo &lt;code&gt;:connect&lt;/code&gt; command.
+Run the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh -t dokku@YOUR_INSTANCE_IP mongo:connect public-database
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It should open a MongoDB shell:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;MongoDB shell version v3.4.9
+connecting to: mongodb://127.0.0.1:27017/public-database
+MongoDB server version: 3.4.9
+&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;dokku-s-behaviour-around-access-of-mongodb&#34;&gt;Dokku’s behaviour around access of MongoDB&lt;/h3&gt;
+
+&lt;p&gt;If we look back at the &lt;code&gt;mongo:info&lt;/code&gt; output we’ll notice the following line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Exposed ports:       -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That means this MongoDB instance is not exposed to anything outside of Dokku, that’s good for security, bad for accessing it from your local tools.&lt;/p&gt;
+
+&lt;h3 id=&#34;exposing-our-mongodb-instance&#34;&gt;Exposing our MongoDB instance&lt;/h3&gt;
+
+&lt;p&gt;We’ll need to expose it, and pass some ports we want to map to (this helps with predictability/reproducibility)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ssh -t dokku@YOUR_INSTANCE_IP mongo:expose public-database &lt;span class=&#34;m&#34;&gt;20017&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20018&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20019&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20020&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Which yields the following output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-----&amp;gt; Service public-database exposed on port(s) [container-&amp;gt;host]: 27017-&amp;gt;20017 27018-&amp;gt;20018 27019-&amp;gt;20019 28017-&amp;gt;20020
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which means the MongoDB ports 27017, 27018, 27019 and 28017 were exposed at the server’s 20017, 20018, 20019, 20020 ports respectively.&lt;/p&gt;
+
+&lt;h3 id=&#34;connecting-with-robo3t&#34;&gt;Connecting with Robo3T&lt;/h3&gt;
+
+&lt;p&gt;In order to connect with Robo3T we’ll create a new connection to the MongoDB instance.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Open the “Connect” menu (File &amp;gt; Connect)&lt;/li&gt;
+&lt;li&gt;In the first line, click “Create”&lt;/li&gt;
+&lt;li&gt;Fill out the “Connection” tab, of course, replace YOUR_SERVER_IP with your actual server IP or domain name.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546270597650_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fill out the “Authentication” tab, if you remember our connection string from &lt;code&gt;dokku mongo:info public-database&lt;/code&gt;, &lt;code&gt;**mongodb://public-database:289b4a4b32ab3182895d8aac7def0ee1@dokku-mongo-public-database:27017/public-database**&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The format is &lt;code&gt;mongodb://USERNAME:PASSWORD@INTERNAL_HOSTNAME:INTERNAL_PORT/DATABASE_NAME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;So we have&lt;/li&gt;
+&lt;li&gt;Database: &lt;code&gt;public-database&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;User Name: &lt;code&gt;public-database&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Password: &lt;code&gt;289b4a4b32ab3182895d8aac7def0ee1&lt;/code&gt; (use your actual password)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546270788604_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You can now hit “Test” and it should tell you everything is fine&lt;/li&gt;
+&lt;li&gt;You can “Save” and “Connect” to this new database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;testing-out-the-connection&#34;&gt;Testing out the connection&lt;/h2&gt;
+
+&lt;p&gt;Create a new collection “newest-public-spaces”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546271101758_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546271148845_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Insert some data&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546271216423_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://d2mxuefqeaa7sj.cloudfront.net/s_5F4BC56CEE8442961498E30A88107FB43112E81DEC4BBA7ABD2A9A1388573B9B_1546271218792_image.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s disconnect and go back to the dokku-mongo plugin connection and get data for the &lt;code&gt;newest-public-spaces&lt;/code&gt; collection to see if we were talking to the same database.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ssh -t dokku@YOUR_SERVER_IP mongo:connect public-database
+MongoDB shell version v3.4.9
+connecting to: mongodb://127.0.0.1:27017/public-database
+MongoDB server version: &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;.4.9
+&amp;gt; db.getCollection&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;newest-public-spaces&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;.find&lt;span class=&#34;o&#34;&gt;({})&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;_id&amp;#34;&lt;/span&gt; : ObjectId&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;5c2a39e6e632f9bc24ec1a2d&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt; : &lt;span class=&#34;s2&#34;&gt;&amp;#34;my park&amp;#34;&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;location&amp;#34;&lt;/span&gt; : &lt;span class=&#34;s2&#34;&gt;&amp;#34;next door&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;security-concerns&#34;&gt;Security concerns&lt;/h2&gt;
+
+&lt;p&gt;These connections are not done with TLS (transport layer security), which is fine for non-sensitive data.&lt;/p&gt;
+
+&lt;p&gt;I would also suggest using &lt;code&gt;dokku mongo:unexpose YOUR_DATABASE_NAME&lt;/code&gt; when not actively using the connection.&lt;/p&gt;
+
+&lt;p&gt;For more about Dokku and deployment see: &lt;a href=&#34;https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/&#34;&gt;Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS&lt;/a&gt; or the &lt;a href=&#34;https://codewithhugo.com/tags/deployment&#34;&gt;“Deployment”&lt;/a&gt; category on Code with Hugo&lt;/p&gt;
+
+&lt;p&gt;If you’re looking for a good place to host your Dokku instance, I recommend &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt;, they have a great &lt;a href=&#34;https://www.digitalocean.com/products/one-click-apps/dokku/&#34;&gt;One-click install and deploy Dokku&lt;/a&gt;, if you use &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;this referral link you’ll get $100 free credit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@ckirby?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Cameron Kirby&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Cameron Kirby&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
