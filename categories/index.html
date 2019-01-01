@@ -153,26 +153,27 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/samuel-zeller-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elevate-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Node 
-              #ES6  </span>
+              #Sequelize 
+              #testing 
+              #Node  </span>
               
-              <h2 class="post-card-title">Why you should wrap your (JavaScript) dependencies</h2>
+              <h2 class="post-card-title">Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> An email sending example.
- 
- ...  </p>
+                <p>This post goes through some patterns that can be used to unit test ES6 classes.
+The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.
+In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database). ...  </p>
               
           </section>
       </a>
@@ -222,24 +223,23 @@ This post walks through how to deliver this functionality both as a CLI and a mo
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cameron-kirby-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/jp-valery-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #deployment 
-              #dokku 
-              #MongoDB  </span>
+              #JavaScript 
+              #reactive programming  </span>
               
-              <h2 class="post-card-title">Connect to MongoDB on Dokku with your local command line or Robo3T</h2>
+              <h2 class="post-card-title">Better HTTP Polling in JavaScript with RxJS 5</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The Dokku mongo plugin provides a mongo:connect command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.
+                <p>Here is the implementation for a function that takes a Promise-based fetch function (eg. using axios) and a function that decides if a response has been successful (from a polling perspective) and polls the fetch function until the isSuccess function returns true:
 
  ...  </p>
               
