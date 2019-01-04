@@ -159,9 +159,13 @@
           <aside class="js-buy-overlay">
             <h2 class="js-buy-overlay__title">Get the Sequelize ES6 cheat sheet</h2>
             <p>Use Sequelize with modern ES6+ JavaScript.<br/>Ready to use examples to increase your productivity.<br/></p>
-            <form action="https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet" type="GET">
-              <button class="button">Buy it now</button>
-            </form>
+            <button
+              class="cp-button button"
+              data-seller="hugo"
+              data-checkout="sequelize-cheatsheet"
+            >
+              Buy it now
+            </button>
             <p class="js-buy-overlay__already-bought">
               Already bought it?
               Check your emails or get in touch <a href="mailto:hi@codewithhugo.com">hi@codewithhugo.com</a>
@@ -831,6 +835,24 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 
     
       <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6"></script>
+      <script type="text/javascript" src="https://checkoutpage.co/js/overlay.js"></script>
+      <script>
+        window.checkoutPageOverlay = (function (document) {
+          const checkoutPageOverlayFrame = document.getElementById('cp-frame')
+          const checkoutButton = document.querySelector('.cp-button')
+          let wasOpened = false
+          return {
+            open: function () {
+              checkoutPageOverlayFrame.onload = function() {
+                if (!wasOpened) {
+                  checkoutButton.click()
+                  wasOpened = true
+                }
+              }
+            }
+          }
+        })(document)
+      </script>
       <script>
         (function (document, navigator, window) {
           const PAID_QUERY_PARAMS = JSON.parse("[{\"key\":\"veryrelational\"},{\"key\":\"mailing-list\"}]");
@@ -906,6 +928,7 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
             if(!didBuy()) {
               $siteWrapper.classList.add(SITE_WRAPPER_NO_SCROLL_CLASS);
               $buyOverlay.classList.add(BUY_OVERLAY_ACTIVE_CLASS);
+              checkoutPageOverlay.open()
             } else {
               window.history.replaceState({}, document.title, window.location.pathname);
             }
