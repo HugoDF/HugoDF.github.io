@@ -153,27 +153,28 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/samuel-zeller-2-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/anthony-cantin-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
+              #deployment 
               #meta 
-              #payment  </span>
+              #JavaScript  </span>
               
-              <h2 class="post-card-title">Add a client-side paywall using checkoutpage.co and vanilla JavaScript</h2>
+              <h2 class="post-card-title">A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>How I created the buying mechanism for the Sequelize ES6 Cheatsheet using checkoutpage.co and sprinkles of vanilla JavaScript.
-This strictly isn’t a paywall, it&rsquo;s all client-side and doesn&rsquo;t check much.
-In principle you can display the whole things using a bit of CSS magic. You could also read the source and reverse-engineer what query params work for this page.
-You could also spoof as Google Bot (or another crawler) and skip the pay overlay. ...  </p>
+                <p> Last Monday (22 October 2018) GitHub was going 💥, and scheduled content on Code with Hugo wasn’t going live.
+ For context, the blog’s setup is documented in “Switching the lights on: Hugo vs Hugo config files”.
+tl;dr (as is relevant to this post)
+ Cloudflare DNS + CDN + proxying + HTTPS GitHub Pages Hugo as a static site generator CircleCI to deploy the site daily + on push (🤷‍♀️wasn’t in the post but that’s how I do it)  
+ ...  </p>
               
           </section>
       </a>
@@ -188,60 +189,62 @@ You could also spoof as Google Bot (or another crawler) and skip the pay overlay
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*gVQU50zNWjL1kihKKQ5zYQ.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ben-koorengevel-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #CSS 
-              #JavaScript 
-              #animation 
-              #web development  </span>
-              
-              <h2 class="post-card-title">Animations: CSS vs JavaScript</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>When should you use JavaScript when you can use CSS? This post was sparked by a question I answered on Quora: Which is better to use, CSS or JS?
-The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see “Backend code, frontend code and how they interact” for more details): HTML says what things are, CSS how they look and JavaScript does all the things the other two can’t. ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cli-screenshot.jpeg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
               #Node 
-              #CLI  </span>
+              #Docker 
+              #redis  </span>
               
-              <h2 class="post-card-title">How to make beautiful, simple CLI apps with Node</h2>
+              <h2 class="post-card-title">A Docker/docker-compose setup with Redis and Node/Express</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
-Command line apps are a neat way to package repetitive tasks. This will walk you through some tools that are useful to build CLI apps.
- The idea 💡 Piping to the command line 🚇 Dealing with sequential actions ✨ Executable JavaScript files 🦅 Adding package binaries 📦 Publishing to npm 🚀  The idea 💡 When merging/rebasing, the file that always seems to cause trouble is the package-lock. ...  </p>
+                <p>Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.
+The repo is available at: https://github.com/HugoDF/express-redis-docker.
+The docker-compose.yml is available at: github.com/HugoDF/express-redis-docker/docker-compose.yml
+Redis is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cameron-kirby-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #deployment 
+              #dokku 
+              #MongoDB  </span>
+              
+              <h2 class="post-card-title">Connect to MongoDB on Dokku with your local command line or Robo3T</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>The Dokku mongo plugin provides a mongo:connect command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.
+
+ ...  </p>
               
           </section>
       </a>
