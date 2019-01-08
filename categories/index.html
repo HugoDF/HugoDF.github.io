@@ -153,27 +153,27 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/anthony-cantin-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #deployment 
-              #meta 
-              #JavaScript  </span>
+              #tooling 
+              #bash  </span>
               
-              <h2 class="post-card-title">A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</h2>
+              <h2 class="post-card-title">Just enough bash to be dangerous</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> Last Monday (22 October 2018) GitHub was going 💥, and scheduled content on Code with Hugo wasn’t going live.
- For context, the blog’s setup is documented in “Switching the lights on: Hugo vs Hugo config files”.
-tl;dr (as is relevant to this post)
- Cloudflare DNS + CDN + proxying + HTTPS GitHub Pages Hugo as a static site generator CircleCI to deploy the site daily + on push (🤷‍♀️wasn’t in the post but that’s how I do it)  
+                <p> A bash cheat sheet for developers who just want to get by.
+ Writing setup, CI and deployment flows means a bit of the old bash scripting.
+Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
+To avoid having to do this again myself and for your reading pleasure, here they are.
+
  ...  </p>
               
           </section>
@@ -189,62 +189,59 @@ tl;dr (as is relevant to this post)
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ben-koorengevel-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #tooling 
+              #git 
+              #ci 
+              #bash  </span>
+              
+              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bekir-donmez-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
               #Node 
-              #Docker 
-              #redis  </span>
+              #Testing  </span>
               
-              <h2 class="post-card-title">A Docker/docker-compose setup with Redis and Node/Express</h2>
+              <h2 class="post-card-title">Testing an Express app with SuperTest, moxios and Jest</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.
-The repo is available at: https://github.com/HugoDF/express-redis-docker.
-The docker-compose.yml is available at: github.com/HugoDF/express-redis-docker/docker-compose.yml
-Redis is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cameron-kirby-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #deployment 
-              #dokku 
-              #MongoDB  </span>
-              
-              <h2 class="post-card-title">Connect to MongoDB on Dokku with your local command line or Robo3T</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>The Dokku mongo plugin provides a mongo:connect command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.
-
- ...  </p>
+                <p>Testing is a crucial part of the software development process. It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.
+Express is one of the most widespread libraries for building backend applications in JavaScript. What follows is a summary of how to set up an efficient unit testing strategy for such an application as well as a couple of situations you may be faced with when attempting to test. ...  </p>
               
           </section>
       </a>
