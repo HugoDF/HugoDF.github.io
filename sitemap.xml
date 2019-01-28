@@ -61,6 +61,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/async-js/</loc>
+    <lastmod>2019-01-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/</loc>
     <lastmod>2018-12-31T00:00:00+00:00</lastmod>
   </url>
