@@ -8617,8 +8617,8 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 &lt;li&gt;&lt;a href=&#34;#asynchronicity-in-javascript&#34;&gt;Asynchronicity in JavaScript&lt;/a&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#whats-asynchronous-in-a-web-application&#34;&gt;What&amp;rsquo;s asynchronous in a web application?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#why-non-blocking-io&#34;&gt;Why non-blocking I/O?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#what-s-asynchronous-in-a-web-application&#34;&gt;What&amp;rsquo;s asynchronous in a web application?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-non-blocking-i-o&#34;&gt;Why non-blocking I/O?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#node-style-callbacks&#34;&gt;Node-style callbacks&lt;/a&gt;
 
@@ -8639,26 +8639,26 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 &lt;li&gt;&lt;a href=&#34;#nesting-them-is-tempting&#34;&gt;Nesting them is tempting&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#onrejected-callback&#34;&gt;onRejected callback&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#asyncawait&#34;&gt;async/await&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#async-await&#34;&gt;async/await&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#example-loop-through-sequential-calls&#34;&gt;Example: loop through sequential calls&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#example-share-data-between-calls&#34;&gt;Example: share data between calls&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#example-error-handling&#34;&gt;Example: error handling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cons-of-asyncawait&#34;&gt;Cons of async/await&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cons-of-async-await&#34;&gt;Cons of async/await&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#gotchas&#34;&gt;Gotchas&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#creating-an-error&#34;&gt;Creating an error&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#what-happens-when-you-forget-await&#34;&gt;What happens when you forget await?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#promises-evaluate-eagerly-&#34;&gt;Promises evaluate eagerly ✨&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-gotchas-&#34;&gt;Testing gotchas 📙&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#promises-evaluate-eagerly&#34;&gt;Promises evaluate eagerly ✨&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#testing-gotchas&#34;&gt;Testing gotchas 📙&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#patterns&#34;&gt;Patterns&lt;/a&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#running-promises-in-parallel-&#34;&gt;Running promises in parallel 🏃&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#running-promises-in-parallel&#34;&gt;Running promises in parallel 🏃&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#delay-execution-of-a-promise&#34;&gt;Delay execution of a promise&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#separate-synchronous-and-asynchronous-operations&#34;&gt;Separate synchronous and asynchronous operations&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#running-promises-sequentially&#34;&gt;Running promises sequentially&lt;/a&gt;&lt;/li&gt;
@@ -8671,26 +8671,33 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 &lt;li&gt;&lt;a href=&#34;#callbackify-ing-a-promise-based-api&#34;&gt;&amp;ldquo;callbackify&amp;rdquo;-ing a Promise-based API&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#getting-data-in-parallel-using-callbacks-the-pain&#34;&gt;Getting data in parallel using callbacks: the pain&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#promisify-ing-a-callback-based-api&#34;&gt;&amp;ldquo;promisify&amp;rdquo;-ing a callback-based API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#why-we-dont-mix-async-and-sync-operations&#34;&gt;Why we don&amp;rsquo;t mix async and sync operations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#why-we-don-t-mix-async-and-sync-operations&#34;&gt;Why we don&amp;rsquo;t mix async and sync operations&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#further-reading&#34;&gt;Further Reading&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;asynchronicity-in-javascript&#34;&gt;Asynchronicity in JavaScript&lt;/h2&gt;
 
-&lt;p&gt;Primitives:
-- Callbacks
-- Promises
-- (Observables)
-- &lt;code&gt;async/await&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Primitives:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Callbacks&lt;/li&gt;
+&lt;li&gt;Promises&lt;/li&gt;
+&lt;li&gt;Observables (not covered in this post)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;async/await&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;what-s-asynchronous-in-a-web-application&#34;&gt;What&amp;rsquo;s asynchronous in a web application?&lt;/h3&gt;
 
-&lt;p&gt;Most things:
-1. any network calls (HTTP, database)
-2. timers (&lt;code&gt;setTimeout&lt;/code&gt;, &lt;code&gt;setInterval&lt;/code&gt;)
-3. filesystem access
-&amp;hellip; Anything else that can be offloaded&lt;/p&gt;
+&lt;p&gt;Most things:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;any network calls (HTTP, database)&lt;/li&gt;
+&lt;li&gt;timers (&lt;code&gt;setTimeout&lt;/code&gt;, &lt;code&gt;setInterval&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;filesystem access&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&amp;hellip; Anything else that can be offloaded&lt;/p&gt;
 
 &lt;p&gt;In JavaScript, these operations are non-blocking.&lt;/p&gt;
 
@@ -8708,9 +8715,12 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 
 &lt;p&gt;Non-blocking I/O means waiting doesn&amp;rsquo;t cost you compute cycles.&lt;/p&gt;
 
-&lt;p&gt;How non-blocking I/O is implemented (in JavaScript):
-- pass a &amp;ldquo;callback&amp;rdquo; function
-- it&amp;rsquo;s called with the outcome of the async operation&lt;/p&gt;
+&lt;p&gt;How non-blocking I/O is implemented (in JavaScript):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;pass a &amp;ldquo;callback&amp;rdquo; function&lt;/li&gt;
+&lt;li&gt;it&amp;rsquo;s called with the outcome of the async operation&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&#34;node-style-callbacks&#34;&gt;Node-style callbacks&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;myAsyncFn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -8751,9 +8761,12 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
   &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;For each asynchronous operation:
-- extra level of indent
-- lots of names for async output: &lt;code&gt;data&lt;/code&gt;, &lt;code&gt;secondData&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;For each asynchronous operation:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;extra level of indent&lt;/li&gt;
+&lt;li&gt;lots of names for async output: &lt;code&gt;data&lt;/code&gt;, &lt;code&gt;secondData&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4 id=&#34;2-shadowing-variables&#34;&gt;2. Shadowing variables&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;myAsyncFn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -8791,10 +8804,13 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id=&#34;4-swallowed-errors&#34;&gt;4. Swallowed errors&lt;/h4&gt;
 
-&lt;p&gt;Ideal failure:
-- fail early
-- fail fast
-- fail loud&lt;/p&gt;
+&lt;p&gt;Ideal failure:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;fail early&lt;/li&gt;
+&lt;li&gt;fail fast&lt;/li&gt;
+&lt;li&gt;fail loud&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;Spot the unhandled error:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;myAsyncFn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;

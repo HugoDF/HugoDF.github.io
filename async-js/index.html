@@ -194,8 +194,8 @@
 <li><a href="#asynchronicity-in-javascript">Asynchronicity in JavaScript</a>
 
 <ul>
-<li><a href="#whats-asynchronous-in-a-web-application">What&rsquo;s asynchronous in a web application?</a></li>
-<li><a href="#why-non-blocking-io">Why non-blocking I/O?</a></li>
+<li><a href="#what-s-asynchronous-in-a-web-application">What&rsquo;s asynchronous in a web application?</a></li>
+<li><a href="#why-non-blocking-i-o">Why non-blocking I/O?</a></li>
 </ul></li>
 <li><a href="#node-style-callbacks">Node-style callbacks</a>
 
@@ -216,26 +216,26 @@
 <li><a href="#nesting-them-is-tempting">Nesting them is tempting</a></li>
 <li><a href="#onrejected-callback">onRejected callback</a></li>
 </ul></li>
-<li><a href="#asyncawait">async/await</a>
+<li><a href="#async-await">async/await</a>
 
 <ul>
 <li><a href="#example-loop-through-sequential-calls">Example: loop through sequential calls</a></li>
 <li><a href="#example-share-data-between-calls">Example: share data between calls</a></li>
 <li><a href="#example-error-handling">Example: error handling</a></li>
-<li><a href="#cons-of-asyncawait">Cons of async/await</a></li>
+<li><a href="#cons-of-async-await">Cons of async/await</a></li>
 </ul></li>
 <li><a href="#gotchas">Gotchas</a>
 
 <ul>
 <li><a href="#creating-an-error">Creating an error</a></li>
 <li><a href="#what-happens-when-you-forget-await">What happens when you forget await?</a></li>
-<li><a href="#promises-evaluate-eagerly-">Promises evaluate eagerly ✨</a></li>
-<li><a href="#testing-gotchas-">Testing gotchas 📙</a></li>
+<li><a href="#promises-evaluate-eagerly">Promises evaluate eagerly ✨</a></li>
+<li><a href="#testing-gotchas">Testing gotchas 📙</a></li>
 </ul></li>
 <li><a href="#patterns">Patterns</a>
 
 <ul>
-<li><a href="#running-promises-in-parallel-">Running promises in parallel 🏃</a></li>
+<li><a href="#running-promises-in-parallel">Running promises in parallel 🏃</a></li>
 <li><a href="#delay-execution-of-a-promise">Delay execution of a promise</a></li>
 <li><a href="#separate-synchronous-and-asynchronous-operations">Separate synchronous and asynchronous operations</a></li>
 <li><a href="#running-promises-sequentially">Running promises sequentially</a></li>
@@ -248,26 +248,33 @@
 <li><a href="#callbackify-ing-a-promise-based-api">&ldquo;callbackify&rdquo;-ing a Promise-based API</a></li>
 <li><a href="#getting-data-in-parallel-using-callbacks-the-pain">Getting data in parallel using callbacks: the pain</a></li>
 <li><a href="#promisify-ing-a-callback-based-api">&ldquo;promisify&rdquo;-ing a callback-based API</a></li>
-<li><a href="#why-we-dont-mix-async-and-sync-operations">Why we don&rsquo;t mix async and sync operations</a></li>
+<li><a href="#why-we-don-t-mix-async-and-sync-operations">Why we don&rsquo;t mix async and sync operations</a></li>
 </ul></li>
 <li><a href="#further-reading">Further Reading</a></li>
 </ul>
 
 <h2 id="asynchronicity-in-javascript">Asynchronicity in JavaScript</h2>
 
-<p>Primitives:
-- Callbacks
-- Promises
-- (Observables)
-- <code>async/await</code></p>
+<p>Primitives:</p>
+
+<ul>
+<li>Callbacks</li>
+<li>Promises</li>
+<li>Observables (not covered in this post)</li>
+<li><code>async/await</code></li>
+</ul>
 
 <h3 id="what-s-asynchronous-in-a-web-application">What&rsquo;s asynchronous in a web application?</h3>
 
-<p>Most things:
-1. any network calls (HTTP, database)
-2. timers (<code>setTimeout</code>, <code>setInterval</code>)
-3. filesystem access
-&hellip; Anything else that can be offloaded</p>
+<p>Most things:</p>
+
+<ol>
+<li>any network calls (HTTP, database)</li>
+<li>timers (<code>setTimeout</code>, <code>setInterval</code>)</li>
+<li>filesystem access</li>
+</ol>
+
+<p>&hellip; Anything else that can be offloaded</p>
 
 <p>In JavaScript, these operations are non-blocking.</p>
 
@@ -285,9 +292,12 @@
 
 <p>Non-blocking I/O means waiting doesn&rsquo;t cost you compute cycles.</p>
 
-<p>How non-blocking I/O is implemented (in JavaScript):
-- pass a &ldquo;callback&rdquo; function
-- it&rsquo;s called with the outcome of the async operation</p>
+<p>How non-blocking I/O is implemented (in JavaScript):</p>
+
+<ul>
+<li>pass a &ldquo;callback&rdquo; function</li>
+<li>it&rsquo;s called with the outcome of the async operation</li>
+</ul>
 
 <h2 id="node-style-callbacks">Node-style callbacks</h2>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">myAsyncFn</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -328,9 +338,12 @@
   <span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
-<p>For each asynchronous operation:
-- extra level of indent
-- lots of names for async output: <code>data</code>, <code>secondData</code></p>
+<p>For each asynchronous operation:</p>
+
+<ul>
+<li>extra level of indent</li>
+<li>lots of names for async output: <code>data</code>, <code>secondData</code></li>
+</ul>
 
 <h4 id="2-shadowing-variables">2. Shadowing variables</h4>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">myAsyncFn</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -368,10 +381,13 @@
 </code></pre></div>
 <h4 id="4-swallowed-errors">4. Swallowed errors</h4>
 
-<p>Ideal failure:
-- fail early
-- fail fast
-- fail loud</p>
+<p>Ideal failure:</p>
+
+<ul>
+<li>fail early</li>
+<li>fail fast</li>
+<li>fail loud</li>
+</ul>
 
 <p>Spot the unhandled error:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">myAsyncFn</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -1147,13 +1163,13 @@ Despite their low usage, we also &lt;3 safari (Apple, latest version: 12, usage:
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">Writing multiple Vue components in a single file</a></li>            
+          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/">JavaScript GraphQL client requests in Node and the browser using `graphql.js`</a></li>            
         
-          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+          <li><a href="https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/">Technical content workflow for “Code with Hugo”: static site, Paper, Medium, DEV and Buttondown</a></li>            
         
-          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoid null/undefined in JavaScript arrays</a></li>            
+          <li><a href="https://codewithhugo.com/observablehq-notebooks-for-javascript-demos-and-prototypes/">ObservableHQ notebooks for JavaScript demos and prototypes</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
