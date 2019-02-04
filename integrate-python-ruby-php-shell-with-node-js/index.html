@@ -208,23 +208,25 @@ They also contain an IIFE (“immediately invoked function expression”) that a
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="p">{</span> <span class="nx">spawn</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;child_process&#39;</span><span class="p">);</span>
 
 <span class="kd">function</span> <span class="nx">run</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">const</span> <span class="nx">process</span> <span class="o">=</span> <span class="nx">spawn</span><span class="p">(</span><span class="s1">&#39;echo&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]);</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span>
+  <span class="k">const</span> <span class="nx">process</span> <span class="o">=</span> <span class="nx">spawn</span><span class="p">(</span><span class="s1">&#39;echo&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]);</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span>
     <span class="s1">&#39;data&#39;</span><span class="p">,</span>
     <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
-    <span class="p">);</span>
+  <span class="p">);</span>
 <span class="p">}</span>
 
 <span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">try</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
     <span class="nx">run</span><span class="p">()</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// process.exit(0)
+</span><span class="c1"></span>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
     <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-    <span class="p">}</span>
+  <span class="p">}</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node run.js
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node run.js
 
 foo</code></pre></div>
 <h2 id="call-python-for-its-version">Call Python for its version</h2>
@@ -255,8 +257,8 @@ foo</code></pre></div>
 <span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="nx">run</span><span class="p">()</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// process.exit(0)
+</span><span class="c1"></span>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
     <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="p">}</span>
@@ -269,12 +271,9 @@ foo</code></pre></div>
 <p>We’ll now run a fully-fledged Python script (although it could just as well be Ruby, PHP, shell etc.) from Node.js.</p>
 
 <p>This is <code>script.py</code>, it just logs out <code>argv</code> (the &ldquo;argument vector&rdquo;, ie. <code>['path/to/executable', /* command line arguments ]</code>)</p>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">sys</span>
 
-<pre><code>import sys
-
-print(sys.argv)
-</code></pre>
-
+<span class="k">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span></code></pre></div>
 <p>Like in the previous example, we’ll just call spawn with <code>python</code> with the path to the Python script (<code>./script.py</code>) in the second parameter.</p>
 
 <p>Here comes another gotcha of integrating scripts in this fashion. In this example, the path to the script is based on the working directory from which <code>node</code> is called.</p>
@@ -301,13 +300,15 @@ print(sys.argv)
 <span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="nx">run</span><span class="p">()</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// process.exit(0)
+</span><span class="c1"></span>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
     <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node run.js
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node run.js
 
 <span class="se">\[</span>stdout<span class="se">\]</span> <span class="o">[</span><span class="s1">&#39;./script.py&#39;</span><span class="o">]</span></code></pre></div>
 <h2 id="pass-arguments-to-a-python-script-from-node-js-using-child-process-spawn">Pass arguments to a Python script from Node.js using child_process.spawn</h2>
@@ -336,8 +337,8 @@ print(sys.argv)
 <span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="nx">run</span><span class="p">()</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// process.exit(0)
+</span><span class="c1"></span>  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">);</span>
     <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="p">}</span>
@@ -463,7 +464,9 @@ print(sys.argv)
     <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node run.js
+</code></pre></div>
+<p>Output:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ node run.js
 
 <span class="o">[</span>stderr<span class="o">]</span> Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
     File <span class="s2">&#34;./script.py&#34;</span>, line <span class="m">3</span>, in &lt;module&gt;
@@ -644,13 +647,13 @@ To the world</code></pre></div>
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+          <li><a href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">A gentle introduction to GraphQL API integrations</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
         
-          <li><a href="https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/">6 months of Code with Hugo, in numbers</a></li>            
+          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">A Docker/docker-compose setup with Redis and Node/Express</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">React vs Angular vs Vue in 2019: How components won the “framework wars”</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">

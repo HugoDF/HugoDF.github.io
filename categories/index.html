@@ -153,24 +153,28 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nils-stahl-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/parker-whitson-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Redis 
-              #tooling  </span>
+              #deployment 
+              #meta 
+              #css 
+              #hugo  </span>
               
-              <h2 class="post-card-title">Install just redis-cli on Ubuntu, Debian, Jessie</h2>
+              <h2 class="post-card-title">Switching the lights on: Hugo vs Hugo config files</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>As part of adding integration tests to an app on CircleCI I ran into the following issues:
- redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly. ...  </p>
+                <p>A simple Hugo blog setup
+ The story of getting codewithhugo.com up and running.
+The tl;dr is the following:
+ I always rave about my blog setup, it’s simple, fast and just works I used Hugo, “The world’s fastest framework for building websites”, a static site generator I used a theme, casper-two, which is a Hugo port of the https://ghost.org/ default theme I deployed to GitHub pages behind Cloudflare *. ...  </p>
               
           </section>
       </a>
@@ -185,27 +189,26 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/how-components-won.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #frontend 
-              #web development  </span>
+              #tooling 
+              #git 
+              #ci 
+              #bash  </span>
               
-              <h2 class="post-card-title">React vs Angular vs Vue in 2019: How components won the “framework wars”</h2>
+              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>React, Vue or Angular: Why it doesn’t matter.
- 2018 marked the end of JavaScript fatigue and the React vs Vue vs Angular (“framework wars”) debate
- A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.
-Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. ...  </p>
+                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. ...  </p>
               
           </section>
       </a>
@@ -220,24 +223,25 @@ Having experienced React, Vue and Angular, it seems they solve similar problems 
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/async-js/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/async-js-cover.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/async-js/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #web development  </span>
+              #Node  </span>
               
-              <h2 class="post-card-title">Avoid null/undefined in JavaScript arrays</h2>
+              <h2 class="post-card-title">Async JavaScript: history, patterns and gotchas</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> How to avoid TypeError: Cannot read property ___ of undefined using Array.filter(Boolean)
- tl;dr: Array.filter(Boolean) filters out falsy values (null, undefined, 0, false, '') and avoids Cannot read property of undefined errors.
+                <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.
+We&rsquo;ll go through the pros and cons of callbacks, Promises and async/await. Present some pitfalls to bear in mind as well as introducing how you would deal with certain situations.
+Live-coding/workshop section touching on both Node and client-side JS situations at github.com/HugoDF/async-js-presentation/tree/master/workshop.
 
  ...  </p>
               
