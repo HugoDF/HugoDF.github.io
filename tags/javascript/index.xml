@@ -8474,7 +8474,7 @@ That’s it, off you go and solve problems.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This is an extract from the &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet&#34;&gt;Sequelize ES6 Cheatsheet&lt;/a&gt;
-- the better Sequelize docs you wish you had (get it &lt;a href=&#34;(https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet)&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+- the better Sequelize docs you wish you had (get it &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&#34;text-types&#34;&gt;Text types&lt;/h2&gt;
@@ -8583,7 +8583,7 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 
 &lt;blockquote&gt;
 &lt;p&gt;This is an extract from the &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet&#34;&gt;Sequelize ES6 Cheatsheet&lt;/a&gt;
-- the better Sequelize docs you wish you had (get it &lt;a href=&#34;(https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet)&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+- the better Sequelize dcs you wish you had (get it &lt;a href=&#34;(https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet)&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@mbaumi?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Mika Baumeister&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Mika Baumeister&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
