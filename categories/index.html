@@ -153,26 +153,30 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cli-screenshot.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elaine-casap-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
               #Node 
-              #CLI  </span>
+              #Python  </span>
               
-              <h2 class="post-card-title">How to make beautiful, simple CLI apps with Node</h2>
+              <h2 class="post-card-title">The comprehensive guide to integrating a Python/Ruby/PHP/shell script with Node.js using child_process.spawn</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
-Command line apps are a neat way to package repetitive tasks. This will walk you through some tools that are useful to build CLI apps.
- The idea 💡 Piping to the command line 🚇 Dealing with sequential actions ✨ Executable JavaScript files 🦅 Adding package binaries 📦 Publishing to npm 🚀  The idea 💡 When merging/rebasing, the file that always seems to cause trouble is the package-lock. ...  </p>
+                <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
+The goal here is to have an interoperability layer between Node.js and an outside shell. This is a quick workaround if some other part of your system isn’t developed in JavaScript.
+We’ll use spawn over exec because we’re talking about passing data, and potentially large amounts of it. To understand the difference between child_process.spawn and child_process.exec (see “Difference between spawn and exec of Node.js child_process”).
+The long and short of it is use exec for small amounts of data (under 200k) using a Buffer interface and spawn for larger amounts using a stream interface.
+spawn has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.
+
+ ...  </p>
               
           </section>
       </a>
@@ -187,23 +191,25 @@ Command line apps are a neat way to package repetitive tasks. This will walk you
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/jp-valery-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/async-js/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/async-js-cover.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/async-js/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #reactive programming  </span>
+              #Node  </span>
               
-              <h2 class="post-card-title">Better HTTP Polling in JavaScript with RxJS 5</h2>
+              <h2 class="post-card-title">Async JavaScript: history, patterns and gotchas</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Here is the implementation for a function that takes a Promise-based fetch function (eg. using axios) and a function that decides if a response has been successful (from a polling perspective) and polls the fetch function until the isSuccess function returns true:
+                <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.
+We&rsquo;ll go through the pros and cons of callbacks, Promises and async/await. Present some pitfalls to bear in mind as well as introducing how you would deal with certain situations.
+Live-coding/workshop section touching on both Node and client-side JS situations at github.com/HugoDF/async-js-presentation/tree/master/workshop.
 
  ...  </p>
               
@@ -220,27 +226,25 @@ Command line apps are a neat way to package repetitive tasks. This will walk you
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/stephen-dawson-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #meta 
-              #blogging 
-              #technical writing 
-              #hugo  </span>
+              #VueJS 
+              #testing 
+              #JavaScript  </span>
               
-              <h2 class="post-card-title">6 months of Code with Hugo, in numbers</h2>
+              <h2 class="post-card-title">From AngularJS to Vue.js, CommonJS and Jest</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> Going from 0 to small. A developer&rsquo;s journey starting a technical blog from scratch.
- 
- ...  </p>
+                <p>The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration
+ AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components. ...  </p>
               
           </section>
       </a>

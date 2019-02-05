@@ -6,111 +6,10 @@
     <description>Recent content in Bash on Code with Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 01 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://codewithhugo.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Just enough bash to be dangerous</title>
-      <link>https://codewithhugo.com/just-enough-bash-to-be-dangerous/</link>
-      <pubDate>Thu, 26 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/just-enough-bash-to-be-dangerous/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;A bash cheat sheet for developers who just want to get by.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Writing setup, CI and deployment flows means a bit of the old bash scripting.&lt;/p&gt;
-
-&lt;p&gt;Despite my deep interest in the intricacies of Bash (&lt;em&gt;/sarcasm&lt;/em&gt;), I&amp;rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.&lt;/p&gt;
-
-&lt;p&gt;To avoid having to do this again myself and for your reading pleasure, here they are.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;To be dangerous in terms of setup, CI and depoyment flows we will encounter the following:
-- &lt;a href=&#34;#check-if-file-exists&#34;&gt;Check if file exists&lt;/a&gt;
-- &lt;a href=&#34;#check-if-a-symbolic-link-exists&#34;&gt;Check if a (symbolic) link exists&lt;/a&gt;
-- &lt;a href=&#34;#check-if-environment-variable-is-set&#34;&gt;Check if environment variable is set&lt;/a&gt;
-- &lt;a href=&#34;#switch-over-an-environment-variable&#34;&gt;Switch over an environment variable&lt;/a&gt;
-- &lt;a href=&#34;#prompt-the-user&#34;&gt;Prompt the user&lt;/a&gt;
-- &lt;a href=&#34;#bonus&#34;&gt;Bonus&lt;/a&gt;
-  - &lt;a href=&#34;#slap-your-env-files-into-your-environment&#34;&gt;Slap your .env files into your environment&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
-&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;check-if-file-exists&#34;&gt;Check if file exists&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; ! -f ./pdfgen/pdfgen &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Building pdfgen binary&amp;#34;&lt;/span&gt;
-    npm run --prefix pdfgen build:linux
-&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
-    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Pdfgen binary already exists, skipping build&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;check-if-a-symbolic-link-exists&#34;&gt;Check if a (symbolic) link exists&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; ! -L /usr/local/bin/heroku &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
-    wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
-    sudo mkdir -p /usr/local/lib /usr/local/bin
-    sudo tar -xvzf heroku-linux-amd64.tar.gz -C /usr/local/lib
-    sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
-&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;check-if-environment-variable-is-set&#34;&gt;Check if environment variable is set&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# long
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[[&lt;/span&gt; -z &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;CIRCLE_BRANCH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
-    npm run redis-cli flushall
-&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
- 
-npm run sync
-
-&lt;span class=&#34;c1&#34;&gt;# one-liner
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-z &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;CIRCLE_BRANCH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; npm run redis-cli flushall&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; npm run sync&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;switch-over-an-environment-variable&#34;&gt;Switch over an environment variable&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$CIRCLE_BRANCH&lt;/span&gt; in
-    &lt;span class=&#34;s2&#34;&gt;&amp;#34;develop&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ENVIRONMENT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;dev&amp;#34;&lt;/span&gt;
-        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;dev-app
-        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
-    &lt;span class=&#34;s2&#34;&gt;&amp;#34;staging&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ENVIRONMENT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;staging&amp;#34;&lt;/span&gt;
-        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;staging-app
-        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
-    &lt;span class=&#34;s2&#34;&gt;&amp;#34;production&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ENVIRONMENT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;production&amp;#34;&lt;/span&gt;
-        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;production-app
-        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;esac&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;prompt-the-user&#34;&gt;Prompt the user&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt; -p &lt;span class=&#34;s2&#34;&gt;&amp;#34;Are you sure you want to merge &amp;#39;develop&amp;#39; into &amp;#39;staging&amp;#39;? (y/N)&amp;#34;&lt;/span&gt; -n &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; -r
-&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# we like having a new line
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[[&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$REPLY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~ ^&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;Yy&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;$ &lt;span class=&#34;o&#34;&gt;]]&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
-  git merge develop --ff-only
-  git push
-&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;A final bit of advice, if it&amp;rsquo;s more than a couple of lines, try to use something like JavaScript, or Python to write your script.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ve got some resources to do that in modern JavaScript/Node:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/&#34;&gt;ES6 by example: a module/CLI to wait for Postgres in docker-compose&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/&#34;&gt;How to make beautiful, simple CLI apps with Node&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;bonus&#34;&gt;Bonus&lt;/h2&gt;
-
-&lt;h3 id=&#34;slap-your-env-files-into-your-environment&#34;&gt;Slap your .env files into your environment&lt;/h3&gt;
-
-&lt;p&gt;We&amp;rsquo;ve got &lt;code&gt;.env&lt;/code&gt; files laying around, Docker Compose deals with this for use usually but say we want to get something running outside of Docker (and without using something like &lt;a href=&#34;https://github.com/motdotla/dotenv&#34;&gt;dotenv&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s the snippet for a *NIX shell:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;cat .env &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; xargs&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@guiccunha?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Guilherme  Cunha&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Guilherme  Cunha&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Deploy to multiple environments with git and CircleCI</title>
@@ -413,6 +312,108 @@ heroku config:set &lt;span class=&#34;nv&#34;&gt;BUILD_NUM&lt;/span&gt;&lt;span 
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@seanmungurdp?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Sean Mungur&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Sean Mungur&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Bash Cheatsheet: check if environment variables are set or file/symlinks exists &#43; more</title>
+      <link>https://codewithhugo.com/just-enough-bash-to-be-dangerous/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/just-enough-bash-to-be-dangerous/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;A bash scripting cheat sheet for developers who just want to get by.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Writing setup, CI and deployment flows means a bit of the old bash scripting.&lt;/p&gt;
+
+&lt;p&gt;Despite my deep interest in the intricacies of Bash (&lt;em&gt;/sarcasm&lt;/em&gt;), I&amp;rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.&lt;/p&gt;
+
+&lt;p&gt;To avoid having to do this again myself and for your reading pleasure, here they are.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;To be dangerous in terms of setup, CI and depoyment flows we will encounter the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#check-if-a-file-exists-in-bash&#34;&gt;check if a file exists in bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#check-if-a-symbolic-link-exists-in-bash&#34;&gt;check if a (symbolic) link exists in bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#check-if-environment-variable-is-set-in-bash&#34;&gt;check if environment variable is set in bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#switch-over-an-environment-variable-in-bash&#34;&gt;switch over an environment variable in bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#prompt-the-user-in-bash&#34;&gt;prompt the user in bash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#inject-env-into-your-bash-session-environment&#34;&gt;inject .env into your bash session/environment&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt;.
+&lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;check-if-a-file-exists-in-bash&#34;&gt;Check if a file exists in bash&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; ! -f ./pdfgen/pdfgen &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Building pdfgen binary&amp;#34;&lt;/span&gt;
+    npm run --prefix pdfgen build:linux
+&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Pdfgen binary already exists, skipping build&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;check-if-a-symbolic-link-exists-in-bash&#34;&gt;Check if a (symbolic) link exists in bash&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; ! -L /usr/local/bin/heroku &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+    wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz
+    sudo mkdir -p /usr/local/lib /usr/local/bin
+    sudo tar -xvzf heroku-linux-amd64.tar.gz -C /usr/local/lib
+    sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;check-if-an-environment-variable-is-set-in-bash&#34;&gt;Check if an environment variable is set in bash&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# long
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[[&lt;/span&gt; -z &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;CIRCLE_BRANCH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+    npm run redis-cli flushall
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+ 
+npm run sync
+
+&lt;span class=&#34;c1&#34;&gt;# one-liner
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-z &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;CIRCLE_BRANCH&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; npm run redis-cli flushall&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; npm run sync&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;switch-over-an-environment-variable-in-bash&#34;&gt;Switch over an environment variable in bash&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$CIRCLE_BRANCH&lt;/span&gt; in
+    &lt;span class=&#34;s2&#34;&gt;&amp;#34;develop&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ENVIRONMENT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;dev&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;dev-app
+        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+    &lt;span class=&#34;s2&#34;&gt;&amp;#34;staging&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ENVIRONMENT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;staging&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;staging-app
+        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+    &lt;span class=&#34;s2&#34;&gt;&amp;#34;production&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;ENVIRONMENT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;production&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;HEROKU_APP&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;production-app
+        &lt;span class=&#34;p&#34;&gt;;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;esac&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;prompt-the-user-in-bash&#34;&gt;Prompt the user in bash&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt; -p &lt;span class=&#34;s2&#34;&gt;&amp;#34;Are you sure you want to merge &amp;#39;develop&amp;#39; into &amp;#39;staging&amp;#39;? (y/N)&amp;#34;&lt;/span&gt; -n &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; -r
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# we like having a new line
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[[&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$REPLY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~ ^&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;Yy&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;$ &lt;span class=&#34;o&#34;&gt;]]&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+  git merge develop --ff-only
+  git push
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A final bit of advice, if it&amp;rsquo;s more than a couple of lines, try to use something like JavaScript, or Python to write your script.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve got some resources to do that in modern JavaScript/Node:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/&#34;&gt;ES6 by example: a module/CLI to wait for Postgres in docker-compose&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/&#34;&gt;How to make beautiful, simple CLI apps with Node&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;inject-env-into-your-bash-session-environment&#34;&gt;Inject .env into your bash session/environment&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;ve got &lt;code&gt;.env&lt;/code&gt; files laying around, Docker Compose deals with this for use usually but say we want to get something running outside of Docker (and without using something like &lt;a href=&#34;https://github.com/motdotla/dotenv&#34;&gt;dotenv&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the snippet for a *NIX shell:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;cat .env &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; xargs&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@guiccunha?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Guilherme  Cunha&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Guilherme  Cunha&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

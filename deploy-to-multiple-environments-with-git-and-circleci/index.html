@@ -501,13 +501,13 @@ heroku config:set <span class="nv">BUILD_NUM</span><span class="o">=</span><span
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/">Progress and roadblocks: a journey into open-source</a></li>            
+          <li><a href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">Install just redis-cli on Ubuntu, Debian, Jessie</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/sequelize-data-types-a-practical-guide/">Sequelize Data Types: a practical guide</a></li>            
         
-          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoid null/undefined in JavaScript arrays</a></li>            
         
-          <li><a href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">The step-by-step guide to create a domain redirect with Cloudflare</a></li>            
+          <li><a href="https://codewithhugo.com/async-js/">Async JavaScript: history, patterns and gotchas</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -555,28 +555,24 @@ We have the following pros for snapshot tests: - the match data is stored in a s
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nils-stahl-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #tooling 
-              #bash  </span>
+              #Redis 
+              #tooling  </span>
               
-              <h2 class="post-card-title">Just enough bash to be dangerous</h2>
+              <h2 class="post-card-title">Install just redis-cli on Ubuntu, Debian, Jessie</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> A bash cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
-To avoid having to do this again myself and for your reading pleasure, here they are.
-
- ...  </p>
+                <p>As part of adding integration tests to an app on CircleCI I ran into the following issues:
+ redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly. ...  </p>
               
           </section>
       </a>
