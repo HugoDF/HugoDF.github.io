@@ -241,28 +241,25 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elaine-casap-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oskar-yildiz-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Node 
-              #Python  </span>
+              #meta 
+              #node 
+              #git  </span>
               
-              <h2 class="post-card-title">The comprehensive guide to integrating a Python/Ruby/PHP/shell script with Node.js using child_process.spawn</h2>
+              <h2 class="post-card-title">A simple JavaScript/Node coding setup on Mac OS X</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
-The goal here is to have an interoperability layer between Node.js and an outside shell. This is a quick workaround if some other part of your system isn’t developed in JavaScript.
-We’ll use spawn over exec because we’re talking about passing data, and potentially large amounts of it. To understand the difference between child_process.spawn and child_process.exec (see “Difference between spawn and exec of Node.js child_process”).
-The long and short of it is use exec for small amounts of data (under 200k) using a Buffer interface and spawn for larger amounts using a stream interface.
-spawn has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.
+                <p>Here&rsquo;s how I get productive for JavaScript/Node on Mac OS.
 
  ...  </p>
               
@@ -279,25 +276,26 @@ spawn has a more verbose syntax for some of the use-cases we’ll look at, but i
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/joshua-sortino-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*gVQU50zNWjL1kihKKQ5zYQ.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #CSS 
               #JavaScript 
-              #Node 
-              #ES6  </span>
+              #animation 
+              #web development  </span>
               
-              <h2 class="post-card-title">Use ES modules/ES6 import in Node without Babel/Webpack using `esm`</h2>
+              <h2 class="post-card-title">Animations: CSS vs JavaScript</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use require('module-name') to import from other modules and use the module.exports object to expose entities from a module.
-Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. ...  </p>
+                <p>When should you use JavaScript when you can use CSS? This post was sparked by a question I answered on Quora: Which is better to use, CSS or JS?
+The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see “Backend code, frontend code and how they interact” for more details): HTML says what things are, CSS how they look and JavaScript does all the things the other two can’t. ...  </p>
               
           </section>
       </a>
@@ -312,27 +310,20 @@ Node’s CommonJS was actually one of the first widely adopted module systems in
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/sean-mungur-unsplash.jpg)"></div>
-    </a>
+    <a class="post-card-image-link" href="https://codewithhugo.com/post/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/defimg/1.jpg)"></div>
+    </a>    
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/post/">
           <header class="post-card-header">
-              <span class="post-card-tags">
-              #git 
-              #bash 
-              #productivity  </span>
               
-              <h2 class="post-card-title">Change the date of a git commit</h2>
+              <h2 class="post-card-title">Posts</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>One of the greatest and worst things with git is that you can rewrite the history. Here’s a sneaky way of abusing that, I can’t think of a legitimate reason to do this.
-As with anything, thanks StackOverflow for all the options I can pick from 👍.
-Set the date of the last commit to the current date GIT_COMMITTER_DATE=&quot;$(date)&quot; git commit --amend --no-edit --date &quot;$(date)&quot;
-Set the date of the last commit to an arbitrary date GIT_COMMITTER_DATE=&quot;Mon 20 Aug 2018 20:19:19 BST&quot; git commit --amend --no-edit --date &quot;Mon 20 Aug 2018 20:19:19 BST&quot; ...  </p>
+                <p> </p>
               
           </section>
       </a>
