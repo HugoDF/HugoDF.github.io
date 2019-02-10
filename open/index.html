@@ -160,7 +160,7 @@
 <p>It operates transparently including sharing metrics, users and traffic data.</p>
 
 <ul>
-<li><a href="#pageviews-and-users">Pageviews and users</a></li>
+<li><a href="#pageviews">Pageviews</a></li>
 <li><a href="#search-and-organic-traffic">Search and organic traffic</a></li>
 <li><a href="#running-costs">Running costs</a></li>
 <li><a href="#revenue">Revenue</a></li>
@@ -175,13 +175,20 @@
 </ul></li>
 </ul>
 
-<h2 id="pageviews-and-users">Pageviews and users</h2>
+<h2 id="pageviews">Pageviews</h2>
 
-<ul>
-<li>Latest and live pageview data at: <a href="https://simpleanalytics.io/codewithhugo.com">simpleanalytics.io/codewithhugo.com</a>.</li>
-</ul>
+<p>This website has <span id="pageviews-display">XXX</span> page views in the last month</p>
 
-<iframe width="100%" height="500" src="https://datastudio.google.com/embed/reporting/1hbicPhTucEmWY1YT59Pof2og4I9QHlBH/page/LI4a" frameborder="0" style="border:0" allowfullscreen></iframe>
+<div
+  style="width: 100%"
+  data-sa-graph-url="https://simpleanalytics.io/codewithhugo.com/?color=26a8ed"
+  data-sa-page-views-selector="#pageviews-display">
+  <blockquote>
+    AdBlockers don't like Simple Analytics embed, disable yours to view this chart
+  </blockquote>
+</div>
+
+<p>More pageview data at: <a href="https://simpleanalytics.io/codewithhugo.com">simpleanalytics.io/codewithhugo.com</a>.</p>
 
 <h2 id="search-and-organic-traffic">Search and organic traffic</h2>
 
@@ -192,7 +199,7 @@
 <p>Latest running costs</p>
 
 <div style="position: relative; display: inline-block; width: 100%">
-    <iframe class='startupcosts-embed' src='https://www.startupcosts.co/code-with-hugo/embed?backgroundColor=white' frameborder='0' onmousewheel='' width='100%' height='600' style='background: transparent; border: 1px solid #f2f3f5;'></iframe> <div style='border-sizing: border-box; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 10px 20px; background-color: #4d7fff; line-height: 180%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; color: #ffffff; font-size: 16px; position: absolute; bottom: 5px; left: 2px; right: 0;'> <a target="_blank" style="font-weight: 900; color: #fff; text-decoration: none;" href="https://www.startupcosts.co/"> <span style="color: black;">Startup</span> Costs </a> <a target="_blank" style="color: #fff; text-decoration: none;" href="https://www.startupcosts.co/code-with-hugo">View more</a>
+  <iframe class='startupcosts-embed' src='https://www.startupcosts.co/code-with-hugo/embed?backgroundColor=white' frameborder='0' onmousewheel='' width='100%' height='600' style='background: transparent; border: 1px solid #f2f3f5;'></iframe> <div style='border-sizing: border-box; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; padding: 10px 20px; background-color: #4d7fff; line-height: 180%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; color: #ffffff; font-size: 16px; position: absolute; bottom: 5px; left: 2px; right: 0;'> <a target="_blank" style="font-weight: 900; color: #fff; text-decoration: none;" href="https://www.startupcosts.co/"> <span style="color: black;">Startup</span> Costs </a> <a target="_blank" style="color: #fff; text-decoration: none;" href="https://www.startupcosts.co/code-with-hugo">View more</a>
 </div> 
 
 <h2 id="revenue">Revenue</h2>
@@ -520,6 +527,8 @@ At an average (mean) post read time of:<br />
 <p>— Hugo Di Francesco (@hugo__df) <a href="https://twitter.com/hugo__df/status/1053998426038394881?ref_src=twsrc%5Etfw">21 October 2018</a></p>
 </blockquote>
 
+<script async src="https://simpleanalytics.io/embed.js"></script>
+
               </div>
             </section>
           </article>
@@ -560,8 +569,8 @@ At an average (mean) post read time of:<br />
 
 
 
-<script async src="//cdn.simpleanalytics.io/hello.js"></script>
-<noscript><img src="//api.simpleanalytics.io/hello.gif" alt=""></noscript>
+<script async defer src="https://infra.codewithhugo.com/app.js"></script>
+<noscript><img src="https://infra.codewithhugo.com/image.gif" alt=""></noscript>
 
 
 
