@@ -102,30 +102,68 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/pepi-stojanovski-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oskar-yildiz-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #deployment 
+              #meta 
+              #node 
+              #git  </span>
+              
+              <h2 class="post-card-title">A simple JavaScript/Node coding setup on Mac OS X</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Here&rsquo;s how I get productive for JavaScript/Node on Mac OS.
+It includes iTerm2, zsh, Node, Visual Studio Code and some git commands.
+
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/joshua-sortino-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
               #Node 
-              #tooling  </span>
+              #ES6  </span>
               
-              <h2 class="post-card-title">Build and deploy a Vue/React/Vanilla JS app with Parcel and GitHub pages</h2>
+              <h2 class="post-card-title">Use ES modules/ES6 import in Node without Babel/Webpack using `esm`</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Parcel allows us to bundle frontend applications with no configuration and GitHub pages affords us a way to deploy them for free.
-Here&rsquo;s how to use these two tools together to deploy a JavaScript application.
-Full example of a repo deployed like this: https://github.com/HugoDF/js-graphql-client-example, and see https://codewithhugo.com/js-graphql-client-example/.
-Or the repo with the demos: https://github.com/HugoDF/parcel-gh-pages-deploy and see https://codewithhugo.com/parcel-gh-pages-deploy/.
-
- ...  </p>
+                <p>Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use require('module-name') to import from other modules and use the module.exports object to expose entities from a module.
+Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. The ease with which one can bundle CommonJS coupled with its widespread use in Node applications and tools means CommonJS quickly displaced RequireJS and SystemJS for frontend application dependency and module management
+ I’m working on a “history of JavaScript module, bundling + dependency management” article, subscribe to get it first).
+ CommonJS has some drawbacks, like being hard to statically analyse, which leads to for example bloated bundles. It’s also just not part of the ECMAScript specification, which ES modules are.
+For anyone who is still wondering, ECMAScript (or ES) modules use a syntax with import thing from 'my-module'; or import { something } from 'my-module' to import things and export default or export something to expose entities from the module.
+Bundlers like Webpack, Rollup and Parcel have support for ES modules. For a Node server I’ve still tended to write in CommonJS style because Node has great support for most ESNext features out of the box (eg. rest/spread, async/await, destructuring, class, shorthand object syntax) and I don’t like messing with bundlers and transpilers.
+I’ve discovered the esm module, “Tomorrow&rsquo;s ECMAScript modules today!” by John-David Dalton (of lodash 😄). It allows you to use ES modules in Node with no compilation step. It’s small, has a small footprint and comes with some extra goodies
+What follows is some ways to use it that aren’t strictly documented. This covers use-cases like incremental adoption of ES modules (ie. convert some modules to ESM but not the whole app). Using this will help you share CommonJS and ESM modules.
+Table of Contents:  ...  </p>
               
           </section>
       </a>
@@ -140,61 +178,30 @@ Or the repo with the demos: https://github.com/HugoDF/parcel-gh-pages-deploy and
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/jay-clark-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/c/600/600/1*ap-t03_46d5mvDLRtL5lZA.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #technical writing 
-              #productivity 
-              #web development  </span>
-              
-              <h2 class="post-card-title">Ditch syntax highlighting for better technical writing</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>Ditching syntax highlighting leads to more concise snippets, more thought to be put to find a minimal example and better overall flow in your writing.
-
- ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elevate-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
+              #Testing 
               #JavaScript 
-              #Sequelize 
-              #testing 
-              #Node  </span>
+              #Productivity  </span>
               
-              <h2 class="post-card-title">Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</h2>
+              <h2 class="post-card-title">AVA, low-config testing for JavaScript</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>This post goes through some patterns that can be used to unit test ES6 classes.
-The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.
-In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).
+                <p>A JavaScript testing library for 2017
+AVA is a Futuristic JavaScript test runner.
+Some of its best features are:
+ it works out of the box, no need to specify a blob for test files or add Babel hooks
+ it’s runs tests in parallel, this stops you from using global state and runs faster
+ the tests are async by default
+  I quite like AVA since I can just drop it in and reap benefits without too much hassle. I’ve never had to fight against AVA to get tests running, that means more focus on the code and tests and less on the setup.
 
  ...  </p>
               
