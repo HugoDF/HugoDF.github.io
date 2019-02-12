@@ -17,9 +17,9 @@
       <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/learn-git-even-if-you-dont-code/</guid>
-      <description>
+      <description>&lt;p&gt;The tools we wield define us, git is the one tool all developers use&lt;/p&gt;
 
-&lt;h3 id=&#34;the-tools-we-wield-define-us-git-is-the-one-tool-all-developers-use&#34;&gt;The tools we wield define us, git is the one tool all developers use&lt;/h3&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Git is a ubiquitous version control tool. The way it works tightly correlates with software engineering and the mindsets of developers. It was purpose-built and designed to be used for the development of the Linux Kernel, one of the largest software projects that’s depended on by millions of developers.&lt;/p&gt;
 
@@ -67,8 +67,7 @@
 
 &lt;p&gt;Feel free to get in touch with me on Twitter &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Leave some 👏🏻 if you enjoyed this.&lt;/p&gt;
-</description>
+&lt;p&gt;Leave some 👏🏻 if you enjoyed this.&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -17,9 +17,7 @@
       <pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;Settling on a &lt;a href=&#34;https://www.netlify.com/&#34;&gt;Netlify&lt;/a&gt; + &lt;a href=&#34;https://github.com/dokku/dokku&#34;&gt;Dokku&lt;/a&gt; on &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt; deployment stack for JavaScript and Node.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -34,31 +32,11 @@
 &lt;li&gt;👎 → con&lt;/li&gt;
 &lt;li&gt;🤔 → undecided&lt;/li&gt;
 &lt;li&gt;🚨 → deal-breaker for me&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;🤓 → nice-to-have&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#my-past-deployment-experiences&#34;&gt;My past deployment experiences&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#nowsh&#34;&gt;now.sh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#github-pages&#34;&gt;GitHub Pages&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#heroku&#34;&gt;Heroku&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#aws&#34;&gt;AWS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#digitalocean&#34;&gt;DigitalOcean&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#vultr&#34;&gt;Vultr&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#the-stack-moving-forward&#34;&gt;The stack moving forward&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#netlify&#34;&gt;Netlify&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#dokku-on-digitalocean&#34;&gt;Dokku on DigitalOcean&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#setting-dokku-up&#34;&gt;Setting Dokku up&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#parting-thoughts&#34;&gt;Parting thoughts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;🤓 → nice-to-have&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;my-past-deployment-experiences&#34;&gt;My past deployment experiences&lt;/h2&gt;
 
@@ -261,8 +239,7 @@
 
 &lt;p&gt;My migration of a couple of apps off of now.sh wasn’t to go from bad to good, but rather from good to better (for my needs).&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@billjelen?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Bill Jelen&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Bill Jelen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@billjelen?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Bill Jelen&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Bill Jelen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -273,31 +250,8 @@
       <guid>https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/</guid>
       <description>&lt;p&gt;The Dokku mongo plugin provides a &lt;code&gt;mongo:connect&lt;/code&gt; command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Table of Contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t&#34;&gt;Connect to MongoDB on Dokku with your local command line or Robo3T&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#pre-requisites&#34;&gt;Pre-requisites&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#dokku-mongo-is-installed&#34;&gt;dokku-mongo is installed&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#you-have-a-database-to-play-with&#34;&gt;You have a database to play with&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#connect-to-your-remote-mongodb-instance-on-dokku&#34;&gt;Connect to your remote MongoDB instance on Dokku&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#dokkus-behaviour-around-access-of-mongodb&#34;&gt;Dokku’s behaviour around access of MongoDB&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#exposing-our-mongodb-instance&#34;&gt;Exposing our MongoDB instance&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#connecting-with-robo3t&#34;&gt;Connecting with Robo3T&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-out-the-connection&#34;&gt;Testing out the connection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#security-concerns&#34;&gt;Security concerns&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Table of Contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h2&gt;
 

@@ -17,9 +17,7 @@
       <pubDate>Mon, 13 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/ava-low-config-testing-for-javascript/</guid>
-      <description>
-
-&lt;p&gt;A JavaScript testing library for 2017&lt;/p&gt;
+      <description>&lt;p&gt;A JavaScript testing library for 2017&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/avajs/ava&#34;&gt;AVA&lt;/a&gt; is a Futuristic JavaScript test runner.&lt;/p&gt;
 
@@ -34,6 +32,8 @@
 &lt;/ul&gt;
 
 &lt;p&gt;I quite like AVA since I can just drop it in and reap benefits without too much hassle. I’ve never had to fight against AVA to get tests running, that means more focus on the code and tests and less on the setup.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;no-blob-configuration&#34;&gt;No blob configuration&lt;/h2&gt;
 
@@ -156,8 +156,7 @@ test.cb(&#39;Callback gets correct value&#39;, t =&amp;gt; {
 
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;AVA is low-config, low maintenance testing for JavaScript for 2017 and beyond. You get really nice diffs on failed assertions, a one-library solution for assertions and running tests. The tests run fast and promote best practice (pure tests) and are ready to test async functionality out of the box.&lt;/p&gt;
-</description>
+&lt;p&gt;AVA is low-config, low maintenance testing for JavaScript for 2017 and beyond. You get really nice diffs on failed assertions, a one-library solution for assertions and running tests. The tests run fast and promote best practice (pure tests) and are ready to test async functionality out of the box.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -166,9 +165,7 @@ test.cb(&#39;Callback gets correct value&#39;, t =&amp;gt; {
       <pubDate>Wed, 30 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -176,25 +173,9 @@ test.cb(&#39;Callback gets correct value&#39;, t =&amp;gt; {
 
 &lt;p&gt;With the tools we have today, AngularJS isn’t as strong a way to do things &lt;em&gt;any more&lt;/em&gt;. The fact that it’s in maintenance mode says it all. For a new application or new features, ie. for a project that &lt;em&gt;not&lt;/em&gt; in maintenance mode, it’s doesn’t have the same niceties as other frameworks and libraries like Angular 2+, React or Vue. There should be a way &lt;em&gt;not&lt;/em&gt; to rewrite the whole AngularJS application at once, here&amp;rsquo;s how I went about doing it:&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#shipping-some-bundles&#34;&gt;Shipping some bundles 📦&lt;/a&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#why-commonjs-instead-of-es-modules&#34;&gt;Why CommonJS instead of ES modules?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adding-vue&#34;&gt;Adding Vue 🖼️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#setting-up-jest&#34;&gt;Setting up Jest 🔧&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#mock-assets&#34;&gt;Mock assets&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#commonjs--webpack-and-vue-jest-woes&#34;&gt;CommonJS, Webpack and &lt;code&gt;vue-jest&lt;/code&gt; woes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#some-solutions&#34;&gt;Some solutions 🤔&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor&#34;&gt;Fixing &lt;code&gt;vue-jest&lt;/code&gt;/Webpack CommonJS handling with a Jest preprocessor&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#thoughts-on-running-vue-inside-angularjs&#34;&gt;Thoughts on running Vue inside AngularJS 🏃‍&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;shipping-some-bundles&#34;&gt;Shipping some bundles 📦&lt;/h1&gt;
+&lt;h2 id=&#34;shipping-some-bundles&#34;&gt;Shipping some bundles 📦&lt;/h2&gt;
 
 &lt;p&gt;Bundling the AngularJS app allows you to send a few files with everything needed to run the single page application.
 Includes using &lt;code&gt;script&lt;/code&gt; are reduced to a few bundles of JavaScript (depending on having eg. a vendor bundle) and possibly a few of CSS.&lt;/p&gt;
@@ -229,7 +210,7 @@ giving you the ability to leverage tools such as Jest, AVA or Mocha (instead of 
 &lt;p&gt;To bundle the application, Webpack allows us to take the AngularJS codebase that leverages CommonJS and output a few application bundles.
 Templates can be &lt;code&gt;require&lt;/code&gt;-ed using the right webpack loaders (&lt;code&gt;html-loader&lt;/code&gt;). SCSS stylesheets and even Handlebar templates can also be compiled.&lt;/p&gt;
 
-&lt;h2 id=&#34;why-commonjs-instead-of-es-modules&#34;&gt;Why CommonJS instead of ES modules?&lt;/h2&gt;
+&lt;h3 id=&#34;why-commonjs-instead-of-es-modules&#34;&gt;Why CommonJS instead of ES modules?&lt;/h3&gt;
 
 &lt;p&gt;ES modules are the module format defined in the ECMAScript spec. They look like the following:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;angular&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;angular&amp;#39;&lt;/span&gt;
@@ -238,7 +219,7 @@ Templates can be &lt;code&gt;require&lt;/code&gt;-ed using the right webpack loa
 &lt;p&gt;The issue with ES modules are that they are static imports, ideally they shouldn’t have side-effects.
 Including something that does &lt;code&gt;angular.module(&#39;some-name&#39;)&lt;/code&gt; seems pretty side-effectful, so CommonJS reflects this a bit more: &lt;code&gt;require(&#39;./this-script-that-adds-something-to-angular&#39;)&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h1 id=&#34;adding-vue&#34;&gt;Adding Vue 🖼️&lt;/h1&gt;
+&lt;h2 id=&#34;adding-vue&#34;&gt;Adding Vue 🖼️&lt;/h2&gt;
 
 &lt;p&gt;This part was surprisingly straightforward, to add Vue components to an AngularJS app ngVue is available (&lt;a href=&#34;https://github.com/ngVue/ngVue&#34;&gt;https://github.com/ngVue/ngVue&lt;/a&gt;).
 &lt;code&gt;ngVue&lt;/code&gt; exposes functionality to wrap Vue components as an AngularJS directives.&lt;/p&gt;
@@ -286,9 +267,9 @@ createVueComponent =&amp;gt; createVueComponent(MyVueComponent)
 &lt;p&gt;In order to load single file components like in the above example, &lt;code&gt;vue-loader&lt;/code&gt; is required (see &lt;a href=&#34;https://github.com/vuejs/vue-loader&#34;&gt;https://github.com/vuejs/vue-loader&lt;/a&gt;),
 depending on how webpack is set up in a project, it can also affect how you process CSS (since single file components contain CSS as well as JavaScript and templates).&lt;/p&gt;
 
-&lt;h1 id=&#34;setting-up-jest&#34;&gt;Setting up Jest 🔧&lt;/h1&gt;
+&lt;h2 id=&#34;setting-up-jest&#34;&gt;Setting up Jest 🔧&lt;/h2&gt;
 
-&lt;h2 id=&#34;mock-assets&#34;&gt;Mock assets&lt;/h2&gt;
+&lt;h3 id=&#34;mock-assets&#34;&gt;Mock assets&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;.html&lt;/code&gt;, &lt;code&gt;.scss&lt;/code&gt;, &lt;code&gt;.svg&lt;/code&gt; needs to be dummied in your Jest config:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -308,7 +289,7 @@ depending on how webpack is set up in a project, it can also affect how you proc
       &lt;span class=&#34;s2&#34;&gt;&amp;#34;src/**/*.{js,vue}&amp;#34;&lt;/span&gt;
     &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;commonjs-webpack-and-vue-jest-woes&#34;&gt;CommonJS, Webpack and &lt;code&gt;vue-jest&lt;/code&gt; woes&lt;/h2&gt;
+&lt;h3 id=&#34;commonjs-webpack-and-vue-jest-woes&#34;&gt;CommonJS, Webpack and &lt;code&gt;vue-jest&lt;/code&gt; woes&lt;/h3&gt;
 
 &lt;p&gt;Webpack doesn’t care about CommonJS vs ESM,  for all intents and purposes, Webpack treats them as the same thing. Here’s the catch: the recommended Jest plugin for Vue (&lt;code&gt;vue-jest&lt;/code&gt;) handles &lt;code&gt;require&lt;/code&gt; vs &lt;code&gt;import&lt;/code&gt; of &lt;code&gt;.vue&lt;/code&gt; files differently to Webpack.
 This is some sample code in a Vue component that imports another Vue single file component in CommonJS:&lt;/p&gt;
@@ -328,7 +309,7 @@ This is some sample code in a Vue component that imports another Vue single file
 &lt;li&gt;AngularJS controllers love &lt;code&gt;this&lt;/code&gt; … transpiling ES modules through Babel breaks &lt;code&gt;this&lt;/code&gt; somehow&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;some-solutions&#34;&gt;Some solutions 🤔&lt;/h2&gt;
+&lt;h3 id=&#34;some-solutions&#34;&gt;Some solutions 🤔&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Use ES6 import/export for the Vue components and tests, add a specific extension (&lt;code&gt;.mjs&lt;/code&gt;, &lt;code&gt;.module.js&lt;/code&gt;), disable &lt;code&gt;babel-jest&lt;/code&gt; on CommonJS files.&lt;br /&gt;
@@ -340,7 +321,7 @@ This is some sample code in a Vue component that imports another Vue single file
 &lt;li&gt;&lt;p&gt;Rewrite the transformed code, using a custom pre-processor, so it behaves the same under Webpack and &lt;code&gt;vue-jest&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor&#34;&gt;Fixing &lt;code&gt;vue-jest&lt;/code&gt;/Webpack CommonJS handling with a Jest preprocessor&lt;/h2&gt;
+&lt;h3 id=&#34;fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor&#34;&gt;Fixing &lt;code&gt;vue-jest&lt;/code&gt;/Webpack CommonJS handling with a Jest preprocessor&lt;/h3&gt;
 
 &lt;p&gt;The following preprocessor takes &lt;code&gt;require(&#39;./relative-path&#39;).default&lt;/code&gt; and converts it to &lt;code&gt;require(&#39;./relative-path&#39;)&lt;/code&gt; (which is what Webpack seems to do under the hood).
 To use the following preprocessor, replace the &lt;code&gt;.vue&lt;/code&gt;-matching line in &lt;code&gt;&amp;quot;transform&amp;quot;&lt;/code&gt; of Jest config with &lt;code&gt;&amp;quot;.*\\.(vue)$&amp;quot;: &amp;quot;&amp;lt;rootDir&amp;gt;/vue-preprocessor&amp;quot;&lt;/code&gt;.
@@ -379,7 +360,7 @@ This is done with the following:&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;String.replace&lt;/code&gt; with a function argument is leveraged to run a custom replace on each match of the previous RegEx. That’s done with &lt;code&gt;match.replace(&#39;.default&#39;, &#39;&#39;)&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;thoughts-on-running-vue-inside-angularjs&#34;&gt;Thoughts on running Vue inside AngularJS 🏃‍&lt;/h1&gt;
+&lt;h2 id=&#34;thoughts-on-running-vue-inside-angularjs&#34;&gt;Thoughts on running Vue inside AngularJS 🏃‍&lt;/h2&gt;
 
 &lt;p&gt;AngularJS is from a time before bundlers and a JavaScript module system.
 The only contemporary bundling tool to AngularJS target JavaScript applications is the Google Closure Compiler.
@@ -396,8 +377,7 @@ AngularJS was and still is great. What’s also great that we can migrate off it
 
 &lt;p&gt;That means we get to keep the solid AngularJS working alongside new features written in Vue.&lt;/p&gt;
 
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/TzQZTfkanPA?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Justyn Warner&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/TzQZTfkanPA?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Justyn Warner&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -406,36 +386,22 @@ AngularJS was and still is great. What’s also great that we can migrate off it
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/</guid>
-      <description>
-
-&lt;p&gt;Testing is a crucial part of the software development process.
+      <description>&lt;p&gt;Testing is a crucial part of the software development process.
 It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.&lt;/p&gt;
 
 &lt;p&gt;Express is one of the most widespread libraries for building backend applications in JavaScript.
 What follows is a summary of how to set up an efficient unit testing strategy for such an application as well as
 a couple of situations you may be faced with when attempting to test.&lt;/p&gt;
 
-&lt;p&gt;Full code example can be found at &lt;a href=&#34;https://github.com/HugoDF/express-supertest-moxios&#34;&gt;https://github.com/HugoDF/express-supertest-moxios&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Full code example can be found at &lt;a href=&#34;https://github.com/HugoDF/express-supertest-moxios&#34;&gt;https://github.com/HugoDF/express-supertest-moxios&lt;/a&gt;.
+&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#a-simple-express-app&#34;&gt;A simple Express app 🎁&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-strategy&#34;&gt;Testing strategy 🕵️‍&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-a-less-simple-express-app&#34;&gt;Testing a less simple Express app 📚&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-strategy&#34;&gt;Testing strategy 🛠&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#where-redis-gets-mocked&#34;&gt;Where Redis gets mocked 🤡&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#parting-thoughts&#34;&gt;Parting thoughts 🦋&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
+&lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; on Monday.
 &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;h1 id=&#34;a-simple-express-app&#34;&gt;A simple Express app 🎁&lt;/h1&gt;
+&lt;h2 id=&#34;a-simple-express-app&#34;&gt;A simple Express app 🎁&lt;/h2&gt;
 
 &lt;p&gt;Say we have an Express set of route handlers like the following:&lt;/p&gt;
 
@@ -486,7 +452,7 @@ a couple of situations you may be faced with when attempting to test.&lt;/p&gt;
 {&amp;quot;blog&amp;quot;:&amp;quot;https://codewithhugo.com&amp;quot;,&amp;quot;location&amp;quot;:&amp;quot;London&amp;quot;,&amp;quot;bio&amp;quot;:&amp;quot;Developer, JavaScript.&amp;quot;,&amp;quot;publicRepos&amp;quot;:39}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;testing-strategy&#34;&gt;Testing strategy 🕵️‍&lt;/h2&gt;
+&lt;h3 id=&#34;testing-strategy&#34;&gt;Testing strategy 🕵️‍&lt;/h3&gt;
 
 &lt;p&gt;Testing is about defining some inputs and asserting on the outputs.&lt;/p&gt;
 
@@ -575,7 +541,7 @@ or a Regular Expression.&lt;/li&gt;
 Status will be the status in the &lt;code&gt;axios&lt;/code&gt; fetch response and &lt;code&gt;response&lt;/code&gt; will be the &lt;code&gt;data&lt;/code&gt; in the &lt;code&gt;axios&lt;/code&gt; fetch response.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;testing-a-less-simple-express-app&#34;&gt;Testing a less simple Express app 📚&lt;/h1&gt;
+&lt;h2 id=&#34;testing-a-less-simple-express-app&#34;&gt;Testing a less simple Express app 📚&lt;/h2&gt;
 
 &lt;p&gt;Let&amp;rsquo;s say we have an app that&amp;rsquo;s a blob store, backed by Redis (a simple key-value store amongst other things):&lt;/p&gt;
 
@@ -650,7 +616,7 @@ curl http://localhost:3000/my-key
 &lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;testing-strategy-1&#34;&gt;Testing strategy 🛠&lt;/h2&gt;
+&lt;h3 id=&#34;testing-strategy-1&#34;&gt;Testing strategy 🛠&lt;/h3&gt;
 
 &lt;p&gt;We have a decision to make here:&lt;/p&gt;
 
@@ -665,7 +631,7 @@ This means you&amp;rsquo;re relying on some sort of ordering of tests and you ca
 &lt;p&gt;For unit(ish) tests, that we want to be running the whole time we&amp;rsquo;re developing, this is an issue.
 The alternative is to mock Redis, specifically, &lt;code&gt;redisClient&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;where-redis-gets-mocked&#34;&gt;Where Redis gets mocked 🤡&lt;/h2&gt;
+&lt;h3 id=&#34;where-redis-gets-mocked&#34;&gt;Where Redis gets mocked 🤡&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;blob-store.test.js&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;blobStore&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./blob-store&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -721,7 +687,7 @@ The alternative is to mock Redis, specifically, &lt;code&gt;redisClient&lt;/code
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In short we set up our tests so we can pass an arbitrary &lt;code&gt;redisClient&lt;/code&gt; object where we can mock the methods themselves.&lt;/p&gt;
 
-&lt;h1 id=&#34;parting-thoughts&#34;&gt;Parting thoughts 🦋&lt;/h1&gt;
+&lt;h2 id=&#34;parting-thoughts&#34;&gt;Parting thoughts 🦋&lt;/h2&gt;
 
 &lt;p&gt;Testing an Express app is all about finding the boundary at which the mocking starts and where it stops.&lt;/p&gt;
 
@@ -733,8 +699,7 @@ state somehow (ie writes to an object internally), and to inject/inspect that st
 
 &lt;p&gt;For the full code example, see &lt;a href=&#34;https://github.com/HugoDF/express-supertest-moxios&#34;&gt;https://github.com/HugoDF/express-supertest-moxios&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Cover photo &lt;a href=&#34;https://unsplash.com/photos/eofm5R5f9Kw?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Bekir Dönmez&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/clowns?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo &lt;a href=&#34;https://unsplash.com/photos/eofm5R5f9Kw?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Bekir Dönmez&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/clowns?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -776,9 +741,7 @@ We’re also being good unit-testing citizens and putting the original &lt;code&
       <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/</guid>
-      <description>
-
-&lt;p&gt;There&amp;rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.&lt;/p&gt;
+      <description>&lt;p&gt;There&amp;rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.&lt;/p&gt;
 
 &lt;p&gt;In other words, although React and Vue testing with snapshots is pretty well documented, that&amp;rsquo;s not the only place they&amp;rsquo;re useful.&lt;/p&gt;
 
@@ -792,38 +755,9 @@ We’re also being good unit-testing citizens and putting the original &lt;code&
 - it&amp;rsquo;s a lost less effort to change than inline data matching, which means people need to pay attention to changes in snapshot files
 - despite community efforts, the only major test library that supports out of the box is Jest (which locks you into that ecosystem)&lt;/p&gt;
 
-&lt;!--
-- [authorAvatar: https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg](#authoravatar-httpscdn-images-1mediumcomfitc2002000rb-adjpttv1uza4ojpeg)
-- [Config 🎛](#config-)
-- [Database Models 🏬](#database-models-)
-  - [Setup 🏗](#setup-)
-  - [Queries 🔍](#queries-)
-- [pug or handlebars templates](#pug-or-handlebars-templates)
-- [Gotchas of snapshot testing ⚠️](#gotchas-of-snapshot-testing-️)
-  - [Some things (like functions) don’t serialise nicely 🔢](#some-things-like-functions-dont-serialise-nicely-)
-  - [If you can do a full match, do it](#if-you-can-do-a-full-match-do-it)
-  - [Try to cover the same code/feature with another type of test ✌️](#try-to-cover-the-same-codefeature-with-another-type-of-test-️)
----&gt;
-
 &lt;p&gt;That makes it particularly well-suited for a couple of areas:&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#config&#34;&gt;Config 🎛&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#database-models&#34;&gt;Database Models 🏬&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#setup&#34;&gt;Setup 🏗&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#queries&#34;&gt;Queries 🔍&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pug-or-handlebars-templates&#34;&gt;pug or handlebars templates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#gotchas-of-snapshot-testing&#34;&gt;Gotchas of snapshot testing ⚠️&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#some-things-like-functions-don-t-serialise-nicely&#34;&gt;Some things (like functions) don’t serialise nicely 🔢&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#if-you-can-do-a-full-match-do-it&#34;&gt;If you can do a full match, do it&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#try-to-cover-the-same-code-feature-with-another-type-of-test&#34;&gt;Try to cover the same code/feature with another type of test ✌️&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Full code is available at &lt;a href=&#34;https://github.com/HugoDF/snapshot-everything&#34;&gt;github.com/HugoDF/snapshot-everything&lt;/a&gt;.&lt;/p&gt;
 
@@ -1162,8 +1096,7 @@ but it&amp;rsquo;s also a lot less effort in terms of code typed and information
 
 &lt;p&gt;Full code is available at &lt;a href=&#34;https://github.com/HugoDF/snapshot-everything&#34;&gt;github.com/HugoDF/snapshot-everything&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@sauer?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Ben Sauer&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Ben Sauer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@sauer?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Ben Sauer&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Ben Sauer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1172,14 +1105,14 @@ but it&amp;rsquo;s also a lot less effort in terms of code typed and information
       <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/</guid>
-      <description>
-
-&lt;p&gt;This post goes through some patterns that can be used to unit test ES6 classes.&lt;/p&gt;
+      <description>&lt;p&gt;This post goes through some patterns that can be used to unit test ES6 classes.&lt;/p&gt;
 
 &lt;p&gt;The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.&lt;/p&gt;
 
 &lt;p&gt;In &lt;a href=&#34;https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/&#34;&gt;&amp;ldquo;Using ES6 classes for Sequelize 4 models&amp;rdquo;&lt;/a&gt; we explored how to define Sequelize models using ES6 classes.
 One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;We’ll be testing the following model (which is an ES6 class):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;sequelize&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -1246,8 +1179,7 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Using ES6 classes with Sequelize makes testing easier and more natural, &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;sign up to the newsletter&lt;/a&gt; to stay in the loop for the upcoming Sequelize ES6 Cheat Sheet.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@elevatebeer?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Elevate&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Elevate&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@elevatebeer?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Elevate&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Elevate&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

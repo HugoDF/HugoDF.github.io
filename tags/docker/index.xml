@@ -17,9 +17,7 @@
       <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</guid>
-      <description>
-
-&lt;p&gt;Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.&lt;/p&gt;
+      <description>&lt;p&gt;Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.&lt;/p&gt;
 
 &lt;p&gt;The repo is available at: &lt;a href=&#34;https://github.com/HugoDF/express-redis-docker&#34;&gt;https://github.com/HugoDF/express-redis-docker&lt;/a&gt;.&lt;/p&gt;
 
@@ -33,21 +31,7 @@
 
 &lt;p&gt;Docker is a containerisation system, Docker Compose is a way to define how multiple Docker containers interact. In the context of Node web application development, Docker tends to be used to define a container that has the required system-level dependencies (eg. Node version, any extra database drivers). Docker Compose would be used to define dependencies outside of the Node application, for example databases.&lt;/p&gt;
 
-&lt;!--
-
-- [Initialising Express 🚅](#initialising-express-)
-- [Running Node inside of Docker 🌊](#running-node-inside-of-docker-)
-- [Adding Redis](#adding-redis)
-- [Creating a blob store 📒](#creating-a-blob-store-)
-
---&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#initialising-express&#34;&gt;Initialising Express 🚅&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#running-node-inside-of-docker&#34;&gt;Running Node inside of Docker 🌊&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adding-redis&#34;&gt;Adding Redis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#creating-a-blob-store&#34;&gt;Creating a blob store 📒&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;initialising-express&#34;&gt;Initialising Express 🚅&lt;/h1&gt;
 
@@ -200,8 +184,7 @@ The reason I used an old school query-param based system is to avoid the boilerp
 
 &lt;p&gt;Full repository available at: &lt;a href=&#34;https://github.com/HugoDF/express-redis-docker&#34;&gt;https://github.com/HugoDF/express-redis-docker&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/rpMwfGLSsd8?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Ben Koorengevel&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/boats?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/rpMwfGLSsd8?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Ben Koorengevel&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/boats?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -210,19 +193,7 @@ The reason I used an old school query-param based system is to avoid the boilerp
       <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/</guid>
-      <description>&lt;!--
-- [An Express application with Redis and a worker 🏃‍♀️](#an-express-application-with-redis-and-a-worker-%F0%9F%8F%83%E2%80%8D%E2%99%80%EF%B8%8F)
-- [Setting up bull 🐮](#setting-up-bull-%F0%9F%90%AE)
-- [Persisting webhook data with Redis](#persisting-webhook-data-with-redis)
-  - [Accepting payloads and forwarding them on](#accepting-payloads-and-forwarding-them-on)
-  - [Persisting webhook data to Redis 💾](#persisting-webhook-data-to-redis-%F0%9F%92%BE)
-  - [Saving POST data using the new db module](#saving-post-data-using-the-new-db-module)
-- [Queuing jobs 🏭](#queuing-jobs-%F0%9F%8F%AD)
-- [Processing jobs ⚙️](#processing-jobs-%E2%9A%99%EF%B8%8F)
-- [Some other stuff to do before you ship this 🚢](#some-other-stuff-to-do-before-you-ship-this-%F0%9F%9A%A2)
---&gt;
-
-&lt;p&gt;There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.&lt;/p&gt;
+      <description>&lt;p&gt;There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.&lt;/p&gt;
 
 &lt;p&gt;There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. &lt;a href=&#34;https://github.com/Automattic/kue&#34;&gt;Kue&lt;/a&gt;, &lt;a href=&#34;https://github.com/smrchy/rsmq&#34;&gt;RSMQ&lt;/a&gt;, &lt;a href=&#34;https://github.com/bee-queue/bee-queue&#34;&gt;Bee Queue&lt;/a&gt;, &lt;a href=&#34;https://github.com/OptimalBits/bull&#34;&gt;bull&lt;/a&gt;.
 The issue with Kue, RSMQ and Bee Queue was its use of a &lt;code&gt;done&lt;/code&gt; callback as the recommended API.&lt;/p&gt;
@@ -231,24 +202,9 @@ The issue with Kue, RSMQ and Bee Queue was its use of a &lt;code&gt;done&lt;/cod
 
 &lt;p&gt;We’ll walk through an application that sends webhooks with a given payload to a set of URLs.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
 &lt;p&gt;You can find the full code content at &lt;a href=&#34;https://github.com/HugoDF/express-bull-es6&#34;&gt;https://github.com/HugoDF/express-bull-es6&lt;/a&gt;.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#an-express-application-with-redis-and-a-worker&#34;&gt;An Express application with Redis and a worker 🏃‍♀️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#setting-up-bull&#34;&gt;Setting up bull 🐮&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#persisting-webhook-data-with-redis&#34;&gt;Persisting webhook data with Redis&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#accepting-payloads-and-forwarding-them-on&#34;&gt;Accepting payloads and forwarding them on&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#persisting-webhook-data-to-redis&#34;&gt;Persisting webhook data to Redis 💾&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#saving-post-data-using-the-new-db-module&#34;&gt;Saving POST data using the new db module&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#queuing-jobs&#34;&gt;Queuing jobs 🏭&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#processing-jobs&#34;&gt;Processing jobs ⚙️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#some-other-stuff-to-do-before-you-ship-this&#34;&gt;Some other stuff to do before you ship this 🚢&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.

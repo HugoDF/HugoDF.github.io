@@ -23,8 +23,9 @@
     
     <link rel="canonical" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/" /> 
 
-     <meta name="description" content="For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? Type" /> 
+     <meta name="description" content="&lt;p&gt;For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;" /> 
 
      
     
@@ -33,8 +34,9 @@ Why TypeScript? Type" />
     
  
     <meta name="twitter:title" content="Writing an npm module with TypeScript and microbundle"/>
-    <meta name="twitter:description" content="For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? Type"/>
+    <meta name="twitter:description" content="&lt;p&gt;For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;"/>
     <meta name="twitter:url" content="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
@@ -44,8 +46,9 @@ Why TypeScript? Type"/>
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.
-Why TypeScript? Type" />
+    <meta property="og:description" content="&lt;p&gt;For those looking to write a package and publish it to npm, TypeScript &#43; microbundle is a low-friction way to build a high-quality library.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;" />
 
     <meta property="article:published_time" content="2018-05-02T00:00:00Z" />
     <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="TypeScript" /><meta property="article:tag" content="web development" /><meta property="article:tag" content="developer tools" />
@@ -61,13 +64,13 @@ Why TypeScript? Type" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -151,23 +154,22 @@ Why TypeScript? Type" />
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
+      <article class="post-full post">
+  <header class="post-full-header">
+    <section class="post-full-meta">
+      <time class="post-full-meta-date"
+        datetime="2018-05-02">2 May 2018</time>
+      <span class="date-divider">/</span> <a
+        href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/typescript/">#TypeScript</a>&nbsp;
+    </section>
+    <h1 class="post-full-title">Writing an npm module with TypeScript and microbundle</h1>
+  </header>
+  <div class="hero-container">
+
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)">
       
-<div id="codefund_ad"></div>
-
-
-<article class="post-full post">
-    <header class="post-full-header">
-        <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-05-02">2 May 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/typescript/">#TypeScript</a>&nbsp;
-        </section>
-        <h1 class="post-full-title">Writing an npm module with TypeScript and microbundle</h1>
-    </header>
-    <div class="hero-container">
-
-      
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)">
-        
   <section class="hero-cta">
     <h3 class="cta-title">Have a question?</h3>
     <p class="cta-text">
@@ -178,14 +180,34 @@ Why TypeScript? Type" />
   </section>
 
 
-      </figure>
+    </figure>
+  </div>
+
+  <section class="post-full-content">
+    <div class="kg-card-markdown">
+      <p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.</p>
+
+<p></p>
     </div>
-
-    <section class="post-full-content">
-        <div class="kg-card-markdown">
+    <section class="table-of-contents">
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#why-typescript">Why TypeScript?</a></li>
+<li><a href="#why-microbundle">Why microbundle?</a></li>
+<li><a href="#zero-config-bundling">Zero-config bundling</a></li>
+<li><a href="#publish-the-module">Publish the module</a></li>
+</ul></li>
+</ul>
+</nav>
+    </section>
+    
+    <div id="codefund_ad" class="related-links"></div>
+    
+    <div class="kg-card-markdown">
         
-
-<p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.</p>
+        
 
 <h2 id="why-typescript">Why TypeScript?</h2>
 
@@ -201,7 +223,7 @@ shouldn’t, which will come handy when you rediscover your code a couple of mon
 <p><a href="https://github.com/developit/microbundle">Microbundle</a> is a “zero-configuration bundler for tiny modules”. It’s a wrapper around <a href="https://rollupjs.org/guide/en">rollup</a> with sane defaults (including minification/compression), nice outputted size stats, multiple target formats (ES modules, CommonJS, UMD). Most of all in the scope of this post, it has TypeScript support out of the box (<em>actually</em> no configuration, not even a <code>tsconfig.json</code>).
 It’s ridiculously easy to set up and allows library authors to focus on building a great library rather than setting up the plumbing to be able to ship a JavaScript library from ES6/TypeScript or other compile-to-JS tool 🙂.</p>
 
-<h1 id="zero-config-bundling">Zero-config bundling</h1>
+<h2 id="zero-config-bundling">Zero-config bundling</h2>
 
 <p>To start, we’ll have to create setup our package run <code>npm init</code> and complete all the prompts.</p>
 
@@ -275,7 +297,7 @@ export declare class MyMainClass {
 }
 </code></pre>
 
-<h1 id="publish-the-module">Publish the module</h1>
+<h2 id="publish-the-module">Publish the module</h2>
 
 <p>By leveraging microbundle we can publish the module as a CommonJS module (standard npm module), but also as an ES Module and a UMD module, to do this follow the guide at <a href="https://github.com/developit/microbundle#specifying-builds-in-packagejson">https://github.com/developit/microbundle#specifying-builds-in-packagejson</a>.</p>
 
@@ -292,36 +314,33 @@ export declare class MyMainClass {
 And if you enjoyed using <a href="https://github.com/developit/microbundle">microbundle</a>, definitely keep using it but also give it a <a href="https://github.com/developit/microbundle">star on GitHub</a> and let Jason Miller aka <a href="https://twitter.com/_developit">@_developit</a> know you’re a fan on Twitter.</p>
 
 <p>Cover Photo by <a href="https://unsplash.com/photos/J8R34suxfRU?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Aaron Burden</a> on <a href="https://unsplash.com/search/photos/tiny?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+    </div>
+  </section>
 
-        </div>
-    </section>
+  <section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+    <p>Get all the posts of the week before anyone else in your inbox</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/hugo" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')">
+      <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+        <input type="hidden" value="1" name="embed" />
+      </div>
+      <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+    </form>
+  </section>
 
-    <section class="subscribe-form">
-        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
-        <p>Get all the posts of the week before anyone else in your inbox</p>
-        <form
-            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
-        >
-            <div class="form-group">
-                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
-                <input type="hidden" value="1" name="embed"/>
-            </div>
-            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
-        </form>
-    </section>
-
-    <footer class="post-full-footer">
-      <section class="author-card">
-        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-        <section class="author-card-content">
-            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
-                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
-        </section>
+  <footer class="post-full-footer">
+    <section class="author-card">
+      <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+        alt="Author" />
+      <section class="author-card-content">
+        <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a>
+        </h4>
+        <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
       </section>
-    </footer>
+    </section>
+  </footer>
 </article>
 
 
@@ -371,13 +390,13 @@ And if you enjoyed using <a href="https://github.com/developit/microbundle">micr
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">Writing multiple Vue components in a single file</a></li>            
+          <li><a href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</a></li>            
         
-          <li><a href="https://codewithhugo.com/impress-interviewers-with-recursion-in-javascript-with-es6-features/">Impress interviewers with recursion in JavaScript with ES6 features</a></li>            
+          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">A gentle introduction to GraphQL API integrations</a></li>            
+          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
         
-          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+          <li><a href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">Simple, but not too simple: how using Zeit’s `micro` improves your Node applications</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -410,7 +429,14 @@ And if you enjoyed using <a href="https://github.com/developit/microbundle">micr
               
                 <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
 For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
-To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node. ...  </p>
+To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node.js” is a good option. It allows the application to run backed by a MySQL or PostgreSQL instance and provides an easy way to map from entities&rsquo; representation in the database to JavaScript and vice versa.
+Sequelize’s API for model definitions looks like the following (from the docs http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):
+const MyModel = sequelize.define(&#34;MyModel&#34;, { // fields and methods });  To add class and instance methods you would write the following:
+// Class Method MyModel.associate = function (models) {}; // Instance Method MyModel.prototype.someMethod = function () {..}  This is necessary pre-ES6 since there was no concept of classical inheritance. Since we have class now, why not leverage them? For developers who are used to having classes, the following would likely look familiar:
+class MyModel extends Sequelize.Model { static associate(models) {} someMethod() {} }  Sequelize actually supports this, but the documentation is a bit lacking. One of the only place to find a reference to how to do this is in a GitHub issue: https://github.com/sequelize/sequelize/issues/6524.
+Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from Sequelize.Model:
+
+ ...  </p>
               
           </section>
       </a>

@@ -17,9 +17,7 @@
       <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</guid>
-      <description>
-
-&lt;p&gt;Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.&lt;/p&gt;
+      <description>&lt;p&gt;Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.&lt;/p&gt;
 
 &lt;p&gt;The repo is available at: &lt;a href=&#34;https://github.com/HugoDF/express-redis-docker&#34;&gt;https://github.com/HugoDF/express-redis-docker&lt;/a&gt;.&lt;/p&gt;
 
@@ -33,21 +31,7 @@
 
 &lt;p&gt;Docker is a containerisation system, Docker Compose is a way to define how multiple Docker containers interact. In the context of Node web application development, Docker tends to be used to define a container that has the required system-level dependencies (eg. Node version, any extra database drivers). Docker Compose would be used to define dependencies outside of the Node application, for example databases.&lt;/p&gt;
 
-&lt;!--
-
-- [Initialising Express 🚅](#initialising-express-)
-- [Running Node inside of Docker 🌊](#running-node-inside-of-docker-)
-- [Adding Redis](#adding-redis)
-- [Creating a blob store 📒](#creating-a-blob-store-)
-
---&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#initialising-express&#34;&gt;Initialising Express 🚅&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#running-node-inside-of-docker&#34;&gt;Running Node inside of Docker 🌊&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adding-redis&#34;&gt;Adding Redis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#creating-a-blob-store&#34;&gt;Creating a blob store 📒&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;initialising-express&#34;&gt;Initialising Express 🚅&lt;/h1&gt;
 
@@ -200,8 +184,7 @@ The reason I used an old school query-param based system is to avoid the boilerp
 
 &lt;p&gt;Full repository available at: &lt;a href=&#34;https://github.com/HugoDF/express-redis-docker&#34;&gt;https://github.com/HugoDF/express-redis-docker&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/rpMwfGLSsd8?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Ben Koorengevel&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/boats?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/rpMwfGLSsd8?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Ben Koorengevel&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/boats?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -210,19 +193,7 @@ The reason I used an old school query-param based system is to avoid the boilerp
       <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/</guid>
-      <description>&lt;!--
-- [An Express application with Redis and a worker 🏃‍♀️](#an-express-application-with-redis-and-a-worker-%F0%9F%8F%83%E2%80%8D%E2%99%80%EF%B8%8F)
-- [Setting up bull 🐮](#setting-up-bull-%F0%9F%90%AE)
-- [Persisting webhook data with Redis](#persisting-webhook-data-with-redis)
-  - [Accepting payloads and forwarding them on](#accepting-payloads-and-forwarding-them-on)
-  - [Persisting webhook data to Redis 💾](#persisting-webhook-data-to-redis-%F0%9F%92%BE)
-  - [Saving POST data using the new db module](#saving-post-data-using-the-new-db-module)
-- [Queuing jobs 🏭](#queuing-jobs-%F0%9F%8F%AD)
-- [Processing jobs ⚙️](#processing-jobs-%E2%9A%99%EF%B8%8F)
-- [Some other stuff to do before you ship this 🚢](#some-other-stuff-to-do-before-you-ship-this-%F0%9F%9A%A2)
---&gt;
-
-&lt;p&gt;There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.&lt;/p&gt;
+      <description>&lt;p&gt;There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.&lt;/p&gt;
 
 &lt;p&gt;There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. &lt;a href=&#34;https://github.com/Automattic/kue&#34;&gt;Kue&lt;/a&gt;, &lt;a href=&#34;https://github.com/smrchy/rsmq&#34;&gt;RSMQ&lt;/a&gt;, &lt;a href=&#34;https://github.com/bee-queue/bee-queue&#34;&gt;Bee Queue&lt;/a&gt;, &lt;a href=&#34;https://github.com/OptimalBits/bull&#34;&gt;bull&lt;/a&gt;.
 The issue with Kue, RSMQ and Bee Queue was its use of a &lt;code&gt;done&lt;/code&gt; callback as the recommended API.&lt;/p&gt;
@@ -231,24 +202,9 @@ The issue with Kue, RSMQ and Bee Queue was its use of a &lt;code&gt;done&lt;/cod
 
 &lt;p&gt;We’ll walk through an application that sends webhooks with a given payload to a set of URLs.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
 &lt;p&gt;You can find the full code content at &lt;a href=&#34;https://github.com/HugoDF/express-bull-es6&#34;&gt;https://github.com/HugoDF/express-bull-es6&lt;/a&gt;.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#an-express-application-with-redis-and-a-worker&#34;&gt;An Express application with Redis and a worker 🏃‍♀️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#setting-up-bull&#34;&gt;Setting up bull 🐮&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#persisting-webhook-data-with-redis&#34;&gt;Persisting webhook data with Redis&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#accepting-payloads-and-forwarding-them-on&#34;&gt;Accepting payloads and forwarding them on&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#persisting-webhook-data-to-redis&#34;&gt;Persisting webhook data to Redis 💾&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#saving-post-data-using-the-new-db-module&#34;&gt;Saving POST data using the new db module&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#queuing-jobs&#34;&gt;Queuing jobs 🏭&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#processing-jobs&#34;&gt;Processing jobs ⚙️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#some-other-stuff-to-do-before-you-ship-this&#34;&gt;Some other stuff to do before you ship this 🚢&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
@@ -819,9 +775,7 @@ my-app    &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; Hit example with &lt;span
       <pubDate>Tue, 24 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/</guid>
-      <description>
-
-&lt;p&gt;As part of adding integration tests to an app on CircleCI I ran into the following issues:&lt;/p&gt;
+      <description>&lt;p&gt;As part of adding integration tests to an app on CircleCI I ran into the following issues:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;redis-cli&lt;/code&gt;&amp;rsquo;s API has changed from version 2 to 3 to 4
@@ -833,6 +787,8 @@ my-app    &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; Hit example with &lt;span
 &lt;/ul&gt;
 
 &lt;p&gt;What follows is how &lt;em&gt;not&lt;/em&gt; to install &lt;code&gt;redis-cli&lt;/code&gt; and then how to install &lt;code&gt;redis-cli&lt;/code&gt; latest, properly.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
@@ -873,8 +829,7 @@ sudo chmod &lt;span class=&#34;m&#34;&gt;755&lt;/span&gt; /usr/local/bin/redis-c
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;apk --upgrade redis&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If you know why this works but &lt;code&gt;apt-get install redis-server&lt;/code&gt; sometimes installs old &lt;code&gt;redis-cli&lt;/code&gt; drop me a line at &lt;a href=&#34;hi@codewithhugo.com&#34;&gt;hi@codewithhugo.com&lt;/a&gt;, or Twitter &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@nilsjacob?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Nils Stahl&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Nils Stahl&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@nilsjacob?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Nils Stahl&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Nils Stahl&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

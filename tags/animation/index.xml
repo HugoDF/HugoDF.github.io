@@ -17,9 +17,9 @@
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/animations-css-vs-javascript/</guid>
-      <description>
-
-&lt;h3 id=&#34;when-should-you-use-javascript-when-you-can-use-css&#34;&gt;&lt;em&gt;When should you use JavaScript when you can use CSS?&lt;/em&gt;&lt;/h3&gt;
+      <description>&lt;blockquote&gt;
+&lt;p&gt;When should you use JavaScript when you can use CSS?&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;This post was sparked by a question I answered on Quora:
 &lt;a href=&#34;https://www.quora.com/Which-is-better-to-use-CSS-or-JS&#34;&gt;&lt;strong&gt;Which is better to use, CSS or JS?&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
@@ -33,10 +33,11 @@
 &lt;p&gt;This leads us to formulate some rules around using JavaScript in the browser:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;if you can do something with CSS over JavaScript, do it&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;if you can do something with HTML over JavaScript, do it&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;if you can do something with CSS over JavaScript, do it&lt;/li&gt;
+&lt;li&gt;if you can do something with HTML over JavaScript, do it&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;why&#34;&gt;Why?&lt;/h2&gt;
 
@@ -89,8 +90,7 @@
 &lt;p&gt;Leave some 👏🏻 if you enjoyed this, and here are some posts you might be interested in:
 - &lt;a href=&#34;https://medium.com/@hugo__df/why-css-is-hard-89f3b221dd4d&#34;&gt;&lt;strong&gt;Why CSS is hard&lt;/strong&gt;, Things we’re not used to tend to be harder&lt;/a&gt;&lt;br /&gt;
 - &lt;a href=&#34;https://hackernoon.com/learn-git-even-if-you-dont-code-89c521f4209b&#34;&gt;&lt;strong&gt;Learn git even if you don’t code&lt;/strong&gt;, The tools we wield define us, git is the one tool all developers use&lt;/a&gt;&lt;br /&gt;
-- &lt;a href=&#34;https://medium.com/@hugo__df/7-reasons-you-should-be-hosted-on-aws-9312e40ee323&#34;&gt;&lt;strong&gt;7 reasons you should be hosted on AWS&lt;/strong&gt;, Amazon Web Services is one of the leading hosting providers, here’s why.&lt;/a&gt;&lt;/p&gt;
-</description>
+- &lt;a href=&#34;https://medium.com/@hugo__df/7-reasons-you-should-be-hosted-on-aws-9312e40ee323&#34;&gt;&lt;strong&gt;7 reasons you should be hosted on AWS&lt;/strong&gt;, Amazon Web Services is one of the leading hosting providers, here’s why.&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -70,13 +70,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -160,23 +160,22 @@
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
+      <article class="post-full post">
+  <header class="post-full-header">
+    <section class="post-full-meta">
+      <time class="post-full-meta-date"
+        datetime="2018-11-02">2 November 2018</time>
+      <span class="date-divider">/</span> <a
+        href="https://codewithhugo.com/tags/deployment/">#deployment</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/meta/">#meta</a>&nbsp;
+    </section>
+    <h1 class="post-full-title">A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</h1>
+  </header>
+  <div class="hero-container">
+
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/anthony-cantin-unsplash.jpg)">
       
-<div id="codefund_ad"></div>
-
-
-<article class="post-full post">
-    <header class="post-full-header">
-        <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-11-02">2 November 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/deployment/">#deployment</a>&nbsp;<a href="https://codewithhugo.com/tags/meta/">#meta</a>&nbsp;
-        </section>
-        <h1 class="post-full-title">A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</h1>
-    </header>
-    <div class="hero-container">
-
-      
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/anthony-cantin-unsplash.jpg)">
-        
   <section class="hero-cta">
     <h3 class="cta-title">Have a question?</h3>
     <p class="cta-text">
@@ -187,12 +186,12 @@
   </section>
 
 
-      </figure>
-    </div>
+    </figure>
+  </div>
 
-    <section class="post-full-content">
-        <div class="kg-card-markdown">
-        <blockquote>
+  <section class="post-full-content">
+    <div class="kg-card-markdown">
+      <blockquote>
 <p>Last Monday (22 October 2018) GitHub was going 💥, and scheduled content on Code with Hugo wasn’t going live.</p>
 </blockquote>
 
@@ -207,24 +206,28 @@
 <li>CircleCI to deploy the site daily + on push (🤷‍♀️wasn’t in the post but that’s how I do it)</li>
 </ul>
 
-<p></p>
-
-<p>Contents of this post:</p>
-
-<!--
-- [authorAvatar: https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg](#authoravatar-httpscdn-images-1mediumcomfitc2002000rb-adjpttv1uza4ojpeg)
-- [On hosting with a business which isn’t specialised in static hosting 🤔](#on-hosting-with-a-business-which-isnt-specialised-in-static-hosting-)
-- [Speedy migration to Netlify ⏩](#speedy-migration-to-netlify-)
-- [Why use Cloudflare then?](#why-use-cloudflare-then)
-- [The path forward](#the-path-forward)
--->
-
+<p>Contents of this post:
+</p>
+    </div>
+    <section class="table-of-contents">
+      <nav id="TableOfContents">
 <ul>
-<li><a href="#on-hosting-with-a-business-which-isnt-specialised-in-static-hosting">On hosting with a business which isn’t specialised in static hosting 🤔</a></li>
+<li>
+<ul>
+<li><a href="#on-hosting-with-a-business-which-isn-t-specialised-in-static-hosting">On hosting with a business which isn’t specialised in static hosting 🤔</a></li>
 <li><a href="#speedy-migration-to-netlify">Speedy migration to Netlify ⏩</a></li>
 <li><a href="#why-use-cloudflare-then">Why use Cloudflare then?</a></li>
 <li><a href="#the-path-forward">The path forward</a></li>
+</ul></li>
 </ul>
+</nav>
+    </section>
+    
+    <div id="codefund_ad" class="related-links"></div>
+    
+    <div class="kg-card-markdown">
+        
+        
 
 <h2 id="on-hosting-with-a-business-which-isn-t-specialised-in-static-hosting">On hosting with a business which isn’t specialised in static hosting 🤔</h2>
 
@@ -308,35 +311,33 @@ codewithhugo.com.        299        IN        A        104.27.141.8
 <p>GitHub Pages is awesome, my demos are likely to still live there. Disruptions happen to everyone but as is <a href="https://blog.github.com/2018-10-30-oct21-post-incident-analysis/">clear in their post-mortem</a>, GitHub isn’t a static hosting service 🙂. Netlify’s core business proposition is static site hosting and deployment, that’s why <a href="https://codewithhugo.com">Code with Hugo</a> is going to live there from now on 👍.</p>
 
 <p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@arizonanthony?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Anthony Cantin"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Anthony Cantin</span></a></p>
-        </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="subscribe-form">
-        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
-        <p>Get all the posts of the week before anyone else in your inbox</p>
-        <form
-            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
-        >
-            <div class="form-group">
-                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
-                <input type="hidden" value="1" name="embed"/>
-            </div>
-            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
-        </form>
-    </section>
+  <section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+    <p>Get all the posts of the week before anyone else in your inbox</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/hugo" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')">
+      <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+        <input type="hidden" value="1" name="embed" />
+      </div>
+      <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+    </form>
+  </section>
 
-    <footer class="post-full-footer">
-      <section class="author-card">
-        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-        <section class="author-card-content">
-            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
-                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
-        </section>
+  <footer class="post-full-footer">
+    <section class="author-card">
+      <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+        alt="Author" />
+      <section class="author-card-content">
+        <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a>
+        </h4>
+        <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
       </section>
-    </footer>
+    </section>
+  </footer>
 </article>
 
 
@@ -386,13 +387,13 @@ codewithhugo.com.        299        IN        A        104.27.141.8
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/observablehq-notebooks-for-javascript-demos-and-prototypes/">ObservableHQ notebooks for JavaScript demos and prototypes</a></li>            
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
         
-          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</a></li>            
+          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -427,8 +428,7 @@ codewithhugo.com.        299        IN        A        104.27.141.8
  Writing setup, CI and deployment flows means a bit of the old bash scripting.
 Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
 To avoid having to do this again myself and for your reading pleasure, here they are.
-
- ...  </p>
+To be dangerous in terms of setup, CI and depoyment flows we will encounter the following:  ...  </p>
               
           </section>
       </a>
@@ -461,11 +461,10 @@ To avoid having to do this again myself and for your reading pleasure, here they
           </header>
           <section class="post-card-excerpt">
               
-                <p>Leave the Express comfort zone to expand how you think about Node application architecture.
+                <p> Leave the Express comfort zone to expand how you think about Node application architecture.
  tl;dr
- using a function composition model for building HTTP servers is awesome Functions as a Service are great but have some drawbacks micro has a similar, simple API to FaaS but doesn&rsquo;t have a compilation step micro&rsquo;s minimalism affects how you solve problems
- Functions as a composition model for JavaScript
- Functions as a Service pain points ...  </p>
+ using a function composition model for building HTTP servers is awesome Functions as a Service are great but have some drawbacks micro has a similar, simple API to FaaS but doesn&rsquo;t have a compilation step micro&rsquo;s minimalism affects how you solve problems  An example comparing micro and express can be found at: github.com/HugoDF/micro-vs-express-example.
+Table of contents:  ...  </p>
               
           </section>
       </a>

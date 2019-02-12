@@ -17,9 +17,7 @@
       <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;A simple Hugo blog setup&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -36,40 +34,12 @@
 
 &lt;p&gt;There&amp;rsquo;s been an update in the deployment saga, read it here: &lt;a href=&#34;https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/&#34;&gt;&amp;ldquo;A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;&lt;/p&gt;
+
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
 &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
 &lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#why-i-didn-t-build-my-own-website&#34;&gt;Why I didn’t build my own website 🏃‍♂️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#picking-a-theme-and-overriding-little-things&#34;&gt;Picking a theme and overriding little things 🖼&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#enabling-syntax-highlighting&#34;&gt;Enabling syntax highlighting 🎨&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#image-and-things&#34;&gt;Image and things 🤳&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#resize-using-imagemagick&#34;&gt;Resize using imagemagick&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#convert-png-to-jpg&#34;&gt;Convert PNG to JPG&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#deployment-and-more&#34;&gt;Deployment and more&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#deployment-script&#34;&gt;Deployment script&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cleaning-up-with-node-and-npm-scripts&#34;&gt;“Cleaning up” with Node and npm scripts 🙄&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#minify-and-optimise-css&#34;&gt;Minify and optimise CSS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#imageoptim&#34;&gt;Imageoptim&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#running-in-development-mode&#34;&gt;Running in development mode&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cloudflare-setup&#34;&gt;Cloudflare setup&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--
-- [Getting a full RSS feed 😄](#getting-a-full-rss-feed-)
-  - [Cloudflare setup](#cloudflare-setup)
---&gt;
 
 &lt;h2 id=&#34;why-i-didn-t-build-my-own-website&#34;&gt;Why I didn’t build my own website 🏃‍♂️&lt;/h2&gt;
 
@@ -300,8 +270,7 @@ I knew it was a problem but as usual I never got round to fixing it until I emba
 
 &lt;p&gt;That’s pretty much all of my Hugo setup for &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt; short of a couple of extra images and setting strings in &lt;code&gt;config.toml&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@parkerkwhitson?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Parker Whitson&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Parker Whitson&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@parkerkwhitson?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Parker Whitson&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Parker Whitson&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -314,22 +283,10 @@ I knew it was a problem but as usual I never got round to fixing it until I emba
 &lt;p&gt;Going from 0 to small. A developer&amp;rsquo;s journey starting a technical blog from scratch.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
 &lt;p&gt;Stats in this post as of 21st of October, &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;follow me on Twitter&lt;/a&gt; for monthly updates.&lt;/p&gt;
 
-&lt;p&gt;Contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#timeline&#34;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#post-count-total-word-and-read-time&#34;&gt;Post count, total word and read time&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#top-visited&#34;&gt;Top visited&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#top-day-analytics-and-search-traffic-data&#34;&gt;Top day, analytics and search traffic data&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#highlights&#34;&gt;Highlights&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#newsletter-devto-and-twitter&#34;&gt;Newsletter, dev.to and Twitter&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#code-and-example-repositories&#34;&gt;Code and example repositories&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#revenue&#34;&gt;Revenue&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;timeline&#34;&gt;Timeline&lt;/h2&gt;
 
@@ -466,24 +423,8 @@ I knew it was a problem but as usual I never got round to fixing it until I emba
 &lt;li&gt;CircleCI to deploy the site daily + on push (🤷‍♀️wasn’t in the post but that’s how I do it)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Contents of this post:&lt;/p&gt;
-
-&lt;!--
-- [authorAvatar: https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg](#authoravatar-httpscdn-images-1mediumcomfitc2002000rb-adjpttv1uza4ojpeg)
-- [On hosting with a business which isn’t specialised in static hosting 🤔](#on-hosting-with-a-business-which-isnt-specialised-in-static-hosting-)
-- [Speedy migration to Netlify ⏩](#speedy-migration-to-netlify-)
-- [Why use Cloudflare then?](#why-use-cloudflare-then)
-- [The path forward](#the-path-forward)
---&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#on-hosting-with-a-business-which-isnt-specialised-in-static-hosting&#34;&gt;On hosting with a business which isn’t specialised in static hosting 🤔&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#speedy-migration-to-netlify&#34;&gt;Speedy migration to Netlify ⏩&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#why-use-cloudflare-then&#34;&gt;Why use Cloudflare then?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#the-path-forward&#34;&gt;The path forward&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Contents of this post:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;on-hosting-with-a-business-which-isn-t-specialised-in-static-hosting&#34;&gt;On hosting with a business which isn’t specialised in static hosting 🤔&lt;/h2&gt;
 
@@ -577,50 +518,9 @@ codewithhugo.com.        299        IN        A        104.27.141.8
       <guid>https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how I get productive for JavaScript/Node on Mac OS.&lt;/p&gt;
 
+&lt;p&gt;It includes iTerm2, zsh, Node, Visual Studio Code and some git commands.&lt;/p&gt;
+
 &lt;p&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#terminal&#34;&gt;Terminal&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#setup-iterm2&#34;&gt;Setup iTerm2&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#change-edit-mode-to-natural-text&#34;&gt;Change edit mode to natural text&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#new-session-should-start-where-previous-left-off&#34;&gt;New session should start where previous left off&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#quit-on-tab-close&#34;&gt;Quit on tab close&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#increase-font-size&#34;&gt;Increase font size&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#enable-infinite-history&#34;&gt;Enable infinite history&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#shell-setup&#34;&gt;Shell setup&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#zsh&#34;&gt;zsh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#snazzy-colour-theme&#34;&gt;snazzy colour theme&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pure-prompt&#34;&gt;Pure prompt&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#browsers-and-testing&#34;&gt;Browsers and testing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#editor&#34;&gt;Editor&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#install-vscode-command-line-tools&#34;&gt;Install VSCode command line tools&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#must-have-extensions&#34;&gt;Must-have extensions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#nice-to-have-extensions&#34;&gt;Nice to have extensions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#productivity&#34;&gt;Productivity&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#clipy&#34;&gt;Clipy&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#tooling&#34;&gt;Tooling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#setup-and-configuration&#34;&gt;Setup and configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#misc-and-extras&#34;&gt;Misc and extras&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#optional-docker-virtualbox&#34;&gt;(Optional) Docker, VirtualBox&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h1 id=&#34;terminal&#34;&gt;Terminal&lt;/h1&gt;
 
@@ -821,9 +721,7 @@ VirtualBox allows you to run Virtual Machines on Mac, install it at &lt;a href=&
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/</guid>
-      <description>
-
-&lt;p&gt;How I created the buying mechanism for the &lt;a href=&#34;https://codewithhugo.com/guides/sequelize-es6-cheatsheet/&#34;&gt;Sequelize ES6 Cheatsheet&lt;/a&gt; using checkoutpage.co and sprinkles of vanilla JavaScript.&lt;/p&gt;
+      <description>&lt;p&gt;How I created the buying mechanism for the &lt;a href=&#34;https://codewithhugo.com/guides/sequelize-es6-cheatsheet/&#34;&gt;Sequelize ES6 Cheatsheet&lt;/a&gt; using checkoutpage.co and sprinkles of vanilla JavaScript.&lt;/p&gt;
 
 &lt;p&gt;This strictly &lt;em&gt;isn’t&lt;/em&gt; a paywall, it&amp;rsquo;s all client-side and doesn&amp;rsquo;t check much.&lt;/p&gt;
 
@@ -834,6 +732,9 @@ VirtualBox allows you to run Virtual Machines on Mac, install it at &lt;a href=&
 &lt;p&gt;I don&amp;rsquo;t think it&amp;rsquo;s likely that people will go through the effort of doing the above reverse-engineering, so I&amp;rsquo;m going to walk anyone who will listen through how I&amp;rsquo;ve implemented it.&lt;/p&gt;
 
 &lt;p&gt;If you like getting the cheatsheet for free but also want to support my work you can &lt;a href=&#34;buymeacoff.ee/hugodf&#34;&gt;Buy me a Coffee&lt;/a&gt; or just &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to my mailing list&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;set-up-hiding-of-content&#34;&gt;Set up hiding of content&lt;/h2&gt;
 
@@ -1355,8 +1256,7 @@ The rest is all explained in the article.&lt;/p&gt;
     &lt;span class=&#34;nx&#34;&gt;init&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
   &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;navigator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@samuelzeller?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Samuel Zeller&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Samuel Zeller&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@samuelzeller?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Samuel Zeller&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Samuel Zeller&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1365,9 +1265,7 @@ The rest is all explained in the article.&lt;/p&gt;
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: here are the tools used to power, build and publish &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt;:&lt;/p&gt;
+      <description>&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: here are the tools used to power, build and publish &lt;a href=&#34;https://codewithhugo.com&#34;&gt;codewithhugo.com&lt;/a&gt;:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/paper&#34;&gt;Dropbox Paper&lt;/a&gt; because it syncs desktop/mobile and outputs to markdown&lt;/li&gt;
@@ -1387,16 +1285,8 @@ The rest is all explained in the article.&lt;/p&gt;
 &lt;li&gt;Analytics: Google Analytics + Simple Analytics&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;This post has about 7 month’s worth of learning in it, so see the following table of contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#dont-build-your-own-if-youre-about-content&#34;&gt;Don’t build your own if you’re about content&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#the-flow-from-idea-to-published&#34;&gt;The flow: from idea to published&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#social-mediapromotion--organic-traffic&#34;&gt;Social Media/Promotion &amp;lt; Organic traffic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#post-and-newsletter-schedule&#34;&gt;Post and Newsletter Schedule&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#newsletter-why-buttondown&#34;&gt;Newsletter: why Buttondown?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#analytics-stack&#34;&gt;Analytics stack&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;This post has about 7 month’s worth of learning in it, so see the following table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;don-t-build-your-own-if-you-re-about-content&#34;&gt;Don’t build your own if you’re about content&lt;/h2&gt;
 
@@ -1484,8 +1374,7 @@ The rest is all explained in the article.&lt;/p&gt;
 
 &lt;p&gt;Simple Analytics is one for the future, it allows me to have live stats in the open &lt;a href=&#34;https://simpleanalytics.io/codewithhugo.com&#34;&gt;simpleanalytics.io/codewithhugo.com&lt;/a&gt;. They’ve recently added a “visitors online” feature, which is more accurate than Google Analytic’s “Active Users”. That’s because GA shows you hits from the last X seconds whereas Simple Analytics shows you who’s &lt;em&gt;actually&lt;/em&gt; online.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@christinhumephoto?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Christin Hume&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Christin Hume&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@christinhumephoto?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Christin Hume&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Christin Hume&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

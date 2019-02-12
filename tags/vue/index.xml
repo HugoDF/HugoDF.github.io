@@ -23,49 +23,12 @@
 
 &lt;p&gt;Let&amp;rsquo;s apply that principle: I&amp;rsquo;m building &lt;a href=&#34;https://accountableblogging.com&#34;&gt;Post Frequency/Accountable Blogging&lt;/a&gt;,
 I&amp;rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and
-I’ve settled on Dokku for databases/backend applications hosting.
+I’ve settled on Dokku for databases/backend applications hosting.&lt;/p&gt;
+
+&lt;p&gt;Table of contents:
 &lt;/p&gt;
 
 &lt;p&gt;See how I deploy my applications &lt;a href=&#34;https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/&#34;&gt;Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Table of contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#context&#34;&gt;Context&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#frontend&#34;&gt;Frontend&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#vue--vue-cli-3&#34;&gt;Vue + Vue CLI 3&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#vue-cli-prerender-spa-plugin&#34;&gt;Vue CLI prerender SPA plugin&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#load-some-scripts-only-on-production&#34;&gt;Load some scripts only on production&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#load-scripts-only-if-not-pre-rendering-injectx-using&#34;&gt;Load scripts only if &lt;em&gt;not&lt;/em&gt; pre-rendering &lt;code&gt;injectX&lt;/code&gt; using:&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#pass-service-urls-using-envenvironment-files&#34;&gt;Pass service URLs using &lt;code&gt;.env.${ENVIRONMENT}&lt;/code&gt; files&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#being-social-and-google-friendly&#34;&gt;Being social and Google-friendly&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#be-crawlable&#34;&gt;Be crawlable&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#favicons-and-manifests&#34;&gt;Favicons and manifests&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#meta-description-opengraph-tags&#34;&gt;Meta description, OpenGraph tags&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#without-router&#34;&gt;Without router&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#with-vue-router&#34;&gt;With vue-router&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#backend-services&#34;&gt;Backend service(s)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#launch&#34;&gt;Launch&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#outcomes&#34;&gt;Outcomes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
 

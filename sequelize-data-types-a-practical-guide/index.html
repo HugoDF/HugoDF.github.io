@@ -23,7 +23,7 @@
     
     <link rel="canonical" href="https://codewithhugo.com/sequelize-data-types-a-practical-guide/" /> 
 
-     <meta name="description" content="DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject." /> 
+     <meta name="description" content="&lt;p&gt;DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subje" /> 
 
      
     
@@ -32,7 +32,7 @@
     
  
     <meta name="twitter:title" content="Sequelize Data Types: a practical guide"/>
-    <meta name="twitter:description" content="DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject."/>
+    <meta name="twitter:description" content="&lt;p&gt;DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subje"/>
     <meta name="twitter:url" content="https://codewithhugo.com/sequelize-data-types-a-practical-guide/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
@@ -42,7 +42,7 @@
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject." />
+    <meta property="og:description" content="&lt;p&gt;DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subje" />
 
     <meta property="article:published_time" content="2018-12-19T00:00:00Z" />
     <meta property="article:tag" content="Sequelize" /><meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="node" />
@@ -58,13 +58,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -148,39 +148,22 @@
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
+      <article class="post-full post">
+  <header class="post-full-header">
+    <section class="post-full-meta">
+      <time class="post-full-meta-date"
+        datetime="2018-12-19">19 December 2018</time>
+      <span class="date-divider">/</span> <a
+        href="https://codewithhugo.com/tags/sequelize/">#Sequelize</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;
+    </section>
+    <h1 class="post-full-title">Sequelize Data Types: a practical guide</h1>
+  </header>
+  <div class="hero-container">
+
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/mika-baumeister-unsplash.jpg)">
       
-<div>
-  <span>
-    <div class="cf-wrapper">
-      <div class="cf-header">Proudly sponsored by</div>
-      <a href="https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet" class="cf-text">
-        <strong> Sequelize ES6 cheat sheet</strong><br/>
-        A cheat sheet to level up your Sequelize productivity. If you've ever needed better Sequelize docs, this is it. 
-      </a>
-
-
-      <a href="/" class="cf-powered-by">
-        <em>useful</em> products by Code with Hugo
-      </a>
-    </div>
-  </span>
-</div>
-
-
-
-<article class="post-full post">
-    <header class="post-full-header">
-        <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-12-19">19 December 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/sequelize/">#Sequelize</a>&nbsp;<a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;
-        </section>
-        <h1 class="post-full-title">Sequelize Data Types: a practical guide</h1>
-    </header>
-    <div class="hero-container">
-
-      
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/mika-baumeister-unsplash.jpg)">
-        
   <section class="hero-cta">
     <h3 class="cta-title">Get the Sequelize ES6 cheat sheet</h3>
     <p class="cta-text">A cheat sheet to level up your Sequelize productivity.<br/>If you've ever needed better Sequelize docs, this is it.<br/></p>
@@ -188,35 +171,57 @@
   </section>
 
 
-      </figure>
-    </div>
+    </figure>
+  </div>
 
-    <section class="post-full-content">
-        <div class="kg-card-markdown">
-        
-
-<p>DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.</p>
+  <section class="post-full-content">
+    <div class="kg-card-markdown">
+      <p>DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.</p>
 
 <p>First of all, DataTypes contains both the types and generators for default values: eg. <code>NOW</code>, <code>UUIDV1</code> and <code>UUIDV4</code> are special default values.</p>
 
 <p>The places where you&rsquo;re likely to encounter DataTypes are in the model field definition and in the migration definitions. Note that for a given model and field, the data type should be the <em>same</em> in the model and in the migration.</p>
 
-<p>Table of contents:</p>
-
+<p>Table of contents:
+</p>
+    </div>
+    <section class="table-of-contents">
+      <nav id="TableOfContents">
+<ul>
+<li>
 <ul>
 <li><a href="#text-types">Text types</a></li>
 <li><a href="#default-values">Default values</a></li>
 <li><a href="#number">Number</a></li>
 <li><a href="#fancy-primitive-types">Fancy primitive types</a></li>
-<li><a href="#datetime">Date/Time</a></li>
+<li><a href="#date-time">Date/Time</a></li>
 <li><a href="#fancy-types">Fancy types</a></li>
 <li><a href="#postgres-fancy-types">Postgres fancy types</a></li>
+</ul></li>
 </ul>
+</nav>
+    </section>
+    
+    <div class="related-links">
+      <span>
+        <div class="cf-wrapper">
+          <div class="cf-header">Proudly sponsored by</div>
+          <a href="https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet" class="cf-text">
+            <strong> Sequelize ES6 cheat sheet</strong><br />
+            A cheat sheet to level up your Sequelize productivity. If you've ever needed better Sequelize docs, this is it. 
+          </a>
 
-<blockquote>
-<p>This is an extract from the <a href="https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet">Sequelize ES6 Cheatsheet</a>
-- the better Sequelize docs you wish you had (get it <a href="https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet">here</a>).</p>
-</blockquote>
+
+          <a href="/" class="cf-powered-by">
+            <em>useful</em> products by Code with Hugo
+          </a>
+        </div>
+      </span>
+    </div>
+    
+    <div class="kg-card-markdown">
+        
+        
 
 <h2 id="text-types">Text types</h2>
 
@@ -267,6 +272,11 @@
 <li><code>DOUBLE</code>: Floating point number (8-byte precision). Accepts one or two arguments for precision</li>
 <li><code>DECIMAL</code>: Decimal number. Accepts one or two arguments for precision</li>
 </ul>
+
+<blockquote>
+<p>This is an extract from the <a href="https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet">Sequelize ES6 Cheatsheet</a>
+- the better Sequelize docs you wish you had (get it <a href="https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet">here</a>).</p>
+</blockquote>
 
 <h2 id="fancy-primitive-types">Fancy primitive types</h2>
 
@@ -328,36 +338,33 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 </blockquote>
 
 <p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@mbaumi?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Mika Baumeister"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Mika Baumeister</span></a></p>
+    </div>
+  </section>
 
-        </div>
-    </section>
+  <section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+    <p>Get all the posts of the week before anyone else in your inbox</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/hugo" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')">
+      <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+        <input type="hidden" value="1" name="embed" />
+      </div>
+      <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+    </form>
+  </section>
 
-    <section class="subscribe-form">
-        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
-        <p>Get all the posts of the week before anyone else in your inbox</p>
-        <form
-            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
-        >
-            <div class="form-group">
-                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
-                <input type="hidden" value="1" name="embed"/>
-            </div>
-            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
-        </form>
-    </section>
-
-    <footer class="post-full-footer">
-      <section class="author-card">
-        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-        <section class="author-card-content">
-            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
-                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
-        </section>
+  <footer class="post-full-footer">
+    <section class="author-card">
+      <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+        alt="Author" />
+      <section class="author-card-content">
+        <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a>
+        </h4>
+        <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
       </section>
-    </footer>
+    </section>
+  </footer>
 </article>
 
 
@@ -409,13 +416,13 @@ If you&#39;ve ever needed better Sequelize docs, this is it.
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
+          <li><a href="https://codewithhugo.com/responsive-semantic-images-with-css/">Responsive, semantic images with CSS</a></li>            
         
-          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
+          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
         
-          <li><a href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</a></li>            
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
         
-          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+          <li><a href="https://codewithhugo.com/async-js/">Async JavaScript: history, patterns and gotchas</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -446,8 +453,7 @@ If you&#39;ve ever needed better Sequelize docs, this is it.
           <section class="post-card-excerpt">
               
                 <p>The Dokku mongo plugin provides a mongo:connect command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.
-
- ...  </p>
+Table of Contents:  ...  </p>
               
           </section>
       </a>
@@ -480,8 +486,7 @@ If you&#39;ve ever needed better Sequelize docs, this is it.
               
                 <p> How to avoid TypeError: Cannot read property ___ of undefined using Array.filter(Boolean)
  tl;dr: Array.filter(Boolean) filters out falsy values (null, undefined, 0, false, '') and avoids Cannot read property of undefined errors.
-
- ...  </p>
+Table of contents:  ...  </p>
               
           </section>
       </a>

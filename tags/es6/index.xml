@@ -17,9 +17,9 @@
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/</guid>
-      <description>
+      <description>&lt;p&gt;The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.&lt;/p&gt;
 
-&lt;p&gt;The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;destructuring&#34;&gt;Destructuring&lt;/h2&gt;
 
@@ -239,9 +239,7 @@
       <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/</guid>
-      <description>
-
-&lt;p&gt;There&amp;rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.&lt;/p&gt;
+      <description>&lt;p&gt;There&amp;rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.&lt;/p&gt;
 
 &lt;p&gt;In other words, although React and Vue testing with snapshots is pretty well documented, that&amp;rsquo;s not the only place they&amp;rsquo;re useful.&lt;/p&gt;
 
@@ -255,38 +253,9 @@
 - it&amp;rsquo;s a lost less effort to change than inline data matching, which means people need to pay attention to changes in snapshot files
 - despite community efforts, the only major test library that supports out of the box is Jest (which locks you into that ecosystem)&lt;/p&gt;
 
-&lt;!--
-- [authorAvatar: https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg](#authoravatar-httpscdn-images-1mediumcomfitc2002000rb-adjpttv1uza4ojpeg)
-- [Config 🎛](#config-)
-- [Database Models 🏬](#database-models-)
-  - [Setup 🏗](#setup-)
-  - [Queries 🔍](#queries-)
-- [pug or handlebars templates](#pug-or-handlebars-templates)
-- [Gotchas of snapshot testing ⚠️](#gotchas-of-snapshot-testing-️)
-  - [Some things (like functions) don’t serialise nicely 🔢](#some-things-like-functions-dont-serialise-nicely-)
-  - [If you can do a full match, do it](#if-you-can-do-a-full-match-do-it)
-  - [Try to cover the same code/feature with another type of test ✌️](#try-to-cover-the-same-codefeature-with-another-type-of-test-️)
----&gt;
-
 &lt;p&gt;That makes it particularly well-suited for a couple of areas:&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#config&#34;&gt;Config 🎛&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#database-models&#34;&gt;Database Models 🏬&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#setup&#34;&gt;Setup 🏗&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#queries&#34;&gt;Queries 🔍&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pug-or-handlebars-templates&#34;&gt;pug or handlebars templates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#gotchas-of-snapshot-testing&#34;&gt;Gotchas of snapshot testing ⚠️&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#some-things-like-functions-don-t-serialise-nicely&#34;&gt;Some things (like functions) don’t serialise nicely 🔢&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#if-you-can-do-a-full-match-do-it&#34;&gt;If you can do a full match, do it&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#try-to-cover-the-same-code-feature-with-another-type-of-test&#34;&gt;Try to cover the same code/feature with another type of test ✌️&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Full code is available at &lt;a href=&#34;https://github.com/HugoDF/snapshot-everything&#34;&gt;github.com/HugoDF/snapshot-everything&lt;/a&gt;.&lt;/p&gt;
 
@@ -625,8 +594,7 @@ but it&amp;rsquo;s also a lot less effort in terms of code typed and information
 
 &lt;p&gt;Full code is available at &lt;a href=&#34;https://github.com/HugoDF/snapshot-everything&#34;&gt;github.com/HugoDF/snapshot-everything&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@sauer?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Ben Sauer&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Ben Sauer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@sauer?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Ben Sauer&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Ben Sauer&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -640,12 +608,6 @@ but it&amp;rsquo;s also a lot less effort in terms of code typed and information
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#example-using-sendgrid&#34;&gt;Example using SendGrid&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#how-do-we-consume-this&#34;&gt;How do we consume this?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#switching-to-another-email-provider&#34;&gt;Switching to another email provider&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt;.
@@ -758,9 +720,7 @@ Ideally, we don’t want to change any of the application code.&lt;/p&gt;
       <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/impress-interviewers-with-recursion-in-javascript-with-es6-features/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;There’s nothing as flashy and useful for JavaScript interviews than recursion.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -775,18 +735,8 @@ Ideally, we don’t want to change any of the application code.&lt;/p&gt;
 &lt;li&gt;recursive case, where the program recurs (again &lt;a href=&#34;http://one or more recursive cases, meaning input(s) for which the program recurs (calls itself)&#34;&gt;Wikipedia, Recursion (computer science)&lt;/a&gt;)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;!--
-- [🛰 Recursion to wrap sequential HTTP requests](#-recursion-to-wrap-sequential-http-requests)
-- [📃 Count number of characters](#-count-number-of-characters)
-
---&gt;
-
-&lt;p&gt;In this post:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#recursion-to-wrap-sequential-http-requests&#34;&gt;🛰 Recursion to wrap sequential HTTP requests&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#count-number-of-characters&#34;&gt;📃 Count number of characters&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;In this post:
+&lt;/p&gt;
 
 &lt;p&gt;The examples for this post are on &lt;a href=&#34;http://beta.observablehq.com&#34;&gt;ObervableHQ&lt;/a&gt;, which is a super cool tool that allows you to build JavaScript notebooks:&lt;/p&gt;
 
@@ -906,8 +856,7 @@ In this situation we’ll be fetching comments from the Reddit API.&lt;/p&gt;
 
 &lt;p&gt;For any questions you can reach me on Twitter &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@andremouton?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Andre Mouton&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Andre Mouton&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@andremouton?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Andre Mouton&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Andre Mouton&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -916,9 +865,7 @@ In this situation we’ll be fetching comments from the Reddit API.&lt;/p&gt;
       <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/</guid>
-      <description>
-
-&lt;p&gt;Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use &lt;code&gt;require(&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;module-name&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;)&lt;/code&gt; to import from other modules and use the &lt;code&gt;module.exports&lt;/code&gt; object to expose entities from a module.&lt;/p&gt;
+      <description>&lt;p&gt;Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use &lt;code&gt;require(&#39;module-name&#39;)&lt;/code&gt; to import from other modules and use the &lt;code&gt;module.exports&lt;/code&gt; object to expose entities from a module.&lt;/p&gt;
 
 &lt;p&gt;Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. The ease with which one can bundle CommonJS coupled with its widespread use in Node applications and tools means CommonJS quickly displaced RequireJS and SystemJS for frontend application dependency and module management&lt;/p&gt;
 
@@ -934,7 +881,10 @@ In this situation we’ll be fetching comments from the Reddit API.&lt;/p&gt;
 
 &lt;p&gt;I’ve discovered the &lt;a href=&#34;https://github.com/standard-things/esm&#34;&gt;esm&lt;/a&gt; module, “Tomorrow&amp;rsquo;s ECMAScript modules today!” by &lt;a href=&#34;https://github.com/jdalton&#34;&gt;John-David Dalton&lt;/a&gt; (of lodash 😄). It allows you to use ES modules in Node with no compilation step. It’s small, has a small footprint and comes with some extra goodies&lt;/p&gt;
 
-&lt;p&gt;What follows is some ways to use it that aren’t strictly documented. This covers use-cases like incremental adoption of ES modules (ie. convert some modules to ESM but not the whole app). Using this will help you share&lt;/p&gt;
+&lt;p&gt;What follows is some ways to use it that aren’t strictly documented. This covers use-cases like incremental adoption of ES modules (ie. convert some modules to ESM but not the whole app). Using this will help you share CommonJS and ESM modules.&lt;/p&gt;
+
+&lt;p&gt;Table of Contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;import-default-export-from-an-es-module-in-commonjs&#34;&gt;Import default export from an ES module in CommonJS&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;esmImport&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;esm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -984,8 +934,7 @@ Success&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;If you’re interested in “history of JavaScript module, bundling + dependency management” article, let me know by &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribing&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@sortino?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Joshua Sortino&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Joshua Sortino&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@sortino?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Joshua Sortino&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Joshua Sortino&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -994,9 +943,7 @@ Success&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       <pubDate>Mon, 22 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;Leave the Express comfort zone to expand how you think about Node application architecture.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1006,23 +953,13 @@ Success&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;using a function composition model for building HTTP servers is awesome&lt;/li&gt;
 &lt;li&gt;Functions as a Service are great but have some drawbacks&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;micro&lt;/code&gt; has a similar, simple API to FaaS but doesn&amp;rsquo;t have a compilation step&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;micro&lt;/code&gt;&amp;rsquo;s minimalism affects how you solve problems&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#functions-as-a-composition-model-for-javascript&#34;&gt;Functions as a composition model for JavaScript&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#functions-as-a-service-pain-points&#34;&gt;Functions as a Service pain points&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#beyond-express-micro-as-a-library-to-write-simple-node-applications&#34;&gt;Beyond Express: &lt;code&gt;micro&lt;/code&gt; as a library to write simple Node applications&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#how-micro-helps-your-architecture&#34;&gt;How &lt;code&gt;micro&lt;/code&gt; helps your architecture&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#the-micro-docs-ecosystem-and-examples&#34;&gt;The &lt;code&gt;micro&lt;/code&gt; docs, ecosystem and examples&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#further-information&#34;&gt;Further information&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;micro&lt;/code&gt;&amp;rsquo;s minimalism affects how you solve problems&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;An example comparing &lt;code&gt;micro&lt;/code&gt; and &lt;code&gt;express&lt;/code&gt; can be found at: &lt;a href=&#34;https://github.com/HugoDF/micro-vs-express-example&#34;&gt;github.com/HugoDF/micro-vs-express-example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;functions-as-a-composition-model-for-javascript&#34;&gt;Functions as a composition model for JavaScript&lt;/h2&gt;
 
@@ -1239,8 +1176,7 @@ This is the hello world, &lt;code&gt;app.js&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Feel free to tweet at me &lt;a href=&#34;https://twitter.com/@hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@kellysikkema?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Kelly Sikkema&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Kelly Sikkema&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@kellysikkema?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Kelly Sikkema&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Kelly Sikkema&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

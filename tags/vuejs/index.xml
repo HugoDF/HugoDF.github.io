@@ -17,9 +17,7 @@
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/a-simple-real-world-vue.js-directive/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; is &amp;ldquo;The Progressive JavaScript Framework&amp;rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer.
+      <description>&lt;p&gt;&lt;a href=&#34;https://vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; is &amp;ldquo;The Progressive JavaScript Framework&amp;rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer.
 In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&amp;rsquo;s documentation is a &lt;code&gt;focus&lt;/code&gt; directive.&lt;/p&gt;
 
 &lt;p&gt;When running Vue.js inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve
@@ -31,15 +29,8 @@ One solution could have leveraged components to update &lt;code&gt;window.locati
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;MyAnchor&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/my-url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
   Go
 &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;MyAnchor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;There were a couple of gotchas:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#local-global&#34;&gt;Local vs global directive registration 🌐&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#minimal-directive&#34;&gt;A minimal directive API 👌&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#hooks-and-remove&#34;&gt;Vue directive hooks and &lt;code&gt;removeEventListener&lt;/code&gt; 🆓&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#handling-clicks&#34;&gt;Handling clicks properly 🖱&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#parting-thoughts&#34;&gt;Parting thoughts 📚&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;There were a couple of gotchas:
+&lt;/p&gt;
 
 &lt;h1 id=&#34;local-global&#34;&gt;Local vs global directive registration 🌐&lt;/h1&gt;
 
@@ -223,8 +214,7 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
 
 &lt;p&gt;By coding against the DOM, we leverage the browser APIs instead of re-inventing them.&lt;/p&gt;
 
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/tjX_sniNzgQ?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;frank mckenna&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/contain?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/tjX_sniNzgQ?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;frank mckenna&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/contain?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -233,9 +223,7 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
       <pubDate>Wed, 30 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -243,25 +231,9 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
 
 &lt;p&gt;With the tools we have today, AngularJS isn’t as strong a way to do things &lt;em&gt;any more&lt;/em&gt;. The fact that it’s in maintenance mode says it all. For a new application or new features, ie. for a project that &lt;em&gt;not&lt;/em&gt; in maintenance mode, it’s doesn’t have the same niceties as other frameworks and libraries like Angular 2+, React or Vue. There should be a way &lt;em&gt;not&lt;/em&gt; to rewrite the whole AngularJS application at once, here&amp;rsquo;s how I went about doing it:&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#shipping-some-bundles&#34;&gt;Shipping some bundles 📦&lt;/a&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#why-commonjs-instead-of-es-modules&#34;&gt;Why CommonJS instead of ES modules?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adding-vue&#34;&gt;Adding Vue 🖼️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#setting-up-jest&#34;&gt;Setting up Jest 🔧&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#mock-assets&#34;&gt;Mock assets&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#commonjs--webpack-and-vue-jest-woes&#34;&gt;CommonJS, Webpack and &lt;code&gt;vue-jest&lt;/code&gt; woes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#some-solutions&#34;&gt;Some solutions 🤔&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor&#34;&gt;Fixing &lt;code&gt;vue-jest&lt;/code&gt;/Webpack CommonJS handling with a Jest preprocessor&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#thoughts-on-running-vue-inside-angularjs&#34;&gt;Thoughts on running Vue inside AngularJS 🏃‍&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;shipping-some-bundles&#34;&gt;Shipping some bundles 📦&lt;/h1&gt;
+&lt;h2 id=&#34;shipping-some-bundles&#34;&gt;Shipping some bundles 📦&lt;/h2&gt;
 
 &lt;p&gt;Bundling the AngularJS app allows you to send a few files with everything needed to run the single page application.
 Includes using &lt;code&gt;script&lt;/code&gt; are reduced to a few bundles of JavaScript (depending on having eg. a vendor bundle) and possibly a few of CSS.&lt;/p&gt;
@@ -296,7 +268,7 @@ giving you the ability to leverage tools such as Jest, AVA or Mocha (instead of 
 &lt;p&gt;To bundle the application, Webpack allows us to take the AngularJS codebase that leverages CommonJS and output a few application bundles.
 Templates can be &lt;code&gt;require&lt;/code&gt;-ed using the right webpack loaders (&lt;code&gt;html-loader&lt;/code&gt;). SCSS stylesheets and even Handlebar templates can also be compiled.&lt;/p&gt;
 
-&lt;h2 id=&#34;why-commonjs-instead-of-es-modules&#34;&gt;Why CommonJS instead of ES modules?&lt;/h2&gt;
+&lt;h3 id=&#34;why-commonjs-instead-of-es-modules&#34;&gt;Why CommonJS instead of ES modules?&lt;/h3&gt;
 
 &lt;p&gt;ES modules are the module format defined in the ECMAScript spec. They look like the following:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;angular&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;angular&amp;#39;&lt;/span&gt;
@@ -305,7 +277,7 @@ Templates can be &lt;code&gt;require&lt;/code&gt;-ed using the right webpack loa
 &lt;p&gt;The issue with ES modules are that they are static imports, ideally they shouldn’t have side-effects.
 Including something that does &lt;code&gt;angular.module(&#39;some-name&#39;)&lt;/code&gt; seems pretty side-effectful, so CommonJS reflects this a bit more: &lt;code&gt;require(&#39;./this-script-that-adds-something-to-angular&#39;)&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h1 id=&#34;adding-vue&#34;&gt;Adding Vue 🖼️&lt;/h1&gt;
+&lt;h2 id=&#34;adding-vue&#34;&gt;Adding Vue 🖼️&lt;/h2&gt;
 
 &lt;p&gt;This part was surprisingly straightforward, to add Vue components to an AngularJS app ngVue is available (&lt;a href=&#34;https://github.com/ngVue/ngVue&#34;&gt;https://github.com/ngVue/ngVue&lt;/a&gt;).
 &lt;code&gt;ngVue&lt;/code&gt; exposes functionality to wrap Vue components as an AngularJS directives.&lt;/p&gt;
@@ -353,9 +325,9 @@ createVueComponent =&amp;gt; createVueComponent(MyVueComponent)
 &lt;p&gt;In order to load single file components like in the above example, &lt;code&gt;vue-loader&lt;/code&gt; is required (see &lt;a href=&#34;https://github.com/vuejs/vue-loader&#34;&gt;https://github.com/vuejs/vue-loader&lt;/a&gt;),
 depending on how webpack is set up in a project, it can also affect how you process CSS (since single file components contain CSS as well as JavaScript and templates).&lt;/p&gt;
 
-&lt;h1 id=&#34;setting-up-jest&#34;&gt;Setting up Jest 🔧&lt;/h1&gt;
+&lt;h2 id=&#34;setting-up-jest&#34;&gt;Setting up Jest 🔧&lt;/h2&gt;
 
-&lt;h2 id=&#34;mock-assets&#34;&gt;Mock assets&lt;/h2&gt;
+&lt;h3 id=&#34;mock-assets&#34;&gt;Mock assets&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;.html&lt;/code&gt;, &lt;code&gt;.scss&lt;/code&gt;, &lt;code&gt;.svg&lt;/code&gt; needs to be dummied in your Jest config:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -375,7 +347,7 @@ depending on how webpack is set up in a project, it can also affect how you proc
       &lt;span class=&#34;s2&#34;&gt;&amp;#34;src/**/*.{js,vue}&amp;#34;&lt;/span&gt;
     &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;commonjs-webpack-and-vue-jest-woes&#34;&gt;CommonJS, Webpack and &lt;code&gt;vue-jest&lt;/code&gt; woes&lt;/h2&gt;
+&lt;h3 id=&#34;commonjs-webpack-and-vue-jest-woes&#34;&gt;CommonJS, Webpack and &lt;code&gt;vue-jest&lt;/code&gt; woes&lt;/h3&gt;
 
 &lt;p&gt;Webpack doesn’t care about CommonJS vs ESM,  for all intents and purposes, Webpack treats them as the same thing. Here’s the catch: the recommended Jest plugin for Vue (&lt;code&gt;vue-jest&lt;/code&gt;) handles &lt;code&gt;require&lt;/code&gt; vs &lt;code&gt;import&lt;/code&gt; of &lt;code&gt;.vue&lt;/code&gt; files differently to Webpack.
 This is some sample code in a Vue component that imports another Vue single file component in CommonJS:&lt;/p&gt;
@@ -395,7 +367,7 @@ This is some sample code in a Vue component that imports another Vue single file
 &lt;li&gt;AngularJS controllers love &lt;code&gt;this&lt;/code&gt; … transpiling ES modules through Babel breaks &lt;code&gt;this&lt;/code&gt; somehow&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;some-solutions&#34;&gt;Some solutions 🤔&lt;/h2&gt;
+&lt;h3 id=&#34;some-solutions&#34;&gt;Some solutions 🤔&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Use ES6 import/export for the Vue components and tests, add a specific extension (&lt;code&gt;.mjs&lt;/code&gt;, &lt;code&gt;.module.js&lt;/code&gt;), disable &lt;code&gt;babel-jest&lt;/code&gt; on CommonJS files.&lt;br /&gt;
@@ -407,7 +379,7 @@ This is some sample code in a Vue component that imports another Vue single file
 &lt;li&gt;&lt;p&gt;Rewrite the transformed code, using a custom pre-processor, so it behaves the same under Webpack and &lt;code&gt;vue-jest&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor&#34;&gt;Fixing &lt;code&gt;vue-jest&lt;/code&gt;/Webpack CommonJS handling with a Jest preprocessor&lt;/h2&gt;
+&lt;h3 id=&#34;fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor&#34;&gt;Fixing &lt;code&gt;vue-jest&lt;/code&gt;/Webpack CommonJS handling with a Jest preprocessor&lt;/h3&gt;
 
 &lt;p&gt;The following preprocessor takes &lt;code&gt;require(&#39;./relative-path&#39;).default&lt;/code&gt; and converts it to &lt;code&gt;require(&#39;./relative-path&#39;)&lt;/code&gt; (which is what Webpack seems to do under the hood).
 To use the following preprocessor, replace the &lt;code&gt;.vue&lt;/code&gt;-matching line in &lt;code&gt;&amp;quot;transform&amp;quot;&lt;/code&gt; of Jest config with &lt;code&gt;&amp;quot;.*\\.(vue)$&amp;quot;: &amp;quot;&amp;lt;rootDir&amp;gt;/vue-preprocessor&amp;quot;&lt;/code&gt;.
@@ -446,7 +418,7 @@ This is done with the following:&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;String.replace&lt;/code&gt; with a function argument is leveraged to run a custom replace on each match of the previous RegEx. That’s done with &lt;code&gt;match.replace(&#39;.default&#39;, &#39;&#39;)&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;thoughts-on-running-vue-inside-angularjs&#34;&gt;Thoughts on running Vue inside AngularJS 🏃‍&lt;/h1&gt;
+&lt;h2 id=&#34;thoughts-on-running-vue-inside-angularjs&#34;&gt;Thoughts on running Vue inside AngularJS 🏃‍&lt;/h2&gt;
 
 &lt;p&gt;AngularJS is from a time before bundlers and a JavaScript module system.
 The only contemporary bundling tool to AngularJS target JavaScript applications is the Google Closure Compiler.
@@ -463,8 +435,7 @@ AngularJS was and still is great. What’s also great that we can migrate off it
 
 &lt;p&gt;That means we get to keep the solid AngularJS working alongside new features written in Vue.&lt;/p&gt;
 
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/TzQZTfkanPA?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Justyn Warner&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/TzQZTfkanPA?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Justyn Warner&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

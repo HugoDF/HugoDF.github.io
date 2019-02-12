@@ -64,13 +64,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -154,23 +154,22 @@
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
+      <article class="post-full post">
+  <header class="post-full-header">
+    <section class="post-full-meta">
+      <time class="post-full-meta-date"
+        datetime="2019-01-28">28 January 2019</time>
+      <span class="date-divider">/</span> <a
+        href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
+    </section>
+    <h1 class="post-full-title">Async JavaScript: history, patterns and gotchas</h1>
+  </header>
+  <div class="hero-container">
+
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/async-js-cover.jpg)">
       
-<div id="codefund_ad"></div>
-
-
-<article class="post-full post">
-    <header class="post-full-header">
-        <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2019-01-28">28 January 2019</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
-        </section>
-        <h1 class="post-full-title">Async JavaScript: history, patterns and gotchas</h1>
-    </header>
-    <div class="hero-container">
-
-      
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/async-js-cover.jpg)">
-        
   <section class="hero-cta">
     <h3 class="cta-title">Have a question?</h3>
     <p class="cta-text">
@@ -181,18 +180,16 @@
   </section>
 
 
-      </figure>
-    </div>
+    </figure>
+  </div>
 
-    <section class="post-full-content">
-        <div class="kg-card-markdown">
-        <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.</p>
+  <section class="post-full-content">
+    <div class="kg-card-markdown">
+      <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.</p>
 
 <p>We&rsquo;ll go through the pros and cons of callbacks, Promises and async/await. Present some pitfalls to bear in mind as well as introducing how you would deal with certain situations.</p>
 
 <p>Live-coding/workshop section touching on both Node and client-side JS situations at <a href="https://github.com/HugoDF/async-js-presentation/tree/master/workshop">github.com/HugoDF/async-js-presentation/tree/master/workshop</a>.</p>
-
-<p></p>
 
 <p>This given as a talk at Codebar London January Monthly 2019, see the slides:</p>
 
@@ -201,36 +198,41 @@
     <script async class="speakerdeck-embed" data-id="bdf4eba915de465096eecc8322c7f712" data-ratio="1.41436464088398" src="https://speakerdeck.com/assets/embed.js"></script>
 </div>
 
-<p><strong>Table of Contents 🐳</strong>:</p>
-
+<p><strong>Table of Contents 🐳</strong>:
+</p>
+    </div>
+    <section class="table-of-contents">
+      <nav id="TableOfContents">
+<ul>
+<li>
 <ul>
 <li><a href="#asynchronicity-in-javascript">Asynchronicity in JavaScript</a>
-
 <ul>
 <li><a href="#what-s-asynchronous-in-a-web-application">What&rsquo;s asynchronous in a web application?</a></li>
 <li><a href="#why-non-blocking-i-o">Why non-blocking I/O?</a></li>
 </ul></li>
 <li><a href="#node-style-callbacks">Node-style callbacks</a>
-
 <ul>
-<li><a href="#node-style-callbacks-problems">Node-style callbacks: problems</a></li>
+<li><a href="#node-style-callbacks-problems">Node-style callbacks: problems</a>
+<ul>
 <li><a href="#1-callback-hell">1. Callback <em>hell</em></a></li>
 <li><a href="#2-shadowing-variables">2. Shadowing variables</a></li>
 <li><a href="#3-duplicated-error-handling">3. Duplicated error handling</a></li>
 <li><a href="#4-swallowed-errors">4. Swallowed errors</a></li>
+</ul></li>
 <li><a href="#callback-problems">Callback problems</a></li>
 </ul></li>
 <li><a href="#bring-on-the-promise">Bring on the Promise</a>
-
 <ul>
 <li><a href="#pros">Pros</a></li>
 <li><a href="#cons">Cons</a></li>
-<li><a href="#promise-gotchas">Promise gotchas</a></li>
+<li><a href="#promise-gotchas">Promise gotchas</a>
+<ul>
 <li><a href="#nesting-them-is-tempting">Nesting them is tempting</a></li>
+</ul></li>
 <li><a href="#onrejected-callback">onRejected callback</a></li>
 </ul></li>
 <li><a href="#async-await">async/await</a>
-
 <ul>
 <li><a href="#example-loop-through-sequential-calls">Example: loop through sequential calls</a></li>
 <li><a href="#example-share-data-between-calls">Example: share data between calls</a></li>
@@ -238,7 +240,6 @@
 <li><a href="#cons-of-async-await">Cons of async/await</a></li>
 </ul></li>
 <li><a href="#gotchas">Gotchas</a>
-
 <ul>
 <li><a href="#creating-an-error">Creating an error</a></li>
 <li><a href="#what-happens-when-you-forget-await">What happens when you forget await?</a></li>
@@ -246,7 +247,6 @@
 <li><a href="#testing-gotchas">Testing gotchas 📙</a></li>
 </ul></li>
 <li><a href="#patterns">Patterns</a>
-
 <ul>
 <li><a href="#running-promises-in-parallel">Running promises in parallel 🏃</a></li>
 <li><a href="#delay-execution-of-a-promise">Delay execution of a promise</a></li>
@@ -256,7 +256,6 @@
 <li><a href="#error-handling">Error handling</a></li>
 </ul></li>
 <li><a href="#workshop-examples">Workshop Examples</a>
-
 <ul>
 <li><a href="#callbackify-ing-a-promise-based-api">&ldquo;callbackify&rdquo;-ing a Promise-based API</a></li>
 <li><a href="#getting-data-in-parallel-using-callbacks-the-pain">Getting data in parallel using callbacks: the pain</a></li>
@@ -264,7 +263,16 @@
 <li><a href="#why-we-don-t-mix-async-and-sync-operations">Why we don&rsquo;t mix async and sync operations</a></li>
 </ul></li>
 <li><a href="#further-reading">Further Reading</a></li>
+</ul></li>
 </ul>
+</nav>
+    </section>
+    
+    <div id="codefund_ad" class="related-links"></div>
+    
+    <div class="kg-card-markdown">
+        
+        
 
 <h2 id="asynchronicity-in-javascript">Asynchronicity in JavaScript</h2>
 
@@ -1098,35 +1106,33 @@ Despite their low usage, we also &lt;3 safari (Apple, latest version: 12, usage:
 <p><a href="https://speakerdeck.com/hugodf/async-javascript-history-patterns-and-gotchas">View the original slides on SpeakerDeck</a> or <a href="https://github.com/HugoDF/async-js-presentation">from the GitHub repo</a>.</p>
 
 <p>Let me know <a href="https://twitter.com/hugo__df">@hugo__df</a> if you need a hand 🙂.</p>
-        </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="subscribe-form">
-        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
-        <p>Get all the posts of the week before anyone else in your inbox</p>
-        <form
-            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
-        >
-            <div class="form-group">
-                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
-                <input type="hidden" value="1" name="embed"/>
-            </div>
-            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
-        </form>
-    </section>
+  <section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+    <p>Get all the posts of the week before anyone else in your inbox</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/hugo" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')">
+      <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+        <input type="hidden" value="1" name="embed" />
+      </div>
+      <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+    </form>
+  </section>
 
-    <footer class="post-full-footer">
-      <section class="author-card">
-        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-        <section class="author-card-content">
-            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
-                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
-        </section>
+  <footer class="post-full-footer">
+    <section class="author-card">
+      <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+        alt="Author" />
+      <section class="author-card-content">
+        <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a>
+        </h4>
+        <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
       </section>
-    </footer>
+    </section>
+  </footer>
 </article>
 
 
@@ -1176,13 +1182,13 @@ Despite their low usage, we also &lt;3 safari (Apple, latest version: 12, usage:
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</a></li>            
+          <li><a href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">Post Frequency: from prototype to production with Vue &#43; Node</a></li>            
         
-          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
+          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
         
-          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">A Docker/docker-compose setup with Redis and Node/Express</a></li>            
+          <li><a href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">A gentle introduction to GraphQL API integrations</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">React vs Angular vs Vue in 2019: How components won the “framework wars”</a></li>            
+          <li><a href="https://codewithhugo.com/detecting-object-vs-array-in-javascript-by-example/">JavaScript “is array” vs object in-depth</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -1217,8 +1223,8 @@ The goal here is to have an interoperability layer between Node.js and an outsid
 We’ll use spawn over exec because we’re talking about passing data, and potentially large amounts of it. To understand the difference between child_process.spawn and child_process.exec (see “Difference between spawn and exec of Node.js child_process”).
 The long and short of it is use exec for small amounts of data (under 200k) using a Buffer interface and spawn for larger amounts using a stream interface.
 spawn has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.
-
- ...  </p>
+Full examples github.com/HugoDF/node-run-python.
+Table of contents:  ...  </p>
               
           </section>
       </a>
@@ -1251,8 +1257,7 @@ spawn has a more verbose syntax for some of the use-cases we’ll look at, but i
           <section class="post-card-excerpt">
               
                 <p>The Dokku mongo plugin provides a mongo:connect command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.
-
- ...  </p>
+Table of Contents:  ...  </p>
               
           </section>
       </a>

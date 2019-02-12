@@ -53,13 +53,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -174,13 +174,11 @@
       </header>
       <section class="post-card-excerpt">
         
+        
+        
         <p> A bash scripting cheat sheet for developers who just want to get by.
  Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
-To avoid having to do this again myself and for your reading pleasure, here they are.
-
- ...  </p>
-        
+Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions t ...  </p>
       </section>
     </a>
 
@@ -202,7 +200,7 @@ To avoid having to do this again myself and for your reading pleasure, here they
         </li>
       </ul>
 
-      <span class="reading-time">3 min read</span>
+      <span class="reading-time">2 min read</span>
 
     </footer>
   </div>
@@ -225,14 +223,10 @@ To avoid having to do this again myself and for your reading pleasure, here they
       </header>
       <section class="post-card-excerpt">
         
-        <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
-The goal here is to have an interoperability layer between Node.js and an outside shell. This is a quick workaround if some other part of your system isn’t developed in JavaScript.
-We’ll use spawn over exec because we’re talking about passing data, and potentially large amounts of it. To understand the difference between child_process.spawn and child_process.exec (see “Difference between spawn and exec of Node.js child_process”).
-The long and short of it is use exec for small amounts of data (under 200k) using a Buffer interface and spawn for larger amounts using a stream interface.
-spawn has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.
-
- ...  </p>
         
+        
+        <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
+The goal here is to have an interoperability layer between Node.js an ...  </p>
       </section>
     </a>
 
@@ -277,12 +271,11 @@ spawn has a more verbose syntax for some of the use-cases we’ll look at, but i
       </header>
       <section class="post-card-excerpt">
         
+        
+        
         <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.
 We&rsquo;ll go through the pros and cons of callbacks, Promises and async/await. Present some pitfalls to bear in mind as well as introducing how you would deal with certain situations.
-Live-coding/workshop section touching on both Node and client-side JS situations at github.com/HugoDF/async-js-presentation/tree/master/workshop.
-
- ...  </p>
-        
+Live-cod ...  </p>
       </section>
     </a>
 
@@ -304,7 +297,7 @@ Live-coding/workshop section touching on both Node and client-side JS situations
         </li>
       </ul>
 
-      <span class="reading-time">16 min read</span>
+      <span class="reading-time">15 min read</span>
 
     </footer>
   </div>
@@ -327,10 +320,10 @@ Live-coding/workshop section touching on both Node and client-side JS situations
       </header>
       <section class="post-card-excerpt">
         
-        <p>The Dokku mongo plugin provides a mongo:connect command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.
-
- ...  </p>
         
+        
+        <p>The Dokku mongo plugin provides a mongo:connect command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.
+Table of Contents:  ...  </p>
       </section>
     </a>
 
@@ -375,10 +368,10 @@ Live-coding/workshop section touching on both Node and client-side JS situations
       </header>
       <section class="post-card-excerpt">
         
-        <p>DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.
-First of all, DataTypes contains both the types and generators for default values: eg. NOW, UUIDV1 and UUIDV4 are special default values.
-The places where you&rsquo;re likely to encounter DataTypes are in the model field definition and in the migration definitions. Note that for a given model and field, the data type should be the same in the model and in the migration. ...  </p>
         
+        
+        <p>DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.
+First of all, DataTypes contains both the types and generators for default values: eg. NOW, UUIDV1 and UUIDV4 are speci ...  </p>
       </section>
     </a>
 
@@ -423,11 +416,11 @@ The places where you&rsquo;re likely to encounter DataTypes are in the model fie
       </header>
       <section class="post-card-excerpt">
         
+        
+        
         <p> How to avoid TypeError: Cannot read property ___ of undefined using Array.filter(Boolean)
  tl;dr: Array.filter(Boolean) filters out falsy values (null, undefined, 0, false, '') and avoids Cannot read property of undefined errors.
-
- ...  </p>
-        
+Table of contents:  ...  </p>
       </section>
     </a>
 
@@ -472,12 +465,12 @@ The places where you&rsquo;re likely to encounter DataTypes are in the model fie
       </header>
       <section class="post-card-excerpt">
         
+        
+        
         <p> Detecting Array vs Object in JavaScript with examples
  tl;dr To detect if something is an Array in JavaScript, use Array.isArray(somethingObjectToCheck).
 This post is a quarter useful, quarter history lesson, half quirky JavaScript exploration.
-
- ...  </p>
-        
+Table of contents:  ...  </p>
       </section>
     </a>
 
@@ -522,56 +515,10 @@ This post is a quarter useful, quarter history lesson, half quirky JavaScript ex
       </header>
       <section class="post-card-excerpt">
         
+        
+        
         <p>tl;dr: here are the tools used to power, build and publish codewithhugo.com:
- Dropbox Paper because it syncs desktop/mobile and outputs to markdown Unsplash for cover images Edited Markdown + images → Hugo static site generator Casper 2 (https://ghost.org default theme) for Hugo Schedule:  Newsletter: Mondays 5pm UK every 2 weeks 1+ post a week  Cross-post to Medium (Stories → Import a Story) Cross-post to dev.to using RSS feed Social media/promotion &lt; Organic traffic Newsletter powered by https://buttondown. ...  </p>
-        
-      </section>
-    </a>
-
-    <footer class="post-card-meta">
-
-      <ul class="author-list">
-        <li class="author-list-item">
-
-          <div class="author-name-tooltip">
-            Hugo Di Francesco
-          </div>
-
-          <a href="/" class="static-avatar">
-            <img class="author-profile-image"
-              src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
-              alt="Author"
-            />
-          </a>
-        </li>
-      </ul>
-
-      <span class="reading-time">7 min read</span>
-
-    </footer>
-  </div>
-</article>
-
-
-<article class="post-card post">
-  
-  <a class="post-card-image-link" href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">
-    <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/neonbrand-unsplash.jpg)"></div>
-  </a>
-  
-
-  <div class="post-card-content">
-    <a class="post-card-content-link" href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">
-      <header class="post-card-header">
-        <span class="post-card-tags"> #JavaScript  #vue  #node  </span>
-        
-        <h2 class="post-card-title">Post Frequency: from prototype to production with Vue &#43; Node</h2>
-      </header>
-      <section class="post-card-excerpt">
-        
-        <p> If you want to ship, use the tools you know. — A lot of people
- Let&rsquo;s apply that principle: I&rsquo;m building Post Frequency/Accountable Blogging, I&rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and I’ve settled on Dokku for databases/backend applications hosting.  ...  </p>
-        
+ Dropbox Paper because it syncs desktop/mobile and outputs to markdown Unsplash for cover images Edited Markdown + images → Hugo static site generator Casper 2 (https://ghost.org default theme) for Hugo  ...  </p>
       </section>
     </a>
 
@@ -602,6 +549,54 @@ This post is a quarter useful, quarter history lesson, half quirky JavaScript ex
 
 <article class="post-card post">
   
+  <a class="post-card-image-link" href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">
+    <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/neonbrand-unsplash.jpg)"></div>
+  </a>
+  
+
+  <div class="post-card-content">
+    <a class="post-card-content-link" href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">
+      <header class="post-card-header">
+        <span class="post-card-tags"> #JavaScript  #vue  #node  </span>
+        
+        <h2 class="post-card-title">Post Frequency: from prototype to production with Vue &#43; Node</h2>
+      </header>
+      <section class="post-card-excerpt">
+        
+        
+        
+        <p> If you want to ship, use the tools you know. — A lot of people
+ Let&rsquo;s apply that principle: I&rsquo;m building Post Frequency/Accountable Blogging, I&rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and I’ve settled on Dokku for ...  </p>
+      </section>
+    </a>
+
+    <footer class="post-card-meta">
+
+      <ul class="author-list">
+        <li class="author-list-item">
+
+          <div class="author-name-tooltip">
+            Hugo Di Francesco
+          </div>
+
+          <a href="/" class="static-avatar">
+            <img class="author-profile-image"
+              src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+              alt="Author"
+            />
+          </a>
+        </li>
+      </ul>
+
+      <span class="reading-time">5 min read</span>
+
+    </footer>
+  </div>
+</article>
+
+
+<article class="post-card post">
+  
   <a class="post-card-image-link" href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">
     <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/samuel-zeller-2-unsplash.jpg)"></div>
   </a>
@@ -616,11 +611,11 @@ This post is a quarter useful, quarter history lesson, half quirky JavaScript ex
       </header>
       <section class="post-card-excerpt">
         
+        
+        
         <p>How I created the buying mechanism for the Sequelize ES6 Cheatsheet using checkoutpage.co and sprinkles of vanilla JavaScript.
 This strictly isn’t a paywall, it&rsquo;s all client-side and doesn&rsquo;t check much.
-In principle you can display the whole things using a bit of CSS magic. You could also read the source and reverse-engineer what query params work for this page.
-You could also spoof as Google Bot (or another crawler) and skip the pay overlay. ...  </p>
-        
+In principle you can display the whole things using a bit of CSS  ...  </p>
       </section>
     </a>
 

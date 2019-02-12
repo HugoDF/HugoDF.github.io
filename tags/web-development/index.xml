@@ -17,9 +17,7 @@
       <pubDate>Sat, 18 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/why-css-is-hard/</guid>
-      <description>
-
-&lt;p&gt;Things we’re not used to tend to be harder&lt;/p&gt;
+      <description>&lt;p&gt;Things we’re not used to tend to be harder&lt;/p&gt;
 
 &lt;p&gt;I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.&lt;/p&gt;
 
@@ -28,6 +26,8 @@
 &lt;p&gt;CSS doesn’t get the love it deserves in the developer crowd. I think I know why that is: it’s hard. Especially coming from the fairy land that is Java/JavaScript/Ruby/PHP/&lt;em&gt;insert language&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Now I’m not saying all these languages are &lt;em&gt;easy&lt;/em&gt; by any stretch but CSS always throws up issues that stump me… for a good while.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;1-the-difficulty-of-a-declarative-language&#34;&gt;1. The difficulty of a declarative language&lt;/h3&gt;
 
@@ -101,8 +101,7 @@
 
 &lt;p&gt;Writing good CSS is hard, it needs to look perfectly right across browsers and devices. Worst of all, any random person can tell you your CSS is off. I’m guessing the average client won’t be trying to hit the edge cases of your server-logic. Which all contributes to a high-pressure, medium-reward environment for front-end guys.&lt;/p&gt;
 
-&lt;p&gt;That’s why it’s so hard to find front-end web developers who can do the basics right. Getting the basics right is time-consuming and doesn’t pay half as well so why even bother?&lt;/p&gt;
-</description>
+&lt;p&gt;That’s why it’s so hard to find front-end web developers who can do the basics right. Getting the basics right is time-consuming and doesn’t pay half as well so why even bother?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -111,9 +110,9 @@
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/</guid>
-      <description>
+      <description>&lt;p&gt;The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.&lt;/p&gt;
 
-&lt;p&gt;The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;destructuring&#34;&gt;Destructuring&lt;/h2&gt;
 
@@ -333,14 +332,14 @@
       <pubDate>Fri, 31 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/</guid>
-      <description>
-
-&lt;p&gt;A look at the shifting boundaries of the web development stack&lt;/p&gt;
+      <description>&lt;p&gt;A look at the shifting boundaries of the web development stack&lt;/p&gt;
 
 &lt;p&gt;This was originally posted as an answer on Quora:
 &lt;a href=&#34;https://www.quora.com/How-does-a-frontend-code-and-a-backend-code-interact-with-each-other/&#34;&gt;&lt;strong&gt;How do frontend code and backend code interact with each other?&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Let’s start with quick definitions:&lt;/p&gt;
+&lt;p&gt;Let’s start with quick definitions followed by state of the art best practices.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;frontend&#34;&gt;Frontend&lt;/h3&gt;
 
@@ -418,8 +417,7 @@
 &lt;a href=&#34;https://hackernoon.com/virtualstudio-code-the-editor-i-didnt-think-i-needed-16970c8356d5&#34;&gt;&lt;strong&gt;Visual Studio Code: the editor I didn’t think I needed&lt;/strong&gt;
 *It’s the small things that make a difference.*hackernoon.com&lt;/a&gt;
 &lt;a href=&#34;https://medium.com/@hugo__df/why-css-is-hard-89f3b221dd4d&#34;&gt;&lt;strong&gt;Why CSS is hard&lt;/strong&gt;
-*Things we’re not used to tend to be harder*medium.com&lt;/a&gt;&lt;/p&gt;
-</description>
+*Things we’re not used to tend to be harder*medium.com&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -428,9 +426,9 @@
       <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/animations-css-vs-javascript/</guid>
-      <description>
-
-&lt;h3 id=&#34;when-should-you-use-javascript-when-you-can-use-css&#34;&gt;&lt;em&gt;When should you use JavaScript when you can use CSS?&lt;/em&gt;&lt;/h3&gt;
+      <description>&lt;blockquote&gt;
+&lt;p&gt;When should you use JavaScript when you can use CSS?&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;This post was sparked by a question I answered on Quora:
 &lt;a href=&#34;https://www.quora.com/Which-is-better-to-use-CSS-or-JS&#34;&gt;&lt;strong&gt;Which is better to use, CSS or JS?&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
@@ -444,10 +442,11 @@
 &lt;p&gt;This leads us to formulate some rules around using JavaScript in the browser:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;if you can do something with CSS over JavaScript, do it&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;if you can do something with HTML over JavaScript, do it&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;if you can do something with CSS over JavaScript, do it&lt;/li&gt;
+&lt;li&gt;if you can do something with HTML over JavaScript, do it&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;why&#34;&gt;Why?&lt;/h2&gt;
 
@@ -500,8 +499,7 @@
 &lt;p&gt;Leave some 👏🏻 if you enjoyed this, and here are some posts you might be interested in:
 - &lt;a href=&#34;https://medium.com/@hugo__df/why-css-is-hard-89f3b221dd4d&#34;&gt;&lt;strong&gt;Why CSS is hard&lt;/strong&gt;, Things we’re not used to tend to be harder&lt;/a&gt;&lt;br /&gt;
 - &lt;a href=&#34;https://hackernoon.com/learn-git-even-if-you-dont-code-89c521f4209b&#34;&gt;&lt;strong&gt;Learn git even if you don’t code&lt;/strong&gt;, The tools we wield define us, git is the one tool all developers use&lt;/a&gt;&lt;br /&gt;
-- &lt;a href=&#34;https://medium.com/@hugo__df/7-reasons-you-should-be-hosted-on-aws-9312e40ee323&#34;&gt;&lt;strong&gt;7 reasons you should be hosted on AWS&lt;/strong&gt;, Amazon Web Services is one of the leading hosting providers, here’s why.&lt;/a&gt;&lt;/p&gt;
-</description>
+- &lt;a href=&#34;https://medium.com/@hugo__df/7-reasons-you-should-be-hosted-on-aws-9312e40ee323&#34;&gt;&lt;strong&gt;7 reasons you should be hosted on AWS&lt;/strong&gt;, Amazon Web Services is one of the leading hosting providers, here’s why.&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -510,9 +508,7 @@
       <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/how-components-won-the-framework-wars/</guid>
-      <description>
-
-&lt;p&gt;React, Vue or Angular: Why it doesn’t matter.&lt;/p&gt;
+      <description>&lt;p&gt;React, Vue or Angular: Why it doesn’t matter.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;2018 marked the end of JavaScript fatigue and the React vs Vue vs Angular (“framework wars”) debate&lt;/p&gt;
@@ -528,19 +524,8 @@
 
 &lt;p&gt;&lt;a href=&#34;https://medium.com/unicorn-supplies/angular-vs-react-vs-vue-a-2017-comparison-c5c52d620176&#34;&gt;&lt;strong&gt;Angular vs. React vs. Vue: A 2017 comparison&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Table of contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#the-component-and-composition-model&#34;&gt;The Component and composition model&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#state-and-mutation&#34;&gt;State and mutation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#data-passing&#34;&gt;Data passing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#lifecycles-updates-and-re-render&#34;&gt;Lifecycles, updates and re-render&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#global-stores&#34;&gt;Global Stores&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#types-and-data-validation&#34;&gt;Types and data validation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#templates-styles-and-tooling&#34;&gt;Templates, styles and tooling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-and-server-side-rendering&#34;&gt;Testing and server side rendering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;the-component-and-composition-model&#34;&gt;The Component and composition model&lt;/h2&gt;
 
@@ -712,8 +697,7 @@ React leans heavily on developers to pick and choose their preferred tools from 
 Vue is happy to start off as a simple &lt;code&gt;script&lt;/code&gt; tag include but also provides a coherent toolset to build larger applications
 (single file components, Vuex, vue-router, documentation and even a &lt;a href=&#34;https://vuejs.org/v2/style-guide/&#34;&gt;style guide&lt;/a&gt;).
 Angular is aimed at large applications and immediately comes with copious amounts of structure and verbosity (using TypeScript)
-as well as deeply embracing RxJS and Observables.&lt;/p&gt;
-</description>
+as well as deeply embracing RxJS and Observables.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -822,9 +806,9 @@ It feels a lot nicer to read, happy readers, happy writers.&lt;/p&gt;
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</guid>
-      <description>
+      <description>&lt;p&gt;For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.&lt;/p&gt;
 
-&lt;p&gt;For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;why-typescript&#34;&gt;Why TypeScript?&lt;/h2&gt;
 
@@ -840,7 +824,7 @@ shouldn’t, which will come handy when you rediscover your code a couple of mon
 &lt;p&gt;&lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;Microbundle&lt;/a&gt; is a “zero-configuration bundler for tiny modules”. It’s a wrapper around &lt;a href=&#34;https://rollupjs.org/guide/en&#34;&gt;rollup&lt;/a&gt; with sane defaults (including minification/compression), nice outputted size stats, multiple target formats (ES modules, CommonJS, UMD). Most of all in the scope of this post, it has TypeScript support out of the box (&lt;em&gt;actually&lt;/em&gt; no configuration, not even a &lt;code&gt;tsconfig.json&lt;/code&gt;).
 It’s ridiculously easy to set up and allows library authors to focus on building a great library rather than setting up the plumbing to be able to ship a JavaScript library from ES6/TypeScript or other compile-to-JS tool 🙂.&lt;/p&gt;
 
-&lt;h1 id=&#34;zero-config-bundling&#34;&gt;Zero-config bundling&lt;/h1&gt;
+&lt;h2 id=&#34;zero-config-bundling&#34;&gt;Zero-config bundling&lt;/h2&gt;
 
 &lt;p&gt;To start, we’ll have to create setup our package run &lt;code&gt;npm init&lt;/code&gt; and complete all the prompts.&lt;/p&gt;
 
@@ -914,7 +898,7 @@ export declare class MyMainClass {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;publish-the-module&#34;&gt;Publish the module&lt;/h1&gt;
+&lt;h2 id=&#34;publish-the-module&#34;&gt;Publish the module&lt;/h2&gt;
 
 &lt;p&gt;By leveraging microbundle we can publish the module as a CommonJS module (standard npm module), but also as an ES Module and a UMD module, to do this follow the guide at &lt;a href=&#34;https://github.com/developit/microbundle#specifying-builds-in-packagejson&#34;&gt;https://github.com/developit/microbundle#specifying-builds-in-packagejson&lt;/a&gt;.&lt;/p&gt;
 
@@ -930,8 +914,7 @@ export declare class MyMainClass {
 &lt;p&gt;With this &lt;code&gt;package.json&lt;/code&gt; you can publish to npm with &lt;code&gt;npm publish&lt;/code&gt;.
 And if you enjoyed using &lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;microbundle&lt;/a&gt;, definitely keep using it but also give it a &lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;star on GitHub&lt;/a&gt; and let Jason Miller aka &lt;a href=&#34;https://twitter.com/_developit&#34;&gt;@_developit&lt;/a&gt; know you’re a fan on Twitter.&lt;/p&gt;
 
-&lt;p&gt;Cover Photo by &lt;a href=&#34;https://unsplash.com/photos/J8R34suxfRU?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Aaron Burden&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/tiny?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover Photo by &lt;a href=&#34;https://unsplash.com/photos/J8R34suxfRU?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Aaron Burden&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/tiny?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -940,9 +923,7 @@ And if you enjoyed using &lt;a href=&#34;https://github.com/developit/microbundl
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/a-simple-real-world-vue.js-directive/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; is &amp;ldquo;The Progressive JavaScript Framework&amp;rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer.
+      <description>&lt;p&gt;&lt;a href=&#34;https://vuejs.org/&#34;&gt;Vue.js&lt;/a&gt; is &amp;ldquo;The Progressive JavaScript Framework&amp;rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer.
 In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&amp;rsquo;s documentation is a &lt;code&gt;focus&lt;/code&gt; directive.&lt;/p&gt;
 
 &lt;p&gt;When running Vue.js inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve
@@ -954,15 +935,8 @@ One solution could have leveraged components to update &lt;code&gt;window.locati
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;MyAnchor&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/my-url&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
   Go
 &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;MyAnchor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;There were a couple of gotchas:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#local-global&#34;&gt;Local vs global directive registration 🌐&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#minimal-directive&#34;&gt;A minimal directive API 👌&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#hooks-and-remove&#34;&gt;Vue directive hooks and &lt;code&gt;removeEventListener&lt;/code&gt; 🆓&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#handling-clicks&#34;&gt;Handling clicks properly 🖱&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#parting-thoughts&#34;&gt;Parting thoughts 📚&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;There were a couple of gotchas:
+&lt;/p&gt;
 
 &lt;h1 id=&#34;local-global&#34;&gt;Local vs global directive registration 🌐&lt;/h1&gt;
 
@@ -1146,8 +1120,7 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
 
 &lt;p&gt;By coding against the DOM, we leverage the browser APIs instead of re-inventing them.&lt;/p&gt;
 
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/tjX_sniNzgQ?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;frank mckenna&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/contain?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/tjX_sniNzgQ?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;frank mckenna&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/contain?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1159,6 +1132,8 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
       <description>&lt;p&gt;One of &lt;code&gt;git&lt;/code&gt;&amp;rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to use &lt;code&gt;git rebase&lt;/code&gt;, usually followed by a &lt;code&gt;git push&lt;/code&gt; &lt;code&gt;--&lt;/code&gt;&lt;code&gt;force&lt;/code&gt; to overwrite history the remote with the local history.&lt;/p&gt;
 
 &lt;p&gt;Here’s a look at how to split existing commits using &lt;code&gt;rebase&lt;/code&gt;, &lt;code&gt;reset&lt;/code&gt; and &lt;code&gt;commit&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;Say you have two files edited in a commit (A and B) and you would like to get the changes from one of those files (A) into your current branch but not those from the other (B).&lt;/p&gt;
 
@@ -1188,8 +1163,7 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
 
 &lt;p&gt;For any questions about using git, feel free to comment below or tweet to me &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/qcCHZLdsS80?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Markus Spiske&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/axe-split-wood?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/qcCHZLdsS80?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Markus Spiske&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/axe-split-wood?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1203,6 +1177,8 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Full code example at &lt;a href=&#34;https://github.com/HugoDF/python-graphql-client-example&#34;&gt;HugoDF/python-graphql-client-example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
@@ -1235,8 +1211,7 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
 
 &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;query&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ python fetch.py
 &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;pokemon&amp;#39;&lt;/span&gt;: &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;attacks&amp;#39;&lt;/span&gt;: &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;special&amp;#39;&lt;/span&gt;: &lt;span class=&#34;o&#34;&gt;[{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;: &lt;span class=&#34;s1&#34;&gt;&amp;#39;Discharge&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;, &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;: &lt;span class=&#34;s1&#34;&gt;&amp;#39;Thunder&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;, &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;: &lt;span class=&#34;s1&#34;&gt;&amp;#39;Thunderbolt&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}]}}}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@isisf?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Isis França&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Isis França&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@isisf?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Isis França&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Isis França&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1249,17 +1224,11 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
 &lt;p&gt;An example consuming a GraphQL API in JavaScript from Node and the browser using &lt;code&gt;graphql.js&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
 &lt;p&gt;See the example live: &lt;a href=&#34;https://codewithhugo.com/js-graphql-client-example/&#34;&gt;https://codewithhugo.com/js-graphql-client-example/&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Full repo: &lt;a href=&#34;https://github.com/HugoDF/js-graphql-client-example&#34;&gt;https://github.com/HugoDF/js-graphql-client-example&lt;/a&gt;.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#fetching-from-node&#34;&gt;Fetching from Node&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#fetching-from-the-browser&#34;&gt;Fetching from the browser&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#graphql-documentation-tools&#34;&gt;GraphQL documentation tools&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
@@ -1426,9 +1395,7 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/</guid>
-      <description>
-
-&lt;p&gt;GraphQL is a great alternative to REST (or other HTTP API designs). This is an quick introduction to the core concepts around &lt;em&gt;consuming&lt;/em&gt; a GraphQL API.&lt;/p&gt;
+      <description>&lt;p&gt;GraphQL is a great alternative to REST (or other HTTP API designs). This is an quick introduction to the core concepts around &lt;em&gt;consuming&lt;/em&gt; a GraphQL API.&lt;/p&gt;
 
 &lt;p&gt;To see some examples consuming a GraphQL API:&lt;/p&gt;
 
@@ -1436,6 +1403,9 @@ we can refactor the &lt;code&gt;handleClick&lt;/code&gt; function.&lt;/p&gt;
 &lt;li&gt;In Python, see &lt;a href=&#34;https://codewithhugo.com/python-graphql-client-requests-example-using-gql/&#34;&gt;Python GraphQL client requests example using gql&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;In JavaScript (browser and Node), &lt;a href=&#34;https://buttondown.email/hugo/archive/9011fe42-c8f7-4201-8b38-d777c1f6910a&#34;&gt;see last week&amp;rsquo;s Code with Hugo newsletter&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;what-is-graphql-and-what-problems-does-it-solve&#34;&gt;What is GraphQL and what problems does it solve?&lt;/h2&gt;
 
@@ -1735,8 +1705,7 @@ fragment FullPokemon on Pokemon {
 &lt;li&gt;In JavaScript (browser and Node), &lt;a href=&#34;https://buttondown.email/hugo/archive/9011fe42-c8f7-4201-8b38-d777c1f6910a&#34;&gt;see last week&amp;rsquo;s Code with Hugo newsletter&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@anniespratt?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Annie Spratt&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Annie Spratt&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@anniespratt?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Annie Spratt&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Annie Spratt&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1990,7 +1959,8 @@ Restart the dev server: &lt;code&gt;npm run serve&lt;/code&gt;:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;: &lt;code&gt;Array.filter(Boolean)&lt;/code&gt; filters out falsy values (&lt;code&gt;null&lt;/code&gt;, &lt;code&gt;undefined&lt;/code&gt;, &lt;code&gt;0&lt;/code&gt;, &lt;code&gt;false&lt;/code&gt;, &lt;code&gt;&#39;&#39;&lt;/code&gt;) and avoids &lt;code&gt;Cannot read property of undefined&lt;/code&gt; errors.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was originally posted on 11th of April 2018, as the first post of the Code with Hugo blog&lt;/p&gt;
@@ -2003,22 +1973,6 @@ Restart the dev server: &lt;code&gt;npm run serve&lt;/code&gt;:&lt;/p&gt;
 &lt;li&gt;13th December 2018 to improve readability and reach a wider audience.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-
-&lt;p&gt;Table of contents:&lt;/p&gt;
-
-&lt;!--
-- [An overview of the &#34;Boolean&#34; function/constructor](#an-overview-of-the-boolean-functionconstructor)
-- [A simple example of .filter(Boolean)](#a-simple-example-of-filterboolean)
-- [How this works &amp; caveats](#how-this-works--caveats)
-- [Situations in which &#34;Cannot read property of undefined&#34; would this occur](#situations-in-which-cannot-read-property-of-undefined-would-this-occur)
---&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#an-overview-of-the-boolean-function-constructor&#34;&gt;An overview of the &amp;ldquo;Boolean&amp;rdquo; function/constructor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#a-simple-example-of-filter-boolean&#34;&gt;A simple example of .filter(Boolean)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#how-this-works-caveats&#34;&gt;How this works &amp;amp; caveats&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#situations-in-which-cannot-read-property-of-undefined-would-this-occur&#34;&gt;Situations in which &amp;ldquo;Cannot read property of undefined&amp;rdquo; would this occur&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h2 id=&#34;an-overview-of-the-boolean-function-constructor&#34;&gt;An overview of the &amp;ldquo;Boolean&amp;rdquo; function/constructor&lt;/h2&gt;
 

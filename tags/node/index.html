@@ -53,13 +53,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -168,14 +168,10 @@
       </header>
       <section class="post-card-excerpt">
         
-        <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
-The goal here is to have an interoperability layer between Node.js and an outside shell. This is a quick workaround if some other part of your system isn’t developed in JavaScript.
-We’ll use spawn over exec because we’re talking about passing data, and potentially large amounts of it. To understand the difference between child_process.spawn and child_process.exec (see “Difference between spawn and exec of Node.js child_process”).
-The long and short of it is use exec for small amounts of data (under 200k) using a Buffer interface and spawn for larger amounts using a stream interface.
-spawn has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.
-
- ...  </p>
         
+        
+        <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
+The goal here is to have an interoperability layer between Node.js an ...  </p>
       </section>
     </a>
 
@@ -220,12 +216,11 @@ spawn has a more verbose syntax for some of the use-cases we’ll look at, but i
       </header>
       <section class="post-card-excerpt">
         
+        
+        
         <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.
 We&rsquo;ll go through the pros and cons of callbacks, Promises and async/await. Present some pitfalls to bear in mind as well as introducing how you would deal with certain situations.
-Live-coding/workshop section touching on both Node and client-side JS situations at github.com/HugoDF/async-js-presentation/tree/master/workshop.
-
- ...  </p>
-        
+Live-cod ...  </p>
       </section>
     </a>
 
@@ -247,7 +242,7 @@ Live-coding/workshop section touching on both Node and client-side JS situations
         </li>
       </ul>
 
-      <span class="reading-time">16 min read</span>
+      <span class="reading-time">15 min read</span>
 
     </footer>
   </div>
@@ -270,10 +265,10 @@ Live-coding/workshop section touching on both Node and client-side JS situations
       </header>
       <section class="post-card-excerpt">
         
-        <p>DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.
-First of all, DataTypes contains both the types and generators for default values: eg. NOW, UUIDV1 and UUIDV4 are special default values.
-The places where you&rsquo;re likely to encounter DataTypes are in the model field definition and in the migration definitions. Note that for a given model and field, the data type should be the same in the model and in the migration. ...  </p>
         
+        
+        <p>DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.
+First of all, DataTypes contains both the types and generators for default values: eg. NOW, UUIDV1 and UUIDV4 are speci ...  </p>
       </section>
     </a>
 
@@ -318,9 +313,10 @@ The places where you&rsquo;re likely to encounter DataTypes are in the model fie
       </header>
       <section class="post-card-excerpt">
         
-        <p> If you want to ship, use the tools you know. — A lot of people
- Let&rsquo;s apply that principle: I&rsquo;m building Post Frequency/Accountable Blogging, I&rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and I’ve settled on Dokku for databases/backend applications hosting.  ...  </p>
         
+        
+        <p> If you want to ship, use the tools you know. — A lot of people
+ Let&rsquo;s apply that principle: I&rsquo;m building Post Frequency/Accountable Blogging, I&rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and I’ve settled on Dokku for ...  </p>
       </section>
     </a>
 
@@ -342,7 +338,7 @@ The places where you&rsquo;re likely to encounter DataTypes are in the model fie
         </li>
       </ul>
 
-      <span class="reading-time">6 min read</span>
+      <span class="reading-time">5 min read</span>
 
     </footer>
   </div>
@@ -365,10 +361,12 @@ The places where you&rsquo;re likely to encounter DataTypes are in the model fie
       </header>
       <section class="post-card-excerpt">
         
+        
+        
         <p>Here&rsquo;s how I get productive for JavaScript/Node on Mac OS.
+It includes iTerm2, zsh, Node, Visual Studio Code and some git commands.
 
  ...  </p>
-        
       </section>
     </a>
 
@@ -390,7 +388,7 @@ The places where you&rsquo;re likely to encounter DataTypes are in the model fie
         </li>
       </ul>
 
-      <span class="reading-time">6 min read</span>
+      <span class="reading-time">5 min read</span>
 
     </footer>
   </div>
@@ -413,10 +411,10 @@ The places where you&rsquo;re likely to encounter DataTypes are in the model fie
       </header>
       <section class="post-card-excerpt">
         
-        <p>Enhancing generators for ES6 in the Sequelize CLI
- This is the story of my discovery of ES6-class style model definitions with Sequelize (see Using ES6 classes for Sequelize 4 models). The realisation that the current Sequelize CLI model generator didn&rsquo;t support it (as is expected since it&rsquo;s not the most common way of doing it). Finally, the impetus to just implement it myself.
-In other words, I started using a style of Sequelize models that the Sequelize CLI didn&rsquo;t support. ...  </p>
         
+        
+        <p> Enhancing generators for ES6 in the Sequelize CLI
+ This is the story of my discovery of ES6-class style model definitions with Sequelize (see Using ES6 classes for Sequelize 4 models). The realisation that the current Sequelize CLI model generator didn&rsquo;t support it (as is  ...  </p>
       </section>
     </a>
 
@@ -461,12 +459,11 @@ In other words, I started using a style of Sequelize models that the Sequelize C
       </header>
       <section class="post-card-excerpt">
         
-        <p>Leave the Express comfort zone to expand how you think about Node application architecture.
- tl;dr
- using a function composition model for building HTTP servers is awesome Functions as a Service are great but have some drawbacks micro has a similar, simple API to FaaS but doesn&rsquo;t have a compilation step micro&rsquo;s minimalism affects how you solve problems
- Functions as a composition model for JavaScript
- Functions as a Service pain points ...  </p>
         
+        
+        <p> Leave the Express comfort zone to expand how you think about Node application architecture.
+ tl;dr
+ using a function composition model for building HTTP servers is awesome Functions as a Service are great but have some drawbacks micro has a similar, simple API to FaaS but doesn& ...  </p>
       </section>
     </a>
 
@@ -511,9 +508,9 @@ In other words, I started using a style of Sequelize models that the Sequelize C
       </header>
       <section class="post-card-excerpt">
         
-        <p>Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use require('module-name') to import from other modules and use the module.exports object to expose entities from a module.
-Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. ...  </p>
         
+        
+        <p>Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use require('module-name') to import from othe ...  </p>
       </section>
     </a>
 
@@ -558,10 +555,10 @@ Node’s CommonJS was actually one of the first widely adopted module systems in
       </header>
       <section class="post-card-excerpt">
         
-        <p>Settling on a Netlify + Dokku on DigitalOcean deployment stack for JavaScript and Node.
- Over the last few years I’ve never quite settled on a goto deployment strategy for my apps and projects. Technology-wise it has settled towards Vue or static site generators for the frontend with Node on the backend, whether that’s for API servers or handling rendering through handlebars.
-What I’ve finally settled on is Netlify + Dokku on DigitalOcean. ...  </p>
         
+        
+        <p> Settling on a Netlify + Dokku on DigitalOcean deployment stack for JavaScript and Node.
+ Over the last few years I’ve never quite settled on a goto deployment strategy for my apps and projects. Technology-wise it has settled towards Vue or static site generators for the frontend ...  </p>
       </section>
     </a>
 
@@ -606,10 +603,11 @@ What I’ve finally settled on is Netlify + Dokku on DigitalOcean. ...  </p>
       </header>
       <section class="post-card-excerpt">
         
+        
+        
         <p>This post goes through some patterns that can be used to unit test ES6 classes.
 The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.
-In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database). ...  </p>
-        
+In &ldquo;Using ES6 classes for Sequelize 4 models&rdq ...  </p>
       </section>
     </a>
 

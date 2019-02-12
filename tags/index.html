@@ -53,13 +53,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -241,6 +241,46 @@
 
 <article class="post-card post"> 
     
+    <a class="post-card-image-link" href="https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ruediger-theiselmann-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #sequelize 
+              #node 
+              #git 
+              #cli 
+              #JavaScript  </span>
+              
+              <h2 class="post-card-title">Progress and roadblocks: a journey into open-source</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p> Enhancing generators for ES6 in the Sequelize CLI
+ This is the story of my discovery of ES6-class style model definitions with Sequelize (see Using ES6 classes for Sequelize 4 models). The realisation that the current Sequelize CLI model generator didn&rsquo;t support it (as is expected since it&rsquo;s not the most common way of doing it). Finally, the impetus to just implement it myself.
+In other words, I started using a style of Sequelize models that the Sequelize CLI didn&rsquo;t support. I didn&rsquo;t get an answer on a &ldquo;feature request&rdquo; issue, so I just forked it, implemented it and published it.
+The Free Open Source Software movement has its ups and downs, its hype and abandoned projects. One of the great aspects of it is that you can always (depending on the license) just fork something and publish it 🙂.
+Some links:
+ sequelize-cli fork repo fork published on npm  Live-tweet storms:
+ Day 1 (struggles) Day 2 (fixes) Day 3 (first publish) Day 4 (finishing up)  Table of contents:  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
     <a class="post-card-image-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
       <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/raymond-rasmusson-unsplash.jpg)"></div>
     </a>
@@ -276,64 +316,32 @@ Some of those components are &ldquo;private&rdquo; to the file/exported componen
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*gVQU50zNWjL1kihKKQ5zYQ.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #CSS 
               #JavaScript 
-              #Node 
-              #Docker 
-              #redis  </span>
+              #animation 
+              #web development  </span>
               
-              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
+              <h2 class="post-card-title">Animations: CSS vs JavaScript</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
-There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
-Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
-We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
-
+                <p> When should you use JavaScript when you can use CSS?
+ This post was sparked by a question I answered on Quora: Which is better to use, CSS or JS?
+The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see “Backend code, frontend code and how they interact” for more details): HTML says what things are, CSS how they look and JavaScript does all the things the other two can’t.
+Seeing it from this light the answer to the question: “When should you use JavaScript when you can use CSS?” is never.
+HTML, CSS and JavaScript do overlap especially since HTML5 and CSS3. Animations before CSS3 used to be the premise of the JavaScript and complex animation orchestration still is with libraries like GSAP, but nowadays we can also animate using the transition CSS rule.
+This leads us to formulate some rules around using JavaScript in the browser:
+ if you can do something with CSS over JavaScript, do it if you can do something with HTML over JavaScript, do it  
  ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #Functional Programming 
-              #Productivity  </span>
-              
-              <h2 class="post-card-title">Closures, Partial Application and Currying: Effective Functional JavaScript</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>Spices and other ingredients of a great curry
-To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.
-The basics Functional programming is a programming paradigm that follows a more mathematical computation model. Let’s go through some basics to make your JavaScript more functional. ...  </p>
               
           </section>
       </a>

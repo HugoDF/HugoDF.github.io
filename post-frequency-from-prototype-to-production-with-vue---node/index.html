@@ -70,13 +70,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -160,23 +160,22 @@
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
+      <article class="post-full post">
+  <header class="post-full-header">
+    <section class="post-full-meta">
+      <time class="post-full-meta-date"
+        datetime="2018-11-26">26 November 2018</time>
+      <span class="date-divider">/</span> <a
+        href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/vue/">#vue</a>&nbsp;
+    </section>
+    <h1 class="post-full-title">Post Frequency: from prototype to production with Vue &#43; Node</h1>
+  </header>
+  <div class="hero-container">
+
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/neonbrand-unsplash.jpg)">
       
-<div id="codefund_ad"></div>
-
-
-<article class="post-full post">
-    <header class="post-full-header">
-        <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-11-26">26 November 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/vue/">#vue</a>&nbsp;
-        </section>
-        <h1 class="post-full-title">Post Frequency: from prototype to production with Vue &#43; Node</h1>
-    </header>
-    <div class="hero-container">
-
-      
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/neonbrand-unsplash.jpg)">
-        
   <section class="hero-cta">
     <h3 class="cta-title">Have a question?</h3>
     <p class="cta-text">
@@ -187,60 +186,61 @@
   </section>
 
 
-      </figure>
-    </div>
+    </figure>
+  </div>
 
-    <section class="post-full-content">
-        <div class="kg-card-markdown">
-        <blockquote>
+  <section class="post-full-content">
+    <div class="kg-card-markdown">
+      <blockquote>
 <p>If you want to ship, use the tools you know. — A lot of people</p>
 </blockquote>
 
 <p>Let&rsquo;s apply that principle: I&rsquo;m building <a href="https://accountableblogging.com">Post Frequency/Accountable Blogging</a>,
 I&rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and
-I’ve settled on Dokku for databases/backend applications hosting.
+I’ve settled on Dokku for databases/backend applications hosting.</p>
+
+<p>Table of contents:
 </p>
-
-<p>See how I deploy my applications <a href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</a>.</p>
-
-<p>Table of contents:</p>
-
+    </div>
+    <section class="table-of-contents">
+      <nav id="TableOfContents">
 <ul>
-<li><p><a href="#context">Context</a></p></li>
-
-<li><p><a href="#frontend">Frontend</a></p>
-
+<li>
 <ul>
-<li><p><a href="#vue--vue-cli-3">Vue + Vue CLI 3</a></p></li>
-
-<li><p><a href="#vue-cli-prerender-spa-plugin">Vue CLI prerender SPA plugin</a></p></li>
-
-<li><p><a href="#load-some-scripts-only-on-production">Load some scripts only on production</a></p></li>
-
-<li><p><a href="#load-scripts-only-if-not-pre-rendering-injectx-using">Load scripts only if <em>not</em> pre-rendering <code>injectX</code> using:</a></p></li>
+<li><a href="#context">Context</a></li>
+<li><a href="#frontend">Frontend</a>
+<ul>
+<li><a href="#vue-vue-cli-3">Vue + Vue CLI 3</a></li>
+<li><a href="#vue-cli-prerender-spa-plugin">Vue CLI prerender SPA plugin</a></li>
+<li><a href="#load-some-scripts-only-on-production">Load some scripts only on production</a></li>
+<li><a href="#load-scripts-only-if-not-pre-rendering-injectx-using">Load scripts only if <em>not</em> pre-rendering <code>injectX</code> using:</a></li>
 </ul></li>
-
-<li><p><a href="#pass-service-urls-using-envenvironment-files">Pass service URLs using <code>.env.${ENVIRONMENT}</code> files</a></p></li>
-
-<li><p><a href="#being-social-and-google-friendly">Being social and Google-friendly</a></p>
-
+<li><a href="#pass-service-urls-using-env-environment-files">Pass service URLs using <code>.env.${ENVIRONMENT}</code> files</a></li>
+<li><a href="#being-social-and-google-friendly">Being social and Google-friendly</a>
 <ul>
 <li><a href="#be-crawlable">Be crawlable</a></li>
 <li><a href="#favicons-and-manifests">Favicons and manifests</a></li>
 <li><a href="#meta-description-opengraph-tags">Meta description, OpenGraph tags</a>
-
 <ul>
 <li><a href="#without-router">Without router</a></li>
 <li><a href="#with-vue-router">With vue-router</a></li>
 </ul></li>
 </ul></li>
-
-<li><p><a href="#backend-services">Backend service(s)</a></p></li>
-
-<li><p><a href="#launch">Launch</a></p></li>
-
-<li><p><a href="#outcomes">Outcomes</a></p></li>
+<li><a href="#backend-service-s">Backend service(s)</a></li>
+<li><a href="#launch">Launch</a></li>
+<li><a href="#outcomes">Outcomes</a></li>
+</ul></li>
 </ul>
+</nav>
+    </section>
+    
+    <div id="codefund_ad" class="related-links"></div>
+    
+    <div class="kg-card-markdown">
+        
+        
+
+<p>See how I deploy my applications <a href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</a>.</p>
 
 <h2 id="context">Context</h2>
 
@@ -389,35 +389,33 @@ I’ve settled on Dokku for databases/backend applications hosting.
 <p>Next steps are to build the thing out. It&rsquo;s simple: give me your URL + payment details, I track how much you publish, you meet your goal or pay.</p>
 
 <p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@neonbrand?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from NeONBRAND"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">NeONBRAND</span></a></p>
-        </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="subscribe-form">
-        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
-        <p>Get all the posts of the week before anyone else in your inbox</p>
-        <form
-            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
-        >
-            <div class="form-group">
-                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
-                <input type="hidden" value="1" name="embed"/>
-            </div>
-            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
-        </form>
-    </section>
+  <section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+    <p>Get all the posts of the week before anyone else in your inbox</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/hugo" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')">
+      <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+        <input type="hidden" value="1" name="embed" />
+      </div>
+      <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+    </form>
+  </section>
 
-    <footer class="post-full-footer">
-      <section class="author-card">
-        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-        <section class="author-card-content">
-            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
-                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
-        </section>
+  <footer class="post-full-footer">
+    <section class="author-card">
+      <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+        alt="Author" />
+      <section class="author-card-content">
+        <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a>
+        </h4>
+        <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
       </section>
-    </footer>
+    </section>
+  </footer>
 </article>
 
 
@@ -467,13 +465,13 @@ I’ve settled on Dokku for databases/backend applications hosting.
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">Python GraphQL client requests example using gql</a></li>            
+          <li><a href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">The step-by-step guide to create a domain redirect with Cloudflare</a></li>            
         
-          <li><a href="https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/">JavaScript GraphQL client requests in Node and the browser using `graphql.js`</a></li>            
+          <li><a href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</a></li>            
         
-          <li><a href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">Why you should wrap your (JavaScript) dependencies</a></li>            
+          <li><a href="https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/">How to make beautiful, simple CLI apps with Node</a></li>            
         
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -504,7 +502,7 @@ I’ve settled on Dokku for databases/backend applications hosting.
           <section class="post-card-excerpt">
               
                 <p>tl;dr: here are the tools used to power, build and publish codewithhugo.com:
- Dropbox Paper because it syncs desktop/mobile and outputs to markdown Unsplash for cover images Edited Markdown + images → Hugo static site generator Casper 2 (https://ghost.org default theme) for Hugo Schedule:  Newsletter: Mondays 5pm UK every 2 weeks 1+ post a week  Cross-post to Medium (Stories → Import a Story) Cross-post to dev.to using RSS feed Social media/promotion &lt; Organic traffic Newsletter powered by https://buttondown. ...  </p>
+ Dropbox Paper because it syncs desktop/mobile and outputs to markdown Unsplash for cover images Edited Markdown + images → Hugo static site generator Casper 2 (https://ghost.org default theme) for Hugo Schedule:  Newsletter: Mondays 5pm UK every 2 weeks 1+ post a week  Cross-post to Medium (Stories → Import a Story) Cross-post to dev.to using RSS feed Social media/promotion &lt; Organic traffic Newsletter powered by https://buttondown.email Analytics: Google Analytics + Simple Analytics  This post has about 7 month’s worth of learning in it, so see the following table of contents:  ...  </p>
               
           </section>
       </a>
@@ -539,7 +537,10 @@ I’ve settled on Dokku for databases/backend applications hosting.
                 <p>How I created the buying mechanism for the Sequelize ES6 Cheatsheet using checkoutpage.co and sprinkles of vanilla JavaScript.
 This strictly isn’t a paywall, it&rsquo;s all client-side and doesn&rsquo;t check much.
 In principle you can display the whole things using a bit of CSS magic. You could also read the source and reverse-engineer what query params work for this page.
-You could also spoof as Google Bot (or another crawler) and skip the pay overlay. ...  </p>
+You could also spoof as Google Bot (or another crawler) and skip the pay overlay. If someone shares the link containing the &ldquo;paid&rdquo; query param whoever they’re sharing with will see it without paying.
+I don&rsquo;t think it&rsquo;s likely that people will go through the effort of doing the above reverse-engineering, so I&rsquo;m going to walk anyone who will listen through how I&rsquo;ve implemented it.
+If you like getting the cheatsheet for free but also want to support my work you can Buy me a Coffee or just subscribe to my mailing list.
+Table of contents:  ...  </p>
               
           </section>
       </a>

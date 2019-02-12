@@ -23,8 +23,11 @@
     
     <link rel="canonical" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/" /> 
 
-     <meta name="description" content="The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration
- AngularJS was pretty groundbreaking. It’s still impressive to this day, packed w" /> 
+     <meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;AngularJS was pretty groundbreaking. It’s s" /> 
 
      
     
@@ -33,8 +36,11 @@
     
  
     <meta name="twitter:title" content="From AngularJS to Vue.js, CommonJS and Jest"/>
-    <meta name="twitter:description" content="The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration
- AngularJS was pretty groundbreaking. It’s still impressive to this day, packed w"/>
+    <meta name="twitter:description" content="&lt;blockquote&gt;
+&lt;p&gt;The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;AngularJS was pretty groundbreaking. It’s s"/>
     <meta name="twitter:url" content="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
@@ -44,8 +50,11 @@
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration
- AngularJS was pretty groundbreaking. It’s still impressive to this day, packed w" />
+    <meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;The trials and tribulations of kicking off an AngularJS -&amp;gt; Vue.js migration&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;AngularJS was pretty groundbreaking. It’s s" />
 
     <meta property="article:published_time" content="2018-05-30T00:00:00Z" />
     <meta property="article:tag" content="VueJS" /><meta property="article:tag" content="testing" /><meta property="article:tag" content="JavaScript" />
@@ -61,13 +70,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -151,23 +160,22 @@
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
+      <article class="post-full post">
+  <header class="post-full-header">
+    <section class="post-full-meta">
+      <time class="post-full-meta-date"
+        datetime="2018-05-30">30 May 2018</time>
+      <span class="date-divider">/</span> <a
+        href="https://codewithhugo.com/tags/vuejs/">#VueJS</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/testing/">#testing</a>&nbsp;
+    </section>
+    <h1 class="post-full-title">From AngularJS to Vue.js, CommonJS and Jest</h1>
+  </header>
+  <div class="hero-container">
+
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)">
       
-<div id="codefund_ad"></div>
-
-
-<article class="post-full post">
-    <header class="post-full-header">
-        <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-05-30">30 May 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/vuejs/">#VueJS</a>&nbsp;<a href="https://codewithhugo.com/tags/testing/">#testing</a>&nbsp;
-        </section>
-        <h1 class="post-full-title">From AngularJS to Vue.js, CommonJS and Jest</h1>
-    </header>
-    <div class="hero-container">
-
-      
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)">
-        
   <section class="hero-cta">
     <h3 class="cta-title">Have a question?</h3>
     <p class="cta-text">
@@ -178,14 +186,12 @@
   </section>
 
 
-      </figure>
-    </div>
+    </figure>
+  </div>
 
-    <section class="post-full-content">
-        <div class="kg-card-markdown">
-        
-
-<blockquote>
+  <section class="post-full-content">
+    <div class="kg-card-markdown">
+      <blockquote>
 <p>The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration</p>
 </blockquote>
 
@@ -193,25 +199,38 @@
 
 <p>With the tools we have today, AngularJS isn’t as strong a way to do things <em>any more</em>. The fact that it’s in maintenance mode says it all. For a new application or new features, ie. for a project that <em>not</em> in maintenance mode, it’s doesn’t have the same niceties as other frameworks and libraries like Angular 2+, React or Vue. There should be a way <em>not</em> to rewrite the whole AngularJS application at once, here&rsquo;s how I went about doing it:</p>
 
+<p></p>
+    </div>
+    <section class="table-of-contents">
+      <nav id="TableOfContents">
+<ul>
+<li>
 <ul>
 <li><a href="#shipping-some-bundles">Shipping some bundles 📦</a>
-
 <ul>
 <li><a href="#why-commonjs-instead-of-es-modules">Why CommonJS instead of ES modules?</a></li>
 </ul></li>
 <li><a href="#adding-vue">Adding Vue 🖼️</a></li>
 <li><a href="#setting-up-jest">Setting up Jest 🔧</a>
-
 <ul>
 <li><a href="#mock-assets">Mock assets</a></li>
-<li><a href="#commonjs--webpack-and-vue-jest-woes">CommonJS, Webpack and <code>vue-jest</code> woes</a></li>
+<li><a href="#commonjs-webpack-and-vue-jest-woes">CommonJS, Webpack and <code>vue-jest</code> woes</a></li>
 <li><a href="#some-solutions">Some solutions 🤔</a></li>
 <li><a href="#fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor">Fixing <code>vue-jest</code>/Webpack CommonJS handling with a Jest preprocessor</a></li>
 </ul></li>
 <li><a href="#thoughts-on-running-vue-inside-angularjs">Thoughts on running Vue inside AngularJS 🏃‍</a></li>
+</ul></li>
 </ul>
+</nav>
+    </section>
+    
+    <div id="codefund_ad" class="related-links"></div>
+    
+    <div class="kg-card-markdown">
+        
+        
 
-<h1 id="shipping-some-bundles">Shipping some bundles 📦</h1>
+<h2 id="shipping-some-bundles">Shipping some bundles 📦</h2>
 
 <p>Bundling the AngularJS app allows you to send a few files with everything needed to run the single page application.
 Includes using <code>script</code> are reduced to a few bundles of JavaScript (depending on having eg. a vendor bundle) and possibly a few of CSS.</p>
@@ -246,7 +265,7 @@ giving you the ability to leverage tools such as Jest, AVA or Mocha (instead of 
 <p>To bundle the application, Webpack allows us to take the AngularJS codebase that leverages CommonJS and output a few application bundles.
 Templates can be <code>require</code>-ed using the right webpack loaders (<code>html-loader</code>). SCSS stylesheets and even Handlebar templates can also be compiled.</p>
 
-<h2 id="why-commonjs-instead-of-es-modules">Why CommonJS instead of ES modules?</h2>
+<h3 id="why-commonjs-instead-of-es-modules">Why CommonJS instead of ES modules?</h3>
 
 <p>ES modules are the module format defined in the ECMAScript spec. They look like the following:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">angular</span> <span class="nx">from</span> <span class="s1">&#39;angular&#39;</span>
@@ -255,7 +274,7 @@ Templates can be <code>require</code>-ed using the right webpack loaders (<code>
 <p>The issue with ES modules are that they are static imports, ideally they shouldn’t have side-effects.
 Including something that does <code>angular.module('some-name')</code> seems pretty side-effectful, so CommonJS reflects this a bit more: <code>require('./this-script-that-adds-something-to-angular')</code>.</p>
 
-<h1 id="adding-vue">Adding Vue 🖼️</h1>
+<h2 id="adding-vue">Adding Vue 🖼️</h2>
 
 <p>This part was surprisingly straightforward, to add Vue components to an AngularJS app ngVue is available (<a href="https://github.com/ngVue/ngVue">https://github.com/ngVue/ngVue</a>).
 <code>ngVue</code> exposes functionality to wrap Vue components as an AngularJS directives.</p>
@@ -303,9 +322,9 @@ createVueComponent =&gt; createVueComponent(MyVueComponent)
 <p>In order to load single file components like in the above example, <code>vue-loader</code> is required (see <a href="https://github.com/vuejs/vue-loader">https://github.com/vuejs/vue-loader</a>),
 depending on how webpack is set up in a project, it can also affect how you process CSS (since single file components contain CSS as well as JavaScript and templates).</p>
 
-<h1 id="setting-up-jest">Setting up Jest 🔧</h1>
+<h2 id="setting-up-jest">Setting up Jest 🔧</h2>
 
-<h2 id="mock-assets">Mock assets</h2>
+<h3 id="mock-assets">Mock assets</h3>
 
 <p><code>.html</code>, <code>.scss</code>, <code>.svg</code> needs to be dummied in your Jest config:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -325,7 +344,7 @@ depending on how webpack is set up in a project, it can also affect how you proc
       <span class="s2">&#34;src/**/*.{js,vue}&#34;</span>
     <span class="p">]</span>
 <span class="p">}</span></code></pre></div>
-<h2 id="commonjs-webpack-and-vue-jest-woes">CommonJS, Webpack and <code>vue-jest</code> woes</h2>
+<h3 id="commonjs-webpack-and-vue-jest-woes">CommonJS, Webpack and <code>vue-jest</code> woes</h3>
 
 <p>Webpack doesn’t care about CommonJS vs ESM,  for all intents and purposes, Webpack treats them as the same thing. Here’s the catch: the recommended Jest plugin for Vue (<code>vue-jest</code>) handles <code>require</code> vs <code>import</code> of <code>.vue</code> files differently to Webpack.
 This is some sample code in a Vue component that imports another Vue single file component in CommonJS:</p>
@@ -345,7 +364,7 @@ This is some sample code in a Vue component that imports another Vue single file
 <li>AngularJS controllers love <code>this</code> … transpiling ES modules through Babel breaks <code>this</code> somehow</li>
 </ul>
 
-<h2 id="some-solutions">Some solutions 🤔</h2>
+<h3 id="some-solutions">Some solutions 🤔</h3>
 
 <ol>
 <li><p>Use ES6 import/export for the Vue components and tests, add a specific extension (<code>.mjs</code>, <code>.module.js</code>), disable <code>babel-jest</code> on CommonJS files.<br />
@@ -357,7 +376,7 @@ This is some sample code in a Vue component that imports another Vue single file
 <li><p>Rewrite the transformed code, using a custom pre-processor, so it behaves the same under Webpack and <code>vue-jest</code>.</p></li>
 </ol>
 
-<h2 id="fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor">Fixing <code>vue-jest</code>/Webpack CommonJS handling with a Jest preprocessor</h2>
+<h3 id="fixing-vue-jest-webpack-commonjs-handling-with-a-jest-preprocessor">Fixing <code>vue-jest</code>/Webpack CommonJS handling with a Jest preprocessor</h3>
 
 <p>The following preprocessor takes <code>require('./relative-path').default</code> and converts it to <code>require('./relative-path')</code> (which is what Webpack seems to do under the hood).
 To use the following preprocessor, replace the <code>.vue</code>-matching line in <code>&quot;transform&quot;</code> of Jest config with <code>&quot;.*\\.(vue)$&quot;: &quot;&lt;rootDir&gt;/vue-preprocessor&quot;</code>.
@@ -396,7 +415,7 @@ This is done with the following:</p>
 <li><code>String.replace</code> with a function argument is leveraged to run a custom replace on each match of the previous RegEx. That’s done with <code>match.replace('.default', '')</code>.</li>
 </ul>
 
-<h1 id="thoughts-on-running-vue-inside-angularjs">Thoughts on running Vue inside AngularJS 🏃‍</h1>
+<h2 id="thoughts-on-running-vue-inside-angularjs">Thoughts on running Vue inside AngularJS 🏃‍</h2>
 
 <p>AngularJS is from a time before bundlers and a JavaScript module system.
 The only contemporary bundling tool to AngularJS target JavaScript applications is the Google Closure Compiler.
@@ -414,36 +433,33 @@ AngularJS was and still is great. What’s also great that we can migrate off it
 <p>That means we get to keep the solid AngularJS working alongside new features written in Vue.</p>
 
 <p>Cover photo by <a href="https://unsplash.com/photos/TzQZTfkanPA?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Justyn Warner</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+    </div>
+  </section>
 
-        </div>
-    </section>
+  <section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+    <p>Get all the posts of the week before anyone else in your inbox</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/hugo" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')">
+      <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+        <input type="hidden" value="1" name="embed" />
+      </div>
+      <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+    </form>
+  </section>
 
-    <section class="subscribe-form">
-        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
-        <p>Get all the posts of the week before anyone else in your inbox</p>
-        <form
-            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
-        >
-            <div class="form-group">
-                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
-                <input type="hidden" value="1" name="embed"/>
-            </div>
-            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
-        </form>
-    </section>
-
-    <footer class="post-full-footer">
-      <section class="author-card">
-        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-        <section class="author-card-content">
-            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
-                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
-        </section>
+  <footer class="post-full-footer">
+    <section class="author-card">
+      <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+        alt="Author" />
+      <section class="author-card-content">
+        <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a>
+        </h4>
+        <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
       </section>
-    </footer>
+    </section>
+  </footer>
 </article>
 
 
@@ -493,13 +509,13 @@ AngularJS was and still is great. What’s also great that we can migrate off it
     <div class="read-next-card-content">
       
         <ul>
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoid null/undefined in JavaScript arrays</a></li>            
+        
           <li><a href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</a></li>            
         
-          <li><a href="https://codewithhugo.com/impress-interviewers-with-recursion-in-javascript-with-es6-features/">Impress interviewers with recursion in JavaScript with ES6 features</a></li>            
+          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/">JavaScript GraphQL client requests in Node and the browser using `graphql.js`</a></li>            
-        
-          <li><a href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</a></li>            
+          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -533,7 +549,12 @@ AngularJS was and still is great. What’s also great that we can migrate off it
                 <p>Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.
 The repo is available at: https://github.com/HugoDF/express-redis-docker.
 The docker-compose.yml is available at: github.com/HugoDF/express-redis-docker/docker-compose.yml
-Redis is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. ...  </p>
+Redis is “an open source, in-memory data structure store, used as a database, cache and message broker”. It’s as simple and unopinionated as a database as it gets, it’s known for its performance and simplicity as a key-value store. It has great flexibility and can also be used as a message queue, circular buffer (and pretty much anything else a developer can come up with short of a relational database).
+Express is a “fast, unopinionated, minimalist web framework for Node.js”. In other words, it’s a wrapper around Node’s server, that provides a way to write what’s called “middleware” to share and compose functionality across HTTP endpoints as well as define said endpoints.
+Getting Redis and Express to work together is trivial. Getting Redis and Express to work together in a way that’s fool and future-proof, and reproducible across local and deployed environments, is slightly harder. That’s where Docker and Docker Compose come in.
+Docker is a containerisation system, Docker Compose is a way to define how multiple Docker containers interact. In the context of Node web application development, Docker tends to be used to define a container that has the required system-level dependencies (eg. Node version, any extra database drivers). Docker Compose would be used to define dependencies outside of the Node application, for example databases.
+
+ ...  </p>
               
           </section>
       </a>
@@ -567,7 +588,8 @@ Redis is “an open source, in-memory data structure store, used as a database, 
               
                 <p>One of git&rsquo;s main differences when compared to other version control systems is that it lets the user rewrite the history. The main way to do this is to use git rebase, usually followed by a git push --force to overwrite history the remote with the local history.
 Here’s a look at how to split existing commits using rebase, reset and commit.
-Say you have two files edited in a commit (A and B) and you would like to get the changes from one of those files (A) into your current branch but not those from the other (B). ...  </p>
+
+ ...  </p>
               
           </section>
       </a>

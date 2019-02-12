@@ -58,13 +58,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -148,23 +148,22 @@
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
+      <article class="post-full post">
+  <header class="post-full-header">
+    <section class="post-full-meta">
+      <time class="post-full-meta-date"
+        datetime="2019-02-04">4 February 2019</time>
+      <span class="date-divider">/</span> <a
+        href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
+    </section>
+    <h1 class="post-full-title">The comprehensive guide to integrating a Python/Ruby/PHP/shell script with Node.js using child_process.spawn</h1>
+  </header>
+  <div class="hero-container">
+
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/elaine-casap-unsplash.jpg)">
       
-<div id="codefund_ad"></div>
-
-
-<article class="post-full post">
-    <header class="post-full-header">
-        <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2019-02-04">4 February 2019</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
-        </section>
-        <h1 class="post-full-title">The comprehensive guide to integrating a Python/Ruby/PHP/shell script with Node.js using child_process.spawn</h1>
-    </header>
-    <div class="hero-container">
-
-      
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/elaine-casap-unsplash.jpg)">
-        
   <section class="hero-cta">
     <h3 class="cta-title">Have a question?</h3>
     <p class="cta-text">
@@ -175,12 +174,12 @@
   </section>
 
 
-      </figure>
-    </div>
+    </figure>
+  </div>
 
-    <section class="post-full-content">
-        <div class="kg-card-markdown">
-        <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.</p>
+  <section class="post-full-content">
+    <div class="kg-card-markdown">
+      <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.</p>
 
 <p>The goal here is to have an interoperability layer between Node.js and an outside shell. This is a quick workaround if some other part of your system isn’t developed in JavaScript.</p>
 
@@ -190,12 +189,15 @@
 
 <p><code>spawn</code> has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.</p>
 
-<p></p>
-
 <p>Full examples <a href="https://github.com/HugoDF/node-run-python">github.com/HugoDF/node-run-python</a>.</p>
 
-<p>Table of contents:</p>
-
+<p>Table of contents:
+</p>
+    </div>
+    <section class="table-of-contents">
+      <nav id="TableOfContents">
+<ul>
+<li>
 <ul>
 <li><a href="#call-a-shell-command-and-log-it">Call a shell command and log it</a></li>
 <li><a href="#call-python-for-its-version">Call Python for its version</a></li>
@@ -204,7 +206,16 @@
 <li><a href="#read-child-process-spawn-output-from-node-js">Read child_process.spawn output from Node.js</a></li>
 <li><a href="#handle-errors-from-child-process-spawn">Handle errors from child_process.spawn</a></li>
 <li><a href="#pass-structured-data-from-python-ruby-to-node-js-javascript">Pass structured data from Python/Ruby to Node.js/JavaScript</a></li>
+</ul></li>
 </ul>
+</nav>
+    </section>
+    
+    <div id="codefund_ad" class="related-links"></div>
+    
+    <div class="kg-card-markdown">
+        
+        
 
 <p>The following examples contain 2 sections.</p>
 
@@ -582,35 +593,33 @@ To the world</code></pre></div>
 <p>I’ve got mentoring spots open at <a href="https://mentorcruise.com/mentor/HugoDiFrancesco/">https://mentorcruise.com/mentor/HugoDiFrancesco/</a>, so do that if you want Node.js/JavaScript/career mentoring or feel free to tweet at me <a href="https://twitter.com/hugo__df">@hugo__df</a></p>
 
 <p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@ecasap?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Elaine Casap"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Elaine Casap</span></a></p>
-        </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="subscribe-form">
-        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
-        <p>Get all the posts of the week before anyone else in your inbox</p>
-        <form
-            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
-        >
-            <div class="form-group">
-                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
-                <input type="hidden" value="1" name="embed"/>
-            </div>
-            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
-        </form>
-    </section>
+  <section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+    <p>Get all the posts of the week before anyone else in your inbox</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/hugo" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')">
+      <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+        <input type="hidden" value="1" name="embed" />
+      </div>
+      <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+    </form>
+  </section>
 
-    <footer class="post-full-footer">
-      <section class="author-card">
-        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-        <section class="author-card-content">
-            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
-                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
-        </section>
+  <footer class="post-full-footer">
+    <section class="author-card">
+      <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+        alt="Author" />
+      <section class="author-card-content">
+        <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a>
+        </h4>
+        <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
       </section>
-    </footer>
+    </section>
+  </footer>
 </article>
 
 
@@ -660,13 +669,13 @@ To the world</code></pre></div>
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/">Build and deploy a Vue/React/Vanilla JS app with Parcel and GitHub pages</a></li>            
+          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
         
-          <li><a href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">Add a client-side paywall using checkoutpage.co and vanilla JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoid null/undefined in JavaScript arrays</a></li>            
         
-          <li><a href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</a></li>            
+          <li><a href="https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/">6 months of Code with Hugo, in numbers</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -697,10 +706,12 @@ To the world</code></pre></div>
           </header>
           <section class="post-card-excerpt">
               
-                <p>A simple Hugo blog setup
+                <p> A simple Hugo blog setup
  The story of getting codewithhugo.com up and running.
 The tl;dr is the following:
- I always rave about my blog setup, it’s simple, fast and just works I used Hugo, “The world’s fastest framework for building websites”, a static site generator I used a theme, casper-two, which is a Hugo port of the https://ghost.org/ default theme I deployed to GitHub pages behind Cloudflare *. ...  </p>
+ I always rave about my blog setup, it’s simple, fast and just works I used Hugo, “The world’s fastest framework for building websites”, a static site generator I used a theme, casper-two, which is a Hugo port of the https://ghost.org/ default theme I deployed to GitHub pages behind Cloudflare *.  There&rsquo;s been an update in the deployment saga, read it here: &ldquo;A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare&rdquo;
+
+ ...  </p>
               
           </section>
       </a>
@@ -734,8 +745,8 @@ The tl;dr is the following:
                 <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.
 We&rsquo;ll go through the pros and cons of callbacks, Promises and async/await. Present some pitfalls to bear in mind as well as introducing how you would deal with certain situations.
 Live-coding/workshop section touching on both Node and client-side JS situations at github.com/HugoDF/async-js-presentation/tree/master/workshop.
-
- ...  </p>
+This given as a talk at Codebar London January Monthly 2019, see the slides:
+  Table of Contents 🐳:  ...  </p>
               
           </section>
       </a>

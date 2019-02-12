@@ -17,9 +17,7 @@
       <pubDate>Mon, 08 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/observablehq-notebooks-for-javascript-demos-and-prototypes/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://beta.observablehq.com/&#34;&gt;ObservableHQ&lt;/a&gt; is a platform being built by &lt;a href=&#34;https://twitter.com/mbostock&#34;&gt;Mike Bostock&lt;/a&gt; (creator of the D3 visualisation library), &lt;a href=&#34;https://twitter.com/jashkenas&#34;&gt;Jeremy Ashkenas&lt;/a&gt; (“Made CoffeeScript, Backbone.js, Underscore and other ragbag” from his &lt;a href=&#34;https://twitter.com/jashkenas&#34;&gt;Twitter bio&lt;/a&gt;) and &lt;a href=&#34;https://twitter.com/tmcw&#34;&gt;Tom MacWright&lt;/a&gt; (creator of the big presentation framework, simple-statistics and documentation.js as well as D3 contributor amongst other things).&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;https://beta.observablehq.com/&#34;&gt;ObservableHQ&lt;/a&gt; is a platform being built by &lt;a href=&#34;https://twitter.com/mbostock&#34;&gt;Mike Bostock&lt;/a&gt; (creator of the D3 visualisation library), &lt;a href=&#34;https://twitter.com/jashkenas&#34;&gt;Jeremy Ashkenas&lt;/a&gt; (“Made CoffeeScript, Backbone.js, Underscore and other ragbag” from his &lt;a href=&#34;https://twitter.com/jashkenas&#34;&gt;Twitter bio&lt;/a&gt;) and &lt;a href=&#34;https://twitter.com/tmcw&#34;&gt;Tom MacWright&lt;/a&gt; (creator of the big presentation framework, simple-statistics and documentation.js as well as D3 contributor amongst other things).&lt;/p&gt;
 
 &lt;p&gt;Observable is not just another JavaScript sandbox. It introduces the notebook paradigm to JavaScript projects, those of you familiar with Jupyter notebooks, this is the equivalent with JavaScript instead of Python. It turns out JavaScript is very well-suited to this type of paradigm.&lt;/p&gt;
 
@@ -39,27 +37,8 @@
 
 &lt;p&gt;I especially like points 4 and 5, since they’re not a selling point for notebooks in general but for ObservableHQ’s take on the problem. What you end up with is a well-designed web-based reactive notebook environment that’s suited to prototyping.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#features&#34;&gt;Features&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#cells-and-reactivity&#34;&gt;Cells and reactivity&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#display-arbitrary-data-in-arbitrary-ways&#34;&gt;Display arbitrary data in arbitrary ways&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#get-input-of-data-in-arbitrary-ways&#34;&gt;Get input of data in arbitrary ways&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#it-feels-like-working-with-a-view-library&#34;&gt;It feels like working with a view library&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#import-of-other-notebooksmodules&#34;&gt;Import of other notebooks/modules&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#sample-projects&#34;&gt;Sample projects&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#run-a-simple-emoji-search&#34;&gt;Run a simple Emoji search&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#write-straight-svg-visualisations&#34;&gt;Write straight SVG visualisations&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#do-interesting-things-with-web-apis&#34;&gt;Do interesting things with web APIs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pure-javascript-demos&#34;&gt;Pure JavaScript demos&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#css-demos&#34;&gt;CSS demos&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#an-exciting-roadmap&#34;&gt;An exciting roadmap&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
 
@@ -165,8 +144,7 @@ fileDataUri = URL.createObjectURL(file)
 
 &lt;p&gt;You can find out more on the &lt;a href=&#34;https://talk.observablehq.com/&#34;&gt;ObservableHQ forum&lt;/a&gt; and in the &lt;a href=&#34;https://beta.observablehq.com/collection/@observablehq/changelog&#34;&gt;changelog&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@headwayio?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Headway&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Headway&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@headwayio?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Headway&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Headway&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

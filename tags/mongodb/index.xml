@@ -19,31 +19,8 @@
       <guid>https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/</guid>
       <description>&lt;p&gt;The Dokku mongo plugin provides a &lt;code&gt;mongo:connect&lt;/code&gt; command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Table of Contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t&#34;&gt;Connect to MongoDB on Dokku with your local command line or Robo3T&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#pre-requisites&#34;&gt;Pre-requisites&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#dokku-mongo-is-installed&#34;&gt;dokku-mongo is installed&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#you-have-a-database-to-play-with&#34;&gt;You have a database to play with&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#connect-to-your-remote-mongodb-instance-on-dokku&#34;&gt;Connect to your remote MongoDB instance on Dokku&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#dokkus-behaviour-around-access-of-mongodb&#34;&gt;Dokku’s behaviour around access of MongoDB&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#exposing-our-mongodb-instance&#34;&gt;Exposing our MongoDB instance&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#connecting-with-robo3t&#34;&gt;Connecting with Robo3T&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-out-the-connection&#34;&gt;Testing out the connection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#security-concerns&#34;&gt;Security concerns&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Table of Contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h2&gt;
 

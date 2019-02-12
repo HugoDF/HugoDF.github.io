@@ -53,13 +53,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -168,14 +168,10 @@
       </header>
       <section class="post-card-excerpt">
         
-        <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
-The goal here is to have an interoperability layer between Node.js and an outside shell. This is a quick workaround if some other part of your system isn’t developed in JavaScript.
-We’ll use spawn over exec because we’re talking about passing data, and potentially large amounts of it. To understand the difference between child_process.spawn and child_process.exec (see “Difference between spawn and exec of Node.js child_process”).
-The long and short of it is use exec for small amounts of data (under 200k) using a Buffer interface and spawn for larger amounts using a stream interface.
-spawn has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.
-
- ...  </p>
         
+        
+        <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
+The goal here is to have an interoperability layer between Node.js an ...  </p>
       </section>
     </a>
 
@@ -220,11 +216,12 @@ spawn has a more verbose syntax for some of the use-cases we’ll look at, but i
       </header>
       <section class="post-card-excerpt">
         
-        <p>An example consuming a GraphQL API from Python using gql.
- Full code example at HugoDF/python-graphql-client-example.
- This was sent out on the Code with Hugo newsletter last Monday. Subscribe to get the latest posts right in your inbox (before anyone else).
- $ pip install gql # You should use a virtualenvfrom gql import gql, Client from gql.transport.requests import RequestsHTTPTransport _transport = RequestsHTTPTransport( url=&#39;https://graphql-pokemon.now.sh/&#39;, use_json=True, ) client = Client( transport=_transport, fetch_schema_from_transport=True, ) query = gql(&#34;&#34;&#34; { pokemon(name: &#34;Pikachu&#34;) { attacks { special { name } } } } &#34;&#34;&#34;) print(client. ...  </p>
         
+        
+        <p> An example consuming a GraphQL API from Python using gql.
+ Full code example at HugoDF/python-graphql-client-example.
+
+ ...  </p>
       </section>
     </a>
 

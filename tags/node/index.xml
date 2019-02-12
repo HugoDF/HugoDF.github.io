@@ -17,9 +17,7 @@
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/</guid>
-      <description>
-
-&lt;p&gt;The ES2015 or ES6 specification introduced &lt;code&gt;class&lt;/code&gt; to JavaScript.
+      <description>&lt;p&gt;The ES2015 or ES6 specification introduced &lt;code&gt;class&lt;/code&gt; to JavaScript.
 Libraries like React went from &lt;code&gt;React.createClass&lt;/code&gt; to &lt;code&gt;class MyComponent extends React.Component&lt;/code&gt;,
 ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.&lt;/p&gt;
 
@@ -54,22 +52,14 @@ provides an easy way to map from entities&amp;rsquo; representation in the datab
 
 &lt;p&gt;Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from &lt;code&gt;Sequelize.Model&lt;/code&gt;:&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#typed-fields&#34;&gt;Defining fields on a model&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#assocations&#34;&gt;Creating associations&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#custom-table-name&#34;&gt;Custom table name&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#custom-model-name&#34;&gt;Custom model name&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#queries&#34;&gt;Wrap queries&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#instance-methods&#34;&gt;Instance methods&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#initialise-all&#34;&gt;Initialising all models&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
 &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h1 id=&#34;typed-fields&#34;&gt;Initialise the model with typed field(s)&lt;/h1&gt;
+&lt;h2 id=&#34;typed-fields&#34;&gt;Initialise the model with typed field(s)&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sequelize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyModel&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
   &lt;span class=&#34;kr&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;init&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataTypes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -82,7 +72,7 @@ provides an easy way to map from entities&amp;rsquo; representation in the datab
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=&#34;associations&#34;&gt;Associate your model to other models&lt;/h1&gt;
+&lt;h2 id=&#34;associations&#34;&gt;Associate your model to other models&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sequelize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyModel&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
   &lt;span class=&#34;kr&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;associate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;models&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -92,7 +82,7 @@ provides an easy way to map from entities&amp;rsquo; representation in the datab
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=&#34;customer-table-name&#34;&gt;Setting a custom table name for your model&lt;/h1&gt;
+&lt;h2 id=&#34;customer-table-name&#34;&gt;Setting a custom table name for your model&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sequelize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyModel&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
   &lt;span class=&#34;kr&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;init&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataTypes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -108,7 +98,7 @@ provides an easy way to map from entities&amp;rsquo; representation in the datab
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=&#34;custom-model-name&#34;&gt;Setting a custom model name for your model (for Sequelize)&lt;/h1&gt;
+&lt;h2 id=&#34;custom-model-name&#34;&gt;Setting a custom model name for your model (for Sequelize)&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sequelize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyModel&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
   &lt;span class=&#34;kr&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;init&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;DataTypes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -124,7 +114,7 @@ provides an easy way to map from entities&amp;rsquo; representation in the datab
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=&#34;queries&#34;&gt;Wrap queries&lt;/h1&gt;
+&lt;h2 id=&#34;queries&#34;&gt;Wrap queries&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sequelize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyModel&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
   &lt;span class=&#34;kr&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;getId&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -136,7 +126,7 @@ provides an easy way to map from entities&amp;rsquo; representation in the datab
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=&#34;instance-methods&#34;&gt;Instance methods&lt;/h1&gt;
+&lt;h2 id=&#34;instance-methods&#34;&gt;Instance methods&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sequelize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;MyModel&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
   &lt;span class=&#34;nx&#34;&gt;getFullName&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -144,7 +134,7 @@ provides an easy way to map from entities&amp;rsquo; representation in the datab
   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1 id=&#34;initialise-all&#34;&gt;Initialise all your models&lt;/h1&gt;
+&lt;h2 id=&#34;initialise-all&#34;&gt;Initialise all your models&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;require()&lt;/code&gt; followed by &lt;code&gt;model.init()&lt;/code&gt; is an alternative to &lt;code&gt;sequelize.import(path)&lt;/code&gt;, it’s a bit clearer what is and isn’t imported and under what name.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Sequelize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;sequelize&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -182,8 +172,7 @@ backed by relational databases, feel free to comment below or tweet to me &lt;a 
 &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/sorCkbu4Nzw?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Eugene Lim&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/square?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/sorCkbu4Nzw?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Eugene Lim&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/square?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -192,9 +181,7 @@ backed by relational databases, feel free to comment below or tweet to me &lt;a 
       <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/</guid>
-      <description>
-
-&lt;p&gt;Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.&lt;/p&gt;
+      <description>&lt;p&gt;Redis and Express are tools that provide a simple and clean approach to their problem domains. What follows is a Docker/Docker Compose v2 setup.&lt;/p&gt;
 
 &lt;p&gt;The repo is available at: &lt;a href=&#34;https://github.com/HugoDF/express-redis-docker&#34;&gt;https://github.com/HugoDF/express-redis-docker&lt;/a&gt;.&lt;/p&gt;
 
@@ -208,21 +195,7 @@ backed by relational databases, feel free to comment below or tweet to me &lt;a 
 
 &lt;p&gt;Docker is a containerisation system, Docker Compose is a way to define how multiple Docker containers interact. In the context of Node web application development, Docker tends to be used to define a container that has the required system-level dependencies (eg. Node version, any extra database drivers). Docker Compose would be used to define dependencies outside of the Node application, for example databases.&lt;/p&gt;
 
-&lt;!--
-
-- [Initialising Express 🚅](#initialising-express-)
-- [Running Node inside of Docker 🌊](#running-node-inside-of-docker-)
-- [Adding Redis](#adding-redis)
-- [Creating a blob store 📒](#creating-a-blob-store-)
-
---&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#initialising-express&#34;&gt;Initialising Express 🚅&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#running-node-inside-of-docker&#34;&gt;Running Node inside of Docker 🌊&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adding-redis&#34;&gt;Adding Redis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#creating-a-blob-store&#34;&gt;Creating a blob store 📒&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;initialising-express&#34;&gt;Initialising Express 🚅&lt;/h1&gt;
 
@@ -375,8 +348,7 @@ The reason I used an old school query-param based system is to avoid the boilerp
 
 &lt;p&gt;Full repository available at: &lt;a href=&#34;https://github.com/HugoDF/express-redis-docker&#34;&gt;https://github.com/HugoDF/express-redis-docker&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/rpMwfGLSsd8?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Ben Koorengevel&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/boats?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo by &lt;a href=&#34;https://unsplash.com/photos/rpMwfGLSsd8?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Ben Koorengevel&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/boats?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -385,21 +357,12 @@ The reason I used an old school query-param based system is to avoid the boilerp
       <pubDate>Wed, 20 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/how-to-make-beautiful-simple-cli-apps-with-node/</guid>
-      <description>
-
-&lt;p&gt;Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.&lt;/p&gt;
+      <description>&lt;p&gt;Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.&lt;/p&gt;
 
 &lt;p&gt;Command line apps are a neat way to package repetitive tasks. This will walk you through some tools
 that are useful to build CLI apps.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#the-idea&#34;&gt;The idea 💡&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#piping-to-the-command-line&#34;&gt;Piping to the command line 🚇&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#dealing-with-sequential-actions&#34;&gt;Dealing with sequential actions ✨&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#executable-javascript-files&#34;&gt;Executable JavaScript files 🦅&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adding-package-binaries&#34;&gt;Adding package binaries 📦&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#publishing-to-npm&#34;&gt;Publishing to npm 🚀&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;the-idea&#34;&gt;The idea 💡&lt;/h2&gt;
 
@@ -527,8 +490,7 @@ package, it&amp;rsquo;s super straightforward.&lt;/p&gt;
 
 &lt;p&gt;Hint: run &lt;code&gt;npx np&lt;/code&gt; in whatever package you&amp;rsquo;re trying to publish&lt;/p&gt;
 
-&lt;p&gt;You can find the full package at You can find it here: &lt;a href=&#34;https://github.com/HugoDF/fix-package-lock&#34;&gt;https://github.com/HugoDF/fix-package-lock&lt;/a&gt; and run it using &lt;code&gt;npx fix-package-lock&lt;/code&gt;.&lt;/p&gt;
-</description>
+&lt;p&gt;You can find the full package at You can find it here: &lt;a href=&#34;https://github.com/HugoDF/fix-package-lock&#34;&gt;https://github.com/HugoDF/fix-package-lock&lt;/a&gt; and run it using &lt;code&gt;npx fix-package-lock&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -537,36 +499,22 @@ package, it&amp;rsquo;s super straightforward.&lt;/p&gt;
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/</guid>
-      <description>
-
-&lt;p&gt;Testing is a crucial part of the software development process.
+      <description>&lt;p&gt;Testing is a crucial part of the software development process.
 It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.&lt;/p&gt;
 
 &lt;p&gt;Express is one of the most widespread libraries for building backend applications in JavaScript.
 What follows is a summary of how to set up an efficient unit testing strategy for such an application as well as
 a couple of situations you may be faced with when attempting to test.&lt;/p&gt;
 
-&lt;p&gt;Full code example can be found at &lt;a href=&#34;https://github.com/HugoDF/express-supertest-moxios&#34;&gt;https://github.com/HugoDF/express-supertest-moxios&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Full code example can be found at &lt;a href=&#34;https://github.com/HugoDF/express-supertest-moxios&#34;&gt;https://github.com/HugoDF/express-supertest-moxios&lt;/a&gt;.
+&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#a-simple-express-app&#34;&gt;A simple Express app 🎁&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-strategy&#34;&gt;Testing strategy 🕵️‍&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-a-less-simple-express-app&#34;&gt;Testing a less simple Express app 📚&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-strategy&#34;&gt;Testing strategy 🛠&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#where-redis-gets-mocked&#34;&gt;Where Redis gets mocked 🤡&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#parting-thoughts&#34;&gt;Parting thoughts 🦋&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
+&lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; on Monday.
 &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;h1 id=&#34;a-simple-express-app&#34;&gt;A simple Express app 🎁&lt;/h1&gt;
+&lt;h2 id=&#34;a-simple-express-app&#34;&gt;A simple Express app 🎁&lt;/h2&gt;
 
 &lt;p&gt;Say we have an Express set of route handlers like the following:&lt;/p&gt;
 
@@ -617,7 +565,7 @@ a couple of situations you may be faced with when attempting to test.&lt;/p&gt;
 {&amp;quot;blog&amp;quot;:&amp;quot;https://codewithhugo.com&amp;quot;,&amp;quot;location&amp;quot;:&amp;quot;London&amp;quot;,&amp;quot;bio&amp;quot;:&amp;quot;Developer, JavaScript.&amp;quot;,&amp;quot;publicRepos&amp;quot;:39}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;testing-strategy&#34;&gt;Testing strategy 🕵️‍&lt;/h2&gt;
+&lt;h3 id=&#34;testing-strategy&#34;&gt;Testing strategy 🕵️‍&lt;/h3&gt;
 
 &lt;p&gt;Testing is about defining some inputs and asserting on the outputs.&lt;/p&gt;
 
@@ -706,7 +654,7 @@ or a Regular Expression.&lt;/li&gt;
 Status will be the status in the &lt;code&gt;axios&lt;/code&gt; fetch response and &lt;code&gt;response&lt;/code&gt; will be the &lt;code&gt;data&lt;/code&gt; in the &lt;code&gt;axios&lt;/code&gt; fetch response.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;testing-a-less-simple-express-app&#34;&gt;Testing a less simple Express app 📚&lt;/h1&gt;
+&lt;h2 id=&#34;testing-a-less-simple-express-app&#34;&gt;Testing a less simple Express app 📚&lt;/h2&gt;
 
 &lt;p&gt;Let&amp;rsquo;s say we have an app that&amp;rsquo;s a blob store, backed by Redis (a simple key-value store amongst other things):&lt;/p&gt;
 
@@ -781,7 +729,7 @@ curl http://localhost:3000/my-key
 &lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;testing-strategy-1&#34;&gt;Testing strategy 🛠&lt;/h2&gt;
+&lt;h3 id=&#34;testing-strategy-1&#34;&gt;Testing strategy 🛠&lt;/h3&gt;
 
 &lt;p&gt;We have a decision to make here:&lt;/p&gt;
 
@@ -796,7 +744,7 @@ This means you&amp;rsquo;re relying on some sort of ordering of tests and you ca
 &lt;p&gt;For unit(ish) tests, that we want to be running the whole time we&amp;rsquo;re developing, this is an issue.
 The alternative is to mock Redis, specifically, &lt;code&gt;redisClient&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;where-redis-gets-mocked&#34;&gt;Where Redis gets mocked 🤡&lt;/h2&gt;
+&lt;h3 id=&#34;where-redis-gets-mocked&#34;&gt;Where Redis gets mocked 🤡&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;blob-store.test.js&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;blobStore&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;./blob-store&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -852,7 +800,7 @@ The alternative is to mock Redis, specifically, &lt;code&gt;redisClient&lt;/code
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In short we set up our tests so we can pass an arbitrary &lt;code&gt;redisClient&lt;/code&gt; object where we can mock the methods themselves.&lt;/p&gt;
 
-&lt;h1 id=&#34;parting-thoughts&#34;&gt;Parting thoughts 🦋&lt;/h1&gt;
+&lt;h2 id=&#34;parting-thoughts&#34;&gt;Parting thoughts 🦋&lt;/h2&gt;
 
 &lt;p&gt;Testing an Express app is all about finding the boundary at which the mocking starts and where it stops.&lt;/p&gt;
 
@@ -864,8 +812,7 @@ state somehow (ie writes to an object internally), and to inject/inspect that st
 
 &lt;p&gt;For the full code example, see &lt;a href=&#34;https://github.com/HugoDF/express-supertest-moxios&#34;&gt;https://github.com/HugoDF/express-supertest-moxios&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Cover photo &lt;a href=&#34;https://unsplash.com/photos/eofm5R5f9Kw?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Bekir Dönmez&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/clowns?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover photo &lt;a href=&#34;https://unsplash.com/photos/eofm5R5f9Kw?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Bekir Dönmez&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/clowns?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -914,44 +861,6 @@ We’re also being good unit-testing citizens and putting the original &lt;code&
 &lt;p&gt;“A fast, production ready, zero-dependency ES module loader for Node 6+!” is &lt;a href=&#34;https://github.com/standard-things/esm&#34;&gt;esm&lt;/a&gt;’s promise. From this sample project, it’s worked.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;
-
-&lt;!-- Break the table of contents so it doesn&#39;t auto-update with emoji --&gt;
-
-&lt;!--
-
-- [Writing ES modules without a build step 🎨](#writing-es-modules-without-a-build-step-%F0%9F%8E%A8)
-- [Sane defaults 🗃](#sane-defaults-%F0%9F%97%83)
-  - [Attempting to destructure null or undefined 0️⃣](#attempting-to-destructure-null-or-undefined-0%EF%B8%8F%E2%83%A3)
-  - [‘null’ remains, undefined gets defaulted 🔎](#%E2%80%98null%E2%80%99-remains-undefined-gets-defaulted-%F0%9F%94%8E)
-- [Waiting for Postgres with async/await 🛎](#waiting-for-postgres-with-asyncawait-%F0%9F%9B%8E)
-- [Integrating as a CLI with `meow` 😼](#integrating-as-a-cli-with-meow-%F0%9F%98%BC)
-- [Packaging and clean up 📤](#packaging-and-clean-up-%F0%9F%93%A4)
-- [Extras](#extras)
-  - [Publishing to npm with np](#publishing-to-npm-with-np)
-  - [Pointing to the ESM version of the module](#pointing-to-the-esm-version-of-the-module)
-  - [A Promise wait-for-pg implementation](#a-promise-wait-for-pg-implementation)
-
---&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#writing-es-modules-without-a-build-step&#34;&gt;Writing ES modules without a build step 🎨&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#sane-defaults&#34;&gt;Sane defaults 🗃&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#attempting-to-destructure-null-or-undefined&#34;&gt;Attempting to destructure null or undefined 0️⃣&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#null-remains-undefined-gets-defaulted&#34;&gt;‘null’ remains, undefined gets defaulted 🔎&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#waiting-for-postgres-with-asyncawait&#34;&gt;Waiting for Postgres with async/await 🛎&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#integrating-as-a-cli-with-meow&#34;&gt;Integrating as a CLI with &lt;code&gt;meow&lt;/code&gt; 😼&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#packaging-and-clean-up&#34;&gt;Packaging and clean up 📤&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#extras&#34;&gt;Extras&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#publishing-to-npm-with-np&#34;&gt;Publishing to npm with np&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pointing-to-the-esm-version-of-the-module&#34;&gt;Pointing to the ESM version of the module&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#a-promise-wait-for-pg-implementation&#34;&gt;A Promise wait-for-pg implementation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
@@ -1422,19 +1331,7 @@ Postgres is unavailable - sleeping&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       <pubDate>Sat, 21 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/</guid>
-      <description>&lt;!--
-- [An Express application with Redis and a worker 🏃‍♀️](#an-express-application-with-redis-and-a-worker-%F0%9F%8F%83%E2%80%8D%E2%99%80%EF%B8%8F)
-- [Setting up bull 🐮](#setting-up-bull-%F0%9F%90%AE)
-- [Persisting webhook data with Redis](#persisting-webhook-data-with-redis)
-  - [Accepting payloads and forwarding them on](#accepting-payloads-and-forwarding-them-on)
-  - [Persisting webhook data to Redis 💾](#persisting-webhook-data-to-redis-%F0%9F%92%BE)
-  - [Saving POST data using the new db module](#saving-post-data-using-the-new-db-module)
-- [Queuing jobs 🏭](#queuing-jobs-%F0%9F%8F%AD)
-- [Processing jobs ⚙️](#processing-jobs-%E2%9A%99%EF%B8%8F)
-- [Some other stuff to do before you ship this 🚢](#some-other-stuff-to-do-before-you-ship-this-%F0%9F%9A%A2)
---&gt;
-
-&lt;p&gt;There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.&lt;/p&gt;
+      <description>&lt;p&gt;There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.&lt;/p&gt;
 
 &lt;p&gt;There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. &lt;a href=&#34;https://github.com/Automattic/kue&#34;&gt;Kue&lt;/a&gt;, &lt;a href=&#34;https://github.com/smrchy/rsmq&#34;&gt;RSMQ&lt;/a&gt;, &lt;a href=&#34;https://github.com/bee-queue/bee-queue&#34;&gt;Bee Queue&lt;/a&gt;, &lt;a href=&#34;https://github.com/OptimalBits/bull&#34;&gt;bull&lt;/a&gt;.
 The issue with Kue, RSMQ and Bee Queue was its use of a &lt;code&gt;done&lt;/code&gt; callback as the recommended API.&lt;/p&gt;
@@ -1443,24 +1340,9 @@ The issue with Kue, RSMQ and Bee Queue was its use of a &lt;code&gt;done&lt;/cod
 
 &lt;p&gt;We’ll walk through an application that sends webhooks with a given payload to a set of URLs.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
 &lt;p&gt;You can find the full code content at &lt;a href=&#34;https://github.com/HugoDF/express-bull-es6&#34;&gt;https://github.com/HugoDF/express-bull-es6&lt;/a&gt;.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#an-express-application-with-redis-and-a-worker&#34;&gt;An Express application with Redis and a worker 🏃‍♀️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#setting-up-bull&#34;&gt;Setting up bull 🐮&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#persisting-webhook-data-with-redis&#34;&gt;Persisting webhook data with Redis&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#accepting-payloads-and-forwarding-them-on&#34;&gt;Accepting payloads and forwarding them on&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#persisting-webhook-data-to-redis&#34;&gt;Persisting webhook data to Redis 💾&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#saving-post-data-using-the-new-db-module&#34;&gt;Saving POST data using the new db module&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#queuing-jobs&#34;&gt;Queuing jobs 🏭&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#processing-jobs&#34;&gt;Processing jobs ⚙️&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#some-other-stuff-to-do-before-you-ship-this&#34;&gt;Some other stuff to do before you ship this 🚢&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
@@ -2041,16 +1923,6 @@ my-app    &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; Hit example with &lt;span
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;!--
-- [Setting up parcel 📦](#setting-up-parcel-%F0%9F%93%A6)
-- [Deploying for free 💸](#deploying-for-free-%F0%9F%92%B8)
---&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#setting-up-parcel&#34;&gt;Setting up parcel 📦&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#deploying-for-free&#34;&gt;Deploying for free 💸&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
 &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
@@ -2159,17 +2031,11 @@ If you’re building a repo that is not &lt;code&gt;USERNAME.github.io&lt;/code&
 &lt;p&gt;An example consuming a GraphQL API in JavaScript from Node and the browser using &lt;code&gt;graphql.js&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
 &lt;p&gt;See the example live: &lt;a href=&#34;https://codewithhugo.com/js-graphql-client-example/&#34;&gt;https://codewithhugo.com/js-graphql-client-example/&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Full repo: &lt;a href=&#34;https://github.com/HugoDF/js-graphql-client-example&#34;&gt;https://github.com/HugoDF/js-graphql-client-example&lt;/a&gt;.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#fetching-from-node&#34;&gt;Fetching from Node&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#fetching-from-the-browser&#34;&gt;Fetching from the browser&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#graphql-documentation-tools&#34;&gt;GraphQL documentation tools&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt; last Monday.
@@ -2342,12 +2208,6 @@ If you’re building a repo that is not &lt;code&gt;USERNAME.github.io&lt;/code&
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#example-using-sendgrid&#34;&gt;Example using SendGrid&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#how-do-we-consume-this&#34;&gt;How do we consume this?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#switching-to-another-email-provider&#34;&gt;Switching to another email provider&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;This was sent out on the &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Code with Hugo newsletter&lt;/a&gt;.
 &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;Subscribe&lt;/a&gt; to get the latest posts right in your inbox (before anyone else).&lt;/p&gt;
@@ -2459,14 +2319,14 @@ Ideally, we don’t want to change any of the application code.&lt;/p&gt;
       <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/</guid>
-      <description>
-
-&lt;p&gt;This post goes through some patterns that can be used to unit test ES6 classes.&lt;/p&gt;
+      <description>&lt;p&gt;This post goes through some patterns that can be used to unit test ES6 classes.&lt;/p&gt;
 
 &lt;p&gt;The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.&lt;/p&gt;
 
 &lt;p&gt;In &lt;a href=&#34;https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/&#34;&gt;&amp;ldquo;Using ES6 classes for Sequelize 4 models&amp;rdquo;&lt;/a&gt; we explored how to define Sequelize models using ES6 classes.
 One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;We’ll be testing the following model (which is an ES6 class):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;sequelize&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -2533,8 +2393,7 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Using ES6 classes with Sequelize makes testing easier and more natural, &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;sign up to the newsletter&lt;/a&gt; to stay in the loop for the upcoming Sequelize ES6 Cheat Sheet.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@elevatebeer?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Elevate&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Elevate&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@elevatebeer?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Elevate&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Elevate&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -2543,9 +2402,7 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
       <pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;Settling on a &lt;a href=&#34;https://www.netlify.com/&#34;&gt;Netlify&lt;/a&gt; + &lt;a href=&#34;https://github.com/dokku/dokku&#34;&gt;Dokku&lt;/a&gt; on &lt;a href=&#34;https://m.do.co/c/4ee8b2d1adb4&#34;&gt;DigitalOcean&lt;/a&gt; deployment stack for JavaScript and Node.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -2560,31 +2417,11 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
 &lt;li&gt;👎 → con&lt;/li&gt;
 &lt;li&gt;🤔 → undecided&lt;/li&gt;
 &lt;li&gt;🚨 → deal-breaker for me&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;🤓 → nice-to-have&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#my-past-deployment-experiences&#34;&gt;My past deployment experiences&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#nowsh&#34;&gt;now.sh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#github-pages&#34;&gt;GitHub Pages&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#heroku&#34;&gt;Heroku&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#aws&#34;&gt;AWS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#digitalocean&#34;&gt;DigitalOcean&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#vultr&#34;&gt;Vultr&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#the-stack-moving-forward&#34;&gt;The stack moving forward&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#netlify&#34;&gt;Netlify&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#dokku-on-digitalocean&#34;&gt;Dokku on DigitalOcean&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#setting-dokku-up&#34;&gt;Setting Dokku up&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#parting-thoughts&#34;&gt;Parting thoughts&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;🤓 → nice-to-have&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;my-past-deployment-experiences&#34;&gt;My past deployment experiences&lt;/h2&gt;
 
@@ -2787,8 +2624,7 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
 
 &lt;p&gt;My migration of a couple of apps off of now.sh wasn’t to go from bad to good, but rather from good to better (for my needs).&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@billjelen?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Bill Jelen&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Bill Jelen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@billjelen?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Bill Jelen&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Bill Jelen&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -2797,9 +2633,7 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
       <pubDate>Thu, 11 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/</guid>
-      <description>
-
-&lt;p&gt;Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use &lt;code&gt;require(&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;module-name&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;)&lt;/code&gt; to import from other modules and use the &lt;code&gt;module.exports&lt;/code&gt; object to expose entities from a module.&lt;/p&gt;
+      <description>&lt;p&gt;Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use &lt;code&gt;require(&#39;module-name&#39;)&lt;/code&gt; to import from other modules and use the &lt;code&gt;module.exports&lt;/code&gt; object to expose entities from a module.&lt;/p&gt;
 
 &lt;p&gt;Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. The ease with which one can bundle CommonJS coupled with its widespread use in Node applications and tools means CommonJS quickly displaced RequireJS and SystemJS for frontend application dependency and module management&lt;/p&gt;
 
@@ -2815,7 +2649,10 @@ One of the benefits of such an approach is that it allows easy unit testing, it 
 
 &lt;p&gt;I’ve discovered the &lt;a href=&#34;https://github.com/standard-things/esm&#34;&gt;esm&lt;/a&gt; module, “Tomorrow&amp;rsquo;s ECMAScript modules today!” by &lt;a href=&#34;https://github.com/jdalton&#34;&gt;John-David Dalton&lt;/a&gt; (of lodash 😄). It allows you to use ES modules in Node with no compilation step. It’s small, has a small footprint and comes with some extra goodies&lt;/p&gt;
 
-&lt;p&gt;What follows is some ways to use it that aren’t strictly documented. This covers use-cases like incremental adoption of ES modules (ie. convert some modules to ESM but not the whole app). Using this will help you share&lt;/p&gt;
+&lt;p&gt;What follows is some ways to use it that aren’t strictly documented. This covers use-cases like incremental adoption of ES modules (ie. convert some modules to ESM but not the whole app). Using this will help you share CommonJS and ESM modules.&lt;/p&gt;
+
+&lt;p&gt;Table of Contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;import-default-export-from-an-es-module-in-commonjs&#34;&gt;Import default export from an ES module in CommonJS&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;esmImport&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;esm&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
@@ -2865,8 +2702,7 @@ Success&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;If you’re interested in “history of JavaScript module, bundling + dependency management” article, let me know by &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribing&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@sortino?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Joshua Sortino&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Joshua Sortino&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@sortino?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Joshua Sortino&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Joshua Sortino&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -2875,9 +2711,7 @@ Success&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       <pubDate>Mon, 22 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;Leave the Express comfort zone to expand how you think about Node application architecture.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -2887,23 +2721,13 @@ Success&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;li&gt;using a function composition model for building HTTP servers is awesome&lt;/li&gt;
 &lt;li&gt;Functions as a Service are great but have some drawbacks&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;micro&lt;/code&gt; has a similar, simple API to FaaS but doesn&amp;rsquo;t have a compilation step&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;micro&lt;/code&gt;&amp;rsquo;s minimalism affects how you solve problems&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#functions-as-a-composition-model-for-javascript&#34;&gt;Functions as a composition model for JavaScript&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#functions-as-a-service-pain-points&#34;&gt;Functions as a Service pain points&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#beyond-express-micro-as-a-library-to-write-simple-node-applications&#34;&gt;Beyond Express: &lt;code&gt;micro&lt;/code&gt; as a library to write simple Node applications&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#how-micro-helps-your-architecture&#34;&gt;How &lt;code&gt;micro&lt;/code&gt; helps your architecture&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#the-micro-docs-ecosystem-and-examples&#34;&gt;The &lt;code&gt;micro&lt;/code&gt; docs, ecosystem and examples&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#further-information&#34;&gt;Further information&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;micro&lt;/code&gt;&amp;rsquo;s minimalism affects how you solve problems&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;An example comparing &lt;code&gt;micro&lt;/code&gt; and &lt;code&gt;express&lt;/code&gt; can be found at: &lt;a href=&#34;https://github.com/HugoDF/micro-vs-express-example&#34;&gt;github.com/HugoDF/micro-vs-express-example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;functions-as-a-composition-model-for-javascript&#34;&gt;Functions as a composition model for JavaScript&lt;/h2&gt;
 
@@ -3120,8 +2944,7 @@ This is the hello world, &lt;code&gt;app.js&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Feel free to tweet at me &lt;a href=&#34;https://twitter.com/@hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@kellysikkema?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Kelly Sikkema&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Kelly Sikkema&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@kellysikkema?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Kelly Sikkema&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Kelly Sikkema&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -3130,9 +2953,7 @@ This is the hello world, &lt;code&gt;app.js&lt;/code&gt;&lt;/p&gt;
       <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/</guid>
-      <description>
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;Enhancing generators for ES6 in the Sequelize CLI&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -3161,41 +2982,8 @@ One of the great aspects of it is that you can always (depending on the license)
 &lt;li&gt;&lt;a href=&#34;https://twitter.com/hugo__df/status/1058284191673188354&#34;&gt;Day 4 (finishing up)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;!--
-- [Dealing with a GitHub fork repository 🍴](#dealing-with-a-github-fork-repository-)
-- [Following setup instructions 📐](#following-setup-instructions-)
-- [My goals 🛒](#my-goals-)
-- [Getting tests to pass 🚫](#getting-tests-to-pass-)
-- [Releasing the updates 🚀](#releasing-the-updates-)
-  - [Trying to contribute back upstream](#trying-to-contribute-back-upstream)
-  - [Publishing a fork as an npm scoped module](#publishing-a-fork-as-an-npm-scoped-module)
-- [Lessons about the Open Source Movement 📖](#lessons-about-the-open-source-movement-)
-  - [People are paid to make mistakes, people who work for free will also make (similar) mistakes](#people-are-paid-to-make-mistakes-people-who-work-for-free-will-also-make-similar-mistakes)
-  - [No one owes you _anything_](#no-one-owes-you-_anything_)
-  - [Do what you can](#do-what-you-can)
---&gt;
-
-&lt;p&gt;Table of contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#dealing-with-a-github-fork-repository&#34;&gt;Dealing with a GitHub fork repository 🍴&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#following-setup-instructions&#34;&gt;Following setup instructions 📐&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#my-goals&#34;&gt;My goals 🛒&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#getting-tests-to-pass&#34;&gt;Getting tests to pass&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#releasing-the-updates&#34;&gt;Releasing the updates 🚀&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#trying-to-contribute-back-upstream&#34;&gt;Trying to contribute back upstream&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#publishing-a-fork-as-an-npm-scoped-module&#34;&gt;Publishing a fork as an npm scoped module&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#lessons-about-the-open-source-movement&#34;&gt;Lessons about the Open Source Movement 📖&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#people-are-paid-to-make-mistakes-people-who-work-for-free-will-also-make-similar-mistakes&#34;&gt;People are paid to make mistakes, people who work for free will also make (similar) mistakes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#no-one-owes-you-anything&#34;&gt;No one owes you &lt;em&gt;anything&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#do-what-you-can&#34;&gt;Do what you can&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;dealing-with-a-github-fork-repository&#34;&gt;Dealing with a GitHub fork repository 🍴&lt;/h2&gt;
 
@@ -3385,8 +3173,7 @@ To get here, just like at a startup attempting to scale, the maintainers have ha
 
 &lt;p&gt;Everyone is just trying to help.&lt;/p&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@docrowdee?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Ruediger Theiselmann&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Ruediger Theiselmann&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@docrowdee?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Ruediger Theiselmann&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Ruediger Theiselmann&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -3397,50 +3184,9 @@ To get here, just like at a startup attempting to scale, the maintainers have ha
       <guid>https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/</guid>
       <description>&lt;p&gt;Here&amp;rsquo;s how I get productive for JavaScript/Node on Mac OS.&lt;/p&gt;
 
+&lt;p&gt;It includes iTerm2, zsh, Node, Visual Studio Code and some git commands.&lt;/p&gt;
+
 &lt;p&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#terminal&#34;&gt;Terminal&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#setup-iterm2&#34;&gt;Setup iTerm2&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#change-edit-mode-to-natural-text&#34;&gt;Change edit mode to natural text&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#new-session-should-start-where-previous-left-off&#34;&gt;New session should start where previous left off&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#quit-on-tab-close&#34;&gt;Quit on tab close&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#increase-font-size&#34;&gt;Increase font size&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#enable-infinite-history&#34;&gt;Enable infinite history&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#shell-setup&#34;&gt;Shell setup&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#zsh&#34;&gt;zsh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#snazzy-colour-theme&#34;&gt;snazzy colour theme&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pure-prompt&#34;&gt;Pure prompt&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#browsers-and-testing&#34;&gt;Browsers and testing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#editor&#34;&gt;Editor&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#install-vscode-command-line-tools&#34;&gt;Install VSCode command line tools&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#must-have-extensions&#34;&gt;Must-have extensions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#nice-to-have-extensions&#34;&gt;Nice to have extensions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#productivity&#34;&gt;Productivity&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#clipy&#34;&gt;Clipy&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#tooling&#34;&gt;Tooling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#setup-and-configuration&#34;&gt;Setup and configuration&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#misc-and-extras&#34;&gt;Misc and extras&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#optional-docker-virtualbox&#34;&gt;(Optional) Docker, VirtualBox&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h1 id=&#34;terminal&#34;&gt;Terminal&lt;/h1&gt;
 
@@ -3647,49 +3393,12 @@ VirtualBox allows you to run Virtual Machines on Mac, install it at &lt;a href=&
 
 &lt;p&gt;Let&amp;rsquo;s apply that principle: I&amp;rsquo;m building &lt;a href=&#34;https://accountableblogging.com&#34;&gt;Post Frequency/Accountable Blogging&lt;/a&gt;,
 I&amp;rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and
-I’ve settled on Dokku for databases/backend applications hosting.
+I’ve settled on Dokku for databases/backend applications hosting.&lt;/p&gt;
+
+&lt;p&gt;Table of contents:
 &lt;/p&gt;
 
 &lt;p&gt;See how I deploy my applications &lt;a href=&#34;https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/&#34;&gt;Deployment options: Netlify + Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Table of contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#context&#34;&gt;Context&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#frontend&#34;&gt;Frontend&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#vue--vue-cli-3&#34;&gt;Vue + Vue CLI 3&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#vue-cli-prerender-spa-plugin&#34;&gt;Vue CLI prerender SPA plugin&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#load-some-scripts-only-on-production&#34;&gt;Load some scripts only on production&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#load-scripts-only-if-not-pre-rendering-injectx-using&#34;&gt;Load scripts only if &lt;em&gt;not&lt;/em&gt; pre-rendering &lt;code&gt;injectX&lt;/code&gt; using:&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#pass-service-urls-using-envenvironment-files&#34;&gt;Pass service URLs using &lt;code&gt;.env.${ENVIRONMENT}&lt;/code&gt; files&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#being-social-and-google-friendly&#34;&gt;Being social and Google-friendly&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#be-crawlable&#34;&gt;Be crawlable&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#favicons-and-manifests&#34;&gt;Favicons and manifests&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#meta-description-opengraph-tags&#34;&gt;Meta description, OpenGraph tags&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#without-router&#34;&gt;Without router&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#with-vue-router&#34;&gt;With vue-router&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#backend-services&#34;&gt;Backend service(s)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#launch&#34;&gt;Launch&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;#outcomes&#34;&gt;Outcomes&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h2 id=&#34;context&#34;&gt;Context&lt;/h2&gt;
 
@@ -3846,30 +3555,14 @@ I’ve settled on Dokku for databases/backend applications hosting.
       <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/sequelize-data-types-a-practical-guide/</guid>
-      <description>
-
-&lt;p&gt;DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.&lt;/p&gt;
+      <description>&lt;p&gt;DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.&lt;/p&gt;
 
 &lt;p&gt;First of all, DataTypes contains both the types and generators for default values: eg. &lt;code&gt;NOW&lt;/code&gt;, &lt;code&gt;UUIDV1&lt;/code&gt; and &lt;code&gt;UUIDV4&lt;/code&gt; are special default values.&lt;/p&gt;
 
 &lt;p&gt;The places where you&amp;rsquo;re likely to encounter DataTypes are in the model field definition and in the migration definitions. Note that for a given model and field, the data type should be the &lt;em&gt;same&lt;/em&gt; in the model and in the migration.&lt;/p&gt;
 
-&lt;p&gt;Table of contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#text-types&#34;&gt;Text types&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#default-values&#34;&gt;Default values&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#number&#34;&gt;Number&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#fancy-primitive-types&#34;&gt;Fancy primitive types&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#datetime&#34;&gt;Date/Time&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#fancy-types&#34;&gt;Fancy types&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#postgres-fancy-types&#34;&gt;Postgres fancy types&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;This is an extract from the &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet&#34;&gt;Sequelize ES6 Cheatsheet&lt;/a&gt;
-- the better Sequelize docs you wish you had (get it &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;text-types&#34;&gt;Text types&lt;/h2&gt;
 
@@ -3920,6 +3613,11 @@ I’ve settled on Dokku for databases/backend applications hosting.
 &lt;li&gt;&lt;code&gt;DOUBLE&lt;/code&gt;: Floating point number (8-byte precision). Accepts one or two arguments for precision&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;DECIMAL&lt;/code&gt;: Decimal number. Accepts one or two arguments for precision&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This is an extract from the &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet&#34;&gt;Sequelize ES6 Cheatsheet&lt;/a&gt;
+- the better Sequelize docs you wish you had (get it &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;fancy-primitive-types&#34;&gt;Fancy primitive types&lt;/h2&gt;
 
@@ -3980,8 +3678,7 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 - the better Sequelize docs you wish you had (get it &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/sequelize-cheatsheet&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@mbaumi?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Mika Baumeister&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Mika Baumeister&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@mbaumi?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Mika Baumeister&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Mika Baumeister&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -3996,8 +3693,6 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
 
 &lt;p&gt;Live-coding/workshop section touching on both Node and client-side JS situations at &lt;a href=&#34;https://github.com/HugoDF/async-js-presentation/tree/master/workshop&#34;&gt;github.com/HugoDF/async-js-presentation/tree/master/workshop&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
 &lt;p&gt;This given as a talk at Codebar London January Monthly 2019, see the slides:&lt;/p&gt;
 
 &lt;div style=&#34;width: 100%; padding: 50px;&#34;&gt;
@@ -4005,70 +3700,8 @@ DataTypes.ENUM(FIRST_ENUM_VALUE, OTHER_ENUM_VALUE)
     &lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;bdf4eba915de465096eecc8322c7f712&#34; data-ratio=&#34;1.41436464088398&#34; src=&#34;https://speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;Table of Contents 🐳&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#asynchronicity-in-javascript&#34;&gt;Asynchronicity in JavaScript&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#what-s-asynchronous-in-a-web-application&#34;&gt;What&amp;rsquo;s asynchronous in a web application?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#why-non-blocking-i-o&#34;&gt;Why non-blocking I/O?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#node-style-callbacks&#34;&gt;Node-style callbacks&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#node-style-callbacks-problems&#34;&gt;Node-style callbacks: problems&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#1-callback-hell&#34;&gt;1. Callback &lt;em&gt;hell&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#2-shadowing-variables&#34;&gt;2. Shadowing variables&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#3-duplicated-error-handling&#34;&gt;3. Duplicated error handling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#4-swallowed-errors&#34;&gt;4. Swallowed errors&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#callback-problems&#34;&gt;Callback problems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#bring-on-the-promise&#34;&gt;Bring on the Promise&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#pros&#34;&gt;Pros&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cons&#34;&gt;Cons&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#promise-gotchas&#34;&gt;Promise gotchas&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#nesting-them-is-tempting&#34;&gt;Nesting them is tempting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#onrejected-callback&#34;&gt;onRejected callback&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#async-await&#34;&gt;async/await&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#example-loop-through-sequential-calls&#34;&gt;Example: loop through sequential calls&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#example-share-data-between-calls&#34;&gt;Example: share data between calls&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#example-error-handling&#34;&gt;Example: error handling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#cons-of-async-await&#34;&gt;Cons of async/await&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#gotchas&#34;&gt;Gotchas&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#creating-an-error&#34;&gt;Creating an error&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#what-happens-when-you-forget-await&#34;&gt;What happens when you forget await?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#promises-evaluate-eagerly&#34;&gt;Promises evaluate eagerly ✨&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#testing-gotchas&#34;&gt;Testing gotchas 📙&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#patterns&#34;&gt;Patterns&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#running-promises-in-parallel&#34;&gt;Running promises in parallel 🏃&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#delay-execution-of-a-promise&#34;&gt;Delay execution of a promise&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#separate-synchronous-and-asynchronous-operations&#34;&gt;Separate synchronous and asynchronous operations&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#running-promises-sequentially&#34;&gt;Running promises sequentially&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#passing-data-in-sequential-async-calls&#34;&gt;Passing data in sequential async calls&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#error-handling&#34;&gt;Error handling&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#workshop-examples&#34;&gt;Workshop Examples&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#callbackify-ing-a-promise-based-api&#34;&gt;&amp;ldquo;callbackify&amp;rdquo;-ing a Promise-based API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#getting-data-in-parallel-using-callbacks-the-pain&#34;&gt;Getting data in parallel using callbacks: the pain&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#promisify-ing-a-callback-based-api&#34;&gt;&amp;ldquo;promisify&amp;rdquo;-ing a callback-based API&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#why-we-don-t-mix-async-and-sync-operations&#34;&gt;Why we don&amp;rsquo;t mix async and sync operations&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#further-reading&#34;&gt;Further Reading&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Table of Contents 🐳&lt;/strong&gt;:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;asynchronicity-in-javascript&#34;&gt;Asynchronicity in JavaScript&lt;/h2&gt;
 
@@ -4920,21 +4553,10 @@ Despite their low usage, we also &amp;lt;3 safari (Apple, latest version: 12, us
 
 &lt;p&gt;&lt;code&gt;spawn&lt;/code&gt; has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
 &lt;p&gt;Full examples &lt;a href=&#34;https://github.com/HugoDF/node-run-python&#34;&gt;github.com/HugoDF/node-run-python&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Table of contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#call-a-shell-command-and-log-it&#34;&gt;Call a shell command and log it&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#call-python-for-its-version&#34;&gt;Call Python for its version&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#call-a-python-script-from-node&#34;&gt;Call a Python script from Node&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pass-arguments-to-a-python-script-from-node-js-using-child-process-spawn&#34;&gt;Pass arguments to a Python script from Node.js using child_process.spawn&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#read-child-process-spawn-output-from-node-js&#34;&gt;Read child_process.spawn output from Node.js&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#handle-errors-from-child-process-spawn&#34;&gt;Handle errors from child_process.spawn&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#pass-structured-data-from-python-ruby-to-node-js-javascript&#34;&gt;Pass structured data from Python/Ruby to Node.js/JavaScript&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;p&gt;The following examples contain 2 sections.&lt;/p&gt;
 

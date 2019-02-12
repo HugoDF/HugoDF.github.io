@@ -23,9 +23,9 @@
     
     <link rel="canonical" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/" /> 
 
-     <meta name="description" content="&lt;!--
-- [An Express application with Redis and a worker 🏃‍♀️](#an-express-application-with-redis-and-a-worker-%F0%9F%8F%83%E2%80%8D%E2%99%80%EF%B8%8F)
-- [Setting" /> 
+     <meta name="description" content="&lt;p&gt;There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.&lt;/p&gt;
+
+&lt;p&gt;There" /> 
 
      
     
@@ -34,9 +34,9 @@
     
  
     <meta name="twitter:title" content="Bring Redux to your queue logic: an Express setup with ES6 and bull queue"/>
-    <meta name="twitter:description" content="&lt;!--
-- [An Express application with Redis and a worker 🏃‍♀️](#an-express-application-with-redis-and-a-worker-%F0%9F%8F%83%E2%80%8D%E2%99%80%EF%B8%8F)
-- [Setting"/>
+    <meta name="twitter:description" content="&lt;p&gt;There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.&lt;/p&gt;
+
+&lt;p&gt;There"/>
     <meta name="twitter:url" content="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
@@ -46,9 +46,9 @@
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="&lt;!--
-- [An Express application with Redis and a worker 🏃‍♀️](#an-express-application-with-redis-and-a-worker-%F0%9F%8F%83%E2%80%8D%E2%99%80%EF%B8%8F)
-- [Setting" />
+    <meta property="og:description" content="&lt;p&gt;There always comes a point in a web application&amp;rsquo;s life where an operation is best served in the background, this is where queues come in.&lt;/p&gt;
+
+&lt;p&gt;There" />
 
     <meta property="article:published_time" content="2018-07-21T00:00:00Z" />
     <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Node" /><meta property="article:tag" content="Docker" /><meta property="article:tag" content="redis" />
@@ -64,13 +64,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -154,23 +154,22 @@
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
+      <article class="post-full post">
+  <header class="post-full-header">
+    <section class="post-full-meta">
+      <time class="post-full-meta-date"
+        datetime="2018-07-21">21 July 2018</time>
+      <span class="date-divider">/</span> <a
+        href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
+    </section>
+    <h1 class="post-full-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h1>
+  </header>
+  <div class="hero-container">
+
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)">
       
-<div id="codefund_ad"></div>
-
-
-<article class="post-full post">
-    <header class="post-full-header">
-        <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-07-21">21 July 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
-        </section>
-        <h1 class="post-full-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h1>
-    </header>
-    <div class="hero-container">
-
-      
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)">
-        
   <section class="hero-cta">
     <h3 class="cta-title">Have a question?</h3>
     <p class="cta-text">
@@ -181,24 +180,12 @@
   </section>
 
 
-      </figure>
-    </div>
+    </figure>
+  </div>
 
-    <section class="post-full-content">
-        <div class="kg-card-markdown">
-        <!--
-- [An Express application with Redis and a worker 🏃‍♀️](#an-express-application-with-redis-and-a-worker-%F0%9F%8F%83%E2%80%8D%E2%99%80%EF%B8%8F)
-- [Setting up bull 🐮](#setting-up-bull-%F0%9F%90%AE)
-- [Persisting webhook data with Redis](#persisting-webhook-data-with-redis)
-  - [Accepting payloads and forwarding them on](#accepting-payloads-and-forwarding-them-on)
-  - [Persisting webhook data to Redis 💾](#persisting-webhook-data-to-redis-%F0%9F%92%BE)
-  - [Saving POST data using the new db module](#saving-post-data-using-the-new-db-module)
-- [Queuing jobs 🏭](#queuing-jobs-%F0%9F%8F%AD)
-- [Processing jobs ⚙️](#processing-jobs-%E2%9A%99%EF%B8%8F)
-- [Some other stuff to do before you ship this 🚢](#some-other-stuff-to-do-before-you-ship-this-%F0%9F%9A%A2)
--->
-
-<p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.</p>
+  <section class="post-full-content">
+    <div class="kg-card-markdown">
+      <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.</p>
 
 <p>There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. <a href="https://github.com/Automattic/kue">Kue</a>, <a href="https://github.com/smrchy/rsmq">RSMQ</a>, <a href="https://github.com/bee-queue/bee-queue">Bee Queue</a>, <a href="https://github.com/OptimalBits/bull">bull</a>.
 The issue with Kue, RSMQ and Bee Queue was its use of a <code>done</code> callback as the recommended API.</p>
@@ -207,15 +194,18 @@ The issue with Kue, RSMQ and Bee Queue was its use of a <code>done</code> callba
 
 <p>We’ll walk through an application that sends webhooks with a given payload to a set of URLs.</p>
 
-<p></p>
-
 <p>You can find the full code content at <a href="https://github.com/HugoDF/express-bull-es6">https://github.com/HugoDF/express-bull-es6</a>.</p>
 
+<p></p>
+    </div>
+    <section class="table-of-contents">
+      <nav id="TableOfContents">
+<ul>
+<li>
 <ul>
 <li><a href="#an-express-application-with-redis-and-a-worker">An Express application with Redis and a worker 🏃‍♀️</a></li>
 <li><a href="#setting-up-bull">Setting up bull 🐮</a></li>
 <li><a href="#persisting-webhook-data-with-redis">Persisting webhook data with Redis</a>
-
 <ul>
 <li><a href="#accepting-payloads-and-forwarding-them-on">Accepting payloads and forwarding them on</a></li>
 <li><a href="#persisting-webhook-data-to-redis">Persisting webhook data to Redis 💾</a></li>
@@ -224,7 +214,16 @@ The issue with Kue, RSMQ and Bee Queue was its use of a <code>done</code> callba
 <li><a href="#queuing-jobs">Queuing jobs 🏭</a></li>
 <li><a href="#processing-jobs">Processing jobs ⚙️</a></li>
 <li><a href="#some-other-stuff-to-do-before-you-ship-this">Some other stuff to do before you ship this 🚢</a></li>
+</ul></li>
 </ul>
+</nav>
+    </section>
+    
+    <div id="codefund_ad" class="related-links"></div>
+    
+    <div class="kg-card-markdown">
+        
+        
 
 <blockquote>
 <p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> last Monday.
@@ -787,35 +786,33 @@ my-app    <span class="p">|</span> Hit example with <span class="o">{</span><spa
 <p>For more information about using <a href="https://github.com/standard-things/esm">esm</a>, see: <a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/</a>.</p>
 
 <p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@mparzuchowski?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Michał Parzuchowski"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Michał Parzuchowski</span></a></p>
-        </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="subscribe-form">
-        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
-        <p>Get all the posts of the week before anyone else in your inbox</p>
-        <form
-            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
-        >
-            <div class="form-group">
-                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
-                <input type="hidden" value="1" name="embed"/>
-            </div>
-            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
-        </form>
-    </section>
+  <section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+    <p>Get all the posts of the week before anyone else in your inbox</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/hugo" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')">
+      <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+        <input type="hidden" value="1" name="embed" />
+      </div>
+      <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+    </form>
+  </section>
 
-    <footer class="post-full-footer">
-      <section class="author-card">
-        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-        <section class="author-card-content">
-            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
-                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
-        </section>
+  <footer class="post-full-footer">
+    <section class="author-card">
+      <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+        alt="Author" />
+      <section class="author-card-content">
+        <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a>
+        </h4>
+        <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
       </section>
-    </footer>
+    </section>
+  </footer>
 </article>
 
 
@@ -865,13 +862,13 @@ my-app    <span class="p">|</span> Hit example with <span class="o">{</span><spa
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/">Technical content workflow for “Code with Hugo”: static site, Paper, Medium, DEV and Buttondown</a></li>            
+          <li><a href="https://codewithhugo.com/sequelize-data-types-a-practical-guide/">Sequelize Data Types: a practical guide</a></li>            
         
-          <li><a href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">First-class and Higher Order Functions: Effective Functional JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         
-          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+          <li><a href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">Testing an Express app with SuperTest, moxios and Jest</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">React vs Angular vs Vue in 2019: How components won the “framework wars”</a></li>            
+          <li><a href="https://codewithhugo.com/why-css-is-hard/">Why CSS is hard</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -901,7 +898,9 @@ my-app    <span class="p">|</span> Hit example with <span class="o">{</span><spa
           <section class="post-card-excerpt">
               
                 <p>As part of adding integration tests to an app on CircleCI I ran into the following issues:
- redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly. ...  </p>
+ redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly.
+
+ ...  </p>
               
           </section>
       </a>

@@ -83,22 +83,8 @@
 
 &lt;p&gt;This post is a quarter useful, quarter history lesson, half quirky JavaScript exploration.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Table of contents:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#arrayisarray-behaviour-with-different-types&#34;&gt;Array.isArray behaviour with different types&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#whats-so-special-about-arrayisarray&#34;&gt;What’s so special about &lt;code&gt;Array.isArray&lt;/code&gt;?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#implementation-options&#34;&gt;Implementation options&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#the-official-polyfill&#34;&gt;The official polyfill&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#the-duck-typing-approach&#34;&gt;The duck-typing approach&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#checking-the-prototypeconstructorinstance-type&#34;&gt;Checking the prototype/constructor/instance type&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#array-vs-object-application&#34;&gt;Array vs Object: application&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Table of contents:
+&lt;/p&gt;
 
 &lt;h2 id=&#34;array-isarray-behaviour-with-different-types&#34;&gt;Array.isArray behaviour with different types&lt;/h2&gt;
 

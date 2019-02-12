@@ -17,9 +17,9 @@
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</guid>
-      <description>
+      <description>&lt;p&gt;For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.&lt;/p&gt;
 
-&lt;p&gt;For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;why-typescript&#34;&gt;Why TypeScript?&lt;/h2&gt;
 
@@ -35,7 +35,7 @@ shouldn’t, which will come handy when you rediscover your code a couple of mon
 &lt;p&gt;&lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;Microbundle&lt;/a&gt; is a “zero-configuration bundler for tiny modules”. It’s a wrapper around &lt;a href=&#34;https://rollupjs.org/guide/en&#34;&gt;rollup&lt;/a&gt; with sane defaults (including minification/compression), nice outputted size stats, multiple target formats (ES modules, CommonJS, UMD). Most of all in the scope of this post, it has TypeScript support out of the box (&lt;em&gt;actually&lt;/em&gt; no configuration, not even a &lt;code&gt;tsconfig.json&lt;/code&gt;).
 It’s ridiculously easy to set up and allows library authors to focus on building a great library rather than setting up the plumbing to be able to ship a JavaScript library from ES6/TypeScript or other compile-to-JS tool 🙂.&lt;/p&gt;
 
-&lt;h1 id=&#34;zero-config-bundling&#34;&gt;Zero-config bundling&lt;/h1&gt;
+&lt;h2 id=&#34;zero-config-bundling&#34;&gt;Zero-config bundling&lt;/h2&gt;
 
 &lt;p&gt;To start, we’ll have to create setup our package run &lt;code&gt;npm init&lt;/code&gt; and complete all the prompts.&lt;/p&gt;
 
@@ -109,7 +109,7 @@ export declare class MyMainClass {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;publish-the-module&#34;&gt;Publish the module&lt;/h1&gt;
+&lt;h2 id=&#34;publish-the-module&#34;&gt;Publish the module&lt;/h2&gt;
 
 &lt;p&gt;By leveraging microbundle we can publish the module as a CommonJS module (standard npm module), but also as an ES Module and a UMD module, to do this follow the guide at &lt;a href=&#34;https://github.com/developit/microbundle#specifying-builds-in-packagejson&#34;&gt;https://github.com/developit/microbundle#specifying-builds-in-packagejson&lt;/a&gt;.&lt;/p&gt;
 
@@ -125,8 +125,7 @@ export declare class MyMainClass {
 &lt;p&gt;With this &lt;code&gt;package.json&lt;/code&gt; you can publish to npm with &lt;code&gt;npm publish&lt;/code&gt;.
 And if you enjoyed using &lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;microbundle&lt;/a&gt;, definitely keep using it but also give it a &lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;star on GitHub&lt;/a&gt; and let Jason Miller aka &lt;a href=&#34;https://twitter.com/_developit&#34;&gt;@_developit&lt;/a&gt; know you’re a fan on Twitter.&lt;/p&gt;
 
-&lt;p&gt;Cover Photo by &lt;a href=&#34;https://unsplash.com/photos/J8R34suxfRU?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Aaron Burden&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/tiny?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;Cover Photo by &lt;a href=&#34;https://unsplash.com/photos/J8R34suxfRU?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Aaron Burden&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/tiny?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

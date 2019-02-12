@@ -23,8 +23,8 @@
     
     <link rel="canonical" href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/" /> 
 
-     <meta name="description" content="Testing is a crucial part of the software development process. It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.
-E" /> 
+     <meta name="description" content="&lt;p&gt;Testing is a crucial part of the software development process.
+It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software" /> 
 
      
     
@@ -33,8 +33,8 @@ E" />
     
  
     <meta name="twitter:title" content="Testing an Express app with SuperTest, moxios and Jest"/>
-    <meta name="twitter:description" content="Testing is a crucial part of the software development process. It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.
-E"/>
+    <meta name="twitter:description" content="&lt;p&gt;Testing is a crucial part of the software development process.
+It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software"/>
     <meta name="twitter:url" content="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/" />
     <meta name="twitter:site" content="@hugo__df"/>
 
@@ -44,8 +44,8 @@ E"/>
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="Testing is a crucial part of the software development process. It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.
-E" />
+    <meta property="og:description" content="&lt;p&gt;Testing is a crucial part of the software development process.
+It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software" />
 
     <meta property="article:published_time" content="2018-06-27T00:00:00Z" />
     <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Node" /><meta property="article:tag" content="Testing" />
@@ -61,13 +61,13 @@ E" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.bd35cf74c58c56c4aa8eff40730357744dec20ff31d8bae7b0618dbe30e0dbe4.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.612120dbcad38a206f6cc18996cd1f7d45141911bf04c86ab0c6132a55274b7b.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/cta.min.e78c0bb9686c3a53ce9ba4c0d5c59abfa16cc34c2a616a001f7e4b473644374c.css">
     
 
     
@@ -151,23 +151,22 @@ E" />
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     
+      <article class="post-full post">
+  <header class="post-full-header">
+    <section class="post-full-meta">
+      <time class="post-full-meta-date"
+        datetime="2018-06-27">27 June 2018</time>
+      <span class="date-divider">/</span> <a
+        href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
+    </section>
+    <h1 class="post-full-title">Testing an Express app with SuperTest, moxios and Jest</h1>
+  </header>
+  <div class="hero-container">
+
+    
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/bekir-donmez-unsplash.jpg)">
       
-<div id="codefund_ad"></div>
-
-
-<article class="post-full post">
-    <header class="post-full-header">
-        <section class="post-full-meta">
-            <time class="post-full-meta-date" datetime="2018-06-27">27 June 2018</time>
-                <span class="date-divider">/</span> <a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
-        </section>
-        <h1 class="post-full-title">Testing an Express app with SuperTest, moxios and Jest</h1>
-    </header>
-    <div class="hero-container">
-
-      
-      <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/bekir-donmez-unsplash.jpg)">
-        
   <section class="hero-cta">
     <h3 class="cta-title">Have a question?</h3>
     <p class="cta-text">
@@ -178,41 +177,53 @@ E" />
   </section>
 
 
-      </figure>
-    </div>
+    </figure>
+  </div>
 
-    <section class="post-full-content">
-        <div class="kg-card-markdown">
-        
-
-<p>Testing is a crucial part of the software development process.
+  <section class="post-full-content">
+    <div class="kg-card-markdown">
+      <p>Testing is a crucial part of the software development process.
 It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.</p>
 
 <p>Express is one of the most widespread libraries for building backend applications in JavaScript.
 What follows is a summary of how to set up an efficient unit testing strategy for such an application as well as
 a couple of situations you may be faced with when attempting to test.</p>
 
-<p>Full code example can be found at <a href="https://github.com/HugoDF/express-supertest-moxios">https://github.com/HugoDF/express-supertest-moxios</a>.</p>
-
+<p>Full code example can be found at <a href="https://github.com/HugoDF/express-supertest-moxios">https://github.com/HugoDF/express-supertest-moxios</a>.
+</p>
+    </div>
+    <section class="table-of-contents">
+      <nav id="TableOfContents">
+<ul>
+<li>
 <ul>
 <li><a href="#a-simple-express-app">A simple Express app 🎁</a>
-
 <ul>
 <li><a href="#testing-strategy">Testing strategy 🕵️‍</a></li>
 </ul></li>
 <li><a href="#testing-a-less-simple-express-app">Testing a less simple Express app 📚</a>
-
 <ul>
-<li><a href="#testing-strategy">Testing strategy 🛠</a></li>
+<li><a href="#testing-strategy-1">Testing strategy 🛠</a></li>
 <li><a href="#where-redis-gets-mocked">Where Redis gets mocked 🤡</a></li>
 </ul></li>
 <li><a href="#parting-thoughts">Parting thoughts 🦋</a></li>
+</ul></li>
 </ul>
+</nav>
+    </section>
+    
+    <div id="codefund_ad" class="related-links"></div>
+    
+    <div class="kg-card-markdown">
+        
+        
 
+<blockquote>
 <p>This was sent out on the <a href="https://buttondown.email/hugo">Code with Hugo newsletter</a> on Monday.
 <a href="https://buttondown.email/hugo">Subscribe</a> to get the latest posts right in your inbox (before anyone else).</p>
+</blockquote>
 
-<h1 id="a-simple-express-app">A simple Express app 🎁</h1>
+<h2 id="a-simple-express-app">A simple Express app 🎁</h2>
 
 <p>Say we have an Express set of route handlers like the following:</p>
 
@@ -263,7 +274,7 @@ a couple of situations you may be faced with when attempting to test.</p>
 {&quot;blog&quot;:&quot;https://codewithhugo.com&quot;,&quot;location&quot;:&quot;London&quot;,&quot;bio&quot;:&quot;Developer, JavaScript.&quot;,&quot;publicRepos&quot;:39}
 </code></pre>
 
-<h2 id="testing-strategy">Testing strategy 🕵️‍</h2>
+<h3 id="testing-strategy">Testing strategy 🕵️‍</h3>
 
 <p>Testing is about defining some inputs and asserting on the outputs.</p>
 
@@ -352,7 +363,7 @@ or a Regular Expression.</li>
 Status will be the status in the <code>axios</code> fetch response and <code>response</code> will be the <code>data</code> in the <code>axios</code> fetch response.</li>
 </ul>
 
-<h1 id="testing-a-less-simple-express-app">Testing a less simple Express app 📚</h1>
+<h2 id="testing-a-less-simple-express-app">Testing a less simple Express app 📚</h2>
 
 <p>Let&rsquo;s say we have an app that&rsquo;s a blob store, backed by Redis (a simple key-value store amongst other things):</p>
 
@@ -427,7 +438,7 @@ curl http://localhost:3000/my-key
 </code></li>
 </ol>
 
-<h2 id="testing-strategy-1">Testing strategy 🛠</h2>
+<h3 id="testing-strategy-1">Testing strategy 🛠</h3>
 
 <p>We have a decision to make here:</p>
 
@@ -442,7 +453,7 @@ This means you&rsquo;re relying on some sort of ordering of tests and you can&rs
 <p>For unit(ish) tests, that we want to be running the whole time we&rsquo;re developing, this is an issue.
 The alternative is to mock Redis, specifically, <code>redisClient</code>.</p>
 
-<h2 id="where-redis-gets-mocked">Where Redis gets mocked 🤡</h2>
+<h3 id="where-redis-gets-mocked">Where Redis gets mocked 🤡</h3>
 
 <p><code>blob-store.test.js</code></p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">blobStore</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./blob-store&#39;</span><span class="p">);</span>
@@ -498,7 +509,7 @@ The alternative is to mock Redis, specifically, <code>redisClient</code>.</p>
 </code></pre></div>
 <p>In short we set up our tests so we can pass an arbitrary <code>redisClient</code> object where we can mock the methods themselves.</p>
 
-<h1 id="parting-thoughts">Parting thoughts 🦋</h1>
+<h2 id="parting-thoughts">Parting thoughts 🦋</h2>
 
 <p>Testing an Express app is all about finding the boundary at which the mocking starts and where it stops.</p>
 
@@ -511,36 +522,33 @@ state somehow (ie writes to an object internally), and to inject/inspect that st
 <p>For the full code example, see <a href="https://github.com/HugoDF/express-supertest-moxios">https://github.com/HugoDF/express-supertest-moxios</a>.</p>
 
 <p>Cover photo <a href="https://unsplash.com/photos/eofm5R5f9Kw?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Bekir Dönmez</a> on <a href="https://unsplash.com/search/photos/clowns?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+    </div>
+  </section>
 
-        </div>
-    </section>
+  <section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
+    <p>Get all the posts of the week before anyone else in your inbox</p>
+    <form action="https://buttondown.email/api/emails/embed-subscribe/hugo" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')">
+      <div class="form-group">
+        <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
+        <input type="hidden" value="1" name="embed" />
+      </div>
+      <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
+    </form>
+  </section>
 
-    <section class="subscribe-form">
-        <h3 class="subscribe-form-title">Subscribe to Code with Hugo</h3>
-        <p>Get all the posts of the week before anyone else in your inbox</p>
-        <form
-            action="https://buttondown.email/api/emails/embed-subscribe/hugo"
-            method="post"
-            target="popupwindow"
-            onsubmit="window.open('https://buttondown.email/hugo', 'popupwindow')"
-        >
-            <div class="form-group">
-                <input class="subscribe-email" type="email" name="email" id="bd-email" placeholder="youremail@example.com">
-                <input type="hidden" value="1" name="embed"/>
-            </div>
-            <button class="" value="Subscribe" type="submit"><span>Subscribe</span></button>
-        </form>
-    </section>
-
-    <footer class="post-full-footer">
-      <section class="author-card">
-        <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-        <section class="author-card-content">
-            <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a></h4>
-                <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
-        </section>
+  <footer class="post-full-footer">
+    <section class="author-card">
+      <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg"
+        alt="Author" />
+      <section class="author-card-content">
+        <h4 class="author-card-name"><a href="https://codewithhugo.com/">Hugo Di Francesco</a>
+        </h4>
+        <p>A developer, working out of London writing CSS, JavaScript and Python.</p>
       </section>
-    </footer>
+    </section>
+  </footer>
 </article>
 
 
@@ -590,13 +598,13 @@ state somehow (ie writes to an object internally), and to inject/inspect that st
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+          <li><a href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">Post Frequency: from prototype to production with Vue &#43; Node</a></li>            
         
-          <li><a href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">Deploy to multiple environments with git and CircleCI</a></li>            
+          <li><a href="https://codewithhugo.com/sequelize-data-types-a-practical-guide/">Sequelize Data Types: a practical guide</a></li>            
         
-          <li><a href="https://codewithhugo.com/impress-interviewers-with-recursion-in-javascript-with-es6-features/">Impress interviewers with recursion in JavaScript with ES6 features</a></li>            
+          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">AVA, low-config testing for JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/">6 months of Code with Hugo, in numbers</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -663,7 +671,8 @@ state somehow (ie writes to an object internally), and to inject/inspect that st
               
                 <p>Channel your inner Sindre Sohrus and ship a beautifully simple CLI app using Node.
 Command line apps are a neat way to package repetitive tasks. This will walk you through some tools that are useful to build CLI apps.
- The idea 💡 Piping to the command line 🚇 Dealing with sequential actions ✨ Executable JavaScript files 🦅 Adding package binaries 📦 Publishing to npm 🚀  The idea 💡 When merging/rebasing, the file that always seems to cause trouble is the package-lock. ...  </p>
+
+ ...  </p>
               
           </section>
       </a>
