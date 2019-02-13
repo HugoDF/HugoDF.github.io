@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="google-site-verification" content="gBfbdXRLofaOyHsbgiSiuCIHKPaviGMRVWh_qOfDHNE" />
 
-    <title>The step-by-step guide to create a domain redirect with Cloudflare &middot; Code with Hugo</title>
+    <title>12-factor Node.js application configuration management without the `config` npm package &middot; Code with Hugo</title>
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,33 +21,33 @@
     <link rel="shortcut icon" href="https://codewithhugo.com/favicon.ico" />
     <meta name="theme-color" content="#090a0b">
     
-    <link rel="canonical" href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/" /> 
+    <link rel="canonical" href="https://codewithhugo.com/node-configuration-management/" /> 
 
-     <meta name="description" content="&lt;p&gt;&lt;/p&gt;" /> 
+     <meta name="description" content="&lt;p&gt;The &lt;code&gt;config&lt;/code&gt; npm package is great (&lt;a href=&#34;https://www.npmjs.com/package/config&#34;&gt;npmjs.com/package/config&lt;/a&gt;), but it encourages confusing and n" /> 
 
      
     
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image" content="https://codewithhugo.com/img/andrew-preble-unsplash.jpg"/>
+    <meta name="twitter:image" content="https://codewithhugo.com/img/filip-gielda-unsplash.jpg"/>
     
  
-    <meta name="twitter:title" content="The step-by-step guide to create a domain redirect with Cloudflare"/>
-    <meta name="twitter:description" content="&lt;p&gt;&lt;/p&gt;"/>
-    <meta name="twitter:url" content="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/" />
+    <meta name="twitter:title" content="12-factor Node.js application configuration management without the `config` npm package"/>
+    <meta name="twitter:description" content="&lt;p&gt;The &lt;code&gt;config&lt;/code&gt; npm package is great (&lt;a href=&#34;https://www.npmjs.com/package/config&#34;&gt;npmjs.com/package/config&lt;/a&gt;), but it encourages confusing and n"/>
+    <meta name="twitter:url" content="https://codewithhugo.com/node-configuration-management" />
     <meta name="twitter:site" content="@hugo__df"/>
 
     <meta property="og:site_name" content="Code with Hugo" />
-    <meta property="og:title" content="The step-by-step guide to create a domain redirect with Cloudflare &middot; Code with Hugo" />
-    <meta property="og:url" content="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/" />
+    <meta property="og:title" content="12-factor Node.js application configuration management without the `config` npm package &middot; Code with Hugo" />
+    <meta property="og:url" content="https://codewithhugo.com/node-configuration-management/" />
     
 
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="&lt;p&gt;&lt;/p&gt;" />
+    <meta property="og:description" content="&lt;p&gt;The &lt;code&gt;config&lt;/code&gt; npm package is great (&lt;a href=&#34;https://www.npmjs.com/package/config&#34;&gt;npmjs.com/package/config&lt;/a&gt;), but it encourages confusing and n" />
 
-    <meta property="article:published_time" content="2018-08-28T00:00:00Z" />
-    <meta property="article:tag" content="cdn" /><meta property="article:tag" content="dev-decoded" /><meta property="article:tag" content="productivity" />
+    <meta property="article:published_time" content="2019-02-13T00:00:00Z" />
+    <meta property="article:tag" content="JavaScript" /><meta property="article:tag" content="Node" /><meta property="article:tag" content="deployment" />
 
-    <meta property="og:image" content="https://codewithhugo.com/img/andrew-preble-unsplash.jpg"/>
+    <meta property="og:image" content="https://codewithhugo.com/img/filip-gielda-unsplash.jpg"/>
 
 
     <meta name="generator" content="Hugo 0.46" />
@@ -152,17 +152,17 @@
   <header class="post-full-header">
     <section class="post-full-meta">
       <time class="post-full-meta-date"
-        datetime="2018-08-28">28 August 2018</time>
+        datetime="2019-02-13">13 February 2019</time>
       <span class="date-divider">/</span> <a
-        href="https://codewithhugo.com/tags/cdn/">#cdn</a>&nbsp;<a
-        href="https://codewithhugo.com/tags/dev-decoded/">#dev-decoded</a>&nbsp;
+        href="https://codewithhugo.com/tags/javascript/">#JavaScript</a>&nbsp;<a
+        href="https://codewithhugo.com/tags/node/">#Node</a>&nbsp;
     </section>
-    <h1 class="post-full-title">The step-by-step guide to create a domain redirect with Cloudflare</h1>
+    <h1 class="post-full-title">12-factor Node.js application configuration management without the `config` npm package</h1>
   </header>
   <div class="hero-container">
 
     
-    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/andrew-preble-unsplash.jpg)">
+    <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/filip-gielda-unsplash.jpg)">
       
   <section class="hero-cta">
     <h3 class="cta-title">Have a question?</h3>
@@ -179,10 +179,29 @@
 
   <section class="post-full-content">
     <div class="kg-card-markdown">
-      <p></p>
+      <p>The <code>config</code> npm package is great (<a href="https://www.npmjs.com/package/config">npmjs.com/package/config</a>), but it encourages confusing and non-<a href="https://12factor.net/">12-factor-app</a>-compliant patterns.</p>
+
+<p>We’ll look at some of the patterns it encourages and why they’ll bring you struggles down the road as well a simple, single-file, no-dependency way to define your configuration.
+</p>
     </div>
     <section class="table-of-contents">
-      
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#sprawling-configuration-hard-to-pinpoint-where-config-is-set">Sprawling configuration: hard to pinpoint where config is set</a></li>
+<li><a href="#non-granular-configuration">Non-granular configuration</a></li>
+<li><a href="#a-single-config-js-file">A single config.js file</a></li>
+<li><a href="#making-process-env-fit-for-purpose">Making process.env fit for purpose</a>
+<ul>
+<li><a href="#parsing-a-number-from-process-env">Parsing a number from process.env</a></li>
+<li><a href="#converting-to-boolean-from-process-env">Converting to Boolean from process.env</a></li>
+</ul></li>
+<li><a href="#consuming-config-js">Consuming config.js</a></li>
+<li><a href="#bonus-getting-values-from-a-env-file">Bonus: getting values from a .env file</a></li>
+</ul></li>
+</ul>
+</nav>
     </section>
     
     <div id="codefund_ad" class="related-links"></div>
@@ -191,38 +210,89 @@
         
         
 
-<p>Be logged into your dashboard.</p>
+<h2 id="sprawling-configuration-hard-to-pinpoint-where-config-is-set">Sprawling configuration: hard to pinpoint where config is set</h2>
 
-<ol>
-<li>Select the domain you want to redirect from</li>
+<p>The main thing it encourages is configuration sprawl: some of your configuration lives in JSON files, some of your configuration comes from environment variables (and is glued together using JSON files). Some config fields change depending on <code>NODE_ENV</code>, others do not.</p>
 
-<li><p>Go to page rules
-<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_DC48416CB036B302B07CB3A97C1D5F782A909AB40C4D67DF37729B755DC42D54_1533378164299_image.png" alt="" /></p></li>
+<p>Worst of all, config is dynamically loaded using a <code>config.get('path.in.the.json.config.object')</code> call. This creates an affordance for users to have deeply-nested configuration object(s), which isn’t desirable, your configuration should be minimal and it shouldn’t live in application code.</p>
 
-<li><p>Click “Create page rule”
-<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_DC48416CB036B302B07CB3A97C1D5F782A909AB40C4D67DF37729B755DC42D54_1533378182704_image.png" alt="" /></p></li>
+<p>See the following from the “config” section in “The Twelve-Factor App” (see it in full at <a href="https://12factor.net/config">12factor.net/config</a>):</p>
 
-<li><p>Enter <code>your.domain/*</code> (matches all traffic) for which URLs will have their traffic redirected</p></li>
+<blockquote>
+<p>Apps sometimes store config as constants in the code. This is a violation of twelve-factor, which requires <strong>strict separation of config from code</strong>. Config varies substantially across deploys, code does not.</p>
+</blockquote>
 
-<li><p>Click “Add a Setting”
-<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_DC48416CB036B302B07CB3A97C1D5F782A909AB40C4D67DF37729B755DC42D54_1533378353766_image.png" alt="" /></p></li>
+<h2 id="non-granular-configuration">Non-granular configuration</h2>
 
-<li><p>Select “Forwarding URL”
-<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_DC48416CB036B302B07CB3A97C1D5F782A909AB40C4D67DF37729B755DC42D54_1533378376456_image.png" alt="" /></p></li>
+<p>Here’s another reason why having a package that makes it easy to have config objects isn’t a good idea according to 12 Factor again (see the full config section at <a href="https://12factor.net/config">12factor.net/config</a>):</p>
 
-<li><p>Select the type of redirect, I recommend 302s since they’re less aggressively cached (so if you ever want to use that domain to do something else other than redirect, you can)
-<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_DC48416CB036B302B07CB3A97C1D5F782A909AB40C4D67DF37729B755DC42D54_1533378448011_image.png" alt="" /></p></li>
+<blockquote>
+<p>In a twelve-factor app, env vars are <strong>granular controls</strong>, each <strong>fully orthogonal</strong> to other env vars. They are <strong>never grouped together as “environments”</strong>, but instead are independently managed for each deploy.</p>
+</blockquote>
 
-<li><p>Enter your forwarding URL
-<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_DC48416CB036B302B07CB3A97C1D5F782A909AB40C4D67DF37729B755DC42D54_1533378393120_image.png" alt="" /></p></li>
+<p>Having a <code>default.json</code>, <code>production.json</code>, <code>test.json</code>, <code>custom-environment-variables.json</code> is just not 12-factor, since you’re not supposed to <strong>group</strong> your config. It should be “here’s a database connection URL”, “here’s a backing service URL”, “here’s a cache connection string”.</p>
 
-<li><p>Click “Save and Deploy”
-<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_DC48416CB036B302B07CB3A97C1D5F782A909AB40C4D67DF37729B755DC42D54_1533378519046_image.png" alt="" /></p></li>
-</ol>
+<p>It entices developers down the line keep adding switches and settings in a <code>&quot;database&quot;: {}</code> field. Those concerns will not be <strong>orthogonal</strong> to each other, what’s more, they’re likely to be application-level concerns, eg. “should the database client try to reconnect?”. That’s not something you should be overriding with environment variables or toggling across the environments. It’s a setting that should be hard-coded into the application depending on whether or not the database is critical for example.</p>
 
-<p>You’re done, you’ve just created a redirect from your domain to another one 🙂</p>
+<h2 id="a-single-config-js-file">A single config.js file</h2>
 
-<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@apreble?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Andrew Preble"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Andrew Preble</span></a></p>
+<p><code>config.js</code> at the root of you application would look like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">NAME_OF_CONFIG</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NAME_OF_CONFIG</span> <span class="o">||</span> <span class="s1">&#39;default-config&#39;</span><span class="p">,</span>
+  <span class="nx">DATABASE_URL</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DATABASE_URL</span><span class="p">,</span>
+  <span class="nx">REDIS_URL</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span> <span class="o">||</span> <span class="s1">&#39;localhost:6379&#39;</span><span class="p">,</span>
+  <span class="nx">X_ENABLED</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">X_ENABLED</span> <span class="o">===</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>In the above, there are examples for how you would default a configuration variable (<code>NAME_OF_CONFIG</code>, <code>REDIS_URL</code>) and how you would check a boolean flag (<code>X_ENABLED</code>).</p>
+
+<h2 id="making-process-env-fit-for-purpose">Making process.env fit for purpose</h2>
+
+<p>In Node.js <code>process.env</code> variables (environment variables) are strings, JavaScript is pretty loose with types, but it’s sometimes useful to convert <code>process.env</code> variables to another type.</p>
+
+<h3 id="parsing-a-number-from-process-env">Parsing a number from process.env</h3>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">SESSION_TIMEOUT</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SESSION_TIMEOUT</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">SESSION_TIMEOUT</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="converting-to-boolean-from-process-env">Converting to Boolean from process.env</h3>
+
+<p>Comparing against the <code>'true'</code> string tends to be enough:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">IS_DEV</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IS_DEV</span> <span class="o">===</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<h2 id="consuming-config-js">Consuming config.js</h2>
+
+<p>To get data from <code>config.js</code> would be like the following, where we conditionally set some <code>'json spaces'</code>, a request timeout and listen on a port with an Express app,</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="p">{</span> <span class="nx">REQUEST_TIMEOUT</span><span class="p">,</span> <span class="nx">X_ENABLED</span><span class="p">,</span> <span class="nx">PORT</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./config&#39;</span><span class="p">)</span>
+<span class="k">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+<span class="k">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">X_ENABLED</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;json spaces&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">REQUEST_TIMEOUT</span><span class="p">);</span> 
+  <span class="nx">next</span><span class="p">()</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`App listening on </span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="bonus-getting-values-from-a-env-file">Bonus: getting values from a .env file</h2>
+
+<p>Sometimes you’ll want to export values from a .env file into your shell session
+The following snippet does just this and is an extract of <a href="https://codewithhugo/just-enough-bash-to-be-dangerous/#inject-env-into-your-bash-session-environment">this bash cheatsheet</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">export</span> <span class="k">$(</span>cat .env <span class="p">|</span> xargs<span class="k">)</span></code></pre></div>
+<blockquote>
+<p>Note the above works for *NIX environments</p>
+</blockquote>
+
+<p><a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@filipovsky?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Filip Gielda"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Filip Gielda</span></a></p>
     </div>
   </section>
 
@@ -291,7 +361,7 @@
     <header class="read-next-card-header">
         <small class="read-next-card-header-sitetitle">&mdash; Code with Hugo &mdash;</small>
         
-        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/cdn/">#cdn</a></h3>
+        <h3 class="read-next-card-header-title"><a href="https://codewithhugo.com/tags/javascript/">#JavaScript</a></h3>
     </header>
     <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
     </div>
@@ -299,18 +369,18 @@
     <div class="read-next-card-content">
       
         <ul>
+          <li><a href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">Writing multiple Vue components in a single file</a></li>            
+        
+          <li><a href="https://codewithhugo.com/change-the-date-of-a-git-commit/">Change the date of a git commit</a></li>            
+        
           <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">React vs Angular vs Vue in 2019: How components won the “framework wars”</a></li>            
         
-          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
-        
-          <li><a href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">From AngularJS to Vue.js, CommonJS and Jest</a></li>            
-        
-          <li><a href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">Post Frequency: from prototype to production with Vue &#43; Node</a></li>            
+          <li><a href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">Add a client-side paywall using checkoutpage.co and vanilla JavaScript</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
       
-        <a href="https://codewithhugo.com/tags/cdn/">See all related posts →</a>
+        <a href="https://codewithhugo.com/tags/javascript/">See all related posts →</a>
     </footer>
 </article>
 
@@ -318,25 +388,28 @@
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/sean-mungur-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/parker-whitson-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #git 
-              #bash 
-              #productivity  </span>
+              #deployment 
+              #meta 
+              #css 
+              #hugo  </span>
               
-              <h2 class="post-card-title">Change the date of a git commit</h2>
+              <h2 class="post-card-title">Switching the lights on: Hugo vs Hugo config files</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>One of the greatest and worst things with git is that you can rewrite the history. Here’s a sneaky way of abusing that, I can’t think of a legitimate reason to do this.
-As with anything, thanks StackOverflow for all the options I can pick from 👍.
+                <p> A simple Hugo blog setup
+ The story of getting codewithhugo.com up and running.
+The tl;dr is the following:
+ I always rave about my blog setup, it’s simple, fast and just works I used Hugo, “The world’s fastest framework for building websites”, a static site generator I used a theme, casper-two, which is a Hugo port of the https://ghost.org/ default theme I deployed to GitHub pages behind Cloudflare *.  There&rsquo;s been an update in the deployment saga, read it here: &ldquo;A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare&rdquo;
 
  ...  </p>
               
@@ -353,27 +426,30 @@ As with anything, thanks StackOverflow for all the options I can pick from 👍.
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/isis-franca-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elaine-casap-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #python 
-              #graphql 
-              #web development  </span>
+              #JavaScript 
+              #Node 
+              #Python  </span>
               
-              <h2 class="post-card-title">Python GraphQL client requests example using gql</h2>
+              <h2 class="post-card-title">The comprehensive guide to integrating a Python/Ruby/PHP/shell script with Node.js using child_process.spawn</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> An example consuming a GraphQL API from Python using gql.
- Full code example at HugoDF/python-graphql-client-example.
-
- ...  </p>
+                <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
+The goal here is to have an interoperability layer between Node.js and an outside shell. This is a quick workaround if some other part of your system isn’t developed in JavaScript.
+We’ll use spawn over exec because we’re talking about passing data, and potentially large amounts of it. To understand the difference between child_process.spawn and child_process.exec (see “Difference between spawn and exec of Node.js child_process”).
+The long and short of it is use exec for small amounts of data (under 200k) using a Buffer interface and spawn for larger amounts using a stream interface.
+spawn has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.
+Full examples github.com/HugoDF/node-run-python.
+Table of contents:  ...  </p>
               
           </section>
       </a>
@@ -397,18 +473,18 @@ As with anything, thanks StackOverflow for all the options I can pick from 👍.
     </a>
   </div>
   <span class="floating-header-divider">&mdash;</span>
-  <div class="floating-header-title">The step-by-step guide to create a domain redirect with Cloudflare</div>
+  <div class="floating-header-title">12-factor Node.js application configuration management without the `config` npm package</div>
   <div class="floating-header-share">
     <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
      <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/></svg>
     </div>
 
     
-    <a class="floating-header-share-tw" href="https://twitter.com/share?text=%22The%20step-by-step%20guide%20to%20create%20a%20domain%20redirect%20with%20Cloudflare%22%20by%20%40hugo__df&amp;url=https%3a%2f%2fcodewithhugo.com%2fthe-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare%2f&amp"
+    <a class="floating-header-share-tw" href="https://twitter.com/share?text=%2212-factor%20Node.js%20application%20configuration%20management%20without%20the%20%60config%60%20npm%20package%22%20by%20%40hugo__df&amp;url=https%3a%2f%2fcodewithhugo.com%2fnode-configuration-management%2f&amp"
           onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
       </a>
-      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fthe-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare%2f"
+      <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcodewithhugo.com%2fnode-configuration-management%2f"
           onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
       </a>
