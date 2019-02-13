@@ -102,25 +102,29 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ben-sauer-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #Testing 
               #JavaScript 
-              #Functional Programming 
-              #Productivity  </span>
+              #ES6  </span>
               
-              <h2 class="post-card-title">Closures, Partial Application and Currying: Effective Functional JavaScript</h2>
+              <h2 class="post-card-title">When to use Jest snapshot tests: comprehensive use-cases and examples 📸</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Spices and other ingredients of a great curry
-To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.
+                <p>There&rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.
+In other words, although React and Vue testing with snapshots is pretty well documented, that&rsquo;s not the only place they&rsquo;re useful.
+As a rule of thumb, you could replace a lot of unit tests that assert on with specific data with snapshot tests.
+We have the following pros for snapshot tests: - the match data is stored in a separate file so it&rsquo;s harder to lose track of things, eg. being skimmed over during review - it&rsquo;s a lot less effort to change than inline data matching, just run npx jest -u and all snapshots get updated.
+The following cons also come to mind: - it&rsquo;s a lost less effort to change than inline data matching, which means people need to pay attention to changes in snapshot files - despite community efforts, the only major test library that supports out of the box is Jest (which locks you into that ecosystem)
+That makes it particularly well-suited for a couple of areas:
 
  ...  </p>
               
@@ -137,29 +141,32 @@ To use JavaScript to its full potential you have to embrace its strong functiona
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/c/600/600/1*ap-t03_46d5mvDLRtL5lZA.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #bash 
-              #deployment 
-              #ci 
-              #tooling  </span>
+              #Testing 
+              #JavaScript 
+              #Productivity  </span>
               
-              <h2 class="post-card-title">Bash Cheatsheet: check if environment variables are set or file/symlinks exists &#43; more</h2>
+              <h2 class="post-card-title">AVA, low-config testing for JavaScript</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> A bash scripting cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
-To avoid having to do this again myself and for your reading pleasure, here they are.
-To be dangerous in terms of setup, CI and depoyment flows we will encounter the following:  ...  </p>
+                <p>A JavaScript testing library for 2017
+AVA is a Futuristic JavaScript test runner.
+Some of its best features are:
+ it works out of the box, no need to specify a blob for test files or add Babel hooks
+ it’s runs tests in parallel, this stops you from using global state and runs faster
+ the tests are async by default
+  I quite like AVA since I can just drop it in and reap benefits without too much hassle. I’ve never had to fight against AVA to get tests running, that means more focus on the code and tests and less on the setup.
+
+ ...  </p>
               
           </section>
       </a>
@@ -174,27 +181,27 @@ To be dangerous in terms of setup, CI and depoyment flows we will encounter the 
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/sequelize-data-types-a-practical-guide/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/mika-baumeister-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/sean-mungur-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/sequelize-data-types-a-practical-guide/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/change-the-date-of-a-git-commit/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Sequelize 
-              #JavaScript 
-              #node  </span>
+              #git 
+              #bash 
+              #productivity  </span>
               
-              <h2 class="post-card-title">Sequelize Data Types: a practical guide</h2>
+              <h2 class="post-card-title">Change the date of a git commit</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.
-First of all, DataTypes contains both the types and generators for default values: eg. NOW, UUIDV1 and UUIDV4 are special default values.
-The places where you&rsquo;re likely to encounter DataTypes are in the model field definition and in the migration definitions. Note that for a given model and field, the data type should be the same in the model and in the migration.
-Table of contents:  ...  </p>
+                <p>One of the greatest and worst things with git is that you can rewrite the history. Here’s a sneaky way of abusing that, I can’t think of a legitimate reason to do this.
+As with anything, thanks StackOverflow for all the options I can pick from 👍.
+
+ ...  </p>
               
           </section>
       </a>

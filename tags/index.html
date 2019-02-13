@@ -92,6 +92,10 @@
             </li>
         
             <li class="" role="menuitem">
+              <a href="https://checkoutpage.co/checkout/hugo/consulting-fee">#AMA</a>
+            </li>
+        
+            <li class="" role="menuitem">
               <a href="/tags/javascript/">JavaScript</a>
             </li>
         
@@ -100,19 +104,7 @@
             </li>
         
             <li class="" role="menuitem">
-              <a href="/tags/sequelize/">Sequelize</a>
-            </li>
-        
-            <li class="" role="menuitem">
-              <a href="/tags/deployment/">Deployment</a>
-            </li>
-        
-            <li class="" role="menuitem">
               <a href="/open/">#open</a>
-            </li>
-        
-            <li class="" role="menuitem">
-              <a href="https://checkoutpage.co/checkout/hugo/consulting-fee">#AMA</a>
             </li>
         
       </ul></div>
@@ -241,64 +233,66 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/raymond-rasmusson-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/joshua-sortino-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #VueJS 
-              #web development  </span>
-              
-              <h2 class="post-card-title">Writing multiple Vue components in a single file</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>Writing multiple components in one file is a pattern from React where some files contain multiple components.
-Some of those components are &ldquo;private&rdquo; to the file/exported component since no other component needs to consume them.
-
- ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
               #Node 
-              #Docker 
-              #redis  </span>
+              #ES6  </span>
               
-              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
+              <h2 class="post-card-title">Use ES modules/ES6 import in Node without Babel/Webpack using `esm`</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
-There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
-Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
-We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
-You can find the full code content at https://github.com/HugoDF/express-bull-es6.
+                <p>Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use require('module-name') to import from other modules and use the module.exports object to expose entities from a module.
+Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. The ease with which one can bundle CommonJS coupled with its widespread use in Node applications and tools means CommonJS quickly displaced RequireJS and SystemJS for frontend application dependency and module management
+ I’m working on a “history of JavaScript module, bundling + dependency management” article, subscribe to get it first).
+ CommonJS has some drawbacks, like being hard to statically analyse, which leads to for example bloated bundles. It’s also just not part of the ECMAScript specification, which ES modules are.
+For anyone who is still wondering, ECMAScript (or ES) modules use a syntax with import thing from 'my-module'; or import { something } from 'my-module' to import things and export default or export something to expose entities from the module.
+Bundlers like Webpack, Rollup and Parcel have support for ES modules. For a Node server I’ve still tended to write in CommonJS style because Node has great support for most ESNext features out of the box (eg. rest/spread, async/await, destructuring, class, shorthand object syntax) and I don’t like messing with bundlers and transpilers.
+I’ve discovered the esm module, “Tomorrow&rsquo;s ECMAScript modules today!” by John-David Dalton (of lodash 😄). It allows you to use ES modules in Node with no compilation step. It’s small, has a small footprint and comes with some extra goodies
+What follows is some ways to use it that aren’t strictly documented. This covers use-cases like incremental adoption of ES modules (ie. convert some modules to ESM but not the whole app). Using this will help you share CommonJS and ESM modules.
+Table of Contents:  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #VueJS 
+              #testing 
+              #JavaScript  </span>
+              
+              <h2 class="post-card-title">From AngularJS to Vue.js, CommonJS and Jest</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p> The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration
+ AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components.
+With the tools we have today, AngularJS isn’t as strong a way to do things any more. The fact that it’s in maintenance mode says it all. For a new application or new features, ie. for a project that not in maintenance mode, it’s doesn’t have the same niceties as other frameworks and libraries like Angular 2+, React or Vue. There should be a way not to rewrite the whole AngularJS application at once, here&rsquo;s how I went about doing it:
 
  ...  </p>
               
@@ -315,30 +309,25 @@ You can find the full code content at https://github.com/HugoDF/express-bull-es6
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/parker-whitson-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/christin-hume-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #deployment 
               #meta 
-              #css 
-              #hugo  </span>
+              #seo 
+              #technical writing  </span>
               
-              <h2 class="post-card-title">Switching the lights on: Hugo vs Hugo config files</h2>
+              <h2 class="post-card-title">Technical content workflow for “Code with Hugo”: static site, Paper, Medium, DEV and Buttondown</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> A simple Hugo blog setup
- The story of getting codewithhugo.com up and running.
-The tl;dr is the following:
- I always rave about my blog setup, it’s simple, fast and just works I used Hugo, “The world’s fastest framework for building websites”, a static site generator I used a theme, casper-two, which is a Hugo port of the https://ghost.org/ default theme I deployed to GitHub pages behind Cloudflare *.  There&rsquo;s been an update in the deployment saga, read it here: &ldquo;A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare&rdquo;
-
- ...  </p>
+                <p>tl;dr: here are the tools used to power, build and publish codewithhugo.com:
+ Dropbox Paper because it syncs desktop/mobile and outputs to markdown Unsplash for cover images Edited Markdown + images → Hugo static site generator Casper 2 (https://ghost.org default theme) for Hugo Schedule:  Newsletter: Mondays 5pm UK every 2 weeks 1+ post a week  Cross-post to Medium (Stories → Import a Story) Cross-post to dev.to using RSS feed Social media/promotion &lt; Organic traffic Newsletter powered by https://buttondown.email Analytics: Google Analytics + Simple Analytics  This post has about 7 month’s worth of learning in it, so see the following table of contents:  ...  </p>
               
           </section>
       </a>

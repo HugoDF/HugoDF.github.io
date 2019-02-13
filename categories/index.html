@@ -92,6 +92,10 @@
             </li>
         
             <li class="" role="menuitem">
+              <a href="https://checkoutpage.co/checkout/hugo/consulting-fee">#AMA</a>
+            </li>
+        
+            <li class="" role="menuitem">
               <a href="/tags/javascript/">JavaScript</a>
             </li>
         
@@ -100,19 +104,7 @@
             </li>
         
             <li class="" role="menuitem">
-              <a href="/tags/sequelize/">Sequelize</a>
-            </li>
-        
-            <li class="" role="menuitem">
-              <a href="/tags/deployment/">Deployment</a>
-            </li>
-        
-            <li class="" role="menuitem">
               <a href="/open/">#open</a>
-            </li>
-        
-            <li class="" role="menuitem">
-              <a href="https://checkoutpage.co/checkout/hugo/consulting-fee">#AMA</a>
             </li>
         
       </ul></div>
@@ -157,25 +149,32 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/raymond-rasmusson-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #VueJS 
-              #web development  </span>
+              #Sequelize 
+              #Node 
+              #productivity  </span>
               
-              <h2 class="post-card-title">Writing multiple Vue components in a single file</h2>
+              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Writing multiple components in one file is a pattern from React where some files contain multiple components.
-Some of those components are &ldquo;private&rdquo; to the file/exported component since no other component needs to consume them.
+                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
+For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
+To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node.js” is a good option. It allows the application to run backed by a MySQL or PostgreSQL instance and provides an easy way to map from entities&rsquo; representation in the database to JavaScript and vice versa.
+Sequelize’s API for model definitions looks like the following (from the docs http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):
+const MyModel = sequelize.define(&#34;MyModel&#34;, { // fields and methods });  To add class and instance methods you would write the following:
+// Class Method MyModel.associate = function (models) {}; // Instance Method MyModel.prototype.someMethod = function () {..}  This is necessary pre-ES6 since there was no concept of classical inheritance. Since we have class now, why not leverage them? For developers who are used to having classes, the following would likely look familiar:
+class MyModel extends Sequelize.Model { static associate(models) {} someMethod() {} }  Sequelize actually supports this, but the documentation is a bit lacking. One of the only place to find a reference to how to do this is in a GitHub issue: https://github.com/sequelize/sequelize/issues/6524.
+Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from Sequelize.Model:
 
  ...  </p>
               
@@ -227,27 +226,27 @@ Table of contents:  ...  </p>
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/async-js/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/async-js-cover.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/async-js/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Node  </span>
+              #Functional Programming 
+              #Productivity  </span>
               
-              <h2 class="post-card-title">Async JavaScript: history, patterns and gotchas</h2>
+              <h2 class="post-card-title">Closures, Partial Application and Currying: Effective Functional JavaScript</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.
-We&rsquo;ll go through the pros and cons of callbacks, Promises and async/await. Present some pitfalls to bear in mind as well as introducing how you would deal with certain situations.
-Live-coding/workshop section touching on both Node and client-side JS situations at github.com/HugoDF/async-js-presentation/tree/master/workshop.
-This given as a talk at Codebar London January Monthly 2019, see the slides:
-  Table of Contents 🐳:  ...  </p>
+                <p>Spices and other ingredients of a great curry
+To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.
+
+ ...  </p>
               
           </section>
       </a>
