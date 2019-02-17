@@ -683,6 +683,36 @@ The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see 
 
 
 
+
+<script>
+  (function (window) {
+    function displayAmaAd() {
+      document.querySelector('#codefund_ad').innerHTML = `<span>
+        <div class="cf-wrapper">
+          <div class="cf-header">Proudly sponsored by</div>
+          <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="cf-text">
+            <strong>Ask Hugo anything</strong><br />
+            Get in touch, I'm available for development, career or any other type of questions
+          </a>
+
+
+          <a href="/" class="cf-powered-by">
+            <em>useful</em> products by Code with Hugo
+          </a>
+        </div>
+      </span>`
+    }
+
+    window.addEventListener("codefund", function(evt) {
+      if (evt.detail.status !== 'ok') {
+        displayAmaAd();
+      }
+    });
+
+  })(window);
+</script>
+
+
 <script async defer src="https://infra.codewithhugo.com/app.js"></script>
 <noscript><img src="https://infra.codewithhugo.com/image.gif" alt=""></noscript>
 

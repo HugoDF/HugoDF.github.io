@@ -161,15 +161,6 @@
     
     <figure class="post-full-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg)">
       
-  <section class="hero-cta">
-    <h3 class="cta-title">Have a question?</h3>
-    <p class="cta-text">
-      I'll happily answer your web development or tech career questions<br/>
-      Get in touch below!
-    </p>
-    <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="button">Ask me Anything</a>
-  </section>
-
 
     </figure>
   </div>
@@ -495,13 +486,13 @@ In the event handler example <code>partialHandleLinkClick</code> isn’t, since 
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
+          <li><a href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">Why you should wrap your (JavaScript) dependencies</a></li>            
         
-          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
+          <li><a href="https://codewithhugo.com/impress-interviewers-with-recursion-in-javascript-with-es6-features/">Impress interviewers with recursion in JavaScript with ES6 features</a></li>            
         
-          <li><a href="https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/">Technical content workflow for “Code with Hugo”: static site, Paper, Medium, DEV and Buttondown</a></li>            
+          <li><a href="https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/">Ditch syntax highlighting for better technical writing</a></li>            
         
-          <li><a href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">Connect to MongoDB on Dokku with your local command line or Robo3T</a></li>            
+          <li><a href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">A gentle introduction to GraphQL API integrations</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -656,6 +647,36 @@ TL;DR Use this package.json, create a src folder, add an index.js and some .js a
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 
+
+
+
+<script>
+  (function (window) {
+    function displayAmaAd() {
+      document.querySelector('#codefund_ad').innerHTML = `<span>
+        <div class="cf-wrapper">
+          <div class="cf-header">Proudly sponsored by</div>
+          <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="cf-text">
+            <strong>Ask Hugo anything</strong><br />
+            Get in touch, I'm available for development, career or any other type of questions
+          </a>
+
+
+          <a href="/" class="cf-powered-by">
+            <em>useful</em> products by Code with Hugo
+          </a>
+        </div>
+      </span>`
+    }
+
+    window.addEventListener("codefund", function(evt) {
+      if (evt.detail.status !== 'ok') {
+        displayAmaAd();
+      }
+    });
+
+  })(window);
+</script>
 
 
 <script async defer src="https://infra.codewithhugo.com/app.js"></script>

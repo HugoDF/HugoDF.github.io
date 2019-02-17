@@ -168,15 +168,6 @@
     
     <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)">
       
-  <section class="hero-cta">
-    <h3 class="cta-title">Have a question?</h3>
-    <p class="cta-text">
-      I'll happily answer your web development or tech career questions<br/>
-      Get in touch below!
-    </p>
-    <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="button">Ask me Anything</a>
-  </section>
-
 
     </figure>
   </div>
@@ -364,13 +355,13 @@ npm run sync
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+          <li><a href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</a></li>            
         
-          <li><a href="https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/">Build and deploy a Vue/React/Vanilla JS app with Parcel and GitHub pages</a></li>            
+          <li><a href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</a></li>            
         
-          <li><a href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">Better HTTP Polling in JavaScript with RxJS 5</a></li>            
+          <li><a href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">Python GraphQL client requests example using gql</a></li>            
         
-          <li><a href="https://codewithhugo.com/sequelize-data-types-a-practical-guide/">Sequelize Data Types: a practical guide</a></li>            
+          <li><a href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">Switching the lights on: Hugo vs Hugo config files</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -487,6 +478,36 @@ tl;dr (as is relevant to this post)
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 
+
+
+
+<script>
+  (function (window) {
+    function displayAmaAd() {
+      document.querySelector('#codefund_ad').innerHTML = `<span>
+        <div class="cf-wrapper">
+          <div class="cf-header">Proudly sponsored by</div>
+          <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="cf-text">
+            <strong>Ask Hugo anything</strong><br />
+            Get in touch, I'm available for development, career or any other type of questions
+          </a>
+
+
+          <a href="/" class="cf-powered-by">
+            <em>useful</em> products by Code with Hugo
+          </a>
+        </div>
+      </span>`
+    }
+
+    window.addEventListener("codefund", function(evt) {
+      if (evt.detail.status !== 'ok') {
+        displayAmaAd();
+      }
+    });
+
+  })(window);
+</script>
 
 
 <script async defer src="https://infra.codewithhugo.com/app.js"></script>

@@ -525,13 +525,13 @@ If you&#39;ve ever needed better Sequelize docs, this is it.
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</a></li>            
+          <li><a href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">Why you should wrap your (JavaScript) dependencies</a></li>            
         
-          <li><a href="https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/">JavaScript GraphQL client requests in Node and the browser using `graphql.js`</a></li>            
+          <li><a href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">The comprehensive guide to integrating a Python/Ruby/PHP/shell script with Node.js using child_process.spawn</a></li>            
         
-          <li><a href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">A gentle introduction to GraphQL API integrations</a></li>            
+          <li><a href="https://codewithhugo.com/animations-css-vs-javascript/">Animations: CSS vs JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</a></li>            
+          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -683,6 +683,36 @@ Contents:  ...  </p>
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 
+
+
+
+<script>
+  (function (window) {
+    function displayAmaAd() {
+      document.querySelector('#codefund_ad').innerHTML = `<span>
+        <div class="cf-wrapper">
+          <div class="cf-header">Proudly sponsored by</div>
+          <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="cf-text">
+            <strong>Ask Hugo anything</strong><br />
+            Get in touch, I'm available for development, career or any other type of questions
+          </a>
+
+
+          <a href="/" class="cf-powered-by">
+            <em>useful</em> products by Code with Hugo
+          </a>
+        </div>
+      </span>`
+    }
+
+    window.addEventListener("codefund", function(evt) {
+      if (evt.detail.status !== 'ok') {
+        displayAmaAd();
+      }
+    });
+
+  })(window);
+</script>
 
 
 <script async defer src="https://infra.codewithhugo.com/app.js"></script>

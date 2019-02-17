@@ -443,13 +443,15 @@ If you&#39;ve ever needed better Sequelize docs, this is it.
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">Simple, but not too simple: how using Zeit’s `micro` improves your Node applications</a></li>            
+                      
         
-          <li><a href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">Recursion in JavaScript with ES6, destructuring and rest/spread</a></li>            
+          <li><a href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</a></li>            
         
-          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">React vs Angular vs Vue in 2019: How components won the “framework wars”</a></li>            
+          <li><a href="https://codewithhugo.com/observablehq-notebooks-for-javascript-demos-and-prototypes/">ObservableHQ notebooks for JavaScript demos and prototypes</a></li>            
         
-          <li><a href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</a></li>            
+          <li><a href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">ES6 by example: a module/CLI to wait for Postgres in docker-compose</a></li>            
+        
+          <li><a href="https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/">JavaScript GraphQL client requests in Node and the browser using `graphql.js`</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -600,6 +602,36 @@ When running Vue.js inside of AngularJS, an issue occured whereby the AngularJS 
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 
+
+
+
+<script>
+  (function (window) {
+    function displayAmaAd() {
+      document.querySelector('#codefund_ad').innerHTML = `<span>
+        <div class="cf-wrapper">
+          <div class="cf-header">Proudly sponsored by</div>
+          <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="cf-text">
+            <strong>Ask Hugo anything</strong><br />
+            Get in touch, I'm available for development, career or any other type of questions
+          </a>
+
+
+          <a href="/" class="cf-powered-by">
+            <em>useful</em> products by Code with Hugo
+          </a>
+        </div>
+      </span>`
+    }
+
+    window.addEventListener("codefund", function(evt) {
+      if (evt.detail.status !== 'ok') {
+        displayAmaAd();
+      }
+    });
+
+  })(window);
+</script>
 
 
 <script async defer src="https://infra.codewithhugo.com/app.js"></script>

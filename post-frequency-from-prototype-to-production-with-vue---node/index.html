@@ -168,15 +168,6 @@
     
     <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/neonbrand-unsplash.jpg)">
       
-  <section class="hero-cta">
-    <h3 class="cta-title">Have a question?</h3>
-    <p class="cta-text">
-      I'll happily answer your web development or tech career questions<br/>
-      Get in touch below!
-    </p>
-    <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="button">Ask me Anything</a>
-  </section>
-
 
     </figure>
   </div>
@@ -457,15 +448,15 @@ I’ve settled on Dokku for databases/backend applications hosting.</p>
     <div class="read-next-card-content">
       
         <ul>
+          <li><a href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">Avoid null/undefined in JavaScript arrays</a></li>            
+        
+          <li><a href="https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/">A Docker/docker-compose setup with Redis and Node/Express</a></li>            
+        
                       
         
-          <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
+          <li><a href="https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/">Technical content workflow for “Code with Hugo”: static site, Paper, Medium, DEV and Buttondown</a></li>            
         
-          <li><a href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">Add a client-side paywall using checkoutpage.co and vanilla JavaScript</a></li>            
-        
-          <li><a href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">Writing an npm module with TypeScript and microbundle</a></li>            
-        
-          <li><a href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">A simple, real-world Vue.js directive</a></li>            
+          <li><a href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">Connect to MongoDB on Dokku with your local command line or Robo3T</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -617,6 +608,36 @@ Table of contents:  ...  </p>
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 
+
+
+
+<script>
+  (function (window) {
+    function displayAmaAd() {
+      document.querySelector('#codefund_ad').innerHTML = `<span>
+        <div class="cf-wrapper">
+          <div class="cf-header">Proudly sponsored by</div>
+          <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="cf-text">
+            <strong>Ask Hugo anything</strong><br />
+            Get in touch, I'm available for development, career or any other type of questions
+          </a>
+
+
+          <a href="/" class="cf-powered-by">
+            <em>useful</em> products by Code with Hugo
+          </a>
+        </div>
+      </span>`
+    }
+
+    window.addEventListener("codefund", function(evt) {
+      if (evt.detail.status !== 'ok') {
+        displayAmaAd();
+      }
+    });
+
+  })(window);
+</script>
 
 
 <script async defer src="https://infra.codewithhugo.com/app.js"></script>

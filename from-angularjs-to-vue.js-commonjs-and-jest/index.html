@@ -168,15 +168,6 @@
     
     <figure class="post-full-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)">
       
-  <section class="hero-cta">
-    <h3 class="cta-title">Have a question?</h3>
-    <p class="cta-text">
-      I'll happily answer your web development or tech career questions<br/>
-      Get in touch below!
-    </p>
-    <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="button">Ask me Anything</a>
-  </section>
-
 
     </figure>
   </div>
@@ -501,13 +492,15 @@ AngularJS was and still is great. What’s also great that we can migrate off it
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">Python GraphQL client requests example using gql</a></li>            
+                      
         
-          <li><a href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">Switching the lights on: Hugo vs Hugo config files</a></li>            
+          <li><a href="https://codewithhugo.com/change-the-date-of-a-git-commit/">Change the date of a git commit</a></li>            
+        
+          <li><a href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">In simple terms: code on the backend, frontend and how they interact</a></li>            
+        
+          <li><a href="https://codewithhugo.com/split-an-existing-git-commit/">Split an existing git commit</a></li>            
         
           <li><a href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">Learn git even if you don’t code</a></li>            
-        
-          <li><a href="https://codewithhugo.com/how-components-won-the-framework-wars/">React vs Angular vs Vue in 2019: How components won the “framework wars”</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -664,6 +657,36 @@ Here’s a look at how to split existing commits using rebase, reset and commit.
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 
+
+
+
+<script>
+  (function (window) {
+    function displayAmaAd() {
+      document.querySelector('#codefund_ad').innerHTML = `<span>
+        <div class="cf-wrapper">
+          <div class="cf-header">Proudly sponsored by</div>
+          <a href="https://checkoutpage.co/checkout/hugo/consulting-fee" class="cf-text">
+            <strong>Ask Hugo anything</strong><br />
+            Get in touch, I'm available for development, career or any other type of questions
+          </a>
+
+
+          <a href="/" class="cf-powered-by">
+            <em>useful</em> products by Code with Hugo
+          </a>
+        </div>
+      </span>`
+    }
+
+    window.addEventListener("codefund", function(evt) {
+      if (evt.detail.status !== 'ok') {
+        displayAmaAd();
+      }
+    });
+
+  })(window);
+</script>
 
 
 <script async defer src="https://infra.codewithhugo.com/app.js"></script>
