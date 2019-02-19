@@ -233,24 +233,63 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
-      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/async-js/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/async-js-cover.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/async-js/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #ES6 
-              #web development  </span>
+              #Node  </span>
               
-              <h2 class="post-card-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h2>
+              <h2 class="post-card-title">Async JavaScript: history, patterns and gotchas</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
+                <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.
+We&rsquo;ll go through the pros and cons of callbacks, Promises and async/await. Present some pitfalls to bear in mind as well as introducing how you would deal with certain situations.
+Live-coding/workshop section touching on both Node and client-side JS situations at github.com/HugoDF/async-js-presentation/tree/master/workshop.
+This given as a talk at Codebar London January Monthly 2019, see the slides:
+  Table of Contents 🐳:  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #tooling 
+              #git 
+              #ci 
+              #bash  </span>
+              
+              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. This is not a CircleCI 2.0 workflows tutorial, it’s more of a git-flow/CircleCI hybrid to have 2 (or more) environments being released to and automatically deployed by CircleCI.
+I would like to thanks Chris Fidao, and this tweet:
+We&rsquo;ll go through how to use GitHub + CircleCI for deployment automation and release management.
 
  ...  </p>
               
@@ -267,60 +306,31 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/anthony-cantin-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-tiny-case-study-about-migrating-to-netlify-when-disaster-strikes-at-github-featuring-cloudflare/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #deployment 
-              #meta 
-              #JavaScript  </span>
+              #JavaScript 
+              #Node 
+              #Docker 
+              #redis  </span>
               
-              <h2 class="post-card-title">A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare</h2>
+              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> Last Monday (22 October 2018) GitHub was going 💥, and scheduled content on Code with Hugo wasn’t going live.
- For context, the blog’s setup is documented in “Switching the lights on: Hugo vs Hugo config files”.
-tl;dr (as is relevant to this post)
- Cloudflare DNS + CDN + proxying + HTTPS GitHub Pages Hugo as a static site generator CircleCI to deploy the site daily + on push (🤷‍♀️wasn’t in the post but that’s how I do it)  Contents of this post:  ...  </p>
-              
-          </section>
-      </a>
+                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
+Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
+We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
+You can find the full code content at https://github.com/HugoDF/express-bull-es6.
 
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/cameron-kirby-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/connect-to-mongodb-on-dokku-with-your-local-command-line-or-robo3t/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #deployment 
-              #dokku 
-              #MongoDB  </span>
-              
-              <h2 class="post-card-title">Connect to MongoDB on Dokku with your local command line or Robo3T</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>The Dokku mongo plugin provides a mongo:connect command, which opens a tunnelled connection to you MongoDB instance on Dokku. This is how you can connect to your database using the tool of your choice, the examples will be using Robo3T.
-Table of Contents:  ...  </p>
+ ...  </p>
               
           </section>
       </a>
