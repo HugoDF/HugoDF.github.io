@@ -233,30 +233,65 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/express-request-response-mocking/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/chris-barbalis-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/pepi-stojanovski-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/express-request-response-mocking/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Testing 
+              #deployment 
+              #Node 
+              #tooling  </span>
+              
+              <h2 class="post-card-title">Build and deploy a Vue/React/Vanilla JS app with Parcel and GitHub pages</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Parcel allows us to bundle frontend applications with no configuration and GitHub pages affords us a way to deploy them for free.
+Here&rsquo;s how to use these two tools together to deploy a JavaScript application.
+Full example of a repo deployed like this: https://github.com/HugoDF/js-graphql-client-example, and see https://codewithhugo.com/js-graphql-client-example/.
+Or the repo with the demos: https://github.com/HugoDF/parcel-gh-pages-deploy and see https://codewithhugo.com/parcel-gh-pages-deploy/.
+
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/matthew-henry-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
               #Node  </span>
               
-              <h2 class="post-card-title">A guide to Express request and response mocking/stubbing with Jest or sinon</h2>
+              <h2 class="post-card-title">ES6 by example: a module/CLI to wait for Postgres in docker-compose</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>To test an Express handler, it’s useful to know how to successfully mock/stub the request and response objects. The following examples will be written both using Jest and sinon (running in AVA).
-The rationale for this is the following. Jest is a very popular “all-in-one” testing framework. Sinon is one of the most popular “Standalone test spies, stubs and mocks for JavaScript” which “works with any unit testing framework”.
-The approach detailed in this post will be about how to test handlers independently of the Express app instance by calling them directly with mocked request (req) and response (res) objects. This is only 1 approach to testing Express handlers and middleware. The alternative is to fire up the Express server (ideally in-memory using SuperTest). I go into more detail on how to achieve that in “Testing an Express app with SuperTest, moxios and Jest”.
-One of the big conceptual leaps to testing Express applications with mocked request/response is understanding how to mock a chained API eg. res.status(200).json({ foo: 'bar' }).
-This is achieved by returning the res instance from each of its methods:
-const mockResponse = { const res = {}; // replace the following () =&gt; res  // with your function stub/mock of choice  // making sure they still return `res`  res.status = () =&gt; res; res.json = () =&gt; res; return res; };  See the repository with examples and the working application at github.com/HugoDF/mock-express-request-response.
-Table of contents:  ...  </p>
+                <p>When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues inside the app.
+This post walks through how to deliver this functionality both as a CLI and a module that works both as a CommonJS module (require) and ES modules, without transpilation.
+“A fast, production ready, zero-dependency ES module loader for Node 6+!” is esm’s promise. From this sample project, it’s worked.
+
+ ...  </p>
               
           </section>
       </a>
@@ -271,65 +306,28 @@ Table of contents:  ...  </p>
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/node-configuration-management/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/filip-gielda-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/max/1600/1*7GDcBl7iTGZ7dDuwWcIZxA.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/node-configuration-management/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Node 
-              #deployment  </span>
+              #Functional Programming 
+              #Productivity  </span>
               
-              <h2 class="post-card-title">12-factor Node.js application configuration management without the `config` npm package</h2>
+              <h2 class="post-card-title">First-class and Higher Order Functions: Effective Functional JavaScript</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The config npm package is great (npmjs.com/package/config), but it encourages confusing and non-12-factor-app-compliant patterns.
-We’ll look at some of the patterns it encourages and why they’ll bring you struggles down the road as well a simple, single-file, no-dependency way to define your configuration.  ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #Sequelize 
-              #Node 
-              #productivity  </span>
-              
-              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
-For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
-To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node.js” is a good option. It allows the application to run backed by a MySQL or PostgreSQL instance and provides an easy way to map from entities&rsquo; representation in the database to JavaScript and vice versa.
-Sequelize’s API for model definitions looks like the following (from the docs http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):
-const MyModel = sequelize.define(&#34;MyModel&#34;, { // fields and methods });  To add class and instance methods you would write the following:
-// Class Method MyModel.associate = function (models) {}; // Instance Method MyModel.prototype.someMethod = function () {..}  This is necessary pre-ES6 since there was no concept of classical inheritance. Since we have class now, why not leverage them? For developers who are used to having classes, the following would likely look familiar:
-class MyModel extends Sequelize.Model { static associate(models) {} someMethod() {} }  Sequelize actually supports this, but the documentation is a bit lacking. One of the only place to find a reference to how to do this is in a GitHub issue: https://github.com/sequelize/sequelize/issues/6524.
-Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from Sequelize.Model:
+                <p>Functions: the killer JavaScript feature we never talk about.
+JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embedded systems and it brings a non-blocking I/O model that is faster than others for some types of applications. What really sets JavaScript apart from the rest of scripting languages is its highly functional nature.
+ JavaScript has more in common with functional languages like Lisp or Scheme than with C or Java. — Douglas Crockford in JavaScript: the World’s Most Misunderstood Language
+ It’s a widely publicised fact that Brendan Eich, when creating the first version of JavaScript, was actually told he would be able to build a Lisp, a list processing language like Scheme or common Lisp. It turns out that Sun Microsystems had other ideas and this programming language needed to wear a coat of procedural syntax inherited from a C or Java-like language. Despite all the semicolons, at its heart JavaScript remains a functional language with features such as first-class functions and closures.
+This post will focus on first-class functions and higher order functions. To read more about closures and how to leverage them to wield JavaScript’s functional powers, I’ve written thefollowing post: Ingredients of Effective Functional JavaScript: Closures, Partial Application and Currying *To use JavaScript to its full potential you have to embrace its strong functional programming base.*hackernoon.com
 
  ...  </p>
               

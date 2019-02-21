@@ -149,105 +149,102 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ben-sauer-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/annie-spratt-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #graphql 
+              #tooling 
+              #web development  </span>
+              
+              <h2 class="post-card-title">A gentle introduction to GraphQL API integrations</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>GraphQL is a great alternative to REST (or other HTTP API designs). This is an quick introduction to the core concepts around consuming a GraphQL API.
+To see some examples consuming a GraphQL API:
+ In Python, see Python GraphQL client requests example using gql In JavaScript (browser and Node), see last week&rsquo;s Code with Hugo newsletter  Table of contents:  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/max/1600/1*7GDcBl7iTGZ7dDuwWcIZxA.jpeg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/first-class-and-higher-order-functions-effective-functional-javascript/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #Functional Programming 
+              #Productivity  </span>
+              
+              <h2 class="post-card-title">First-class and Higher Order Functions: Effective Functional JavaScript</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>Functions: the killer JavaScript feature we never talk about.
+JavaScript is a very in-demand language today. It runs in a lot of places from the browser to embedded systems and it brings a non-blocking I/O model that is faster than others for some types of applications. What really sets JavaScript apart from the rest of scripting languages is its highly functional nature.
+ JavaScript has more in common with functional languages like Lisp or Scheme than with C or Java. — Douglas Crockford in JavaScript: the World’s Most Misunderstood Language
+ It’s a widely publicised fact that Brendan Eich, when creating the first version of JavaScript, was actually told he would be able to build a Lisp, a list processing language like Scheme or common Lisp. It turns out that Sun Microsystems had other ideas and this programming language needed to wear a coat of procedural syntax inherited from a C or Java-like language. Despite all the semicolons, at its heart JavaScript remains a functional language with features such as first-class functions and closures.
+This post will focus on first-class functions and higher order functions. To read more about closures and how to leverage them to wield JavaScript’s functional powers, I’ve written thefollowing post: Ingredients of Effective Functional JavaScript: Closures, Partial Application and Currying *To use JavaScript to its full potential you have to embrace its strong functional programming base.*hackernoon.com
+
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/express-request-response-mocking/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/chris-barbalis-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/express-request-response-mocking/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
               #Testing 
-              #JavaScript 
-              #ES6  </span>
+              #Node  </span>
               
-              <h2 class="post-card-title">When to use Jest snapshot tests: comprehensive use-cases and examples 📸</h2>
+              <h2 class="post-card-title">A guide to Express request and response mocking/stubbing with Jest or sinon</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>There&rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.
-In other words, although React and Vue testing with snapshots is pretty well documented, that&rsquo;s not the only place they&rsquo;re useful.
-As a rule of thumb, you could replace a lot of unit tests that assert on with specific data with snapshot tests.
-We have the following pros for snapshot tests: - the match data is stored in a separate file so it&rsquo;s harder to lose track of things, eg. being skimmed over during review - it&rsquo;s a lot less effort to change than inline data matching, just run npx jest -u and all snapshots get updated.
-The following cons also come to mind: - it&rsquo;s a lost less effort to change than inline data matching, which means people need to pay attention to changes in snapshot files - despite community efforts, the only major test library that supports out of the box is Jest (which locks you into that ecosystem)
-That makes it particularly well-suited for a couple of areas:
-
- ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oskar-yildiz-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #meta 
-              #node 
-              #git  </span>
-              
-              <h2 class="post-card-title">A simple JavaScript/Node coding setup on Mac OS X</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>Here&rsquo;s how I get productive for JavaScript/Node on Mac OS.
-It includes iTerm2, zsh, Node, Visual Studio Code and some git commands.
-
- ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/parker-whitson-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #deployment 
-              #meta 
-              #css 
-              #hugo  </span>
-              
-              <h2 class="post-card-title">Switching the lights on: Hugo vs Hugo config files</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p> A simple Hugo blog setup
- The story of getting codewithhugo.com up and running.
-The tl;dr is the following:
- I always rave about my blog setup, it’s simple, fast and just works I used Hugo, “The world’s fastest framework for building websites”, a static site generator I used a theme, casper-two, which is a Hugo port of the https://ghost.org/ default theme I deployed to GitHub pages behind Cloudflare *.  There&rsquo;s been an update in the deployment saga, read it here: &ldquo;A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare&rdquo;
-
- ...  </p>
+                <p>To test an Express handler, it’s useful to know how to successfully mock/stub the request and response objects. The following examples will be written both using Jest and sinon (running in AVA).
+The rationale for this is the following. Jest is a very popular “all-in-one” testing framework. Sinon is one of the most popular “Standalone test spies, stubs and mocks for JavaScript” which “works with any unit testing framework”.
+The approach detailed in this post will be about how to test handlers independently of the Express app instance by calling them directly with mocked request (req) and response (res) objects. This is only 1 approach to testing Express handlers and middleware. The alternative is to fire up the Express server (ideally in-memory using SuperTest). I go into more detail on how to achieve that in “Testing an Express app with SuperTest, moxios and Jest”.
+One of the big conceptual leaps to testing Express applications with mocked request/response is understanding how to mock a chained API eg. res.status(200).json({ foo: 'bar' }).
+This is achieved by returning the res instance from each of its methods:
+const mockResponse = { const res = {}; // replace the following () =&gt; res  // with your function stub/mock of choice  // making sure they still return `res`  res.status = () =&gt; res; res.json = () =&gt; res; return res; };  See the repository with examples and the working application at github.com/HugoDF/mock-express-request-response.
+Table of contents:  ...  </p>
               
           </section>
       </a>
