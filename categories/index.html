@@ -149,26 +149,32 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oskar-yildiz-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #meta 
-              #node 
-              #git  </span>
+              #Sequelize 
+              #Node 
+              #productivity  </span>
               
-              <h2 class="post-card-title">A simple JavaScript/Node coding setup on Mac OS X</h2>
+              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Here&rsquo;s how I get productive for JavaScript/Node on Mac OS.
-It includes iTerm2, zsh, Node, Visual Studio Code and some git commands.
+                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
+For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
+To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node.js” is a good option. It allows the application to run backed by a MySQL or PostgreSQL instance and provides an easy way to map from entities&rsquo; representation in the database to JavaScript and vice versa.
+Sequelize’s API for model definitions looks like the following (from the docs http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):
+const MyModel = sequelize.define(&#34;MyModel&#34;, { // fields and methods });  To add class and instance methods you would write the following:
+// Class Method MyModel.associate = function (models) {}; // Instance Method MyModel.prototype.someMethod = function () {..}  This is necessary pre-ES6 since there was no concept of classical inheritance. Since we have class now, why not leverage them? For developers who are used to having classes, the following would likely look familiar:
+class MyModel extends Sequelize.Model { static associate(models) {} someMethod() {} }  Sequelize actually supports this, but the documentation is a bit lacking. One of the only place to find a reference to how to do this is in a GitHub issue: https://github.com/sequelize/sequelize/issues/6524.
+Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from Sequelize.Model:
 
  ...  </p>
               
@@ -185,27 +191,26 @@ It includes iTerm2, zsh, Node, Visual Studio Code and some git commands.
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/raymond-rasmusson-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/annie-spratt-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #VueJS 
+              #graphql 
+              #tooling 
               #web development  </span>
               
-              <h2 class="post-card-title">Writing multiple Vue components in a single file</h2>
+              <h2 class="post-card-title">A gentle introduction to GraphQL API integrations</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Writing multiple components in one file is a pattern from React where some files contain multiple components.
-Some of those components are &ldquo;private&rdquo; to the file/exported component since no other component needs to consume them.
-
- ...  </p>
+                <p>GraphQL is a great alternative to REST (or other HTTP API designs). This is an quick introduction to the core concepts around consuming a GraphQL API.
+To see some examples consuming a GraphQL API:
+ In Python, see Python GraphQL client requests example using gql In JavaScript (browser and Node), see last week&rsquo;s Code with Hugo newsletter  Table of contents:  ...  </p>
               
           </section>
       </a>
@@ -220,31 +225,26 @@ Some of those components are &ldquo;private&rdquo; to the file/exported componen
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/how-components-won.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bekir-donmez-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #frontend 
-              #web development  </span>
+              #Node 
+              #Testing  </span>
               
-              <h2 class="post-card-title">React vs Angular vs Vue in 2019: How components won the “framework wars”</h2>
+              <h2 class="post-card-title">Testing an Express app with SuperTest, moxios and Jest</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>React, Vue or Angular: Why it doesn’t matter.
- 2018 marked the end of JavaScript fatigue and the React vs Vue vs Angular (“framework wars”) debate
- A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.
-Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. In more ways than one, the mental model of these frameworks/libraries have converged to the component model.
-This is a win for the developers since the mental model is the same for all the most widespread frameworks. Which means going from one to the other does not pose as big a challenge as it used to.
-If you came here to read a more thorough review and have more background to the Vue, React and Angular ecosystems, I recommend the following from 2017:
-Angular vs. React vs. Vue: A 2017 comparison
-Table of contents:  ...  </p>
+                <p>Testing is a crucial part of the software development process. It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.
+Express is one of the most widespread libraries for building backend applications in JavaScript. What follows is a summary of how to set up an efficient unit testing strategy for such an application as well as a couple of situations you may be faced with when attempting to test.
+Full code example can be found at https://github.com/HugoDF/express-supertest-moxios.  ...  </p>
               
           </section>
       </a>
