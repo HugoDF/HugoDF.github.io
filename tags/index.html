@@ -233,26 +233,28 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/600/600/1*xJoAW5prjY5hGmiTgL40TQ.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/parker-whitson-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/in-simple-terms-code-on-the-backend-frontend-and-how-they-interact/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/switching-the-lights-on-hugo-vs-hugo-config-files/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #dev-decoded 
-              #Web development 
-              #Productivity  </span>
+              #deployment 
+              #meta 
+              #css 
+              #hugo  </span>
               
-              <h2 class="post-card-title">In simple terms: code on the backend, frontend and how they interact</h2>
+              <h2 class="post-card-title">Switching the lights on: Hugo vs Hugo config files</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>A look at the shifting boundaries of the web development stack
-This was originally posted as an answer on Quora: How do frontend code and backend code interact with each other?
-Let’s start with quick definitions followed by state of the art best practices.
+                <p> A simple Hugo blog setup
+ The story of getting codewithhugo.com up and running.
+The tl;dr is the following:
+ I always rave about my blog setup, it’s simple, fast and just works I used Hugo, “The world’s fastest framework for building websites”, a static site generator I used a theme, casper-two, which is a Hugo port of the https://ghost.org/ default theme I deployed to GitHub pages behind Cloudflare *.  There&rsquo;s been an update in the deployment saga, read it here: &ldquo;A tiny case study about migrating to Netlify when disaster strikes at GitHub, featuring Cloudflare&rdquo;
 
  ...  </p>
               
@@ -269,27 +271,25 @@ Let’s start with quick definitions followed by state of the art best practices
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/sequelize-data-types-a-practical-guide/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/mika-baumeister-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/node-configuration-management/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/filip-gielda-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/sequelize-data-types-a-practical-guide/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/node-configuration-management/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Sequelize 
               #JavaScript 
-              #node  </span>
+              #Node 
+              #deployment  </span>
               
-              <h2 class="post-card-title">Sequelize Data Types: a practical guide</h2>
+              <h2 class="post-card-title">12-factor Node.js application configuration management without the `config` npm package</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>DataTypes are core to the Sequelize 4 library. This is a practical and complete guide to make up for the sparse Sequelize official documentation on the subject.
-First of all, DataTypes contains both the types and generators for default values: eg. NOW, UUIDV1 and UUIDV4 are special default values.
-The places where you&rsquo;re likely to encounter DataTypes are in the model field definition and in the migration definitions. Note that for a given model and field, the data type should be the same in the model and in the migration.
-Table of contents:  ...  </p>
+                <p>The config npm package is great (npmjs.com/package/config), but it encourages confusing and non-12-factor-app-compliant patterns.
+We’ll look at some of the patterns it encourages and why they’ll bring you struggles down the road as well a simple, single-file, no-dependency way to define your configuration.  ...  </p>
               
           </section>
       </a>
@@ -304,30 +304,25 @@ Table of contents:  ...  </p>
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/express-request-response-mocking/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/chris-barbalis-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/andrew-preble-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/express-request-response-mocking/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/the-step-by-step-guide-to-create-a-domain-redirect-with-cloudflare/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Testing 
-              #Node  </span>
+              #cdn 
+              #dev-decoded 
+              #productivity  </span>
               
-              <h2 class="post-card-title">A guide to Express request and response mocking/stubbing with Jest or sinon</h2>
+              <h2 class="post-card-title">The step-by-step guide to create a domain redirect with Cloudflare</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>To test an Express handler, it’s useful to know how to successfully mock/stub the request and response objects. The following examples will be written both using Jest and sinon (running in AVA).
-The rationale for this is the following. Jest is a very popular “all-in-one” testing framework. Sinon is one of the most popular “Standalone test spies, stubs and mocks for JavaScript” which “works with any unit testing framework”.
-The approach detailed in this post will be about how to test handlers independently of the Express app instance by calling them directly with mocked request (req) and response (res) objects. This is only 1 approach to testing Express handlers and middleware. The alternative is to fire up the Express server (ideally in-memory using SuperTest). I go into more detail on how to achieve that in “Testing an Express app with SuperTest, moxios and Jest”.
-One of the big conceptual leaps to testing Express applications with mocked request/response is understanding how to mock a chained API eg. res.status(200).json({ foo: 'bar' }).
-This is achieved by returning the res instance from each of its methods:
-const mockResponse = { const res = {}; // replace the following () =&gt; res  // with your function stub/mock of choice  // making sure they still return `res`  res.status = () =&gt; res; res.json = () =&gt; res; return res; };  See the repository with examples and the working application at github.com/HugoDF/mock-express-request-response.
-Table of contents:  ...  </p>
+                <p>
+ ...  </p>
               
           </section>
       </a>
