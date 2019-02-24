@@ -149,32 +149,25 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/isis-franca-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Sequelize 
-              #Node 
-              #productivity  </span>
+              #python 
+              #graphql 
+              #web development  </span>
               
-              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
+              <h2 class="post-card-title">Python GraphQL client requests example using gql</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
-For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
-To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node.js” is a good option. It allows the application to run backed by a MySQL or PostgreSQL instance and provides an easy way to map from entities&rsquo; representation in the database to JavaScript and vice versa.
-Sequelize’s API for model definitions looks like the following (from the docs http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):
-const MyModel = sequelize.define(&#34;MyModel&#34;, { // fields and methods });  To add class and instance methods you would write the following:
-// Class Method MyModel.associate = function (models) {}; // Instance Method MyModel.prototype.someMethod = function () {..}  This is necessary pre-ES6 since there was no concept of classical inheritance. Since we have class now, why not leverage them? For developers who are used to having classes, the following would likely look familiar:
-class MyModel extends Sequelize.Model { static associate(models) {} someMethod() {} }  Sequelize actually supports this, but the documentation is a bit lacking. One of the only place to find a reference to how to do this is in a GitHub issue: https://github.com/sequelize/sequelize/issues/6524.
-Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from Sequelize.Model:
+                <p> An example consuming a GraphQL API from Python using gql.
+ Full code example at HugoDF/python-graphql-client-example.
 
  ...  </p>
               
@@ -191,26 +184,31 @@ Here’s a cheat sheet for things you would want to do and how to achieve it usi
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/annie-spratt-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #graphql 
-              #tooling 
-              #web development  </span>
+              #JavaScript 
+              #Node 
+              #Docker 
+              #redis  </span>
               
-              <h2 class="post-card-title">A gentle introduction to GraphQL API integrations</h2>
+              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>GraphQL is a great alternative to REST (or other HTTP API designs). This is an quick introduction to the core concepts around consuming a GraphQL API.
-To see some examples consuming a GraphQL API:
- In Python, see Python GraphQL client requests example using gql In JavaScript (browser and Node), see last week&rsquo;s Code with Hugo newsletter  Table of contents:  ...  </p>
+                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
+Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
+We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
+You can find the full code content at https://github.com/HugoDF/express-bull-es6.
+
+ ...  </p>
               
           </section>
       </a>
@@ -225,26 +223,28 @@ To see some examples consuming a GraphQL API:
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bekir-donmez-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kelly-sikkema-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
               #Node 
-              #Testing  </span>
+              #ES6 
+              #architecture  </span>
               
-              <h2 class="post-card-title">Testing an Express app with SuperTest, moxios and Jest</h2>
+              <h2 class="post-card-title">Simple, but not too simple: how using Zeit’s `micro` improves your Node applications</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Testing is a crucial part of the software development process. It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.
-Express is one of the most widespread libraries for building backend applications in JavaScript. What follows is a summary of how to set up an efficient unit testing strategy for such an application as well as a couple of situations you may be faced with when attempting to test.
-Full code example can be found at https://github.com/HugoDF/express-supertest-moxios.  ...  </p>
+                <p> Leave the Express comfort zone to expand how you think about Node application architecture.
+ tl;dr
+ using a function composition model for building HTTP servers is awesome Functions as a Service are great but have some drawbacks micro has a similar, simple API to FaaS but doesn&rsquo;t have a compilation step micro&rsquo;s minimalism affects how you solve problems  An example comparing micro and express can be found at: github.com/HugoDF/micro-vs-express-example.
+Table of contents:  ...  </p>
               
           </section>
       </a>
