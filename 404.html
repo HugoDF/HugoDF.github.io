@@ -53,7 +53,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     
       
-      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.d4792608561f2f90b88204f4f1f084917e02a0e781972321f2716d085725cbf2.css">
+      <link rel="stylesheet" href="https://codewithhugo.com/overrides.min.b03e9c043a50092b43f3ef9ab0b468b08690a8f8f1b270a7b31ff5ab68a94763.css">
     
       
       <link rel="stylesheet" href="https://codewithhugo.com/syntax.min.e1646a3f88f77e1b5e7d0253633b1958013aa132890dfe4d7e15dc4718d4aecc.css">
@@ -102,28 +102,29 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kelly-sikkema-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elevate-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Node 
-              #ES6 
-              #architecture  </span>
+              #Sequelize 
+              #testing 
+              #Node  </span>
               
-              <h2 class="post-card-title">Simple, but not too simple: how using Zeit’s `micro` improves your Node applications</h2>
+              <h2 class="post-card-title">Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> Leave the Express comfort zone to expand how you think about Node application architecture.
- tl;dr
- using a function composition model for building HTTP servers is awesome Functions as a Service are great but have some drawbacks micro has a similar, simple API to FaaS but doesn&rsquo;t have a compilation step micro&rsquo;s minimalism affects how you solve problems  An example comparing micro and express can be found at: github.com/HugoDF/micro-vs-express-example.
-Table of contents:  ...  </p>
+                <p>This post goes through some patterns that can be used to unit test ES6 classes.
+The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.
+In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).
+
+ ...  </p>
               
           </section>
       </a>
@@ -138,32 +139,30 @@ Table of contents:  ...  </p>
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/joshua-sortino-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bill-jelen-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
+              #deployment 
               #Node 
-              #ES6  </span>
+              #JavaScript 
+              #tooling 
+              #dokku  </span>
               
-              <h2 class="post-card-title">Use ES modules/ES6 import in Node without Babel/Webpack using `esm`</h2>
+              <h2 class="post-card-title">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Node has been implementing more and more ES6+ (ESNext) features natively. One of the features that is taking the longest to implement is modules. The reason for this is that Node and npm run on what is called CommonJS, with which you use require('module-name') to import from other modules and use the module.exports object to expose entities from a module.
-Node’s CommonJS was actually one of the first widely adopted module systems in JavaScript. The ease with which one can bundle CommonJS coupled with its widespread use in Node applications and tools means CommonJS quickly displaced RequireJS and SystemJS for frontend application dependency and module management
- I’m working on a “history of JavaScript module, bundling + dependency management” article, subscribe to get it first).
- CommonJS has some drawbacks, like being hard to statically analyse, which leads to for example bloated bundles. It’s also just not part of the ECMAScript specification, which ES modules are.
-For anyone who is still wondering, ECMAScript (or ES) modules use a syntax with import thing from 'my-module'; or import { something } from 'my-module' to import things and export default or export something to expose entities from the module.
-Bundlers like Webpack, Rollup and Parcel have support for ES modules. For a Node server I’ve still tended to write in CommonJS style because Node has great support for most ESNext features out of the box (eg. rest/spread, async/await, destructuring, class, shorthand object syntax) and I don’t like messing with bundlers and transpilers.
-I’ve discovered the esm module, “Tomorrow&rsquo;s ECMAScript modules today!” by John-David Dalton (of lodash 😄). It allows you to use ES modules in Node with no compilation step. It’s small, has a small footprint and comes with some extra goodies
-What follows is some ways to use it that aren’t strictly documented. This covers use-cases like incremental adoption of ES modules (ie. convert some modules to ESM but not the whole app). Using this will help you share CommonJS and ESM modules.
-Table of Contents:  ...  </p>
+                <p> Settling on a Netlify + Dokku on DigitalOcean deployment stack for JavaScript and Node.
+ Over the last few years I’ve never quite settled on a goto deployment strategy for my apps and projects. Technology-wise it has settled towards Vue or static site generators for the frontend with Node on the backend, whether that’s for API servers or handling rendering through handlebars.
+What I’ve finally settled on is Netlify + Dokku on DigitalOcean. Netlify for anything static (and more with forms, CMS and lambda). Dokku, “The smallest PaaS implementation you&rsquo;ve ever seen.“ for any backend apps and databases. This is what I’ve used to deploy my latest projects Post Frequency and Accountable Blogging, tools to quantify and improve your blogging output.
+This is a long list of pros/cons for a bunch of services:
+ 👍 → pro 👎 → con 🤔 → undecided 🚨 → deal-breaker for me 🤓 → nice-to-have  Table of contents:  ...  </p>
               
           </section>
       </a>
@@ -178,27 +177,20 @@ Table of Contents:  ...  </p>
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/stephen-dawson-unsplash.jpg)"></div>
-    </a>
+    <a class="post-card-image-link" href="https://codewithhugo.com/post/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/defimg/6.jpg)"></div>
+    </a>    
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/6-months-of-code-with-hugo-in-numbers/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/post/">
           <header class="post-card-header">
-              <span class="post-card-tags">
-              #meta 
-              #blogging 
-              #technical writing 
-              #hugo  </span>
               
-              <h2 class="post-card-title">6 months of Code with Hugo, in numbers</h2>
+              <h2 class="post-card-title">Posts</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> Going from 0 to small. A developer&rsquo;s journey starting a technical blog from scratch.
- Stats in this post as of 21st of October, follow me on Twitter for monthly updates.
-Contents:  ...  </p>
+                <p> </p>
               
           </section>
       </a>
