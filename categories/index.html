@@ -149,25 +149,25 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/matthew-henry-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #TypeScript 
-              #web development 
-              #developer tools  </span>
+              #Node  </span>
               
-              <h2 class="post-card-title">Writing an npm module with TypeScript and microbundle</h2>
+              <h2 class="post-card-title">ES6 by example: a module/CLI to wait for Postgres in docker-compose</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.
+                <p>When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues inside the app.
+This post walks through how to deliver this functionality both as a CLI and a module that works both as a CommonJS module (require) and ES modules, without transpilation.
+“A fast, production ready, zero-dependency ES module loader for Node 6+!” is esm’s promise. From this sample project, it’s worked.
 
  ...  </p>
               
@@ -184,30 +184,29 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/how-components-won.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elaine-casap-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #Node 
               #JavaScript 
-              #frontend 
-              #web development  </span>
+              #Python  </span>
               
-              <h2 class="post-card-title">React vs Angular vs Vue in 2019: How components won the “framework wars”</h2>
+              <h2 class="post-card-title">The comprehensive guide to integrating a Python/Ruby/PHP/shell script with Node.js using child_process.spawn</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>React, Vue or Angular: Why it doesn’t matter.
- 2018 marked the end of JavaScript fatigue and the React vs Vue vs Angular (“framework wars”) debate
- A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.
-Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. In more ways than one, the mental model of these frameworks/libraries have converged to the component model.
-This is a win for the developers since the mental model is the same for all the most widespread frameworks. Which means going from one to the other does not pose as big a challenge as it used to.
-If you came here to read a more thorough review and have more background to the Vue, React and Angular ecosystems, I recommend the following from 2017:
-Angular vs. React vs. Vue: A 2017 comparison
+                <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
+The goal here is to have an interoperability layer between Node.js and an outside shell. This is a quick workaround if some other part of your system isn’t developed in JavaScript.
+We’ll use spawn over exec because we’re talking about passing data, and potentially large amounts of it. To understand the difference between child_process.spawn and child_process.exec (see “Difference between spawn and exec of Node.js child_process”).
+The long and short of it is use exec for small amounts of data (under 200k) using a Buffer interface and spawn for larger amounts using a stream interface.
+spawn has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.
+Full examples github.com/HugoDF/node-run-python.
 Table of contents:  ...  </p>
               
           </section>
@@ -223,27 +222,29 @@ Table of contents:  ...  </p>
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/async-js/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/async-js-cover.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elevate-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/async-js/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #Node 
+              #testing 
               #JavaScript 
-              #Node  </span>
+              #Sequelize  </span>
               
-              <h2 class="post-card-title">Async JavaScript: history, patterns and gotchas</h2>
+              <h2 class="post-card-title">Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>A look at the history, patterns and gotchas of asynchronous operations in JavaScript.
-We&rsquo;ll go through the pros and cons of callbacks, Promises and async/await. Present some pitfalls to bear in mind as well as introducing how you would deal with certain situations.
-Live-coding/workshop section touching on both Node and client-side JS situations at github.com/HugoDF/async-js-presentation/tree/master/workshop.
-This given as a talk at Codebar London January Monthly 2019, see the slides:
-  Table of Contents 🐳:  ...  </p>
+                <p>This post goes through some patterns that can be used to unit test ES6 classes.
+The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.
+In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).
+
+ ...  </p>
               
           </section>
       </a>
