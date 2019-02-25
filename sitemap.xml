@@ -61,6 +61,11 @@
   </url>
   
   <url>
+    <loc>https://codewithhugo.com/parse-express-json-body/</loc>
+    <lastmod>2019-02-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://codewithhugo.com/express-request-response-mocking/</loc>
     <lastmod>2019-02-18T00:00:00+00:00</lastmod>
   </url>
@@ -392,6 +397,12 @@
   <url>
     <loc>https://codewithhugo.com/tags/es6/</loc>
     <lastmod>2018-10-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://codewithhugo.com/tags/express/</loc>
+    <lastmod>2019-02-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

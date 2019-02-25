@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Express on Code with Hugo</title>
+    <link>https://codewithhugo.com/tags/express/</link>
+    <description>Recent content in Express on Code with Hugo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 25 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://codewithhugo.com/tags/express/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Parse POST/PATCH/PUT request JSON body with Express and no dependencies</title>
+      <link>https://codewithhugo.com/parse-express-json-body/</link>
+      <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/parse-express-json-body/</guid>
+      <description>&lt;p&gt;When asked to handle data in a request body, developers who have used Express (the “Fast, unopinionated, minimalist web framework for &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;Node.js&lt;/a&gt;”) before, reach for the &lt;a href=&#34;https://github.com/expressjs/body-parser&#34;&gt;body-parser&lt;/a&gt; library.&lt;/p&gt;
+
+&lt;p&gt;The same functionality can be achieved using &lt;code&gt;express.json()&lt;/code&gt;. A middleware for parsing JSON request bodies built-into Express.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note: &lt;code&gt;express.json&lt;/code&gt; exists only in Express 4.16+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is an example app that reflects the request POST body in the response:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;express&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;require&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;express&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;app&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;express&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;use&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;express&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;post&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+  &lt;span class=&#34;s1&#34;&gt;&amp;#39;/test&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;PORT&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;process&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;env&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PORT&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3000&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;listen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PORT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`Server listening on port &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PORT&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can see it running at &lt;a href=&#34;https://olrn6x3n19.sse.codesandbox.io/&#34;&gt;https://olrn6x3n19.sse.codesandbox.io/&lt;/a&gt;, test it using:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl --request POST &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --url https://olrn6x3n19.sse.codesandbox.io/test &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --header &lt;span class=&#34;s1&#34;&gt;&amp;#39;content-type: application/json&amp;#39;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --data &lt;span class=&#34;s1&#34;&gt;&amp;#39;{
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    &amp;#34;json-parsing&amp;#34;: &amp;#34;just with Express&amp;#34;,
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;    &amp;#34;no&amp;#34;: &amp;#34;body-parser&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;}&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It will output:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;json-parsing&amp;#34;&lt;/span&gt;:&lt;span class=&#34;s2&#34;&gt;&amp;#34;just with Express&amp;#34;&lt;/span&gt;,&lt;span class=&#34;s2&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;:&lt;span class=&#34;s2&#34;&gt;&amp;#34;body-parser&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Which is exactly what we sent in the &lt;code&gt;--data&lt;/code&gt; property of the curl request.&lt;/p&gt;
+
+&lt;p&gt;You can pass options into it like so (all the values are the default values for these options):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;app&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;use&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;express&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;inflate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;100kb&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;reviver&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;strict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;application/json&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;verify&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;undefined&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The full API docs for &lt;code&gt;express.json&lt;/code&gt; are at &lt;a href=&#34;https://expressjs.com/en/api.html#express.json&#34;&gt;expressjs.com/en/api.html#express.json&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A run-through of the options follows.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;inflate&lt;/code&gt; controls whether or not to handle compressed/deflated request bodies. When it’s set to false, compressed/deflated bodies will get rejected.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;limit&lt;/code&gt; controls the maximum body size. It can be either a number of bytes or a string which is compatible with the &lt;a href=&#34;https://www.npmjs.com/package/bytes&#34;&gt;bytes&lt;/a&gt; library.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;strict&lt;/code&gt; is about locking JSON.parse down to just objects and arrays. If true, only &lt;code&gt;JSON.stringify&lt;/code&gt;-ed objects and arrays will be allowed, if false, anything that JSON.parse accepts will be parsed.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;type&lt;/code&gt; controls which content-type the middleware will attempt to parse. The value for this option can be a string, an array of strings, or a function. Content-type wildcards are supported to some extent since string(s) are passed to the &lt;a href=&#34;https://www.npmjs.com/package/type-is&#34;&gt;type-is&lt;/a&gt; library.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;verify&lt;/code&gt; is an optional function with &lt;code&gt;verify(req, res, buf, encoding)&lt;/code&gt; signature. &lt;code&gt;buf&lt;/code&gt; is a Buffer containing the raw request body. &lt;code&gt;verify&lt;/code&gt; can be used to abort parsing by throwing an error.&lt;/p&gt;
+
+&lt;p&gt;Despite not being necessary for parsing JSON bodies, body-parser remains a great library that provides parsers for other body types (see the docs at &lt;a href=&#34;https://github.com/expressjs/body-parser&#34;&gt;github.com/expressjs/body-parser&lt;/a&gt;):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/expressjs/body-parser#bodyparserjsonoptions&#34;&gt;JSON body parser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/expressjs/body-parser#bodyparserrawoptions&#34;&gt;Raw body parser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/expressjs/body-parser#bodyparsertextoptions&#34;&gt;Text body parser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/expressjs/body-parser#bodyparserurlencodedoptions&#34;&gt;URL-encoded form body parser&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The exception is multipart bodies, there are alternative libraries to handle that use-case (usually for file upload).&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@mahiruysal?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Mahir Uysal&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Mahir Uysal&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

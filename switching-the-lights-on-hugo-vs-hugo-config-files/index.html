@@ -560,13 +560,13 @@ I knew it was a problem but as usual I never got round to fixing it until I emba
     <div class="read-next-card-content">
       
         <ul>
-          <li><a href="https://codewithhugo.com/node-configuration-management/">12-factor Node.js application configuration management without the `config` npm package</a></li>            
+          <li><a href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">Writing multiple Vue components in a single file</a></li>            
         
-          <li><a href="https://codewithhugo.com/impress-interviewers-with-recursion-in-javascript-with-es6-features/">Impress interviewers with recursion in JavaScript with ES6 features</a></li>            
+          <li><a href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">Using ES6 classes for Sequelize 4 models</a></li>            
         
-          <li><a href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">From AngularJS to Vue.js, CommonJS and Jest</a></li>            
+          <li><a href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">Closures, Partial Application and Currying: Effective Functional JavaScript</a></li>            
         
-          <li><a href="https://codewithhugo.com/use-es-modules-in-node-without-babel/webpack-using-esm/">Use ES modules/ES6 import in Node without Babel/Webpack using `esm`</a></li>            
+          <li><a href="https://codewithhugo.com/python-graphql-client-requests-example-using-gql/">Python GraphQL client requests example using gql</a></li>            
         </ul>
     </div>
     <footer class="read-next-card-footer">
@@ -612,30 +612,28 @@ I knew it was a problem but as usual I never got round to fixing it until I emba
       
       <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/express-request-response-mocking/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/chris-barbalis-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/parse-express-json-body/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/mahir-uysal-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/express-request-response-mocking/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/parse-express-json-body/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #Node 
-              #Testing 
+              #Express 
               #JavaScript  </span>
               
-              <h2 class="post-card-title">A guide to Express request and response mocking/stubbing with Jest or sinon</h2>
+              <h2 class="post-card-title">Parse POST/PATCH/PUT request JSON body with Express and no dependencies</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>To test an Express handler, it’s useful to know how to successfully mock/stub the request and response objects. The following examples will be written both using Jest and sinon (running in AVA).
-The rationale for this is the following. Jest is a very popular “all-in-one” testing framework. Sinon is one of the most popular “Standalone test spies, stubs and mocks for JavaScript” which “works with any unit testing framework”.
-The approach detailed in this post will be about how to test handlers independently of the Express app instance by calling them directly with mocked request (req) and response (res) objects. This is only 1 approach to testing Express handlers and middleware. The alternative is to fire up the Express server (ideally in-memory using SuperTest). I go into more detail on how to achieve that in “Testing an Express app with SuperTest, moxios and Jest”.
-One of the big conceptual leaps to testing Express applications with mocked request/response is understanding how to mock a chained API eg. res.status(200).json({ foo: 'bar' }).
-This is achieved by returning the res instance from each of its methods:
-const mockResponse = { const res = {}; // replace the following () =&gt; res  // with your function stub/mock of choice  // making sure they still return `res`  res.status = () =&gt; res; res.json = () =&gt; res; return res; };  See the repository with examples and the working application at github.com/HugoDF/mock-express-request-response.
-Table of contents:  ...  </p>
+                <p>When asked to handle data in a request body, developers who have used Express (the “Fast, unopinionated, minimalist web framework for Node.js”) before, reach for the body-parser library.
+The same functionality can be achieved using express.json(). A middleware for parsing JSON request bodies built-into Express.
+ Note: express.json exists only in Express 4.16+
+ 
+ ...  </p>
               
           </section>
       </a>
