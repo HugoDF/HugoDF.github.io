@@ -233,99 +233,100 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/express-request-response-mocking/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/chris-barbalis-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/samuel-zeller-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/express-request-response-mocking/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #Node 
-              #Testing 
-              #JavaScript  </span>
-              
-              <h2 class="post-card-title">A guide to Express request and response mocking/stubbing with Jest or sinon</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>To test an Express handler, it’s useful to know how to successfully mock/stub the request and response objects. The following examples will be written both using Jest and sinon (running in AVA).
-The rationale for this is the following. Jest is a very popular “all-in-one” testing framework. Sinon is one of the most popular “Standalone test spies, stubs and mocks for JavaScript” which “works with any unit testing framework”.
-The approach detailed in this post will be about how to test handlers independently of the Express app instance by calling them directly with mocked request (req) and response (res) objects. This is only 1 approach to testing Express handlers and middleware. The alternative is to fire up the Express server (ideally in-memory using SuperTest). I go into more detail on how to achieve that in “Testing an Express app with SuperTest, moxios and Jest”.
-One of the big conceptual leaps to testing Express applications with mocked request/response is understanding how to mock a chained API eg. res.status(200).json({ foo: 'bar' }).
-This is achieved by returning the res instance from each of its methods:
-const mockResponse = { const res = {}; // replace the following () =&gt; res  // with your function stub/mock of choice  // making sure they still return `res`  res.status = () =&gt; res; res.json = () =&gt; res; return res; };  See the repository with examples and the working application at github.com/HugoDF/mock-express-request-response.
-Table of contents:  ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/christin-hume-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/technical-content-workflow-for-code-with-hugo-static-site-paper-medium-dev-and-buttondown/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #meta 
-              #seo 
-              #technical writing  </span>
-              
-              <h2 class="post-card-title">Technical content workflow for “Code with Hugo”: static site, Paper, Medium, DEV and Buttondown</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>tl;dr: here are the tools used to power, build and publish codewithhugo.com:
- Dropbox Paper because it syncs desktop/mobile and outputs to markdown Unsplash for cover images Edited Markdown + images → Hugo static site generator Casper 2 (https://ghost.org default theme) for Hugo Schedule:  Newsletter: Mondays 5pm UK every 2 weeks 1+ post a week  Cross-post to Medium (Stories → Import a Story) Cross-post to dev.to using RSS feed Social media/promotion &lt; Organic traffic Newsletter powered by https://buttondown.email Analytics: Google Analytics + Simple Analytics  This post has about 7 month’s worth of learning in it, so see the following table of contents:  ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kelly-sikkema-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/simple-but-not-too-simple-how-using-zeits-micro-improves-your-node-applications/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/why-you-should-wrap-your-javascript-dependencies/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #Node 
               #JavaScript 
-              #ES6 
-              #architecture  </span>
+              #ES6  </span>
               
-              <h2 class="post-card-title">Simple, but not too simple: how using Zeit’s `micro` improves your Node applications</h2>
+              <h2 class="post-card-title">Why you should wrap your (JavaScript) dependencies</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> Leave the Express comfort zone to expand how you think about Node application architecture.
- tl;dr
- using a function composition model for building HTTP servers is awesome Functions as a Service are great but have some drawbacks micro has a similar, simple API to FaaS but doesn&rsquo;t have a compilation step micro&rsquo;s minimalism affects how you solve problems  An example comparing micro and express can be found at: github.com/HugoDF/micro-vs-express-example.
-Table of contents:  ...  </p>
+                <p> An email sending example.
+ 
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*gVQU50zNWjL1kihKKQ5zYQ.jpeg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/animations-css-vs-javascript/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #CSS 
+              #JavaScript 
+              #animation 
+              #web development  </span>
+              
+              <h2 class="post-card-title">Animations: CSS vs JavaScript</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p> When should you use JavaScript when you can use CSS?
+ This post was sparked by a question I answered on Quora: Which is better to use, CSS or JS?
+The web frontend is built with the triumvirate of HTML, CSS and JavaScript (see “Backend code, frontend code and how they interact” for more details): HTML says what things are, CSS how they look and JavaScript does all the things the other two can’t.
+Seeing it from this light the answer to the question: “When should you use JavaScript when you can use CSS?” is never.
+HTML, CSS and JavaScript do overlap especially since HTML5 and CSS3. Animations before CSS3 used to be the premise of the JavaScript and complex animation orchestration still is with libraries like GSAP, but nowadays we can also animate using the transition CSS rule.
+This leads us to formulate some rules around using JavaScript in the browser:
+ if you can do something with CSS over JavaScript, do it if you can do something with HTML over JavaScript, do it  
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #ES6 
+              #web development  </span>
+              
+              <h2 class="post-card-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
+
+ ...  </p>
               
           </section>
       </a>
