@@ -233,28 +233,29 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #tooling 
-              #git 
-              #ci 
-              #bash  </span>
+              #Node 
+              #JavaScript 
+              #Docker 
+              #redis  </span>
               
-              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
+              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
-Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. This is not a CircleCI 2.0 workflows tutorial, it’s more of a git-flow/CircleCI hybrid to have 2 (or more) environments being released to and automatically deployed by CircleCI.
-I would like to thanks Chris Fidao, and this tweet:
-We&rsquo;ll go through how to use GitHub + CircleCI for deployment automation and release management.
+                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
+There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
+Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
+We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
+You can find the full code content at https://github.com/HugoDF/express-bull-es6.
 
  ...  </p>
               
@@ -313,26 +314,28 @@ Here’s a cheat sheet for things you would want to do and how to achieve it usi
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/neonbrand-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/parse-express-json-body/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/mahir-uysal-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/parse-express-json-body/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #vue 
-              #node  </span>
+              #Node 
+              #Express 
+              #JavaScript  </span>
               
-              <h2 class="post-card-title">Post Frequency: from prototype to production with Vue &#43; Node</h2>
+              <h2 class="post-card-title">Parse POST/PATCH/PUT request JSON body with Express and no dependencies</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> If you want to ship, use the tools you know. — A lot of people
- Let&rsquo;s apply that principle: I&rsquo;m building Post Frequency/Accountable Blogging, I&rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and I’ve settled on Dokku for databases/backend applications hosting.
-Table of contents:  ...  </p>
+                <p>When asked to handle data in a request body, developers who have used Express (the “Fast, unopinionated, minimalist web framework for Node.js”) before, reach for the body-parser library.
+The same functionality can be achieved using express.json(). A middleware for parsing JSON request bodies built-into Express.
+ Note: express.json exists only in Express 4.16+
+ 
+ ...  </p>
               
           </section>
       </a>
