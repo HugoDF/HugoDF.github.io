@@ -233,29 +233,24 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/michal-parzuchowski-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
+      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1416269223193-bc45028133f5?ixlib=rb-0.3.5&amp;s=de9cf50e342bd5a92bf1850dc7f409c0&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/bring-redux-to-your-queue-logic-an-express-setup-with-es6-and-bull-queue/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/recursion-in-javascript-with-es6-destructuring-and-rest/spread/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Node 
               #JavaScript 
-              #Docker 
-              #redis  </span>
+              #ES6 
+              #web development  </span>
               
-              <h2 class="post-card-title">Bring Redux to your queue logic: an Express setup with ES6 and bull queue</h2>
+              <h2 class="post-card-title">Recursion in JavaScript with ES6, destructuring and rest/spread</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>There always comes a point in a web application&rsquo;s life where an operation is best served in the background, this is where queues come in.
-There are a few queuing solutions in Node. None of them are ridiculously dominant, eg. Kue, RSMQ, Bee Queue, bull. The issue with Kue, RSMQ and Bee Queue was its use of a done callback as the recommended API.
-Bull https://github.com/OptimalBits/bull is a premium Queue package for handling jobs and messages in NodeJS. It’s backed by Redis and is pretty feature-rich. Most of all, it leverages a Promise-based processing API which means async/await.
-We’ll walk through an application that sends webhooks with a given payload to a set of URLs.
-You can find the full code content at https://github.com/HugoDF/express-bull-es6.
+                <p>The latest ECMA standard for JavaScript (ECMAScript 6) makes JavaScript more readable by encouraging a more declarative style with functional constructs and new operators.
 
  ...  </p>
               
@@ -272,32 +267,28 @@ You can find the full code content at https://github.com/HugoDF/express-bull-es6
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/eugene-lim-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Node 
-              #JavaScript 
-              #Sequelize 
-              #productivity  </span>
+              #tooling 
+              #git 
+              #ci 
+              #bash  </span>
               
-              <h2 class="post-card-title">Using ES6 classes for Sequelize 4 models</h2>
+              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The ES2015 or ES6 specification introduced class to JavaScript. Libraries like React went from React.createClass to class MyComponent extends React.Component, ie went from rolling their own constructor to leveraging a language built-in to convey the programmer’s intent.
-For a Node.js web application’s persistence layer, a few databases come to mind like MongoDB (possibly paired with mongoose), or a key-value store like Redis.
-To run a relational database with a Node application, Sequelize, “An easy-to-use multi SQL dialect ORM for Node.js” is a good option. It allows the application to run backed by a MySQL or PostgreSQL instance and provides an easy way to map from entities&rsquo; representation in the database to JavaScript and vice versa.
-Sequelize’s API for model definitions looks like the following (from the docs http://docs.sequelizejs.com/manual/tutorial/upgrade-to-v4.html):
-const MyModel = sequelize.define(&#34;MyModel&#34;, { // fields and methods });  To add class and instance methods you would write the following:
-// Class Method MyModel.associate = function (models) {}; // Instance Method MyModel.prototype.someMethod = function () {..}  This is necessary pre-ES6 since there was no concept of classical inheritance. Since we have class now, why not leverage them? For developers who are used to having classes, the following would likely look familiar:
-class MyModel extends Sequelize.Model { static associate(models) {} someMethod() {} }  Sequelize actually supports this, but the documentation is a bit lacking. One of the only place to find a reference to how to do this is in a GitHub issue: https://github.com/sequelize/sequelize/issues/6524.
-Here’s a cheat sheet for things you would want to do and how to achieve it using ES6 classe + inheriting from Sequelize.Model:
+                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. This is not a CircleCI 2.0 workflows tutorial, it’s more of a git-flow/CircleCI hybrid to have 2 (or more) environments being released to and automatically deployed by CircleCI.
+I would like to thanks Chris Fidao, and this tweet:
+We&rsquo;ll go through how to use GitHub + CircleCI for deployment automation and release management.
 
  ...  </p>
               
@@ -314,28 +305,29 @@ Here’s a cheat sheet for things you would want to do and how to achieve it usi
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/parse-express-json-body/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/mahir-uysal-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/parse-express-json-body/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Node 
-              #Express 
-              #JavaScript  </span>
+              #bash 
+              #deployment 
+              #ci 
+              #tooling  </span>
               
-              <h2 class="post-card-title">Parse POST/PATCH/PUT request JSON body with Express and no dependencies</h2>
+              <h2 class="post-card-title">Bash Cheatsheet: check if environment variables are set or file/symlinks exists &#43; more</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>When asked to handle data in a request body, developers who have used Express (the “Fast, unopinionated, minimalist web framework for Node.js”) before, reach for the body-parser library.
-The same functionality can be achieved using express.json(). A middleware for parsing JSON request bodies built-into Express.
- Note: express.json exists only in Express 4.16+
- 
- ...  </p>
+                <p> A bash scripting cheat sheet for developers who just want to get by.
+ Writing setup, CI and deployment flows means a bit of the old bash scripting.
+Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
+To avoid having to do this again myself and for your reading pleasure, here they are.
+To be dangerous in terms of setup, CI and depoyment flows we will encounter the following:  ...  </p>
               
           </section>
       </a>
