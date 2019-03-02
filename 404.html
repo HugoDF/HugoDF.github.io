@@ -102,26 +102,25 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nils-stahl-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/node-configuration-management/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/filip-gielda-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/install-just-redis-cli-on-ubuntu-debian-jessie/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/node-configuration-management/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Redis 
-              #tooling  </span>
+              #Node 
+              #JavaScript 
+              #deployment  </span>
               
-              <h2 class="post-card-title">Install just redis-cli on Ubuntu, Debian, Jessie</h2>
+              <h2 class="post-card-title">12-factor Node.js application configuration management without the `config` npm package</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>As part of adding integration tests to an app on CircleCI I ran into the following issues:
- redis-cli&rsquo;s API has changed from version 2 to 3 to 4  ie. this works in v4 redis-cli -u ${REDIS_URL} but doesn’t in v2  the &ldquo;only way&rdquo; to install redis-cli is through a redis-tools or redis-server install and I only need redis-cli not the server or any other tools  What follows is how not to install redis-cli and then how to install redis-cli latest, properly.
-
- ...  </p>
+                <p>The config npm package is great (npmjs.com/package/config), but it encourages confusing and non-12-factor-app-compliant patterns.
+We’ll look at some of the patterns it encourages and why they’ll bring you struggles down the road as well a simple, single-file, no-dependency way to define your configuration.  ...  </p>
               
           </section>
       </a>
@@ -136,61 +135,66 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/nate-bell-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/responsive-semantic-images-with-css/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #CSS 
-              #tip 
-              #accessibility  </span>
-              
-              <h2 class="post-card-title">Responsive, semantic images with CSS</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p> CSS tip: object-fit your images.
- To have an image that doesn&rsquo;t try to stretch to its width/height the classic CSS is as follows:
-
- ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/annie-spratt-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #graphql 
               #tooling 
-              #web development  </span>
+              #git 
+              #ci 
+              #bash  </span>
               
-              <h2 class="post-card-title">A gentle introduction to GraphQL API integrations</h2>
+              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>GraphQL is a great alternative to REST (or other HTTP API designs). This is an quick introduction to the core concepts around consuming a GraphQL API.
-To see some examples consuming a GraphQL API:
- In Python, see Python GraphQL client requests example using gql In JavaScript (browser and Node), see last week&rsquo;s Code with Hugo newsletter  Table of contents:  ...  </p>
+                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. This is not a CircleCI 2.0 workflows tutorial, it’s more of a git-flow/CircleCI hybrid to have 2 (or more) environments being released to and automatically deployed by CircleCI.
+I would like to thanks Chris Fidao, and this tweet:
+We&rsquo;ll go through how to use GitHub + CircleCI for deployment automation and release management.
+
+ ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #VueJS 
+              #testing 
+              #JavaScript  </span>
+              
+              <h2 class="post-card-title">From AngularJS to Vue.js, CommonJS and Jest</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p> The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration
+ AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components.
+With the tools we have today, AngularJS isn’t as strong a way to do things any more. The fact that it’s in maintenance mode says it all. For a new application or new features, ie. for a project that not in maintenance mode, it’s doesn’t have the same niceties as other frameworks and libraries like Angular 2+, React or Vue. There should be a way not to rewrite the whole AngularJS application at once, here&rsquo;s how I went about doing it:
+
+ ...  </p>
               
           </section>
       </a>

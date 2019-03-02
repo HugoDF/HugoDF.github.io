@@ -149,20 +149,30 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/post/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/defimg/4.jpg)"></div>
-    </a>    
+    <a class="post-card-image-link" href="https://codewithhugo.com/observablehq-notebooks-for-javascript-demos-and-prototypes/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/headway-unsplash.jpg)"></div>
+    </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/post/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/observablehq-notebooks-for-javascript-demos-and-prototypes/">
           <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #deployment 
+              #observablehq  </span>
               
-              <h2 class="post-card-title">Posts</h2>
+              <h2 class="post-card-title">ObservableHQ notebooks for JavaScript demos and prototypes</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> </p>
+                <p>ObservableHQ is a platform being built by Mike Bostock (creator of the D3 visualisation library), Jeremy Ashkenas (“Made CoffeeScript, Backbone.js, Underscore and other ragbag” from his Twitter bio) and Tom MacWright (creator of the big presentation framework, simple-statistics and documentation.js as well as D3 contributor amongst other things).
+Observable is not just another JavaScript sandbox. It introduces the notebook paradigm to JavaScript projects, those of you familiar with Jupyter notebooks, this is the equivalent with JavaScript instead of Python. It turns out JavaScript is very well-suited to this type of paradigm.
+What’s more, JavaScript developers already have some sort of familiarity with reactivity since most frontend frameworks and view libraries build on it. It’s a different kind of reactivity, in that the library only re-renders or re-computes the section of the application that needs it (cf. Vue, Angular, React).
+You can read original post from Bostock detailing what is now ObservableHQ (then called d3.express), “A better way to code” on Medium. In that post, the state of the art of why and how of data visualisation is explained. A “better way” is described, the “integrated discovery environment”, or more simply “notebook”-s.
+That inception post is a 20 minute read, but here’s the tl;dr:
+ visualisations are usually one-offs - “The purpose of visualization is insight, not pictures.” reactivity is great for building visualisations and discovering insights from data visual outputs help massively especially in the exploration phase a well-designed notebook system has the benefit of making chunks of code reusable without much effort (or re-packaging as a library) web-based notebooks are accessible from anywhere by anyone (if that’s wanted behaviour)  I especially like points 4 and 5, since they’re not a selling point for notebooks in general but for ObservableHQ’s take on the problem. What you end up with is a well-designed web-based reactive notebook environment that’s suited to prototyping.
+Table of contents:  ...  </p>
               
           </section>
       </a>
@@ -177,27 +187,27 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">
-      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1507914997623-5b75b37d9cad?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=4daefc0d1e77d387f6e177a0990e42a8&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oskar-yildiz-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/10-minute-javascript-library-development-in-es6-with-babel-mocha-and-npm-scripts/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-javascript/node-coding-setup-on-mac-os-x/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Productivity 
-              #JavaScript  </span>
+              #node 
+              #JavaScript 
+              #meta 
+              #git  </span>
               
-              <h2 class="post-card-title">10 minute JavaScript: Library development in ES6 with Babel, Mocha and npm scripts</h2>
+              <h2 class="post-card-title">A simple JavaScript/Node coding setup on Mac OS X</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> Warning: the ecosystem has moved on since this post was originally published, it’s now easier than ever to set up a library for development: see Writing an npm module with microbundle for an up to date view on how to develop a library
- JavaScript has a thriving ecosystem of libraries delivered as packages on npm. Node has a high degree of compatibility with ES6 but it doesn’t have some features yet, namely import. This means that if we want to distribute useable packages over npm and we want to be writing ES6, we have to transpile back to ES5.
-We’ll be setting up a project that allows us to write ES6, and distribute it in ES5 (with Babel) and to test it with Mocha, all through npm scripts. We’ll also discuss some workflows that we can use to speed up our development.
-TL;DR Use this package.json, create a src folder, add an index.js and some .js and .test.js files inside it and off you go. You can also check out https://github.com/HugoDF/recursive-js, it’s a decent example project. :)
-{ &#34;name&#34;: &#34;library-js&#34;, &#34;version&#34;: &#34;1.0.0&#34;, &#34;description&#34;: &#34;Starter for library development with ES6, Babel, Mocha and npm scripts&#34;, &#34;main&#34;: &#34;./dist/index.js&#34;, &#34;scripts&#34;: { &#34;start&#34;: &#34;npm run dev&#34;, &#34;dev&#34;: &#34;npm test -- -w&#34;, &#34;init&#34;: &#34;mkdir dist&#34;, &#34;clean&#34;: &#34;rm -rf dist&#34;, &#34;prebuild&#34;: &#34;npm run clean &amp;&amp; npm run init&#34;, &#34;build&#34;: &#34;babel ./src -d ./dist --ignore test.js&#34;, &#34;pretest&#34;: &#34;npm run build&#34;, &#34;test&#34;: &#34;mocha --compilers js:babel-core/register ./src/**/*.test.js&#34;, &#34;test:single&#34;: &#34;mocha --compilers js:babel-core/register&#34; }, &#34;author&#34;: &#34;Hugo Di Francesco&#34;, &#34;devDependencies&#34;: { &#34;babel-cli&#34;: &#34;^6.16.0&#34;, &#34;babel-core&#34;: &#34;^6.17.0&#34;, &#34;babel-preset-es2015&#34;: &#34;^6.16.0&#34;, &#34;chai&#34;: &#34;^3.5.0&#34;, &#34;mocha&#34;: &#34;^3.1.2&#34; }, &#34;files&#34;: [ &#34;dist&#34; ] } 
+                <p>Here&rsquo;s how I get productive for JavaScript/Node on Mac OS.
+It includes iTerm2, zsh, Node, Visual Studio Code and some git commands.
+
  ...  </p>
               
           </section>
@@ -213,26 +223,27 @@ TL;DR Use this package.json, create a src folder, add an index.js and some .js a
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/neonbrand-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/max/1600/1*EbcfCYpND5NMGvqwkrnsWA.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/post-frequency-from-prototype-to-production-with-vue---node/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #vue 
-              #node  </span>
+              #dev-decoded 
+              #git 
+              #programming 
+              #Productivity  </span>
               
-              <h2 class="post-card-title">Post Frequency: from prototype to production with Vue &#43; Node</h2>
+              <h2 class="post-card-title">Learn git even if you don’t code</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> If you want to ship, use the tools you know. — A lot of people
- Let&rsquo;s apply that principle: I&rsquo;m building Post Frequency/Accountable Blogging, I&rsquo;m familiar with Vue and Node-based backends. Netlify makes frontend deployments trivial and I’ve settled on Dokku for databases/backend applications hosting.
-Table of contents:  ...  </p>
+                <p>The tools we wield define us, git is the one tool all developers use
+
+ ...  </p>
               
           </section>
       </a>
