@@ -6538,7 +6538,7 @@ VirtualBox allows you to run Virtual Machines on Mac, install it at &lt;a href=&
 
 &lt;p&gt;I don&amp;rsquo;t think it&amp;rsquo;s likely that people will go through the effort of doing the above reverse-engineering, so I&amp;rsquo;m going to walk anyone who will listen through how I&amp;rsquo;ve implemented it.&lt;/p&gt;
 
-&lt;p&gt;If you like getting the cheatsheet for free but also want to support my work you can &lt;a href=&#34;buymeacoff.ee/hugodf&#34;&gt;Buy me a Coffee&lt;/a&gt; or just &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to my mailing list&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you like getting the cheatsheet for free but also want to support my work you can &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/consulting-fee&#34;&gt;Buy me a Coffee&lt;/a&gt; or just &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to my mailing list&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Table of contents:
 &lt;/p&gt;
@@ -6984,7 +6984,7 @@ The rest is all explained in the article.&lt;/p&gt;
 
 &lt;p&gt;See it in action at &lt;a href=&#34;https://codewithhugo.com/guides/sequelize-es6-cheatsheet/&#34;&gt;Sequelize ES6 Cheatsheet&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;If you like getting the cheatsheet for free but also want to support my work you can &lt;a href=&#34;buymeacoff.ee/hugodf&#34;&gt;Buy me a Coffee&lt;/a&gt; or just &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to my mailing list&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you like getting the cheatsheet for free but also want to support my work you can &lt;a href=&#34;https://checkoutpage.co/checkout/hugo/consulting-fee&#34;&gt;Buy me a Coffee&lt;/a&gt; or just &lt;a href=&#34;https://buttondown.email/hugo&#34;&gt;subscribe to my mailing list&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://cdn.polyfill.io/v2/polyfill.min.js?features=es6&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;navigator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
