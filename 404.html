@@ -102,27 +102,27 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/why-css-is-hard/">
-      <div class="post-card-image" style="background-image: url(https://images.unsplash.com/photo-1505975064594-c71d5454823e?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=cd9daf0a6b9cb8db2b8b97fcace94526&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=80)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elevate-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/why-css-is-hard/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/unit-testing-sequelize-4-es6-class-models/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #CSS 
-              #web development  </span>
+              #Node 
+              #testing 
+              #JavaScript 
+              #Sequelize  </span>
               
-              <h2 class="post-card-title">Why CSS is hard</h2>
+              <h2 class="post-card-title">Mocking/stubbing ES6 classes in tests with examples of Sequelize model unit tests</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Things we’re not used to tend to be harder
-I’m a developer, and I CSS. I probably have written more CSS than I have written Java, Ruby, PHP, Python and JavaScript combined.
-Being a front-end developer is a dying art. By front-end I don’t mean ES6, Babelifyied React SPAs. I mean meat and potatoes: “here’s a design, turn it into a website please”.
-CSS doesn’t get the love it deserves in the developer crowd. I think I know why that is: it’s hard. Especially coming from the fairy land that is Java/JavaScript/Ruby/PHP/insert language.
-Now I’m not saying all these languages are easy by any stretch but CSS always throws up issues that stump me… for a good while.
+                <p>This post goes through some patterns that can be used to unit test ES6 classes.
+The examples will use Jest module auto-mocking but should be portable to other module mocking libraries (eg. Proxyquire) with some modifications.
+In &ldquo;Using ES6 classes for Sequelize 4 models&rdquo; we explored how to define Sequelize models using ES6 classes. One of the benefits of such an approach is that it allows easy unit testing, it allows you to instantiate the model without the baggage of all of Sequelize (and/or a database).
 
  ...  </p>
               
@@ -139,30 +139,25 @@ Now I’m not saying all these languages are easy by any stretch but CSS always 
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bill-jelen-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/node-configuration-management/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/filip-gielda-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/node-configuration-management/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #deployment 
               #Node 
               #JavaScript 
-              #tooling 
-              #dokku  </span>
+              #deployment  </span>
               
-              <h2 class="post-card-title">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</h2>
+              <h2 class="post-card-title">12-factor Node.js application configuration management without the `config` npm package</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> Settling on a Netlify + Dokku on DigitalOcean deployment stack for JavaScript and Node.
- Over the last few years I’ve never quite settled on a goto deployment strategy for my apps and projects. Technology-wise it has settled towards Vue or static site generators for the frontend with Node on the backend, whether that’s for API servers or handling rendering through handlebars.
-What I’ve finally settled on is Netlify + Dokku on DigitalOcean. Netlify for anything static (and more with forms, CMS and lambda). Dokku, “The smallest PaaS implementation you&rsquo;ve ever seen.“ for any backend apps and databases. This is what I’ve used to deploy my latest projects Post Frequency and Accountable Blogging, tools to quantify and improve your blogging output.
-This is a long list of pros/cons for a bunch of services:
- 👍 → pro 👎 → con 🤔 → undecided 🚨 → deal-breaker for me 🤓 → nice-to-have  Table of contents:  ...  </p>
+                <p>The config npm package is great (npmjs.com/package/config), but it encourages confusing and non-12-factor-app-compliant patterns.
+We’ll look at some of the patterns it encourages and why they’ll bring you struggles down the road as well a simple, single-file, no-dependency way to define your configuration.  ...  </p>
               
           </section>
       </a>
@@ -177,29 +172,28 @@ This is a long list of pros/cons for a bunch of services:
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ben-sauer-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/oliver-roos-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deploy-to-multiple-environments-with-git-and-circleci/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #Testing 
-              #JavaScript 
-              #ES6  </span>
+              #tooling 
+              #git 
+              #ci 
+              #bash  </span>
               
-              <h2 class="post-card-title">When to use Jest snapshot tests: comprehensive use-cases and examples 📸</h2>
+              <h2 class="post-card-title">Deploy to multiple environments with git and CircleCI</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>There&rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.
-In other words, although React and Vue testing with snapshots is pretty well documented, that&rsquo;s not the only place they&rsquo;re useful.
-As a rule of thumb, you could replace a lot of unit tests that assert on with specific data with snapshot tests.
-We have the following pros for snapshot tests: - the match data is stored in a separate file so it&rsquo;s harder to lose track of things, eg. being skimmed over during review - it&rsquo;s a lot less effort to change than inline data matching, just run npx jest -u and all snapshots get updated.
-The following cons also come to mind: - it&rsquo;s a lost less effort to change than inline data matching, which means people need to pay attention to changes in snapshot files - despite community efforts, the only major test library that supports out of the box is Jest (which locks you into that ecosystem)
-That makes it particularly well-suited for a couple of areas:
+                <p>Easily deploying to multiple environments in a simple manner using GitHub, CircleCI and Heroku.
+Continuous Integration is awesome, but sometimes you need a buffer between auto-deploying things on merge and the production release. To do that with CircleCI requires some git branch-wrangling and a few lines of bash scripting. We’ll imagine a scenario where a deploy is trivial (ie. we’ll pretend we’re using Heroku). For more complicated build steps we should still be able to follow similar principles. This is not a CircleCI 2.0 workflows tutorial, it’s more of a git-flow/CircleCI hybrid to have 2 (or more) environments being released to and automatically deployed by CircleCI.
+I would like to thanks Chris Fidao, and this tweet:
+We&rsquo;ll go through how to use GitHub + CircleCI for deployment automation and release management.
 
  ...  </p>
               

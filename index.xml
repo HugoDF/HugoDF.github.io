@@ -12,106 +12,6 @@
     
     
     <item>
-      <title>Ditch syntax highlighting for better technical writing</title>
-      <link>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</link>
-      <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/ditch-syntax-highlighting-for-better-technical-writing/</guid>
-      <description>&lt;p&gt;Ditching syntax highlighting leads to more concise snippets,
-more thought to be put to find a minimal example
-and better overall flow in your writing.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;Writing technical content is hard, picking a nice syntax highlighting theme is harder.&lt;/p&gt;
-
-&lt;p&gt;There are so many options and each platform has a ton more you can for example:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;export your code as images with services like &lt;a href=&#34;https://carbon.now.sh&#34;&gt;carbon.now.sh&lt;/a&gt;,&lt;/li&gt;
-&lt;li&gt;take screenshots of your code in your editor&lt;/li&gt;
-&lt;li&gt;use GitHub gists &lt;a href=&#34;https://gist.github.com&#34;&gt;gist.github.com&lt;/a&gt; or other hosted solution&lt;/li&gt;
-&lt;li&gt;compile your examples to code blocks (eg. as part of your markdown compilation) and
-leverage CSS or JavaScript libraries to highlight them on the web&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The other option is to just &lt;em&gt;not&lt;/em&gt; have highlighted code blocks.&lt;/p&gt;
-
-&lt;p&gt;Here are a couple of reasons to ditch syntax highlighting.&lt;/p&gt;
-
-&lt;h1 id=&#34;1-focus&#34;&gt;1. Focus&lt;/h1&gt;
-
-&lt;p&gt;Focus on the content not presentation.&lt;/p&gt;
-
-&lt;p&gt;Spend time polishing and rethinking your examples, not going back and exporting
-that code snippet on &lt;a href=&#34;https://carbon.now.sh&#34;&gt;carbon.now.sh&lt;/a&gt; for the 10th time.&lt;/p&gt;
-
-&lt;p&gt;The code snippets are an intrisic part of your content, not just a nice flourish.
-Your examples illustrate your points.
-You don&amp;rsquo;t edit your content in 5 different formats, your code should be no different.&lt;/p&gt;
-
-&lt;p&gt;Make your content pretty but not at the expense of your ability to publish it fast.&lt;/p&gt;
-
-&lt;h1 id=&#34;2-difficult-to-further-highlight-inside-something-that-s-highlighted&#34;&gt;2. Difficult to further highlight inside something that&amp;rsquo;s highlighted&lt;/h1&gt;
-
-&lt;p&gt;Just like you can use &lt;strong&gt;bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt; text in moderation,
-&lt;strong&gt;if a whole sentence or paragraph is bold, it&amp;rsquo;s hard to &lt;em&gt;highlight&lt;/em&gt; anything inside it.&lt;/strong&gt;
-From there on it&amp;rsquo;s just a race to the biggest, flashiest text.
-That&amp;rsquo;s not something you want to turn your post into.&lt;/p&gt;
-
-&lt;p&gt;What that means is that having large chunks of highlighted code might make it hard for you
-to show your readers what you&amp;rsquo;re trying to show them.&lt;/p&gt;
-
-&lt;h1 id=&#34;3-content-that-lasts&#34;&gt;3. Content that lasts&lt;/h1&gt;
-
-&lt;p&gt;Using images or 3rd party services to host your code means your post now needs multiple
-services to be up for it to keep existing in full.&lt;/p&gt;
-
-&lt;p&gt;Services shut down (sometimes quite quickly), images get lost.
-Don&amp;rsquo;t let your post live on borrowed time, let it host all its own content.&lt;/p&gt;
-
-&lt;h1 id=&#34;4-accessible-and-fast&#34;&gt;4. Accessible and fast&lt;/h1&gt;
-
-&lt;p&gt;Put yourself in the reader&amp;rsquo;s shoes.&lt;/p&gt;
-
-&lt;p&gt;How many times did you load a post on a flaky network,
-just before the connection dropped, the post flashes, it looks like it loaded,
-maybe you beat the flaky network this time?&lt;/p&gt;
-
-&lt;p&gt;Wrong! The post loaded alright, but to have any of the code, you need the images and the embeds&amp;hellip; great.&lt;/p&gt;
-
-&lt;p&gt;A code block is just text, it can be interpreted better than an image.
-Even if that image has a nice alt text and good metadata.&lt;/p&gt;
-
-&lt;h1 id=&#34;5-find-a-minimal-case&#34;&gt;5. Find a minimal case&lt;/h1&gt;
-
-&lt;p&gt;Not having nice-looking code means you&amp;rsquo;ll shorten your examples and that&amp;rsquo;s a good thing.&lt;/p&gt;
-
-&lt;p&gt;More explanation, less shoving code in people&amp;rsquo;s faces.
-After all that&amp;rsquo;s why they&amp;rsquo;re here.
-If they wanted to read code, they would have gone some open source project&amp;rsquo;s GitHub page.&lt;/p&gt;
-
-&lt;h1 id=&#34;6-write-as-you-speak&#34;&gt;6. Write as you speak&lt;/h1&gt;
-
-&lt;p&gt;Large code snippets, just like massive paragraphs, can start to look like a wall of text.&lt;/p&gt;
-
-&lt;p&gt;When you start to mix between small snippets and code inset in your text, the content will flow better.
-It will be more like a conversation, you explaining to a co-worker or a little sister,
-what exactly it is that &lt;code&gt;var&lt;/code&gt; is compared to &lt;code&gt;let&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;A well-written post with inset code is just like a well-punctuated and structured post.
-It feels a lot nicer to read, happy readers, happy writers.&lt;/p&gt;
-
-&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
-
-&lt;p&gt;Reduce the amount of time you spend messing around with your code blocks and spend more time thinking about it.&lt;/p&gt;
-
-&lt;p&gt;What other hurdles do you have in your technical writing?&lt;/p&gt;
-
-&lt;p&gt;Let me know here or on Twitter: &lt;a href=&#34;https://twitter.com/hugo__df&#34;&gt;@hugo__df&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Writing an npm module with TypeScript and microbundle</title>
       <link>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
@@ -10147,6 +10047,62 @@ Otherwise, it reflects the part of the session contents (just the &lt;code&gt;us
 &lt;p&gt;The exception is multipart bodies, there are alternative libraries to handle that use-case (usually for file upload).&lt;/p&gt;
 
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@mahiruysal?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Mahir Uysal&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Mahir Uysal&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Pass cookies with axios or fetch requests</title>
+      <link>https://codewithhugo.com/pass-cookies-axios-fetch-requests/</link>
+      <pubDate>Mon, 04 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/pass-cookies-axios-fetch-requests/</guid>
+      <description>&lt;p&gt;When sending requests from client-side JavaScript, by default cookies are not passed.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;By default, fetch won&amp;rsquo;t send or receive any cookies from the server, resulting in unauthenticated requests
+&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch&#34;&gt;https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Two JavaScript HTTP clients I use are &lt;a href=&#34;https://github.com/axios/axios&#34;&gt;axios&lt;/a&gt;, a “Promise based HTTP client for the browser and Node.js” and the fetch API (see &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API&#34;&gt;Fetch API on MDN&lt;/a&gt;).
+&lt;/p&gt;
+
+&lt;h2 id=&#34;pass-cookies-with-requests-in-axios&#34;&gt;Pass cookies with requests in axios&lt;/h2&gt;
+
+&lt;p&gt;In axios, to enable passing of cookies, we use the  &lt;code&gt;withCredentials: true&lt;/code&gt; option.&lt;/p&gt;
+
+&lt;p&gt;Which means we can create a new axios instance with &lt;code&gt;withCredentials&lt;/code&gt;  enabled:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;transport&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;axios&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;
+  &lt;span class=&#34;nx&#34;&gt;withCredentials&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;transport&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/cookie-auth-protected-route&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;then&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/* not hit since no 401 */&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It’s also possible to set it in the request options:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;axios&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;s1&#34;&gt;&amp;#39;/cookie-auth-protected-route&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;withCredentials&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;then&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/* not hit since no 401 */&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Or override the global defaults:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;axios&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;defaults&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;withCredentials&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;pass-cookies-with-requests-using-fetch&#34;&gt;Pass cookies with requests using fetch&lt;/h2&gt;
+
+&lt;p&gt;The equivalent with &lt;code&gt;fetch&lt;/code&gt; is to set the &lt;code&gt;credentials: &#39;include&#39;&lt;/code&gt; or &lt;code&gt;credentials: &#39;same-origin&#39;&lt;/code&gt; option when sending the request:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;nx&#34;&gt;fetch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+  &lt;span class=&#34;s1&#34;&gt;&amp;#39;/cookie-auth-protected-route&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;credentials&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;include&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// could also try &amp;#39;same-origin&amp;#39;
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;then&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ok&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;res&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;json&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+  &lt;span class=&#34;c1&#34;&gt;// not hit since no 401
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@worthyofelegance?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Alex&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Alex&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
