@@ -235,59 +235,25 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/annie-spratt-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/raymond-rasmusson-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #graphql 
-              #tooling 
+              #JavaScript 
+              #VueJS 
               #web development  </span>
               
-              <h2 class="post-card-title">A gentle introduction to GraphQL API integrations</h2>
+              <h2 class="post-card-title">Writing multiple Vue components in a single file</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>GraphQL is a great alternative to REST (or other HTTP API designs). This is an quick introduction to the core concepts around consuming a GraphQL API.
-To see some examples consuming a GraphQL API:
- In Python, see Python GraphQL client requests example using gql In JavaScript (browser and Node), see last week&rsquo;s Code with Hugo newsletter  Table of contents:  ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/max/1600/1*EbcfCYpND5NMGvqwkrnsWA.jpeg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/learn-git-even-if-you-dont-code/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #dev-decoded 
-              #git 
-              #programming 
-              #Productivity  </span>
-              
-              <h2 class="post-card-title">Learn git even if you don’t code</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>The tools we wield define us, git is the one tool all developers use
+                <p>Writing multiple components in one file is a pattern from React where some files contain multiple components.
+Some of those components are &ldquo;private&rdquo; to the file/exported component since no other component needs to consume them.
 
  ...  </p>
               
@@ -304,25 +270,68 @@ To see some examples consuming a GraphQL API:
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/node-configuration-management/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/filip-gielda-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bill-jelen-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/node-configuration-management/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #deployment 
               #Node 
               #JavaScript 
-              #deployment  </span>
+              #tooling 
+              #dokku  </span>
               
-              <h2 class="post-card-title">12-factor Node.js application configuration management without the `config` npm package</h2>
+              <h2 class="post-card-title">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>The config npm package is great (npmjs.com/package/config), but it encourages confusing and non-12-factor-app-compliant patterns.
-We’ll look at some of the patterns it encourages and why they’ll bring you struggles down the road as well a simple, single-file, no-dependency way to define your configuration.  ...  </p>
+                <p> Settling on a Netlify + Dokku on DigitalOcean deployment stack for JavaScript and Node.
+ Over the last few years I’ve never quite settled on a goto deployment strategy for my apps and projects. Technology-wise it has settled towards Vue or static site generators for the frontend with Node on the backend, whether that’s for API servers or handling rendering through handlebars.
+What I’ve finally settled on is Netlify + Dokku on DigitalOcean. Netlify for anything static (and more with forms, CMS and lambda). Dokku, “The smallest PaaS implementation you&rsquo;ve ever seen.“ for any backend apps and databases. This is what I’ve used to deploy my latest projects Post Frequency and Accountable Blogging, tools to quantify and improve your blogging output.
+This is a long list of pros/cons for a bunch of services:
+ 👍 → pro 👎 → con 🤔 → undecided 🚨 → deal-breaker for me 🤓 → nice-to-have  Table of contents:  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/samuel-zeller-2-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #JavaScript 
+              #meta 
+              #payment  </span>
+              
+              <h2 class="post-card-title">Add a client-side paywall using checkoutpage.co and vanilla JavaScript</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>How I created the buying mechanism for the Sequelize ES6 Cheatsheet using checkoutpage.co and sprinkles of vanilla JavaScript.
+This strictly isn’t a paywall, it&rsquo;s all client-side and doesn&rsquo;t check much.
+In principle you can display the whole things using a bit of CSS magic. You could also read the source and reverse-engineer what query params work for this page.
+You could also spoof as Google Bot (or another crawler) and skip the pay overlay. If someone shares the link containing the &ldquo;paid&rdquo; query param whoever they’re sharing with will see it without paying.
+I don&rsquo;t think it&rsquo;s likely that people will go through the effort of doing the above reverse-engineering, so I&rsquo;m going to walk anyone who will listen through how I&rsquo;ve implemented it.
+If you like getting the cheatsheet for free but also want to support my work you can Buy me a Coffee or just subscribe to my mailing list.
+Table of contents:  ...  </p>
               
           </section>
       </a>
