@@ -102,25 +102,63 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
-      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/1000/1000/1*6JWjrAzwchgcr823H9g8Og.jpeg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/closures-partial-application-and-currying-effective-functional-javascript/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #Functional Programming 
-              #Productivity  </span>
+              #web development  </span>
               
-              <h2 class="post-card-title">Closures, Partial Application and Currying: Effective Functional JavaScript</h2>
+              <h2 class="post-card-title">Avoid null/undefined in JavaScript arrays</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Spices and other ingredients of a great curry
-To use JavaScript to its full potential you have to embrace its strong functional programming base. We’re going to explore some crucial and powerful functional constructs: closures, partial application and currying that make JavaScript terse yet understandable.
+                <p> How to avoid TypeError: Cannot read property ___ of undefined using Array.filter(Boolean)
+ tl;dr: Array.filter(Boolean) filters out falsy values (null, undefined, 0, false, '') and avoids Cannot read property of undefined errors.
+Table of contents:  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/c/600/600/1*ap-t03_46d5mvDLRtL5lZA.jpeg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #Testing 
+              #JavaScript 
+              #Productivity  </span>
+              
+              <h2 class="post-card-title">AVA, low-config testing for JavaScript</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>A JavaScript testing library for 2017
+AVA is a Futuristic JavaScript test runner.
+Some of its best features are:
+ it works out of the box, no need to specify a blob for test files or add Babel hooks
+ it’s runs tests in parallel, this stops you from using global state and runs faster
+ the tests are async by default
+  I quite like AVA since I can just drop it in and reap benefits without too much hassle. I’ve never had to fight against AVA to get tests running, that means more focus on the code and tests and less on the setup.
 
  ...  </p>
               
@@ -137,64 +175,27 @@ To use JavaScript to its full potential you have to embrace its strong functiona
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bekir-donmez-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/parse-express-json-body/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/mahir-uysal-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/testing-an-express-app-with-supertest-moxios-and-jest/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/parse-express-json-body/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
               #Node 
-              #Testing  </span>
+              #Express 
+              #JavaScript  </span>
               
-              <h2 class="post-card-title">Testing an Express app with SuperTest, moxios and Jest</h2>
+              <h2 class="post-card-title">Parse POST/PATCH/PUT request JSON body with Express and no dependencies</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Testing is a crucial part of the software development process. It helps to catch bugs, avoid regressions and to document the behaviour of a piece of software.
-Express is one of the most widespread libraries for building backend applications in JavaScript. What follows is a summary of how to set up an efficient unit testing strategy for such an application as well as a couple of situations you may be faced with when attempting to test.
-Full code example can be found at https://github.com/HugoDF/express-supertest-moxios.  ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
+                <p>When asked to handle data in a request body, developers who have used Express (the “Fast, unopinionated, minimalist web framework for Node.js”) before, reach for the body-parser library.
+The same functionality can be achieved using express.json(). A middleware for parsing JSON request bodies built-into Express.
+ Note: express.json exists only in Express 4.16+
  
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ben-sauer-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/abusing-jest-snapshot-tests-some-nice-use-cases-/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #Testing 
-              #JavaScript 
-              #ES6  </span>
-              
-              <h2 class="post-card-title">When to use Jest snapshot tests: comprehensive use-cases and examples 📸</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>There&rsquo;s some nice use-cases for snapshot tests outside of the well-travelled React/Vue UI component ones.
-In other words, although React and Vue testing with snapshots is pretty well documented, that&rsquo;s not the only place they&rsquo;re useful.
-As a rule of thumb, you could replace a lot of unit tests that assert on with specific data with snapshot tests.
-We have the following pros for snapshot tests: - the match data is stored in a separate file so it&rsquo;s harder to lose track of things, eg. being skimmed over during review - it&rsquo;s a lot less effort to change than inline data matching, just run npx jest -u and all snapshots get updated.
-The following cons also come to mind: - it&rsquo;s a lost less effort to change than inline data matching, which means people need to pay attention to changes in snapshot files - despite community efforts, the only major test library that supports out of the box is Jest (which locks you into that ecosystem)
-That makes it particularly well-suited for a couple of areas:
-
  ...  </p>
               
           </section>

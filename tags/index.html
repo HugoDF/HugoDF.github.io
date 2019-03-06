@@ -235,25 +235,62 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/raymond-rasmusson-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/elaine-casap-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/integrate-python-ruby-php-shell-with-node-js/">
           <header class="post-card-header">
               <span class="post-card-tags">
+              #Node 
               #JavaScript 
-              #VueJS 
-              #web development  </span>
+              #Python  </span>
               
-              <h2 class="post-card-title">Writing multiple Vue components in a single file</h2>
+              <h2 class="post-card-title">The comprehensive guide to integrating a Python/Ruby/PHP/shell script with Node.js using child_process.spawn</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>Writing multiple components in one file is a pattern from React where some files contain multiple components.
-Some of those components are &ldquo;private&rdquo; to the file/exported component since no other component needs to consume them.
+                <p>There are occasions when running a Python/Ruby/PHP shell script from Node.js is necessary. This post looks at best practices around leveraging child_process.spawn to encapsulate this call in Node.js/JavaScript.
+The goal here is to have an interoperability layer between Node.js and an outside shell. This is a quick workaround if some other part of your system isn’t developed in JavaScript.
+We’ll use spawn over exec because we’re talking about passing data, and potentially large amounts of it. To understand the difference between child_process.spawn and child_process.exec (see “Difference between spawn and exec of Node.js child_process”).
+The long and short of it is use exec for small amounts of data (under 200k) using a Buffer interface and spawn for larger amounts using a stream interface.
+spawn has a more verbose syntax for some of the use-cases we’ll look at, but it’s more serviceable for integrating with Ruby/Python/PHP since we might get more data than a couple of lines of text.
+Full examples github.com/HugoDF/node-run-python.
+Table of contents:  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/aaron-burden-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #Node 
+              #JavaScript 
+              #TypeScript  </span>
+              
+              <h2 class="post-card-title">Writing an npm module with TypeScript and microbundle</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p>For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.
 
  ...  </p>
               
@@ -270,68 +307,25 @@ Some of those components are &ldquo;private&rdquo; to the file/exported componen
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/bill-jelen-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/jp-valery-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/deployment-options-netlify---dokku-on-digitalocean-vs-now.sh-github-pages-heroku-and-aws/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #deployment 
-              #Node 
-              #JavaScript 
-              #tooling 
-              #dokku  </span>
-              
-              <h2 class="post-card-title">Deployment options: Netlify &#43; Dokku on DigitalOcean vs now.sh, GitHub Pages, Heroku and AWS</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p> Settling on a Netlify + Dokku on DigitalOcean deployment stack for JavaScript and Node.
- Over the last few years I’ve never quite settled on a goto deployment strategy for my apps and projects. Technology-wise it has settled towards Vue or static site generators for the frontend with Node on the backend, whether that’s for API servers or handling rendering through handlebars.
-What I’ve finally settled on is Netlify + Dokku on DigitalOcean. Netlify for anything static (and more with forms, CMS and lambda). Dokku, “The smallest PaaS implementation you&rsquo;ve ever seen.“ for any backend apps and databases. This is what I’ve used to deploy my latest projects Post Frequency and Accountable Blogging, tools to quantify and improve your blogging output.
-This is a long list of pros/cons for a bunch of services:
- 👍 → pro 👎 → con 🤔 → undecided 🚨 → deal-breaker for me 🤓 → nice-to-have  Table of contents:  ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/samuel-zeller-2-unsplash.jpg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/add-a-client-side-paywall-using-checkoutpage.co-and-vanilla-javascript/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/better-http-polling-with-rxjs-5/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #meta 
-              #payment  </span>
+              #reactive programming  </span>
               
-              <h2 class="post-card-title">Add a client-side paywall using checkoutpage.co and vanilla JavaScript</h2>
+              <h2 class="post-card-title">Better HTTP Polling in JavaScript with RxJS 5</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>How I created the buying mechanism for the Sequelize ES6 Cheatsheet using checkoutpage.co and sprinkles of vanilla JavaScript.
-This strictly isn’t a paywall, it&rsquo;s all client-side and doesn&rsquo;t check much.
-In principle you can display the whole things using a bit of CSS magic. You could also read the source and reverse-engineer what query params work for this page.
-You could also spoof as Google Bot (or another crawler) and skip the pay overlay. If someone shares the link containing the &ldquo;paid&rdquo; query param whoever they’re sharing with will see it without paying.
-I don&rsquo;t think it&rsquo;s likely that people will go through the effort of doing the above reverse-engineering, so I&rsquo;m going to walk anyone who will listen through how I&rsquo;ve implemented it.
-If you like getting the cheatsheet for free but also want to support my work you can Buy me a Coffee or just subscribe to my mailing list.
-Table of contents:  ...  </p>
+                <p>Here is the implementation for a function that takes a Promise-based fetch function (eg. using axios) and a function that decides if a response has been successful (from a polling perspective) and polls the fetch function until the isSuccess function returns true:
+
+ ...  </p>
               
           </section>
       </a>
