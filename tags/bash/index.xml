@@ -377,5 +377,149 @@ npm run sync
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@guiccunha?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Guilherme  Cunha&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Guilherme  Cunha&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Fix git “tip of your current branch is behind its remote counterpart” - 4 real-world solutions</title>
+      <link>https://codewithhugo.com/fix-git-failed-to-push-updates-were-rejected/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/fix-git-failed-to-push-updates-were-rejected/</guid>
+      <description>&lt;p&gt;When working with &lt;code&gt;git&lt;/code&gt; a selection of GitLab, GitHub, BitBucket and rebase-trigger-happy colleagues/collaborators, it’s a rite of passage to see a message like the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;Pushing to git@github.com:some-project/some-repo.git
+To git@github.com:some-project/some-repo.git
+  ! &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;rejected&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;        master -&amp;gt; master &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;non-fast-forward&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+error: failed to push some refs to &lt;span class=&#34;s1&#34;&gt;&amp;#39;git@github.com:some-project/some-repo.git&amp;#39;&lt;/span&gt;
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;e.g. &lt;span class=&#34;s1&#34;&gt;&amp;#39;git pull&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+hint: before pushing again.
+hint: See the &lt;span class=&#34;s1&#34;&gt;&amp;#39;Note about fast-forwards&amp;#39;&lt;/span&gt; in &lt;span class=&#34;s1&#34;&gt;&amp;#39;git push --help&amp;#39;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; details.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;what-causes-tip-of-your-current-branch-is-behind&#34;&gt;What causes ”tip of your current branch is behind”?&lt;/h2&gt;
+
+&lt;p&gt;Git works with the concept of local and remote branches. A local branch is a branch that exists in your local version of the git repository. A remote branch is one that exists on the remote location (most repositories usually have a remote called &lt;code&gt;origin&lt;/code&gt;). A remote equates roughly to a place where you git repository is hosted (eg. a GitHub/GitLab/BitBucket/self-hosted Git server repository instance).&lt;/p&gt;
+
+&lt;p&gt;Remotes are useful to share your work or collaborate on a branch.&lt;/p&gt;
+
+&lt;p&gt;“the tip of your current branch is behind its remote counterpart” means that there have been changes on the remote branch that you don’t have locally.&lt;/p&gt;
+
+&lt;p&gt;There tend to be 2 types of changes to the remote branch: someone added commits or someone modified the history of the branch (usually some sort of rebase).&lt;/p&gt;
+
+&lt;p&gt;These 2 cases should be dealt with differently.&lt;/p&gt;
+
+&lt;h2 id=&#34;how-can-you-get-your-local-branch-back-to-a-state-that-s-pushable&#34;&gt;How can you get your local branch back to a state that&amp;rsquo;s pushable?&lt;/h2&gt;
+
+&lt;p&gt;We’re now going to explore how to achieve a state in the local branch where the remote won’t reject the push.&lt;/p&gt;
+
+&lt;h3 id=&#34;1-no-rebase-s-merge-the-remote-branch-into-local&#34;&gt;1. No rebase(s): merge the remote branch into local&lt;/h3&gt;
+
+&lt;p&gt;In the message we can see:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Updates were rejected because the tip of your current branch is behind its remote counterpart. Merge the remote changes (e.g. &amp;lsquo;git pull&amp;rsquo;) before pushing again.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So is it as simple as doing:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git pull&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And solving any conflicts that arise.&lt;/p&gt;
+
+&lt;p&gt;We shouldn’t do this if someone has rebased on the remote. The history is different and a merge could have a nasty effect on the history. There will be a weird history with equivalent commits in 2 places plus a merge commit.&lt;/p&gt;
+
+&lt;p&gt;Read on for solutions to the “remote has been rebased” case.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-remote-rebase-no-local-commits-force-git-to-overwrite-files-on-pull&#34;&gt;2. Remote rebase + no local commits: force git to overwrite files on pull&lt;/h3&gt;
+
+&lt;p&gt;If you don’t have any changes that aren’t on the remote you can just do:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Warning&lt;/strong&gt;: this is a destructive action, it overwrites all the changes in your local branch with the changes from the remote&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git reset --hard origin/branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is of course very seldom the case but offers a path to the two following solutions.&lt;/p&gt;
+
+&lt;p&gt;Solutions 3. and 4. save the local changes somewhere else (the git stash or another branch). They reset the local branch from the origin using the above command. Finally they re-apply any local changes and send them up.&lt;/p&gt;
+
+&lt;h3 id=&#34;3-remote-rebase-local-commits-soft-git-reset-stash-hard-pull-pop-stash-commit&#34;&gt;3. Remote rebase + local commits: soft git reset, stash, “hard pull”, pop stash, commit&lt;/h3&gt;
+
+&lt;p&gt;Say you’ve got local changes (maybe just a few commits).&lt;/p&gt;
+
+&lt;p&gt;A simple way to use the knowledge from 2. is to do a “soft reset”.&lt;/p&gt;
+
+&lt;h4 id=&#34;options-to-soft-reset&#34;&gt;Options to “soft reset”&lt;/h4&gt;
+
+&lt;p&gt;Option 1, say the first commit you’ve added has sha &lt;code&gt;&amp;lt;first-commit-sha&amp;gt;&lt;/code&gt; use:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note the &lt;code&gt;^&lt;/code&gt; which means the commit preceding &lt;code&gt;&amp;lt;first-commit-sha&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git reset &amp;lt;first-commit-sha&amp;gt;^ .&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Option 2, if you know the number of commits you’ve added, you can also use the following, replace &lt;code&gt;3&lt;/code&gt; with the number of commits you want to “undo”:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git reset HEAD~3 .&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should now be able to run &lt;code&gt;git status&lt;/code&gt; and see un-staged (ie. “modified”) file changes from the local commits we’ve just “undone”.&lt;/p&gt;
+
+&lt;h4 id=&#34;save-your-changes-to-the-stash&#34;&gt;Save your changes to the stash&lt;/h4&gt;
+
+&lt;p&gt;Run &lt;code&gt;git stash&lt;/code&gt; to save them to the stash (for more information &lt;a href=&#34;https://git-scm.com/docs/git-stash&#34;&gt;see git docs for stash&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;If you run &lt;code&gt;git status&lt;/code&gt; you’ll see the un-staged (“modified”) files aren’t there any more.&lt;/p&gt;
+
+&lt;h4 id=&#34;run-the-hard-pull-as-seen-in-the-previous-section&#34;&gt;Run the hard pull as seen in the previous section&lt;/h4&gt;
+
+&lt;p&gt;Run &lt;code&gt;git reset --hard origin/branch-name&lt;/code&gt; as seen in 2.&lt;/p&gt;
+
+&lt;h4 id=&#34;un-stash-and-re-commit-your-changes&#34;&gt;Un-stash and re-commit your changes&lt;/h4&gt;
+
+&lt;p&gt;To restore the stashed changes:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git stash pop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can now use &lt;code&gt;git add&lt;/code&gt; (hopefully with the &lt;code&gt;-p&lt;/code&gt; option, eg. &lt;code&gt;git add -p .&lt;/code&gt;) followed by &lt;code&gt;git commit&lt;/code&gt; to add your local changes to a branch that the remote won’t reject on push.&lt;/p&gt;
+
+&lt;p&gt;Once you’ve added your changes, &lt;code&gt;git push&lt;/code&gt; shouldn’t get rejected.&lt;/p&gt;
+
+&lt;h3 id=&#34;4-remote-rebase-local-commits-2-checkout-to-a-new-temp-branch-hard-pull-the-original-branch-cherry-pick-from-temp-onto-branch&#34;&gt;4. Remote rebase + local commits 2: checkout to a new temp branch, “hard pull” the original branch, cherry-pick from temp onto branch&lt;/h3&gt;
+
+&lt;p&gt;That alternative to using stash is to branch off of the local branch, and re-apply the commits of a “hard pull”-ed version of the branch.&lt;/p&gt;
+
+&lt;h4 id=&#34;create-a-new-temp-branch&#34;&gt;Create a new temp branch&lt;/h4&gt;
+
+&lt;p&gt;To start with we’ll create a new temporary local branch. Assuming we started on branch &lt;code&gt;branch-name&lt;/code&gt; branch (if not, run &lt;code&gt;git checkout branch-name&lt;/code&gt;) we can do:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout -b temp-branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will create a new branch &lt;code&gt;temp-branch-name&lt;/code&gt; which is a copy of our changes but in a new branch&lt;/p&gt;
+
+&lt;h4 id=&#34;go-back-to-the-branch-and-hard-pull&#34;&gt;Go back to the branch and “hard pull”&lt;/h4&gt;
+
+&lt;p&gt;We’ll now go back to branch &lt;code&gt;branch-name&lt;/code&gt; and overwrite our local version with the remote one:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Followed by &lt;code&gt;git reset --hard origin/branch-name&lt;/code&gt; as seen in 2.&lt;/p&gt;
+
+&lt;h4 id=&#34;cherry-pick-the-commits-from-temp-branch-onto-the-local-branch&#34;&gt;Cherry-pick the commits from temp branch onto the local branch&lt;/h4&gt;
+
+&lt;p&gt;We’ll now want to switch back to &lt;code&gt;temp-branch-name&lt;/code&gt; and get the SHAs of the commits we want to apply:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout temp-branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Followed by&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To see which commits we want to apply (to exit &lt;code&gt;git log&lt;/code&gt; you can use &lt;code&gt;q&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h4 id=&#34;cherry-pick-each-commit-individually&#34;&gt;Cherry-pick each commit individually&lt;/h4&gt;
+
+&lt;p&gt;Say we want to apply commits &lt;code&gt;&amp;lt;commit-sha-1&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;commit-sha-2&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We’ll switch to the branch that has been reset to the remote version using:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We’ll then use cherry-pick (&lt;a href=&#34;https://git-scm.com/docs/git-cherry-pick&#34;&gt;see cherry-pick git docs&lt;/a&gt;) to apply those commits:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git cherry-pick &amp;lt;commit-sha1&amp;gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git cherry-pick &amp;lt;commit-sha2&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;cherry-pick-a-range-of-commits&#34;&gt;Cherry-pick a range of commits&lt;/h4&gt;
+
+&lt;p&gt;If you’ve got a bunch of commits and they’re sequential, you can use the following (for git 1.7.2+)&lt;/p&gt;
+
+&lt;p&gt;We’ll make sure to be on the branch that has been reset to the remote version using:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For git version 1.7.2+, credit to &lt;a href=&#34;https://fmarier.org/&#34;&gt;&lt;strong&gt;François Marier&lt;/strong&gt;&lt;/a&gt; in “&lt;a href=&#34;https://feeding.cloud.geek.nz/posts/cherry-picking-range-of-git-commits/&#34;&gt;Cherry-picking a range of git commits&lt;/a&gt;” - &lt;a href=&#34;https://feeding.cloud.geek.nz/&#34;&gt;Feeding the Cloud&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git cherry-pick &amp;lt;first-commit-sha&amp;gt;^..&amp;lt;last-commit-sha&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should now be able to &lt;code&gt;git push&lt;/code&gt; the local branch to the remote without getting rejected.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@aloragriffiths?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Alora Griffiths&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Alora Griffiths&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

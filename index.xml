@@ -12,123 +12,6 @@
     
     
     <item>
-      <title>Writing an npm module with TypeScript and microbundle</title>
-      <link>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</link>
-      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://codewithhugo.com/writing-an-npm-module-with-typescript-and-microbundle/</guid>
-      <description>&lt;p&gt;For those looking to write a package and publish it to npm, TypeScript + microbundle is a low-friction way to build a high-quality library.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;why-typescript&#34;&gt;Why TypeScript?&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.typescriptlang.org/&#34;&gt;TypeScript&lt;/a&gt; is a JavaScript superset that adds static types to it.
-Its other features also follow the ECMAScript specification (current and future) quite closely.
-For library authors this means you provide the consumers of your library, even those who don’t use TypeScript with more
-details around expected types and for some editors/IDEs that integrate with TypeScript (like Visual Studio Code)
-nicer auto-complete. TypeScript also serves as inline documentation that shouts at you when you pass something you
-shouldn’t, which will come handy when you rediscover your code a couple of months down the line.&lt;/p&gt;
-
-&lt;h2 id=&#34;why-microbundle&#34;&gt;Why microbundle?&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;Microbundle&lt;/a&gt; is a “zero-configuration bundler for tiny modules”. It’s a wrapper around &lt;a href=&#34;https://rollupjs.org/guide/en&#34;&gt;rollup&lt;/a&gt; with sane defaults (including minification/compression), nice outputted size stats, multiple target formats (ES modules, CommonJS, UMD). Most of all in the scope of this post, it has TypeScript support out of the box (&lt;em&gt;actually&lt;/em&gt; no configuration, not even a &lt;code&gt;tsconfig.json&lt;/code&gt;).
-It’s ridiculously easy to set up and allows library authors to focus on building a great library rather than setting up the plumbing to be able to ship a JavaScript library from ES6/TypeScript or other compile-to-JS tool 🙂.&lt;/p&gt;
-
-&lt;h2 id=&#34;zero-config-bundling&#34;&gt;Zero-config bundling&lt;/h2&gt;
-
-&lt;p&gt;To start, we’ll have to create setup our package run &lt;code&gt;npm init&lt;/code&gt; and complete all the prompts.&lt;/p&gt;
-
-&lt;p&gt;Next run: &lt;code&gt;npm i --save-dev microbundle&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let’s create a src and dist folder: &lt;code&gt;mkdir src &amp;amp;&amp;amp; mkdir dist&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And add the first TypeScript file: &lt;code&gt;touch src/index.ts&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let’s add a class to the index.ts so we’re not just compiling empty files:
-&lt;code&gt;echo &amp;quot;export class MyMainClass {}&amp;quot; &amp;gt;&amp;gt; src/index.ts&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Microbundle looks at the &lt;code&gt;package.json&lt;/code&gt; &lt;code&gt;&amp;quot;main&amp;quot;&lt;/code&gt; and &lt;code&gt;&amp;quot;source&amp;quot;&lt;/code&gt; fields (compiled entry point and source entry point),
-in our case that’s &lt;code&gt;dist/index.js&lt;/code&gt; (which doesn’t exist yet) and &lt;code&gt;src/index.ts&lt;/code&gt;.
-Let’s edit it to have the following in the &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-  &amp;quot;main&amp;quot;: &amp;quot;dist/index.js&amp;quot;,
-  &amp;quot;source&amp;quot;: &amp;quot;src/index.ts&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This means microbundle knows how to compile our library now, run: &lt;code&gt;npx microbundle&lt;/code&gt; (on versions of npm &amp;lt;5.x, you can also run &lt;code&gt;./node_modules/.bin/microbundle&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;This will compile your &lt;code&gt;src/index.ts&lt;/code&gt; to the &lt;code&gt;dist&lt;/code&gt; folder.
-If you look at the contents of the &lt;code&gt;dist&lt;/code&gt; folder, you’ll see how much work microbundle does for you:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ls dist
-index.d.ts       index.js.map     index.m.js.map   index.umd.js.map
-index.js         index.m.js       index.umd.js
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Let’s explain what all these are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;index.js&lt;/code&gt; is the CommonJS module. This is module type used by Node and it looks like &lt;code&gt;const myModule = require(&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;my-module&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;index.m.js&lt;/code&gt; is the ECMAScript Module, as defined in ES6, it looks like &lt;code&gt;import MyModule from&lt;/code&gt; &lt;code&gt;&#39;&lt;/code&gt;&lt;code&gt;my-module&lt;/code&gt;&lt;code&gt;&#39;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;index.umd.js&lt;/code&gt; is the UMD module&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;index.d.ts&lt;/code&gt; is TypeScript type declaration file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Then there’s a matching &lt;code&gt;.map&lt;/code&gt; file that maps back to the TypeScript source for each of the files.&lt;/p&gt;
-
-&lt;p&gt;Take a look inside &lt;code&gt;index.js&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cat dist/index.js
-var n=function(){return function(){}}();exports.MyMainClass=n;
-//# sourceMappingURL=index.js.map
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Our &lt;code&gt;class MyMainClass {}&lt;/code&gt; statement was compiled to its ES5 equivalent and the export to a CommonJS export.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;index.d.ts&lt;/code&gt; is also interesting:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cat dist/index.d.ts
-export declare class MyMainClass {
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This allows a TypeScript project to assign the correct type information back to the package… which &lt;em&gt;is&lt;/em&gt; a roundabout way of doing since a TypeScript project should be able to just import the &lt;code&gt;.ts&lt;/code&gt; file. The separate type declaration means that non-TypeScript projects can also understand the public API of the module (eg. code editors can do smart autocomplete on unseen npm packages).&lt;/p&gt;
-
-&lt;p&gt;microbundle can also watch for changes: &lt;code&gt;npx microbundle watch&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;For ease of use we can put the watch and build tasks in the &lt;code&gt;package.json&lt;/code&gt; as npm scripts:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-  &amp;quot;scripts&amp;quot;: {
-    &amp;quot;dev&amp;quot;: &amp;quot;microbundle watch&amp;quot;,
-    &amp;quot;build&amp;quot;: &amp;quot;microbundle&amp;quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;publish-the-module&#34;&gt;Publish the module&lt;/h2&gt;
-
-&lt;p&gt;By leveraging microbundle we can publish the module as a CommonJS module (standard npm module), but also as an ES Module and a UMD module, to do this follow the guide at &lt;a href=&#34;https://github.com/developit/microbundle#specifying-builds-in-packagejson&#34;&gt;https://github.com/developit/microbundle#specifying-builds-in-packagejson&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;main&amp;quot;: &amp;quot;dist/index.js&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;umd:main&amp;quot;: &amp;quot;dist/index.umd.js&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;module&amp;quot;: &amp;quot;dist/index.m.js&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;quot;source&amp;quot;: &amp;quot;src/index.ts&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;With this &lt;code&gt;package.json&lt;/code&gt; you can publish to npm with &lt;code&gt;npm publish&lt;/code&gt;.
-And if you enjoyed using &lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;microbundle&lt;/a&gt;, definitely keep using it but also give it a &lt;a href=&#34;https://github.com/developit/microbundle&#34;&gt;star on GitHub&lt;/a&gt; and let Jason Miller aka &lt;a href=&#34;https://twitter.com/_developit&#34;&gt;@_developit&lt;/a&gt; know you’re a fan on Twitter.&lt;/p&gt;
-
-&lt;p&gt;Cover Photo by &lt;a href=&#34;https://unsplash.com/photos/J8R34suxfRU?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Aaron Burden&lt;/a&gt; on &lt;a href=&#34;https://unsplash.com/search/photos/tiny?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Using ES6 classes for Sequelize 4 models</title>
       <link>https://codewithhugo.com/using-es6-classes-for-sequelize-4-models/</link>
       <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
@@ -10103,6 +9986,150 @@ Otherwise, it reflects the part of the session contents (just the &lt;code&gt;us
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@worthyofelegance?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Alex&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Alex&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Fix git “tip of your current branch is behind its remote counterpart” - 4 real-world solutions</title>
+      <link>https://codewithhugo.com/fix-git-failed-to-push-updates-were-rejected/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://codewithhugo.com/fix-git-failed-to-push-updates-were-rejected/</guid>
+      <description>&lt;p&gt;When working with &lt;code&gt;git&lt;/code&gt; a selection of GitLab, GitHub, BitBucket and rebase-trigger-happy colleagues/collaborators, it’s a rite of passage to see a message like the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;Pushing to git@github.com:some-project/some-repo.git
+To git@github.com:some-project/some-repo.git
+  ! &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;rejected&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;        master -&amp;gt; master &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;non-fast-forward&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+error: failed to push some refs to &lt;span class=&#34;s1&#34;&gt;&amp;#39;git@github.com:some-project/some-repo.git&amp;#39;&lt;/span&gt;
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;e.g. &lt;span class=&#34;s1&#34;&gt;&amp;#39;git pull&amp;#39;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+hint: before pushing again.
+hint: See the &lt;span class=&#34;s1&#34;&gt;&amp;#39;Note about fast-forwards&amp;#39;&lt;/span&gt; in &lt;span class=&#34;s1&#34;&gt;&amp;#39;git push --help&amp;#39;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; details.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;what-causes-tip-of-your-current-branch-is-behind&#34;&gt;What causes ”tip of your current branch is behind”?&lt;/h2&gt;
+
+&lt;p&gt;Git works with the concept of local and remote branches. A local branch is a branch that exists in your local version of the git repository. A remote branch is one that exists on the remote location (most repositories usually have a remote called &lt;code&gt;origin&lt;/code&gt;). A remote equates roughly to a place where you git repository is hosted (eg. a GitHub/GitLab/BitBucket/self-hosted Git server repository instance).&lt;/p&gt;
+
+&lt;p&gt;Remotes are useful to share your work or collaborate on a branch.&lt;/p&gt;
+
+&lt;p&gt;“the tip of your current branch is behind its remote counterpart” means that there have been changes on the remote branch that you don’t have locally.&lt;/p&gt;
+
+&lt;p&gt;There tend to be 2 types of changes to the remote branch: someone added commits or someone modified the history of the branch (usually some sort of rebase).&lt;/p&gt;
+
+&lt;p&gt;These 2 cases should be dealt with differently.&lt;/p&gt;
+
+&lt;h2 id=&#34;how-can-you-get-your-local-branch-back-to-a-state-that-s-pushable&#34;&gt;How can you get your local branch back to a state that&amp;rsquo;s pushable?&lt;/h2&gt;
+
+&lt;p&gt;We’re now going to explore how to achieve a state in the local branch where the remote won’t reject the push.&lt;/p&gt;
+
+&lt;h3 id=&#34;1-no-rebase-s-merge-the-remote-branch-into-local&#34;&gt;1. No rebase(s): merge the remote branch into local&lt;/h3&gt;
+
+&lt;p&gt;In the message we can see:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Updates were rejected because the tip of your current branch is behind its remote counterpart. Merge the remote changes (e.g. &amp;lsquo;git pull&amp;rsquo;) before pushing again.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So is it as simple as doing:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git pull&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And solving any conflicts that arise.&lt;/p&gt;
+
+&lt;p&gt;We shouldn’t do this if someone has rebased on the remote. The history is different and a merge could have a nasty effect on the history. There will be a weird history with equivalent commits in 2 places plus a merge commit.&lt;/p&gt;
+
+&lt;p&gt;Read on for solutions to the “remote has been rebased” case.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-remote-rebase-no-local-commits-force-git-to-overwrite-files-on-pull&#34;&gt;2. Remote rebase + no local commits: force git to overwrite files on pull&lt;/h3&gt;
+
+&lt;p&gt;If you don’t have any changes that aren’t on the remote you can just do:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Warning&lt;/strong&gt;: this is a destructive action, it overwrites all the changes in your local branch with the changes from the remote&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git reset --hard origin/branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is of course very seldom the case but offers a path to the two following solutions.&lt;/p&gt;
+
+&lt;p&gt;Solutions 3. and 4. save the local changes somewhere else (the git stash or another branch). They reset the local branch from the origin using the above command. Finally they re-apply any local changes and send them up.&lt;/p&gt;
+
+&lt;h3 id=&#34;3-remote-rebase-local-commits-soft-git-reset-stash-hard-pull-pop-stash-commit&#34;&gt;3. Remote rebase + local commits: soft git reset, stash, “hard pull”, pop stash, commit&lt;/h3&gt;
+
+&lt;p&gt;Say you’ve got local changes (maybe just a few commits).&lt;/p&gt;
+
+&lt;p&gt;A simple way to use the knowledge from 2. is to do a “soft reset”.&lt;/p&gt;
+
+&lt;h4 id=&#34;options-to-soft-reset&#34;&gt;Options to “soft reset”&lt;/h4&gt;
+
+&lt;p&gt;Option 1, say the first commit you’ve added has sha &lt;code&gt;&amp;lt;first-commit-sha&amp;gt;&lt;/code&gt; use:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note the &lt;code&gt;^&lt;/code&gt; which means the commit preceding &lt;code&gt;&amp;lt;first-commit-sha&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git reset &amp;lt;first-commit-sha&amp;gt;^ .&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Option 2, if you know the number of commits you’ve added, you can also use the following, replace &lt;code&gt;3&lt;/code&gt; with the number of commits you want to “undo”:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git reset HEAD~3 .&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should now be able to run &lt;code&gt;git status&lt;/code&gt; and see un-staged (ie. “modified”) file changes from the local commits we’ve just “undone”.&lt;/p&gt;
+
+&lt;h4 id=&#34;save-your-changes-to-the-stash&#34;&gt;Save your changes to the stash&lt;/h4&gt;
+
+&lt;p&gt;Run &lt;code&gt;git stash&lt;/code&gt; to save them to the stash (for more information &lt;a href=&#34;https://git-scm.com/docs/git-stash&#34;&gt;see git docs for stash&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;If you run &lt;code&gt;git status&lt;/code&gt; you’ll see the un-staged (“modified”) files aren’t there any more.&lt;/p&gt;
+
+&lt;h4 id=&#34;run-the-hard-pull-as-seen-in-the-previous-section&#34;&gt;Run the hard pull as seen in the previous section&lt;/h4&gt;
+
+&lt;p&gt;Run &lt;code&gt;git reset --hard origin/branch-name&lt;/code&gt; as seen in 2.&lt;/p&gt;
+
+&lt;h4 id=&#34;un-stash-and-re-commit-your-changes&#34;&gt;Un-stash and re-commit your changes&lt;/h4&gt;
+
+&lt;p&gt;To restore the stashed changes:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git stash pop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can now use &lt;code&gt;git add&lt;/code&gt; (hopefully with the &lt;code&gt;-p&lt;/code&gt; option, eg. &lt;code&gt;git add -p .&lt;/code&gt;) followed by &lt;code&gt;git commit&lt;/code&gt; to add your local changes to a branch that the remote won’t reject on push.&lt;/p&gt;
+
+&lt;p&gt;Once you’ve added your changes, &lt;code&gt;git push&lt;/code&gt; shouldn’t get rejected.&lt;/p&gt;
+
+&lt;h3 id=&#34;4-remote-rebase-local-commits-2-checkout-to-a-new-temp-branch-hard-pull-the-original-branch-cherry-pick-from-temp-onto-branch&#34;&gt;4. Remote rebase + local commits 2: checkout to a new temp branch, “hard pull” the original branch, cherry-pick from temp onto branch&lt;/h3&gt;
+
+&lt;p&gt;That alternative to using stash is to branch off of the local branch, and re-apply the commits of a “hard pull”-ed version of the branch.&lt;/p&gt;
+
+&lt;h4 id=&#34;create-a-new-temp-branch&#34;&gt;Create a new temp branch&lt;/h4&gt;
+
+&lt;p&gt;To start with we’ll create a new temporary local branch. Assuming we started on branch &lt;code&gt;branch-name&lt;/code&gt; branch (if not, run &lt;code&gt;git checkout branch-name&lt;/code&gt;) we can do:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout -b temp-branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will create a new branch &lt;code&gt;temp-branch-name&lt;/code&gt; which is a copy of our changes but in a new branch&lt;/p&gt;
+
+&lt;h4 id=&#34;go-back-to-the-branch-and-hard-pull&#34;&gt;Go back to the branch and “hard pull”&lt;/h4&gt;
+
+&lt;p&gt;We’ll now go back to branch &lt;code&gt;branch-name&lt;/code&gt; and overwrite our local version with the remote one:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Followed by &lt;code&gt;git reset --hard origin/branch-name&lt;/code&gt; as seen in 2.&lt;/p&gt;
+
+&lt;h4 id=&#34;cherry-pick-the-commits-from-temp-branch-onto-the-local-branch&#34;&gt;Cherry-pick the commits from temp branch onto the local branch&lt;/h4&gt;
+
+&lt;p&gt;We’ll now want to switch back to &lt;code&gt;temp-branch-name&lt;/code&gt; and get the SHAs of the commits we want to apply:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout temp-branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Followed by&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To see which commits we want to apply (to exit &lt;code&gt;git log&lt;/code&gt; you can use &lt;code&gt;q&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h4 id=&#34;cherry-pick-each-commit-individually&#34;&gt;Cherry-pick each commit individually&lt;/h4&gt;
+
+&lt;p&gt;Say we want to apply commits &lt;code&gt;&amp;lt;commit-sha-1&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;commit-sha-2&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We’ll switch to the branch that has been reset to the remote version using:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We’ll then use cherry-pick (&lt;a href=&#34;https://git-scm.com/docs/git-cherry-pick&#34;&gt;see cherry-pick git docs&lt;/a&gt;) to apply those commits:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git cherry-pick &amp;lt;commit-sha1&amp;gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git cherry-pick &amp;lt;commit-sha2&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;cherry-pick-a-range-of-commits&#34;&gt;Cherry-pick a range of commits&lt;/h4&gt;
+
+&lt;p&gt;If you’ve got a bunch of commits and they’re sequential, you can use the following (for git 1.7.2+)&lt;/p&gt;
+
+&lt;p&gt;We’ll make sure to be on the branch that has been reset to the remote version using:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git checkout branch-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For git version 1.7.2+, credit to &lt;a href=&#34;https://fmarier.org/&#34;&gt;&lt;strong&gt;François Marier&lt;/strong&gt;&lt;/a&gt; in “&lt;a href=&#34;https://feeding.cloud.geek.nz/posts/cherry-picking-range-of-git-commits/&#34;&gt;Cherry-picking a range of git commits&lt;/a&gt;” - &lt;a href=&#34;https://feeding.cloud.geek.nz/&#34;&gt;Feeding the Cloud&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git cherry-pick &amp;lt;first-commit-sha&amp;gt;^..&amp;lt;last-commit-sha&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should now be able to &lt;code&gt;git push&lt;/code&gt; the local branch to the remote without getting rejected.&lt;/p&gt;
+
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@aloragriffiths?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Alora Griffiths&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Alora Griffiths&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

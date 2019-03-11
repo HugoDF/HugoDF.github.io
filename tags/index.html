@@ -148,7 +148,7 @@
           
           <a href="https://codewithhugo.com/tags/architecture"> architecture </a> (1)&nbsp;&#x2F;&nbsp;
           
-          <a href="https://codewithhugo.com/tags/bash"> bash </a> (3)&nbsp;&#x2F;&nbsp;
+          <a href="https://codewithhugo.com/tags/bash"> bash </a> (4)&nbsp;&#x2F;&nbsp;
           
           <a href="https://codewithhugo.com/tags/blogging"> blogging </a> (1)&nbsp;&#x2F;&nbsp;
           
@@ -178,7 +178,7 @@
           
           <a href="https://codewithhugo.com/tags/functional-programming"> functional-programming </a> (3)&nbsp;&#x2F;&nbsp;
           
-          <a href="https://codewithhugo.com/tags/git"> git </a> (6)&nbsp;&#x2F;&nbsp;
+          <a href="https://codewithhugo.com/tags/git"> git </a> (7)&nbsp;&#x2F;&nbsp;
           
           <a href="https://codewithhugo.com/tags/graphql"> graphql </a> (3)&nbsp;&#x2F;&nbsp;
           
@@ -243,32 +243,25 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/ruediger-theiselmann-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/node-configuration-management/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/filip-gielda-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/progress-and-roadblocks-a-journey-into-open-source/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/node-configuration-management/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #node 
-              #sequelize 
-              #git 
-              #cli 
-              #JavaScript  </span>
+              #Node 
+              #JavaScript 
+              #deployment  </span>
               
-              <h2 class="post-card-title">Progress and roadblocks: a journey into open-source</h2>
+              <h2 class="post-card-title">12-factor Node.js application configuration management without the `config` npm package</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> Enhancing generators for ES6 in the Sequelize CLI
- This is the story of my discovery of ES6-class style model definitions with Sequelize (see Using ES6 classes for Sequelize 4 models). The realisation that the current Sequelize CLI model generator didn&rsquo;t support it (as is expected since it&rsquo;s not the most common way of doing it). Finally, the impetus to just implement it myself.
-In other words, I started using a style of Sequelize models that the Sequelize CLI didn&rsquo;t support. I didn&rsquo;t get an answer on a &ldquo;feature request&rdquo; issue, so I just forked it, implemented it and published it.
-The Free Open Source Software movement has its ups and downs, its hype and abandoned projects. One of the great aspects of it is that you can always (depending on the license) just fork something and publish it 🙂.
-Some links:
- sequelize-cli fork repo fork published on npm  Live-tweet storms:
- Day 1 (struggles) Day 2 (fixes) Day 3 (first publish) Day 4 (finishing up)  Table of contents:  ...  </p>
+                <p>The config npm package is great (npmjs.com/package/config), but it encourages confusing and non-12-factor-app-compliant patterns.
+We’ll look at some of the patterns it encourages and why they’ll bring you struggles down the road as well a simple, single-file, no-dependency way to define your configuration.  ...  </p>
               
           </section>
       </a>
@@ -283,25 +276,27 @@ Some links:
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/frank-mckenna-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-simple-real-world-vue.js-directive/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
+              #VueJS 
               #web development  </span>
               
-              <h2 class="post-card-title">Avoid null/undefined in JavaScript arrays</h2>
+              <h2 class="post-card-title">A simple, real-world Vue.js directive</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> How to avoid TypeError: Cannot read property ___ of undefined using Array.filter(Boolean)
- tl;dr: Array.filter(Boolean) filters out falsy values (null, undefined, 0, false, '') and avoids Cannot read property of undefined errors.
-Table of contents:  ...  </p>
+                <p>Vue.js is &ldquo;The Progressive JavaScript Framework&rdquo;. It takes inspiration from all prior art in the view library and frontend framework world, including AngularJS, React, Angular, Ember, Knockout and Polymer. In Vue (and Angular/AngularJS), a directive is a way to wrap functionality that usually applies to DOM elements. The example in Vue&rsquo;s documentation is a focus directive.
+When running Vue.js inside of AngularJS, an issue occured whereby the AngularJS router would try to resolve normal anchors&rsquo; href on click. The hrefs weren&rsquo;t AngularJS URLs so it would fall back to the default page. One solution could have leveraged components to update window.location directly, but here&rsquo;s a nifty directive to do the same:
+&lt;a v-href=&#34;&#39;/my-url&#39;&#34;&gt;Go&lt;/a&gt; That&rsquo;s a pretty cool API, and it&rsquo;s probably more idiomatic Vue than:
+&lt;MyAnchor href=&#34;/my-url&#34;&gt; Go &lt;/MyAnchor&gt; There were a couple of gotchas:  ...  </p>
               
           </section>
       </a>
@@ -316,29 +311,32 @@ Table of contents:  ...  </p>
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/guilherme-cunha-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">
+      <div class="post-card-image" style="background-image: url(https://cdn-images-1.medium.com/fit/c/600/600/1*ap-t03_46d5mvDLRtL5lZA.jpeg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/just-enough-bash-to-be-dangerous/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/ava-low-config-testing-for-javascript/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #bash 
-              #deployment 
-              #ci 
-              #tooling  </span>
+              #Testing 
+              #JavaScript 
+              #Productivity  </span>
               
-              <h2 class="post-card-title">Bash Cheatsheet: check if environment variables are set or file/symlinks exists &#43; more</h2>
+              <h2 class="post-card-title">AVA, low-config testing for JavaScript</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p> A bash scripting cheat sheet for developers who just want to get by.
- Writing setup, CI and deployment flows means a bit of the old bash scripting.
-Despite my deep interest in the intricacies of Bash (/sarcasm), I&rsquo;ve kept hitting up Google and StackOverflow for solutions to the same couple of situations.
-To avoid having to do this again myself and for your reading pleasure, here they are.
-To be dangerous in terms of setup, CI and depoyment flows we will encounter the following:  ...  </p>
+                <p>A JavaScript testing library for 2017
+AVA is a Futuristic JavaScript test runner.
+Some of its best features are:
+ it works out of the box, no need to specify a blob for test files or add Babel hooks
+ it’s runs tests in parallel, this stops you from using global state and runs faster
+ the tests are async by default
+  I quite like AVA since I can just drop it in and reap benefits without too much hassle. I’ve never had to fight against AVA to get tests running, that means more focus on the code and tests and less on the setup.
+
+ ...  </p>
               
           </section>
       </a>
