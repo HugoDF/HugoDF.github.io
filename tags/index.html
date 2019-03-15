@@ -243,25 +243,60 @@
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/matthew-henry-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/annie-spratt-unsplash.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/es6-by-example-a-module/cli-to-wait-for-postgres-in-docker-compose/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/a-gentle-introduction-to-graphql-api-integrations/">
           <header class="post-card-header">
               <span class="post-card-tags">
-              #JavaScript 
-              #Node  </span>
+              #graphql 
+              #tooling 
+              #web development  </span>
               
-              <h2 class="post-card-title">ES6 by example: a module/CLI to wait for Postgres in docker-compose</h2>
+              <h2 class="post-card-title">A gentle introduction to GraphQL API integrations</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>When using docker-compose, it’s good practice to make anything that relies on Postgres wait for it to be up before launching. This avoids connection issues inside the app.
-This post walks through how to deliver this functionality both as a CLI and a module that works both as a CommonJS module (require) and ES modules, without transpilation.
-“A fast, production ready, zero-dependency ES module loader for Node 6+!” is esm’s promise. From this sample project, it’s worked.
+                <p>GraphQL is a great alternative to REST (or other HTTP API designs). This is an quick introduction to the core concepts around consuming a GraphQL API.
+To see some examples consuming a GraphQL API:
+ In Python, see Python GraphQL client requests example using gql In JavaScript (browser and Node), see last week&rsquo;s Code with Hugo newsletter  Table of contents:  ...  </p>
+              
+          </section>
+      </a>
+
+      <footer class="post-card-meta">
+          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
+          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
+      </footer>
+    </div>
+</article>
+ 
+
+<article class="post-card post"> 
+    
+    <a class="post-card-image-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/justyn-warner-unsplash.jpg)"></div>
+    </a>
+    
+
+    <div class="post-card-content">
+      <a class="post-card-content-link" href="https://codewithhugo.com/from-angularjs-to-vue.js-commonjs-and-jest/">
+          <header class="post-card-header">
+              <span class="post-card-tags">
+              #VueJS 
+              #testing 
+              #JavaScript  </span>
+              
+              <h2 class="post-card-title">From AngularJS to Vue.js, CommonJS and Jest</h2>
+          </header>
+          <section class="post-card-excerpt">
+              
+                <p> The trials and tribulations of kicking off an AngularJS -&gt; Vue.js migration
+ AngularJS was pretty groundbreaking. It’s still impressive to this day, packed with a router, an HTTP client, a dependency injection system and a bunch of other things I haven’t necessarily had the pleasure of dealing with. It also wraps most browser APIs as injectable services, that’s pretty cool. The downside is that it’s complicated: services, filters, injectors, directives, controllers, apps, components.
+With the tools we have today, AngularJS isn’t as strong a way to do things any more. The fact that it’s in maintenance mode says it all. For a new application or new features, ie. for a project that not in maintenance mode, it’s doesn’t have the same niceties as other frameworks and libraries like Angular 2+, React or Vue. There should be a way not to rewrite the whole AngularJS application at once, here&rsquo;s how I went about doing it:
 
  ...  </p>
               
@@ -278,68 +313,24 @@ This post walks through how to deliver this functionality both as a CLI and a mo
 
 <article class="post-card post"> 
     
-    <a class="post-card-image-link" href="https://codewithhugo.com/observablehq-notebooks-for-javascript-demos-and-prototypes/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/headway-unsplash.jpg)"></div>
+    <a class="post-card-image-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
+      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/kaizen-nguy.jpg)"></div>
     </a>
     
 
     <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/observablehq-notebooks-for-javascript-demos-and-prototypes/">
+      <a class="post-card-content-link" href="https://codewithhugo.com/avoiding-falsy-values-in-javascript-arrays/">
           <header class="post-card-header">
               <span class="post-card-tags">
               #JavaScript 
-              #deployment 
-              #observablehq  </span>
-              
-              <h2 class="post-card-title">ObservableHQ notebooks for JavaScript demos and prototypes</h2>
-          </header>
-          <section class="post-card-excerpt">
-              
-                <p>ObservableHQ is a platform being built by Mike Bostock (creator of the D3 visualisation library), Jeremy Ashkenas (“Made CoffeeScript, Backbone.js, Underscore and other ragbag” from his Twitter bio) and Tom MacWright (creator of the big presentation framework, simple-statistics and documentation.js as well as D3 contributor amongst other things).
-Observable is not just another JavaScript sandbox. It introduces the notebook paradigm to JavaScript projects, those of you familiar with Jupyter notebooks, this is the equivalent with JavaScript instead of Python. It turns out JavaScript is very well-suited to this type of paradigm.
-What’s more, JavaScript developers already have some sort of familiarity with reactivity since most frontend frameworks and view libraries build on it. It’s a different kind of reactivity, in that the library only re-renders or re-computes the section of the application that needs it (cf. Vue, Angular, React).
-You can read original post from Bostock detailing what is now ObservableHQ (then called d3.express), “A better way to code” on Medium. In that post, the state of the art of why and how of data visualisation is explained. A “better way” is described, the “integrated discovery environment”, or more simply “notebook”-s.
-That inception post is a 20 minute read, but here’s the tl;dr:
- visualisations are usually one-offs - “The purpose of visualization is insight, not pictures.” reactivity is great for building visualisations and discovering insights from data visual outputs help massively especially in the exploration phase a well-designed notebook system has the benefit of making chunks of code reusable without much effort (or re-packaging as a library) web-based notebooks are accessible from anywhere by anyone (if that’s wanted behaviour)  I especially like points 4 and 5, since they’re not a selling point for notebooks in general but for ObservableHQ’s take on the problem. What you end up with is a well-designed web-based reactive notebook environment that’s suited to prototyping.
-Table of contents:  ...  </p>
-              
-          </section>
-      </a>
-
-      <footer class="post-card-meta">
-          <img class="author-profile-image" src="https://cdn-images-1.medium.com/fit/c/200/200/0*Rb-aDjpTtV1UZA4O.jpeg" alt="Author" />
-          <span class="post-card-author"><a href="/">Hugo Di Francesco</a></span>
-      </footer>
-    </div>
-</article>
- 
-
-<article class="post-card post"> 
-    
-    <a class="post-card-image-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
-      <div class="post-card-image" style="background-image: url(https://codewithhugo.com/img/how-components-won.jpeg)"></div>
-    </a>
-    
-
-    <div class="post-card-content">
-      <a class="post-card-content-link" href="https://codewithhugo.com/how-components-won-the-framework-wars/">
-          <header class="post-card-header">
-              <span class="post-card-tags">
-              #JavaScript 
-              #frontend 
               #web development  </span>
               
-              <h2 class="post-card-title">React vs Angular vs Vue in 2019: How components won the “framework wars”</h2>
+              <h2 class="post-card-title">Avoid null/undefined in JavaScript arrays</h2>
           </header>
           <section class="post-card-excerpt">
               
-                <p>React, Vue or Angular: Why it doesn’t matter.
- 2018 marked the end of JavaScript fatigue and the React vs Vue vs Angular (“framework wars”) debate
- A typical frontend/JavaScript developer career usually involves some jQuery and associated plugins before moving on to React, Angular or Vue.
-Having experienced React, Vue and Angular, it seems they solve similar problems in a similar way. Where they differ is the setup experience and best-practices. In more ways than one, the mental model of these frameworks/libraries have converged to the component model.
-This is a win for the developers since the mental model is the same for all the most widespread frameworks. Which means going from one to the other does not pose as big a challenge as it used to.
-If you came here to read a more thorough review and have more background to the Vue, React and Angular ecosystems, I recommend the following from 2017:
-Angular vs. React vs. Vue: A 2017 comparison
+                <p> How to avoid TypeError: Cannot read property ___ of undefined using Array.filter(Boolean)
+ tl;dr: Array.filter(Boolean) filters out falsy values (null, undefined, 0, false, '') and avoids Cannot read property of undefined errors.
 Table of contents:  ...  </p>
               
           </section>
