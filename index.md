@@ -4,6 +4,17 @@ See more + WIP examples at:
 - [github.com/HugoDF](https://github.com/HugoDF)
 - [codesandbox.io/u/HugoDF](https://codesandbox.io/u/HugoDF)
 
+Table of Contents:
+
+- [Express, Redis + Docker Compose setup](#express-redis--docker-compose-setup)
+- [Docker Compose Local HTTPS/TLS/SSL](#docker-compose-local-httpstlsssl)
+- [Express Bull Queue ES6 Example](#express-bull-queue-es6-example)
+- [Express Testing Patterns with Supertest and Moxios](#express-testing-patterns-with-supertest-and-moxios)
+- [Express Testing by mocking the request and response objects](#express-testing-by-mocking-the-request-and-response-objects)
+- [Vue Multiple Components in a single file](#vue-multiple-components-in-a-single-file)
+- [Parcel GitHub Pages Deploy](#parcel-github-pages-deploy)
+- [JS GraphQL client example](#js-graphql-client-example)
+
 ## Express, Redis + Docker Compose setup
 
 Article: [A Docker/docker-compose setup with Redis and Node/Express](https://codewithhugo.com/setting-up-express-and-redis-with-docker-compose/)
