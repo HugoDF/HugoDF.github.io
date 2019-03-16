@@ -1,1 +1,0 @@
-.js-buy-overlay{display:none;position:absolute;top:calc(100vh - 250px);left:0;right:0;text-align:center;z-index:1000;height:250px;padding:1em;background:rgba(255,255,255,.95)}@media screen and (max-width:1023px){.js-buy-overlay{padding:.5em}}.js-buy-overlay__title{margin-top:1em}.js-buy-overlay--active{display:block}.js-buy-overlay__already-bought{font-size:.8em;padding-top:10px}
