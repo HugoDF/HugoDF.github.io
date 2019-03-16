@@ -55,7 +55,7 @@ Repository: [github.com/HugoDF/vue-multiple-components-in-sfc](https://github.co
 
 Article: [Build and deploy a Vue/React/Vanilla JS app with Parcel and GitHub pages](https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/)
 
-Example: [/parcel-gh-pages-deploy](/parcel-gh-pages-deploy)
+Example: [example.codewithhugo.com/parcel-gh-pages-deploy/](/parcel-gh-pages-deploy/)
 
 Repository: [github.com/HugoDF/parcel-gh-pages-deploy/](https://github.com/HugoDF/parcel-gh-pages-deploy/)
 
@@ -63,6 +63,6 @@ Repository: [github.com/HugoDF/parcel-gh-pages-deploy/](https://github.com/HugoD
 
 Article: [JavaScript GraphQL client requests in Node and the browser using `graphql.js`](https://codewithhugo.com/javascript-graphql-client-requests-in-node-and-the-browser-using-graphql.js/)
 
-Example: [/js-graphql-client-example](/js-graphql-client-example)
+Example: [example.codewithhugo.com/js-graphql-client-example](/js-graphql-client-example)
 
 Repository: [github.com/HugoDF/js-graphql-client-example](https://github.com/HugoDF/js-graphql-client-example)
