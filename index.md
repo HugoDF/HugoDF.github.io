@@ -28,6 +28,11 @@ Repository: [github.com/HugoDF/express-supertest-moxios](https://github.com/Hugo
 Article: [A guide to Express request and response mocking/stubbing with Jest or sinon](https://codewithhugo.com/express-request-response-mocking/)
 Repository: [github.com/HugoDF/mock-express-request-response](https://github.com/HugoDF/mock-express-request-response)
 
+## Vue Multiple Components in a single file
+
+Article: [Writing multiple Vue components in a single file](https://codewithhugo.com/writing-multiple-vue-components-in-a-single-file/)
+Repository: [github.com/HugoDF/vue-multiple-components-in-sfc](https://github.com/HugoDF/vue-multiple-components-in-sfc)
+
 ## Parcel GitHub Pages Deploy
 
 Article: [Build and deploy a Vue/React/Vanilla JS app with Parcel and GitHub pages](https://codewithhugo.com/build-and-deploy-a-vue/react/vanilla-js-app-with-parcel-and-github-pages/)
