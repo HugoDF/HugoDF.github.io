@@ -1,4 +1,6 @@
 > Examples for [codewithhugo.com](https://codewithhugo.com)
+>
+> [Subscribe at codewithhugo.com](https://buttondown.email/hugo)
 
 See more + WIP examples at:
 - [github.com/HugoDF](https://github.com/HugoDF)
@@ -23,7 +25,7 @@ Repository: [github.com/HugoDF/express-redis-docker](https://github.com/HugoDF/e
 
 ## Docker Compose Local HTTPS/TLS/SSL
 
-__Coming soon, [subscribe at codewithhugo.com](https://buttondown.email/hugo)__
+Article: [Docker Compose Local HTTPS with nginx or Caddy and mkcert](https://codewithhugo.com/docker-compose-local-https)
 
 Repository: [github.com/HugoDF/docker-compose-local-https](https://github.com/HugoDF/docker-compose-local-https)
 
